@@ -64,7 +64,7 @@ namespace ToBOE.Dialogue.Importer.CodeGen
             }
         }
 
-        private StringBuilder Indent()
+        private StringBuilder ApplyIndent()
         {
             return builder.Append('\t', IndentLevel);
         }
@@ -74,7 +74,18 @@ namespace ToBOE.Dialogue.Importer.CodeGen
 
         public void AddComment(string comment)
         {
-            Indent().Append("// ").AppendLine(comment);
+            ApplyIndent().Append("// ").AppendLine(comment);
+        }
+
+        public void Space()
+        {
+            builder.AppendLine();
+        }
+
+        public void Space(int numSpaces)
+        {
+            for (int i = 0; i < numSpaces; i++)
+                builder.AppendLine();
         }
 
         public StringBuilder AddModifiers(Modifiers mods)
@@ -104,6 +115,38 @@ namespace ToBOE.Dialogue.Importer.CodeGen
             Virtual = 1 << 4,
             Abstract = 1 << 5,
             
+        }
+
+        public class Scope : IDisposable
+        {
+            private bool isDisposed;
+
+            public Scope(CodeFile codeFile)
+            {
+                codeFile.builder.AppendLine();
+                codeFile.ApplyIndent().AppendLine("{");
+                codeFile.IncreaseIndent();
+            }
+
+            protected virtual void Dispose(bool disposing)
+            {
+                if (!isDisposed)
+                {
+                    if (disposing)
+                    {
+                        //codeFile.builder.AppendLine();
+                    }
+
+                    isDisposed = true;
+                }
+            }
+
+            public void Dispose()
+            {
+                // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+                Dispose(disposing: true);
+                GC.SuppressFinalize(this);
+            }
         }
     }
 }
