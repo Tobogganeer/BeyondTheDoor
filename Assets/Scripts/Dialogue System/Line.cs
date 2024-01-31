@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace ToBOE.Dialogue
 {
     /// <summary>
@@ -11,6 +10,7 @@ namespace ToBOE.Dialogue
     [System.Serializable]
     public class Line
     {
+        #region Property Accessors
         /// <summary>
         /// The character that speaks this line
         /// </summary>
@@ -39,7 +39,7 @@ namespace ToBOE.Dialogue
         /// Any extra data about the line.
         /// </summary>
         public string ExtraData => extraData;
-
+        #endregion
 
         [SerializeField] private Character character;
         [SerializeField] private string text;
