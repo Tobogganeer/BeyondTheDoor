@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class DialogueImportWindow : MonoBehaviour
+public class DialogueImportWindow : EditorWindow
 {
-    // Start is called before the first frame update
-    void Start()
+    TextAsset tsvFile;
+
+    [MenuItem("Dialogue/Import Window")]
+    public static void ShowWindow()
     {
-        
+        DialogueImportWindow window = EditorWindow.GetWindow<DialogueImportWindow>();
+        window.titleContent = new GUIContent("Import Dialogue");
+        window.minSize = new Vector2(300, 600);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnGUI()
     {
-        
+        tsvFile = EditorGUILayout.ObjectField(tsvFile, typeof(TextAsset), false) as TextAsset;
     }
 }
