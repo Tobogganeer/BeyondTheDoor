@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using System.IO;
+using System;
 
 namespace ToBOE.Dialogue.Importer.CodeGen
 {
@@ -15,7 +16,7 @@ namespace ToBOE.Dialogue.Importer.CodeGen
         public string FolderPath { get; private set; }
         public string FullPath { get; private set; }
         
-        public uint IndentLevel { get; private set; }
+        public int IndentLevel { get; private set; }
 
         private StringBuilder builder;
 
@@ -61,6 +62,48 @@ namespace ToBOE.Dialogue.Importer.CodeGen
                 builder.Append(' ', spaces).Append('=');
                 builder.AppendLine();
             }
+        }
+
+        private StringBuilder Indent()
+        {
+            return builder.Append('\t', IndentLevel);
+        }
+
+        private void IncreaseIndent(int increase = 1) => IndentLevel = Mathf.Max(IndentLevel + increase, 0);
+        private void DecreaseIndent(int decrease = 1) => IndentLevel = Mathf.Max(IndentLevel - decrease, 0);
+
+        public void AddComment(string comment)
+        {
+            Indent().Append("// ").AppendLine(comment);
+        }
+
+        public StringBuilder AddModifiers(Modifiers mods)
+        {
+            if (mods.HasFlag(Modifiers.None)) return builder;
+            if (mods.HasFlag(Modifiers.Private)) builder.Append("private ");
+            if (mods.HasFlag(Modifiers.Public)) builder.Append("public ");
+            if (mods.HasFlag(Modifiers.Protected)) builder.Append("protected ");
+            if (mods.HasFlag(Modifiers.Static)) builder.Append("static ");
+            if (mods.HasFlag(Modifiers.Virtual)) builder.Append("virtual ");
+            if (mods.HasFlag(Modifiers.Abstract)) builder.Append("abstract ");
+
+            return builder;
+        }
+
+
+
+
+        [Flags]
+        public enum Modifiers
+        {
+            None = 0,
+            Private = 1 << 0,
+            Public = 1 << 1,
+            Protected = 1 << 2,
+            Static = 1 << 3,
+            Virtual = 1 << 4,
+            Abstract = 1 << 5,
+            
         }
     }
 }
