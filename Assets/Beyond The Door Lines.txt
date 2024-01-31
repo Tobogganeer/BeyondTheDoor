@@ -1,0 +1,4 @@
+Actor	Line	Context	Day	ID	Line Status	Voice Status	Extra Data
+TestActor1	This is the first line	idk lol	1	test1_line1	Placeholder	None	brrrt
+TestActor1	Noice (2nd line)	mmmmm	1	test1_line2	Draft	None	zazaza
+TestActor2	Actor 2 line	yada	1	test2_line1	Final	None	yoink
