@@ -7,6 +7,7 @@ namespace ToBOE.Dialogue
     /// <summary>
     /// A ScriptableObject that holds the data for a Line
     /// </summary>
+    [CreateAssetMenu(menuName = "Creathawudhai")]
     public class LineSO : ScriptableObject
     {
         #region Property Wrappers
@@ -37,7 +38,7 @@ namespace ToBOE.Dialogue
         /// <summary>
         /// The status of the voice recording.
         /// </summary>
-        public LineStatus VoiceStatus => line.VoiceStatus;
+        public VoiceStatus VoiceStatus => line.VoiceStatus;
         /// <summary>
         /// Any extra data about the line.
         /// </summary>

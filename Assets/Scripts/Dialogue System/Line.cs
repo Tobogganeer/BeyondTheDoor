@@ -42,7 +42,7 @@ namespace ToBOE.Dialogue
         /// <summary>
         /// The status of the voice recording.
         /// </summary>
-        public LineStatus VoiceStatus => voiceStatus;
+        public VoiceStatus VoiceStatus => voiceStatus;
         /// <summary>
         /// Any extra data about the line.
         /// </summary>
@@ -55,12 +55,12 @@ namespace ToBOE.Dialogue
         [SerializeField] internal int day;
         [SerializeField] internal LineID id;
         [SerializeField] internal LineStatus lineStatus;
-        [SerializeField] internal LineStatus voiceStatus;
+        [SerializeField] internal VoiceStatus voiceStatus;
         [SerializeField] internal string extraData;
 
         internal Line() { }
 
-        public Line(Character character, string text, string context, LineID id, LineStatus lineStatus, LineStatus voiceStatus, string extraData)
+        public Line(Character character, string text, string context, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
         {
             this.character = character;
             this.text = text;
