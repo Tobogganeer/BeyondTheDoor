@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Runtime.Remoting.Contexts;
 
 namespace ToBOE.Dialogue.Importer
 {
@@ -123,7 +124,6 @@ namespace ToBOE.Dialogue.Importer
             public LineDataType InvalidElements { get; private set; }
 
 
-            
             public void Validate()
             {
                 InvalidElements = GetInvalidElements();
@@ -150,6 +150,7 @@ namespace ToBOE.Dialogue.Importer
                 return $"Raw Line with ID {id} is invalid. Invalid elements: {InvalidElements}.";
             }
 
+
             public bool IsCharacterValid() => Enum.TryParse<Character>(character, out _);
             public bool IsTextValid() => !string.IsNullOrEmpty(text);
             public bool IsContextValid() => true;
@@ -158,23 +159,60 @@ namespace ToBOE.Dialogue.Importer
             public bool IsLineStatusValid() => Enum.TryParse<LineStatus>(lineStatus, out _);
             public bool IsVoiceStatusValid() => Enum.TryParse<LineStatus>(voiceStatus, out _);
             public bool IsExtraDataValid() => true;
+
+
+            public string GetData(LineDataType type)
+            {
+                return type switch
+                {
+                    LineDataType.Character => character,
+                    LineDataType.Text => text,
+                    LineDataType.Context => context,
+                    LineDataType.Day => day,
+                    LineDataType.LineID => id,
+                    LineDataType.LineStatus => lineStatus,
+                    LineDataType.VoiceStatus => voiceStatus,
+                    LineDataType.ExtraData => extraData,
+                    _ => throw new ArgumentException("Invalid LineDataType", "type")
+                };
+            }
         }
 
         public class RawLineCollection
         {
             public List<RawLineData> RawLines { get; private set; }
+            public List<RawLineData> InvalidLines { get; private set; }
             public LineDataType InvalidElements { get; private set; }
             public bool IsValid { get; private set; }
 
             public RawLineCollection(List<RawLineData> rawLines)
             {
                 RawLines = rawLines;
+                InvalidLines = new List<RawLineData>();
 
                 InvalidElements = LineDataType.None;
                 foreach (RawLineData line in rawLines)
+                {
                     InvalidElements |= line.InvalidElements;
+                    if (!line.IsValid)
+                        InvalidLines.Add(line);
+                }
 
                 IsValid = InvalidElements == LineDataType.None;
+            }
+
+            /// <summary>
+            /// Gets a list of the <paramref name="type"/> data from all lines, e.g. the Character of all lines.
+            /// </summary>
+            /// <param name="type"></param>
+            /// <returns></returns>
+            public List<string> GetAllData(LineDataType type)
+            {
+                List<string> data = new List<string>(RawLines.Count);
+                for (int i = 0; i < RawLines.Count; i++)
+                    data[i] = RawLines[i].GetData(type);
+
+                return data;
             }
         }
     }
