@@ -47,13 +47,20 @@ namespace ToBOE.Dialogue.Importer
 
         void LinesValid()
         {
-
+            EditorGUILayout.LabelField("All lines passed validation.");
         }
 
         void LinesInvalid()
         {
             EditorGUILayout.LabelField("Lines invalid: " + rawLines.InvalidLines.Count +
                 ". Reason(s): " + rawLines.InvalidElements);
+
+            if (GUILayout.Button("Log Invalid lines"))
+            {
+                Debug.Log("Invalid lines:");
+                foreach (LineParser.RawLineData data in rawLines.InvalidLines)
+                    Debug.Log("- " + data.GetInvalidElementsString());
+            }
 
             bool charactersInvalid = rawLines.InvalidElements.HasFlag(LineParser.LineDataType.Character);
             bool lineIDsInvalid = rawLines.InvalidElements.HasFlag(LineParser.LineDataType.LineID);
@@ -66,6 +73,14 @@ namespace ToBOE.Dialogue.Importer
                 if (GUILayout.Button("Generate Enums"))
                 {
                     GenerateEnums(charactersInvalid, lineIDsInvalid, lineStatusesInvalid, voiceStatusesInvalid);
+                }
+            }
+            else
+            {
+                EditorGUILayout.LabelField("All Enums appear valid.");
+                if (GUILayout.Button("Regenerate Enums anyways"))
+                {
+                    GenerateEnums(true, true, true, true);
                 }
             }
         }
