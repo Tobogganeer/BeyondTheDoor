@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+
+// Let the importer edit the values on lines directly
+[assembly: InternalsVisibleTo("Importer")]
 
 namespace ToBOE.Dialogue
 {
@@ -24,6 +28,10 @@ namespace ToBOE.Dialogue
         /// </summary>
         public string Context => context;
         /// <summary>
+        /// The day on which this line is spoken.
+        /// </summary>
+        public int Day => day;
+        /// <summary>
         /// The ID of the line.
         /// </summary>
         public LineID ID => id;
@@ -41,13 +49,16 @@ namespace ToBOE.Dialogue
         public string ExtraData => extraData;
         #endregion
 
-        [SerializeField] private Character character;
-        [SerializeField] private string text;
-        [SerializeField] private string context;
-        [SerializeField] private LineID id;
-        [SerializeField] private LineStatus lineStatus;
-        [SerializeField] private LineStatus voiceStatus;
-        [SerializeField] private string extraData;
+        [SerializeField] internal Character character;
+        [SerializeField] internal string text;
+        [SerializeField] internal string context;
+        [SerializeField] internal int day;
+        [SerializeField] internal LineID id;
+        [SerializeField] internal LineStatus lineStatus;
+        [SerializeField] internal LineStatus voiceStatus;
+        [SerializeField] internal string extraData;
+
+        internal Line() { }
 
         public Line(Character character, string text, string context, LineID id, LineStatus lineStatus, LineStatus voiceStatus, string extraData)
         {

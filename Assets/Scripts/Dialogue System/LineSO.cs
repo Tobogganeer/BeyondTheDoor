@@ -23,6 +23,10 @@ namespace ToBOE.Dialogue
         /// </summary>
         public string Context => line.Context;
         /// <summary>
+        /// The day on which this line is spoken.
+        /// </summary>
+        public int Day => line.Day;
+        /// <summary>
         /// The ID of the line.
         /// </summary>
         public LineID ID => line.ID;
