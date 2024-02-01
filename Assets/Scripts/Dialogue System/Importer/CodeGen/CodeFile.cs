@@ -122,7 +122,7 @@ namespace ToBOE.Dialogue.Importer.CodeGen
         /// <returns></returns>
         public StringBuilder AddModifiers(Modifiers mods)
         {
-            if (mods.HasFlag(Modifiers.None)) return builder;
+            if (mods == Modifiers.None) return builder;
             if (mods.HasFlag(Modifiers.Private)) builder.Append("private ");
             if (mods.HasFlag(Modifiers.Public)) builder.Append("public ");
             if (mods.HasFlag(Modifiers.Protected)) builder.Append("protected ");

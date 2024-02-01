@@ -16,5 +16,7 @@ namespace ToBOE.Dialogue
         public static readonly string CharacterEnumFileName = "Character.cs";
         public static readonly string LineIDEnumFileName = "LineID.cs";
         public static readonly string LineStatusEnumFileName = "LineStatus.cs";
+
+        public static readonly string DialogueNamespace = "ToBOE.Dialogue";
     }
 }

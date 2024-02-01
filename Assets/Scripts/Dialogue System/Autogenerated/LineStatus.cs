@@ -1,4 +1,18 @@
-public enum LineStatus
-{
+//==================================================
+// =                                             =
+// = LineStatus.cs                               =
+// =                                             =
+// = AUTO-GENERATED FILE - Do not edit!          =
+// =                                             =
+//==================================================
 
+namespace ToBOE.Dialogue
+{
+    public enum LineStatus
+    {
+        Placeholder = -1019358273,
+        Draft = 1944763273,
+        Final = 1319502690,
+    }
 }
+

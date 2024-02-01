@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Runtime.Remoting.Contexts;
 
 namespace ToBOE.Dialogue.Importer
 {
@@ -109,6 +108,7 @@ namespace ToBOE.Dialogue.Importer
             ExtraData = 1 << 7
         }
 
+        [Serializable]
         public class RawLineData
         {
             public string character;
@@ -155,7 +155,7 @@ namespace ToBOE.Dialogue.Importer
             public bool IsTextValid() => !string.IsNullOrEmpty(text);
             public bool IsContextValid() => true;
             public bool IsDayValid() => uint.TryParse(day, out _);
-            public bool IsIDValid() => !string.IsNullOrEmpty(id);
+            public bool IsIDValid() => Enum.TryParse<LineID>(id, out _);
             public bool IsLineStatusValid() => Enum.TryParse<LineStatus>(lineStatus, out _);
             public bool IsVoiceStatusValid() => Enum.TryParse<LineStatus>(voiceStatus, out _);
             public bool IsExtraDataValid() => true;
@@ -178,6 +178,7 @@ namespace ToBOE.Dialogue.Importer
             }
         }
 
+        [Serializable]
         public class RawLineCollection
         {
             public List<RawLineData> RawLines { get; private set; }
@@ -206,11 +207,31 @@ namespace ToBOE.Dialogue.Importer
             /// </summary>
             /// <param name="type"></param>
             /// <returns></returns>
-            public List<string> GetAllData(LineDataType type)
+            public List<string> GetAllData(LineDataType type, bool removeDuplicates = true)
+            {
+                if (removeDuplicates)
+                    return GetAllDataNoDuplicates(type);
+                return GetAllDataIncludingDuplicates(type);
+            }
+
+            List<string> GetAllDataNoDuplicates(LineDataType type)
             {
                 List<string> data = new List<string>(RawLines.Count);
                 for (int i = 0; i < RawLines.Count; i++)
-                    data[i] = RawLines[i].GetData(type);
+                {
+                    string entry = RawLines[i].GetData(type);
+                    if (!data.Contains(entry))
+                        data.Add(entry);
+                }
+
+                return data;
+            }
+
+            List<string> GetAllDataIncludingDuplicates(LineDataType type)
+            {
+                List<string> data = new List<string>(RawLines.Count);
+                for (int i = 0; i < RawLines.Count; i++)
+                    data.Add(RawLines[i].GetData(type));
 
                 return data;
             }
