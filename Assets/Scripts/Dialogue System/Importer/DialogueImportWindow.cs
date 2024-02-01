@@ -52,24 +52,25 @@ namespace ToBOE.Dialogue.Importer
 
         void LinesInvalid()
         {
-            EditorGUILayout.LabelField("Lines invalid: " + rawLines.InvalidLines.Count);
+            EditorGUILayout.LabelField("Lines invalid: " + rawLines.InvalidLines.Count +
+                ". Reason(s): " + rawLines.InvalidElements);
 
             bool charactersInvalid = rawLines.InvalidElements.HasFlag(LineParser.LineDataType.Character);
             bool lineIDsInvalid = rawLines.InvalidElements.HasFlag(LineParser.LineDataType.LineID);
-            bool lineStatusesInvalid = rawLines.InvalidElements.HasFlag(LineParser.LineDataType.LineStatus) ||
-                rawLines.InvalidElements.HasFlag(LineParser.LineDataType.VoiceStatus);
+            bool lineStatusesInvalid = rawLines.InvalidElements.HasFlag(LineParser.LineDataType.LineStatus);
+            bool voiceStatusesInvalid = rawLines.InvalidElements.HasFlag(LineParser.LineDataType.VoiceStatus);
 
-            if (charactersInvalid || lineIDsInvalid || lineStatusesInvalid)
+            if (charactersInvalid || lineIDsInvalid || lineStatusesInvalid || voiceStatusesInvalid)
             {
                 EditorGUILayout.LabelField("Enums may be invalid.");
                 if (GUILayout.Button("Generate Enums"))
                 {
-                    GenerateEnums(charactersInvalid, lineIDsInvalid, lineStatusesInvalid);
+                    GenerateEnums(charactersInvalid, lineIDsInvalid, lineStatusesInvalid, voiceStatusesInvalid);
                 }
             }
         }
 
-        void GenerateEnums(bool chars, bool ids, bool stats)
+        void GenerateEnums(bool chars, bool ids, bool stats, bool voices)
         {
             if (chars)
                 GenerateEnum(nameof(Character), LineParser.LineDataType.Character);
@@ -77,6 +78,8 @@ namespace ToBOE.Dialogue.Importer
                 GenerateEnum(nameof(LineID), LineParser.LineDataType.LineID);
             if (stats)
                 GenerateEnum(nameof(LineStatus), LineParser.LineDataType.LineStatus);
+            if (voices)
+                GenerateEnum(nameof(VoiceStatus), LineParser.LineDataType.VoiceStatus);
         }
 
         void GenerateEnum(string enumName, LineParser.LineDataType dataType)

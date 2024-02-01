@@ -157,7 +157,7 @@ namespace ToBOE.Dialogue.Importer
             public bool IsDayValid() => uint.TryParse(day, out _);
             public bool IsIDValid() => Enum.TryParse<LineID>(id, out _);
             public bool IsLineStatusValid() => Enum.TryParse<LineStatus>(lineStatus, out _);
-            public bool IsVoiceStatusValid() => Enum.TryParse<LineStatus>(voiceStatus, out _);
+            public bool IsVoiceStatusValid() => Enum.TryParse<VoiceStatus>(voiceStatus, out _);
             public bool IsExtraDataValid() => true;
 
 

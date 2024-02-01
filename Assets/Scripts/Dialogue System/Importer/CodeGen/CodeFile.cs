@@ -50,14 +50,14 @@ namespace ToBOE.Dialogue.Importer.CodeGen
             // Ensure we have enough space
             int lineLength = Mathf.Max(AutoGenPreambleMinLength, FileName.Length + AutoGenPreambleNameSpacing);
 
-            builder.Append("//").Append('=', lineLength); // Top row
+            builder.Append("// ").Append('=', lineLength - 1); // Top row
             builder.AppendLine();
             AppendPreambleLine(builder, lineLength, ""); // Empty spacer line
             AppendPreambleLine(builder, lineLength, FileName);
             AppendPreambleLine(builder, lineLength, ""); // Spacer
             AppendPreambleLine(builder, lineLength, "AUTO-GENERATED FILE - Do not edit!");
             AppendPreambleLine(builder, lineLength, ""); // Spacer
-            builder.Append("//").Append('=', lineLength); // Bottom row
+            builder.Append("// ").Append('=', lineLength - 1); // Bottom row
             builder.AppendLine().AppendLine(); // Trailing newlines
 
             static void AppendPreambleLine(StringBuilder builder, int lineLength, string text)
@@ -65,7 +65,7 @@ namespace ToBOE.Dialogue.Importer.CodeGen
                 builder.Append("// = ").Append(text);
 
                 int textLength = text.Length;
-                textLength += 5; // Beginning //, 2 spaces and =
+                textLength += 3; // Beginning // and space
                 int spaces = lineLength - textLength;
                 spaces--; // End =
 
