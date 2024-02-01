@@ -87,6 +87,10 @@ namespace ToBOE.Dialogue.Importer
                 }
             }
 
+            int numDataTypes = Enum.GetNames(typeof(LineDataType)).Length - 1; // Subtract 'None'
+            if (mappings.Count < numDataTypes)
+                throw new FormatException($"TSV file contained less than {numDataTypes} headers!");
+
             return mappings;
         }
 

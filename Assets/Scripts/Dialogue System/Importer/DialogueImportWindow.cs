@@ -9,9 +9,7 @@ namespace ToBOE.Dialogue.Importer
     public class DialogueImportWindow : EditorWindow
     {
         TextAsset tsvFile;
-        //bool generateCharactersEnum;
-        //bool generateStatusEnum;
-        //bool generateIDEnum = true;
+        LineParser.RawLineCollection rawLines;
 
         [MenuItem("Dialogue/Import Window")]
         public static void ShowWindow()
@@ -24,9 +22,18 @@ namespace ToBOE.Dialogue.Importer
         private void OnGUI()
         {
             tsvFile = EditorGUILayout.ObjectField("Lines File", tsvFile, typeof(TextAsset), false) as TextAsset;
-            //generateCharactersEnum = EditorGUILayout.Toggle("Generate Characters Enum", generateCharactersEnum);
-            //generateStatusEnum = EditorGUILayout.Toggle("Generate Status Enum", generateStatusEnum);
-            //generateIDEnum = EditorGUILayout.Toggle("Generate LineID Enum", generateIDEnum);
+            if (tsvFile == null)
+                GUI.enabled = false;
+
+            if (GUILayout.Button("Process TSV"))
+            {
+                rawLines = LineParser.ParseRawLines(tsvFile.text);
+            }
+
+            GUI.enabled = true;
+
+            if (rawLines != null)
+                EditorGUILayout.LabelField("Raw line count: " + rawLines.RawLines.Count);
         }
     }
 }
