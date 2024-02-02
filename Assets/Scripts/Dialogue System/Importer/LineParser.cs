@@ -136,6 +136,14 @@ namespace ToBOE.Dialogue.Importer
                 voiceStatus = voiceStatus?.Trim();
                 extraData = extraData?.Trim();
 
+                const string NoneString = "None";
+
+                // Handle empty statuses to be None
+                if (string.IsNullOrEmpty(lineStatus))
+                    lineStatus = NoneString;
+                if (string.IsNullOrEmpty(voiceStatus))
+                    voiceStatus = NoneString;
+
                 InvalidElements = GetInvalidElements();
                 IsValid = InvalidElements == LineDataType.None;
             }

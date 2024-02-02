@@ -1,4 +1,10 @@
 Character	Text	Context	Day	LineID	LineStatus	VoiceStatus	ExtraData
-TestActor1	This is the first line	idk lol	1	test1_line1	Placeholder	None	brrrt
-TestActor1	Noice (2nd line)	mmmmm	1	test1_line2	Draft	None	zazaza
-TestActor2	Actor 2 line	yada	1	test2_line1	Final	None	yoink
+Bob	"Hey Jessica, knock knock?"	Start of test conversation	1	bob_start_joke	Placeholder	None	brrrt
+Bob	Old lady.	Reply to Jessica	1	bob_joke_question	Draft	None	zazaza
+Bob	Didn't know there was a yodeller!	2nd line of convo	1	bob_punchline	Final	None	yoink
+Jessica	... Who's there?		1	jessica_reply1	Draft	None	
+Jessica	Old lady who?		1	jessica_reply2	Draft	None	
+Jessica	…		1	jessica_silent	Draft	None	
+Jessica	Can we kill this guy?		1	jessica_player_question	Draft	None	
+Player	Yes		1	player_yes	Draft	None	
+Player	No		1	player_no	Draft	None	

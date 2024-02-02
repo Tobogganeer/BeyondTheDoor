@@ -1,18 +1,24 @@
-//==================================================
-// =                                             =
-// = LineID.cs                                   =
-// =                                             =
-// = AUTO-GENERATED FILE - Do not edit!          =
-// =                                             =
-//==================================================
+// =================================================
+// =                                               =
+// = LineID.cs                                     =
+// =                                               =
+// = AUTO-GENERATED FILE - Do not edit!            =
+// =                                               =
+// =================================================
 
 namespace ToBOE.Dialogue
 {
     public enum LineID
     {
-        test1_line1 = -437530653,
-        test1_line2 = -437530650,
-        test2_line1 = -437708090,
+        bob_start_joke = 2047213056,
+        bob_joke_question = 706647210,
+        bob_punchline = 47716548,
+        jessica_reply1 = -749216894,
+        jessica_reply2 = -1152501421,
+        jessica_silent = -1658352232,
+        jessica_player_question = 1312534369,
+        player_yes = 1000278611,
+        player_no = 1223167581,
     }
 }
 

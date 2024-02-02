@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using ToBOE.Dialogue.Importer.CodeGen;
-using System.Security.Cryptography;
-using static UnityEditor.LightingExplorerTableColumn;
 
 namespace ToBOE.Dialogue.Importer
 {
@@ -12,6 +10,7 @@ namespace ToBOE.Dialogue.Importer
     {
         TextAsset tsvFile;
         LineParser.RawLineCollection rawLines;
+        bool clearLinesOnEnumGeneration;
 
         [MenuItem("Dialogue/Import Window")]
         public static void ShowWindow()
@@ -77,8 +76,12 @@ namespace ToBOE.Dialogue.Importer
                 EditorGUILayout.LabelField("Enums may be invalid.");
                 if (GUILayout.Button("Generate Enums"))
                 {
+                    if (clearLinesOnEnumGeneration)
+                        LineGenerator.ClearLinesFile();
+
                     GenerateEnums(charactersInvalid, lineIDsInvalid, lineStatusesInvalid, voiceStatusesInvalid);
                 }
+                clearLinesOnEnumGeneration = EditorGUILayout.Toggle("Clear all Lines?", clearLinesOnEnumGeneration);
             }
             else
             {
