@@ -14,6 +14,9 @@ namespace ToBOE.Dialogue
         private List<Line> _linesBacking;
         private ChoiceCollection _choicesBacking;
 
+        /// <summary>
+        /// The lines of this conversation, in order.
+        /// </summary>
         public List<Line> Lines
         {
             get
@@ -23,15 +26,31 @@ namespace ToBOE.Dialogue
                     _linesBacking = new List<Line>(lines.Count);
                     foreach (LineID id in lines)
                         _linesBacking.Add(Line.Get(id));
+
+                    // Make the lines lead into each other
+                    if (_linesBacking.Count > 0)
+                    {
+                        for (int i = 0; i < _linesBacking.Count - 1; i++)
+                            _linesBacking[i].Then(_linesBacking[i + 1]);
+                        // Make the last one lead to the choices
+                        _linesBacking[_linesBacking.Count - 1].Then(Choices);
+                    }
                 }
 
                 return _linesBacking;
             }
         }
+        /// <summary>
+        /// The choices that can be chosen after all lines are spoken. May be null if the conversation simply ends.
+        /// </summary>
         public ChoiceCollection Choices
         {
             get
             {
+                // No choices, return nothing
+                if (choices.Count == 0)
+                    return null;
+
                 if (_choicesBacking == null || _choicesBacking.Choices.Count != choices.Count)
                 {
                     List<Choice> fill = new List<Choice>();
@@ -47,11 +66,14 @@ namespace ToBOE.Dialogue
                 return _choicesBacking;
             }
         }
-        public event Action<Conversation> OnOpen;
+        /// <summary>
+        /// Called when this conversation is started
+        /// </summary>
+        public event Action<Conversation> OnStarted;
 
         public void Open()
         {
-            OnOpen?.Invoke(this);
+            OnStarted?.Invoke(this);
             if (Lines.Count > 0)
                 Lines[0].Open();
         }

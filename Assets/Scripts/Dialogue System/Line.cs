@@ -66,6 +66,9 @@ namespace ToBOE.Dialogue
         private IDialogueElement followupElement;
         private int timesOpened;
 
+        /// <summary>
+        /// Called when this line is opened/displayed.
+        /// </summary>
         public event Action<Line> OnOpen;
 
         internal Line() { }
@@ -94,7 +97,7 @@ namespace ToBOE.Dialogue
         /// </summary>
         /// <param name="followingLine">The line to open after this one.</param>
         /// <returns></returns>
-        public Line Then(Line followingLine)
+        public Line Then(IDialogueElement followingLine)
         {
             followupElement = followingLine;
             return followingLine;
