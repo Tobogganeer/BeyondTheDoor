@@ -97,10 +97,20 @@ namespace ToBOE.Dialogue
         /// </summary>
         /// <param name="followingLine">The line to open after this one.</param>
         /// <returns></returns>
-        public Line Then(IDialogueElement followingLine)
+        public Line Then(Line followingLine)
         {
             followupElement = followingLine;
             return followingLine;
+        }
+
+        /// <summary>
+        /// Opens the <paramref name="followingElement"/> after this line is complete.
+        /// </summary>
+        /// <param name="followingElement">The element to open after this one.</param>
+        /// <returns></returns>
+        public void Then(IDialogueElement followingElement)
+        {
+            followupElement = followingElement;
         }
 
         /// <summary>
