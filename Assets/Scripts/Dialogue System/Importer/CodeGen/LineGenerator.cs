@@ -85,13 +85,13 @@ namespace ToBOE.Dialogue.Importer.CodeGen
             // LineStatus lineStatus, VoiceStatus voiceStatus, string extraData
             cf.ApplyIndent();
             sb.Append("public static Line ").Append(line.id).Append(" { get; private set; } = new Line(");
-            sb.Append("Character.").Append(line.character).Append(", ");
+            sb.Append(nameof(CharacterID)).Append(".").Append(line.character).Append(", ");
             sb.Append('"').Append(SanitizeForCodeGen(line.text)).Append("\", ");
             sb.Append('"').Append(SanitizeForCodeGen(line.context)).Append("\", ");
             sb.Append(line.day).Append(", ");
-            sb.Append("LineID.").Append(line.id).Append(", ");
-            sb.Append("LineStatus.").Append(line.lineStatus).Append(", ");
-            sb.Append("VoiceStatus.").Append(line.voiceStatus).Append(", ");
+            sb.Append(nameof(LineID)).Append(".").Append(line.id).Append(", ");
+            sb.Append(nameof(LineStatus)).Append(".").Append(line.lineStatus).Append(", ");
+            sb.Append(nameof(VoiceStatus)).Append(".").Append(line.voiceStatus).Append(", ");
             sb.Append('"').Append(SanitizeForCodeGen(line.extraData)).Append("\");");
             sb.AppendLine();
         }

@@ -39,7 +39,7 @@ namespace ToBOE.Dialogue.Importer
         {
             switch (type)
             {
-                case Line.Element.Character:
+                case Line.Element.CharacterID:
                     line.character = data;
                     break;
                 case Line.Element.Text:
@@ -137,7 +137,7 @@ namespace ToBOE.Dialogue.Importer
             private Line.Element GetInvalidElements()
             {
                 Line.Element invalidElements = Line.Element.None;
-                if (!IsCharacterValid()) invalidElements |= Line.Element.Character;
+                if (!IsCharacterValid()) invalidElements |= Line.Element.CharacterID;
                 if (!IsTextValid()) invalidElements |= Line.Element.Text;
                 if (!IsContextValid()) invalidElements |= Line.Element.Context;
                 if (!IsDayValid()) invalidElements |= Line.Element.Day;
@@ -159,7 +159,7 @@ namespace ToBOE.Dialogue.Importer
             }
 
 
-            public bool IsCharacterValid() => Enum.TryParse<Character>(character, out _);
+            public bool IsCharacterValid() => Enum.TryParse<CharacterID>(character, out _);
             public bool IsTextValid() => !string.IsNullOrEmpty(text);
             public bool IsContextValid() => true;
             public bool IsDayValid() => uint.TryParse(day, out _);
@@ -173,7 +173,7 @@ namespace ToBOE.Dialogue.Importer
             {
                 return type switch
                 {
-                    Line.Element.Character => character,
+                    Line.Element.CharacterID => character,
                     Line.Element.Text => text,
                     Line.Element.Context => context,
                     Line.Element.Day => day,

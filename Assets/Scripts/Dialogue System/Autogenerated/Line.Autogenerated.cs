@@ -12,16 +12,20 @@ namespace ToBOE.Dialogue
 {
     public partial class Line
     {
-        public static Line bob_start_joke { get; private set; } = new Line(Character.Bob, "Hey Jessica, knock knock?", "Start of test conversation", 1, LineID.bob_start_joke, LineStatus.Placeholder, VoiceStatus.None, "brrrt");
-        public static Line bob_joke_question { get; private set; } = new Line(Character.Bob, "Old lady.", "Reply to Jessica", 1, LineID.bob_joke_question, LineStatus.Draft, VoiceStatus.None, "zazaza");
-        public static Line bob_punchline { get; private set; } = new Line(Character.Bob, "Didn't know there was a yodeller!", "2nd line of convo", 1, LineID.bob_punchline, LineStatus.Final, VoiceStatus.None, "yoink");
-        public static Line jessica_reply1 { get; private set; } = new Line(Character.Jessica, "... Who's there?", "", 1, LineID.jessica_reply1, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line jessica_reply2 { get; private set; } = new Line(Character.Jessica, "Old lady who?", "", 1, LineID.jessica_reply2, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line jessica_silent { get; private set; } = new Line(Character.Jessica, "�", "", 1, LineID.jessica_silent, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line jessica_player_question { get; private set; } = new Line(Character.Jessica, "Can we kill this guy?", "", 1, LineID.jessica_player_question, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line player_yes { get; private set; } = new Line(Character.Player, "Yes", "", 1, LineID.player_yes, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line player_no { get; private set; } = new Line(Character.Player, "No", "", 1, LineID.player_no, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line bob_start_joke { get; private set; } = new Line(CharacterID.Bob, "Hey Jessica, knock knock?", "Start of test conversation", 1, LineID.bob_start_joke, LineStatus.Placeholder, VoiceStatus.None, "brrrt");
+        public static Line bob_joke_question { get; private set; } = new Line(CharacterID.Bob, "Old lady.", "Reply to Jessica", 1, LineID.bob_joke_question, LineStatus.Draft, VoiceStatus.None, "zazaza");
+        public static Line bob_punchline { get; private set; } = new Line(CharacterID.Bob, "Didn't know there was a yodeller!", "2nd line of convo", 1, LineID.bob_punchline, LineStatus.Final, VoiceStatus.None, "yoink");
+        public static Line jessica_reply1 { get; private set; } = new Line(CharacterID.Jessica, "... Who's there?", "", 1, LineID.jessica_reply1, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line jessica_reply2 { get; private set; } = new Line(CharacterID.Jessica, "Old lady who?", "", 1, LineID.jessica_reply2, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line jessica_silent { get; private set; } = new Line(CharacterID.Jessica, "�", "", 1, LineID.jessica_silent, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line jessica_player_question { get; private set; } = new Line(CharacterID.Jessica, "Can we kill this guy?", "", 1, LineID.jessica_player_question, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line player_yes { get; private set; } = new Line(CharacterID.Player, "Yes", "", 1, LineID.player_yes, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line player_no { get; private set; } = new Line(CharacterID.Player, "No", "", 1, LineID.player_no, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line jessica_cant_kill_bob { get; private set; } = new Line(CharacterID.Jessica, "Ah, alright.", "After player says no", 1, LineID.jessica_cant_kill_bob, LineStatus.None, VoiceStatus.None, "");
 
+        /// <summary>
+        /// All lines that can be used.
+        /// <summary>
         public static Dictionary<LineID, Line> All { get; private set; } = new Dictionary<LineID, Line>()
         {
             { LineID.bob_start_joke, bob_start_joke },
@@ -33,6 +37,7 @@ namespace ToBOE.Dialogue
             { LineID.jessica_player_question, jessica_player_question },
             { LineID.player_yes, player_yes },
             { LineID.player_no, player_no },
+            { LineID.jessica_cant_kill_bob, jessica_cant_kill_bob },
         };
     }
 }

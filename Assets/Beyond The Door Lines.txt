@@ -1,4 +1,4 @@
-Character	Text	Context	Day	LineID	LineStatus	VoiceStatus	ExtraData
+CharacterID	Text	Context	Day	LineID	LineStatus	VoiceStatus	ExtraData
 Bob	"Hey Jessica, knock knock?"	Start of test conversation	1	bob_start_joke	Placeholder	None	brrrt
 Bob	Old lady.	Reply to Jessica	1	bob_joke_question	Draft	None	zazaza
 Bob	Didn't know there was a yodeller!	2nd line of convo	1	bob_punchline	Final	None	yoink
@@ -8,3 +8,4 @@ Jessica	…		1	jessica_silent	Draft	None
 Jessica	Can we kill this guy?		1	jessica_player_question	Draft	None	
 Player	Yes		1	player_yes	Draft	None	
 Player	No		1	player_no	Draft	None	
+Jessica	"Ah, alright."	After player says no	1	jessica_cant_kill_bob			

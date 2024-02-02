@@ -8,7 +8,7 @@
 
 namespace ToBOE.Dialogue
 {
-    public enum Character
+    public enum CharacterID
     {
         Bob = 1502599511,
         Jessica = -1608546876,

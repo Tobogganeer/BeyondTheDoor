@@ -19,6 +19,7 @@ namespace ToBOE.Dialogue
         jessica_player_question = 1312534369,
         player_yes = 1000278611,
         player_no = 1223167581,
+        jessica_cant_kill_bob = -959813436,
     }
 }
 

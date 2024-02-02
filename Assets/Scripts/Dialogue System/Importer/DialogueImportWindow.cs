@@ -66,7 +66,7 @@ namespace ToBOE.Dialogue.Importer
                     Debug.Log("- " + data.GetInvalidElementsString());
             }
 
-            bool charactersInvalid = rawLines.InvalidElements.HasFlag(Line.Element.Character);
+            bool charactersInvalid = rawLines.InvalidElements.HasFlag(Line.Element.CharacterID);
             bool lineIDsInvalid = rawLines.InvalidElements.HasFlag(Line.Element.LineID);
             bool lineStatusesInvalid = rawLines.InvalidElements.HasFlag(Line.Element.LineStatus);
             bool voiceStatusesInvalid = rawLines.InvalidElements.HasFlag(Line.Element.VoiceStatus);
@@ -96,7 +96,7 @@ namespace ToBOE.Dialogue.Importer
         void GenerateEnums(bool chars, bool ids, bool stats, bool voices)
         {
             if (chars)
-                GenerateEnum(nameof(Character), Line.Element.Character);
+                GenerateEnum(nameof(CharacterID), Line.Element.CharacterID);
             if (ids)
                 GenerateEnum(nameof(LineID), Line.Element.LineID);
             if (stats)

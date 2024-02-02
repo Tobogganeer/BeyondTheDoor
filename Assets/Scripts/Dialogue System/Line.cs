@@ -18,7 +18,7 @@ namespace ToBOE.Dialogue
         /// <summary>
         /// The character that speaks this line
         /// </summary>
-        public Character Character => character;
+        public CharacterID Character => character;
         /// <summary>
         /// The text that is spoken and shown on screen.
         /// </summary>
@@ -54,7 +54,7 @@ namespace ToBOE.Dialogue
         public int TimesOpened => timesOpened;
         #endregion
 
-        [SerializeField] internal Character character;
+        [SerializeField] internal CharacterID character;
         [SerializeField] internal string text;
         [SerializeField] internal string context;
         [SerializeField] internal int day;
@@ -68,7 +68,7 @@ namespace ToBOE.Dialogue
 
         internal Line() { }
 
-        public Line(Character character, string text, string context, int day, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
+        public Line(CharacterID character, string text, string context, int day, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
         {
             this.character = character;
             this.text = text;
@@ -123,7 +123,7 @@ namespace ToBOE.Dialogue
         public enum Element
         {
             None = 0,
-            Character = 1 << 0,
+            CharacterID = 1 << 0,
             Text = 1 << 1,
             Context = 1 << 2,
             Day = 1 << 3,
