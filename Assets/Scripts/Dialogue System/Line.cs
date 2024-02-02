@@ -12,7 +12,7 @@ namespace ToBOE.Dialogue
     /// Represents a line of character dialogue.
     /// </summary>
     [System.Serializable]
-    public class Line
+    public partial class Line
     {
         #region Property Accessors
         /// <summary>
@@ -69,6 +69,23 @@ namespace ToBOE.Dialogue
             this.lineStatus = lineStatus;
             this.voiceStatus = voiceStatus;
             this.extraData = extraData;
+        }
+
+
+        public void Open()
+        {
+
+        }
+
+        public Line Then(Line followingLine)
+        {
+            // TODO: Set the line to actually follow this one
+            return followingLine;
+        }
+
+        public void ThenChoice(params Choice[] choices)
+        {
+
         }
     }
 }
