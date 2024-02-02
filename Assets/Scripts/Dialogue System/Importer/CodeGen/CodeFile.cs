@@ -217,13 +217,15 @@ namespace ToBOE.Dialogue.Importer.CodeGen
         {
             private bool isDisposed;
             private CodeFile cf;
+            private bool endWithSemicolon;
 
-            public Scope(CodeFile codeFile)
+            public Scope(CodeFile codeFile, bool endWithSemicolon = false)
             {
                 cf = codeFile;
                 cf.builder.AppendLine();
                 cf.ApplyIndent().AppendLine("{");
                 cf.IncreaseIndent();
+                this.endWithSemicolon = endWithSemicolon;
             }
 
             protected virtual void Dispose(bool disposing)
@@ -235,7 +237,10 @@ namespace ToBOE.Dialogue.Importer.CodeGen
                         // End the scope
                         //cf.builder.AppendLine();
                         cf.DecreaseIndent();
-                        cf.ApplyIndent().AppendLine("}");
+                        if (endWithSemicolon)
+                            cf.ApplyIndent().AppendLine("};");
+                        else
+                            cf.ApplyIndent().AppendLine("}");
                     }
 
                     isDisposed = true;

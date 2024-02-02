@@ -6,6 +6,8 @@
 // =                                               =
 // =================================================
 
+using System.Collections.Generic;
+
 namespace ToBOE.Dialogue
 {
     public partial class Line
@@ -19,6 +21,19 @@ namespace ToBOE.Dialogue
         public static Line jessica_player_question { get; private set; } = new Line(Character.Jessica, "Can we kill this guy?", "", 1, LineID.jessica_player_question, LineStatus.Draft, VoiceStatus.None, "");
         public static Line player_yes { get; private set; } = new Line(Character.Player, "Yes", "", 1, LineID.player_yes, LineStatus.Draft, VoiceStatus.None, "");
         public static Line player_no { get; private set; } = new Line(Character.Player, "No", "", 1, LineID.player_no, LineStatus.Draft, VoiceStatus.None, "");
+
+        public static Dictionary<LineID, Line> All { get; private set; } = new Dictionary<LineID, Line>()
+        {
+            { LineID.bob_start_joke, bob_start_joke },
+            { LineID.bob_joke_question, bob_joke_question },
+            { LineID.bob_punchline, bob_punchline },
+            { LineID.jessica_reply1, jessica_reply1 },
+            { LineID.jessica_reply2, jessica_reply2 },
+            { LineID.jessica_silent, jessica_silent },
+            { LineID.jessica_player_question, jessica_player_question },
+            { LineID.player_yes, player_yes },
+            { LineID.player_no, player_no },
+        };
     }
 }
 
