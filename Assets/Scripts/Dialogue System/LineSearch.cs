@@ -3,24 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
-using UnityEngine.TextCore.Text;
-using Unity.IO.LowLevel.Unsafe;
 
 namespace ToBOE.Dialogue
 {
     public static class LineSearch
     {
-        /*
-        None = 0,
-        Character = 1 << 0,
-        Text = 1 << 1,
-        Context = 1 << 2,
-        Day = 1 << 3,
-        LineID = 1 << 4,
-        LineStatus = 1 << 5,
-        VoiceStatus = 1 << 6,
-        ExtraData = 1 << 7
-        */
 
         /// <summary>
         /// Returns the lines from <paramref name="toFilter"/> that match the <paramref name="elements"/> specified.
@@ -36,8 +23,8 @@ namespace ToBOE.Dialogue
         /// <param name="extraData">If applicable, the extra data to match with.</param>
         /// <returns>The lines that match all given <paramref name="elements"/>.</returns>
         public static IEnumerable<Line> Filter(IEnumerable<Line> toFilter, Line.Element elements,
-            CharacterID character, string text, string context, int day,
-            LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
+            CharacterID character = 0, string text = null, string context = null, int day = -1,
+            LineStatus lineStatus = 0, VoiceStatus voiceStatus = 0, string extraData = null)
         {
             if (elements == Line.Element.None)
                 return Enumerable.Empty<Line>();
@@ -61,21 +48,35 @@ namespace ToBOE.Dialogue
             return toFilter;
         }
 
-        // There is a LINQ method, hope it doesn't kill performance tho
-        // Only a few hundred elements max anyways
-        /*
-        static List<Line> FilterPredicate<T>(List<Line> toFilter, T obj, Func<Line, T, bool> comparison)
+
+
+        /// <summary>
+        /// Returns the lines from <paramref name="toFilter"/> that are from <paramref name="character"/> on <paramref name="day"/>.
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="character">The character speaking the lines.</param>
+        /// <param name="day">The day that the lines are spoken.</param>
+        /// <returns>The lines spoken by <paramref name="character"/> on <paramref name="day"/>.</returns>
+        public static IEnumerable<Line> Filter(IEnumerable<Line> toFilter, CharacterID character, int day)
         {
-            // There has got to be a LINQ method for this
-            List<Line> result = new List<Line>();
-            foreach (Line line in toFilter)
-                if (comparison(line, obj))
-                    result.Add(line);
-
-            return result;
+            return Filter(toFilter, Line.Element.CharacterID | Line.Element.Day, character: character, day: day);
         }
-        */
 
+        /// <summary>
+        /// Returns the lines from <paramref name="toFilter"/> that are from <paramref name="character"/> and contain <paramref name="text"/>.
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="character">The character speaking the lines.</param>
+        /// <param name="text">Text that the lines must contain.</param>
+        /// <returns>The lines spoken by <paramref name="character"/> containing <paramref name="text"/>.</returns>
+        public static IEnumerable<Line> Filter(IEnumerable<Line> toFilter, CharacterID character, string text)
+        {
+            return Filter(toFilter, Line.Element.CharacterID | Line.Element.Text, character: character, text: text);
+        }
+
+
+
+        #region Individual Filters
         /// <summary>
         /// Returns the lines from <paramref name="toFilter"/> that belong to <paramref name="character"/>.
         /// </summary>
@@ -152,5 +153,22 @@ namespace ToBOE.Dialogue
         {
             return from line in toFilter where line.extraData.Contains(extraData, StringComparison.OrdinalIgnoreCase) select line;
         }
+        #endregion
+
+
+        // There is a LINQ method, hope it doesn't kill performance tho
+        // Only a few hundred elements max anyways
+        /*
+        static List<Line> FilterPredicate<T>(List<Line> toFilter, T obj, Func<Line, T, bool> comparison)
+        {
+            // There has got to be a LINQ method for this
+            List<Line> result = new List<Line>();
+            foreach (Line line in toFilter)
+                if (comparison(line, obj))
+                    result.Add(line);
+
+            return result;
+        }
+        */
     }
 }
