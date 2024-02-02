@@ -78,7 +78,7 @@ namespace ToBOE.Dialogue.Importer.CodeGen
         /// Apply tabs up until the current level of indentation.
         /// </summary>
         /// <returns></returns>
-        private StringBuilder ApplyIndent()
+        public StringBuilder ApplyIndent()
         {
             // Pick your poison
             //return builder.Append('\t', IndentLevel);
@@ -129,6 +129,7 @@ namespace ToBOE.Dialogue.Importer.CodeGen
             if (mods.HasFlag(Modifiers.Static)) builder.Append("static ");
             if (mods.HasFlag(Modifiers.Virtual)) builder.Append("virtual ");
             if (mods.HasFlag(Modifiers.Abstract)) builder.Append("abstract ");
+            if (mods.HasFlag(Modifiers.Partial)) builder.Append("partial ");
 
             return builder;
         }
@@ -196,6 +197,9 @@ namespace ToBOE.Dialogue.Importer.CodeGen
         }
 
 
+        public StringBuilder GetStringBuilder() { return builder; }
+
+
         [Flags]
         public enum Modifiers
         {
@@ -206,7 +210,7 @@ namespace ToBOE.Dialogue.Importer.CodeGen
             Static = 1 << 3,
             Virtual = 1 << 4,
             Abstract = 1 << 5,
-            
+            Partial = 1 << 6,
         }
 
         public class Scope : IDisposable

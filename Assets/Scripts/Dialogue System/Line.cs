@@ -68,11 +68,12 @@ namespace ToBOE.Dialogue
 
         internal Line() { }
 
-        public Line(Character character, string text, string context, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
+        public Line(Character character, string text, string context, int day, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
         {
             this.character = character;
             this.text = text;
             this.context = context;
+            this.day = day;
             this.id = id;
             this.lineStatus = lineStatus;
             this.voiceStatus = voiceStatus;
