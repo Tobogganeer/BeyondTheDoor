@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.TextCore.Text;
+using Unity.IO.LowLevel.Unsafe;
 
 namespace ToBOE.Dialogue
 {
@@ -25,6 +27,9 @@ namespace ToBOE.Dialogue
 
         }
 
+        // There is a LINQ method, hope it doesn't kill performance tho
+        // Only a few hundred elements max anyways
+        /*
         static List<Line> FilterPredicate<T>(List<Line> toFilter, T obj, Func<Line, T, bool> comparison)
         {
             // There has got to be a LINQ method for this
@@ -35,60 +40,83 @@ namespace ToBOE.Dialogue
 
             return result;
         }
+        */
 
+        /// <summary>
+        /// Returns a list of lines that belong to <paramref name="character"/>.
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="character">The value to match.</param>
+        /// <returns>The lines that match.</returns>
         public static IEnumerable<Line> FilterCharacter(IEnumerable<Line> toFilter, CharacterID character)
         {
             return from line in toFilter where line.character == character select line;
         }
 
-        public static List<Line> FilterText(List<Line> toFilter, string text)
+        /// <summary>
+        /// Returns a list of lines whose text contains <paramref name="text"/>.
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="text">The value to match.</param>
+        /// <returns>The lines that match.</returns>
+        public static IEnumerable<Line> FilterText(IEnumerable<Line> toFilter, string text)
         {
-            List<Line> result = new List<Line>();
-            foreach (Line line in toFilter)
-                if (line.text.Contains(text, System.StringComparison.OrdinalIgnoreCase))
-                    result.Add(line);
-
-            return result;
+            return from line in toFilter where line.text.Contains(text, StringComparison.OrdinalIgnoreCase) select line;
         }
 
-        public static List<Line> FilterContext(List<Line> toFilter, string context)
+        /// <summary>
+        /// Returns a list of lines whose context contains <paramref name="context"/>.
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="context">The value to match.</param>
+        /// <returns>The lines that match.</returns>
+        public static IEnumerable<Line> FilterContext(IEnumerable<Line> toFilter, string context)
         {
-            List<Line> result = new List<Line>();
-            foreach (Line line in toFilter)
-                if (line.context.Contains(context, System.StringComparison.OrdinalIgnoreCase))
-                    result.Add(line);
-
-            return result;
+            return from line in toFilter where line.context.Contains(context, StringComparison.OrdinalIgnoreCase) select line;
         }
 
-        public static List<Line> FilterDay(List<Line> toFilter, int day)
+        /// <summary>
+        /// Returns a list of lines that are spoken on <paramref name="day"/>.
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="day">The value to match.</param>
+        /// <returns>The lines that match.</returns>
+        public static IEnumerable<Line> FilterDay(IEnumerable<Line> toFilter, int day)
         {
-            List<Line> result = new List<Line>();
-            foreach (Line line in toFilter)
-                if (line.day == day)
-                    result.Add(line);
-
-            return result;
+            return from line in toFilter where line.day == day select line;
         }
 
-        public static List<Line> FilterLineStatus(List<Line> toFilter, LineStatus lineStatus)
+        /// <summary>
+        /// Returns a list of lines that match the <paramref name="lineStatus"/>.
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="lineStatus">The value to match.</param>
+        /// <returns>The lines that match.</returns>
+        public static IEnumerable<Line> FilterLineStatus(IEnumerable<Line> toFilter, LineStatus lineStatus)
         {
-            List<Line> result = new List<Line>();
-            foreach (Line line in toFilter)
-                if (line.lineStatus == lineStatus)
-                    result.Add(line);
-
-            return result;
+            return from line in toFilter where line.lineStatus == lineStatus select line;
         }
 
-        public static List<Line> FilterExtraData(List<Line> toFilter, string extraData)
+        /// <summary>
+        /// Returns a list of lines that match the <paramref name="voiceStatus"/>.
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="voiceStatus">The value to match.</param>
+        /// <returns>The lines that match.</returns>
+        public static IEnumerable<Line> FilterVoiceStatus(IEnumerable<Line> toFilter, VoiceStatus voiceStatus)
         {
-            List<Line> result = new List<Line>();
-            foreach (Line line in toFilter)
-                if (line.text == text)
-                    result.Add(line);
+            return from line in toFilter where line.voiceStatus == voiceStatus select line;
+        }
 
-            return result;
+        /// <summary>
+        /// Returns a list of lines whose extra data contains <paramref name="extraData"/>
+        /// </summary>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="extraData">The value to match.</param>
+        /// <returns>The lines that match.</returns>
+        public static IEnumerable<Line> FilterExtraData(IEnumerable<Line> toFilter, string extraData)
+        {
+            return from line in toFilter where line.extraData.Contains(extraData, StringComparison.OrdinalIgnoreCase) select line;
         }
     }
 }
