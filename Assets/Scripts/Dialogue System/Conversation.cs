@@ -8,8 +8,8 @@ namespace ToBOE.Dialogue
     [CreateAssetMenu(menuName = "Dialogue/Conversation")]
     public class Conversation : ScriptableObject, IDialogueElement
     {
-        [SerializeField] private List<LineID> lines;
-        [SerializeField] private List<ConversationChoice> choices;
+        [SerializeField] internal List<LineID> lines;
+        [SerializeField] internal List<ConversationChoice> choices;
 
         private List<Line> _linesBacking;
         private ChoiceCollection _choicesBacking;
@@ -80,7 +80,7 @@ namespace ToBOE.Dialogue
 
 
         [Serializable]
-        public class ConversationChoice
+        internal class ConversationChoice
         {
             public LineID prompt;
             public Conversation nextConversation;

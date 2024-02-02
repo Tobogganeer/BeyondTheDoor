@@ -129,7 +129,12 @@ namespace ToBOE.Dialogue
         /// Gets the Line with the specified <paramref name="id"/>. Shorthand for Line.All[<paramref name="id"/>];
         /// </summary>
         /// <param name="id">The ID of the line to get.</param>
-        public static Line Get(LineID id) => All[id];
+        public static Line Get(LineID id)
+        {
+            if (All.TryGetValue(id, out Line val))
+                return val;
+            return null;
+        }
 
 
 
