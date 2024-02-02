@@ -11,14 +11,14 @@ namespace ToBOE.Dialogue
     /// <summary>
     /// Represents a line of character dialogue.
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public partial class Line : IDialogueElement
     {
         #region Property Accessors
         /// <summary>
         /// The character that speaks this line
         /// </summary>
-        public CharacterID Character => character;
+        public CharacterID CharacterID => character;
         /// <summary>
         /// The text that is spoken and shown on screen.
         /// </summary>
@@ -67,7 +67,6 @@ namespace ToBOE.Dialogue
         private int timesOpened;
 
         internal Line() { }
-
         public Line(CharacterID character, string text, string context, int day, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
         {
             this.character = character;
@@ -118,6 +117,20 @@ namespace ToBOE.Dialogue
                 followupElement.Open();
         }
 
+
+        public override string ToString()
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            sb.Append("ID -> ").Append(id.ToString()).Append(" - Text -> ");
+            sb.Append(character.ToString()).Append(": ").Append(text);
+            sb.Append(" (Day ").Append(day).Append(") - ctx -> ").Append(context);
+            sb.Append(" - line status -> ").Append(lineStatus.ToString());
+            sb.Append(" - voice status -> ").Append(voiceStatus.ToString());
+            sb.Append(" - extra data -> ").Append(extraData);
+
+            return sb.ToString();
+        }
 
         [Flags]
         public enum Element
