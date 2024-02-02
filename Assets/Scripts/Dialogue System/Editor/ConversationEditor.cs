@@ -92,6 +92,10 @@ namespace ToBOE.Dialogue
                         text += $"\n    -> {FormatCharacterMessage(line)}";
                         text += "\n    ... (cont'd)";
                     }
+                    else
+                    {
+                        text += "\n    (no lines)";
+                    }
                 }
 
                 EditorGUILayout.TextArea(text, style);
