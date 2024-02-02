@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ToBOE.Dialogue
 {
+    /*
     /// <summary>
     /// A ScriptableObject used to store all Lines in the project
     /// </summary>
@@ -11,4 +12,5 @@ namespace ToBOE.Dialogue
     {
         public List<LineSO> lineObjects = new List<LineSO>();
     }
+    */
 }

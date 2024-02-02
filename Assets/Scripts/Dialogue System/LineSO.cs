@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ToBOE.Dialogue
 {
+    /*
     /// <summary>
     /// A ScriptableObject that holds the data for a Line
     /// </summary>
@@ -47,4 +48,5 @@ namespace ToBOE.Dialogue
         [SerializeField]
         private Line line;
     }
+    */
 }
