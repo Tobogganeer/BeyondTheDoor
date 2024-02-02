@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ToBOE.Dialogue
 {
@@ -16,5 +17,19 @@ namespace ToBOE.Dialogue
         - Convo just ends if there are no choices.
 
         */
+
+        public List<LineID> lines;
+        public List<ConversationChoice> endChoices;
+
+        [System.Serializable]
+        public class ConversationChoice
+        {
+            public LineID prompt;
+            public Conversation nextConversation;
+            public ChoiceChosenUnityEvent onChosen;
+        }
+
+        [System.Serializable]
+        public class ChoiceChosenUnityEvent : UnityEvent<LineID> { }
     }
 }

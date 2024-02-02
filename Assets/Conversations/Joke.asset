@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: Joke
+  m_EditorClassIdentifier: 
+  lines: 00fe057a82db57d3aa941e2a53394ebbc418d802988d279d61af3b4e
+  endChoices:
+  - prompt: 1000278611
+    nextConversation: {fileID: 0}
+  - prompt: 1223167581
+    nextConversation: {fileID: 0}
