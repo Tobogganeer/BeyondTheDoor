@@ -22,7 +22,22 @@ namespace ToBOE.Dialogue
         ExtraData = 1 << 7
         */
 
-        public static List<Line> Filter(List<Line> toFilter, Line.Element elements)
+        /// <summary>
+        /// Returns the lines from <paramref name="toFilter"/> that match the <paramref name="elements"/> specified.
+        /// </summary>
+        /// <param name="toFilter"></param>
+        /// <param name="elements"></param>
+        /// <param name="character"></param>
+        /// <param name="text"></param>
+        /// <param name="context"></param>
+        /// <param name="day"></param>
+        /// <param name="lineStatus"></param>
+        /// <param name="voiceStatus"></param>
+        /// <param name="extraData"></param>
+        /// <returns></returns>
+        public static IEnumerable<Line> Filter(IEnumerable<Line> toFilter, Line.Element elements,
+            CharacterID character, string text, string context, int day,
+            LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
         {
 
         }
@@ -43,7 +58,7 @@ namespace ToBOE.Dialogue
         */
 
         /// <summary>
-        /// Returns a list of lines that belong to <paramref name="character"/>.
+        /// Returns the lines from <paramref name="toFilter"/> that belong to <paramref name="character"/>.
         /// </summary>
         /// <param name="toFilter">The lines to search through.</param>
         /// <param name="character">The value to match.</param>
@@ -54,7 +69,7 @@ namespace ToBOE.Dialogue
         }
 
         /// <summary>
-        /// Returns a list of lines whose text contains <paramref name="text"/>.
+        /// Returns the lines from <paramref name="toFilter"/> whose text contains <paramref name="text"/>.
         /// </summary>
         /// <param name="toFilter">The lines to search through.</param>
         /// <param name="text">The value to match.</param>
@@ -65,7 +80,7 @@ namespace ToBOE.Dialogue
         }
 
         /// <summary>
-        /// Returns a list of lines whose context contains <paramref name="context"/>.
+        /// Returns the lines from <paramref name="toFilter"/> whose context contains <paramref name="context"/>.
         /// </summary>
         /// <param name="toFilter">The lines to search through.</param>
         /// <param name="context">The value to match.</param>
@@ -76,7 +91,7 @@ namespace ToBOE.Dialogue
         }
 
         /// <summary>
-        /// Returns a list of lines that are spoken on <paramref name="day"/>.
+        /// Returns the lines from <paramref name="toFilter"/> that are spoken on <paramref name="day"/>.
         /// </summary>
         /// <param name="toFilter">The lines to search through.</param>
         /// <param name="day">The value to match.</param>
@@ -87,7 +102,7 @@ namespace ToBOE.Dialogue
         }
 
         /// <summary>
-        /// Returns a list of lines that match the <paramref name="lineStatus"/>.
+        /// Returns the lines from <paramref name="toFilter"/> that match the <paramref name="lineStatus"/>.
         /// </summary>
         /// <param name="toFilter">The lines to search through.</param>
         /// <param name="lineStatus">The value to match.</param>
@@ -98,7 +113,7 @@ namespace ToBOE.Dialogue
         }
 
         /// <summary>
-        /// Returns a list of lines that match the <paramref name="voiceStatus"/>.
+        /// Returns the lines from <paramref name="toFilter"/> that match the <paramref name="voiceStatus"/>.
         /// </summary>
         /// <param name="toFilter">The lines to search through.</param>
         /// <param name="voiceStatus">The value to match.</param>
@@ -109,7 +124,7 @@ namespace ToBOE.Dialogue
         }
 
         /// <summary>
-        /// Returns a list of lines whose extra data contains <paramref name="extraData"/>
+        /// Returns the lines from <paramref name="toFilter"/> whose extra data contains <paramref name="extraData"/>
         /// </summary>
         /// <param name="toFilter">The lines to search through.</param>
         /// <param name="extraData">The value to match.</param>
