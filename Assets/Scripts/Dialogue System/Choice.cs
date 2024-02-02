@@ -83,8 +83,7 @@ namespace ToBOE.Dialogue
 
         public void Open()
         {
-            // TODO: Implementation
-            throw new NotImplementedException();
+            DialogueGUI.OpenChoices(this);
         }
     }
 }

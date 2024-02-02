@@ -82,8 +82,8 @@ namespace ToBOE.Dialogue
 
         public void Open()
         {
-            // TODO: Open on screen
             timesOpened++;
+            DialogueGUI.OpenLine(this);
         }
 
         /// <summary>
