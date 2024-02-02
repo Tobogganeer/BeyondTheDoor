@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // Let the importer edit the values on lines directly
-[assembly: InternalsVisibleTo("Importer")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Importer")]
 
 namespace ToBOE.Dialogue
 {
@@ -116,6 +116,21 @@ namespace ToBOE.Dialogue
         {
             if (followupElement != null)
                 followupElement.Open();
+        }
+
+
+        [Flags]
+        public enum Element
+        {
+            None = 0,
+            Character = 1 << 0,
+            Text = 1 << 1,
+            Context = 1 << 2,
+            Day = 1 << 3,
+            LineID = 1 << 4,
+            LineStatus = 1 << 5,
+            VoiceStatus = 1 << 6,
+            ExtraData = 1 << 7
         }
     }
 }

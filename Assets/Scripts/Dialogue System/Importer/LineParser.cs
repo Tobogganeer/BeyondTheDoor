@@ -24,7 +24,7 @@ namespace ToBOE.Dialogue.Importer
             return new RawLineCollection(lines);
         }
 
-        static RawLineData GenerateLineData(string rawLine, Dictionary<int, LineDataType> mappings)
+        static RawLineData GenerateLineData(string rawLine, Dictionary<int, Line.Element> mappings)
         {
             RawLineData line = new RawLineData();
             string[] elements = rawLine.Split('\t', StringSplitOptions.None);
@@ -35,32 +35,32 @@ namespace ToBOE.Dialogue.Importer
             return line;
         }
 
-        static void FillValue(RawLineData line, LineDataType type, string data)
+        static void FillValue(RawLineData line, Line.Element type, string data)
         {
             switch (type)
             {
-                case LineDataType.Character:
+                case Line.Element.Character:
                     line.character = data;
                     break;
-                case LineDataType.Text:
+                case Line.Element.Text:
                     line.text = data;
                     break;
-                case LineDataType.Context:
+                case Line.Element.Context:
                     line.context = data;
                     break;
-                case LineDataType.Day:
+                case Line.Element.Day:
                     line.day = data;
                     break;
-                case LineDataType.LineID:
+                case Line.Element.LineID:
                     line.id = data;
                     break;
-                case LineDataType.LineStatus:
+                case Line.Element.LineStatus:
                     line.lineStatus = data;
                     break;
-                case LineDataType.VoiceStatus:
+                case Line.Element.VoiceStatus:
                     line.voiceStatus = data;
                     break;
-                case LineDataType.ExtraData:
+                case Line.Element.ExtraData:
                     line.extraData = data;
                     break;
                 default:
@@ -74,38 +74,24 @@ namespace ToBOE.Dialogue.Importer
         /// </summary>
         /// <param name="mappingLine"></param>
         /// <returns></returns>
-        static Dictionary<int, LineDataType> GenerateMappingDictionary(string mappingLine)
+        static Dictionary<int, Line.Element> GenerateMappingDictionary(string mappingLine)
         {
-            Dictionary<int, LineDataType> mappings = new Dictionary<int, LineDataType>();
+            Dictionary<int, Line.Element> mappings = new Dictionary<int, Line.Element>();
             string[] rawMappings = mappingLine.Split('\t');
 
             for (int i = 0; i < rawMappings.Length; i++)
             {
-                if (Enum.TryParse(rawMappings[i], true, out LineDataType type))
+                if (Enum.TryParse(rawMappings[i], true, out Line.Element type))
                 {
                     mappings.Add(i, type);
                 }
             }
 
-            int numDataTypes = Enum.GetNames(typeof(LineDataType)).Length - 1; // Subtract 'None'
+            int numDataTypes = Enum.GetNames(typeof(Line.Element)).Length - 1; // Subtract 'None'
             if (mappings.Count < numDataTypes)
                 throw new FormatException($"TSV file contained less than {numDataTypes} headers!");
 
             return mappings;
-        }
-
-        [Flags]
-        public enum LineDataType
-        {
-            None = 0,
-            Character = 1 << 0,
-            Text = 1 << 1,
-            Context = 1 << 2,
-            Day = 1 << 3,
-            LineID = 1 << 4,
-            LineStatus = 1 << 5,
-            VoiceStatus = 1 << 6,
-            ExtraData = 1 << 7
         }
 
         [Serializable]
@@ -121,7 +107,7 @@ namespace ToBOE.Dialogue.Importer
             public string extraData;
 
             public bool IsValid { get; private set; }
-            public LineDataType InvalidElements { get; private set; }
+            public Line.Element InvalidElements { get; private set; }
 
 
             public void Validate()
@@ -145,20 +131,20 @@ namespace ToBOE.Dialogue.Importer
                     voiceStatus = NoneString;
 
                 InvalidElements = GetInvalidElements();
-                IsValid = InvalidElements == LineDataType.None;
+                IsValid = InvalidElements == Line.Element.None;
             }
 
-            private LineDataType GetInvalidElements()
+            private Line.Element GetInvalidElements()
             {
-                LineDataType invalidElements = LineDataType.None;
-                if (!IsCharacterValid()) invalidElements |= LineDataType.Character;
-                if (!IsTextValid()) invalidElements |= LineDataType.Text;
-                if (!IsContextValid()) invalidElements |= LineDataType.Context;
-                if (!IsDayValid()) invalidElements |= LineDataType.Day;
-                if (!IsIDValid()) invalidElements |= LineDataType.LineID;
-                if (!IsLineStatusValid()) invalidElements |= LineDataType.LineStatus;
-                if (!IsVoiceStatusValid()) invalidElements |= LineDataType.VoiceStatus;
-                if (!IsExtraDataValid()) invalidElements |= LineDataType.ExtraData;
+                Line.Element invalidElements = Line.Element.None;
+                if (!IsCharacterValid()) invalidElements |= Line.Element.Character;
+                if (!IsTextValid()) invalidElements |= Line.Element.Text;
+                if (!IsContextValid()) invalidElements |= Line.Element.Context;
+                if (!IsDayValid()) invalidElements |= Line.Element.Day;
+                if (!IsIDValid()) invalidElements |= Line.Element.LineID;
+                if (!IsLineStatusValid()) invalidElements |= Line.Element.LineStatus;
+                if (!IsVoiceStatusValid()) invalidElements |= Line.Element.VoiceStatus;
+                if (!IsExtraDataValid()) invalidElements |= Line.Element.ExtraData;
 
                 return invalidElements;
             }
@@ -183,18 +169,18 @@ namespace ToBOE.Dialogue.Importer
             public bool IsExtraDataValid() => true;
 
 
-            public string GetData(LineDataType type)
+            public string GetData(Line.Element type)
             {
                 return type switch
                 {
-                    LineDataType.Character => character,
-                    LineDataType.Text => text,
-                    LineDataType.Context => context,
-                    LineDataType.Day => day,
-                    LineDataType.LineID => id,
-                    LineDataType.LineStatus => lineStatus,
-                    LineDataType.VoiceStatus => voiceStatus,
-                    LineDataType.ExtraData => extraData,
+                    Line.Element.Character => character,
+                    Line.Element.Text => text,
+                    Line.Element.Context => context,
+                    Line.Element.Day => day,
+                    Line.Element.LineID => id,
+                    Line.Element.LineStatus => lineStatus,
+                    Line.Element.VoiceStatus => voiceStatus,
+                    Line.Element.ExtraData => extraData,
                     _ => throw new ArgumentException("Invalid LineDataType", "type")
                 };
             }
@@ -205,7 +191,7 @@ namespace ToBOE.Dialogue.Importer
         {
             public List<RawLineData> RawLines { get; private set; }
             public List<RawLineData> InvalidLines { get; private set; }
-            public LineDataType InvalidElements { get; private set; }
+            public Line.Element InvalidElements { get; private set; }
             public bool IsValid { get; private set; }
 
             public RawLineCollection(List<RawLineData> rawLines)
@@ -213,7 +199,7 @@ namespace ToBOE.Dialogue.Importer
                 RawLines = rawLines;
                 InvalidLines = new List<RawLineData>();
 
-                InvalidElements = LineDataType.None;
+                InvalidElements = Line.Element.None;
                 foreach (RawLineData line in rawLines)
                 {
                     InvalidElements |= line.InvalidElements;
@@ -221,7 +207,7 @@ namespace ToBOE.Dialogue.Importer
                         InvalidLines.Add(line);
                 }
 
-                IsValid = InvalidElements == LineDataType.None;
+                IsValid = InvalidElements == Line.Element.None;
             }
 
             /// <summary>
@@ -229,14 +215,14 @@ namespace ToBOE.Dialogue.Importer
             /// </summary>
             /// <param name="type"></param>
             /// <returns></returns>
-            public List<string> GetAllData(LineDataType type, bool removeDuplicates = true)
+            public List<string> GetAllData(Line.Element type, bool removeDuplicates = true)
             {
                 if (removeDuplicates)
                     return GetAllDataNoDuplicates(type);
                 return GetAllDataIncludingDuplicates(type);
             }
 
-            List<string> GetAllDataNoDuplicates(LineDataType type)
+            List<string> GetAllDataNoDuplicates(Line.Element type)
             {
                 List<string> data = new List<string>(RawLines.Count);
                 for (int i = 0; i < RawLines.Count; i++)
@@ -249,7 +235,7 @@ namespace ToBOE.Dialogue.Importer
                 return data;
             }
 
-            List<string> GetAllDataIncludingDuplicates(LineDataType type)
+            List<string> GetAllDataIncludingDuplicates(Line.Element type)
             {
                 List<string> data = new List<string>(RawLines.Count);
                 for (int i = 0; i < RawLines.Count; i++)

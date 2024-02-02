@@ -6,6 +6,6 @@ namespace ToBOE.Dialogue
 {
     public static class LineSearch
     {
-        
+        //public static List<Line> Filter()
     }
 }
