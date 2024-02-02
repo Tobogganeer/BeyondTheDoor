@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Kill Bob
   m_EditorClassIdentifier: 
   lines: 
-  endChoices: []
+  choices: []

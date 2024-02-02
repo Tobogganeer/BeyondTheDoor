@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Joke
   m_EditorClassIdentifier: 
   lines: 00fe057a82db57d3aa941e2a53394ebbc418d802988d279d61af3b4e
-  endChoices:
+  choices:
   - prompt: 1000278611
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: dfe00e5966ee0a944b68b3126cb9f252, type: 2}
   - prompt: 1223167581
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 4434499c18ff3534faa6a04fd4349891, type: 2}

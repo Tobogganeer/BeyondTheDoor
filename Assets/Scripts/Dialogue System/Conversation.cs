@@ -71,11 +71,23 @@ namespace ToBOE.Dialogue
         /// </summary>
         public event Action<Conversation> OnStarted;
 
+
+
+        /// <summary>
+        /// Starts this conversation. Analogous to Open();
+        /// </summary>
+        public void Start()
+        {
+            Open();
+        }
+
         public void Open()
         {
             OnStarted?.Invoke(this);
             if (Lines.Count > 0)
                 Lines[0].Open();
+            else
+                Choices?.Open();
         }
 
 

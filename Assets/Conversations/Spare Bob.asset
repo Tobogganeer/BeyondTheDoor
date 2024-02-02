@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: Spare Bob
   m_EditorClassIdentifier: 
-  lines: 
-  endChoices: []
+  lines: c468cac6
+  choices: []
