@@ -124,10 +124,17 @@ namespace ToBOE.Dialogue
 
             sb.Append("ID -> ").Append(id.ToString()).Append(" - Text -> ");
             sb.Append(character.ToString()).Append(": ").Append(text);
-            sb.Append(" (Day ").Append(day).Append(") - ctx -> ").Append(context);
+            sb.Append(" (Day ").Append(day).Append(")");
+            if (string.IsNullOrEmpty(context))
+                sb.Append(" - no context");
+            else
+                sb.Append("- context -> ").Append(context);
             sb.Append(" - line status -> ").Append(lineStatus.ToString());
             sb.Append(" - voice status -> ").Append(voiceStatus.ToString());
-            sb.Append(" - extra data -> ").Append(extraData);
+            if (string.IsNullOrEmpty(extraData))
+                sb.Append(" - no extra data");
+            else
+                sb.Append(" - extra data -> ").Append(extraData);
 
             return sb.ToString();
         }
