@@ -25,21 +25,40 @@ namespace ToBOE.Dialogue
         /// <summary>
         /// Returns the lines from <paramref name="toFilter"/> that match the <paramref name="elements"/> specified.
         /// </summary>
-        /// <param name="toFilter"></param>
-        /// <param name="elements"></param>
-        /// <param name="character"></param>
-        /// <param name="text"></param>
-        /// <param name="context"></param>
-        /// <param name="day"></param>
-        /// <param name="lineStatus"></param>
-        /// <param name="voiceStatus"></param>
-        /// <param name="extraData"></param>
-        /// <returns></returns>
+        /// <param name="toFilter">The lines to search through.</param>
+        /// <param name="elements">The elements that will be matched/filtered.</param>
+        /// <param name="character">If applicable, the character to match with.</param>
+        /// <param name="text">If applicable, the text to match with.</param>
+        /// <param name="context">If applicable, the context to match with.</param>
+        /// <param name="day">If applicable, the day to match with.</param>
+        /// <param name="lineStatus">If applicable, the line status to match with.</param>
+        /// <param name="voiceStatus">If applicable, the voice status to match with.</param>
+        /// <param name="extraData">If applicable, the extra data to match with.</param>
+        /// <returns>The lines that match all given <paramref name="elements"/>.</returns>
         public static IEnumerable<Line> Filter(IEnumerable<Line> toFilter, Line.Element elements,
             CharacterID character, string text, string context, int day,
             LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
         {
+            if (elements == Line.Element.None)
+                return Enumerable.Empty<Line>();
 
+            // Filter all elements in an optimized order
+            if (elements.HasFlag(Line.Element.CharacterID))
+                toFilter = FilterCharacter(toFilter, character);
+            if (elements.HasFlag(Line.Element.Day))
+                toFilter = FilterDay(toFilter, day);
+            if (elements.HasFlag(Line.Element.LineStatus))
+                toFilter = FilterLineStatus(toFilter, lineStatus);
+            if (elements.HasFlag(Line.Element.VoiceStatus))
+                toFilter = FilterVoiceStatus(toFilter, voiceStatus);
+            if (elements.HasFlag(Line.Element.Text))
+                toFilter = FilterText(toFilter, text);
+            if (elements.HasFlag(Line.Element.Context))
+                toFilter = FilterContext(toFilter, context);
+            if (elements.HasFlag(Line.Element.ExtraData))
+                toFilter = FilterExtraData(toFilter, extraData);
+
+            return toFilter;
         }
 
         // There is a LINQ method, hope it doesn't kill performance tho
