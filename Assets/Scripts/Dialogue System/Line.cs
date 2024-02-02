@@ -66,6 +66,8 @@ namespace ToBOE.Dialogue
         private IDialogueElement followupElement;
         private int timesOpened;
 
+        public event Action<Line> OnOpen;
+
         internal Line() { }
         public Line(CharacterID character, string text, string context, int day, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
         {
@@ -83,6 +85,7 @@ namespace ToBOE.Dialogue
         public void Open()
         {
             timesOpened++;
+            OnOpen?.Invoke(this);
             DialogueGUI.OpenLine(this);
         }
 
@@ -106,6 +109,15 @@ namespace ToBOE.Dialogue
             ChoiceCollection choiceCollection = new ChoiceCollection(choices);
             followupElement = choiceCollection;
         }
+
+
+
+        /// <summary>
+        /// Gets the Line with the specified <paramref name="id"/>. Shorthand for Line.All[<paramref name="id"/>];
+        /// </summary>
+        /// <param name="id">The ID of the line to get.</param>
+        public static Line Get(LineID id) => All[id];
+
 
 
         /// <summary>
