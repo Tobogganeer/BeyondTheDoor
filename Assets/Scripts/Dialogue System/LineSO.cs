@@ -7,7 +7,6 @@ namespace ToBOE.Dialogue
     /// <summary>
     /// A ScriptableObject that holds the data for a Line
     /// </summary>
-    [CreateAssetMenu(menuName = "Creathawudhai")]
     public class LineSO : ScriptableObject
     {
         #region Property Wrappers

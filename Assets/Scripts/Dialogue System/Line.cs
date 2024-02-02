@@ -12,7 +12,7 @@ namespace ToBOE.Dialogue
     /// Represents a line of character dialogue.
     /// </summary>
     [System.Serializable]
-    public partial class Line
+    public partial class Line : IDialogueElement
     {
         #region Property Accessors
         /// <summary>
@@ -47,6 +47,11 @@ namespace ToBOE.Dialogue
         /// Any extra data about the line.
         /// </summary>
         public string ExtraData => extraData;
+
+        /// <summary>
+        /// How many times this line has been opened/spoken.
+        /// </summary>
+        public int TimesOpened => timesOpened;
         #endregion
 
         [SerializeField] internal Character character;
@@ -57,6 +62,9 @@ namespace ToBOE.Dialogue
         [SerializeField] internal LineStatus lineStatus;
         [SerializeField] internal VoiceStatus voiceStatus;
         [SerializeField] internal string extraData;
+
+        private IDialogueElement followupElement;
+        private int timesOpened;
 
         internal Line() { }
 
@@ -74,18 +82,39 @@ namespace ToBOE.Dialogue
 
         public void Open()
         {
-
+            // TODO: Open on screen
+            timesOpened++;
         }
 
+        /// <summary>
+        /// Opens the <paramref name="followingLine"/> after this line is complete.
+        /// </summary>
+        /// <param name="followingLine">The line to open after this one.</param>
+        /// <returns></returns>
         public Line Then(Line followingLine)
         {
-            // TODO: Set the line to actually follow this one
+            followupElement = followingLine;
             return followingLine;
         }
 
+        /// <summary>
+        /// Lets the player choose between the <paramref name="choices"/> provided.
+        /// </summary>
+        /// <param name="choices">The possible choices.</param>
         public void ThenChoice(params Choice[] choices)
         {
+            ChoiceCollection choiceCollection = new ChoiceCollection(choices);
+            followupElement = choiceCollection;
+        }
 
+
+        /// <summary>
+        /// Called when this line is finished displaying.
+        /// </summary>
+        internal void OnLineClosing()
+        {
+            if (followupElement != null)
+                followupElement.Open();
         }
     }
 }
