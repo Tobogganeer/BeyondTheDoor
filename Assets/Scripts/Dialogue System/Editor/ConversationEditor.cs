@@ -10,14 +10,28 @@ namespace ToBOE.Dialogue
     [CustomEditor(typeof(Conversation))]
     public class ConversationEditor : Editor
     {
+        const string CharacterNameColour = "#4ed476";
+        const string TextColour = "#d1d1d1";
+        const string ConversationNameColour = "#4287f5";
+        const string ChoicePromptColour = "#ed7e4e";
+        GUIStyle style;
+
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
+
+            if (style == null)
+            {
+                style = new GUIStyle(EditorStyles.textArea);
+                style.richText = true;
+            }
 
             Conversation con = (Conversation)target;
 
             EditorGUILayout.Space(10);
             EditorGUILayout.LabelField("======= CONVERSATION START =======", EditorStyles.largeLabel);
+            GUI.enabled = false;
+
             if (con.lines != null)
             {
                 if (con.lines.Count > 0)
@@ -26,6 +40,7 @@ namespace ToBOE.Dialogue
                     foreach (LineID line in con.lines)
                     {
                         DisplayLine(Line.Get(line));
+                        EditorGUILayout.Space(3f);
                     }
                 }
             }
@@ -39,46 +54,54 @@ namespace ToBOE.Dialogue
                 }
             }
 
+            GUI.enabled = true;
             EditorGUILayout.LabelField("======= CONVERSATION END =======", EditorStyles.largeLabel);
         }
 
         void DisplayLine(Line line)
         {
             if (line == null)
-                EditorGUILayout.SelectableLabel("null (codegen?)");
+                EditorGUILayout.TextArea("null (codegen?)");
             else
-                EditorGUILayout.SelectableLabel($"{line.character}: {line.text}");
+                EditorGUILayout.TextArea(FormatCharacterMessage(line), style);
         }
 
         void DisplayChoice(Conversation.ConversationChoice choice)
         {
             if (choice == null)
-                EditorGUILayout.SelectableLabel("null choice");
+                EditorGUILayout.TextArea("null choice");
             else
             {
                 Line prompt = Line.Get(choice.prompt);
                 if (prompt == null)
                 {
-                    EditorGUILayout.SelectableLabel("Invalid Choice");
+                    EditorGUILayout.TextArea("Invalid Choice");
                     return;
                 }
-                string text = prompt.text;
+                string text = $"<color={ChoicePromptColour}>{prompt.text}</color>";
                 text += "\n -> ";
                 if (choice.nextConversation == null)
-                    text += "Conversation Ends";
+                    text += $"<color={TextColour}>Conversation Ends</color>";
                 else
                 {
-                    text += "Start " + choice.nextConversation.name;
+                    text += $"<color={TextColour}>Start Conversation</color> " +
+                        $"'<color={ConversationNameColour}>" + choice.nextConversation.name + "</color>'";
                     if (choice.nextConversation.lines != null && choice.nextConversation.lines.Count > 0)
                     {
                         Line line = Line.Get(choice.nextConversation.lines[0]);
-                        text += $"\n    -> {line.character}: {line.text}";
-                        text += "\n    ...";
+                        text += $"\n    -> {FormatCharacterMessage(line)}";
+                        text += "\n    ... (cont'd)";
                     }
                 }
 
-                EditorGUILayout.SelectableLabel(text);
+                EditorGUILayout.TextArea(text, style);
+                //EditorGUILayout.SelectableLabel(text, GUILayout.ExpandHeight(true));
             }
+        }
+
+        string FormatCharacterMessage(Line line)
+        {
+            return $"<color={CharacterNameColour}>{line.character}:</color> <color={TextColour}>{line.text}</color>";
         }
     }
 }
