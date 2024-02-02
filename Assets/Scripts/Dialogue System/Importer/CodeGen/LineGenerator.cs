@@ -123,17 +123,6 @@ namespace ToBOE.Dialogue.Importer.CodeGen
                     sb.Append("{ LineID.").Append(rawLine.id).Append(", ").Append(rawLine.id).AppendLine(" },");
                 }
             }
-
-
-
-            /*
-            
-            public static Dictionary<LineID, Line> All { get; private set; } = new Dictionary<LineID, Line>()
-        {
-            { LineID.bob_start_joke, bob_start_joke },
-        };
-
-            */
         }
 
 
