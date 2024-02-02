@@ -70,7 +70,7 @@ namespace ToBOE.Dialogue.Importer.CodeGen
                         GenerateLineCode(line, cf);
                     }
 
-                    GenerateLinesDict(rawLines, cf);
+                    GenerateAllLinesDict(rawLines, cf);
                 }
             }
 
@@ -108,16 +108,27 @@ namespace ToBOE.Dialogue.Importer.CodeGen
             return textInput.Replace("\"", "\\\"");
         }
 
-        static void GenerateLinesDict(LineParser.RawLineCollection rawLines, CodeFile cf)
+        static void GenerateAllLinesDict(LineParser.RawLineCollection rawLines, CodeFile cf)
+        {
+            GenerateLineDict(cf, "All", rawLines.RawLines, "All lines that can be used.");
+        }
+
+        static void GenerateLineDict(CodeFile cf, string dictName, List<LineParser.RawLineData> lines, string xmlComment = null)
         {
             System.Text.StringBuilder sb = cf.GetStringBuilder();
 
             cf.Space();
+            if (xmlComment != null)
+            {
+                cf.ApplyIndent().AppendLine("/// <summary>");
+                cf.ApplyIndent().Append("/// ").AppendLine(xmlComment);
+                cf.ApplyIndent().AppendLine("/// <summary>");
+            }
             cf.ApplyIndent();
-            sb.Append("public static Dictionary<LineID, Line> All { get; private set; } = new Dictionary<LineID, Line>()");
+            sb.Append("public static Dictionary<LineID, Line> ").Append(dictName).Append(" { get; private set; } = new Dictionary<LineID, Line>()");
             using (new CodeFile.Scope(cf, true))
             {
-                foreach (var rawLine in rawLines.RawLines)
+                foreach (var rawLine in lines)
                 {
                     cf.ApplyIndent();
                     sb.Append("{ LineID.").Append(rawLine.id).Append(", ").Append(rawLine.id).AppendLine(" },");
