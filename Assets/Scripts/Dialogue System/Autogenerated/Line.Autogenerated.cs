@@ -17,7 +17,7 @@ namespace ToBOE.Dialogue
         public static Line bob_punchline { get; private set; } = new Line(CharacterID.Bob, "Didn't know there was a yodeller!", "2nd line of convo", 1, LineID.bob_punchline, LineStatus.Final, VoiceStatus.None, "yoink");
         public static Line jessica_reply1 { get; private set; } = new Line(CharacterID.Jessica, "... Who's there?", "", 1, LineID.jessica_reply1, LineStatus.Draft, VoiceStatus.None, "");
         public static Line jessica_reply2 { get; private set; } = new Line(CharacterID.Jessica, "Old lady who?", "", 1, LineID.jessica_reply2, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line jessica_silent { get; private set; } = new Line(CharacterID.Jessica, "�", "", 1, LineID.jessica_silent, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line jessica_silent { get; private set; } = new Line(CharacterID.Jessica, "...", "", 1, LineID.jessica_silent, LineStatus.Draft, VoiceStatus.None, "");
         public static Line jessica_player_question { get; private set; } = new Line(CharacterID.Jessica, "Can we kill this guy?", "", 1, LineID.jessica_player_question, LineStatus.Draft, VoiceStatus.None, "");
         public static Line player_yes { get; private set; } = new Line(CharacterID.Player, "Yes", "", 1, LineID.player_yes, LineStatus.Draft, VoiceStatus.None, "");
         public static Line player_no { get; private set; } = new Line(CharacterID.Player, "No", "", 1, LineID.player_no, LineStatus.Draft, VoiceStatus.None, "");

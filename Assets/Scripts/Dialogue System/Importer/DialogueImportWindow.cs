@@ -17,7 +17,7 @@ namespace ToBOE.Dialogue.Importer
         {
             DialogueImportWindow window = EditorWindow.GetWindow<DialogueImportWindow>();
             window.titleContent = new GUIContent("Import Dialogue");
-            window.minSize = new Vector2(300, 400);
+            window.minSize = new Vector2(350, 150);
         }
 
         private void OnGUI()
