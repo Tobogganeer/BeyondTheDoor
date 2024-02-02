@@ -48,6 +48,11 @@ namespace ToBOE.Dialogue.Importer
         void LinesValid()
         {
             EditorGUILayout.LabelField("All lines passed validation.");
+
+            if (GUILayout.Button("Generate Lines"))
+            {
+                LineGenerator.GenerateLinesFile(rawLines);
+            }
         }
 
         void LinesInvalid()

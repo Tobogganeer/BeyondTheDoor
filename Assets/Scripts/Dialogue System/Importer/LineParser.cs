@@ -126,6 +126,16 @@ namespace ToBOE.Dialogue.Importer
 
             public void Validate()
             {
+                // Clean up the data
+                character = character?.Trim();
+                text = text?.Trim();
+                context = context?.Trim();
+                day = day?.Trim();
+                id = id?.Trim();
+                lineStatus = lineStatus?.Trim();
+                voiceStatus = voiceStatus?.Trim();
+                extraData = extraData?.Trim();
+
                 InvalidElements = GetInvalidElements();
                 IsValid = InvalidElements == LineDataType.None;
             }
