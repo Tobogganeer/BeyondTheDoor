@@ -1,5 +1,5 @@
 {
-    "name": "Importer",
+    "name": "DialogueImporter",
     "rootNamespace": "ToBOE.Dialogue.Importer",
     "references": [
         "GUID:0c5b5836812ac124597ac8177b70c1e9"

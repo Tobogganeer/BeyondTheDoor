@@ -83,7 +83,7 @@ namespace ToBOE.Dialogue
 
         public void Open()
         {
-            DialogueGUI.OpenChoices(this);
+            UI.DialogueGUI.OpenChoices(this);
         }
     }
 }

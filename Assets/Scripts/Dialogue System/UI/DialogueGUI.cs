@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-namespace ToBOE.Dialogue
+namespace ToBOE.Dialogue.UI
 {
     public class DialogueGUI : MonoBehaviour
     {
