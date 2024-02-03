@@ -4,9 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.UIElements;
 
-namespace ToBOE.Dialogue
+namespace ToBOE.Dialogue.Editor
 {
     public class DialogueSearchWindow : EditorWindow
     {
@@ -20,6 +19,12 @@ namespace ToBOE.Dialogue
         LineStatus lineStatus;
         VoiceStatus voiceStatus;
         string extraData;
+
+        List<Line> lines;
+        List<bool> foldouts;
+
+        GUIStyle foldoutStyleRich;
+        GUIStyle textFieldRich;
 
         /*
             CharacterID = 1 << 0,
@@ -42,6 +47,15 @@ namespace ToBOE.Dialogue
 
         private void OnGUI()
         {
+            if (foldoutStyleRich == null || textFieldRich == null)
+            {
+                foldoutStyleRich = new GUIStyle(EditorStyles.foldout);
+                foldoutStyleRich.richText = true;
+
+                textFieldRich = new GUIStyle(EditorStyles.textField);
+                textFieldRich.richText = true;
+            }
+
             searchElements = (Line.Element)EditorGUILayout.EnumFlagsField("Search Filters", searchElements);
 
             if (searchElements == Line.Element.None)
@@ -56,7 +70,20 @@ namespace ToBOE.Dialogue
 
             if (GUILayout.Button("Search"))
             {
+                lines = new List<Line>(LineSearch.Filter(Line.All.Values, searchElements,
+                    character, text, context, day, lineStatus, voiceStatus, extraData));
 
+                // Make all lines collapsed by default
+                foldouts = new List<bool>(lines.Count);
+                for (int i = 0; i < lines.Count; i++)
+                    foldouts.Add(false);
+            }
+
+            GUI.enabled = false;
+
+            if (lines != null)
+            {
+                DisplayLines();
             }
 
             GUI.enabled = true;
@@ -78,6 +105,62 @@ namespace ToBOE.Dialogue
                 voiceStatus = (VoiceStatus)EditorGUILayout.EnumPopup("Voice Status", voiceStatus);
             if (searchElements.HasFlag(Line.Element.ExtraData))
                 extraData = EditorGUILayout.TextField("Extra Data", extraData);
+        }
+
+        void DisplayLines()
+        {
+            if (lines.Count == 0)
+            {
+                EditorGUILayout.TextField("No matching lines found.");
+            }
+            else
+            {
+                for (int i = 0; i < lines.Count; i++)
+                    DisplayLine(i);
+            }
+        }
+
+        void DisplayLine(int index)
+        {
+            Line line = lines[index];
+            string foldoutText = White($"{line.character} (day {line.day}) - {line.id}");
+            foldouts[index] = EditorGUILayout.Foldout(foldouts[index], foldoutText, foldoutStyleRich);
+            // Draw the rest of the owl
+            if (foldouts[index])
+            {
+                EditorGUI.indentLevel++;
+                /*
+                CharacterID character;
+                string text;
+                string context;
+                int day;
+                LineID id;
+                LineStatus lineStatus;
+                VoiceStatus voiceStatus;
+                string extraData;
+                */
+                EditorGUILayout.TextField(DetailedEntry("Character", line.character.ToString()), textFieldRich);
+                EditorGUILayout.TextField(DetailedEntry("Text", line.text), textFieldRich);
+                EditorGUILayout.TextField(DetailedEntry("Context", line.context), textFieldRich);
+                EditorGUILayout.TextField(DetailedEntry("Day", line.day.ToString()), textFieldRich);
+                EditorGUILayout.TextField(DetailedEntry("LineID", line.id.ToString()), textFieldRich);
+                EditorGUILayout.TextField(DetailedEntry("LineStatus", line.lineStatus.ToString()), textFieldRich);
+                EditorGUILayout.TextField(DetailedEntry("VoiceStatus", line.voiceStatus.ToString()), textFieldRich);
+                EditorGUILayout.TextField(DetailedEntry("ExtraData", line.extraData), textFieldRich);
+                EditorGUI.indentLevel--;
+            }
+        }
+
+        string White(string text)
+        {
+            return $"<color={EditorColours.TextColour}>{text}</color>";
+        }
+
+        string DetailedEntry(string header, string value)
+        {
+            // This line sucks lol I hate it
+            return $"<color={EditorColours.CharacterNameColour}>{header}:</color> " +
+                $"<color={EditorColours.TextColour}>{value}</color>";
         }
 
         /*

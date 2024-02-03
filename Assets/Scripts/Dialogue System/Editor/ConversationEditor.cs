@@ -5,15 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace ToBOE.Dialogue
+namespace ToBOE.Dialogue.Editor
 {
     [CustomEditor(typeof(Conversation))]
-    public class ConversationEditor : Editor
+    public class ConversationEditor : UnityEditor.Editor
     {
-        const string CharacterNameColour = "#4ed476";
-        const string TextColour = "#d1d1d1";
-        const string ConversationNameColour = "#4287f5";
-        const string ChoicePromptColour = "#ed7e4e";
         GUIStyle style;
 
         public override void OnInspectorGUI()
@@ -78,14 +74,16 @@ namespace ToBOE.Dialogue
                     EditorGUILayout.TextArea("Invalid Choice");
                     return;
                 }
-                string text = $"<color={ChoicePromptColour}>{prompt.text}</color>";
+                string text = $"<color={EditorColours.ChoicePromptColour}>{prompt.text}</color>";
                 text += "\n -> ";
                 if (choice.nextConversation == null)
-                    text += $"<color={TextColour}>Conversation Ends</color>";
+                    text += $"<color={EditorColours.TextColour}>Conversation Ends</color>";
                 else
                 {
-                    text += $"<color={TextColour}>Start Conversation</color> " +
-                        $"'<color={ConversationNameColour}>" + choice.nextConversation.name + "</color>'";
+                    text += $"<color={EditorColours.TextColour}>Start Conversation</color> " +
+                        $"'<color={EditorColours.ConversationNameColour}>" +
+                        //$"<a href=\"{AssetDatabase.GetAssetPath(choice.nextConversation)}\">" +
+                        choice.nextConversation.name + "</color>'";
                     if (choice.nextConversation.lines != null && choice.nextConversation.lines.Count > 0)
                     {
                         Line line = Line.Get(choice.nextConversation.lines[0]);
@@ -99,13 +97,13 @@ namespace ToBOE.Dialogue
                 }
 
                 EditorGUILayout.TextArea(text, style);
-                //EditorGUILayout.SelectableLabel(text, GUILayout.ExpandHeight(true));
             }
         }
 
         string FormatCharacterMessage(Line line)
         {
-            return $"<color={CharacterNameColour}>{line.character}:</color> <color={TextColour}>{line.text}</color>";
+            return $"<color={EditorColours.CharacterNameColour}>{line.character}:</color> " +
+                $"<color={EditorColours.TextColour}>{line.text}</color>";
         }
     }
 }
