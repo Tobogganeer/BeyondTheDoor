@@ -70,6 +70,10 @@ namespace ToBOE.Dialogue
         /// Called when this line is opened/displayed.
         /// </summary>
         public event Action<Line> OnOpen;
+        /// <summary>
+        /// Called after this line is closed/been moved on from.
+        /// </summary>
+        public event Action<Line> OnClose;
 
         internal Line() { }
         public Line(CharacterID character, string text, string context, int day, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
@@ -89,7 +93,7 @@ namespace ToBOE.Dialogue
         {
             timesOpened++;
             OnOpen?.Invoke(this);
-            UI.DialogueGUI.OpenLine(this);
+            UI.DialogueGUI.Open(this);
         }
 
         /// <summary>
@@ -145,6 +149,7 @@ namespace ToBOE.Dialogue
         {
             if (followupElement != null)
                 followupElement.Open();
+            OnClose?.Invoke(this);
         }
 
 
