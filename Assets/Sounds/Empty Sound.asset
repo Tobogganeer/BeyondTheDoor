@@ -9,8 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feef067aca970c241ada3810dfe15a7d, type: 3}
-  m_Name: Library
+  m_Script: {fileID: 11500000, guid: 687e7219b33c27445909a75ec375ab60, type: 3}
+  m_Name: Empty Sound
   m_EditorClassIdentifier: 
-  sounds:
-  - {fileID: 11400000, guid: 2a6991b357a9ab34da3d999c1a79178b, type: 2}
+  soundID: 0
+  clips: []
+  maxDistance: 35
+  category: 1
+  volume: 1
+  minPitch: 0.85
+  maxPitch: 1.1
+  is2d: 0
