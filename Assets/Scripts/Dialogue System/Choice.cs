@@ -61,8 +61,12 @@ namespace ToBOE.Dialogue
             // Call back to user code first
             OnChosen?.Invoke(Prompt);
 
+            // Open the next thing if there is one
             if (FollowingElement != null)
                 FollowingElement.Open();
+            // If not just stop the dialogue
+            else
+                UI.DialogueGUI.Close();
         }
     }
 
@@ -83,7 +87,7 @@ namespace ToBOE.Dialogue
 
         public void Open()
         {
-            DialogueGUI.OpenChoices(this);
+            UI.DialogueGUI.Open(this);
         }
     }
 }

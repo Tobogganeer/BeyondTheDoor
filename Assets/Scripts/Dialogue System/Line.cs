@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Let the importer edit the values on lines directly
+// Let the importer and UI edit the values on lines directly
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Importer")]
 
 namespace ToBOE.Dialogue
@@ -70,6 +70,10 @@ namespace ToBOE.Dialogue
         /// Called when this line is opened/displayed.
         /// </summary>
         public event Action<Line> OnOpen;
+        /// <summary>
+        /// Called after this line is closed/been moved on from.
+        /// </summary>
+        public event Action<Line> OnClose;
 
         internal Line() { }
         public Line(CharacterID character, string text, string context, int day, LineID id, LineStatus lineStatus, VoiceStatus voiceStatus, string extraData)
@@ -89,7 +93,7 @@ namespace ToBOE.Dialogue
         {
             timesOpened++;
             OnOpen?.Invoke(this);
-            DialogueGUI.OpenLine(this);
+            UI.DialogueGUI.Open(this);
         }
 
         /// <summary>
@@ -143,8 +147,13 @@ namespace ToBOE.Dialogue
         /// </summary>
         internal void OnLineClosing()
         {
+            // Open the next thing if there is one
             if (followupElement != null)
                 followupElement.Open();
+            // If not just stop the dialogue
+            else
+                UI.DialogueGUI.Close();
+            OnClose?.Invoke(this);
         }
 
 
