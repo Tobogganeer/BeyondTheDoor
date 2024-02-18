@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 namespace ToBOE.Dialogue.UI
 {
@@ -37,6 +38,16 @@ namespace ToBOE.Dialogue.UI
         public static bool HasLine => CurrentLine != null;
         public static bool HasChoices => CurrentChoices != null;
         public static bool AtEndOfLine => HasLine && Current.revealedLength >= Current.formattedLineText.Length;
+
+        // Intended to be used for audio VVV
+        /// <summary>
+        /// Invoked when a line has started being displayed.
+        /// </summary>
+        public static event Action<LineID> OnLineStart;
+        /// <summary>
+        /// Invoked when a line is skipped or the next line is started.
+        /// </summary>
+        public static event Action<LineID> OnLineStop;
 
 
         float revealTimer;
@@ -108,6 +119,8 @@ namespace ToBOE.Dialogue.UI
             // TODO: Use Character class to get proper name
             characterNameField.text = line.character.ToString();
             lineTextField.text = string.Empty; // Blank
+
+            OnLineStart?.Invoke(line.ID);
         }
 
 
@@ -209,6 +222,10 @@ namespace ToBOE.Dialogue.UI
         private void _Close()
         {
             SetWindowActive(false);
+
+            if (HasLine && !AtEndOfLine)
+                OnLineStop?.Invoke(CurrentLine.ID);
+
             currentLine = null;
             currentChoices = null;
         }
@@ -231,6 +248,7 @@ namespace ToBOE.Dialogue.UI
                 // Skip to the end of the line
                 revealedLength = string.IsNullOrEmpty(formattedLineText) ? 0 : formattedLineText.Length;
                 UpdateLineTextGUI();
+                OnLineStop?.Invoke(CurrentLine.ID);
             }
         }
 
