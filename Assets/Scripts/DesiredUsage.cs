@@ -22,14 +22,12 @@ public class DesiredUsage : MonoBehaviour
         //Line.startConvo.Then(Line.convo2).Then(Line.askQuestion);
         //Line.askQuestion.ThenChoice(Choice.Line(Line.sure, Line.soundsGood), Choice.Action(Line.shoot, ShootLover));
 
-        /*
         Line.bob_start_joke.Then(Line.jessica_reply1).Then(Line.bob_joke_question).Then(Line.jessica_reply2).
             Then(Line.bob_punchline);
         Line.bob_punchline.Then(Line.jessica_silent);
-        Line.jessica_silent.ThenChoice(Choice.Line(Line.player_no, null), Choice.Action(Line.player_yes, KillBob));
+        Line.jessica_silent.ThenChoice(Choice.Line(Line.player_no, Line.jessica_cant_kill_bob), Choice.Action(Line.player_yes, KillBob));
 
-        Line.bob_start_joke.Open();
-        */
+        //Line.bob_start_joke.Open();
     }
 
     private void Update()
@@ -43,12 +41,12 @@ public class DesiredUsage : MonoBehaviour
         }
     }
 
-    /*
+    
     void KillBob(Line l)
     {
 
     }
-    */
+    
 
 
     /*
