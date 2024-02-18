@@ -17,7 +17,7 @@ namespace ToBOE.Dialogue
         }
 
         [SerializeField] private bool playLineAudio = true;
-        [SerializeField] private Key nextKey;
+        [SerializeField] private Key nextKey = Key.Space;
 
         PooledAudioSource playingAudio;
 
