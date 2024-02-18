@@ -51,6 +51,8 @@ public class AudioManager : MonoBehaviour
         return sound;
     }
 
+    public static bool SoundExists(Sound.ID id) => soundsDictionary.ContainsKey(id);
+
     #region Play Methods
     public static void Play(Sound sound, Vector3 position, Transform parent = null)
     {

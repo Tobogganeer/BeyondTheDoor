@@ -42,6 +42,8 @@ public class Sound : ScriptableObject
         return new Audio(this);
     }
 
+    public static bool Exists(ID id) => AudioManager.SoundExists(id);
+
     #region Play
     public void Play(Vector3 position)
     {
