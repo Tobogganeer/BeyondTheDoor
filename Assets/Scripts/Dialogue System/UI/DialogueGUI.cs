@@ -110,6 +110,7 @@ namespace ToBOE.Dialogue.UI
             lineTextField.text = string.Empty; // Blank
         }
 
+
         internal void OpenChoices(ChoiceCollection choices)
         {
             // Turn the choices on, don't touch the line text
@@ -154,6 +155,7 @@ namespace ToBOE.Dialogue.UI
             choice.OnChoiceChosen(); // Activate it
         }
 
+
         private void ResetRevealTimer() => revealTimer = 1f / revealedCharactersPerSecond;
 
         #region Static Accessors
@@ -192,11 +194,13 @@ namespace ToBOE.Dialogue.UI
         }
         #endregion
 
-
         private void SetWindowActive(bool active) => dialogueUIContainer.SetActive(active);
         private void SetLineTextActive(bool active) => characterUIContainer.SetActive(active);
         private void SetChoicesActive(bool active) => choiceUIContainer.SetActive(active);
 
+        /// <summary>
+        /// Sets this dialogue GUI as the current GUI.
+        /// </summary>
         public void SetAsCurrent()
         {
             Current = this;
@@ -232,7 +236,7 @@ namespace ToBOE.Dialogue.UI
 
 
         [System.Serializable]
-        public class ChoiceGUI
+        private class ChoiceGUI
         {
             public Button button;
             public TMP_Text label;
