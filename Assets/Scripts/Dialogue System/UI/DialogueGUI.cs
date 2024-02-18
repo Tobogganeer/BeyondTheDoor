@@ -22,6 +22,7 @@ namespace ToBOE.Dialogue.UI
         [SerializeField] private GameObject characterUIContainer;
         [SerializeField] private TMP_Text characterNameField;
         [SerializeField] private TMP_Text lineTextField;
+        [SerializeField] private GameObject endOfLineMarker;
         [Space]
         [SerializeField] private GameObject choiceUIContainer;
         [SerializeField] private ChoiceGUI[] choiceButtons;
@@ -60,6 +61,9 @@ namespace ToBOE.Dialogue.UI
             {
                 UpdateLine();
             }
+
+            // If we are waiting for input, let the player know
+            endOfLineMarker.SetActive(AtEndOfLine && !HasChoices);
         }
 
         private void UpdateLine()
