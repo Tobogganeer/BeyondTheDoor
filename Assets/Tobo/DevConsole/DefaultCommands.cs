@@ -31,7 +31,7 @@ namespace Tobo.DevConsole
         static void Help(CmdArgs args)
         {
             // TODO: help command
-            Debug.Log(args.)
+            //Debug.Log(args.)
         }
 
         static void HelpCompletion(string partialFirstArg, string[] resultBuffer)
