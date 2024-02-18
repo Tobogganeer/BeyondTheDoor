@@ -16,6 +16,7 @@ public class AudioCreatorWindow : EditorWindow
     List<AudioClip> clips = new List<AudioClip>();
     string fileName;
     bool is2D = true;
+    AudioCategory category = AudioCategory.Dialogue;
 
     SerializedObject target;
 
@@ -53,20 +54,46 @@ public class AudioCreatorWindow : EditorWindow
         target.ApplyModifiedProperties();
 
         if (clips.Count == 0)
+        {
             EditorGUILayout.LabelField("Please choose at least 1 audio clip.");
-        else if (clips.Count == 1)
-        {
-            // Use the clip name
+            return;
         }
+       
+        // Use the clip name
+        if (clips.Count == 1 && clips[0] != null)
+            fileName = clips[0].name;
+        // Make them choose a name
         else
-        {
-            // Make them choose a name
-        }
+            fileName = EditorGUILayout.TextField("Sound ID", fileName);
+
+        DisplaySaveGUI();
     }
 
     void DisplaySaveGUI()
     {
+        if (string.IsNullOrEmpty(fileName))
+        {
+            EditorGUILayout.LabelField("Please choose a valid name");
+            return;
+        }
 
+        string path = Combine(BasePath, pathExtension ?? string.Empty, fileName ?? string.Empty);
+        DisabledLabel("Asset Path", path);
+        path += ".asset"; // Don't show this but do include it
+
+        EditorGUILayout.Space();
+        is2D = EditorGUILayout.Toggle("Sound is 2D", is2D);
+        category = (AudioCategory)EditorGUILayout.EnumPopup("Audio Category", category);
+        if (GUILayout.Button("Save"))
+            Save(path);
+    }
+
+    void Save(string path)
+    {
+        Sound s = Sound.CreateInternal(clips, is2D, category);
+        AssetDatabase.CreateAsset(s, path);
+        AssetDatabase.Refresh();
+        FillSounds();
     }
 
     void DisabledLabel(string label, string text)

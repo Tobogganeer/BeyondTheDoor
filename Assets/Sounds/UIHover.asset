@@ -15,7 +15,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 280725bd5e211d640a46854928660e8c, type: 3}
   maxDistance: 35
-  category: 1
+  category: 4
   volume: 1
   minPitch: 0.85
   maxPitch: 1.1

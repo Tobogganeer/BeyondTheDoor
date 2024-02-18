@@ -373,5 +373,6 @@ public enum AudioCategory : byte
     Master,
     SFX,
     Ambient,
-    Music
+    Music,
+    Dialogue
 }

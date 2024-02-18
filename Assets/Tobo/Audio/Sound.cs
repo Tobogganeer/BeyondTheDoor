@@ -86,6 +86,17 @@ public class Sound : ScriptableObject
         public static implicit operator string(ID id) => id.Value;
         public static implicit operator ID(string str) => new ID(str);
     }
+
+    public static Sound CreateInternal(List<AudioClip> clips, bool is2D, AudioCategory category)
+    {
+        Sound s = CreateInstance<Sound>();
+
+        s.clips = clips.ToArray();
+        s.is2d = is2D;
+        s.category = category;
+
+        return s;
+    }
 }
 
 public static class SoundIDExtensions
