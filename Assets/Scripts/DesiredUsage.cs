@@ -11,11 +11,13 @@ public class DesiredUsage : MonoBehaviour
 {
     private void Start()
     {
+        /*
         IEnumerable<Line> jessicaLines = LineSearch.FilterCharacter(Line.All.Values, CharacterID.Jessica);
         foreach (Line line in jessicaLines)
         {
             Debug.Log(line);
         }
+        */
         //Line.startConvo.Then(Line.convo2).Then(Line.askQuestion);
         //Line.askQuestion.ThenChoice(Choice.Line(Line.sure, Line.soundsGood), Choice.Action(Line.shoot, ShootLover));
 
@@ -29,10 +31,18 @@ public class DesiredUsage : MonoBehaviour
         */
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            Line.bob_start_joke.Open();
+    }
+
+    /*
     void KillBob(Line l)
     {
 
     }
+    */
 
 
     /*

@@ -11,19 +11,48 @@ namespace ToBOE.Dialogue.UI
         public static DialogueGUI Current { get; private set; }
         public bool IsCurrent => Current == this;
 
+        [Header("Config")]
+        [SerializeField] private bool startAsDefault = true;
+
+        [Header("GUI Components")]
         [SerializeField] private GameObject dialogueUIContainer;
         [Space]
+        [SerializeField] private GameObject characterUIContainer;
         [SerializeField] private TMP_Text characterNameField;
         [SerializeField] private TMP_Text lineTextField;
-        [SerializeField] private GameObject characterUIContainer;
         [Space]
         [SerializeField] private GameObject choiceUIContainer;
         [SerializeField] private ChoiceGUI[] choiceButtons;
 
+        private Line _currentLine;
+        public static Line CurrentLine => Current._currentLine;
+
+        private ChoiceCollection _currentChoices;
+        public ChoiceCollection CurrentChoices => _currentChoices;
+
+
+        private void Start()
+        {
+            if (startAsDefault)
+                SetAsCurrent();
+
+            // Turn us off
+            SetWindowActive(false);
+        }
 
         internal void OpenLine(Line line)
         {
-            // TODO: Display stuff
+            // Turn the line text on, keep choices off
+            SetWindowActive(true);
+            SetLineTextActive(true);
+            SetChoicesActive(false);
+
+            _currentLine = line;
+
+            // TODO: This is for testing
+            // TODO: Use Character class to get proper name
+            characterNameField.text = line.character.ToString();
+            lineTextField.text = line.Text;
 
             // TODO: Call only when the line is actually done displaying
             line.OnLineClosing();
@@ -31,9 +60,11 @@ namespace ToBOE.Dialogue.UI
 
         internal void OpenChoices(ChoiceCollection choices)
         {
-            // TODO: Display stuff and make the choice
+            // Turn the choices on, don't touch the line text
+            SetWindowActive(true);
+            SetChoicesActive(true);
 
-            // TODO: Call only when the choice is actually made
+            // TODO: Call only when the choice is actually made + choose the right one
             choices.Choices[0].OnChoiceChosen();
         }
 
@@ -54,6 +85,11 @@ namespace ToBOE.Dialogue.UI
             Current.OpenChoices(choices);
         }
         #endregion
+
+
+        private void SetWindowActive(bool active) => dialogueUIContainer.SetActive(active);
+        private void SetLineTextActive(bool active) => characterUIContainer.SetActive(active);
+        private void SetChoicesActive(bool active) => choiceUIContainer.SetActive(active);
 
         public void SetAsCurrent()
         {
