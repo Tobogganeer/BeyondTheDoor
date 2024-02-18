@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ToBOE.Dialogue;
 using ToBOE.Dialogue.UI;
+using UnityEngine.InputSystem;
 using System;
 
 /// <summary>
@@ -32,7 +33,7 @@ public class DesiredUsage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if (!DialogueGUI.HasLine)
                 Line.bob_start_joke.Open();
