@@ -147,8 +147,12 @@ namespace ToBOE.Dialogue
         /// </summary>
         internal void OnLineClosing()
         {
+            // Open the next thing if there is one
             if (followupElement != null)
                 followupElement.Open();
+            // If not just stop the dialogue
+            else
+                UI.DialogueGUI.Close();
             OnClose?.Invoke(this);
         }
 

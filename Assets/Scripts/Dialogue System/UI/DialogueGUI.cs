@@ -13,6 +13,8 @@ namespace ToBOE.Dialogue.UI
 
         [Header("Config")]
         [SerializeField] private bool startAsDefault = true;
+        [Range(5f, 20f)]
+        [SerializeField] private float revealedCharactersPerSecond = 10f;
 
         [Header("GUI Components")]
         [SerializeField] private GameObject dialogueUIContainer;
@@ -24,11 +26,14 @@ namespace ToBOE.Dialogue.UI
         [SerializeField] private GameObject choiceUIContainer;
         [SerializeField] private ChoiceGUI[] choiceButtons;
 
-        private Line _currentLine;
-        public static Line CurrentLine => Current._currentLine;
+        private Line currentLine;
+        private ChoiceCollection currentChoices;
+        private int revealedLength;
 
-        private ChoiceCollection _currentChoices;
-        public ChoiceCollection CurrentChoices => _currentChoices;
+        public static Line CurrentLine => Current.currentLine;
+        public ChoiceCollection CurrentChoices => currentChoices;
+
+        float revealTimer;
 
 
         private void Start()
@@ -47,7 +52,27 @@ namespace ToBOE.Dialogue.UI
             SetLineTextActive(true);
             SetChoicesActive(false);
 
-            _currentLine = line;
+            SetNewLine(line);
+        }
+
+        internal void OpenChoices(ChoiceCollection choices)
+        {
+            // Turn the choices on, don't touch the line text
+            SetWindowActive(true);
+            SetChoicesActive(true);
+
+            currentChoices = choices;
+
+            // TODO: Call only when the choice is actually made + choose the right one
+            choices.Choices[0].OnChoiceChosen();
+        }
+
+        private void SetNewLine(Line line)
+        {
+            // Get the incremental printing ready
+            currentLine = line;
+            revealedLength = 0;
+            ResetRevealTimer();
 
             // TODO: This is for testing
             // TODO: Use Character class to get proper name
@@ -58,15 +83,7 @@ namespace ToBOE.Dialogue.UI
             line.OnLineClosing();
         }
 
-        internal void OpenChoices(ChoiceCollection choices)
-        {
-            // Turn the choices on, don't touch the line text
-            SetWindowActive(true);
-            SetChoicesActive(true);
-
-            // TODO: Call only when the choice is actually made + choose the right one
-            choices.Choices[0].OnChoiceChosen();
-        }
+        private void ResetRevealTimer() => revealTimer = 1f / revealedCharactersPerSecond;
 
         #region Static Accessors
         internal static void Open(Line line)
@@ -84,6 +101,24 @@ namespace ToBOE.Dialogue.UI
 
             Current.OpenChoices(choices);
         }
+
+        /// <summary>
+        /// Closes the window and stops the dialogue.
+        /// </summary>
+        public static void Close()
+        {
+            if (Current != null)
+                Current._Close();
+        }
+
+        /// <summary>
+        /// Skips to the end of the current line or advances to the next one.
+        /// </summary>
+        public static void Next()
+        {
+            if (Current != null)
+                Current._Next();
+        }
         #endregion
 
 
@@ -94,6 +129,22 @@ namespace ToBOE.Dialogue.UI
         public void SetAsCurrent()
         {
             Current = this;
+        }
+
+        private void _Close()
+        {
+            SetWindowActive(false);
+            currentLine = null;
+            currentChoices = null;
+        }
+
+        private void _Next()
+        {
+            // No line to skip ._.
+            if (currentLine == null)
+                return;
+
+
         }
 
 
