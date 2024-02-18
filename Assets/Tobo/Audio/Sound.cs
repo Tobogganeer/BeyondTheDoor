@@ -10,39 +10,6 @@ public class Sound : ScriptableObject
         None = 0,
         UIClick,
         UIHover,
-        // Leaving room for different material types
-        LeftFootstep = 20,
-        RightFootstep = 30,
-        Drop = 40,
-        Jump = 50,
-        P510_Fire = 200,
-        P510_Fire_Mech,
-        
-
-        SlotHover = 299,
-        Item_Select_Tool = 300,
-        Item_Drag_Tool,
-        Item_Drop_Tool,
-
-        Item_Select_Wood,
-        Item_Drag_Wood,
-        Item_Drop_Wood,
-
-        Item_Select_Stone,
-        Item_Drag_Stone,
-        Item_Drop_Stone,
-
-        Item_Select_Metal,
-        Item_Drag_Metal,
-        Item_Drop_Metal,
-
-        Item_Select_Generic,
-        Item_Drag_Generic,
-        Item_Drop_Generic,
-
-        Item_Select_SmallGun,
-        Item_Drag_SmallGun,
-        Item_Drop_SmallGun,
     }
 
     [SerializeField] private ID soundID;
