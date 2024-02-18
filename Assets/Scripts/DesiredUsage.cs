@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ToBOE.Dialogue;
+using ToBOE.Dialogue.UI;
 using System;
 
 /// <summary>
@@ -34,7 +35,12 @@ public class DesiredUsage : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            Line.bob_start_joke.Open();
+        {
+            if (!DialogueGUI.HasLine)
+                Line.bob_start_joke.Open();
+            else
+                DialogueGUI.Next();
+        }
     }
 
     /*

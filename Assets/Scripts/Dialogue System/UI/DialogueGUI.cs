@@ -116,9 +116,6 @@ namespace ToBOE.Dialogue.UI
             // TODO: Use Character class to get proper name
             characterNameField.text = line.character.ToString();
             lineTextField.text = string.Empty; // Blank
-
-            // TODO: Call only when the line is actually done displaying
-            //line.OnLineClosing();
         }
 
         private void ResetRevealTimer() => revealTimer = 1f / revealedCharactersPerSecond;
@@ -179,10 +176,22 @@ namespace ToBOE.Dialogue.UI
         private void _Next()
         {
             // No line to skip ._.
-            if (currentLine == null)
+            if (!HasLine)
                 return;
 
+            // Don't update our current line if we have choices
+            if (HasChoices)
+                return;
 
+            // Let the line know it's done
+            if (AtEndOfLine)
+                currentLine.OnLineClosing();
+            else
+            {
+                // Skip to the end of the line
+                revealedLength = string.IsNullOrEmpty(formattedLineText) ? 0 : formattedLineText.Length;
+                UpdateLineTextGUI();
+            }
         }
 
 
