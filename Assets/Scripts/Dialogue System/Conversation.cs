@@ -66,8 +66,11 @@ namespace ToBOE.Dialogue
             OnStarted?.Invoke(this);
             if (Lines.Count > 0)
                 Lines[0].Open();
-            else
+            else if (Choices != null)
                 Choices?.Open();
+            else
+                // Close if we have nothing to show
+                UI.DialogueGUI.Close();
         }
 
         private void HookUpLines()

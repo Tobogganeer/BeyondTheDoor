@@ -138,6 +138,10 @@ namespace ToBOE.Dialogue.UI
 
         private void SetChoices(ChoiceCollection choices)
         {
+            // Close if trying to display no choices
+            if (choices.Choices.Count == 0)
+                Close();
+
             currentChoices = choices;
             if (choices.Choices.Count > choiceButtons.Length)
                 Debug.LogWarning("Too many choices to present, will be truncated. First line: " + choices.Choices[0].Prompt.ToString());
@@ -240,6 +244,8 @@ namespace ToBOE.Dialogue.UI
             if (HasChoices)
                 return;
 
+            OnLineStop?.Invoke(CurrentLine.ID);
+
             // Let the line know it's done
             if (AtEndOfLine)
                 currentLine.OnLineClosing();
@@ -248,7 +254,6 @@ namespace ToBOE.Dialogue.UI
                 // Skip to the end of the line
                 revealedLength = string.IsNullOrEmpty(formattedLineText) ? 0 : formattedLineText.Length;
                 UpdateLineTextGUI();
-                OnLineStop?.Invoke(CurrentLine.ID);
             }
         }
 

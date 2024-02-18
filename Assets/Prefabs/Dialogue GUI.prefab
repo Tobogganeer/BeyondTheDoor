@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAsDefault: 1
-  revealedCharactersPerSecond: 15
+  revealedCharactersPerSecond: 20
   dialogueUIContainer: {fileID: 1777531404031824716}
   characterUIContainer: {fileID: 5324825214270709586}
   characterNameField: {fileID: 1740240234719948474}
