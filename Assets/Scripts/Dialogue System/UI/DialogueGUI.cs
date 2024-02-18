@@ -14,7 +14,7 @@ namespace ToBOE.Dialogue.UI
         [Header("Config")]
         [SerializeField] private bool startAsDefault = true;
         [Range(5f, 20f)]
-        [SerializeField] private float revealedCharactersPerSecond = 10f;
+        [SerializeField] private float revealedCharactersPerSecond = 15f;
 
         [Header("GUI Components")]
         [SerializeField] private GameObject dialogueUIContainer;
@@ -27,11 +27,16 @@ namespace ToBOE.Dialogue.UI
         [SerializeField] private ChoiceGUI[] choiceButtons;
 
         private Line currentLine;
+        private string formattedLineText;
         private ChoiceCollection currentChoices;
         private int revealedLength;
 
-        public static Line CurrentLine => Current.currentLine;
-        public ChoiceCollection CurrentChoices => currentChoices;
+        public static Line CurrentLine => Current?.currentLine;
+        public static ChoiceCollection CurrentChoices => Current?.currentChoices;
+        public static bool HasLine => CurrentLine != null;
+        public static bool HasChoices => CurrentChoices != null;
+        public static bool AtEndOfLine => HasLine && Current.revealedLength >= Current.formattedLineText.Length;
+
 
         float revealTimer;
 
@@ -44,6 +49,37 @@ namespace ToBOE.Dialogue.UI
             // Turn us off
             SetWindowActive(false);
         }
+
+        private void Update()
+        {
+            // Don't update if we aren't the current GUI
+            if (!IsCurrent)
+                return;
+
+            if (HasLine && !AtEndOfLine)
+            {
+                UpdateLine();
+            }
+        }
+
+        private void UpdateLine()
+        {
+            // Decrease the timer
+            revealTimer -= Time.deltaTime;
+            if (revealTimer <= 0)
+            {
+                // Reveal another character
+                ResetRevealTimer();
+                revealedLength++;
+                UpdateLineTextGUI();
+            }
+        }
+
+        private void UpdateLineTextGUI()
+        {
+            lineTextField.text = formattedLineText?.Substring(0, revealedLength);
+        }
+
 
         internal void OpenLine(Line line)
         {
@@ -69,18 +105,20 @@ namespace ToBOE.Dialogue.UI
 
         private void SetNewLine(Line line)
         {
-            // Get the incremental printing ready
+            // Set our current
             currentLine = line;
+            // TODO: Format text accounting for variables etc
+            formattedLineText = line.text;
+            // Get the incremental printing ready
             revealedLength = 0;
             ResetRevealTimer();
 
-            // TODO: This is for testing
             // TODO: Use Character class to get proper name
             characterNameField.text = line.character.ToString();
-            lineTextField.text = line.Text;
+            lineTextField.text = string.Empty; // Blank
 
             // TODO: Call only when the line is actually done displaying
-            line.OnLineClosing();
+            //line.OnLineClosing();
         }
 
         private void ResetRevealTimer() => revealTimer = 1f / revealedCharactersPerSecond;
