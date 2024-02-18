@@ -14,8 +14,8 @@ namespace ToBOE.Dialogue.UI
 
         [Header("Config")]
         [SerializeField] private bool startAsDefault = true;
-        [Range(5f, 20f)]
-        [SerializeField] private float revealedCharactersPerSecond = 15f;
+        [Range(5f, 50f)]
+        [SerializeField] private float revealedCharactersPerSecond = 25f;
 
         [Header("GUI Components")]
         [SerializeField] private GameObject dialogueUIContainer;
