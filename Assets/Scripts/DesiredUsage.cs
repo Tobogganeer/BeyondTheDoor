@@ -11,6 +11,8 @@ using System;
 /// </summary>
 public class DesiredUsage : MonoBehaviour
 {
+    public Conversation convo;
+
     private void Start()
     {
         /*
@@ -23,10 +25,10 @@ public class DesiredUsage : MonoBehaviour
         //Line.startConvo.Then(Line.convo2).Then(Line.askQuestion);
         //Line.askQuestion.ThenChoice(Choice.Line(Line.sure, Line.soundsGood), Choice.Action(Line.shoot, ShootLover));
 
-        Line.bob_start_joke.Then(Line.jessica_reply1).Then(Line.bob_joke_question).Then(Line.jessica_reply2).
-            Then(Line.bob_punchline);
-        Line.bob_punchline.Then(Line.jessica_silent).Then(Line.jessica_player_question);
-        Line.jessica_player_question.ThenChoice(Choice.Line(Line.player_no, Line.jessica_cant_kill_bob), Choice.Action(Line.player_yes, KillBob));
+        //Line.bob_start_joke.Then(Line.jessica_reply1).Then(Line.bob_joke_question).Then(Line.jessica_reply2).
+        //    Then(Line.bob_punchline);
+        //Line.bob_punchline.Then(Line.jessica_silent).Then(Line.jessica_player_question);
+        //Line.jessica_player_question.ThenChoice(Choice.Line(Line.player_no, Line.jessica_cant_kill_bob), Choice.Action(Line.player_yes, KillBob));
 
         //Line.bob_start_joke.Open();
     }
@@ -36,17 +38,15 @@ public class DesiredUsage : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             if (!DialogueGUI.HasLine)
-                Line.bob_start_joke.Open();
-            else
-                DialogueGUI.Next();
+                convo.Start();
         }
     }
 
     
-    void KillBob(Line l)
-    {
-
-    }
+    //void KillBob(Line l)
+    //{
+    //
+    //}
     
 
 
