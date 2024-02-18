@@ -87,6 +87,14 @@ public class Sound : ScriptableObject
         }
         public static implicit operator string(ID id) => id.Value;
         public static implicit operator ID(string str) => new ID(str);
+
+
+        public Audio Override() => Sound.Override(this);
+        public PooledAudioSource Play(Vector3 position) => AudioManager.Play(this, position);
+        public PooledAudioSource Play2D() => AudioManager.Play2D(this);
+        public PooledAudioSource PlayLocal(Vector3 position) => AudioManager.PlayLocal(this, position);
+        public PooledAudioSource PlayLocal2D() => AudioManager.PlayLocal2D(this);
+        public bool Exists() => Sound.Exists(this);
     }
 
     public static Sound CreateInternal(List<AudioClip> clips, bool is2D, AudioCategory category)
@@ -98,33 +106,5 @@ public class Sound : ScriptableObject
         s.category = category;
 
         return s;
-    }
-}
-
-public static class SoundIDExtensions
-{
-    public static Audio Override(this Sound.ID id)
-    {
-        return Sound.Override(id);
-    }
-
-    public static void Play(this Sound.ID id, Vector3 position)
-    {
-        AudioManager.Play(id, position);
-    }
-
-    public static void Play2D(this Sound.ID id)
-    {
-        AudioManager.Play2D(id);
-    }
-
-    public static void PlayLocal(this Sound.ID id, Vector3 position)
-    {
-        AudioManager.PlayLocal(id, position);
-    }
-
-    public static void PlayLocal2D(this Sound.ID id)
-    {
-        AudioManager.PlayLocal2D(id);
     }
 }

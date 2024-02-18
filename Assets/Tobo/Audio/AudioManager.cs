@@ -54,44 +54,44 @@ public class AudioManager : MonoBehaviour
     public static bool SoundExists(Sound.ID id) => soundsDictionary.ContainsKey(id);
 
     #region Play Methods
-    public static void Play(Sound sound, Vector3 position, Transform parent = null)
+    public static PooledAudioSource Play(Sound sound, Vector3 position, Transform parent = null)
     {
-        PlayAudio(sound.GetAudio().SetPosition(position).SetParent(parent));
+        return PlayAudio(sound.GetAudio().SetPosition(position).SetParent(parent));
     }
 
-    public static void Play2D(Sound sound)
+    public static PooledAudioSource Play2D(Sound sound)
     {
-        PlayAudio(sound.GetAudio().Set2D());
+        return PlayAudio(sound.GetAudio().Set2D());
     }
 
-    public static void Play(Sound.ID soundID, Vector3 position, Transform parent = null)
+    public static PooledAudioSource Play(Sound.ID soundID, Vector3 position, Transform parent = null)
     {
-        Play(GetSound(soundID), position, parent);
+        return Play(GetSound(soundID), position, parent);
     }
 
-    public static void Play2D(Sound.ID soundID)
+    public static PooledAudioSource Play2D(Sound.ID soundID)
     {
-        Play2D(GetSound(soundID));
+        return Play2D(GetSound(soundID));
     }
 
-    public static void PlayLocal(Sound sound, Vector3 position, Transform parent = null)
+    public static PooledAudioSource PlayLocal(Sound sound, Vector3 position, Transform parent = null)
     {
-        PlayAudioLocal(sound.GetAudio().SetPosition(position).SetParent(parent));
+        return PlayAudioLocal(sound.GetAudio().SetPosition(position).SetParent(parent));
     }
 
-    public static void PlayLocal2D(Sound sound)
+    public static PooledAudioSource PlayLocal2D(Sound sound)
     {
-        PlayAudioLocal(sound.GetAudio().Set2D());
+        return PlayAudioLocal(sound.GetAudio().Set2D());
     }
 
-    public static void PlayLocal(Sound.ID soundID, Vector3 position, Transform parent = null)
+    public static PooledAudioSource PlayLocal(Sound.ID soundID, Vector3 position, Transform parent = null)
     {
-        PlayLocal(GetSound(soundID), position, parent);
+        return PlayLocal(GetSound(soundID), position, parent);
     }
 
-    public static void PlayLocal2D(Sound.ID soundID)
+    public static PooledAudioSource PlayLocal2D(Sound.ID soundID)
     {
-        PlayLocal2D(GetSound(soundID));
+        return PlayLocal2D(GetSound(soundID));
     }
     #endregion
 
