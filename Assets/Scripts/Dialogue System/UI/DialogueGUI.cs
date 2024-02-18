@@ -11,9 +11,11 @@ namespace ToBOE.Dialogue.UI
         public static DialogueGUI Current { get; private set; }
         public bool IsCurrent => Current == this;
 
-        [SerializeField] private TMP_Text characterNameField;
-        [SerializeField] private TMP_Text textField;
         [SerializeField] private GameObject dialogueUIContainer;
+        [Space]
+        [SerializeField] private TMP_Text characterNameField;
+        [SerializeField] private TMP_Text lineTextField;
+        [SerializeField] private GameObject characterUIContainer;
         [Space]
         [SerializeField] private GameObject choiceUIContainer;
         [SerializeField] private ChoiceGUI[] choiceButtons;
