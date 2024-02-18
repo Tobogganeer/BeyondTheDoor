@@ -16,8 +16,7 @@ public class PooledAudioSource : MonoBehaviour
     {
         if (!gameObject.activeInHierarchy)
         {
-            gameObject.SetActive(false);
-            transform.SetParent(originalParent);
+            Stop();
             return;
         }
 
@@ -29,6 +28,12 @@ public class PooledAudioSource : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
 
+        Stop();
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
         gameObject.SetActive(false);
         transform.SetParent(originalParent);
     }

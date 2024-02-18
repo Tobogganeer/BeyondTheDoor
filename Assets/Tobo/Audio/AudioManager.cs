@@ -95,7 +95,7 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
-    public static void PlayAudio(Audio audio)
+    public static PooledAudioSource PlayAudio(Audio audio)
     {
         // Send over network
 #if MULTIPLAYER
@@ -108,10 +108,10 @@ public class AudioManager : MonoBehaviour
 #endif
 
         // Play on our side
-        PlayAudioLocal(audio);
+        return PlayAudioLocal(audio);
     }
 
-    public static void PlayAudioLocal(Audio audio)
+    public static PooledAudioSource PlayAudioLocal(Audio audio)
     {
         if (!soundsDictionary.TryGetValue(audio.ID, out Sound sound))
         {
@@ -119,7 +119,7 @@ public class AudioManager : MonoBehaviour
         }
 
         if (sound.SoundID == Sound.ID.None)
-            return;
+            return null;
 
         if (sound.Clips == null || sound.Clips.Length == 0)
         {
@@ -129,7 +129,7 @@ public class AudioManager : MonoBehaviour
         if (audio.ClipIndex < 0 || audio.ClipIndex >= sound.Clips.Length)
         {
             Debug.LogWarning($"Clip (index: {audio.ClipIndex}) was outside range for Sound.ID {audio.ID} (sound has {sound.Clips.Length} registered clips).");
-            return;
+            return null;
         }
 
         GameObject sourceObj = AudioMaster.GetAudioSource();
@@ -139,7 +139,7 @@ public class AudioManager : MonoBehaviour
             // Parent is turned off
             Debug.Log($"Skipping audio played on disabled parent ({audio.Parent.name})");
             sourceObj.SetActive(false);
-            return;
+            return null;
         }
 
         sourceObj.transform.SetParent(audio.Parent);
@@ -157,7 +157,9 @@ public class AudioManager : MonoBehaviour
         source.outputAudioMixerGroup = AudioMaster.GetGroup(audio.Category);
         source.Play();
 
-        sourceObj.GetComponent<PooledAudioSource>().DisableAfterTime(source.clip.length / audio.Pitch + 0.25f); // 0.25 seconds extra for good measure
+        PooledAudioSource src = sourceObj.GetComponent<PooledAudioSource>();
+        src.DisableAfterTime(source.clip.length / audio.Pitch + 0.25f); // 0.25 seconds extra for good measure
+        return src;
     }
 
     public static void OnNetworkAudio(Audio audio)
