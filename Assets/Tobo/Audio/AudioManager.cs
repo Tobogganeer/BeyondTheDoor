@@ -164,6 +164,14 @@ public class AudioManager : MonoBehaviour
     {
         PlayAudioLocal(audio);
     }
+
+#if UNITY_EDITOR
+    [UnityEditor.MenuItem("Audio/Fill Sounds")]
+    public static void FillSounds()
+    {
+        LibraryUtil.FillLibrary<SoundLibrary, Sound>(nameof(SoundLibrary.sounds));
+    }
+#endif
 }
 
 public class Audio
