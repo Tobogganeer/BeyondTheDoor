@@ -9,10 +9,10 @@ namespace Tobo.DevConsole
     {
         public static ConVar sv_cheats;
 
-        public static ConVar cl_testcheat;
-        public static ConVar cl_test;
-        public static ConVar mp_thing;
-        public static ConVar fps_max;
+        //public static ConVar cl_testcheat;
+        //public static ConVar cl_test;
+        //public static ConVar mp_thing;
+        //public static ConVar fps_max;
 
         public static ConCommand help;
 
@@ -20,10 +20,10 @@ namespace Tobo.DevConsole
         {
             sv_cheats = new ConVar("sv_cheats", "0", CVarFlags.ServerOnly | CVarFlags.Replicated | CVarFlags.Notify, "Enables cheats", CVarType.Bool);
 
-            cl_testcheat = new ConVar("cl_testcheat", "0", CVarFlags.Cheat, "test", CVarType.Bool);
-            cl_test = new ConVar("cl_test", "test value", CVarFlags.None, "test");
-            mp_thing = new ConVar("mp_thing", "idk", CVarFlags.None, "test");
-            fps_max = new ConVar("fps_max", "144", CVarFlags.None, "test (does nothing)");
+            //cl_testcheat = new ConVar("cl_testcheat", "0", CVarFlags.Cheat, "test", CVarType.Bool);
+            //cl_test = new ConVar("cl_test", "test value", CVarFlags.None, "test");
+            //mp_thing = new ConVar("mp_thing", "idk", CVarFlags.None, "test");
+            //fps_max = new ConVar("fps_max", "144", CVarFlags.None, "test (does nothing)");
 
             help = new ConCommand("help", Help, "Prints help for a command, or all commands if none are specified.", CVarFlags.None, HelpCompletion);
         }
@@ -31,6 +31,7 @@ namespace Tobo.DevConsole
         static void Help(CmdArgs args)
         {
             // TODO: help command
+            Debug.Log(args.)
         }
 
         static void HelpCompletion(string partialFirstArg, string[] resultBuffer)
