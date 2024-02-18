@@ -130,6 +130,7 @@ MonoBehaviour:
   sfxGroup: {fileID: 3899560442349514167, guid: af8f9daad29da304f96bf208f9d729cd, type: 2}
   ambientGroup: {fileID: 2187550644878548249, guid: af8f9daad29da304f96bf208f9d729cd, type: 2}
   musicGroup: {fileID: -3049279344602043986, guid: af8f9daad29da304f96bf208f9d729cd, type: 2}
+  dialogueGroup: {fileID: 8206703612806754722, guid: af8f9daad29da304f96bf208f9d729cd, type: 2}
   updatePitchWithTimeScale: 1
 --- !u!114 &-2199389829717027695
 MonoBehaviour:
