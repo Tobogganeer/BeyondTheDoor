@@ -14,28 +14,14 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
-        // Attached to App object, already in DontDestroyOnLoad
-
-        /*
-        
-        if (Instance == null) Instance = this;
-
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        transform.SetParent(null);
-        DontDestroyOnLoad(gameObject);
-        */
-
         Init();
     }
 
     private void Init()
     {
+        if (soundLibrary == null)
+            return;
+
         for (int i = 0; i < soundLibrary.sounds.Length; i++)
         {
             if (soundsDictionary.ContainsKey(soundLibrary.sounds[i].SoundID))
@@ -50,66 +36,12 @@ public class AudioManager : MonoBehaviour
         {
             throw new System.Exception("AudioManager requires a sound with ID " + Sound.ID.None + "!");
         }
-        /*
-        clips.Clear();
-        clipNameToIndex.Clear();
-
-        int count = 0;
-
-        for (int i = 0; i < singleClips.Length; i++)
-        {
-            clips.Add(singleClips[i]);
-            if (clipNameToIndex.ContainsKey(clips[count].name))
-                Debug.LogError("Duplicate single audio key: " + clips[count].name);
-            clipNameToIndex.Add(clips[count].name, count++);
-        }
-
-        for (int i = 0; i < clipGroups.Length; i++)
-        {
-            int[] indices = new int[clipGroups[i].clips.Length];
-
-            for (int j = 0; j < clipGroups[i].clips.Length; j++)
-            {
-                clips.Add(clipGroups[i].clips[j]);
-                if (clipNameToIndex.ContainsKey(clips[count].name))
-                    Debug.LogError("Duplicate group audio clip key: " + clips[count].name);
-                clipNameToIndex.Add(clips[count].name, count);
-                indices[j] = count++;
-            }
-
-            if (groupNameToIndices.ContainsKey(clipGroups[i].name))
-                Debug.LogError("Duplicate group audio group key: " + clipGroups[i].name);
-            groupNameToIndices.Add(clipGroups[i].name, indices);
-        }
-        */
     }
 
-    //public AudioClip[] singleClips;
-    //public AudioClipGroup[] clipGroups;
-    //public Sound[] sounds;
     public SoundLibrary soundLibrary;
 
     private static readonly Dictionary<Sound.ID, Sound> soundsDictionary = new Dictionary<Sound.ID, Sound>();
-    //private static readonly List<AudioClip> clips = new List<AudioClip>();
-    //private static readonly Dictionary<string, int> clipNameToIndex = new Dictionary<string, int>();
-    //private static readonly Dictionary<string, int[]> groupNameToIndices = new Dictionary<string, int[]>();
-
-    /*
-    public static int GetClipIndex(string clipOrGroup)
-    {
-        if (groupNameToIndices.TryGetValue(clipOrGroup, out int[] indices))
-            return indices[Random.Range(0, indices.Length)];
-        else if (clipNameToIndex.TryGetValue(clipOrGroup, out int clip))
-            return clip;
-        else
-        {
-            Debug.LogWarning("Could not get clip for " + clipOrGroup);
-            return -1;
-        }
-    }
-    */
-
-
+    
     public static Sound GetSound(Sound.ID id)
     {
         if (!soundsDictionary.TryGetValue(id, out Sound sound))
