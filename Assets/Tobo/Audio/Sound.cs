@@ -5,14 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable Objects/Sound")]
 public class Sound : ScriptableObject
 {
-    public enum ID : ushort
-    {
-        None = 0,
-        UIClick,
-        UIHover,
-    }
-
-    [SerializeField] private ID soundID;
     [SerializeField] private AudioClip[] clips;
     [SerializeField] private float maxDistance = 35f;
     [SerializeField] private AudioCategory category = AudioCategory.SFX;
@@ -21,7 +13,7 @@ public class Sound : ScriptableObject
     [SerializeField] private float maxPitch = 1.1f;
     [SerializeField] private bool is2d = false;
 
-    public ID SoundID => soundID;
+    public ID SoundID => name;
     public AudioClip[] Clips => clips;
     public float MaxDistance => maxDistance;
     public AudioCategory Category => category;
@@ -71,6 +63,21 @@ public class Sound : ScriptableObject
         AudioManager.PlayLocal2D(this);
     }
     #endregion
+
+    public class ID
+    {
+        // Yes, it's a wrapper of a string to be a bit more functional
+        public string Value { get; private set; }
+
+        public static ID None => "none";
+
+        public ID(string value) => Value = value.Trim().ToLower();
+
+        public override int GetHashCode() => Value.GetHashCode();
+        public override bool Equals(object obj) => Value.Equals(obj);
+        public static implicit operator string(ID id) => id.Value;
+        public static implicit operator ID(string str) => new ID(str);
+    }
 }
 
 public static class SoundIDExtensions

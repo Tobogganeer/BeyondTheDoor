@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
 
     public SoundLibrary soundLibrary;
 
-    private static readonly Dictionary<Sound.ID, Sound> soundsDictionary = new Dictionary<Sound.ID, Sound>();
+    private static readonly Dictionary<string, Sound> soundsDictionary = new Dictionary<string, Sound>();
     
     public static Sound GetSound(Sound.ID id)
     {
