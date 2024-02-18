@@ -74,7 +74,15 @@ public class Sound : ScriptableObject
         public ID(string value) => Value = value.Trim().ToLower();
 
         public override int GetHashCode() => Value.GetHashCode();
-        public override bool Equals(object obj) => Value.Equals(obj);
+        public override bool Equals(object obj)
+        {
+            if (obj is not ID && obj is not string)
+                return false;
+
+            ID other = (ID)obj;
+
+            return this.Value == other.Value;
+        }
         public static implicit operator string(ID id) => id.Value;
         public static implicit operator ID(string str) => new ID(str);
     }
