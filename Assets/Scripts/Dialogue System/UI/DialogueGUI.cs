@@ -95,18 +95,6 @@ namespace ToBOE.Dialogue.UI
             SetNewLine(line);
         }
 
-        internal void OpenChoices(ChoiceCollection choices)
-        {
-            // Turn the choices on, don't touch the line text
-            SetWindowActive(true);
-            SetChoicesActive(true);
-
-            currentChoices = choices;
-
-            // TODO: Call only when the choice is actually made + choose the right one
-            choices.Choices[0].OnChoiceChosen();
-        }
-
         private void SetNewLine(Line line)
         {
             // Set our current
@@ -120,6 +108,50 @@ namespace ToBOE.Dialogue.UI
             // TODO: Use Character class to get proper name
             characterNameField.text = line.character.ToString();
             lineTextField.text = string.Empty; // Blank
+        }
+
+        internal void OpenChoices(ChoiceCollection choices)
+        {
+            // Turn the choices on, don't touch the line text
+            SetWindowActive(true);
+            SetChoicesActive(true);
+
+            SetChoices(choices);
+
+            // TODO: Call only when the choice is actually made + choose the right one
+            //choices.Choices[0].OnChoiceChosen();
+        }
+
+        private void SetChoices(ChoiceCollection choices)
+        {
+            currentChoices = choices;
+            if (choices.Choices.Count > choiceButtons.Length)
+                Debug.LogWarning("Too many choices to present, will be truncated. First line: " + choices.Choices[0].Prompt.ToString());
+
+            int numChoices = Mathf.Min(choices.Choices.Count, choiceButtons.Length);
+            // Disable the unneeded buttons
+            for (int i = 0; i < choiceButtons.Length; i++)
+                choiceButtons[i].button.gameObject.SetActive(i < numChoices);
+
+            // Wire the buttons to the correct choices
+            for (int i = 0; i < numChoices; i++)
+                SetChoiceButton(choices.Choices[i], choiceButtons[i]);
+        }
+
+        private void SetChoiceButton(Choice choice, ChoiceGUI gui)
+        {
+            if (choice == null)
+                throw new System.ArgumentNullException(nameof(choice));
+
+            gui.label.text = choice.Prompt.Text; // Set the right text
+            gui.button.onClick.RemoveAllListeners(); // Clear the previous choices
+            gui.button.onClick.AddListener(() => OnChoiceChosen(choice)); // Wire it up
+        }
+
+        private void OnChoiceChosen(Choice choice)
+        {
+            currentChoices = null; // Remove our choices
+            choice.OnChoiceChosen(); // Activate it
         }
 
         private void ResetRevealTimer() => revealTimer = 1f / revealedCharactersPerSecond;

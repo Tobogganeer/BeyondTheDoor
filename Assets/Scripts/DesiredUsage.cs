@@ -24,8 +24,8 @@ public class DesiredUsage : MonoBehaviour
 
         Line.bob_start_joke.Then(Line.jessica_reply1).Then(Line.bob_joke_question).Then(Line.jessica_reply2).
             Then(Line.bob_punchline);
-        Line.bob_punchline.Then(Line.jessica_silent);
-        Line.jessica_silent.ThenChoice(Choice.Line(Line.player_no, Line.jessica_cant_kill_bob), Choice.Action(Line.player_yes, KillBob));
+        Line.bob_punchline.Then(Line.jessica_silent).Then(Line.jessica_player_question);
+        Line.jessica_player_question.ThenChoice(Choice.Line(Line.player_no, Line.jessica_cant_kill_bob), Choice.Action(Line.player_yes, KillBob));
 
         //Line.bob_start_joke.Open();
     }
