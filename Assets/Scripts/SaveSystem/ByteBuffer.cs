@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
 using System.Text;
+using ArrayLength = System.UInt16;
 
 namespace BeyondTheDoor.SaveSystem
 {
     public class ByteBuffer
     {
-        private static readonly ByteBuffer buf1 = new ByteBuffer(BufferSize);
-        private static readonly ByteBuffer buf2 = new ByteBuffer(BufferSize);
-
-        const ushort BufferSize = 4096;
+        const ushort BufferSize = 1024 * 8; // 8kb should be enough for these saves
 
         public readonly byte[] Data;
 
@@ -22,31 +20,11 @@ namespace BeyondTheDoor.SaveSystem
         public int Unwritten => Data.Length - WritePosition;
         public int Written => WritePosition;
 
-        static bool flag;
-
         private ByteBuffer() { }
 
-        private ByteBuffer(ushort maxSize)
+        public ByteBuffer(ushort maxSize = BufferSize)
         {
             Data = new byte[maxSize];
-        }
-
-        public static ByteBuffer Get()
-        {
-            flag = !flag;
-            // Motivation: If you are reading a buffer and choose to send a packet halfway
-            //   through, and then keep reading buf
-
-            if (flag)
-            {
-                buf1.Reset();
-                return buf1;
-            }
-            else
-            {
-                buf2.Reset();
-                return buf2;
-            }
         }
 
         public void Reset()
@@ -308,52 +286,23 @@ namespace BeyondTheDoor.SaveSystem
         /// </summary>
         /// <typeparam name="T">The unmanaged type to write,</typeparam>
         /// <param name="value">The array of values,</param>
-        /// <param name="length">Set to ArrayLength.None if you wish to explicitly specify the length in the call to Read<![CDATA[<]]><typeparamref name="T"/><![CDATA[>]]>.</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public unsafe ByteBuffer Add<T>(T[] value, ArrayLength length = ArrayLength.Short) where T : unmanaged
+        public unsafe ByteBuffer Add<T>(T[] value) where T : unmanaged
         {
             int size = sizeof(T);
-            int lengthLength = length == ArrayLength.None ? 0 : (int)length + 1;
 
-            if (Unwritten < size * value.Length + lengthLength)
+            if (Unwritten < size * value.Length + sizeof(ArrayLength))
                 throw new Exception($"Failed to write {typeof(T)}[] ({Unwritten} bytes unwritten)");
 
             if (value == null)
             {
                 Debug.LogWarning($"Tried to write null {typeof(T)}[] to ByteBuffer, writing empty array!");
-                WriteArrayLength(length, 0);
+                WriteArrayLength(0);
                 return this;
             }
 
-            /*
-            if (length != ArrayLength.None)
-            {
-                Bytes[writePos++] = (byte)length;
-                ReadableLength++;
-            }
-
-            switch (length)
-            {
-                case ArrayLength.Byte:
-                    byte lenB = (byte)value.Length;
-                    Span<byte> lenSpan = span.Slice(0, (int)length);
-                    MemoryMarshal.Write(lenSpan, ref lenB);
-                    break;
-                case ArrayLength.Short:
-                    short lenS = (short)value.Length;
-                    lenSpan = span.Slice(0, (int)length);
-                    MemoryMarshal.Write(lenSpan, ref lenS);
-                    break;
-                case ArrayLength.Int:
-                    int lenI = value.Length;
-                    lenSpan = span.Slice(0, (int)length);
-                    MemoryMarshal.Write(lenSpan, ref lenI);
-                    break;
-            }
-            */
-
-            WriteArrayLength(length, value.Length);
+            WriteArrayLength(value.Length);
             Span<byte> span = new Span<byte>(Data, WritePosition, size * value.Length);
 
             if (value != null && value.Length > 0)
@@ -371,33 +320,9 @@ namespace BeyondTheDoor.SaveSystem
             return this;
         }
 
-        private unsafe void WriteArrayLength(ArrayLength length, int count)
+        private unsafe void WriteArrayLength(int count)
         {
-            if (length != ArrayLength.None)
-            {
-                Data[WritePosition++] = (byte)length;
-                Readable++;
-            }
-
-            Span<byte> lenSpan = Data.AsSpan(WritePosition, (int)length);
-            WritePosition += (ushort)length;
-            Readable += (int)length;
-
-            switch (length)
-            {
-                case ArrayLength.Byte:
-                    byte lenB = (byte)count;
-                    MemoryMarshal.Write(lenSpan, ref lenB);
-                    break;
-                case ArrayLength.Short:
-                    short lenS = (short)count;
-                    MemoryMarshal.Write(lenSpan, ref lenS);
-                    break;
-                case ArrayLength.Int:
-                    int lenI = count;
-                    MemoryMarshal.Write(lenSpan, ref lenI);
-                    break;
-            }
+            Add((ArrayLength)count);
         }
 
         public unsafe T Read<T>() where T : unmanaged
@@ -431,60 +356,16 @@ namespace BeyondTheDoor.SaveSystem
             return value;
         }
 
-        bool logEmptyArrays = true;
 
         /// <summary>
         /// Reads an array of elements.
         /// </summary>
         /// <typeparam name="T">The unmanaged type to read.</typeparam>
-        /// <param name="len">Set as negative if the length was included in the Write<![CDATA[<]]><typeparamref name="T"/><![CDATA[>]]> call.</param>
         /// <returns></returns>
-        public unsafe T[] Read<T>(int len = -1) where T : unmanaged
+        public unsafe T[] ReadArray<T>() where T : unmanaged
         {
             int size = sizeof(T);
-            if (len < 0)
-            {
-                ArrayLength length = (ArrayLength)Data[ReadPosition++];
-                if (Unread < (int)length)
-                {
-                    Debug.LogError($"Failed to read {typeof(T)}[] ({Unread} bytes unread)");
-                    return null;
-                }
-                switch (length)
-                {
-                    case ArrayLength.None:
-                        Debug.LogError($"Failed to read {typeof(T)}[] (No Length)");
-                        return null;
-                    case ArrayLength.Byte:
-                        len = Data[ReadPosition++];
-                        break;
-                    case ArrayLength.Short:
-                        len = MemoryMarshal.Read<short>(new ReadOnlySpan<byte>(Data, ReadPosition, sizeof(short)));
-                        ReadPosition += 2;
-                        break;
-                    case ArrayLength.Int:
-                        len = MemoryMarshal.Read<int>(new ReadOnlySpan<byte>(Data, ReadPosition, sizeof(int)));
-                        ReadPosition += 4;
-                        break;
-                }
-            }
-
-            if (len == 0)
-            {
-                //Debug.LogError($"Failed to read {typeof(T)}[] (Negative or Zero Length [{len}])");
-                if (logEmptyArrays)
-                {
-                    Debug.LogWarning($"Failed to read {typeof(T)}[] (Zero Length), suppressing future warnings");
-                    //Debug.LogWarning(Dump());
-                    logEmptyArrays = false;
-                }
-                return null;
-            }
-            else if (len < 0)
-            {
-                Debug.LogError($"Failed to read {typeof(T)}[] (Negative Length [{len}])");
-                return null;
-            }
+            ArrayLength len = Read<ArrayLength>();
 
             if (Unread < sizeof(T) * len)
             {
@@ -505,8 +386,6 @@ namespace BeyondTheDoor.SaveSystem
             return values;
         }
 
-        public unsafe T[] ReadArray<T>(int len = -1) where T : unmanaged => Read<T>(len);
-
         #endregion
 
         public string Dump()
@@ -524,14 +403,6 @@ namespace BeyondTheDoor.SaveSystem
 
             return sb.ToString();
         }
-    }
-
-    public enum ArrayLength : byte
-    {
-        None = 0,
-        Byte = 1,
-        Short = 2,
-        Int = 4
     }
 
     /// <summary>
