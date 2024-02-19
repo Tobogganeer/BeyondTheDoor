@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ToBOE.Dialogue;
-using ToBOE.Dialogue.UI;
+using BeyondTheDoor;
+using BeyondTheDoor.UI;
 using UnityEngine.InputSystem;
 using System;
 

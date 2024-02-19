@@ -8,7 +8,7 @@
 
 using System.Collections.Generic;
 
-namespace ToBOE.Dialogue
+namespace BeyondTheDoor
 {
     public partial class Character
     {

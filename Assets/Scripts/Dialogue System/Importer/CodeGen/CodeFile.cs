@@ -8,7 +8,7 @@ using System;
 using UnityEditor;
 #endif
 
-namespace ToBOE.Dialogue.Importer.CodeGen
+namespace BeyondTheDoor.Importer.CodeGen
 {
     public class CodeFile
     {

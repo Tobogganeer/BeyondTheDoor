@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace ToBOE.Dialogue.Editor
+namespace BeyondTheDoor.Editor
 {
     [CustomEditor(typeof(Conversation))]
     public class ConversationEditor : UnityEditor.Editor

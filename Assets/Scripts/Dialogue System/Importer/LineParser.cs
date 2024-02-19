@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace ToBOE.Dialogue.Importer
+namespace BeyondTheDoor.Importer
 {
     public static class LineParser
     {

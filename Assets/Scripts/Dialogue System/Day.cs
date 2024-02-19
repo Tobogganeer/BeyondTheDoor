@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace ToBOE.Dialogue
+namespace BeyondTheDoor
 {
     /// <summary>
     /// Represents the course of a day.
