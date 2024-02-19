@@ -37,6 +37,8 @@ namespace ToBOE.Dialogue
         /// Called when the player clicks on this character during the day (start dialogue).
         /// </summary>
         public event Action<Character, Day> OnSpokenTo;
+
+        #region Individual Days
         /// <summary>
         /// Called when the player clicks on this character during day 0 (start dialogue).
         /// </summary>
@@ -69,6 +71,8 @@ namespace ToBOE.Dialogue
         /// Called when the player clicks on this character during day 7 (start dialogue).
         /// </summary>
         public event Action<Character, Day> OnSpokenToDay7;
+        #endregion
+
 
         // ============ Constants ============
         static readonly string UnknownCharacterName = "(Unknown)";
@@ -83,7 +87,13 @@ namespace ToBOE.Dialogue
 
 
 
-
+        /// <summary>
+        /// Call this when the player wants to speak to his character
+        /// </summary>
+        public void OnSelected()
+        {
+            // TODO: Activate callbacks using current Day
+        }
 
         /// <summary>
         /// Gets the name of the character if they have been introduced.
