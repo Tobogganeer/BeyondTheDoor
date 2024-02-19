@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace ToBOE.Dialogue.Importer.CodeGen
+namespace BeyondTheDoor.Importer.CodeGen
 {
     public static class LineGenerator
     {

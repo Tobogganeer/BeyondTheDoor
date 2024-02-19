@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using ToBOE.Dialogue.Importer.CodeGen;
+using BeyondTheDoor.Importer.CodeGen;
 
-namespace ToBOE.Dialogue.Importer
+namespace BeyondTheDoor.Importer
 {
     public class DialogueImportWindow : EditorWindow
     {

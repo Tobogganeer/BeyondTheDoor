@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-namespace ToBOE.Dialogue.UI
+namespace BeyondTheDoor.UI
 {
     public class DialogueGUI : MonoBehaviour
     {

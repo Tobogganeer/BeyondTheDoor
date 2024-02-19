@@ -6,7 +6,7 @@ using UnityEngine;
 // Let the importer and UI edit the values on lines directly
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Importer")]
 
-namespace ToBOE.Dialogue
+namespace BeyondTheDoor
 {
     /// <summary>
     /// Represents a line of character dialogue.

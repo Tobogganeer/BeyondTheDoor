@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using ToBOE.Dialogue;
-using ToBOE.Dialogue.UI;
+using BeyondTheDoor;
+using BeyondTheDoor.UI;
 
-namespace ToBOE.Dialogue
+namespace BeyondTheDoor
 {
     // This class isn't in the dialogue asmdef so it can access the audio manager
     public class DialogueManager : MonoBehaviour

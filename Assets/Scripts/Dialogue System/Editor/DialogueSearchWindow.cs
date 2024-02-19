@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace ToBOE.Dialogue.Editor
+namespace BeyondTheDoor.Editor
 {
     public class DialogueSearchWindow : EditorWindow
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace ToBOE.Dialogue
+namespace BeyondTheDoor
 {
     [CreateAssetMenu(menuName = "Dialogue/Conversation")]
     public class Conversation : ScriptableObject, IDialogueElement

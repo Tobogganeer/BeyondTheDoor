@@ -6,7 +6,7 @@
 // =                                               =
 // =================================================
 
-namespace ToBOE.Dialogue
+namespace BeyondTheDoor
 {
     public enum CharacterID
     {

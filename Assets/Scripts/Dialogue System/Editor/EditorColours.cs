@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ToBOE.Dialogue.Editor
+namespace BeyondTheDoor.Editor
 {
     internal static class EditorColours
     {

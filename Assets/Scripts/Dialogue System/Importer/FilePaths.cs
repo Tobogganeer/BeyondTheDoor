@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static System.IO.Path;
 
-namespace ToBOE.Dialogue
+namespace BeyondTheDoor
 {
     public static class FilePaths
     {
@@ -17,6 +17,6 @@ namespace ToBOE.Dialogue
         //public static readonly string LineIDEnumFileName = "LineID.cs";
         //public static readonly string LineStatusEnumFileName = "LineStatus.cs";
 
-        public static readonly string DialogueNamespace = "ToBOE.Dialogue";
+        public static readonly string DialogueNamespace = "BeyondTheDoor";
     }
 }
