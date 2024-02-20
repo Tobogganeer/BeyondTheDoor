@@ -23,7 +23,7 @@ namespace BeyondTheDoor
         /// <summary>
         /// The current status of this Character
         /// </summary>
-        public CharacterStatus Status { get; set; }
+        public CharacterStatus Status { get; private set; }
         /// <summary>
         /// A list of events that have happened to this character
         /// </summary>
@@ -31,7 +31,7 @@ namespace BeyondTheDoor
         /// <summary>
         /// The first thing this Character says at the door
         /// </summary>
-        public IDialogueElement Introduction { get; set; } 
+        public IDialogueElement Introduction { get; set; }
 
 
         // ============ Useful Properties ============
@@ -117,6 +117,18 @@ namespace BeyondTheDoor
         }
 
 
+        /// <summary>
+        /// Changes this Character's status to <paramref name="newStatus"/> and records it in our <seealso cref="HistoryEvents"/>.
+        /// </summary>
+        /// <param name="newStatus"></param>
+        public void ChangeStatus(CharacterStatus newStatus)
+        {
+            if (newStatus != Status)
+            {
+                HistoryEvents.Add(new CharacterHistoryEvent(Status, newStatus));
+                Status = newStatus;
+            }
+        }
 
         /// <summary>
         /// Call this when the character arrives at the door.
