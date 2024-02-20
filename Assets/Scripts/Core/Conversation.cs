@@ -93,6 +93,7 @@ namespace BeyondTheDoor
         {
             public LineID prompt;
             public Conversation nextConversation;
+            public ChoiceCallback callback;
         }
     }
 }
