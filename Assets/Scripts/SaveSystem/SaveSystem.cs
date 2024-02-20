@@ -20,13 +20,31 @@ namespace BeyondTheDoor.SaveSystem
 
         }
 
+        /// <summary>
+        /// Returns true if a file for save number <paramref name="saveNumber"/> exists.
+        /// </summary>
+        /// <param name="saveNumber"></param>
+        /// <returns></returns>
+        public static bool SaveExists(int saveNumber)
+        {
+            string path = FormatSavePath(saveNumber);
+            // Check if it exists
+            return File.Exists(path);
+        }
+
         static void SaveBuffer(ByteBuffer buf, int saveNumber)
         {
+            // Make sure our folder exists
+            if (!Directory.Exists(SavePath))
+                Directory.CreateDirectory(SavePath);
+
             string path = FormatSavePath(saveNumber);
             try
             {
+                // Copy the correct amount of bytes
                 byte[] writeBuf = new byte[buf.Written];
                 System.Buffer.BlockCopy(buf.Data, 0, writeBuf, 0, buf.Written);
+                // Save them
                 File.WriteAllBytes(path, writeBuf);
             }
             catch (System.Exception ex)
@@ -37,10 +55,11 @@ namespace BeyondTheDoor.SaveSystem
 
         static ByteBuffer LoadBuffer(int saveNumber)
         {
-            string path = FormatSavePath(saveNumber);
-
-            if (!File.Exists(path))
+            // Make sure we are loading a valid save
+            if (SaveExists(saveNumber))
                 throw new SaveSystemException($"Save file {saveNumber} not found.");
+
+            string path = FormatSavePath(saveNumber);
 
             ByteBuffer buf = new ByteBuffer();
             try
