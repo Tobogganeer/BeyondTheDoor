@@ -8,6 +8,19 @@ namespace BeyondTheDoor.SaveSystem
     {
         private ByteBuffer savedData;
 
+        /// <summary>
+        /// Creates an empty SaveState ready for saving.
+        /// </summary>
+        public SaveState()
+        {
+            savedData = new ByteBuffer();
+            SaveEmptyState();
+        }
+
+        /// <summary>
+        /// Creates a SaveState with save data ready for loading.
+        /// </summary>
+        /// <param name="savedData"></param>
         public SaveState(ByteBuffer savedData)
         {
             this.savedData = savedData;
@@ -16,6 +29,11 @@ namespace BeyondTheDoor.SaveSystem
         public void AddDataTo(ByteBuffer buffer)
         {
             buffer.AddBuffer(savedData);
+        }
+
+        public void SaveEmptyState()
+        {
+            // TODO: Implement default save state
         }
 
         public void SaveCurrentState()
