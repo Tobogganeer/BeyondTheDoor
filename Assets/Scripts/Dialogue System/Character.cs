@@ -15,8 +15,6 @@ namespace BeyondTheDoor
         public CharacterID ID { get; private set; }
         public string Name { get; set; }
         public CharacterStatus Status { get; set; }
-        // TODO: Set this from the Game script
-        public int ArrivalDay { get; set; }
 
 
         // ============ Useful Properties ============
@@ -90,7 +88,7 @@ namespace BeyondTheDoor
 
 
         /// <summary>
-        /// Call this when the player wants to speak to his character
+        /// Call this when the player wants to speak to this character
         /// </summary>
         public void OnSelected()
         {

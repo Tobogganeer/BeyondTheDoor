@@ -12,6 +12,7 @@ namespace BeyondTheDoor
             instance = this;
         }
 
+
         [SerializeField] private List<CharacterID> characterArrivalOrder;
 
         public static List<CharacterID> CharacterArrivalOrder => instance.characterArrivalOrder;
