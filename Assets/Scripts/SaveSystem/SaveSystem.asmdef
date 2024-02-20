@@ -1,7 +1,9 @@
 {
     "name": "SaveSystem",
     "rootNamespace": "BeyondTheDoor.SaveSystem",
-    "references": [],
+    "references": [
+        "GUID:0c5b5836812ac124597ac8177b70c1e9"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,
