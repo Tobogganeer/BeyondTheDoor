@@ -8,6 +8,7 @@ namespace BeyondTheDoor
     [CreateAssetMenu(menuName = "Dialogue/Conversation")]
     public class Conversation : ScriptableObject, IDialogueElement
     {
+        // TODO: Add ConversationCallbacks to each line? May not be needed due to Line.OnOpen, but still
         [SerializeField] internal List<LineID> lines;
         [SerializeField] internal List<ConversationChoice> choices;
 
@@ -36,7 +37,8 @@ namespace BeyondTheDoor
 
                     foreach (ConversationChoice c in choices)
                     {
-                        fill.Add(Choice.Line(Line.Get(c.prompt), c.nextConversation));
+                        fill.Add(Choice.LineAndAction(Line.Get(c.prompt),
+                            c.nextConversation, (line) => c.callback?.Invoke(this, line.ID)));
                     }
 
                     _choicesBacking = new ChoiceCollection(fill);
@@ -48,7 +50,7 @@ namespace BeyondTheDoor
         /// <summary>
         /// Called when this conversation is started
         /// </summary>
-        public event Action<Conversation> OnStarted;
+        public ConversationCallback OnStarted;
 
 
 
@@ -63,7 +65,7 @@ namespace BeyondTheDoor
         public void Open()
         {
             HookUpLines();
-            OnStarted?.Invoke(this);
+            OnStarted?.Invoke(this, Lines.Count > 0 ? Lines[0].id : 0);
             if (Lines.Count > 0)
                 Lines[0].Open();
             else if (Choices != null)
@@ -93,6 +95,7 @@ namespace BeyondTheDoor
         {
             public LineID prompt;
             public Conversation nextConversation;
+            public ConversationCallback callback;
         }
     }
 }

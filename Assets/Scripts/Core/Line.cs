@@ -142,6 +142,13 @@ namespace BeyondTheDoor
             return null;
         }
 
+        /// <summary>
+        /// Returns true if a line with the given <paramref name="id"/> exists.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static bool Exists(LineID id) => All.ContainsKey(id);
+
 
 
         /// <summary>

@@ -10,5 +10,6 @@ namespace BeyondTheDoor.Editor
         internal const string TextColour = "#d1d1d1";
         internal const string ConversationNameColour = "#4287f5";
         internal const string ChoicePromptColour = "#ed7e4e";
+        internal const string CallbackColour = "#c975b1";
     }
 }

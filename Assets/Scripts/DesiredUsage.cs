@@ -5,6 +5,7 @@ using BeyondTheDoor;
 using BeyondTheDoor.UI;
 using UnityEngine.InputSystem;
 using System;
+using BeyondTheDoor.SaveSystem;
 
 /// <summary>
 /// Shows the desired usage of the dialogue system
@@ -12,6 +13,7 @@ using System;
 public class DesiredUsage : MonoBehaviour
 {
     public Conversation convo;
+    public ConversationCallback onKillBob;
 
     private void Start()
     {
@@ -31,6 +33,21 @@ public class DesiredUsage : MonoBehaviour
         //Line.jessica_player_question.ThenChoice(Choice.Line(Line.player_no, Line.jessica_cant_kill_bob), Choice.Action(Line.player_yes, KillBob));
 
         //Line.bob_start_joke.Open();
+
+        /*
+        SaveState state = SaveSystem.Load(1);
+        state.Load();
+        Game.Begin();
+        // Do stuff...
+        Day.Advance();
+        */
+
+        onKillBob.Callback += OnKillBob_Callback;
+    }
+
+    private void OnKillBob_Callback(Conversation arg1, LineID arg2)
+    {
+        Debug.Log("Bob died :(");
     }
 
     private void Update()
