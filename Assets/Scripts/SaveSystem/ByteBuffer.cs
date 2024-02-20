@@ -20,8 +20,6 @@ namespace BeyondTheDoor.SaveSystem
         public int Unwritten => Data.Length - WritePosition;
         public int Written => WritePosition;
 
-        private ByteBuffer() { }
-
         public ByteBuffer(ushort maxSize = BufferSize)
         {
             Data = new byte[maxSize];
@@ -231,6 +229,21 @@ namespace BeyondTheDoor.SaveSystem
             return array;
         }
         #endregion
+
+        public ByteBuffer AddBuffer(ByteBuffer buf)
+        {
+            Add(buf.Written);
+            WriteSpan(new ReadOnlySpan<byte>(buf.Data, 0, buf.Written));
+            return this;
+        }
+
+        public ByteBuffer GetBuffer()
+        {
+            int size = Read<int>();
+            ByteBuffer read = new ByteBuffer();
+            read.WriteSpan(new ReadOnlySpan<byte>(Data, ReadPosition, size));
+            return read;
+        }
 
         #region Buffer Struct
 

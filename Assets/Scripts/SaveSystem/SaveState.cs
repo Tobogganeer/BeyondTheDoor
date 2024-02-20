@@ -4,28 +4,35 @@ using UnityEngine;
 
 namespace BeyondTheDoor.SaveSystem
 {
-    public class SaveState : IBufferStruct
+    public class SaveState
     {
-        /// <summary>
-        /// Creates an empty world - used by IBufferStruct.
-        /// </summary>
-        public SaveState() { }
+        private ByteBuffer savedData;
 
-        public void Serialize(ByteBuffer buf)
+        public SaveState(ByteBuffer savedData)
         {
-            SaveCabin(buf);
-            SaveDays(buf);
-            SaveCharacters(buf);
-            SaveLines(buf);
+            this.savedData = savedData;
         }
 
-        public void Deserialize(ByteBuffer buf)
+        public void AddDataTo(ByteBuffer buffer)
+        {
+            buffer.AddBuffer(savedData);
+        }
+
+        public void SaveCurrentState()
+        {
+            SaveCabin(savedData);
+            SaveDays(savedData);
+            SaveCharacters(savedData);
+            SaveLines(savedData);
+        }
+
+        public void Load()
         {
             // Load everything in the same order
-            LoadCabin(buf);
-            LoadDays(buf);
-            LoadCharacters(buf);
-            LoadLines(buf);
+            LoadCabin(savedData);
+            LoadDays(savedData);
+            LoadCharacters(savedData);
+            LoadLines(savedData);
         }
 
         #region Saving
