@@ -5,6 +5,8 @@ using UnityEngine;
 
 // Let the importer and UI edit the values on lines directly
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Importer")]
+// And the save system as well :P
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("SaveSystem")]
 
 namespace BeyondTheDoor
 {
