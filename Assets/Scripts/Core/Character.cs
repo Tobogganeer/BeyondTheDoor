@@ -177,6 +177,21 @@ namespace BeyondTheDoor
         {
             return HasBeenIntroduced ? Name : UnknownCharacterName;
         }
+
+
+        /// <summary>
+        /// Resets the data of all characters to their default state.
+        /// </summary>
+        public static void ResetAll()
+        {
+            Dictionary<CharacterID, Character> newChars = new Dictionary<CharacterID, Character>();
+
+            // Recreate them all
+            foreach (Character c in All.Values)
+                newChars.Add(c.ID, new Character(c.ID));
+
+            All = newChars;
+        }
     }
 
     public enum CharacterStatus
