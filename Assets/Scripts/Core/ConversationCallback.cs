@@ -8,11 +8,15 @@ namespace BeyondTheDoor
     [CreateAssetMenu(menuName = "Dialogue/Conversation Callback")]
     public class ConversationCallback : ScriptableObject
     {
-        public event Action<LineID> Chosen;
+        /// <summary>
+        /// Called when this is activated. Passes the target conversation and the line of interest.
+        /// </summary>
+        /// <remarks>LineID will be the prompt line for a choice, or the first line for conversation start.</remarks>
+        public event Action<Conversation, LineID> Callback;
 
-        internal void Invoke(LineID prompt)
+        internal void Invoke(Conversation convo, LineID prompt)
         {
-            Chosen?.Invoke(prompt);
+            Callback?.Invoke(convo, prompt);
         }
     }
 }
