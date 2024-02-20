@@ -36,7 +36,8 @@ namespace BeyondTheDoor
 
                     foreach (ConversationChoice c in choices)
                     {
-                        fill.Add(Choice.Line(Line.Get(c.prompt), c.nextConversation));
+                        fill.Add(Choice.LineAndAction(Line.Get(c.prompt),
+                            c.nextConversation, (line) => c.callback?.Invoke(line.ID)));
                     }
 
                     _choicesBacking = new ChoiceCollection(fill);

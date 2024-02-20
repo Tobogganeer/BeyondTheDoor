@@ -10,7 +10,7 @@ namespace BeyondTheDoor
     {
         public event Action<LineID> Chosen;
 
-        internal void OnChosen(LineID prompt)
+        internal void Invoke(LineID prompt)
         {
             Chosen?.Invoke(prompt);
         }
