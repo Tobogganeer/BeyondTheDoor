@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Kill Bob
   m_EditorClassIdentifier: 
   lines: 
-  choices: []
+  choices:
+  - prompt: -749216894
+    nextConversation: {fileID: 0}
+    callback: {fileID: 11400000, guid: 2a14271b1547b1b43832fe15fbca3032, type: 2}
