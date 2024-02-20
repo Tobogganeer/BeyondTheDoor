@@ -6,15 +6,10 @@ namespace BeyondTheDoor.SaveSystem
 {
     public class World : IBufferStruct
     {
-        public int SaveSlot { get; private set; }
-
-        // Used by IBufferStruct
+        /// <summary>
+        /// Creates an empty world - used by IBufferStruct.
+        /// </summary>
         public World() { }
-
-        public static World CreateEmpty()
-        {
-
-        }
 
         public void Serialize(ByteBuffer buf)
         {

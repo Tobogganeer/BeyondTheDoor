@@ -13,19 +13,24 @@ namespace BeyondTheDoor.SaveSystem
 
         static readonly FileVersion Version = FileVersion.Version_1_0;
 
-        public static void Save(World world)
+        public static void Save(World world, int saveSlot)
         {
             ByteBuffer buf = new ByteBuffer();
             buf.Add((byte)Version);
             buf.AddStruct(world);
-            SaveBuffer(buf, world.SaveSlot);
+            SaveBuffer(buf, saveSlot);
         }
 
         public static World Load(int saveSlot)
         {
             // Don't let us try to load a non-existent save file
             if (!SaveExists(saveSlot))
-                return World.CreateEmpty();
+            {
+                World emptyWorld = new World();
+                // Save this slot so we can use it later
+                Save(emptyWorld, saveSlot);
+                return emptyWorld;
+            }
 
             ByteBuffer buf = LoadBuffer(saveSlot);
             FileVersion saveVersion = (FileVersion)buf.Read<byte>();

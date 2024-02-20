@@ -1,5 +1,5 @@
 {
-    "name": "SaveSytem",
+    "name": "SaveSystem",
     "rootNamespace": "BeyondTheDoor.SaveSystem",
     "references": [],
     "includePlatforms": [],
