@@ -18,6 +18,11 @@ namespace BeyondTheDoor
         public static CharacterID ArrivingCharacter { get; private set; }
         public static Stage Stage { get; set; }
 
+        public static void Advance()
+        {
+            throw new NotImplementedException();
+        }
+
         public static void StartDay(int dayNumber)
         {
             if (dayNumber < FirstDay || dayNumber > LastDay)

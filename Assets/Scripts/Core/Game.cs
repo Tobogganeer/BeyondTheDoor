@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,10 @@ namespace BeyondTheDoor
             instance = this;
         }
 
+        public static void Begin()
+        {
+            throw new NotImplementedException();
+        }
 
         [SerializeField] private List<CharacterID> characterArrivalOrder;
 

@@ -32,6 +32,12 @@ public class DesiredUsage : MonoBehaviour
         //Line.jessica_player_question.ThenChoice(Choice.Line(Line.player_no, Line.jessica_cant_kill_bob), Choice.Action(Line.player_yes, KillBob));
 
         //Line.bob_start_joke.Open();
+
+        SaveState state = SaveSystem.Load(1);
+        state.Load();
+        Game.Begin();
+        // Do stuff...
+        Day.Advance();
     }
 
     private void Update()

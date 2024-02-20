@@ -36,6 +36,10 @@ namespace BeyondTheDoor
         /// </summary>
         public bool IsScavenging => Status == CharacterStatus.ScavengingWithShotgun
             || Status == CharacterStatus.ScavengingDefenseless;
+        /// <summary>
+        /// Has the player chosen to let this character in or leave them out?
+        /// </summary>
+        public bool DoorDecisionMade => Status > CharacterStatus.AtDoor;
 
 
         // ============ Dialogue Events ============
