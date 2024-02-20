@@ -15,6 +15,7 @@ namespace BeyondTheDoor
         public CharacterID ID { get; private set; }
         public string Name { get; set; }
         public CharacterStatus Status { get; set; }
+        public List<CharacterHistoryEvent> HistoryEvents { get; set; }
 
 
         // ============ Useful Properties ============
@@ -83,6 +84,7 @@ namespace BeyondTheDoor
             ID = id;
             Name = id.ToString(); // Can be changed later
             Status = CharacterStatus.NotMet;
+            HistoryEvents = new List<CharacterHistoryEvent>();
         }
 
 
@@ -141,10 +143,49 @@ namespace BeyondTheDoor
         AliveAtBorder
     }
 
+    /// <summary>
+    /// Represents an event happening to a character.
+    /// </summary>
     public class CharacterHistoryEvent
     {
+        /// <summary>
+        /// What was this character?
+        /// </summary>
         public CharacterStatus OldStatus { get; private set; }
+        /// <summary>
+        /// What is this character now?
+        /// </summary>
         public CharacterStatus NewStatus { get; private set; }
+        /// <summary>
+        /// What day did this happen on?
+        /// </summary>
         public int Day { get; private set; }
+        /// <summary>
+        /// What stage of the day did it happen on?
+        /// </summary>
+        public Stage Stage { get; private set; }
+        
+        /// <summary>
+        /// Creates a history event with the passed arguments.
+        /// </summary>
+        /// <param name="oldStatus"></param>
+        /// <param name="newStatus"></param>
+        /// <param name="day"></param>
+        /// <param name="stage"></param>
+        public CharacterHistoryEvent(CharacterStatus oldStatus, CharacterStatus newStatus, int day, Stage stage)
+        {
+            OldStatus = oldStatus;
+            NewStatus = newStatus;
+            Day = day;
+            Stage = stage;
+        }
+        
+        /// <summary>
+        /// Creates a history event with with the passed statuses, using the current day and stage.
+        /// </summary>
+        /// <param name="oldStatus"></param>
+        /// <param name="newStatus"></param>
+        public CharacterHistoryEvent(CharacterStatus oldStatus, CharacterStatus newStatus)
+            : this(oldStatus, newStatus, BeyondTheDoor.Day.DayNumber, BeyondTheDoor.Day.Stage) { }
     }
 }
