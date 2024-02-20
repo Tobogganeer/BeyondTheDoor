@@ -8,6 +8,7 @@ namespace BeyondTheDoor
     [CreateAssetMenu(menuName = "Dialogue/Conversation")]
     public class Conversation : ScriptableObject, IDialogueElement
     {
+        // TODO: Add ConversationCallbacks to each line? May not be needed due to Line.OnOpen, but still
         [SerializeField] internal List<LineID> lines;
         [SerializeField] internal List<ConversationChoice> choices;
 

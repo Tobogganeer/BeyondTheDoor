@@ -13,6 +13,7 @@ using BeyondTheDoor.SaveSystem;
 public class DesiredUsage : MonoBehaviour
 {
     public Conversation convo;
+    public ConversationCallback onKillBob;
 
     private void Start()
     {
@@ -33,11 +34,20 @@ public class DesiredUsage : MonoBehaviour
 
         //Line.bob_start_joke.Open();
 
+        /*
         SaveState state = SaveSystem.Load(1);
         state.Load();
         Game.Begin();
         // Do stuff...
         Day.Advance();
+        */
+
+        onKillBob.Callback += OnKillBob_Callback;
+    }
+
+    private void OnKillBob_Callback(Conversation arg1, LineID arg2)
+    {
+        Debug.Log("Bob died :(");
     }
 
     private void Update()
