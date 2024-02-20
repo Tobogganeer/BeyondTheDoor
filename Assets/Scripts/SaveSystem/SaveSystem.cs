@@ -21,6 +21,7 @@ namespace BeyondTheDoor.SaveSystem
             SaveBuffer(buf, saveSlot);
         }
 
+        // The world loads all data on deserialization... why are we returning it? Beats me :P
         public static World Load(int saveSlot)
         {
             // Don't let us try to load a non-existent save file
