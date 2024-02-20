@@ -6,17 +6,27 @@ using System;
 namespace BeyondTheDoor
 {
     /// <summary>
-    /// Represents the course of a day.
+    /// Represents the state of the current day.
     /// </summary>
-    [Serializable]
-    public class Day
+    public static class Day
     {
-        [SerializeField, Range(0, 8)] private int number;
-        [SerializeField] private CharacterID arrivingCharacter;
+        // Not sure why I'm making these constants, but I am
+        public const int FirstDay = 0;
+        public const int LastDay = 8;
 
-        public int Number => number;
-        public CharacterID ArrivingCharacter => arrivingCharacter;
-        public Stage Stage { get; set; }
+        public static int DayNumber { get; private set; }
+        public static CharacterID ArrivingCharacter { get; private set; }
+        public static Stage Stage { get; set; }
+
+        public static void StartDay(int dayNumber)
+        {
+            if (dayNumber < FirstDay || dayNumber > LastDay)
+                throw new ArgumentException($"Tried to load day {dayNumber}?", nameof(dayNumber));
+
+            DayNumber = dayNumber;
+            ArrivingCharacter = Game.CharacterArrivalOrder[dayNumber];
+            Stage = Stage.SpeakingWithParty;
+        }
     }
 
     /// <summary>
