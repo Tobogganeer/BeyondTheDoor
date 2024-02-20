@@ -12,10 +12,26 @@ namespace BeyondTheDoor
     public partial class Character
     {
         // ============ Variables ============
+        /// <summary>
+        /// This Character's ID
+        /// </summary>
         public CharacterID ID { get; private set; }
+        /// <summary>
+        /// This Character's proper name
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// The current status of this Character
+        /// </summary>
         public CharacterStatus Status { get; set; }
+        /// <summary>
+        /// A list of events that have happened to this character
+        /// </summary>
         public List<CharacterHistoryEvent> HistoryEvents { get; set; }
+        /// <summary>
+        /// The first thing this Character says at the door
+        /// </summary>
+        public IDialogueElement Introduction { get; set; } 
 
 
         // ============ Useful Properties ============
@@ -46,11 +62,11 @@ namespace BeyondTheDoor
         /// <summary>
         /// Called when this character arrives at the door (start dialogue).
         /// </summary>
-        public event Action<Character> OnArrivalAtDoor;
+        public event Action<Character> ArrivingAtDoor;
         /// <summary>
         /// Called when the player clicks on this character during the day (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenTo;
+        public event Action<Character> SpokenTo;
 
         #region Individual Days
         /// <summary>
@@ -103,11 +119,23 @@ namespace BeyondTheDoor
 
 
         /// <summary>
+        /// Call this when the character arrives at the door.
+        /// </summary>
+        public void OnArrivingAtDoor()
+        {
+            ArrivingAtDoor?.Invoke(this);
+            if (Introduction != null)
+                Introduction.Open();
+            else
+                throw new NullReferenceException($"Character ({ID}) has no Introduction! Please set it through code.");
+        }
+
+        /// <summary>
         /// Call this when the player wants to speak to this character
         /// </summary>
         public void OnSelected()
         {
-            OnSpokenTo?.Invoke(this);
+            SpokenTo?.Invoke(this);
             InvokeIndividualDayOnSpokenTo();
         }
 
