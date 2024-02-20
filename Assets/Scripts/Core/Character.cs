@@ -22,11 +22,20 @@ namespace BeyondTheDoor
         /// <summary>
         /// Has this character been to the door?
         /// </summary>
-        public bool Encountered => Status >= CharacterStatus.AtDoor;
+        public bool HasBeenEncountered => Status >= CharacterStatus.AtDoor;
         /// <summary>
         /// Has this character been inside the cabin?
         /// </summary>
-        public bool Introduced => Status >= CharacterStatus.PartyMember;
+        public bool HasBeenIntroduced => Status >= CharacterStatus.PartyMember;
+        /// <summary>
+        /// Is this character currently dead?
+        /// </summary>
+        public bool IsDead => Status >= CharacterStatus.DeadWhileScavenging;
+        /// <summary>
+        /// Is this character currently out scavenging?
+        /// </summary>
+        public bool IsScavenging => Status == CharacterStatus.ScavengingWithShotgun
+            || Status == CharacterStatus.ScavengingDefenseless;
 
 
         // ============ Dialogue Events ============
@@ -122,7 +131,7 @@ namespace BeyondTheDoor
         /// <returns></returns>
         public string GetCurrentName()
         {
-            return Introduced ? Name : UnknownCharacterName;
+            return HasBeenIntroduced ? Name : UnknownCharacterName;
         }
     }
 
@@ -134,13 +143,13 @@ namespace BeyondTheDoor
         PartyMember,
         ScavengingDefenseless,
         ScavengingWithShotgun,
+        AliveAtBorder,
         DeadWhileScavenging,
         KilledByBear,
         Kidnapped,
         DeadFromIllness,
         Killed,
         DeadOnWayToBorder,
-        AliveAtBorder
     }
 
     /// <summary>
