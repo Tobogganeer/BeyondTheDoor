@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace BeyondTheDoor.SaveSystem
 {
-    public class World : IBufferStruct
+    public class SaveState : IBufferStruct
     {
         /// <summary>
         /// Creates an empty world - used by IBufferStruct.
         /// </summary>
-        public World() { }
+        public SaveState() { }
 
         public void Serialize(ByteBuffer buf)
         {

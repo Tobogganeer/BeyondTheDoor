@@ -5,6 +5,7 @@ using BeyondTheDoor;
 using BeyondTheDoor.UI;
 using UnityEngine.InputSystem;
 using System;
+using BeyondTheDoor.SaveSystem;
 
 /// <summary>
 /// Shows the desired usage of the dialogue system

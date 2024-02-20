@@ -13,7 +13,7 @@ namespace BeyondTheDoor.SaveSystem
 
         static readonly FileVersion Version = FileVersion.Version_1_0;
 
-        public static void Save(World world, int saveSlot)
+        public static void Save(SaveState world, int saveSlot)
         {
             ByteBuffer buf = new ByteBuffer();
             buf.Add((byte)Version);
@@ -22,12 +22,12 @@ namespace BeyondTheDoor.SaveSystem
         }
 
         // The world loads all data on deserialization... why are we returning it? Beats me :P
-        public static World Load(int saveSlot)
+        public static SaveState Load(int saveSlot)
         {
             // Don't let us try to load a non-existent save file
             if (!SaveExists(saveSlot))
             {
-                World emptyWorld = new World();
+                SaveState emptyWorld = new SaveState();
                 // Save this slot so we can use it later
                 Save(emptyWorld, saveSlot);
                 return emptyWorld;
@@ -40,7 +40,7 @@ namespace BeyondTheDoor.SaveSystem
                 // idk do something here if the file version ever changes
             }
 
-            World world = buf.GetStruct<World>();
+            SaveState world = buf.GetStruct<SaveState>();
             return world;
         }
 
