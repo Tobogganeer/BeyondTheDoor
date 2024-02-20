@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BeyondTheDoor;
 
 namespace BeyondTheDoor.SaveSystem
 {
@@ -33,7 +34,10 @@ namespace BeyondTheDoor.SaveSystem
 
         public void SaveEmptyState()
         {
-            // TODO: Implement default save state
+            SaveEmptyCabin(savedData);
+            SaveEmptyDays(savedData);
+            SaveEmptyCharacters(savedData);
+            SaveEmptyLines(savedData);
         }
 
         public void SaveCurrentState()
@@ -53,48 +57,90 @@ namespace BeyondTheDoor.SaveSystem
             LoadLines(savedData);
         }
 
+        #region Empty Saving
+        private static void SaveEmptyCabin(ByteBuffer buf)
+        {
+
+        }
+
+        private static void SaveEmptyDays(ByteBuffer buf)
+        {
+
+        }
+
+        private static void SaveEmptyCharacters(ByteBuffer buf)
+        {
+
+        }
+
+        private static void SaveEmptyLines(ByteBuffer buf)
+        {
+
+        }
+        #endregion
+
         #region Saving
-        private void SaveCabin(ByteBuffer buf)
+        private static void SaveCabin(ByteBuffer buf)
         {
 
         }
 
-        private void SaveDays(ByteBuffer buf)
+        private static void SaveDays(ByteBuffer buf)
         {
 
         }
 
-        private void SaveCharacters(ByteBuffer buf)
+        private static void SaveCharacters(ByteBuffer buf)
         {
 
         }
 
-        private void SaveLines(ByteBuffer buf)
+        private static void SaveLines(ByteBuffer buf)
         {
 
         }
         #endregion
 
         #region Loading
-        private void LoadCabin(ByteBuffer buf)
+        private static void LoadCabin(ByteBuffer buf)
         {
 
         }
 
-        private void LoadDays(ByteBuffer buf)
+        private static void LoadDays(ByteBuffer buf)
         {
 
         }
 
-        private void LoadCharacters(ByteBuffer buf)
+        private static void LoadCharacters(ByteBuffer buf)
         {
 
         }
 
-        private void LoadLines(ByteBuffer buf)
+        private static void LoadLines(ByteBuffer buf)
         {
 
         }
         #endregion
+
+        private static void AddCharacter(ByteBuffer buf, Character c)
+        {
+
+        }
+
+        private static void LoadCharacter(ByteBuffer buf, Character loadInto)
+        {
+
+        }
+
+        private static void AddLine(ByteBuffer buf, Line l)
+        {
+
+        }
+
+        private static void LoadLine(ByteBuffer buf, Line loadInto)
+        {
+
+        }
     }
 }
