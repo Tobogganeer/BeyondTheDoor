@@ -5,8 +5,8 @@ using System;
 
 namespace BeyondTheDoor
 {
-    [CreateAssetMenu(menuName = "Dialogue/Choice Callback")]
-    public class ChoiceCallback : ScriptableObject
+    [CreateAssetMenu(menuName = "Dialogue/Conversation Callback")]
+    public class ConversationCallback : ScriptableObject
     {
         public event Action<LineID> Chosen;
 
