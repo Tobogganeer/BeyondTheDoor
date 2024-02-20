@@ -94,7 +94,26 @@ namespace BeyondTheDoor
         /// </summary>
         public void OnSelected()
         {
-            // TODO: Activate callbacks using current Day
+            OnSpokenTo?.Invoke(this);
+            InvokeIndividualDayOnSpokenTo();
+        }
+
+        private void InvokeIndividualDayOnSpokenTo()
+        {
+            // Yuck
+            // I reaaally want to make an array of these but I can't :(
+            switch (Day.DayNumber)
+            {
+                case 0: OnSpokenToDay0?.Invoke(this); break;
+                case 1: OnSpokenToDay1?.Invoke(this); break;
+                case 2: OnSpokenToDay2?.Invoke(this); break;
+                case 3: OnSpokenToDay3?.Invoke(this); break;
+                case 4: OnSpokenToDay4?.Invoke(this); break;
+                case 5: OnSpokenToDay5?.Invoke(this); break;
+                case 6: OnSpokenToDay6?.Invoke(this); break;
+                case 7: OnSpokenToDay7?.Invoke(this); break;
+                default: break;
+            }
         }
 
         /// <summary>
