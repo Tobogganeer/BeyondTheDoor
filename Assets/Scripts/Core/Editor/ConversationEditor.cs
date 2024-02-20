@@ -75,6 +75,13 @@ namespace BeyondTheDoor.Editor
                     return;
                 }
                 string text = $"<color={EditorColours.ChoicePromptColour}>{prompt.text}</color>";
+                if (choice.callback != null)
+                {
+                    text += "\n -> ";
+                    text += $"<color={EditorColours.TextColour}>Calls </color>";
+                    text += $"<color={EditorColours.CallbackColour}>{choice.callback.name}</color>";
+                }
+
                 text += "\n -> ";
                 if (choice.nextConversation == null)
                     text += $"<color={EditorColours.TextColour}>Conversation Ends</color>";
