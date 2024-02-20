@@ -42,7 +42,7 @@ namespace BeyondTheDoor
         /// <summary>
         /// Has this character been inside the cabin?
         /// </summary>
-        public bool HasBeenIntroduced => Status >= CharacterStatus.PartyMember;
+        public bool HasBeenIntroduced => Status >= CharacterStatus.InsideCabin;
         /// <summary>
         /// Is this character currently dead?
         /// </summary>
@@ -56,6 +56,7 @@ namespace BeyondTheDoor
         /// Has the player chosen to let this character in or leave them out?
         /// </summary>
         public bool DoorDecisionMade => Status > CharacterStatus.AtDoor;
+        public bool InsideCabin => Status == CharacterStatus.InsideCabin;
 
 
         // ============ Dialogue Events ============
@@ -199,7 +200,7 @@ namespace BeyondTheDoor
         NotMet,
         AtDoor,
         LeftOutside,
-        PartyMember,
+        InsideCabin,
         ScavengingDefenseless,
         ScavengingWithShotgun,
         AliveAtBorder,

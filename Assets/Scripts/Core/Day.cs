@@ -11,8 +11,10 @@ namespace BeyondTheDoor
     public static class Day
     {
         // Not sure why I'm making these constants, but I am
-        public const int FirstDay = 0;
-        public const int LastDay = 8;
+        public const int TutorialDay = 0;
+        public const int FirstDay = 1;
+        public const int LastDay = 7;
+        public const int BorderDay = 8;
 
         public static int DayNumber { get; private set; }
         public static CharacterID ArrivingCharacter { get; private set; }
@@ -23,14 +25,28 @@ namespace BeyondTheDoor
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Starts the given day.
+        /// </summary>
+        /// <param name="dayNumber"></param>
+        /// <exception cref="ArgumentException"></exception>
         public static void StartDay(int dayNumber)
         {
-            if (dayNumber < FirstDay || dayNumber > LastDay)
+            if (dayNumber < TutorialDay || dayNumber > BorderDay)
                 throw new ArgumentException($"Tried to load day {dayNumber}?", nameof(dayNumber));
 
             DayNumber = dayNumber;
             ArrivingCharacter = Game.CharacterArrivalOrder[dayNumber];
             Stage = Stage.SpeakingWithParty;
+        }
+
+        /// <summary>
+        /// Resets the current day, or resets all the way to Day 1 if <paramref name="resetToDay1"/> is true.
+        /// </summary>
+        /// <param name="resetToDay1"></param>
+        public static void Reset(bool resetToDay1 = false)
+        {
+            StartDay(resetToDay1 ? FirstDay : DayNumber);
         }
     }
 
