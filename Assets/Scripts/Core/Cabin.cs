@@ -8,6 +8,7 @@ namespace BeyondTheDoor
     {
         public static bool HasShotgun { get; set; } = true;
         public static bool HasCar { get; set; } = false;
+        public static List<Character> CurrentCharacters => GetCurrentCharacters();
 
         public static List<Character> GetCurrentCharacters()
         {
