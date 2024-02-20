@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 namespace BeyondTheDoor.SaveSystem
 {
@@ -10,24 +11,41 @@ namespace BeyondTheDoor.SaveSystem
         public static readonly string SavePath = Path.Combine(Application.persistentDataPath, "Saves");
         public static readonly string SaveFileNameTemplate = "save_#.dat";
 
-        public static void Save()
-        {
+        static readonly FileVersion Version = FileVersion.Version_1_0;
 
+        public static void Save(World world)
+        {
+            ByteBuffer buf = new ByteBuffer();
+            buf.Add((byte)Version);
+            buf.AddStruct(world);
+            SaveBuffer(buf, world.SaveSlot);
         }
 
-        public static void Load()
+        public static World Load(int saveSlot)
         {
+            // Don't let us try to load a non-existent save file
+            if (!SaveExists(saveSlot))
+                return World.CreateEmpty();
 
+            ByteBuffer buf = LoadBuffer(saveSlot);
+            FileVersion saveVersion = (FileVersion)buf.Read<byte>();
+            if (saveVersion != Version)
+            {
+                // idk do something here if the file version ever changes
+            }
+
+            World world = buf.GetStruct<World>();
+            return world;
         }
 
         /// <summary>
-        /// Returns true if a file for save number <paramref name="saveNumber"/> exists.
+        /// Returns true if a file for save number <paramref name="saveSlot"/> exists.
         /// </summary>
-        /// <param name="saveNumber"></param>
+        /// <param name="saveSlot"></param>
         /// <returns></returns>
-        public static bool SaveExists(int saveNumber)
+        public static bool SaveExists(int saveSlot)
         {
-            string path = FormatSavePath(saveNumber);
+            string path = FormatSavePath(saveSlot);
             // Check if it exists
             return File.Exists(path);
         }
@@ -53,13 +71,13 @@ namespace BeyondTheDoor.SaveSystem
             }
         }
 
-        static ByteBuffer LoadBuffer(int saveNumber)
+        static ByteBuffer LoadBuffer(int saveSlot)
         {
             // Make sure we are loading a valid save
-            if (SaveExists(saveNumber))
-                throw new SaveSystemException($"Save file {saveNumber} not found.");
+            if (SaveExists(saveSlot))
+                throw new SaveSystemException($"Save file {saveSlot} not found.");
 
-            string path = FormatSavePath(saveNumber);
+            string path = FormatSavePath(saveSlot);
 
             ByteBuffer buf = new ByteBuffer();
             try
@@ -68,24 +86,30 @@ namespace BeyondTheDoor.SaveSystem
             }
             catch (System.Exception ex)
             {
-                throw new SaveSystemException($"Failed to read save file {saveNumber}: {ex}");
+                throw new SaveSystemException($"Failed to read save file {saveSlot}: {ex}");
             }
 
             return buf;
         }
 
         /// <summary>
-        /// Returns the full path to save file number <paramref name="saveNumber"/>.
+        /// Returns the full path to save file number <paramref name="saveSlot"/>.
         /// </summary>
-        /// <param name="saveNumber">The save file number to format.</param>
+        /// <param name="saveSlot">The save file number to format.</param>
         /// <returns></returns>
-        static string FormatSavePath(int saveNumber)
+        static string FormatSavePath(int saveSlot)
         {
-            return Path.Combine(SavePath, SaveFileNameTemplate.Replace("#", saveNumber.ToString()));
+            return Path.Combine(SavePath, SaveFileNameTemplate.Replace("#", saveSlot.ToString()));
+        }
+
+        enum FileVersion : byte
+        {
+            Unknown,
+            Version_1_0
         }
     }
 
-    public class SaveSystemException : System.Exception
+    public class SaveSystemException : Exception
     {
         public SaveSystemException() { }
         public SaveSystemException(string message) : base(message) { }
