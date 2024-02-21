@@ -66,7 +66,7 @@ namespace BeyondTheDoor
         [SerializeField] internal string extraData;
 
         private IDialogueElement followupElement;
-        private int timesOpened;
+        internal int timesOpened;
 
         /// <summary>
         /// Called when this line is opened/displayed.
