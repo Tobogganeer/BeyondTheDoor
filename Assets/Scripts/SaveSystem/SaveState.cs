@@ -135,7 +135,7 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void LoadDays(ByteBuffer buf)
         {
-            Day.StartDay(buf.Read<int>());
+            Day.DayNumber = buf.Read<int>();
             Day.Stage = buf.Read<Stage>();
         }
 

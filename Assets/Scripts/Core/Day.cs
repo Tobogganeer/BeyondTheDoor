@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Security.Cryptography;
 
 namespace BeyondTheDoor
 {
@@ -17,7 +16,7 @@ namespace BeyondTheDoor
         public const int LastDay = 7;
         public const int BorderDay = 8;
 
-        public static int DayNumber { get; private set; }
+        public static int DayNumber { get; internal set; }
         //public static CharacterID ArrivingCharacter { get; private set; }
         public static Stage Stage { get; set; }
 
