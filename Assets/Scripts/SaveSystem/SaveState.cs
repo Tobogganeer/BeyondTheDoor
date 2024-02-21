@@ -60,12 +60,14 @@ namespace BeyondTheDoor.SaveSystem
         #region Empty Saving
         private static void SaveEmptyCabin(ByteBuffer buf)
         {
-
+            buf.Add(true); // Has Shotgun
+            buf.Add(false); // Has Car
         }
 
         private static void SaveEmptyDays(ByteBuffer buf)
         {
-
+            buf.Add(1); // Day 1
+            buf.Add(Stage.SpeakingWithParty); // First stage
         }
 
         private static void SaveEmptyCharacters(ByteBuffer buf)
@@ -82,12 +84,14 @@ namespace BeyondTheDoor.SaveSystem
         #region Saving
         private static void SaveCabin(ByteBuffer buf)
         {
-
+            buf.Add(Cabin.HasShotgun);
+            buf.Add(Cabin.HasCar);
         }
 
         private static void SaveDays(ByteBuffer buf)
         {
-
+            buf.Add(Day.DayNumber);
+            buf.Add(Day.Stage);
         }
 
         private static void SaveCharacters(ByteBuffer buf)
@@ -104,12 +108,14 @@ namespace BeyondTheDoor.SaveSystem
         #region Loading
         private static void LoadCabin(ByteBuffer buf)
         {
-
+            Cabin.HasShotgun = buf.Read<bool>();
+            Cabin.HasCar = buf.Read<bool>();
         }
 
         private static void LoadDays(ByteBuffer buf)
         {
-
+            Day.StartDay(buf.Read<int>());
+            Day.Stage = buf.Read<Stage>();
         }
 
         private static void LoadCharacters(ByteBuffer buf)

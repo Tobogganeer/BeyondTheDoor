@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Security.Cryptography;
 
 namespace BeyondTheDoor
 {
@@ -17,8 +18,13 @@ namespace BeyondTheDoor
         public const int BorderDay = 8;
 
         public static int DayNumber { get; private set; }
-        public static CharacterID ArrivingCharacter { get; private set; }
+        //public static CharacterID ArrivingCharacter { get; private set; }
         public static Stage Stage { get; set; }
+
+        public static CharacterID GetArrivingCharacter()
+        {
+            return Game.CharacterArrivalOrder[DayNumber];
+        }
 
         public static void Advance()
         {
@@ -36,7 +42,7 @@ namespace BeyondTheDoor
                 throw new ArgumentException($"Tried to load day {dayNumber}?", nameof(dayNumber));
 
             DayNumber = dayNumber;
-            ArrivingCharacter = Game.CharacterArrivalOrder[dayNumber];
+            //ArrivingCharacter = Game.CharacterArrivalOrder[dayNumber];
             Stage = Stage.SpeakingWithParty;
         }
 
