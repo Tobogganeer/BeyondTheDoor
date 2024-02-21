@@ -1,0 +1,19 @@
+<ProjectInfo Version="1">
+  <Signature>B6C7A725003DD83B3A0D244B2466F82D8B16490B340C606ECDC435E401CA0751</Signature>
+  <Content>
+    <Project Guid="87abdf1a-b4b9-4c87-b35e-f06ee5bdd425">
+      <DisplayName Value="beyond the door"/>
+      <DetailName Value=""/>
+      <MainProjectGuid Value="ef6e33fa-bae8-4690-a292-89c1d9ef59f5"/>
+      <IconType Value="0"/>
+      <IdProjectIcon Value="00000000-0000-0000-0000-000000000000"/>
+      <ScmProviderGuid Value="0745c2ee-abe3-451b-934e-7f597f56c0d7"/>
+      <ScmConfiguration Value=""/>
+      <CreationTimeStamp Value="638439877384177870"/>
+      <PartitionHash Value="22AB180B0190B476AB8E797940F4978D7E981E0CF607558B4F5AEF44E2295CE3"/>
+      <SaveFileVersion Value="57"/>
+      <ProjectType Value="0"/>
+      <IsOnlineProject Value="False"/>
+    </Project>
+  </Content>
+</ProjectInfo>
