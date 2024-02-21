@@ -122,11 +122,15 @@ namespace BeyondTheDoor
         /// Changes this Character's status to <paramref name="newStatus"/> and records it in our <seealso cref="HistoryEvents"/>.
         /// </summary>
         /// <param name="newStatus"></param>
-        public void ChangeStatus(CharacterStatus newStatus)
+        public void ChangeStatus(CharacterStatus newStatus, bool writeHistory = true)
         {
-            if (newStatus != Status)
+            if (writeHistory && newStatus != Status)
             {
                 HistoryEvents.Add(new CharacterHistoryEvent(Status, newStatus));
+                Status = newStatus;
+            }
+            else
+            {
                 Status = newStatus;
             }
         }

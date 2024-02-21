@@ -72,7 +72,7 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void SaveEmptyCharacters(ByteBuffer buf)
         {
-
+            buf.Add(0); // No characters
         }
 
         private static void SaveEmptyLines(ByteBuffer buf)
@@ -96,7 +96,11 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void SaveCharacters(ByteBuffer buf)
         {
-
+            buf.Add(Character.All.Count);
+            foreach(Character ch in Character.All.Values)
+            {
+                AddCharacter(buf, ch);
+            }
         }
 
         private static void SaveLines(ByteBuffer buf)
@@ -120,7 +124,12 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void LoadCharacters(ByteBuffer buf)
         {
-
+            Character.ResetAll();
+            int count = buf.Read<int>();
+            for (int i = 0; i < count; i++)
+            {
+                LoadCharacter(buf);
+            }
         }
 
         private static void LoadLines(ByteBuffer buf)
@@ -131,12 +140,31 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void AddCharacter(ByteBuffer buf, Character c)
         {
-
+            buf.Add(c.ID);
+            buf.AddString(c.Name);
+            buf.Add(c.Status);
+            buf.Add(c.HistoryEvents.Count);
+            foreach (var historyEvent in c.HistoryEvents)
+                buf.AddStruct(new BufCharacterHistoryEvent(historyEvent));
         }
 
-        private static void LoadCharacter(ByteBuffer buf, Character loadInto)
+        private static void LoadCharacter(ByteBuffer buf)
         {
-
+            CharacterID id = buf.Read<CharacterID>();
+            if (Character.All.TryGetValue(id, out Character ch))
+            {
+                // All characters have already been reset by here
+                ch.Name = buf.Read();
+                ch.ChangeStatus(buf.Read<CharacterStatus>(), false);
+                int numHistoryEvents = buf.Read<int>();
+                ch.HistoryEvents = new List<CharacterHistoryEvent>(numHistoryEvents);
+                for (int i = 0; i < numHistoryEvents; i++)
+                    ch.HistoryEvents.Add(buf.ReadStruct<BufCharacterHistoryEvent>().ToHistoryEvent());
+            }
+            else
+            {
+                throw new SaveSystemException("Could not find character with ID " + id);
+            }
         }
 
         private static void AddLine(ByteBuffer buf, Line l)
@@ -147,6 +175,46 @@ namespace BeyondTheDoor.SaveSystem
         private static void LoadLine(ByteBuffer buf, Line loadInto)
         {
 
+        }
+
+        // Gotta avoid circular dependencies with assemblies
+        private class BufCharacterHistoryEvent : IBufferStruct
+        {
+            private CharacterStatus oldStatus;
+            private CharacterStatus newStatus;
+            private int day;
+            private Stage stage;
+
+            public BufCharacterHistoryEvent() { }
+
+            public BufCharacterHistoryEvent(CharacterHistoryEvent ev)
+            {
+                oldStatus = ev.OldStatus;
+                newStatus = ev.NewStatus;
+                day = ev.Day;
+                stage = ev.Stage;
+            }
+
+            public CharacterHistoryEvent ToHistoryEvent()
+            {
+                return new CharacterHistoryEvent(oldStatus, newStatus, day, stage);
+            }
+
+            public void Serialize(ByteBuffer buf)
+            {
+                buf.Add(oldStatus);
+                buf.Add(newStatus);
+                buf.Add(day);
+                buf.Add(stage);
+            }
+
+            public void Deserialize(ByteBuffer buf)
+            {
+                oldStatus = buf.Read<CharacterStatus>();
+                newStatus = buf.Read<CharacterStatus>();
+                day = buf.Read<int>();
+                stage = buf.Read<Stage>();
+            }
         }
     }
 }

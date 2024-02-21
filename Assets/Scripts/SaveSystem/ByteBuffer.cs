@@ -194,7 +194,10 @@ namespace BeyondTheDoor.SaveSystem
         public string ReadString()
         {
             if (Peek<ushort>() == 0)
+            {
+                ReadPosition += sizeof(ushort);
                 return "";
+            }
             string str = GetString(ReadPosition);
             ReadPosition += str.Length * sizeof(char) + sizeof(ushort);
             return str;
