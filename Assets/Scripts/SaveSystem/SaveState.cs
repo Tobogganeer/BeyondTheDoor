@@ -77,7 +77,7 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void SaveEmptyLines(ByteBuffer buf)
         {
-
+            buf.Add(0); // No opened lines
         }
         #endregion
 
@@ -96,6 +96,9 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void SaveCharacters(ByteBuffer buf)
         {
+            // Write all characters, even if they might not have changed
+            // TODO: Check how many HistoryEvents and maybe don't write characters with none?
+            // They could still be changed though...
             buf.Add(Character.All.Count);
             foreach(Character ch in Character.All.Values)
             {
@@ -105,7 +108,21 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void SaveLines(ByteBuffer buf)
         {
+            // Find out what lines we need to save
+            List<Line> changedLines = new List<Line>();
+            foreach (Line line in Line.All.Values)
+            {
+                if (line.timesOpened > 0)
+                    changedLines.Add(line);
+            }
 
+            buf.Add(changedLines.Count);
+            foreach (Line changedLine in changedLines)
+            {
+                // Write how many times the line's been opened
+                buf.Add(changedLine.ID);
+                buf.Add(changedLine.timesOpened);
+            }
         }
         #endregion
 
@@ -134,7 +151,20 @@ namespace BeyondTheDoor.SaveSystem
 
         private static void LoadLines(ByteBuffer buf)
         {
-
+            int changedLines = buf.Read<int>();
+            for (int i = 0; i < changedLines; i++)
+            {
+                LineID lineID = buf.Read<LineID>();
+                if (Line.All.TryGetValue(lineID, out Line line))
+                {
+                    // All that we store is the times these lines were opened
+                    line.timesOpened = buf.Read<int>();
+                }
+                else
+                {
+                    throw new SaveSystemException("Could not find line with ID " + lineID);
+                }
+            }
         }
         #endregion
 
@@ -165,16 +195,6 @@ namespace BeyondTheDoor.SaveSystem
             {
                 throw new SaveSystemException("Could not find character with ID " + id);
             }
-        }
-
-        private static void AddLine(ByteBuffer buf, Line l)
-        {
-
-        }
-
-        private static void LoadLine(ByteBuffer buf, Line loadInto)
-        {
-
         }
 
         // Gotta avoid circular dependencies with assemblies
