@@ -69,6 +69,10 @@ namespace Tobo.DevConsole
         {
             if (Keyboard.current[toggleKey].wasPressedThisFrame)
                 Toggle();
+
+            if (!show)
+                return;
+
             if (Keyboard.current[Key.Enter].wasPressedThisFrame)
                 gui.ReturnPressed();
             if (Keyboard.current[Key.UpArrow].wasPressedThisFrame)
