@@ -17,6 +17,6 @@ MonoBehaviour:
   maxDistance: 35
   category: 4
   volume: 1
-  minPitch: 0.85
-  maxPitch: 1.1
+  minPitch: 1
+  maxPitch: 1
   is2d: 1

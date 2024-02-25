@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 6814918612736422899}
   - component: {fileID: -2199389829717027695}
   - component: {fileID: 3387363760288231107}
-  - component: {fileID: 8799423549476283583}
   - component: {fileID: -9045745168459478293}
   m_Layer: 0
   m_Name: App
@@ -163,18 +162,6 @@ MonoBehaviour:
   - name: TestScene
     level: 1
     scene: TestScene
---- !u!114 &8799423549476283583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2420169551764057506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7413f5241a1394843994b68adcd81c8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-9045745168459478293
 MonoBehaviour:
   m_ObjectHideFlags: 0
