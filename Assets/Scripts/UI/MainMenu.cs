@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject quitOverlay;
+
+    private void Start()
     {
-        
+        quitOverlay.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Continue()
     {
-        
+
+    }
+
+    public void Play()
+    {
+
+    }
+
+    public void Settings()
+    {
+
+    }
+
+    public void Quit()
+    {
+
     }
 }
