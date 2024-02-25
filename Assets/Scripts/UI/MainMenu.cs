@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject homePage;
+    public Canvas homePage;
     public GameObject continueButton;
     public TMPro.TMP_Text continueButtonText;
     public GameObject quitOverlay;
 
     [Space]
-    public GameObject savesPage;
+    public Canvas savesPage;
 
     [Space]
-    public GameObject settingsPage; // TODO: Change type to be the settings page type
+    public Canvas settingsPage; // TODO: Change type to be the settings page type
 
     private void Start()
     {
+        // Disable other menus
+        ReturnToHome();
         quitOverlay.SetActive(false);
 
         // TODO: Check if we can continue
         continueButton.SetActive(false);
-
     }
 
     public void Continue()
@@ -31,16 +32,16 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        homePage.SetActive(false);
-        savesPage.SetActive(true);
-        settingsPage.SetActive(false);
+        homePage.enabled = false;
+        savesPage.enabled = true;
+        settingsPage.enabled = false;
     }
 
     public void Settings()
     {
-        homePage.SetActive(false);
-        savesPage.SetActive(false);
-        settingsPage.SetActive(true);
+        homePage.enabled = false;
+        savesPage.enabled = false;
+        settingsPage.enabled = true;
     }
 
     public void Quit()
@@ -54,8 +55,8 @@ public class MainMenu : MonoBehaviour
 
     public void ReturnToHome()
     {
-        homePage.SetActive(true);
-        savesPage.SetActive(false);
-        settingsPage.SetActive(false);
+        homePage.enabled = true;
+        savesPage.enabled = false;
+        settingsPage.enabled = false;
     }
 }
