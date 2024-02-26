@@ -93,7 +93,6 @@ namespace BeyondTheDoor.SaveSystem
         #region Saving
         private void SaveDay()
         {
-            data.Add(DateTime.Now.Ticks); // Current save time
             data.Add(Day.DayNumber);
             data.Add(Day.Stage);
         }

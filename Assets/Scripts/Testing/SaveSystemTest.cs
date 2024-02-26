@@ -1,3 +1,4 @@
+using BeyondTheDoor;
 using BeyondTheDoor.SaveSystem;
 using System;
 using System.Collections;
@@ -10,6 +11,8 @@ public class SaveSystemTest : MonoBehaviour
     {
         RunTest(BufferCopy, nameof(BufferCopy));
         RunTest(SaveLoad, nameof(SaveLoad));
+        RunTest(EnumTest, nameof(EnumTest));
+        RunTest(SaveStateTest, nameof(SaveStateTest));
     }
 
     void RunTest(Action test, string testName)
@@ -46,5 +49,22 @@ public class SaveSystemTest : MonoBehaviour
         ByteBuffer load = SaveSystem.LoadBuffer(9);
         Debug.Log(load.Read() + load.Read<int>());
         Debug.Log("Time: " + new DateTime(load.Read<long>(), DateTimeKind.Local));
+    }
+
+    void EnumTest()
+    {
+        ByteBuffer buf = new ByteBuffer();
+        buf.Add(CharacterID.Bob);
+        Debug.Log(buf.Read<CharacterID>());
+    }
+
+    void SaveStateTest()
+    {
+        SaveState s = new SaveState();
+        s.SaveEmptyState(false);
+        ByteBuffer buf = new ByteBuffer();
+        s.AddDataTo(buf);
+        SaveState load = new SaveState(buf);
+        Debug.Log("Loaded time: " + load.SaveTime);
     }
 }
