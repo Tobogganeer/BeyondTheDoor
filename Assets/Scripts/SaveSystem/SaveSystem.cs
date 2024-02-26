@@ -43,7 +43,8 @@ namespace BeyondTheDoor.SaveSystem
                 emptyState.SaveEmptyState(false);
                 // Save this slot so we can use it later
                 Save(emptyState, saveSlot);
-                return emptyState;
+                // Load the file as normal now
+                //return emptyState;
             }
 
             ByteBuffer buf = LoadBuffer(saveSlot);
