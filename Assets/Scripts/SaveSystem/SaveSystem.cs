@@ -13,6 +13,11 @@ namespace BeyondTheDoor.SaveSystem
 
         static readonly FileVersion Version = FileVersion.Version_1_0;
 
+        /// <summary>
+        /// Saves the given <paramref name="state"/> to the specified <paramref name="saveSlot"/>.
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="saveSlot"></param>
         public static void Save(SaveState state, int saveSlot)
         {
             ByteBuffer buf = new ByteBuffer();
@@ -21,6 +26,11 @@ namespace BeyondTheDoor.SaveSystem
             SaveBuffer(buf, saveSlot);
         }
 
+        /// <summary>
+        /// Loads the save if it exists, or saves and loads an empty save.
+        /// </summary>
+        /// <param name="saveSlot"></param>
+        /// <returns></returns>
         public static SaveState Load(int saveSlot)
         {
             // Don't let us try to load a non-existent save file

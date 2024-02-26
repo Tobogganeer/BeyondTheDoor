@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using BeyondTheDoor.SaveSystem;
 
 public class SavesMenu : MonoBehaviour
 {
@@ -23,11 +24,15 @@ public class SavesMenu : MonoBehaviour
     public GameObject deleteConfirmWindow;
 
     int currentSlot = -1;
+    SaveState[] saves;
+    SaveState currentSave => saves[currentSlot];
     Canvas canvas;
 
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
+        saves = new SaveState[numSaves];
+        LoadSaves();
     }
 
     public void Open()
@@ -49,15 +54,17 @@ public class SavesMenu : MonoBehaviour
 
     public void SelectSlot(int slot)
     {
-        for(int i = 0; i < selectedSlotHighlights.Length; i++)
-        {
-            selectedSlotHighlights[i].SetActive(i == slot);
-        }
+        currentSlot = Mathf.Clamp(slot, 0, numSaves - 1);
+        saveSlotText.text = "Slot " + (currentSlot + 1);
 
-        //occupiedSlotInfo.SetActive(false);
-        //emptySlotInfo.SetActive(true);
+        // Highlight the current save
+        for (int i = 0; i < selectedSlotHighlights.Length; i++)
+            selectedSlotHighlights[i].SetActive(i == currentSlot);
 
-        saveSlotText.text = "Slot " + (slot + 1);
+        if (currentSave == null)
+            LoadEmptySlotInfo();
+        else
+            LoadSlotInfo(currentSave);
     }
 
     public void StartNewGame()
@@ -73,5 +80,28 @@ public class SavesMenu : MonoBehaviour
     public void DeleteCurrentSave()
     {
 
+    }
+
+    private void LoadEmptySlotInfo()
+    {
+        occupiedSlotInfo.SetActive(false);
+        emptySlotInfo.SetActive(true);
+    }
+
+    private void LoadSlotInfo(SaveState state)
+    {
+        occupiedSlotInfo.SetActive(true);
+        emptySlotInfo.SetActive(false);
+        //saveDateText;
+        //dayText;
+    }
+
+    private void LoadSaves()
+    {
+        for (int i = 0; i < saves.Length; i++)
+        {
+            if (SaveSystem.SaveExists(i))
+                saves[i] = SaveSystem.Load(i);
+        }
     }
 }
