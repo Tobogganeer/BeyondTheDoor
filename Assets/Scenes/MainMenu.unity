@@ -373,7 +373,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115838554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad0ded9c3c107e14caa7e54576b0c1bd, type: 3}
   m_Name: 
@@ -1003,6 +1003,7 @@ MonoBehaviour:
   - {fileID: 562896499}
   - {fileID: 501812890}
   saveSlotText: {fileID: 659022569}
+  deleteSaveSlotText: {fileID: 536064449}
   occupiedSlotInfo: {fileID: 1965668553}
   saveDateText: {fileID: 487244692}
   dayText: {fileID: 74004350}

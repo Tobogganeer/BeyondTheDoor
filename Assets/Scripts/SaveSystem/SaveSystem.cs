@@ -59,6 +59,18 @@ namespace BeyondTheDoor.SaveSystem
         }
 
         /// <summary>
+        /// Deletes the save in the specified <paramref name="saveSlot"/> if it exists.
+        /// </summary>
+        /// <param name="saveSlot"></param>
+        public static void Delete(int saveSlot)
+        {
+            if (SaveExists(saveSlot))
+            {
+                File.Delete(FormatSavePath(saveSlot));
+            }
+        }
+
+        /// <summary>
         /// Returns true if a file for save number <paramref name="saveSlot"/> exists.
         /// </summary>
         /// <param name="saveSlot"></param>

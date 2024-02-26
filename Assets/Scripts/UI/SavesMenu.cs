@@ -13,6 +13,7 @@ public class SavesMenu : MonoBehaviour
 
     [Space]
     public TMP_Text saveSlotText;
+    public TMP_Text deleteSaveSlotText;
 
     [Space]
     public GameObject occupiedSlotInfo;
@@ -34,7 +35,6 @@ public class SavesMenu : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         saves = new SaveState[numSaves];
-        LoadSaves();
     }
 
     public void Open()
@@ -42,6 +42,8 @@ public class SavesMenu : MonoBehaviour
         canvas.enabled = true;
         // Close this if it was opened
         deleteConfirmWindow.SetActive(false);
+        LoadSaves();
+        SelectSlot(currentSlot);
     }
 
     public void Close()
@@ -49,15 +51,12 @@ public class SavesMenu : MonoBehaviour
         canvas.enabled = false;
     }
 
-    private void Start()
-    {
-        SelectSlot(1); // Default slot
-    }
-
     public void SelectSlot(int slot)
     {
         currentSlot = Mathf.Clamp(slot, 0, numSaves - 1);
-        saveSlotText.text = "Slot " + (currentSlot + 1);
+        string slotText = "Slot " + (currentSlot + 1);
+        saveSlotText.text = slotText;
+        deleteSaveSlotText.text = "Delete " + slotText + " ? ";
 
         // Highlight the current save
         for (int i = 0; i < selectedSlotHighlights.Length; i++)
@@ -79,7 +78,10 @@ public class SavesMenu : MonoBehaviour
 
     public void DeleteCurrentSave()
     {
-
+        SaveSystem.Delete(currentSlot);
+        saves[currentSlot] = null;
+        RefreshSaveSlots();
+        SelectSlot(currentSlot);
     }
 
     private void LoadEmptySlotInfo()
@@ -101,8 +103,18 @@ public class SavesMenu : MonoBehaviour
         for (int i = 0; i < saves.Length; i++)
         {
             if (SaveSystem.SaveExists(i))
-            {
                 saves[i] = SaveSystem.Load(i);
+        }
+
+        RefreshSaveSlots();
+    }
+
+    private void RefreshSaveSlots()
+    {
+        for (int i = 0; i < saves.Length; i++)
+        {
+            if (saves[i] != null)
+            {
                 slotNameTexts[i].text = "Save " + (i + 1);
             }
             else
