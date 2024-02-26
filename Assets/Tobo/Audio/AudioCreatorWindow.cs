@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using static System.IO.Path;
+using System.IO;
 
 // This is gonna be a quick and jank class
 public class AudioCreatorWindow : EditorWindow
@@ -44,10 +45,11 @@ public class AudioCreatorWindow : EditorWindow
 
     private void OnGUI()
     {
-        DisabledLabel("Base path:", BasePath);
+        string catBasePath = Combine(BasePath, category.ToString());
+        DisabledLabel("Base path:", catBasePath);
         // If users want to put this into a sub-folder
         pathExtension = EditorGUILayout.TextField("Path Extension", pathExtension);
-        DisabledLabel("Folder path:", Combine(BasePath, pathExtension ?? string.Empty));
+        DisabledLabel("Folder path:", Combine(catBasePath, pathExtension ?? string.Empty));
 
         // Edit clips list
         target.Update();
@@ -85,7 +87,8 @@ public class AudioCreatorWindow : EditorWindow
             return;
         }
 
-        string path = Combine(BasePath, pathExtension ?? string.Empty);
+        string catBasePath = Combine(BasePath, category.ToString());
+        string path = Combine(catBasePath, pathExtension ?? string.Empty);
         if (clips.Count == 1)
             fileName = clips[0].name;
         if (clips.Count == 1 || !batchMode)
@@ -109,6 +112,8 @@ public class AudioCreatorWindow : EditorWindow
     {
         fileName += ".asset";
 
+        if (!Directory.Exists(path))
+            Directory.CreateDirectory(path);
         Sound s = Sound.CreateInternal(clips, is2D, category);
         AssetDatabase.CreateAsset(s, Combine(path, fileName));
         AssetDatabase.Refresh();

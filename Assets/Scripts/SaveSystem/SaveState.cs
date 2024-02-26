@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BeyondTheDoor;
+using System;
 
 namespace BeyondTheDoor.SaveSystem
 {
     public class SaveState
     {
-        private ByteBuffer savedData;
+        public DateTime SaveTime { get; private set; }
+        public int GameDay { get; private set; }
+        public Stage GameStage { get; private set; }
+
+        private ByteBuffer data;
 
         /// <summary>
         /// Creates an empty SaveState ready for saving.
         /// </summary>
         public SaveState()
         {
-            savedData = new ByteBuffer();
-            SaveEmptyState();
+            data = new ByteBuffer();
         }
 
         /// <summary>
@@ -24,89 +28,94 @@ namespace BeyondTheDoor.SaveSystem
         /// <param name="savedData"></param>
         public SaveState(ByteBuffer savedData)
         {
-            this.savedData = savedData;
+            this.data = savedData;
+            SaveTime = new DateTime(savedData.Read<long>(), DateTimeKind.Local);
+            GameDay = savedData.Read<int>();
+            GameStage = savedData.Read<Stage>();
         }
 
         public void AddDataTo(ByteBuffer buffer)
         {
-            buffer.AddBuffer(savedData);
+            buffer.AddBuffer(data, false);
         }
 
-        public void SaveEmptyState()
+        public void SaveEmptyState(bool playTutorial)
         {
-            SaveEmptyCabin(savedData);
-            SaveEmptyDays(savedData);
-            SaveEmptyCharacters(savedData);
-            SaveEmptyLines(savedData);
+            data.Add(DateTime.Now.Ticks); // Current save time
+            SaveEmptyDay(playTutorial);
+            SaveEmptyCabin();
+            SaveEmptyCharacters();
+            SaveEmptyLines();
         }
 
         public void SaveCurrentState()
         {
-            SaveCabin(savedData);
-            SaveDays(savedData);
-            SaveCharacters(savedData);
-            SaveLines(savedData);
+            data.Add(DateTime.Now.Ticks); // Current save time
+            SaveDay();
+            SaveCabin();
+            SaveCharacters();
+            SaveLines();
         }
 
         public void Load()
         {
             // Load everything in the same order
-            LoadCabin(savedData);
-            LoadDays(savedData);
-            LoadCharacters(savedData);
-            LoadLines(savedData);
+            LoadDay();
+            LoadCabin();
+            LoadCharacters();
+            LoadLines();
         }
 
         #region Empty Saving
-        private static void SaveEmptyCabin(ByteBuffer buf)
+        private void SaveEmptyDay(bool playTutorial)
         {
-            buf.Add(true); // Has Shotgun
-            buf.Add(false); // Has Car
+            data.Add(playTutorial ? 0 : 1); // Day 0/1 depending on whether we are doing the tutorial
+            data.Add(Stage.SpeakingWithParty); // First stage
         }
 
-        private static void SaveEmptyDays(ByteBuffer buf)
+        private void SaveEmptyCabin()
         {
-            buf.Add(1); // Day 1
-            buf.Add(Stage.SpeakingWithParty); // First stage
+            data.Add(true); // Has Shotgun
+            data.Add(false); // Has Car
         }
 
-        private static void SaveEmptyCharacters(ByteBuffer buf)
+        private void SaveEmptyCharacters()
         {
-            buf.Add(0); // No characters
+            data.Add(0); // No characters
         }
 
-        private static void SaveEmptyLines(ByteBuffer buf)
+        private void SaveEmptyLines()
         {
-            buf.Add(0); // No opened lines
+            data.Add(0); // No opened lines
         }
         #endregion
 
         #region Saving
-        private static void SaveCabin(ByteBuffer buf)
+        private void SaveDay()
         {
-            buf.Add(Cabin.HasShotgun);
-            buf.Add(Cabin.HasCar);
+            data.Add(Day.DayNumber);
+            data.Add(Day.Stage);
         }
 
-        private static void SaveDays(ByteBuffer buf)
+        private void SaveCabin()
         {
-            buf.Add(Day.DayNumber);
-            buf.Add(Day.Stage);
+            data.Add(Cabin.HasShotgun);
+            data.Add(Cabin.HasCar);
         }
 
-        private static void SaveCharacters(ByteBuffer buf)
+        private void SaveCharacters()
         {
             // Write all characters, even if they might not have changed
             // TODO: Check how many HistoryEvents and maybe don't write characters with none?
             // They could still be changed though...
-            buf.Add(Character.All.Count);
+            data.Add(Character.All.Count);
             foreach(Character ch in Character.All.Values)
             {
-                AddCharacter(buf, ch);
+                AddCharacter(data, ch);
             }
         }
 
-        private static void SaveLines(ByteBuffer buf)
+        private void SaveLines()
         {
             // Find out what lines we need to save
             List<Line> changedLines = new List<Line>();
@@ -116,49 +125,51 @@ namespace BeyondTheDoor.SaveSystem
                     changedLines.Add(line);
             }
 
-            buf.Add(changedLines.Count);
+            data.Add(changedLines.Count);
             foreach (Line changedLine in changedLines)
             {
                 // Write how many times the line's been opened
-                buf.Add(changedLine.ID);
-                buf.Add(changedLine.timesOpened);
+                data.Add(changedLine.ID);
+                data.Add(changedLine.timesOpened);
             }
         }
         #endregion
 
         #region Loading
-        private static void LoadCabin(ByteBuffer buf)
+        private void LoadDay()
         {
-            Cabin.HasShotgun = buf.Read<bool>();
-            Cabin.HasCar = buf.Read<bool>();
+            //Day.DayNumber = buf.Read<int>();
+            //Day.Stage = buf.Read<Stage>();
+            Day.DayNumber = GameDay;
+            Day.Stage = GameStage;
         }
 
-        private static void LoadDays(ByteBuffer buf)
+        private void LoadCabin()
         {
-            Day.DayNumber = buf.Read<int>();
-            Day.Stage = buf.Read<Stage>();
+            Cabin.HasShotgun = data.Read<bool>();
+            Cabin.HasCar = data.Read<bool>();
         }
 
-        private static void LoadCharacters(ByteBuffer buf)
+        private void LoadCharacters()
         {
             Character.ResetAll();
-            int count = buf.Read<int>();
+            int count = data.Read<int>();
             for (int i = 0; i < count; i++)
             {
-                LoadCharacter(buf);
+                LoadCharacter(data);
             }
         }
 
-        private static void LoadLines(ByteBuffer buf)
+        private void LoadLines()
         {
-            int changedLines = buf.Read<int>();
+            int changedLines = data.Read<int>();
             for (int i = 0; i < changedLines; i++)
             {
-                LineID lineID = buf.Read<LineID>();
+                LineID lineID = data.Read<LineID>();
                 if (Line.All.TryGetValue(lineID, out Line line))
                 {
                     // All that we store is the times these lines were opened
-                    line.timesOpened = buf.Read<int>();
+                    line.timesOpened = data.Read<int>();
                 }
                 else
                 {
@@ -168,7 +179,7 @@ namespace BeyondTheDoor.SaveSystem
         }
         #endregion
 
-        private static void AddCharacter(ByteBuffer buf, Character c)
+        private void AddCharacter(ByteBuffer buf, Character c)
         {
             buf.Add(c.ID);
             buf.AddString(c.Name);
@@ -178,7 +189,7 @@ namespace BeyondTheDoor.SaveSystem
                 buf.AddStruct(new BufCharacterHistoryEvent(historyEvent));
         }
 
-        private static void LoadCharacter(ByteBuffer buf)
+        private void LoadCharacter(ByteBuffer buf)
         {
             CharacterID id = buf.Read<CharacterID>();
             if (Character.All.TryGetValue(id, out Character ch))

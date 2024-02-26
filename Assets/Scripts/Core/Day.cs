@@ -66,4 +66,17 @@ namespace BeyondTheDoor
         RadioLoreTime,
         DealingWithArrival
     }
+
+    public static class StageExtensions
+    {
+        public static string ToTimeString(this Stage stage) => stage switch
+        {
+            Stage.SpeakingWithParty => "Morning",
+            Stage.SendingScavengers => "Noon",
+            Stage.FixingOvercrowding => "Afternoon",
+            Stage.RadioLoreTime => "Evening",
+            Stage.DealingWithArrival => "Door",
+            _ => throw new System.NotImplementedException()
+        };
+    }
 }

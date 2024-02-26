@@ -1,3 +1,5 @@
+#define TEST_EXPOSE_BUF_IO
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +15,11 @@ namespace BeyondTheDoor.SaveSystem
 
         static readonly FileVersion Version = FileVersion.Version_1_0;
 
+        /// <summary>
+        /// Saves the given <paramref name="state"/> to the specified <paramref name="saveSlot"/>.
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="saveSlot"></param>
         public static void Save(SaveState state, int saveSlot)
         {
             ByteBuffer buf = new ByteBuffer();
@@ -21,16 +28,23 @@ namespace BeyondTheDoor.SaveSystem
             SaveBuffer(buf, saveSlot);
         }
 
+        /// <summary>
+        /// Loads the save if it exists, or saves and loads an empty save.
+        /// </summary>
+        /// <param name="saveSlot"></param>
+        /// <returns></returns>
         public static SaveState Load(int saveSlot)
         {
             // Don't let us try to load a non-existent save file
             if (!SaveExists(saveSlot))
             {
                 SaveState emptyState = new SaveState();
-                emptyState.SaveEmptyState();
+                // TODO: Support tutorial mode
+                emptyState.SaveEmptyState(false);
                 // Save this slot so we can use it later
                 Save(emptyState, saveSlot);
-                return emptyState;
+                // Load the file as normal now
+                //return emptyState;
             }
 
             ByteBuffer buf = LoadBuffer(saveSlot);
@@ -45,6 +59,18 @@ namespace BeyondTheDoor.SaveSystem
         }
 
         /// <summary>
+        /// Deletes the save in the specified <paramref name="saveSlot"/> if it exists.
+        /// </summary>
+        /// <param name="saveSlot"></param>
+        public static void Delete(int saveSlot)
+        {
+            if (SaveExists(saveSlot))
+            {
+                File.Delete(FormatSavePath(saveSlot));
+            }
+        }
+
+        /// <summary>
         /// Returns true if a file for save number <paramref name="saveSlot"/> exists.
         /// </summary>
         /// <param name="saveSlot"></param>
@@ -55,6 +81,10 @@ namespace BeyondTheDoor.SaveSystem
             // Check if it exists
             return File.Exists(path);
         }
+
+#if TEST_EXPOSE_BUF_IO
+        public
+#endif
 
         static void SaveBuffer(ByteBuffer buf, int saveNumber)
         {
@@ -67,7 +97,7 @@ namespace BeyondTheDoor.SaveSystem
             {
                 // Copy the correct amount of bytes
                 byte[] writeBuf = new byte[buf.Written];
-                System.Buffer.BlockCopy(buf.Data, 0, writeBuf, 0, buf.Written);
+                Buffer.BlockCopy(buf.Data, 0, writeBuf, 0, buf.Written);
                 // Save them
                 File.WriteAllBytes(path, writeBuf);
             }
@@ -77,10 +107,13 @@ namespace BeyondTheDoor.SaveSystem
             }
         }
 
+#if TEST_EXPOSE_BUF_IO
+        public
+#endif
         static ByteBuffer LoadBuffer(int saveSlot)
         {
             // Make sure we are loading a valid save
-            if (SaveExists(saveSlot))
+            if (!SaveExists(saveSlot))
                 throw new SaveSystemException($"Save file {saveSlot} not found.");
 
             string path = FormatSavePath(saveSlot);

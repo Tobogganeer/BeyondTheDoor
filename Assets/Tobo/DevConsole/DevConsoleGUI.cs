@@ -36,7 +36,7 @@ namespace Tobo.DevConsole
         bool autoCompleteTrigger;
         bool wasFocused; // It keeps unfocusing when a new message comes in
 
-        List<string> autoCompleteStrings;
+        List<string> autoCompleteStrings = new List<string>(MaxAutoCompleteStrings);
         const int MaxAutoCompleteStrings = 16;
 
         static readonly string InputControlName = "DevConsole Input";
@@ -58,15 +58,6 @@ namespace Tobo.DevConsole
                 FillAutoCompleteStrings(input);
                 bufferSelectionIndex = -1; // Everytime we change autocomplete, reset the buffer index (previous commands)
             }
-
-            if (log != null)
-            {
-                Debug.Log(log);
-                log = null;
-            }
-
-            if (Keyboard.current[Key.LeftCtrl].wasPressedThisFrame)
-                Debug.Log("Test");
         }
 
         public void Draw(Queue<DevConsole.Message> messages)
@@ -211,7 +202,6 @@ namespace Tobo.DevConsole
             }
         }
 
-        string log;
         void MoveCaret()
         {
             if (desiredCaret < 0) return;
