@@ -36,7 +36,7 @@ namespace BeyondTheDoor.SaveSystem
 
         public void AddDataTo(ByteBuffer buffer)
         {
-            buffer.AddBuffer(data);
+            buffer.AddBuffer(data, false);
         }
 
         public void SaveEmptyState(bool playTutorial)

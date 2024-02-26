@@ -232,9 +232,10 @@ namespace BeyondTheDoor.SaveSystem
         }
         #endregion
 
-        public ByteBuffer AddBuffer(ByteBuffer buf)
+        public ByteBuffer AddBuffer(ByteBuffer buf, bool writeLength = true)
         {
-            Add(buf.Written);
+            if (writeLength)
+                Add(buf.Written);
             WriteSpan(new ReadOnlySpan<byte>(buf.Data, 0, buf.Written));
             return this;
         }

@@ -64,6 +64,7 @@ public class SaveSystemTest : MonoBehaviour
         s.SaveEmptyState(false);
         ByteBuffer buf = new ByteBuffer();
         s.AddDataTo(buf);
+
         SaveState load = new SaveState(buf);
         Debug.Log("Loaded time: " + load.SaveTime);
     }
