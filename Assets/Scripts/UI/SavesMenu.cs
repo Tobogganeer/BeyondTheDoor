@@ -19,7 +19,28 @@ public class SavesMenu : MonoBehaviour
     [Space]
     public GameObject emptySlotInfo;
 
+    [Space]
+    public GameObject deleteConfirmWindow;
+
     int currentSlot = -1;
+    Canvas canvas;
+
+    private void Awake()
+    {
+        canvas = GetComponent<Canvas>();
+    }
+
+    public void Open()
+    {
+        canvas.enabled = true;
+        // Close this if it was opened
+        deleteConfirmWindow.SetActive(false);
+    }
+
+    public void Close()
+    {
+        canvas.enabled = false;
+    }
 
     private void Start()
     {

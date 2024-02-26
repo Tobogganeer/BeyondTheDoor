@@ -10,10 +10,10 @@ public class MainMenu : MonoBehaviour
     public GameObject quitOverlay;
 
     [Space]
-    public Canvas savesPage;
+    public SavesMenu savesPage;
 
     [Space]
-    public Canvas settingsPage; // TODO: Change type to be the settings page type
+    public SettingsMenu settingsPage;
 
     private void Start()
     {
@@ -33,15 +33,15 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         homePage.enabled = false;
-        savesPage.enabled = true;
-        settingsPage.enabled = false;
+        savesPage.Open();
+        settingsPage.Close();
     }
 
     public void Settings()
     {
         homePage.enabled = false;
-        savesPage.enabled = false;
-        settingsPage.enabled = true;
+        savesPage.Close();
+        settingsPage.Open();
     }
 
     public void Quit()
@@ -56,7 +56,7 @@ public class MainMenu : MonoBehaviour
     public void ReturnToHome()
     {
         homePage.enabled = true;
-        savesPage.enabled = false;
-        settingsPage.enabled = false;
+        savesPage.Close();
+        settingsPage.Close();
     }
 }
