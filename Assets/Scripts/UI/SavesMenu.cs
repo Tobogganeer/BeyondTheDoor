@@ -9,6 +9,7 @@ public class SavesMenu : MonoBehaviour
 {
     public int numSaves = 3;
     public GameObject[] selectedSlotHighlights;
+    public TMP_Text[] slotNameTexts;
 
     [Space]
     public TMP_Text saveSlotText;
@@ -100,7 +101,14 @@ public class SavesMenu : MonoBehaviour
         for (int i = 0; i < saves.Length; i++)
         {
             if (SaveSystem.SaveExists(i))
+            {
                 saves[i] = SaveSystem.Load(i);
+                slotNameTexts[i].text = "Save " + (i + 1);
+            }
+            else
+            {
+                slotNameTexts[i].text = "<Empty>";
+            }
         }
     }
 }
