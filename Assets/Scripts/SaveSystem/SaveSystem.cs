@@ -37,7 +37,8 @@ namespace BeyondTheDoor.SaveSystem
             if (!SaveExists(saveSlot))
             {
                 SaveState emptyState = new SaveState();
-                emptyState.SaveEmptyState();
+                // TODO: Support tutorial mode
+                emptyState.SaveEmptyState(false);
                 // Save this slot so we can use it later
                 Save(emptyState, saveSlot);
                 return emptyState;
@@ -77,7 +78,7 @@ namespace BeyondTheDoor.SaveSystem
             {
                 // Copy the correct amount of bytes
                 byte[] writeBuf = new byte[buf.Written];
-                System.Buffer.BlockCopy(buf.Data, 0, writeBuf, 0, buf.Written);
+                Buffer.BlockCopy(buf.Data, 0, writeBuf, 0, buf.Written);
                 // Save them
                 File.WriteAllBytes(path, writeBuf);
             }
@@ -90,7 +91,7 @@ namespace BeyondTheDoor.SaveSystem
         static ByteBuffer LoadBuffer(int saveSlot)
         {
             // Make sure we are loading a valid save
-            if (SaveExists(saveSlot))
+            if (!SaveExists(saveSlot))
                 throw new SaveSystemException($"Save file {saveSlot} not found.");
 
             string path = FormatSavePath(saveSlot);

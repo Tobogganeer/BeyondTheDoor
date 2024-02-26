@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 40908328}
   - component: {fileID: 40908329}
   - component: {fileID: 40908330}
+  - component: {fileID: 40908331}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -202,6 +203,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &40908331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40908327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d9442207f6bc647b5c3fc33528f043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &74004348
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +959,7 @@ MonoBehaviour:
   saveDateText: {fileID: 487244692}
   dayText: {fileID: 74004350}
   emptySlotInfo: {fileID: 613969423}
+  deleteConfirmWindow: {fileID: 1303396671}
 --- !u!1001 &275065765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2506,8 +2520,8 @@ MonoBehaviour:
   continueButton: {fileID: 1320477672}
   continueButtonText: {fileID: 1206631234}
   quitOverlay: {fileID: 1486749448}
-  savesPage: {fileID: 266667055}
-  settingsPage: {fileID: 40908329}
+  savesPage: {fileID: 266667057}
+  settingsPage: {fileID: 40908331}
 --- !u!1001 &843429988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5484,7 +5498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7050828538597283505, guid: 74e8094c0db65244d8fdb01ffd9a5f62, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartNewGame
+      value: LoadCurrentSave
       objectReference: {fileID: 0}
     - target: {fileID: 7050828538597283505, guid: 74e8094c0db65244d8fdb01ffd9a5f62, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

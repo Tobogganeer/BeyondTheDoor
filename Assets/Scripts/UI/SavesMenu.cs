@@ -68,14 +68,12 @@ public class SavesMenu : MonoBehaviour
             LoadSlotInfo(currentSave);
     }
 
-    public void StartNewGame()
-    {
-
-    }
-
     public void LoadCurrentSave()
     {
-
+        // Loads the current save or starts a new one
+        SaveState state = SaveSystem.Load(currentSlot);
+        state.Load();
+        // TODO: Actually load game scene from here
     }
 
     public void DeleteCurrentSave()

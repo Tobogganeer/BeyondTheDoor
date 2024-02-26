@@ -20,7 +20,6 @@ namespace BeyondTheDoor.SaveSystem
         public SaveState()
         {
             savedData = new ByteBuffer();
-            SaveEmptyState();
         }
 
         /// <summary>
@@ -40,9 +39,9 @@ namespace BeyondTheDoor.SaveSystem
             buffer.AddBuffer(savedData);
         }
 
-        public void SaveEmptyState()
+        public void SaveEmptyState(bool playTutorial)
         {
-            SaveEmptyDay(savedData);
+            SaveEmptyDay(savedData, playTutorial);
             SaveEmptyCabin(savedData);
             SaveEmptyCharacters(savedData);
             SaveEmptyLines(savedData);
@@ -66,10 +65,10 @@ namespace BeyondTheDoor.SaveSystem
         }
 
         #region Empty Saving
-        private void SaveEmptyDay(ByteBuffer buf)
+        private void SaveEmptyDay(ByteBuffer buf, bool playTutorial)
         {
             buf.Add(DateTime.Now.Ticks); // Current save time
-            buf.Add(1); // Day 1
+            buf.Add(playTutorial ? 0 : 1); // Day 0/1 depending on whether we are doing the tutorial
             buf.Add(Stage.SpeakingWithParty); // First stage
         }
 

@@ -106,7 +106,6 @@ namespace BeyondTheDoor.SaveSystem
             if (Unwritten < span.Length)
                 throw new Exception($"Failed to write Span ({Unwritten} bytes unwritten)");
 
-            Add((ushort)span.Length);
             span.CopyTo(new Span<byte>(Data, WritePosition, span.Length));
             WritePosition += (ushort)span.Length;
             Readable += span.Length;
@@ -245,6 +244,7 @@ namespace BeyondTheDoor.SaveSystem
             int size = Read<int>();
             ByteBuffer read = new ByteBuffer();
             read.WriteSpan(new ReadOnlySpan<byte>(Data, ReadPosition, size));
+            ReadPosition += size;
             return read;
         }
 
