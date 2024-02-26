@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using BeyondTheDoor.SaveSystem;
+using BeyondTheDoor;
 
 public class SavesMenu : MonoBehaviour
 {
@@ -92,8 +93,8 @@ public class SavesMenu : MonoBehaviour
     {
         occupiedSlotInfo.SetActive(true);
         emptySlotInfo.SetActive(false);
-        //saveDateText;
-        //dayText;
+        saveDateText.text = state.SaveTime.ToString();
+        dayText.text = "Day " + state.GameDay + " - " + state.GameStage.ToTimeString();
     }
 
     private void LoadSaves()
