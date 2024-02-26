@@ -1,3 +1,5 @@
+#define TEST_EXPOSE_BUF_IO
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,6 +69,10 @@ namespace BeyondTheDoor.SaveSystem
             return File.Exists(path);
         }
 
+#if TEST_EXPOSE_BUF_IO
+        public
+#endif
+
         static void SaveBuffer(ByteBuffer buf, int saveNumber)
         {
             // Make sure our folder exists
@@ -88,6 +94,9 @@ namespace BeyondTheDoor.SaveSystem
             }
         }
 
+#if TEST_EXPOSE_BUF_IO
+        public
+#endif
         static ByteBuffer LoadBuffer(int saveSlot)
         {
             // Make sure we are loading a valid save
