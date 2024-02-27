@@ -19,13 +19,20 @@ namespace BeyondTheDoor.Importer
 
             // Skip the first line (the header)
             for (int i = 1; i < rawLines.Length; i++)
-                lines.Add(GenerateLineData(rawLines[i], mappings));
+            {
+                RawLineData data = GenerateLineData(rawLines[i], mappings);
+                if (data != null)
+                    lines.Add(data);
+            }
 
             return new RawLineCollection(lines);
         }
 
         static RawLineData GenerateLineData(string rawLine, Dictionary<int, Line.Element> mappings)
         {
+            if (string.IsNullOrWhiteSpace(rawLine))
+                return null;
+
             RawLineData line = new RawLineData();
             string[] elements = rawLine.Split('\t', StringSplitOptions.None);
             for (int i = 0; i < elements.Length; i++)
