@@ -16,8 +16,9 @@ MonoBehaviour:
   choices:
   - prompt: 1304022509
     nextConversation: {fileID: 11400000, guid: 5d166460f5c3ae24c84d532f51acfae3, type: 2}
-    callback: {fileID: 0}
+    callback: {fileID: 11400000, guid: 5acfab5c786a53846bd0c9a7f9814e55, type: 2}
   - prompt: 1299950903
     nextConversation: {fileID: 11400000, guid: 7202f8c1b501e3d408181133db94ef46, type: 2}
-    callback: {fileID: 0}
+    callback: {fileID: 11400000, guid: ca63835b13df52c4d90007edbc25d2d3, type: 2}
   OnStarted: {fileID: 0}
+  OnFinished: {fileID: 0}

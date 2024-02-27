@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
-  m_Name: 0_GoScavenge
+  m_Script: {fileID: 11500000, guid: ec31e2e8dc0a4e146b5fcdc213238c33, type: 3}
+  m_Name: JokeEnding
   m_EditorClassIdentifier: 
-  lines: dc626772
-  choices: []
-  OnStarted: {fileID: 0}
-  OnFinished: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
