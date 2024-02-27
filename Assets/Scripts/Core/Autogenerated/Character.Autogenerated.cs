@@ -12,18 +12,20 @@ namespace BeyondTheDoor
 {
     public partial class Character
     {
-        public static Character Bob { get; private set; } = new Character(CharacterID.Bob);
         public static Character Player { get; private set; } = new Character(CharacterID.Player);
-        public static Character Jessica { get; private set; } = new Character(CharacterID.Jessica);
+        public static Character Test { get; private set; } = new Character(CharacterID.Test);
+        public static Character Tutorial_Mom { get; private set; } = new Character(CharacterID.Tutorial_Mom);
+        public static Character Tutorial_Dad { get; private set; } = new Character(CharacterID.Tutorial_Dad);
 
         /// <summary>
         /// All characters in the game.
         /// <summary>
         public static Dictionary<CharacterID, Character> All { get; private set; } = new Dictionary<CharacterID, Character>()
         {
-            { CharacterID.Bob, Bob },
             { CharacterID.Player, Player },
-            { CharacterID.Jessica, Jessica },
+            { CharacterID.Test, Test },
+            { CharacterID.Tutorial_Mom, Tutorial_Mom },
+            { CharacterID.Tutorial_Dad, Tutorial_Dad },
         };
     }
 }

@@ -11,6 +11,8 @@ namespace BeyondTheDoor
     public enum VoiceStatus
     {
         None = 1414246128,
+        Placeholder = -1019358273,
+        Draft = 1944763273,
     }
 }
 

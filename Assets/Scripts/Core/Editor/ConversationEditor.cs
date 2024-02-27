@@ -28,6 +28,13 @@ namespace BeyondTheDoor.Editor
             EditorGUILayout.LabelField("======= CONVERSATION START =======", EditorStyles.largeLabel);
             GUI.enabled = false;
 
+            if (con.OnStarted != null)
+            {
+                string text = $"<color={EditorColours.TextColour}>Calls </color>";
+                text += $"<color={EditorColours.CallbackColour}>{con.OnStarted.name}</color>";
+                EditorGUILayout.TextArea(text, style);
+            }
+
             if (con.lines != null)
             {
                 if (con.lines.Count > 0)
@@ -48,6 +55,15 @@ namespace BeyondTheDoor.Editor
                 {
                     DisplayChoice(choice);
                 }
+            }
+
+            if (con.OnFinished != null)
+            {
+                string text = $"<color={EditorColours.TextColour}>Calls </color>";
+                text += $"<color={EditorColours.CallbackColour}>{con.OnFinished.name}</color>";
+                if (con.choices != null && con.choices.Count > 0)
+                    text += $"<color={EditorColours.TextColour}> (Once choice is selected)</color>";
+                EditorGUILayout.TextArea(text, style);
             }
 
             GUI.enabled = true;

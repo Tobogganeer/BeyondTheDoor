@@ -1,11 +1,26 @@
 CharacterID	Text	Context	Day	LineID	LineStatus	VoiceStatus	ExtraData
-Bob	"Hey Jessica, knock knock?"	Start of test conversation	1	bob_start_joke	Placeholder	None	brrrt
-Bob	Old lady.	Reply to Jessica	1	bob_joke_question	Draft	None	zazaza
-Bob	Didn't know there was a yodeller!	2nd line of convo	1	bob_punchline	Final	None	yoink
-Jessica	... Who's there?		1	jessica_reply1	Draft	None	
-Jessica	Old lady who?		1	jessica_reply2	Draft	None	
-Jessica	...		1	jessica_silent	Draft	None	
-Jessica	Can we kill this guy?		1	jessica_player_question	Draft	None	
-Player	Yes		1	player_yes	Draft	None	
-Player	No		1	player_no	Draft	None	
-Jessica	"Ah, alright."	After player says no	1	jessica_cant_kill_bob			
+Test	These lines show some formatting stuff	Heres some useful internal notes	0	test_0_use_name_then_day	Placeholder	None	Extra stuff
+Test	Let me ask you something... 	idk something can go here	0	test_0_dont_use_caps_in_ids	Draft	Placeholder	Can
+Test	Did I ever tell you the definition... Of insanity?	Export: Save as Text (tab delimited)	0	test_0_q_questions_have_a_q_first	Final	Draft	Go
+Test	Dialogue is so cool.	I got nothin	0	test_0_main_chars_only_use_one_letter	Draft	Placeholder	Here
+							
+Player	Yes	Basic prompts that are used often	0	player_yes	Final	None	
+Player	No		0	player_no	Final	None	
+Player	Open Door		0	player_open_door	Final	None	
+Player	Keep Door Closed		0	player_keep_door_closed	Final	None	
+							
+							
+Tutorial_Mom	Wake up sunshine...  you fell asleep while playing games.	First line of tutorial	0	tutmom_0_wake_up	Placeholder	None	
+Tutorial_Mom	Me and your Dad are going to get some ice cream.		0	tutmom_0_going_ice_cream	Placeholder	None	
+Tutorial_Dad	What flavour of ice cream do you want?	First question	0	tutdad_0_q_ice_cream	Placeholder	None	
+Player	Vanilla	Player choices	0	p_0_vanilla	Placeholder	None	
+Player	Chocolate	Player choices	0	p_0_chocolate	Placeholder	None	
+Player	Strawberry	Player choices	0	p_0_strawberry	Placeholder	None	
+Tutorial_Dad	"Okay, we won't take long."	Response to player choice	0	tutdad_0_question_response	Placeholder	None	
+Tutorial_Dad	(To Mom) Have you seen where the car keys are?		0	tutdad_0_where_are_keys	Placeholder	None	
+Tutorial_Dad	Thank you kiddo...  see you soon.	Being sent out to scavenge	0	tutdad_0_scavenge_response	Placeholder	None	
+Tutorial_Mom	We're back!	At door	0	tutmom_0_at_door	Placeholder	None	
+Tutorial_Mom	"Hey kiddo, can you open the door please? It's raining out here... "		0	tutmom_0_q_open_door	Placeholder	None	
+Tutorial_Mom	"Hehe, nice one... Really though, it is quite cold."	Player keeps door closed	0	tutmom_0_q_open_door_second	Placeholder	None	
+Tutorial_Mom	Kiddo?	Player keeps door closed again	0	tutmom_0_door_closed_twice	Placeholder	None	
+Tutorial_Dad	"Thanks kiddo, now let's eat some ice cream!"	Player lets them in	0	tutdad_0_lets_eat	Placeholder	None	

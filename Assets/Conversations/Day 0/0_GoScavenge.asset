@@ -10,14 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
-  m_Name: Joke
+  m_Name: 0_GoScavenge
   m_EditorClassIdentifier: 
-  lines: 00fe057a82db57d3aa941e2a53394ebbc418d802988d279d61af3b4e
-  choices:
-  - prompt: 1000278611
-    nextConversation: {fileID: 0}
-    callback: {fileID: 11400000, guid: 2a14271b1547b1b43832fe15fbca3032, type: 2}
-  - prompt: 1223167581
-    nextConversation: {fileID: 11400000, guid: 4434499c18ff3534faa6a04fd4349891, type: 2}
-    callback: {fileID: 0}
+  lines: dc626772
+  choices: []
   OnStarted: {fileID: 0}
+  OnFinished: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}

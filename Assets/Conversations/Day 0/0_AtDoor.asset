@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: 0_AtDoor
+  m_EditorClassIdentifier: 
+  lines: a42f4551fd9a16b4
+  choices:
+  - prompt: 1304022509
+    nextConversation: {fileID: 11400000, guid: 5d166460f5c3ae24c84d532f51acfae3, type: 2}
+    callback: {fileID: 11400000, guid: 5acfab5c786a53846bd0c9a7f9814e55, type: 2}
+  - prompt: 1299950903
+    nextConversation: {fileID: 11400000, guid: 715f4fe3ae24e994493c3e72263742ad, type: 2}
+    callback: {fileID: 0}
+  OnStarted: {fileID: 0}
+  OnFinished: {fileID: 0}
