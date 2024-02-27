@@ -35,7 +35,20 @@ Then comes the first knock with [[d1_door]]</tw-passagedata><tw-passagedata pid=
 The player can let Jessica in, talk with her a bit, and move onto [[d2_morning_j]]
 OR
 Keep her locked outside and move to [[d2_morning_alone]]
-</tw-passagedata><tw-passagedata pid="14" name="d2_morning_j" tags="" position="2150,1550" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="d2_morning_alone" tags="" position="2150,1250" size="100,100"></tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="14" name="d2_morning_j" tags="" position="2150,1550" size="100,100">The player can do their normal thingies and also talk to Jessica.
+They will chit-chat a bit and talk about scavenging and the ethics of it.
+Move on to [[d2_noon_j]]</tw-passagedata><tw-passagedata pid="15" name="d2_morning_alone" tags="" position="2150,1250" size="100,100">This is pretty similar to the first day being alone.
+The player moves along to [[d2_evening_alone]]</tw-passagedata><tw-passagedata pid="16" name="d2_evening_alone" tags="" position="2300,1250" size="100,100">Similar to day 1, you can listen to the radio, tv, etc.
+Move on to [[d2_door_alone]]</tw-passagedata><tw-passagedata pid="17" name="d2_noon_j" tags="" position="2225,1700" size="100,100">Here the player can ask Jessica to scavenge. She will object, but you can force her to anyways.
+If you send her, she will perish, moving you to [[d2_evening_alone]].
+If you don&#39;t send her, you will move to [[d2_evening_j]]</tw-passagedata><tw-passagedata pid="18" name="d2_evening_j" tags="" position="2300,1550" size="100,100">Similar to day 1, you can listen to the radio, tv, etc. Maybe Jessica will have some input...
+Then comes [[d2_door_j]]</tw-passagedata><tw-passagedata pid="19" name="d2_door_j" tags="" position="2450,1550" size="100,100">Bob arrives at the door. Jessica will urge the player to open it and see who needs help.
+The player can let Bob in, talk with him a bit and move to [[d3_morning_jb]]
+OR
+Keep him locked outside, upsetting Jessica slightly and moving to [[d3_morning_j]]</tw-passagedata><tw-passagedata pid="20" name="d2_door_alone" tags="" position="2450,1250" size="100,100">Bob arrives at the door.
+The player can let Bob in, talk with him a bit and move to [[d3_morning_b]]
+OR
+Keep him locked outside, moving to [[d3_morning_alone]]</tw-passagedata><tw-passagedata pid="21" name="d3_morning_jb" tags="" position="2750,1850" size="100,100"></tw-passagedata><tw-passagedata pid="22" name="d3_morning_j" tags="" position="2750,1550" size="100,100"></tw-passagedata><tw-passagedata pid="23" name="d3_morning_b" tags="" position="2750,1250" size="100,100"></tw-passagedata><tw-passagedata pid="24" name="d3_morning_alone" tags="" position="2750,950" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
