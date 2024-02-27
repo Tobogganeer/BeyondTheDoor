@@ -162,14 +162,26 @@ MonoBehaviour:
   - name: MainMenu
     level: 0
     scene: MainMenu
-  - name: GameScene
+  - name: Morning
     level: 1
-    scene: GameScene
-  - name: BorderScene
+    scene: Morning
+  - name: Noon
     level: 2
+    scene: Noon
+  - name: Afternoon
+    level: 3
+    scene: Afternoon
+  - name: Evening
+    level: 4
+    scene: Evening
+  - name: Door
+    level: 5
+    scene: Door
+  - name: BorderScene
+    level: 6
     scene: BorderScene
   - name: EarlyEndingScene
-    level: 3
+    level: 7
     scene: EarlyEndingScene
 --- !u!114 &-9045745168459478293
 MonoBehaviour:
