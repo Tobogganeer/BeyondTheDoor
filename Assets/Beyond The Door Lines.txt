@@ -10,7 +10,7 @@ Player	Open Door		0	player_open_door	Final	None
 Player	Keep Door Closed		0	player_keep_door_closed	Final	None	
 							
 							
-Tutorial_Mom	Wake up sunshine… you fell asleep while playing games.	First line of tutorial	0	tutmom_0_wake_up	Placeholder	None	
+Tutorial_Mom	Wake up sunshine...  you fell asleep while playing games.	First line of tutorial	0	tutmom_0_wake_up	Placeholder	None	
 Tutorial_Mom	Me and your Dad are going to get some ice cream.		0	tutmom_0_going_ice_cream	Placeholder	None	
 Tutorial_Dad	What flavour of ice cream do you want?	First question	0	tutdad_0_q_ice_cream	Placeholder	None	
 Player	Vanilla	Player choices	0	p_0_vanilla	Placeholder	None	

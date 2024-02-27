@@ -18,7 +18,7 @@ namespace BeyondTheDoor
         /// <summary>
         /// The lines of this conversation, in order.
         /// </summary>
-        public List<Line> Lines => lines?.ConvertAll((id) => Line.Get(id));
+        public List<Line> Lines => lines != null ? lines.ConvertAll((id) => Line.Get(id)) : new List<Line>();
 
         /// <summary>
         /// The choices that can be chosen after all lines are spoken. May be null if the conversation simply ends.
@@ -51,7 +51,10 @@ namespace BeyondTheDoor
         /// Called when this conversation is started
         /// </summary>
         public ConversationCallback OnStarted;
-
+        /// <summary>
+        /// Called when the last line of this conversation is finished, or when a choice is chosen.
+        /// </summary>
+        public ConversationCallback OnFinished;
 
 
         /// <summary>
@@ -65,14 +68,28 @@ namespace BeyondTheDoor
         public void Open()
         {
             HookUpLines();
-            OnStarted?.Invoke(this, Lines.Count > 0 ? Lines[0].id : 0);
-            if (Lines.Count > 0)
-                Lines[0].Open();
+            List<Line> lines = Lines;
+            OnStarted?.Invoke(this, lines.Count > 0 ? lines[0].ID : 0);
+            if (lines.Count > 0)
+                lines[0].Open();
             else if (Choices != null)
                 Choices?.Open();
             else
                 // Close if we have nothing to show
                 UI.DialogueGUI.Close();
+
+            // Hook up the OnFinished event
+            if (Choices != null && Choices.Choices.Count > 0)
+            {
+                // We are finished when we pick a choice
+                foreach (Choice c in Choices.Choices)
+                    HookUpLineFinishedCallback(c);
+            }
+            else if (lines.Count > 0)
+            {
+                // There are no choices - we are finished when the last line is closed
+                HookUpLineFinishedCallback(lines[lines.Count - 1]);
+            }
         }
 
         private void HookUpLines()
@@ -87,6 +104,25 @@ namespace BeyondTheDoor
                 // Make the last one lead to the choices
                 _linesBacking[_linesBacking.Count - 1].Then(Choices);
             }
+        }
+
+        private void HookUpLineFinishedCallback(Line line)
+        {
+            // Un and re-sub to prevent double calling
+            line.OnClose -= OnLastLineFinished;
+            line.OnClose += OnLastLineFinished;
+        }
+
+        private void HookUpLineFinishedCallback(Choice line)
+        {
+            // Un and re-sub to prevent double calling
+            line.OnChosen -= OnLastLineFinished;
+            line.OnChosen += OnLastLineFinished;
+        }
+
+        private void OnLastLineFinished(Line line)
+        {
+            OnFinished?.Invoke(this, line.ID);
         }
 
 
