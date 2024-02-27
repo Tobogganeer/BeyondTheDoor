@@ -148,6 +148,18 @@ namespace BeyondTheDoor.Importer.CodeGen
 
             cf.AddComment("This file was intentionally cleared by the code generator.");
 
+            // Add All dictionary to avoid compile errors
+            cf.AddUsingDirective("System.Collections.Generic");
+            cf.Space();
+
+            using (cf.Namespace(FilePaths.DialogueNamespace))
+            {
+                using (cf.Class(CodeFile.Modifiers.Public | CodeFile.Modifiers.Partial, nameof(Line)))
+                {
+                    cf.GetStringBuilder().Append("public static Dictionary<LineID, Line> All { get; private set; }");
+                }
+            }
+
             cf.SaveToDisk();
         }
     }

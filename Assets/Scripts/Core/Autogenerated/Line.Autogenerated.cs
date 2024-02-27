@@ -12,32 +12,56 @@ namespace BeyondTheDoor
 {
     public partial class Line
     {
-        public static Line bob_start_joke { get; private set; } = new Line(CharacterID.Bob, "Hey Jessica, knock knock?", "Start of test conversation", 1, LineID.bob_start_joke, LineStatus.Placeholder, VoiceStatus.None, "brrrt");
-        public static Line bob_joke_question { get; private set; } = new Line(CharacterID.Bob, "Old lady.", "Reply to Jessica", 1, LineID.bob_joke_question, LineStatus.Draft, VoiceStatus.None, "zazaza");
-        public static Line bob_punchline { get; private set; } = new Line(CharacterID.Bob, "Didn't know there was a yodeller!", "2nd line of convo", 1, LineID.bob_punchline, LineStatus.Final, VoiceStatus.None, "yoink");
-        public static Line jessica_reply1 { get; private set; } = new Line(CharacterID.Jessica, "... Who's there?", "", 1, LineID.jessica_reply1, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line jessica_reply2 { get; private set; } = new Line(CharacterID.Jessica, "Old lady who?", "", 1, LineID.jessica_reply2, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line jessica_silent { get; private set; } = new Line(CharacterID.Jessica, "...", "", 1, LineID.jessica_silent, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line jessica_player_question { get; private set; } = new Line(CharacterID.Jessica, "Can we kill this guy?", "", 1, LineID.jessica_player_question, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line player_yes { get; private set; } = new Line(CharacterID.Player, "Yes", "", 1, LineID.player_yes, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line player_no { get; private set; } = new Line(CharacterID.Player, "No", "", 1, LineID.player_no, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line jessica_cant_kill_bob { get; private set; } = new Line(CharacterID.Jessica, "Ah, alright.", "After player says no", 1, LineID.jessica_cant_kill_bob, LineStatus.None, VoiceStatus.None, "");
+        public static Line test_0_use_name_then_day { get; private set; } = new Line(CharacterID.Test, "These lines show some formatting stuff", "Heres some useful internal notes", 0, LineID.test_0_use_name_then_day, LineStatus.Placeholder, VoiceStatus.None, "Extra stuff");
+        public static Line test_0_dont_use_caps_in_ids { get; private set; } = new Line(CharacterID.Test, "Let me ask you something...", "idk something can go here", 0, LineID.test_0_dont_use_caps_in_ids, LineStatus.Draft, VoiceStatus.Placeholder, "Can");
+        public static Line test_0_q_questions_have_a_q_first { get; private set; } = new Line(CharacterID.Test, "Did I ever tell you the definition... Of insanity?", "Export as TSV (tab seperated values)", 0, LineID.test_0_q_questions_have_a_q_first, LineStatus.Final, VoiceStatus.Draft, "Go");
+        public static Line test_0_main_chars_only_use_one_letter { get; private set; } = new Line(CharacterID.Test, "Dialogue is so cool.", "I got nothin", 0, LineID.test_0_main_chars_only_use_one_letter, LineStatus.Draft, VoiceStatus.Placeholder, "Here");
+        public static Line player_yes { get; private set; } = new Line(CharacterID.Player, "Yes", "Basic prompts that are used often", 0, LineID.player_yes, LineStatus.Final, VoiceStatus.None, "");
+        public static Line player_no { get; private set; } = new Line(CharacterID.Player, "No", "", 0, LineID.player_no, LineStatus.Final, VoiceStatus.None, "");
+        public static Line player_open_door { get; private set; } = new Line(CharacterID.Player, "Open Door", "", 0, LineID.player_open_door, LineStatus.Final, VoiceStatus.None, "");
+        public static Line player_keep_door_closed { get; private set; } = new Line(CharacterID.Player, "Keep Door Closed", "", 0, LineID.player_keep_door_closed, LineStatus.Final, VoiceStatus.None, "");
+        public static Line tutmom_0_wake_up { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Wake up sunshine� you fell asleep while playing games.", "First line of tutorial", 0, LineID.tutmom_0_wake_up, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutmom_0_going_ice_cream { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Me and your Dad are going to get some ice cream.", "", 0, LineID.tutmom_0_going_ice_cream, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutdad_0_q_ice_cream { get; private set; } = new Line(CharacterID.Tutorial_Dad, "What flavour of ice cream do you want?", "First question", 0, LineID.tutdad_0_q_ice_cream, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_0_vanilla { get; private set; } = new Line(CharacterID.Player, "Vanilla", "Player choices", 0, LineID.p_0_vanilla, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_0_chocolate { get; private set; } = new Line(CharacterID.Player, "Chocolate", "Player choices", 0, LineID.p_0_chocolate, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_0_strawberry { get; private set; } = new Line(CharacterID.Player, "Strawberry", "Player choices", 0, LineID.p_0_strawberry, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutdad_0_question_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Okay, we don't take long.", "Response to player choice", 0, LineID.tutdad_0_question_response, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutdad_0_where_are_keys { get; private set; } = new Line(CharacterID.Tutorial_Dad, "(To Mom) Have you seen where the car keys are?", "", 0, LineID.tutdad_0_where_are_keys, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutdad_0_scavenge_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Thank you kiddo...  see you soon.", "Being sent out to scavenge", 0, LineID.tutdad_0_scavenge_response, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutmom_0_at_door { get; private set; } = new Line(CharacterID.Tutorial_Mom, "We're back!", "At door", 0, LineID.tutmom_0_at_door, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutmom_0_q_open_door { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Hey kiddo, can you open the door please? It's raining out here... ", "", 0, LineID.tutmom_0_q_open_door, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutmom_0_q_open_door_second { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Hehe, nice one... Really though, it is quite cold.", "Player keeps door closed", 0, LineID.tutmom_0_q_open_door_second, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutmom_0_door_closed_twice { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Kiddo?", "Player keeps door closed again", 0, LineID.tutmom_0_door_closed_twice, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutdad_0_lets_eat { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Thanks kiddo, now let's eat some ice cream!", "Player lets them in", 0, LineID.tutdad_0_lets_eat, LineStatus.Placeholder, VoiceStatus.None, "");
 
         /// <summary>
         /// All lines that can be used.
         /// <summary>
         public static Dictionary<LineID, Line> All { get; private set; } = new Dictionary<LineID, Line>()
         {
-            { LineID.bob_start_joke, bob_start_joke },
-            { LineID.bob_joke_question, bob_joke_question },
-            { LineID.bob_punchline, bob_punchline },
-            { LineID.jessica_reply1, jessica_reply1 },
-            { LineID.jessica_reply2, jessica_reply2 },
-            { LineID.jessica_silent, jessica_silent },
-            { LineID.jessica_player_question, jessica_player_question },
+            { LineID.test_0_use_name_then_day, test_0_use_name_then_day },
+            { LineID.test_0_dont_use_caps_in_ids, test_0_dont_use_caps_in_ids },
+            { LineID.test_0_q_questions_have_a_q_first, test_0_q_questions_have_a_q_first },
+            { LineID.test_0_main_chars_only_use_one_letter, test_0_main_chars_only_use_one_letter },
             { LineID.player_yes, player_yes },
             { LineID.player_no, player_no },
-            { LineID.jessica_cant_kill_bob, jessica_cant_kill_bob },
+            { LineID.player_open_door, player_open_door },
+            { LineID.player_keep_door_closed, player_keep_door_closed },
+            { LineID.tutmom_0_wake_up, tutmom_0_wake_up },
+            { LineID.tutmom_0_going_ice_cream, tutmom_0_going_ice_cream },
+            { LineID.tutdad_0_q_ice_cream, tutdad_0_q_ice_cream },
+            { LineID.p_0_vanilla, p_0_vanilla },
+            { LineID.p_0_chocolate, p_0_chocolate },
+            { LineID.p_0_strawberry, p_0_strawberry },
+            { LineID.tutdad_0_question_response, tutdad_0_question_response },
+            { LineID.tutdad_0_where_are_keys, tutdad_0_where_are_keys },
+            { LineID.tutdad_0_scavenge_response, tutdad_0_scavenge_response },
+            { LineID.tutmom_0_at_door, tutmom_0_at_door },
+            { LineID.tutmom_0_q_open_door, tutmom_0_q_open_door },
+            { LineID.tutmom_0_q_open_door_second, tutmom_0_q_open_door_second },
+            { LineID.tutmom_0_door_closed_twice, tutmom_0_door_closed_twice },
+            { LineID.tutdad_0_lets_eat, tutdad_0_lets_eat },
         };
     }
 }

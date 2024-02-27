@@ -54,7 +54,7 @@ public class SaveSystemTest : MonoBehaviour
     void EnumTest()
     {
         ByteBuffer buf = new ByteBuffer();
-        buf.Add(CharacterID.Bob);
+        //buf.Add(CharacterID.Bob);
         Debug.Log(buf.Read<CharacterID>());
     }
 
