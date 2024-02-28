@@ -17,13 +17,7 @@ namespace BeyondTheDoor
         public const int BorderDay = 8;
 
         public static int DayNumber { get; internal set; }
-        //public static CharacterID ArrivingCharacter { get; private set; }
         public static Stage Stage { get; set; }
-
-        public static CharacterID GetArrivingCharacter()
-        {
-            return Game.CharacterArrivalOrder[DayNumber];
-        }
 
         public static void Advance()
         {
