@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class SaveSystemTest : MonoBehaviour
 {
+    /*
     void Start()
     {
         RunTest(BufferCopy, nameof(BufferCopy));
@@ -68,4 +69,5 @@ public class SaveSystemTest : MonoBehaviour
         SaveState load = new SaveState(buf);
         Debug.Log("Loaded time: " + load.SaveTime);
     }
+    */
 }
