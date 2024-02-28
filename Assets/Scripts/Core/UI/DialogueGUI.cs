@@ -14,8 +14,6 @@ namespace BeyondTheDoor.UI
 
         [Header("Config")]
         [SerializeField] private bool startAsDefault = true;
-        [Range(5f, 50f)]
-        [SerializeField] private float revealedCharactersPerSecond = 25f;
 
         [Header("GUI Components")]
         [SerializeField] private GameObject dialogueUIContainer;
@@ -32,6 +30,11 @@ namespace BeyondTheDoor.UI
         private string formattedLineText;
         private ChoiceCollection currentChoices;
         private int revealedLength;
+
+        /// <summary>
+        /// Set by Settings.cs
+        /// </summary>
+        public static float RevealedCharactersPerSecond { get; set; }
 
         public static Line CurrentLine => Current?.currentLine;
         public static ChoiceCollection CurrentChoices => Current?.currentChoices;
@@ -173,7 +176,7 @@ namespace BeyondTheDoor.UI
         }
 
 
-        private void ResetRevealTimer() => revealTimer = 1f / revealedCharactersPerSecond;
+        private void ResetRevealTimer() => revealTimer = 1f / RevealedCharactersPerSecond;
 
         #region Static Accessors
         internal static void Open(Line line)

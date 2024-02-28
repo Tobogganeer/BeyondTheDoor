@@ -26,7 +26,7 @@ public class SavesMenu : MonoBehaviour
     [Space]
     public GameObject deleteConfirmWindow;
 
-    int currentSlot = -1;
+    uint currentSlot = 0;
     SaveState[] saves;
     SaveState currentSave => saves[currentSlot];
     Canvas canvas;
@@ -43,7 +43,7 @@ public class SavesMenu : MonoBehaviour
         // Close this if it was opened
         deleteConfirmWindow.SetActive(false);
         LoadSaves();
-        SelectSlot(currentSlot);
+        SelectSlot((int)currentSlot);
     }
 
     public void Close()
@@ -53,7 +53,7 @@ public class SavesMenu : MonoBehaviour
 
     public void SelectSlot(int slot)
     {
-        currentSlot = Mathf.Clamp(slot, 0, numSaves - 1);
+        currentSlot = (uint)Mathf.Clamp(slot, 0, numSaves - 1);
         string slotText = "Slot " + (currentSlot + 1);
         saveSlotText.text = slotText;
         deleteSaveSlotText.text = "Delete " + slotText + " ? ";
@@ -72,6 +72,10 @@ public class SavesMenu : MonoBehaviour
     {
         // Loads the current save or starts a new one
         SaveState state = SaveSystem.Load(currentSlot);
+
+        // This is the last slot we've played
+        SaveSystem.SaveLastPlayedSaveSlot(currentSlot);
+
         state.Load();
         // TODO: Actually load game scene from here
     }
@@ -81,7 +85,7 @@ public class SavesMenu : MonoBehaviour
         SaveSystem.Delete(currentSlot);
         saves[currentSlot] = null;
         RefreshSaveSlots();
-        SelectSlot(currentSlot);
+        SelectSlot((int)currentSlot);
     }
 
     private void LoadEmptySlotInfo()
@@ -100,7 +104,7 @@ public class SavesMenu : MonoBehaviour
 
     private void LoadSaves()
     {
-        for (int i = 0; i < saves.Length; i++)
+        for (uint i = 0; i < saves.Length; i++)
         {
             if (SaveSystem.SaveExists(i))
                 saves[i] = SaveSystem.Load(i);

@@ -14,7 +14,11 @@ public class MenuSlider : MonoBehaviour
     public float value
     {
         get => slider.value;
-        set => slider.value = value;
+        set
+        {
+            slider.value = value;
+            UpdateText();
+        }
     }
     public event Action<float> ValueChanged;
 
@@ -26,6 +30,11 @@ public class MenuSlider : MonoBehaviour
     private void OnSliderValueChanged(float value)
     {
         ValueChanged?.Invoke(value);
+        UpdateText();
+    }
+
+    public void UpdateText()
+    {
         // Display as a whole number
         valueText.text = "- " + Mathf.RoundToInt(value * textValueMultiplier).ToString();
     }
