@@ -26,7 +26,7 @@ public class SavesMenu : MonoBehaviour
     [Space]
     public GameObject deleteConfirmWindow;
 
-    int currentSlot = -1;
+    uint currentSlot = 0;
     SaveState[] saves;
     SaveState currentSave => saves[currentSlot];
     Canvas canvas;
@@ -51,9 +51,9 @@ public class SavesMenu : MonoBehaviour
         canvas.enabled = false;
     }
 
-    public void SelectSlot(int slot)
+    public void SelectSlot(uint slot)
     {
-        currentSlot = Mathf.Clamp(slot, 0, numSaves - 1);
+        currentSlot = (uint)Mathf.Clamp(slot, 0, numSaves - 1);
         string slotText = "Slot " + (currentSlot + 1);
         saveSlotText.text = slotText;
         deleteSaveSlotText.text = "Delete " + slotText + " ? ";
@@ -100,7 +100,7 @@ public class SavesMenu : MonoBehaviour
 
     private void LoadSaves()
     {
-        for (int i = 0; i < saves.Length; i++)
+        for (uint i = 0; i < saves.Length; i++)
         {
             if (SaveSystem.SaveExists(i))
                 saves[i] = SaveSystem.Load(i);

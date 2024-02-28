@@ -1,5 +1,3 @@
-#define TEST_EXPOSE_BUF_IO
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,17 +8,19 @@ namespace BeyondTheDoor.SaveSystem
 {
     public class SaveSystem
     {
-        public static readonly string SavePath = Path.Combine(Application.persistentDataPath, "Saves");
-        public static readonly string SaveFileNameTemplate = "save_#.dat";
+        private static readonly string SavePath = Path.Combine(Application.persistentDataPath, "Saves");
+        private static readonly string SaveFileNameTemplate = "save_#.dat";
+        private static readonly string LastPlayedFile = Path.Combine(SavePath, "lastplayed.txt");
 
         static readonly FileVersion Version = FileVersion.Version_1_0;
+
 
         /// <summary>
         /// Saves the given <paramref name="state"/> to the specified <paramref name="saveSlot"/>.
         /// </summary>
         /// <param name="state"></param>
         /// <param name="saveSlot"></param>
-        public static void Save(SaveState state, int saveSlot)
+        public static void Save(SaveState state, uint saveSlot)
         {
             ByteBuffer buf = new ByteBuffer();
             buf.Add((byte)Version);
@@ -33,7 +33,7 @@ namespace BeyondTheDoor.SaveSystem
         /// </summary>
         /// <param name="saveSlot"></param>
         /// <returns></returns>
-        public static SaveState Load(int saveSlot)
+        public static SaveState Load(uint saveSlot)
         {
             // Don't let us try to load a non-existent save file
             if (!SaveExists(saveSlot))
@@ -62,7 +62,7 @@ namespace BeyondTheDoor.SaveSystem
         /// Deletes the save in the specified <paramref name="saveSlot"/> if it exists.
         /// </summary>
         /// <param name="saveSlot"></param>
-        public static void Delete(int saveSlot)
+        public static void Delete(uint saveSlot)
         {
             if (SaveExists(saveSlot))
             {
@@ -75,18 +75,42 @@ namespace BeyondTheDoor.SaveSystem
         /// </summary>
         /// <param name="saveSlot"></param>
         /// <returns></returns>
-        public static bool SaveExists(int saveSlot)
+        public static bool SaveExists(uint saveSlot)
         {
             string path = FormatSavePath(saveSlot);
             // Check if it exists
             return File.Exists(path);
         }
 
-#if TEST_EXPOSE_BUF_IO
-        public
-#endif
 
-        static void SaveBuffer(ByteBuffer buf, int saveNumber)
+        /// <summary>
+        /// Attempts to read the slot of the last played save.
+        /// </summary>
+        /// <param name="saveSlot"></param>
+        /// <returns>True if there is a last played save.</returns>
+        public static bool TryGetLastPlayedSaveSlot(out uint saveSlot)
+        {
+            saveSlot = 0;
+            return File.Exists(LastPlayedFile) &&
+                uint.TryParse(File.ReadAllText(LastPlayedFile), out saveSlot) &&
+                SaveExists(saveSlot);
+        }
+
+        /// <summary>
+        /// Saves the last played save slot to disk.
+        /// </summary>
+        /// <param name="saveSlot"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public static void SaveLastPlayedSaveSlot(uint saveSlot)
+        {
+            if (!SaveExists(saveSlot))
+                throw new ArgumentException($"Last played save slot ({saveSlot}) does not exist!", nameof(saveSlot));
+
+            File.WriteAllText(LastPlayedFile, saveSlot.ToString());
+        }
+
+
+        static void SaveBuffer(ByteBuffer buf, uint saveNumber)
         {
             // Make sure our folder exists
             if (!Directory.Exists(SavePath))
@@ -107,10 +131,7 @@ namespace BeyondTheDoor.SaveSystem
             }
         }
 
-#if TEST_EXPOSE_BUF_IO
-        public
-#endif
-        static ByteBuffer LoadBuffer(int saveSlot)
+        static ByteBuffer LoadBuffer(uint saveSlot)
         {
             // Make sure we are loading a valid save
             if (!SaveExists(saveSlot))
@@ -136,10 +157,11 @@ namespace BeyondTheDoor.SaveSystem
         /// </summary>
         /// <param name="saveSlot">The save file number to format.</param>
         /// <returns></returns>
-        static string FormatSavePath(int saveSlot)
+        static string FormatSavePath(uint saveSlot)
         {
             return Path.Combine(SavePath, SaveFileNameTemplate.Replace("#", saveSlot.ToString()));
         }
+
 
         enum FileVersion : byte
         {
