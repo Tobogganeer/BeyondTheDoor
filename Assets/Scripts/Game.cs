@@ -11,15 +11,16 @@ public class Game : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Settings.Load();
     }
 
     /// <summary>
-    /// Starts the game given the loaded <paramref name="gameState"/>.
+    /// Starts the game given the loaded <paramref name="saveState"/>.
     /// </summary>
-    /// <param name="gameState"></param>
-    public static void Begin(SaveState gameState)
+    /// <param name="saveState"></param>
+    public static void Begin(SaveState saveState)
     {
-        gameState.Load();
+        saveState.Load();
         Level currentLevel = GameStageToLevel(Day.Stage);
         SceneManager.LoadLevel(currentLevel);
     }
