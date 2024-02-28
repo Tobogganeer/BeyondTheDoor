@@ -1,3 +1,4 @@
+using BeyondTheDoor.SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public Canvas homePage;
     public GameObject continueButton;
+    public TMPro.TMP_Text continueText;
     public TMPro.TMP_Text continueButtonText;
     public GameObject quitOverlay;
 
@@ -15,19 +17,28 @@ public class MainMenu : MonoBehaviour
     [Space]
     public SettingsMenu settingsPage;
 
+    bool canContinue;
+    uint lastPlayedSaveSlot;
+
     private void Start()
     {
         // Disable other menus
         ReturnToHome();
         quitOverlay.SetActive(false);
-
-        // TODO: Check if we can continue
-        continueButton.SetActive(false);
     }
 
     public void Continue()
     {
-        throw new System.NotImplementedException();
+        if (!canContinue)
+        {
+            // How did we click this? Try resetting...
+            ReturnToHome();
+            return;
+        }
+
+        SaveState save = SaveSystem.Load(lastPlayedSaveSlot);
+        save.Load();
+        // TODO: Load game...
     }
 
     public void Play()
@@ -58,5 +69,10 @@ public class MainMenu : MonoBehaviour
         homePage.enabled = true;
         savesPage.Close();
         settingsPage.Close();
+
+        canContinue = SaveSystem.TryGetLastPlayedSaveSlot(out lastPlayedSaveSlot);
+        continueButton.SetActive(canContinue);
+        if (canContinue)
+            continueText.text = $"Continue (Day {lastPlayedSaveSlot})";
     }
 }

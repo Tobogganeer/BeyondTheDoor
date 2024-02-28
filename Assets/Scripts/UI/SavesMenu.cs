@@ -43,7 +43,7 @@ public class SavesMenu : MonoBehaviour
         // Close this if it was opened
         deleteConfirmWindow.SetActive(false);
         LoadSaves();
-        SelectSlot(currentSlot);
+        SelectSlot((int)currentSlot);
     }
 
     public void Close()
@@ -51,7 +51,7 @@ public class SavesMenu : MonoBehaviour
         canvas.enabled = false;
     }
 
-    public void SelectSlot(uint slot)
+    public void SelectSlot(int slot)
     {
         currentSlot = (uint)Mathf.Clamp(slot, 0, numSaves - 1);
         string slotText = "Slot " + (currentSlot + 1);
@@ -72,6 +72,10 @@ public class SavesMenu : MonoBehaviour
     {
         // Loads the current save or starts a new one
         SaveState state = SaveSystem.Load(currentSlot);
+
+        // This is the last slot we've played
+        SaveSystem.SaveLastPlayedSaveSlot(currentSlot);
+
         state.Load();
         // TODO: Actually load game scene from here
     }
@@ -81,7 +85,7 @@ public class SavesMenu : MonoBehaviour
         SaveSystem.Delete(currentSlot);
         saves[currentSlot] = null;
         RefreshSaveSlots();
-        SelectSlot(currentSlot);
+        SelectSlot((int)currentSlot);
     }
 
     private void LoadEmptySlotInfo()
