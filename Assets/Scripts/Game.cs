@@ -73,7 +73,8 @@ public class Game : MonoBehaviour
     private void Start()
     {
         // Advance when a conversation wants to
-        advanceCallback.Callback += (conv, line) => Advance();
+        if (advanceCallback != null)
+            advanceCallback.Callback += (conv, line) => Advance();
     }
 
 
@@ -118,14 +119,6 @@ public class Game : MonoBehaviour
         }
     }
 
-    private static void LoadStage(Stage stage)
-    {
-        OnStageChanged?.Invoke();
-        Level level = GameStageToLevel(stage);
-        SceneManager.LoadLevel(level);
-        OnStageLoaded?.Invoke();
-    }
-
     /// <summary>
     /// Can we advance to the next stage currently?
     /// </summary>
@@ -152,6 +145,22 @@ public class Game : MonoBehaviour
         }
 
         throw new InvalidProgramException("Tried to check advancement on some goofy state that doesn't exist?");
+    }
+
+    private static void LoadStage(Stage stage)
+    {
+        OnStageChanged?.Invoke();
+        Level level = GameStageToLevel(stage);
+        SceneManager.LoadLevel(level);
+        OnStageLoaded?.Invoke();
+    }
+
+    
+
+    public static void ExitToMenu()
+    {
+        // Game is saved automatically
+        SceneManager.LoadLevel(Level.MainMenu);
     }
 
     public static Level GameStageToLevel(Stage stage) => stage switch
