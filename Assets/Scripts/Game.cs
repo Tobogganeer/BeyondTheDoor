@@ -33,6 +33,10 @@ public class Game : MonoBehaviour
     [Tooltip("Called when a new day is started but before it is loaded.")]
     [SerializeField] private UnityEvent onNewDayStarted;
 
+    [Space]
+    [Tooltip("Called when returning to the main menu but before the game is unloaded.")]
+    [SerializeField] private UnityEvent onGameExit;
+
 
     public static Character[] CharacterArrivalOrder { get; private set; } =
     {
@@ -64,6 +68,10 @@ public class Game : MonoBehaviour
     /// Called when a new day is started but before it is loaded.
     /// </summary>
     public static UnityEvent OnNewDayStarted => instance.onNewDayStarted;
+    /// <summary>
+    /// Called when returning to the main menu but before the game is unloaded.
+    /// </summary>
+    public static UnityEvent OnGameExit => instance.onGameExit;
 
 
     private static uint currentSaveSlot;
@@ -159,6 +167,10 @@ public class Game : MonoBehaviour
 
     public static void ExitToMenu()
     {
+        OnGameExit?.Invoke();
+        BeyondTheDoor.UI.DialogueGUI.Close(); // Turn off the GUI if it's playing a line
+        Character.ResetAll(); // Reset them (doesn't really matter but meh)
+
         // Game is saved automatically
         SceneManager.LoadLevel(Level.MainMenu);
     }
