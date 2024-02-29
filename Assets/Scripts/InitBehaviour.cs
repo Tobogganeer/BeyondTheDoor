@@ -27,12 +27,20 @@ public abstract class InitBehaviour<T> : MonoBehaviour
 
     private void Start()
     {
-        Game.OnInitialize.AddListener(Initialize);
+        RegisterConversationCallbacks();
+
+        Game.OnInitialize.AddListener(GameStart);
     }
 
+
+    /// <summary>
+    /// Called only once when application is started.
+    /// </summary>
+    /// <remarks>Use this to subscribe to persistent events (like ConversationCallbacks)</remarks>
+    protected virtual void RegisterConversationCallbacks() { }
     /// <summary>
     /// Called when the game is loaded.
     /// </summary>
-    /// <remarks>Initialize lines here.</remarks>
-    protected abstract void Initialize();
+    /// <remarks>Initialize lines and character callbacks here.</remarks>
+    protected abstract void GameStart();
 }

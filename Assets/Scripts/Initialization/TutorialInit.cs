@@ -9,13 +9,22 @@ public class TutorialInit : InitBehaviour<TutorialInit>
     public LineID momLookingForKeys;
     public LineID dadLookingForKeys;
 
-    protected override void Initialize()
+    [Space]
+    public Conversation cyaLaterConvo;
+
+    [Space]
+    public Conversation arrivingConvo;
+
+    protected override void GameStart()
     {
         // If you talk to them they'll just ask you where the keys are
-        Character.Tutorial_Mom.SpokenTo += (mom) => Line.Get(momLookingForKeys).Open();
-        Character.Tutorial_Dad.SpokenTo += (mom) => Line.Get(dadLookingForKeys).Open();
+        Character.Tutorial_Mom.SpokenTo += (mom) => Line.Get(momLookingForKeys)?.Open();
+        Character.Tutorial_Dad.SpokenTo += (mom) => Line.Get(dadLookingForKeys)?.Open();
 
         Character.Tutorial_Mom.SendingToScavenge += SendToScavenge;
+        Character.Tutorial_Dad.SendingToScavenge += SendToScavenge;
+
+        Character.Tutorial_Mom.ArrivingAtDoor += ArrivingAtDoor;
 
         if (Day.DayNumber == Day.TutorialDay && Day.Stage == Stage.SpeakingWithParty)
         {
@@ -29,6 +38,11 @@ public class TutorialInit : InitBehaviour<TutorialInit>
 
     private void SendToScavenge(Character momOrDad)
     {
-        throw new System.NotImplementedException();
+        cyaLaterConvo.Start();
+    }
+
+    private void ArrivingAtDoor(Character mom)
+    {
+        arrivingConvo.Start();
     }
 }

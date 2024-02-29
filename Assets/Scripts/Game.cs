@@ -18,6 +18,8 @@ public class Game : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] private ConversationCallback advanceCallback;
+    [SerializeField] private ConversationCallback openDoorCallback;
+    [SerializeField] private ConversationCallback leaveDoorClosedCallback;
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
@@ -36,6 +38,10 @@ public class Game : MonoBehaviour
     [Space]
     [Tooltip("Called when returning to the main menu but before the game is unloaded.")]
     [SerializeField] private UnityEvent onGameExit;
+
+    [Space]
+    [SerializeField] private UnityEvent onDoorOpened;
+    [SerializeField] private UnityEvent onDoorLeftClosed;
 
 
     public static Character[] CharacterArrivalOrder { get; private set; } =
@@ -76,6 +82,14 @@ public class Game : MonoBehaviour
     /// Called when returning to the main menu but before the game is unloaded.
     /// </summary>
     public static UnityEvent OnGameExit => instance.onGameExit;
+    /// <summary>
+    /// Called when the door is opened, after the character's state is changed.
+    /// </summary>
+    public static UnityEvent OnDoorOpened => instance.onDoorOpened;
+    /// <summary>
+    /// Called when the door is kept closed, after the character's state is changed.
+    /// </summary>
+    public static UnityEvent OnDoorLeftClosed => instance.onDoorLeftClosed;
 
 
     private static uint currentSaveSlot;
@@ -87,6 +101,10 @@ public class Game : MonoBehaviour
         // Advance when a conversation wants to
         if (advanceCallback != null)
             advanceCallback.Callback += (conv, line) => Advance();
+        if (openDoorCallback != null)
+            openDoorCallback.Callback += (conv, line) => OpenDoor();
+        if (leaveDoorClosedCallback != null)
+            leaveDoorClosedCallback.Callback += (conv, line) => LeaveDoorClosed();
     }
 
 
@@ -119,6 +137,11 @@ public class Game : MonoBehaviour
             {
                 Day.StartDay(Day.DayNumber + 1);
                 OnNewDayStarted?.Invoke();
+            }
+            else if (Day.Stage == Stage.DealingWithArrival)
+            {
+                // Make the character "arrive"
+                ArrivingCharacter.ChangeStatus(CharacterStatus.AtDoor);
             }
 
             // Save the state after we switch stages (but before changing scenes)
@@ -165,6 +188,19 @@ public class Game : MonoBehaviour
         Level level = GameStageToLevel(stage);
         SceneManager.LoadLevel(level);
         OnStageLoaded?.Invoke();
+    }
+
+
+    public static void OpenDoor()
+    {
+        ArrivingCharacter.ChangeStatus(CharacterStatus.InsideCabin);
+        OnDoorOpened?.Invoke();
+    }
+
+    public static void LeaveDoorClosed()
+    {
+        ArrivingCharacter.ChangeStatus(CharacterStatus.LeftOutside);
+        OnDoorLeftClosed?.Invoke();
     }
 
 
