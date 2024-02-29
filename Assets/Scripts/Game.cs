@@ -49,6 +49,10 @@ public class Game : MonoBehaviour
         Character.Hal,
         Character.Raiders
     };
+    /// <summary>
+    /// What character is arriving today?
+    /// </summary>
+    public static Character ArrivingCharacter => CharacterArrivalOrder[DayNumber];
     public static int DayNumber => Day.DayNumber;
     public static Stage Stage => Day.Stage;
 
@@ -163,7 +167,6 @@ public class Game : MonoBehaviour
         OnStageLoaded?.Invoke();
     }
 
-    
 
     public static void ExitToMenu()
     {

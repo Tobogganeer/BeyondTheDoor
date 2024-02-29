@@ -65,6 +65,10 @@ namespace BeyondTheDoor
         /// </summary>
         public event Action<Character> ArrivingAtDoor;
         /// <summary>
+        ///Called when the player clicks on this character while another character is at the door (start dialogue).
+        /// </summary>
+        public event Action<Character> OtherCharacterArrivingAtDoor;
+        /// <summary>
         /// Called when the player clicks on this character during the day (start dialogue).
         /// </summary>
         public event Action<Character> SpokenTo;
@@ -103,6 +107,15 @@ namespace BeyondTheDoor
         /// </summary>
         public event Action<Character> SpokenToDay7;
         #endregion
+
+        /// <summary>
+        /// Called when the player clicks on this character during the scavenging stage (start dialogue).
+        /// </summary>
+        public event Action<Character> SendingToScavenge;
+        /// <summary>
+        /// Called when the player clicks on this character during the overcrowding stage (start dialogue).
+        /// </summary>
+        public event Action<Character> TryingToKickOut;
 
 
         // ============ Constants ============
@@ -148,12 +161,30 @@ namespace BeyondTheDoor
         }
 
         /// <summary>
-        /// Call this when the player wants to speak to this character
+        /// Call this when the player wants to speak to this character (during any stage)
         /// </summary>
         public void OnSelected()
         {
-            SpokenTo?.Invoke(this);
-            InvokeIndividualDayOnSpokenTo();
+            switch (Day.Stage)
+            {
+                case Stage.SpeakingWithParty:
+                    SpokenTo?.Invoke(this);
+                    InvokeIndividualDayOnSpokenTo();
+                    break;
+                case Stage.SendingScavengers:
+                    SendingToScavenge?.Invoke(this);
+                    break;
+                case Stage.FixingOvercrowding:
+                    TryingToKickOut?.Invoke(this);
+                    break;
+                case Stage.RadioLoreTime:
+                    break;
+                case Stage.DealingWithArrival:
+                    OtherCharacterArrivingAtDoor?.Invoke(this);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void InvokeIndividualDayOnSpokenTo()
