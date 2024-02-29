@@ -195,6 +195,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213edb94dc5a5534188f943855cacdc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  advanceCallback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
+  onInitialize:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onStageLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  onNewDayStarted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2598026140404002207
 GameObject:
   m_ObjectHideFlags: 0

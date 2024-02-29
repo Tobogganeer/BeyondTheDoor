@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BeyondTheDoor;
 using BeyondTheDoor.SaveSystem;
+using UnityEngine.Events;
 
 public class Game : MonoBehaviour
 {
@@ -13,6 +14,25 @@ public class Game : MonoBehaviour
         instance = this;
         Settings.Load();
     }
+
+
+    [Header("Input")]
+    [SerializeField] private ConversationCallback advanceCallback;
+
+    [Header("Output")]
+    [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
+    [SerializeField] private UnityEvent onInitialize;
+
+    [Space]
+    [Tooltip("Called after the game's stage is changed but before the next stage is loaded.")]
+    [SerializeField] private UnityEvent onStageChanged;
+    [Tooltip("Called after the game's stage is changed and loaded.")]
+    [SerializeField] private UnityEvent onStageLoaded;
+
+    [Space]
+    [Tooltip("Called when a new day is started but before it is loaded.")]
+    [SerializeField] private UnityEvent onNewDayStarted;
+
 
     public static Character[] CharacterArrivalOrder { get; private set; } =
     {
@@ -28,8 +48,33 @@ public class Game : MonoBehaviour
     public static int DayNumber => Day.DayNumber;
     public static Stage Stage => Day.Stage;
 
+    /// <summary>
+    /// Called after a save file is loaded but before the stage is loaded.
+    /// </summary>
+    public static UnityEvent OnInitialize => instance.onInitialize;
+    /// <summary>
+    /// Called after the game's stage is changed but before the next stage is loaded.
+    /// </summary>
+    public static UnityEvent OnStageChanged => instance.onStageChanged;
+    /// <summary>
+    /// Called after the game's stage is changed and loaded.
+    /// </summary>
+    public static UnityEvent OnStageLoaded => instance.onStageLoaded;
+    /// <summary>
+    /// Called when a new day is started but before it is loaded.
+    /// </summary>
+    public static UnityEvent OnNewDayStarted => instance.onNewDayStarted;
+
+
     private static uint currentSaveSlot;
 
+
+
+    private void Start()
+    {
+        // Advance when a conversation wants to
+        advanceCallback.Callback += (conv, line) => Advance();
+    }
 
 
 
@@ -42,6 +87,8 @@ public class Game : MonoBehaviour
         // Load the save
         saveState.Load();
         currentSaveSlot = saveSlot;
+
+        OnInitialize?.Invoke();
         // Change scenes
         LoadStage(Day.Stage);
     }
@@ -56,7 +103,10 @@ public class Game : MonoBehaviour
             Day.Stage++;
             // Wrap around if we went too far
             if (Day.Stage > Stage.DealingWithArrival)
-                Day.Stage = Stage.SpeakingWithParty;
+            {
+                Day.StartDay(Day.DayNumber + 1);
+                OnNewDayStarted?.Invoke();
+            }
 
             // Save the state after we switch stages (but before changing scenes)
             SaveState currentState = new SaveState();
@@ -70,8 +120,10 @@ public class Game : MonoBehaviour
 
     private static void LoadStage(Stage stage)
     {
+        OnStageChanged?.Invoke();
         Level level = GameStageToLevel(stage);
         SceneManager.LoadLevel(level);
+        OnStageLoaded?.Invoke();
     }
 
     /// <summary>
