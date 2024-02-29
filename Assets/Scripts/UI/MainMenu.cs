@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
         }
 
         SaveState save = SaveSystem.Load(lastPlayedSaveSlot);
-        Game.Begin(save);
+        Game.Begin(save, lastPlayedSaveSlot);
     }
 
     public void Play()

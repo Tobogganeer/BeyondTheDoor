@@ -38,7 +38,8 @@ namespace BeyondTheDoor
         public static bool IsOvercrowded()
         {
             int numMembers = NumCurrentPartyMembers();
-            //if (Character.)
+            if (Character.Hal.InsideCabin && Character.Sal.InsideCabin)
+                numMembers--; // The siblings count as 1 character together
             return numMembers > MaxPartyMembers;
         }
 

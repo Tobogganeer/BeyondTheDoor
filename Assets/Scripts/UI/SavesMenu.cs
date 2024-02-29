@@ -75,7 +75,7 @@ public class SavesMenu : MonoBehaviour
 
         // This is the last slot we've played
         SaveSystem.SaveLastPlayedSaveSlot(currentSlot);
-        Game.Begin(save);
+        Game.Begin(save, currentSlot);
     }
 
     public void DeleteCurrentSave()
