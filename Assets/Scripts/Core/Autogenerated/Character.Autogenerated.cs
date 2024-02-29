@@ -12,7 +12,18 @@ namespace BeyondTheDoor
 {
     public partial class Character
     {
+        public static Character Bear { get; private set; } = new Character(CharacterID.Bear);
+        public static Character Journalist { get; private set; } = new Character(CharacterID.Journalist);
+        public static Character Dad { get; private set; } = new Character(CharacterID.Dad);
+        public static Character Hal { get; private set; } = new Character(CharacterID.Hal);
+        public static Character Sal { get; private set; } = new Character(CharacterID.Sal);
+        public static Character Violet { get; private set; } = new Character(CharacterID.Violet);
+        public static Character None { get; private set; } = new Character(CharacterID.None);
+        public static Character Bob { get; private set; } = new Character(CharacterID.Bob);
         public static Character Player { get; private set; } = new Character(CharacterID.Player);
+        public static Character Raiders { get; private set; } = new Character(CharacterID.Raiders);
+        public static Character Jessica { get; private set; } = new Character(CharacterID.Jessica);
+        public static Character Neighbour { get; private set; } = new Character(CharacterID.Neighbour);
         public static Character Test { get; private set; } = new Character(CharacterID.Test);
         public static Character Tutorial_Mom { get; private set; } = new Character(CharacterID.Tutorial_Mom);
         public static Character Tutorial_Dad { get; private set; } = new Character(CharacterID.Tutorial_Dad);
@@ -22,7 +33,18 @@ namespace BeyondTheDoor
         /// <summary>
         public static Dictionary<CharacterID, Character> All { get; private set; } = new Dictionary<CharacterID, Character>()
         {
+            { CharacterID.Bear, Bear },
+            { CharacterID.Journalist, Journalist },
+            { CharacterID.Dad, Dad },
+            { CharacterID.Hal, Hal },
+            { CharacterID.Sal, Sal },
+            { CharacterID.Violet, Violet },
+            { CharacterID.None, None },
+            { CharacterID.Bob, Bob },
             { CharacterID.Player, Player },
+            { CharacterID.Raiders, Raiders },
+            { CharacterID.Jessica, Jessica },
+            { CharacterID.Neighbour, Neighbour },
             { CharacterID.Test, Test },
             { CharacterID.Tutorial_Mom, Tutorial_Mom },
             { CharacterID.Tutorial_Dad, Tutorial_Dad },
