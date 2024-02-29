@@ -73,35 +73,35 @@ namespace BeyondTheDoor
         /// <summary>
         /// Called when the player clicks on this character during day 0 (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay0;
+        public event Action<Character> SpokenToDay0;
         /// <summary>
         /// Called when the player clicks on this character during day 1 (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay1;
+        public event Action<Character> SpokenToDay1;
         /// <summary>
         /// Called when the player clicks on this character during day 2 (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay2;
+        public event Action<Character> SpokenToDay2;
         /// <summary>
         /// Called when the player clicks on this character during day 3 (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay3;
+        public event Action<Character> SpokenToDay3;
         /// <summary>
         /// Called when the player clicks on this character during day 4 (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay4;
+        public event Action<Character> SpokenToDay4;
         /// <summary>
         /// Called when the player clicks on this character during day 5 (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay5;
+        public event Action<Character> SpokenToDay5;
         /// <summary>
         /// Called when the player clicks on this character during day 6 (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay6;
+        public event Action<Character> SpokenToDay6;
         /// <summary>
         /// Called when the player clicks on this character during day 7 (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay7;
+        public event Action<Character> SpokenToDay7;
         #endregion
 
 
@@ -162,14 +162,14 @@ namespace BeyondTheDoor
             // I reaaally want to make an array of these but I can't :(
             switch (Day.DayNumber)
             {
-                case 0: OnSpokenToDay0?.Invoke(this); break;
-                case 1: OnSpokenToDay1?.Invoke(this); break;
-                case 2: OnSpokenToDay2?.Invoke(this); break;
-                case 3: OnSpokenToDay3?.Invoke(this); break;
-                case 4: OnSpokenToDay4?.Invoke(this); break;
-                case 5: OnSpokenToDay5?.Invoke(this); break;
-                case 6: OnSpokenToDay6?.Invoke(this); break;
-                case 7: OnSpokenToDay7?.Invoke(this); break;
+                case 0: SpokenToDay0?.Invoke(this); break;
+                case 1: SpokenToDay1?.Invoke(this); break;
+                case 2: SpokenToDay2?.Invoke(this); break;
+                case 3: SpokenToDay3?.Invoke(this); break;
+                case 4: SpokenToDay4?.Invoke(this); break;
+                case 5: SpokenToDay5?.Invoke(this); break;
+                case 6: SpokenToDay6?.Invoke(this); break;
+                case 7: SpokenToDay7?.Invoke(this); break;
                 default: break;
             }
         }
