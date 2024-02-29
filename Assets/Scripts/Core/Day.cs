@@ -19,11 +19,6 @@ namespace BeyondTheDoor
         public static int DayNumber { get; internal set; }
         public static Stage Stage { get; set; }
 
-        public static void Advance()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Starts the given day.
         /// </summary>

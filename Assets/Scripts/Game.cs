@@ -14,6 +14,16 @@ public class Game : MonoBehaviour
         Settings.Load();
     }
 
+    public static CharacterID[] CharacterArrivalOrder { get; private set; } =
+    {
+        CharacterID.Test
+    };
+    public static int DayNumber => Day.DayNumber;
+    public static Stage Stage => Day.Stage;
+
+
+
+
     /// <summary>
     /// Starts the game given the loaded <paramref name="saveState"/>.
     /// </summary>
@@ -25,10 +35,38 @@ public class Game : MonoBehaviour
         SceneManager.LoadLevel(currentLevel);
     }
 
-    public static CharacterID[] CharacterArrivalOrder { get; private set; } =
+    /// <summary>
+    /// Advances to the next stage of the day, if possible.
+    /// </summary>
+    public static void Advance()
     {
-        CharacterID.Test
-    };
+
+    }
+
+    /// <summary>
+    /// Can we advance to the next stage currently?
+    /// </summary>
+    /// <returns></returns>
+    public static bool CanAdvance()
+    {
+        switch (Stage)
+        {
+            case Stage.SpeakingWithParty:
+                // You can always advance from speaking
+                return true;
+            case Stage.SendingScavengers:
+                // You can always advance without sending anyone
+                return true;
+            case Stage.FixingOvercrowding:
+                break;
+            case Stage.RadioLoreTime:
+                break;
+            case Stage.DealingWithArrival:
+                break;
+        }
+
+        throw new InvalidProgramException("Tried to check advancement on some goofy state that doesn't exist?");
+    }
 
     public static Level GameStageToLevel(Stage stage) => stage switch
     {
