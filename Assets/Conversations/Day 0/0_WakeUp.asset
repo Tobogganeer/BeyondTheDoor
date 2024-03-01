@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines: da702569019cffb8e25b0932
   choices:
-  - prompt: -119911243
+  - prompt: -439578120
     nextConversation: {fileID: 11400000, guid: e81829975edb2964996de2a7ee74e055, type: 2}
     callback: {fileID: 0}
-  - prompt: 301028368
+  - prompt: 1598028075
     nextConversation: {fileID: 11400000, guid: e81829975edb2964996de2a7ee74e055, type: 2}
     callback: {fileID: 0}
-  - prompt: 2081628673
+  - prompt: -1068718804
     nextConversation: {fileID: 11400000, guid: e81829975edb2964996de2a7ee74e055, type: 2}
     callback: {fileID: 0}
   OnStarted: {fileID: 0}
+  OnFinished: {fileID: 0}

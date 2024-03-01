@@ -14,7 +14,7 @@ namespace BeyondTheDoor
         /// <remarks>LineID will be the prompt line for a choice, or the first line for conversation start.</remarks>
         public event Action<Conversation, LineID> Callback;
 
-        internal void Invoke(Conversation convo, LineID prompt)
+        public void Invoke(Conversation convo, LineID prompt)
         {
             Callback?.Invoke(convo, prompt);
         }

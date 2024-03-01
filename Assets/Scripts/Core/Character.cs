@@ -28,10 +28,12 @@ namespace BeyondTheDoor
         /// A list of events that have happened to this character
         /// </summary>
         public List<CharacterHistoryEvent> HistoryEvents { get; set; }
+        /*
         /// <summary>
         /// The first thing this Character says at the door
         /// </summary>
         public IDialogueElement Introduction { get; set; }
+        */
 
 
         // ============ Useful Properties ============
@@ -65,44 +67,22 @@ namespace BeyondTheDoor
         /// </summary>
         public event Action<Character> ArrivingAtDoor;
         /// <summary>
+        ///Called when the player clicks on this character while another character is at the door (start dialogue).
+        /// </summary>
+        public event Action<Character> OtherCharacterArrivingAtDoor;
+        /// <summary>
         /// Called when the player clicks on this character during the day (start dialogue).
         /// </summary>
         public event Action<Character> SpokenTo;
 
-        #region Individual Days
         /// <summary>
-        /// Called when the player clicks on this character during day 0 (start dialogue).
+        /// Called when the player clicks on this character during the scavenging stage (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay0;
+        public event Action<Character> SendingToScavenge;
         /// <summary>
-        /// Called when the player clicks on this character during day 1 (start dialogue).
+        /// Called when the player clicks on this character during the overcrowding stage (start dialogue).
         /// </summary>
-        public event Action<Character> OnSpokenToDay1;
-        /// <summary>
-        /// Called when the player clicks on this character during day 2 (start dialogue).
-        /// </summary>
-        public event Action<Character> OnSpokenToDay2;
-        /// <summary>
-        /// Called when the player clicks on this character during day 3 (start dialogue).
-        /// </summary>
-        public event Action<Character> OnSpokenToDay3;
-        /// <summary>
-        /// Called when the player clicks on this character during day 4 (start dialogue).
-        /// </summary>
-        public event Action<Character> OnSpokenToDay4;
-        /// <summary>
-        /// Called when the player clicks on this character during day 5 (start dialogue).
-        /// </summary>
-        public event Action<Character> OnSpokenToDay5;
-        /// <summary>
-        /// Called when the player clicks on this character during day 6 (start dialogue).
-        /// </summary>
-        public event Action<Character> OnSpokenToDay6;
-        /// <summary>
-        /// Called when the player clicks on this character during day 7 (start dialogue).
-        /// </summary>
-        public event Action<Character> OnSpokenToDay7;
-        #endregion
+        public event Action<Character> TryingToKickOut;
 
 
         // ============ Constants ============
@@ -112,9 +92,26 @@ namespace BeyondTheDoor
         public Character(CharacterID id)
         {
             ID = id;
-            Name = id.ToString(); // Can be changed later
+            Reset();
+        }
+
+        // We can't just recreate all the characters because they have old references in Character.___
+        private void Reset()
+        {
+            Name = ID.ToString(); // Can be changed later
             Status = CharacterStatus.NotMet;
             HistoryEvents = new List<CharacterHistoryEvent>();
+
+            ResetEvents();
+        }
+
+        private void ResetEvents()
+        {
+            ArrivingAtDoor = null;
+            OtherCharacterArrivingAtDoor = null;
+            SpokenTo = null;
+            SendingToScavenge = null;
+            TryingToKickOut = null;
         }
 
 
@@ -141,36 +138,35 @@ namespace BeyondTheDoor
         public void OnArrivingAtDoor()
         {
             ArrivingAtDoor?.Invoke(this);
-            if (Introduction != null)
-                Introduction.Open();
-            else
-                throw new NullReferenceException($"Character ({ID}) has no Introduction! Please set it through code.");
+            //if (Introduction != null)
+            //    Introduction.Open();
+            //else
+            //    throw new NullReferenceException($"Character ({ID}) has no Introduction! Please set it through code.");
         }
 
         /// <summary>
-        /// Call this when the player wants to speak to this character
+        /// Call this when the player wants to speak to this character (during any stage)
         /// </summary>
         public void OnSelected()
         {
-            SpokenTo?.Invoke(this);
-            InvokeIndividualDayOnSpokenTo();
-        }
-
-        private void InvokeIndividualDayOnSpokenTo()
-        {
-            // Yuck
-            // I reaaally want to make an array of these but I can't :(
-            switch (Day.DayNumber)
+            switch (Day.Stage)
             {
-                case 0: OnSpokenToDay0?.Invoke(this); break;
-                case 1: OnSpokenToDay1?.Invoke(this); break;
-                case 2: OnSpokenToDay2?.Invoke(this); break;
-                case 3: OnSpokenToDay3?.Invoke(this); break;
-                case 4: OnSpokenToDay4?.Invoke(this); break;
-                case 5: OnSpokenToDay5?.Invoke(this); break;
-                case 6: OnSpokenToDay6?.Invoke(this); break;
-                case 7: OnSpokenToDay7?.Invoke(this); break;
-                default: break;
+                case Stage.SpeakingWithParty:
+                    SpokenTo?.Invoke(this);
+                    break;
+                case Stage.SendingScavengers:
+                    SendingToScavenge?.Invoke(this);
+                    break;
+                case Stage.FixingOvercrowding:
+                    TryingToKickOut?.Invoke(this);
+                    break;
+                case Stage.RadioLoreTime:
+                    break;
+                case Stage.DealingWithArrival:
+                    OtherCharacterArrivingAtDoor?.Invoke(this);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -189,13 +185,8 @@ namespace BeyondTheDoor
         /// </summary>
         public static void ResetAll()
         {
-            Dictionary<CharacterID, Character> newChars = new Dictionary<CharacterID, Character>();
-
-            // Recreate them all
             foreach (Character c in All.Values)
-                newChars.Add(c.ID, new Character(c.ID));
-
-            All = newChars;
+                c.Reset();
         }
     }
 
@@ -208,6 +199,8 @@ namespace BeyondTheDoor
         ScavengingDefenseless,
         ScavengingWithShotgun,
         AliveAtBorder,
+        KickedOut,
+        Left, // Used for Dad
         DeadWhileScavenging,
         KilledByBear,
         Kidnapped,

@@ -16,6 +16,20 @@ namespace BeyondTheDoor
         public static Line test_0_dont_use_caps_in_ids { get; private set; } = new Line(CharacterID.Test, "Let me ask you something...", "idk something can go here", 0, LineID.test_0_dont_use_caps_in_ids, LineStatus.Draft, VoiceStatus.Placeholder, "Can");
         public static Line test_0_q_questions_have_a_q_first { get; private set; } = new Line(CharacterID.Test, "Did I ever tell you the definition... Of insanity?", "Export: Save as Text (tab delimited)", 0, LineID.test_0_q_questions_have_a_q_first, LineStatus.Final, VoiceStatus.Draft, "Go");
         public static Line test_0_main_chars_only_use_one_letter { get; private set; } = new Line(CharacterID.Test, "Dialogue is so cool.", "I got nothin", 0, LineID.test_0_main_chars_only_use_one_letter, LineStatus.Draft, VoiceStatus.Placeholder, "Here");
+        public static Line none_chardefine { get; private set; } = new Line(CharacterID.None, "Character Define", "Used to generate Character IDs", 0, LineID.none_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line player_chardefine { get; private set; } = new Line(CharacterID.Player, "Character Define", "^^^ before they have any lines", 0, LineID.player_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line tutmom_chardefine { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Character Define", "Used to generate Character IDs", 0, LineID.tutmom_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line tutdad_chardefine { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Character Define", "^^^ before they have any lines", 0, LineID.tutdad_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line j_chardefine { get; private set; } = new Line(CharacterID.Jessica, "Character Define", "Used to generate Character IDs", 0, LineID.j_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line b_chardefine { get; private set; } = new Line(CharacterID.Bob, "Character Define", "^^^ before they have any lines", 0, LineID.b_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line v_chardefine { get; private set; } = new Line(CharacterID.Violet, "Character Define", "Used to generate Character IDs", 0, LineID.v_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line h_chardefine { get; private set; } = new Line(CharacterID.Hal, "Character Define", "^^^ before they have any lines", 0, LineID.h_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line s_chardefine { get; private set; } = new Line(CharacterID.Sal, "Character Define", "Used to generate Character IDs", 0, LineID.s_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line dad_chardefine { get; private set; } = new Line(CharacterID.Dad, "Character Define", "^^^ before they have any lines", 0, LineID.dad_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line bear_chardefine { get; private set; } = new Line(CharacterID.Bear, "Character Define", "Used to generate Character IDs", 0, LineID.bear_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line raiders_chardefine { get; private set; } = new Line(CharacterID.Raiders, "Character Define", "^^^ before they have any lines", 0, LineID.raiders_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line neighbour_chardefine { get; private set; } = new Line(CharacterID.Neighbour, "Character Define", "Used to generate Character IDs", 0, LineID.neighbour_chardefine, LineStatus.None, VoiceStatus.None, "");
+        public static Line journalist_chardefine { get; private set; } = new Line(CharacterID.Journalist, "Character Define", "^^^ before they have any lines", 0, LineID.journalist_chardefine, LineStatus.None, VoiceStatus.None, "");
         public static Line player_yes { get; private set; } = new Line(CharacterID.Player, "Yes", "Basic prompts that are used often", 0, LineID.player_yes, LineStatus.Final, VoiceStatus.None, "");
         public static Line player_no { get; private set; } = new Line(CharacterID.Player, "No", "", 0, LineID.player_no, LineStatus.Final, VoiceStatus.None, "");
         public static Line player_open_door { get; private set; } = new Line(CharacterID.Player, "Open Door", "", 0, LineID.player_open_door, LineStatus.Final, VoiceStatus.None, "");
@@ -23,11 +37,13 @@ namespace BeyondTheDoor
         public static Line tutmom_0_wake_up { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Wake up sunshine...  you fell asleep while playing games.", "First line of tutorial", 0, LineID.tutmom_0_wake_up, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutmom_0_going_ice_cream { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Me and your Dad are going to get some ice cream.", "", 0, LineID.tutmom_0_going_ice_cream, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutdad_0_q_ice_cream { get; private set; } = new Line(CharacterID.Tutorial_Dad, "What flavour of ice cream do you want?", "First question", 0, LineID.tutdad_0_q_ice_cream, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_0_vanilla { get; private set; } = new Line(CharacterID.Player, "Vanilla", "Player choices", 0, LineID.p_0_vanilla, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_0_chocolate { get; private set; } = new Line(CharacterID.Player, "Chocolate", "Player choices", 0, LineID.p_0_chocolate, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_0_strawberry { get; private set; } = new Line(CharacterID.Player, "Strawberry", "Player choices", 0, LineID.p_0_strawberry, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line player_0_vanilla { get; private set; } = new Line(CharacterID.Player, "Vanilla", "Player choices", 0, LineID.player_0_vanilla, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line player_0_chocolate { get; private set; } = new Line(CharacterID.Player, "Chocolate", "Player choices", 0, LineID.player_0_chocolate, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line player_0_strawberry { get; private set; } = new Line(CharacterID.Player, "Strawberry", "Player choices", 0, LineID.player_0_strawberry, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutdad_0_question_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Okay, we won't take long.", "Response to player choice", 0, LineID.tutdad_0_question_response, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutdad_0_where_are_keys { get; private set; } = new Line(CharacterID.Tutorial_Dad, "(To Mom) Have you seen where the car keys are?", "", 0, LineID.tutdad_0_where_are_keys, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutdad_0_looking_for_keys { get; private set; } = new Line(CharacterID.Tutorial_Dad, "I don't know where we left them...", "If you try to talk to them before finding keys", 0, LineID.tutdad_0_looking_for_keys, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutmom_0_looking_for_keys { get; private set; } = new Line(CharacterID.Tutorial_Mom, "I could've swore they were around here somewhere!", "If you try to talk to them before finding keys", 0, LineID.tutmom_0_looking_for_keys, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutdad_0_scavenge_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Thank you kiddo...  see you soon.", "Being sent out to scavenge", 0, LineID.tutdad_0_scavenge_response, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutmom_0_at_door { get; private set; } = new Line(CharacterID.Tutorial_Mom, "We're back!", "At door", 0, LineID.tutmom_0_at_door, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutmom_0_q_open_door { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Hey kiddo, can you open the door please? It's raining out here... ", "", 0, LineID.tutmom_0_q_open_door, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -44,6 +60,20 @@ namespace BeyondTheDoor
             { LineID.test_0_dont_use_caps_in_ids, test_0_dont_use_caps_in_ids },
             { LineID.test_0_q_questions_have_a_q_first, test_0_q_questions_have_a_q_first },
             { LineID.test_0_main_chars_only_use_one_letter, test_0_main_chars_only_use_one_letter },
+            { LineID.none_chardefine, none_chardefine },
+            { LineID.player_chardefine, player_chardefine },
+            { LineID.tutmom_chardefine, tutmom_chardefine },
+            { LineID.tutdad_chardefine, tutdad_chardefine },
+            { LineID.j_chardefine, j_chardefine },
+            { LineID.b_chardefine, b_chardefine },
+            { LineID.v_chardefine, v_chardefine },
+            { LineID.h_chardefine, h_chardefine },
+            { LineID.s_chardefine, s_chardefine },
+            { LineID.dad_chardefine, dad_chardefine },
+            { LineID.bear_chardefine, bear_chardefine },
+            { LineID.raiders_chardefine, raiders_chardefine },
+            { LineID.neighbour_chardefine, neighbour_chardefine },
+            { LineID.journalist_chardefine, journalist_chardefine },
             { LineID.player_yes, player_yes },
             { LineID.player_no, player_no },
             { LineID.player_open_door, player_open_door },
@@ -51,11 +81,13 @@ namespace BeyondTheDoor
             { LineID.tutmom_0_wake_up, tutmom_0_wake_up },
             { LineID.tutmom_0_going_ice_cream, tutmom_0_going_ice_cream },
             { LineID.tutdad_0_q_ice_cream, tutdad_0_q_ice_cream },
-            { LineID.p_0_vanilla, p_0_vanilla },
-            { LineID.p_0_chocolate, p_0_chocolate },
-            { LineID.p_0_strawberry, p_0_strawberry },
+            { LineID.player_0_vanilla, player_0_vanilla },
+            { LineID.player_0_chocolate, player_0_chocolate },
+            { LineID.player_0_strawberry, player_0_strawberry },
             { LineID.tutdad_0_question_response, tutdad_0_question_response },
             { LineID.tutdad_0_where_are_keys, tutdad_0_where_are_keys },
+            { LineID.tutdad_0_looking_for_keys, tutdad_0_looking_for_keys },
+            { LineID.tutmom_0_looking_for_keys, tutmom_0_looking_for_keys },
             { LineID.tutdad_0_scavenge_response, tutdad_0_scavenge_response },
             { LineID.tutmom_0_at_door, tutmom_0_at_door },
             { LineID.tutmom_0_q_open_door, tutmom_0_q_open_door },

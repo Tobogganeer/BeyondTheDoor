@@ -88,6 +88,16 @@ public static class Settings
         {
             Debug.LogWarning("Error reading settings (using defaults): " + ex);
         }
+        finally
+        {
+            // Set the values to themselves to apply to the audiomanager and gui
+            MasterVolume = MasterVolume;
+            SfxVolume = SfxVolume;
+            AmbientVolume = AmbientVolume;
+            MusicVolume = MusicVolume;
+            DialogueVolume = DialogueVolume;
+            TextSpeed = TextSpeed;
+        }
     }
 
 

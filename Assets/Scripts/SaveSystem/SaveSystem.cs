@@ -20,12 +20,13 @@ namespace BeyondTheDoor.SaveSystem
         /// </summary>
         /// <param name="state"></param>
         /// <param name="saveSlot"></param>
-        public static void Save(SaveState state, uint saveSlot)
+        public static ByteBuffer Save(SaveState state, uint saveSlot)
         {
             ByteBuffer buf = new ByteBuffer();
             buf.Add((byte)Version);
             state.AddDataTo(buf);
             SaveBuffer(buf, saveSlot);
+            return buf;
         }
 
         /// <summary>
@@ -33,14 +34,13 @@ namespace BeyondTheDoor.SaveSystem
         /// </summary>
         /// <param name="saveSlot"></param>
         /// <returns></returns>
-        public static SaveState Load(uint saveSlot)
+        public static SaveState Load(uint saveSlot, bool playTutorialIfNotFound = false)
         {
             // Don't let us try to load a non-existent save file
             if (!SaveExists(saveSlot))
             {
                 SaveState emptyState = new SaveState();
-                // TODO: Support tutorial mode
-                emptyState.SaveEmptyState(false);
+                emptyState.SaveEmptyState(playTutorialIfNotFound);
                 // Save this slot so we can use it later
                 Save(emptyState, saveSlot);
                 // Load the file as normal now

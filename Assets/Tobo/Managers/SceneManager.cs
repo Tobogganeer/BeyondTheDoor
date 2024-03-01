@@ -6,30 +6,19 @@ using Scene = UnityEngine.SceneManagement.Scene;
 
 public class SceneManager : MonoBehaviour
 {
-    public static SceneManager instance;
-    public static Level CurrentLevel = Level.MainMenu;
+    public static Level CurrentLevel { get; private set; } = Level.MainMenu;
 
     private void Awake()
     {
-        if (instance == null) instance = this;
-
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        transform.SetParent(null);
-        DontDestroyOnLoad(gameObject);
-
         scenes.Clear();
 
         foreach (InspectorLevel level in levels)
             scenes.Add(level.level, level.scene);
     }
 
+    [SerializeField] private InspectorLevel[] levels;
+
     private static Dictionary<Level, string> scenes = new Dictionary<Level, string>();
-    public InspectorLevel[] levels;
 
     public static void LoadLevel(Level level)
     {
