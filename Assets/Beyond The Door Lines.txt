@@ -40,6 +40,8 @@ Player	Chocolate	Player choices	0	player_0_chocolate	Placeholder	None
 Player	Strawberry	Player choices	0	player_0_strawberry	Placeholder	None	
 Tutorial_Dad	"Okay, we won't take long."	Response to player choice	0	tutdad_0_question_response	Placeholder	None	
 Tutorial_Dad	(To Mom) Have you seen where the car keys are?		0	tutdad_0_where_are_keys	Placeholder	None	
+Tutorial_Dad	I don't know where we left them...	If you try to talk to them before finding keys	0	tutdad_0_looking_for_keys	Placeholder	None	
+Tutorial_Mom	I could've swore they were around here somewhere!	If you try to talk to them before finding keys	0	tutmom_0_looking_for_keys	Placeholder	None	
 Tutorial_Dad	Thank you kiddo...  see you soon.	Being sent out to scavenge	0	tutdad_0_scavenge_response	Placeholder	None	
 Tutorial_Mom	We're back!	At door	0	tutmom_0_at_door	Placeholder	None	
 Tutorial_Mom	"Hey kiddo, can you open the door please? It's raining out here... "		0	tutmom_0_q_open_door	Placeholder	None	

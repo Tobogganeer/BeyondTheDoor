@@ -42,6 +42,8 @@ namespace BeyondTheDoor
         public static Line player_0_strawberry { get; private set; } = new Line(CharacterID.Player, "Strawberry", "Player choices", 0, LineID.player_0_strawberry, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutdad_0_question_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Okay, we won't take long.", "Response to player choice", 0, LineID.tutdad_0_question_response, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutdad_0_where_are_keys { get; private set; } = new Line(CharacterID.Tutorial_Dad, "(To Mom) Have you seen where the car keys are?", "", 0, LineID.tutdad_0_where_are_keys, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutdad_0_looking_for_keys { get; private set; } = new Line(CharacterID.Tutorial_Dad, "I don't know where we left them...", "If you try to talk to them before finding keys", 0, LineID.tutdad_0_looking_for_keys, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line tutmom_0_looking_for_keys { get; private set; } = new Line(CharacterID.Tutorial_Mom, "I could've swore they were around here somewhere!", "If you try to talk to them before finding keys", 0, LineID.tutmom_0_looking_for_keys, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutdad_0_scavenge_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Thank you kiddo...  see you soon.", "Being sent out to scavenge", 0, LineID.tutdad_0_scavenge_response, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutmom_0_at_door { get; private set; } = new Line(CharacterID.Tutorial_Mom, "We're back!", "At door", 0, LineID.tutmom_0_at_door, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tutmom_0_q_open_door { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Hey kiddo, can you open the door please? It's raining out here... ", "", 0, LineID.tutmom_0_q_open_door, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -84,6 +86,8 @@ namespace BeyondTheDoor
             { LineID.player_0_strawberry, player_0_strawberry },
             { LineID.tutdad_0_question_response, tutdad_0_question_response },
             { LineID.tutdad_0_where_are_keys, tutdad_0_where_are_keys },
+            { LineID.tutdad_0_looking_for_keys, tutdad_0_looking_for_keys },
+            { LineID.tutmom_0_looking_for_keys, tutmom_0_looking_for_keys },
             { LineID.tutdad_0_scavenge_response, tutdad_0_scavenge_response },
             { LineID.tutmom_0_at_door, tutmom_0_at_door },
             { LineID.tutmom_0_q_open_door, tutmom_0_q_open_door },

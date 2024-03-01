@@ -27,8 +27,8 @@ public class TutorialInit : DayBehaviour<TutorialInit>
     protected override void Initialize()
     {
         // If you talk to them they'll just ask you where the keys are (does nothing)
-        //Character.Tutorial_Mom.SpokenTo += (mom) => Line.Get(momLookingForKeys)?.Open();
-        //Character.Tutorial_Dad.SpokenTo += (mom) => Line.Get(dadLookingForKeys)?.Open();
+        Character.Tutorial_Mom.SpokenTo += (mom) => Line.tutmom_0_looking_for_keys.Open();
+        Character.Tutorial_Dad.SpokenTo += (dad) => Line.tutdad_0_looking_for_keys.Open();
 
         // Clicking either character has the same result
         Character.Tutorial_Mom.SendingToScavenge += SendToScavenge;
@@ -36,7 +36,7 @@ public class TutorialInit : DayBehaviour<TutorialInit>
 
         Character.Tutorial_Mom.ArrivingAtDoor += ArrivingAtDoor;
 
-        if (Day.DayNumber == Day.TutorialDay && Day.Stage == Stage.SpeakingWithParty)
+        if (Day.Stage == Stage.SpeakingWithParty)
         {
             // We just started the tutorial - add the mom and dad to the cabin
             Character.Tutorial_Mom.ChangeStatus(CharacterStatus.InsideCabin);

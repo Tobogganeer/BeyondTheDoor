@@ -40,6 +40,8 @@ namespace BeyondTheDoor
         player_0_strawberry = -1068718804,
         tutdad_0_question_response = -1801491490,
         tutdad_0_where_are_keys = 110554687,
+        tutdad_0_looking_for_keys = 352578126,
+        tutmom_0_looking_for_keys = 1617217136,
         tutdad_0_scavenge_response = 1919378140,
         tutmom_0_at_door = 1363488676,
         tutmom_0_q_open_door = -1273586947,
