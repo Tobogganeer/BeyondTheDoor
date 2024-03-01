@@ -28,10 +28,12 @@ namespace BeyondTheDoor
         /// A list of events that have happened to this character
         /// </summary>
         public List<CharacterHistoryEvent> HistoryEvents { get; set; }
+        /*
         /// <summary>
         /// The first thing this Character says at the door
         /// </summary>
         public IDialogueElement Introduction { get; set; }
+        */
 
 
         // ============ Useful Properties ============
@@ -90,9 +92,26 @@ namespace BeyondTheDoor
         public Character(CharacterID id)
         {
             ID = id;
-            Name = id.ToString(); // Can be changed later
+            Reset();
+        }
+
+        // We can't just recreate all the characters because they have old references in Character.___
+        private void Reset()
+        {
+            Name = ID.ToString(); // Can be changed later
             Status = CharacterStatus.NotMet;
             HistoryEvents = new List<CharacterHistoryEvent>();
+
+            ResetEvents();
+        }
+
+        private void ResetEvents()
+        {
+            ArrivingAtDoor = null;
+            OtherCharacterArrivingAtDoor = null;
+            SpokenTo = null;
+            SendingToScavenge = null;
+            TryingToKickOut = null;
         }
 
 
@@ -119,10 +138,10 @@ namespace BeyondTheDoor
         public void OnArrivingAtDoor()
         {
             ArrivingAtDoor?.Invoke(this);
-            if (Introduction != null)
-                Introduction.Open();
-            else
-                throw new NullReferenceException($"Character ({ID}) has no Introduction! Please set it through code.");
+            //if (Introduction != null)
+            //    Introduction.Open();
+            //else
+            //    throw new NullReferenceException($"Character ({ID}) has no Introduction! Please set it through code.");
         }
 
         /// <summary>
@@ -166,13 +185,8 @@ namespace BeyondTheDoor
         /// </summary>
         public static void ResetAll()
         {
-            Dictionary<CharacterID, Character> newChars = new Dictionary<CharacterID, Character>();
-
-            // Recreate them all
             foreach (Character c in All.Values)
-                newChars.Add(c.ID, new Character(c.ID));
-
-            All = newChars;
+                c.Reset();
         }
     }
 
