@@ -8,9 +8,9 @@ using BeyondTheDoor;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <remarks>Basically wraps <seealso cref="Game"/> callbacks.</remarks>
-public abstract class InitBehaviour<T> : MonoBehaviour
+public abstract class DayBehaviour<T> : MonoBehaviour
 {
-    private static InitBehaviour<T> instance;
+    private static DayBehaviour<T> instance;
 
     private int day;
 

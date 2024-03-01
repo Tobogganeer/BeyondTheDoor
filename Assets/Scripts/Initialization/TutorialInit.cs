@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BeyondTheDoor;
 
-public class TutorialInit : InitBehaviour<TutorialInit>
+public class TutorialInit : DayBehaviour<TutorialInit>
 {
     public Conversation wakeUpConvo;
 
