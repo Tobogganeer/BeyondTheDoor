@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using BeyondTheDoor.SaveSystem;
 using BeyondTheDoor;
+using UnityEngine.UI;
 
 public class SavesMenu : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class SavesMenu : MonoBehaviour
 
     [Space]
     public GameObject emptySlotInfo;
+    public Toggle playTutorialToggle;
 
     [Space]
     public GameObject deleteConfirmWindow;
@@ -71,7 +73,7 @@ public class SavesMenu : MonoBehaviour
     public void LoadCurrentSave()
     {
         // Loads the current save or starts a new one
-        SaveState save = SaveSystem.Load(currentSlot);
+        SaveState save = SaveSystem.Load(currentSlot, playTutorialToggle.isOn);
 
         // This is the last slot we've played
         SaveSystem.SaveLastPlayedSaveSlot(currentSlot);
