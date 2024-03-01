@@ -15,4 +15,4 @@ MonoBehaviour:
   lines: de6b9f943fee9606
   choices: []
   OnStarted: {fileID: 0}
-  OnFinished: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
+  OnFinished: {fileID: 0}

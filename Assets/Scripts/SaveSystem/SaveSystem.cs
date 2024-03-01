@@ -20,12 +20,13 @@ namespace BeyondTheDoor.SaveSystem
         /// </summary>
         /// <param name="state"></param>
         /// <param name="saveSlot"></param>
-        public static void Save(SaveState state, uint saveSlot)
+        public static ByteBuffer Save(SaveState state, uint saveSlot)
         {
             ByteBuffer buf = new ByteBuffer();
             buf.Add((byte)Version);
             state.AddDataTo(buf);
             SaveBuffer(buf, saveSlot);
+            return buf;
         }
 
         /// <summary>

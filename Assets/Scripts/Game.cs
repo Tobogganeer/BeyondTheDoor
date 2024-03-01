@@ -147,10 +147,10 @@ public class Game : MonoBehaviour
             // Save the state after we switch stages (but before changing scenes)
             SaveState currentState = new SaveState();
             currentState.SaveCurrentState();
-            SaveSystem.Save(currentState, currentSaveSlot);
+            ByteBuffer savedBuf = SaveSystem.Save(currentState, currentSaveSlot);
 
             // Load the new day (resets state)
-            Begin(currentState, currentSaveSlot);
+            Begin(new SaveState(savedBuf), currentSaveSlot);
             //LoadStage(Day.Stage);
         }
     }

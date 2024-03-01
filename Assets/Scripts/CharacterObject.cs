@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BeyondTheDoor;
-using UnityEngine.EventSystems;
 
-public class CharacterObject : MonoBehaviour, IPointerUpHandler
+public class CharacterObject : MonoBehaviour
 {
     public CharacterID character;
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnMouseUp()
     {
         Character.All[character].OnSelected();
     }
