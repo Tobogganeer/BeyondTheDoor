@@ -6,8 +6,6 @@ using BeyondTheDoor;
 public class TutorialInit : InitBehaviour<TutorialInit>
 {
     public Conversation wakeUpConvo;
-    public LineID momLookingForKeys;
-    public LineID dadLookingForKeys;
 
     [Space]
     public Conversation cyaLaterConvo;
@@ -15,12 +13,21 @@ public class TutorialInit : InitBehaviour<TutorialInit>
     [Space]
     public Conversation arrivingConvo;
 
-    protected override void GameStart()
-    {
-        // If you talk to them they'll just ask you where the keys are
-        Character.Tutorial_Mom.SpokenTo += (mom) => Line.Get(momLookingForKeys)?.Open();
-        Character.Tutorial_Dad.SpokenTo += (mom) => Line.Get(dadLookingForKeys)?.Open();
+    [Space]
+    public ConversationCallback activateJokeEnding;
 
+    protected override void RegisterConversationCallbacks()
+    {
+        activateJokeEnding.Callback += ActivateJokeEnding;
+    }
+
+    protected override void Initialize()
+    {
+        // If you talk to them they'll just ask you where the keys are (does nothing)
+        //Character.Tutorial_Mom.SpokenTo += (mom) => Line.Get(momLookingForKeys)?.Open();
+        //Character.Tutorial_Dad.SpokenTo += (mom) => Line.Get(dadLookingForKeys)?.Open();
+
+        // Clicking either character has the same result
         Character.Tutorial_Mom.SendingToScavenge += SendToScavenge;
         Character.Tutorial_Dad.SendingToScavenge += SendToScavenge;
 
@@ -36,6 +43,18 @@ public class TutorialInit : InitBehaviour<TutorialInit>
         }
     }
 
+    protected override void DoorOpened()
+    {
+        // The mom will automatically have the status set, the dad will not
+        Character.Tutorial_Dad.ChangeStatus(CharacterStatus.InsideCabin);
+    }
+
+    protected override void DoorLeftClosed()
+    {
+        // The mom will automatically have the status set, the dad will not
+        Character.Tutorial_Dad.ChangeStatus(CharacterStatus.LeftOutside);
+    }
+
     private void SendToScavenge(Character momOrDad)
     {
         cyaLaterConvo.Start();
@@ -44,5 +63,13 @@ public class TutorialInit : InitBehaviour<TutorialInit>
     private void ArrivingAtDoor(Character mom)
     {
         arrivingConvo.Start();
+    }
+
+
+    private void ActivateJokeEnding(Conversation convo, LineID line)
+    {
+        // TODO: Actually activate ending
+        Debug.Log("Joke ending silly");
+        Game.ExitToMenu();
     }
 }
