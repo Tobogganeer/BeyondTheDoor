@@ -6424,8 +6424,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wakeUpConvo: {fileID: 11400000, guid: 011044a72cadd714da6e89d34957ea84, type: 2}
-  momLookingForKeys: 0
-  dadLookingForKeys: 0
+  cyaLaterConvo: {fileID: 11400000, guid: ac2516a085ede054488e430313fa7ea1, type: 2}
+  arrivingConvo: {fileID: 11400000, guid: 67a02acaa109581459587c61be0f2f5d, type: 2}
+  activateJokeEnding: {fileID: 11400000, guid: 3c286f018d00bfd40a31428c9540939f, type: 2}
 --- !u!4 &2027103834
 Transform:
   m_ObjectHideFlags: 0

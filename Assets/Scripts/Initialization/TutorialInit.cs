@@ -6,14 +6,8 @@ using BeyondTheDoor;
 public class TutorialInit : DayBehaviour<TutorialInit>
 {
     public Conversation wakeUpConvo;
-
-    [Space]
     public Conversation cyaLaterConvo;
-
-    [Space]
     public Conversation arrivingConvo;
-
-    [Space]
     public ConversationCallback activateJokeEnding;
 
 

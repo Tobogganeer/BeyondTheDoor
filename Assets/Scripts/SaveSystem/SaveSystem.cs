@@ -40,7 +40,7 @@ namespace BeyondTheDoor.SaveSystem
             {
                 SaveState emptyState = new SaveState();
                 // TODO: Support tutorial mode
-                emptyState.SaveEmptyState(false);
+                emptyState.SaveEmptyState(true);
                 // Save this slot so we can use it later
                 Save(emptyState, saveSlot);
                 // Load the file as normal now

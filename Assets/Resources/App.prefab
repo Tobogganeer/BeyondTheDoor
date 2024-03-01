@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: -2199389829717027695}
   - component: {fileID: 3387363760288231107}
   - component: {fileID: -9045745168459478293}
+  - component: {fileID: -4411511646512016402}
   m_Layer: 0
   m_Name: App
   m_TagString: Untagged
@@ -196,6 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   advanceCallback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
+  openDoorCallback: {fileID: 11400000, guid: 5acfab5c786a53846bd0c9a7f9814e55, type: 2}
+  leaveDoorClosedCallback: {fileID: 11400000, guid: ca63835b13df52c4d90007edbc25d2d3, type: 2}
   onInitialize:
     m_PersistentCalls:
       m_Calls: []
@@ -208,6 +211,28 @@ MonoBehaviour:
   onNewDayStarted:
     m_PersistentCalls:
       m_Calls: []
+  onGameExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onDoorOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  onDoorLeftClosed:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-4411511646512016402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420169551764057506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350c2d7e3f2f2d1488a86b943f812c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuScene: MainMenu
 --- !u!1 &2598026140404002207
 GameObject:
   m_ObjectHideFlags: 0

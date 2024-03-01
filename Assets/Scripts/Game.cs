@@ -120,6 +120,7 @@ public class Game : MonoBehaviour
         currentSaveSlot = saveSlot;
 
         OnInitialize?.Invoke();
+        Debug.Log("Initialized: Day " + Day.DayNumber + ", stage " + Day.Stage);
         // Change scenes
         LoadStage(Day.Stage);
     }
