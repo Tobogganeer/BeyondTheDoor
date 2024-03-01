@@ -30,7 +30,7 @@ public class TutorialInit : DayBehaviour<TutorialInit>
 
         Character.Tutorial_Mom.ArrivingAtDoor += ArrivingAtDoor;
 
-        if (Day.Stage == Stage.SpeakingWithParty)
+        if (Stage == Stage.SpeakingWithParty)
         {
             // We just started the tutorial - add the mom and dad to the cabin
             Character.Tutorial_Mom.ChangeStatus(CharacterStatus.InsideCabin);

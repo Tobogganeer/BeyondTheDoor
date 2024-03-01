@@ -12,7 +12,10 @@ public abstract class DayBehaviour<T> : MonoBehaviour
 {
     private static DayBehaviour<T> instance;
 
-    private int day;
+    protected int DayNumber { get; private set; }
+    protected Stage Stage => Day.Stage;
+
+
 
     private void Awake()
     {
@@ -28,7 +31,7 @@ public abstract class DayBehaviour<T> : MonoBehaviour
             return;
         }
 
-        day = GetDay();
+        DayNumber = GetDay();
     }
 
     private void Start()
@@ -40,13 +43,13 @@ public abstract class DayBehaviour<T> : MonoBehaviour
 
     private void AddGameCallbacks()
     {
-        Game.OnInitialize.AddListener(() => { if (Day.DayNumber == day) Initialize(); });
-        Game.OnStageChanged.AddListener(() => { if (Day.DayNumber == day) StageChanged(); });
-        Game.OnStageLoaded.AddListener(() => { if (Day.DayNumber == day) StageLoaded(); });
+        Game.OnInitialize.AddListener(() => { if (Day.DayNumber == DayNumber) Initialize(); });
+        Game.OnStageChanged.AddListener(() => { if (Day.DayNumber == DayNumber) StageChanged(); });
+        Game.OnStageLoaded.AddListener(() => { if (Day.DayNumber == DayNumber) StageLoaded(); });
         //Game.OnNewDayStarted.AddListener(NewDayStarted);
-        Game.OnGameExit.AddListener(() => { if (Day.DayNumber == day) GameExit(); });
-        Game.OnDoorOpened.AddListener(() => { if (Day.DayNumber == day) DoorOpened(); });
-        Game.OnDoorLeftClosed.AddListener(() => { if (Day.DayNumber == day) DoorLeftClosed(); });
+        Game.OnGameExit.AddListener(() => { if (Day.DayNumber == DayNumber) GameExit(); });
+        Game.OnDoorOpened.AddListener(() => { if (Day.DayNumber == DayNumber) DoorOpened(); });
+        Game.OnDoorLeftClosed.AddListener(() => { if (Day.DayNumber == DayNumber) DoorLeftClosed(); });
     }
 
 
