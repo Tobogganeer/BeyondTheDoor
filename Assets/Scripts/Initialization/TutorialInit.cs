@@ -16,6 +16,9 @@ public class TutorialInit : InitBehaviour<TutorialInit>
     [Space]
     public ConversationCallback activateJokeEnding;
 
+
+    protected override int GetDay() => 0;
+
     protected override void RegisterConversationCallbacks()
     {
         activateJokeEnding.Callback += ActivateJokeEnding;

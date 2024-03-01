@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BeyondTheDoor;
 
 /// <summary>
-/// Used to initialize pieces of the dialogue system.
+/// Used to initialize pieces of the dialogue system for a specific day.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-/// <remarks>Basically wraps <seealso cref="Game"/> callbacks</remarks>
+/// <remarks>Basically wraps <seealso cref="Game"/> callbacks.</remarks>
 public abstract class InitBehaviour<T> : MonoBehaviour
 {
     private static InitBehaviour<T> instance;
+
+    private int day;
 
     private void Awake()
     {
@@ -24,6 +27,8 @@ public abstract class InitBehaviour<T> : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        day = GetDay();
     }
 
     private void Start()
@@ -35,15 +40,21 @@ public abstract class InitBehaviour<T> : MonoBehaviour
 
     private void AddGameCallbacks()
     {
-        Game.OnInitialize.AddListener(Initialize);
-        Game.OnStageChanged.AddListener(StageChanged);
-        Game.OnStageLoaded.AddListener(StageLoaded);
-        Game.OnNewDayStarted.AddListener(NewDayStarted);
-        Game.OnGameExit.AddListener(GameExit);
-        Game.OnDoorOpened.AddListener(DoorOpened);
-        Game.OnDoorLeftClosed.AddListener(DoorLeftClosed);
+        Game.OnInitialize.AddListener(() => { if (Day.DayNumber == day) Initialize(); });
+        Game.OnStageChanged.AddListener(() => { if (Day.DayNumber == day) StageChanged(); });
+        Game.OnStageLoaded.AddListener(() => { if (Day.DayNumber == day) StageLoaded(); });
+        //Game.OnNewDayStarted.AddListener(NewDayStarted);
+        Game.OnGameExit.AddListener(() => { if (Day.DayNumber == day) GameExit(); });
+        Game.OnDoorOpened.AddListener(() => { if (Day.DayNumber == day) DoorOpened(); });
+        Game.OnDoorLeftClosed.AddListener(() => { if (Day.DayNumber == day) DoorLeftClosed(); });
     }
 
+
+    /// <summary>
+    /// Override and return the day that this init should be used for.
+    /// </summary>
+    /// <returns></returns>
+    protected abstract int GetDay();
 
     /// <summary>
     /// Called only once when application is started.
@@ -52,7 +63,7 @@ public abstract class InitBehaviour<T> : MonoBehaviour
     protected virtual void RegisterConversationCallbacks() { }
 
     /// <summary>
-    /// Called after a save file is loaded but before the stage is loaded.
+    /// Called for this day before each stage is loaded.
     /// </summary>
     /// <remarks>Initialize lines and character callbacks here.</remarks>
     protected abstract void Initialize();
@@ -64,20 +75,22 @@ public abstract class InitBehaviour<T> : MonoBehaviour
     /// Called after the game's stage is changed and loaded.
     /// </summary>
     protected virtual void StageLoaded() { }
+    /*
     /// <summary>
     /// Called when a new day is started but before it is loaded.
     /// </summary>
     protected virtual void NewDayStarted() { }
+    */
     /// <summary>
-    /// Called when returning to the main menu but before the game is unloaded.
+    /// Called when returning to the main menu from this day, but before the game is unloaded.
     /// </summary>
     protected virtual void GameExit() { }
     /// <summary>
-    /// Called when the door is opened, after the character's state is changed.
+    /// Called when the door is opened on this day, after the character's state is changed.
     /// </summary>
     protected virtual void DoorOpened() { }
     /// <summary>
-    /// Called when the door is kept closed, after the character's state is changed.
+    /// Called when the door is kept closed on this day, after the character's state is changed.
     /// </summary>
     protected virtual void DoorLeftClosed() { }
 

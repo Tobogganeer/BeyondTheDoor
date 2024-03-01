@@ -149,8 +149,9 @@ public class Game : MonoBehaviour
             currentState.SaveCurrentState();
             SaveSystem.Save(currentState, currentSaveSlot);
 
-            // Load the new day
-            LoadStage(Day.Stage);
+            // Load the new day (resets state)
+            Begin(currentState, currentSaveSlot);
+            //LoadStage(Day.Stage);
         }
     }
 

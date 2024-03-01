@@ -73,41 +73,6 @@ namespace BeyondTheDoor
         /// </summary>
         public event Action<Character> SpokenTo;
 
-        #region Individual Days
-        /// <summary>
-        /// Called when the player clicks on this character during day 0 (start dialogue).
-        /// </summary>
-        public event Action<Character> SpokenToDay0;
-        /// <summary>
-        /// Called when the player clicks on this character during day 1 (start dialogue).
-        /// </summary>
-        public event Action<Character> SpokenToDay1;
-        /// <summary>
-        /// Called when the player clicks on this character during day 2 (start dialogue).
-        /// </summary>
-        public event Action<Character> SpokenToDay2;
-        /// <summary>
-        /// Called when the player clicks on this character during day 3 (start dialogue).
-        /// </summary>
-        public event Action<Character> SpokenToDay3;
-        /// <summary>
-        /// Called when the player clicks on this character during day 4 (start dialogue).
-        /// </summary>
-        public event Action<Character> SpokenToDay4;
-        /// <summary>
-        /// Called when the player clicks on this character during day 5 (start dialogue).
-        /// </summary>
-        public event Action<Character> SpokenToDay5;
-        /// <summary>
-        /// Called when the player clicks on this character during day 6 (start dialogue).
-        /// </summary>
-        public event Action<Character> SpokenToDay6;
-        /// <summary>
-        /// Called when the player clicks on this character during day 7 (start dialogue).
-        /// </summary>
-        public event Action<Character> SpokenToDay7;
-        #endregion
-
         /// <summary>
         /// Called when the player clicks on this character during the scavenging stage (start dialogue).
         /// </summary>
@@ -169,7 +134,6 @@ namespace BeyondTheDoor
             {
                 case Stage.SpeakingWithParty:
                     SpokenTo?.Invoke(this);
-                    InvokeIndividualDayOnSpokenTo();
                     break;
                 case Stage.SendingScavengers:
                     SendingToScavenge?.Invoke(this);
@@ -184,24 +148,6 @@ namespace BeyondTheDoor
                     break;
                 default:
                     break;
-            }
-        }
-
-        private void InvokeIndividualDayOnSpokenTo()
-        {
-            // Yuck
-            // I reaaally want to make an array of these but I can't :(
-            switch (Day.DayNumber)
-            {
-                case 0: SpokenToDay0?.Invoke(this); break;
-                case 1: SpokenToDay1?.Invoke(this); break;
-                case 2: SpokenToDay2?.Invoke(this); break;
-                case 3: SpokenToDay3?.Invoke(this); break;
-                case 4: SpokenToDay4?.Invoke(this); break;
-                case 5: SpokenToDay5?.Invoke(this); break;
-                case 6: SpokenToDay6?.Invoke(this); break;
-                case 7: SpokenToDay7?.Invoke(this); break;
-                default: break;
             }
         }
 
