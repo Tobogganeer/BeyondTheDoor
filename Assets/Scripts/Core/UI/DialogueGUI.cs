@@ -41,6 +41,7 @@ namespace BeyondTheDoor.UI
         public static bool HasLine => CurrentLine != null;
         public static bool HasChoices => CurrentChoices != null;
         public static bool AtEndOfLine => HasLine && Current.revealedLength >= Current.formattedLineText.Length;
+        public static bool IsOpen => HasLine;
 
         // Intended to be used for audio VVV
         /// <summary>

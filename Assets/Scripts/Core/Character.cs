@@ -199,6 +199,8 @@ namespace BeyondTheDoor
         ScavengingDefenseless,
         ScavengingWithShotgun,
         AliveAtBorder,
+        KickedOut,
+        Left, // Used for Dad
         DeadWhileScavenging,
         KilledByBear,
         Kidnapped,
