@@ -148,6 +148,7 @@ public class Game : MonoBehaviour
             SaveState currentState = new SaveState();
             currentState.SaveCurrentState();
             ByteBuffer savedBuf = SaveSystem.Save(currentState, currentSaveSlot);
+            savedBuf.Read<byte>(); // Skip over the version number
 
             // Load the new day (resets state)
             Begin(new SaveState(savedBuf), currentSaveSlot);
