@@ -29,7 +29,7 @@ namespace BeyondTheDoor.SaveSystem
         public SaveState(ByteBuffer savedData)
         {
             this.data = savedData;
-            SaveTime = new DateTime(savedData.Read<long>(), DateTimeKind.Local);
+            SaveTime = new DateTime(savedData.Read<long>());
             GameDay = savedData.Read<int>();
             GameStage = savedData.Read<Stage>();
         }
