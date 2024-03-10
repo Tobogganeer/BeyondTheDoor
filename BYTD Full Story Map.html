@@ -17,7 +17,21 @@ This one leads to [[d#_afternoon]] if you have too many people.
 Otherwise it goes to the [[d#_evening]].</tw-passagedata><tw-passagedata pid="3" name="d#_afternoon" tags="" position="425,2800" size="100,100">Now you need to fix overcrowding (if applicable).
 Leads into [[d#_evening]].</tw-passagedata><tw-passagedata pid="4" name="d#_evening" tags="" position="500,2950" size="100,100">Here you can get some lore. Listen to the radio, watch the TV, take stock of supplies.
 Then comes [[d#_door]].</tw-passagedata><tw-passagedata pid="5" name="d#_door" tags="" position="650,2950" size="100,100">Now you decide who comes in and out.
-Let&#39;s get started with [[d0_morning]]</tw-passagedata><tw-passagedata pid="6" name="d0_morning" tags="" position="950,2950" size="100,100">This is a tutorial section. The player wakes up as a kid in the past and can talk with their parents.
+The player can take a few actions with whatever is outside:
+- Look through peephole (shows view and a description)
+- Ask questions
+- Stay silent
+- Make decision (revealed after taking at least one action, let in/leave outside)
+
+They can ask the following questions:
+- &quot;Who are you?&quot;
+- &quot;What do you want?&quot;
+- &quot;Why should I let you in?&quot;
+- &quot;How can you be helpful to me?&quot;
+
+If the player lets the person/thing in, they can talk for a bit (if applicable).
+
+The tutorial starts with [[d0_morning]], and the game starts with [[d1_morning]]</tw-passagedata><tw-passagedata pid="6" name="d0_morning" tags="" position="950,2950" size="100,100">This is a tutorial section. The player wakes up as a kid in the past and can talk with their parents.
 They will make a choice of which flavour they prefer to learn how the dialogue and choices work.
 The game will move to [[d0_noon]].
 
@@ -64,14 +78,203 @@ DAD
 Thanks kiddo, now lets eat some ice cream!
 </tw-passagedata><tw-passagedata pid="10" name="d1_morning" tags="" position="1550,2950" size="100,100">This is the first level of the actual game.
 The player awakes to the sound of explosions (as if coming to).
-There isn&#39;t much to do apart from look around the cabin and move onto [[d1_evening]]</tw-passagedata><tw-passagedata pid="11" name="end_joke" tags="" position="1250,3550" size="100,100">This is what happens when they lock their parents out for the entire time.</tw-passagedata><tw-passagedata pid="12" name="d1_evening" tags="" position="1700,2950" size="100,100">Here is where the player will get their first taste of lore.
+There isn&#39;t much to do apart from look around the cabin and move onto [[d1_evening]]
+
+
+Player wakes up with distant sound of explosions
+
+PLAYER
+Uuuuugh. If the sound continues I will have to hide again under the bed
+
+PLAYER
+Another dream huh, what can I do for today
+
+PLAYER can choose to interact with some objects
+
+Check food ration
+
+PLAYER
+I think I have enough food for the next days if, I hope the war doesn&#39;t reach this are of the city
+
+Check outside
+
+PLAYER
+I only see snow and ash outside, I hope the heater doesnt give up on me, that would be my downfall
+
+</tw-passagedata><tw-passagedata pid="11" name="end_joke" tags="" position="1250,3550" size="100,100">This is what happens when they lock their parents out for the entire time.</tw-passagedata><tw-passagedata pid="12" name="d1_evening" tags="" position="1700,2950" size="100,100">Here is where the player will get their first taste of lore.
 The TV will talk about the ongoing war and the weather.
 The radio will pelt out about warnings and government news.
-Then comes the first knock with [[d1_door]]</tw-passagedata><tw-passagedata pid="13" name="d1_door" tags="" position="1850,2950" size="100,100">Here is where Jessica arrives.
+Then comes the first knock with [[d1_door]]
+
+
+Check radio
+
+RADIO
+The war continues on Brasnia Republic, it has been one week since the war started, United States send more weapons to revolutionaries, multiple industries are leaving the country, afraid of being involved with any side of the war. So far the only hope for some is leaving for Canada as they are the only ones accepting refugees.
+
+Check television
+
+TV
+LOOK FOR SHELTER, DONT LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING.</tw-passagedata><tw-passagedata pid="13" name="d1_door" tags="" position="1850,2950" size="100,100">Here is where Jessica arrives.
 The player can let Jessica in, talk with her a bit, and move onto [[d2_morning_j]]
 OR
 Keep her locked outside and move to [[d2_morning_alone]]
-</tw-passagedata><tw-passagedata pid="14" name="d2_morning_j" tags="" position="2150,3100" size="100,100">The player can do their normal thingies and also talk to Jessica.
+
+
+
+Player is in front of the campfire
+
+Player is offered some choices but none of them are actually useful as all of them lead to Jessica knocking on the door
+
+Knock on the door
+
+UNKNOWN (Jessica)
+Hello? Is there anyone there? Its cold here outside
+
+Player can either approach the door to look trough the peephole and talk or just stay far
+
+If stayed far
+
+UNKNOWN (JESSICA)
+Hey! Im pleading to be let in, I can survive out here in a wheel chair
+
+Player can either approach the door to look trough the peephole and talk or continue to stay far and then Jessica will leave
+
+If player chooses to talk to Jessica or look trough the peephole
+
+Player
+(Talking in their head)
+I can&#39;t see anything beyond a shape, it looks like I can see small, and a wheel, maybe two
+
+If player chooses to talk to Jessica they can use the dialog choices under
+
+PLAYER
+Who are you? What do you want?
+
+JESSICA
+(name is revelaed now )
+
+My name is Jessica, Im just looking for shelter, I can&#39;t stay out here for long, I cant go very further because of my wheelchair
+
+PLAYER
+Why should I let you in?
+
+JESSICA
+There&#39;s not much reason apart from your kindness, I know I can&#39;t help much because of my condition but I&#39;m scared, please help me
+
+PLAYER
+How can you be helpful to me?
+
+JESSICA
+I cant help you much because of my wheelchair but I can just help by being someone that you can talk to.
+
+PLAYER
+Have you ever been here before, where did you come from?
+
+JESSICA
+I&#39;ve from a city nearby. I used to live in a big house before but after the war started I had to escape the city, I took the refugee train to leave the city before it was shut down due to the destruction of the lines.
+
+Player after making the question can chose to either let person in or not
+
+Letting person out
+
+PLAYER
+Sorry I cant let you in, I don&#39;t have enough resources ( lie)
+
+JESSICA
+That&#39;s horrible, but at least you tried, I will go now, goodbye
+
+OR
+
+PLAYER
+Sorry, I cant let you in, I don&#39;t trust you
+
+JESSICA
+Is there anything more I can say to change your mind?
+
+PLAYER
+Yes ( go back to questions)
+
+Or
+
+No
+
+JESSICA
+I&#39;m sad but I can understand where you&#39;re coming from. Goodbye.
+
+OR
+
+PLAYER
+*stay silent*
+
+JESSICA
+Hello? Oh, I see how it is then
+
+Player can opt to let Jessica in
+
+PLAYER
+Okay, take three step back, I&#39;m going to open the door
+
+JESSICA
+Thank you so much
+
+Door opens
+
+JESSICA
+Thank you so much, really thank you so much
+
+PLAYER
+Okay you can get in, you should warm up a bit.
+
+JESSICA
+You&#39;re probably right
+
+Player can choose to leave Jessica and go to sleep or talk a bit with her
+
+PLAYER
+*sits near her* So for how long have you been out there?
+
+JESSICA
+For around a day, I was able to take the last train that was going for the airport nearby, but after the airport was attacked, we were left helpless in the station.
+
+JESSICA
+Some of the soldiers apprehended some of the people of the station but I was able to flee so I&#39;ve romamed a for some hours until I found the cabin, I was probably going to die if it wasnt for you
+
+PLAYER
+Those are some horrible news, were they the govermnet soldiers or the revolunaries?
+
+JESSICA
+It was the government, they were afraid of some of the words getting out, some people are fleeing the country trough airports.
+
+PLAYER
+Weren&#39;t the airports closed?
+
+JESSICA
+They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country
+
+Player can ask if they want to talk about politics or about Jessicas past
+
+PLAYER
+Can you tell me a bit about your past?
+
+OR
+
+PLAYER
+Which of the two sides do you trust more ?
+
+JESSICA
+I feel Im not too confortable talking about that
+
+PLAYER
+I feel like it is better for us to get some rest, you can use the first bedroom in the hallway.
+
+JESSICA
+Ok, thank you very much, see you tomorrow.
+
+If player chose to not talk to Jessica the player will say
+
+PLAYER
+I feel like it is better for us to get some rest, you can use the first bedroom in the hallway.</tw-passagedata><tw-passagedata pid="14" name="d2_morning_j" tags="" position="2150,3100" size="100,100">The player can do their normal thingies and also talk to Jessica.
 They will chit-chat a bit and talk about scavenging and the ethics of it.
 Move on to [[d2_noon_j]]</tw-passagedata><tw-passagedata pid="15" name="d2_morning_alone" tags="" position="2150,2800" size="100,100">This is pretty similar to the first day being alone.
 The player moves along to [[d2_evening_alone]]</tw-passagedata><tw-passagedata pid="16" name="d2_evening_alone" tags="" position="2300,2800" size="100,100">Similar to day 1, you can listen to the radio, tv, etc.
