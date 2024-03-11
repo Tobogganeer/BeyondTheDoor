@@ -236,6 +236,7 @@ namespace BeyondTheDoor.UI
 
             currentLine = null;
             currentChoices = null;
+            Character.Current = null;
         }
 
         private void _Next()

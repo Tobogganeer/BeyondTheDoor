@@ -94,6 +94,7 @@ namespace BeyondTheDoor
         public void Open()
         {
             timesOpened++;
+            Character.Current = Character.All[character];
             OnOpen?.Invoke(this);
             UI.DialogueGUI.Open(this);
         }
@@ -162,6 +163,7 @@ namespace BeyondTheDoor
             // If not just stop the dialogue
             else
                 UI.DialogueGUI.Close();
+
             OnClose?.Invoke(this);
         }
 

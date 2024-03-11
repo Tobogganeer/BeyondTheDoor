@@ -87,6 +87,12 @@ namespace BeyondTheDoor
 
         // ============ Constants ============
         static readonly string UnknownCharacterName = "(Unknown)";
+        
+
+        /// <summary>
+        /// The character that is currently being talked to.
+        /// </summary>
+        public static Character Current { get; set; }
 
 
         public Character(CharacterID id)
@@ -152,17 +158,21 @@ namespace BeyondTheDoor
             switch (Day.Stage)
             {
                 case Stage.SpeakingWithParty:
+                    Current = this;
                     SpokenTo?.Invoke(this);
                     break;
                 case Stage.SendingScavengers:
+                    Current = this;
                     SendingToScavenge?.Invoke(this);
                     break;
                 case Stage.FixingOvercrowding:
+                    Current = this;
                     TryingToKickOut?.Invoke(this);
                     break;
                 case Stage.RadioLoreTime:
                     break;
                 case Stage.DealingWithArrival:
+                    Current = this;
                     OtherCharacterArrivingAtDoor?.Invoke(this);
                     break;
                 default:
