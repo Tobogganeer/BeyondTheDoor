@@ -102,8 +102,8 @@ namespace BeyondTheDoor
             {
                 for (int i = 0; i < _linesBacking.Count - 1; i++)
                     _linesBacking[i].Then(_linesBacking[i + 1]);
-                // Make the last one lead to the choices
-                _linesBacking[_linesBacking.Count - 1].Then(Choices);
+                // Make the last one lead to the choices/next convo (can't use ?? here)
+                _linesBacking[_linesBacking.Count - 1].Then(nextConversation == null ? Choices : nextConversation);
             }
         }
 
