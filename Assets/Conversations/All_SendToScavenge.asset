@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: All_SendToScavenge
   m_EditorClassIdentifier: 
   lines: 
-  choices: []
+  nextConversation: {fileID: 0}
+  choices:
+  - prompt: -1795097779
+    nextConversation: {fileID: 0}
+    callback: {fileID: 11400000, guid: a97ebf4be4da3094c80aca7a247ed0d8, type: 2}
+  - prompt: 714585806
+    nextConversation: {fileID: 0}
+    callback: {fileID: 0}
   OnStarted: {fileID: 0}
   OnFinished: {fileID: 0}

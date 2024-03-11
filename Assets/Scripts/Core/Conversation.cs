@@ -10,6 +10,7 @@ namespace BeyondTheDoor
     {
         // TODO: Add ConversationCallbacks to each line? May not be needed due to Line.OnOpen, but still
         [SerializeField] internal List<LineID> lines;
+        [SerializeField] internal Conversation nextConversation;
         [SerializeField] internal List<ConversationChoice> choices;
 
         //private List<Line> _linesBacking;
