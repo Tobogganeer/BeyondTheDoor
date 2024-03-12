@@ -20,6 +20,8 @@ public class Game : MonoBehaviour
     [SerializeField] private ConversationCallback advanceCallback;
     [SerializeField] private ConversationCallback openDoorCallback;
     [SerializeField] private ConversationCallback leaveDoorClosedCallback;
+    [SerializeField] private ConversationCallback addToScavengePartyCallback;
+    [SerializeField] private ConversationCallback removeFromScavengePartyCallback;
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
@@ -61,6 +63,7 @@ public class Game : MonoBehaviour
     public static Character ArrivingCharacter => CharacterArrivalOrder[DayNumber];
     public static int DayNumber => Day.DayNumber;
     public static Stage Stage => Day.Stage;
+    public static List<Character> ScavengeParty { get; private set; } = new List<Character>();
 
     /// <summary>
     /// Called after a save file is loaded but before the stage is loaded.
@@ -105,6 +108,10 @@ public class Game : MonoBehaviour
             openDoorCallback.Callback += (conv, line) => OpenDoor();
         if (leaveDoorClosedCallback != null)
             leaveDoorClosedCallback.Callback += (conv, line) => LeaveDoorClosed();
+        if (addToScavengePartyCallback != null)
+            addToScavengePartyCallback.Callback += (conv, line) => AddToScavengeParty(Character.Current);
+        if (removeFromScavengePartyCallback != null)
+            removeFromScavengePartyCallback.Callback += (conv, line) => RemoveFromScavengeParty(Character.Current);
     }
 
 
@@ -203,6 +210,18 @@ public class Game : MonoBehaviour
     {
         ArrivingCharacter.ChangeStatus(CharacterStatus.LeftOutside);
         OnDoorLeftClosed?.Invoke();
+    }
+
+    public static void AddToScavengeParty(Character character)
+    {
+        if (character != null && !ScavengeParty.Contains(character))
+            ScavengeParty.Add(character);
+    }
+
+    public static void RemoveFromScavengeParty(Character character)
+    {
+        if (character != null && ScavengeParty.Contains(character))
+            ScavengeParty.Remove(character);
     }
 
 
