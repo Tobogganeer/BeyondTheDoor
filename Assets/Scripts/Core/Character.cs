@@ -24,6 +24,7 @@ namespace BeyondTheDoor
         /// The current status of this Character
         /// </summary>
         public CharacterStatus Status { get; private set; }
+        public CharacterStatus LastStatus => HistoryEvents.Count > 0 ? HistoryEvents[HistoryEvents.Count - 1].OldStatus : Status;
         /// <summary>
         /// A list of events that have happened to this character
         /// </summary>
@@ -59,6 +60,8 @@ namespace BeyondTheDoor
         /// </summary>
         public bool DoorDecisionMade => Status > CharacterStatus.AtDoor;
         public bool InsideCabin => Status == CharacterStatus.InsideCabin;
+        public bool JustReturnedFromScavenging => LastStatus == CharacterStatus.ScavengingWithShotgun ||
+            LastStatus == CharacterStatus.ScavengingDefenseless;
 
 
         // ============ Dialogue Events ============
