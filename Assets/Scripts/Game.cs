@@ -139,18 +139,13 @@ public class Game : MonoBehaviour
     {
         if (CanAdvance())
         {
-            Day.Stage = GetNextStage();
-            // Wrap around if we went to the next morning
-            if (Stage == Stage.SpeakingWithParty)
-            {
-                Day.StartDay(DayNumber + 1);
-                OnNewDayStarted?.Invoke();
-            }
-            else if (Stage == Stage.DealingWithArrival)
-            {
-                // Make the character "arrive"
-                ArrivingCharacter.ChangeStatus(CharacterStatus.AtDoor);
-            }
+            // Execute stage-specific behaviour
+            Stage next = GetNextStage();
+            BeforeLoadNewStage(Stage, next);
+
+            Day.Stage = next;
+
+            OnLoadNewStage();
 
             // Save the state after we switch stages (but before changing scenes)
             SaveState currentState = new SaveState();
@@ -190,6 +185,47 @@ public class Game : MonoBehaviour
         }
 
         throw new InvalidProgramException("Tried to check advancement on some goofy state that doesn't exist?");
+    }
+
+    private static void BeforeLoadNewStage(Stage current, Stage next)
+    {
+        switch (current)
+        {
+            case Stage.SpeakingWithParty:
+                break;
+            case Stage.SendingScavengers:
+                break;
+            case Stage.FixingOvercrowding:
+                break;
+            case Stage.RadioLoreTime:
+                break;
+            case Stage.DealingWithArrival:
+                break;
+        }
+    }
+
+    private static void OnLoadNewStage()
+    {
+        switch (Stage)
+        {
+            case Stage.SpeakingWithParty:
+                // Wrap around if we went to the next morning
+                Day.StartDay(DayNumber + 1);
+                OnNewDayStarted?.Invoke();
+                break;
+            case Stage.SendingScavengers:
+                break;
+            case Stage.FixingOvercrowding:
+                // See what happened to the scavengers
+                DetermineScavengerFates();
+                break;
+            case Stage.RadioLoreTime:
+                break;
+            case Stage.DealingWithArrival:
+                // Make the character "arrive"
+                ArrivingCharacter.ChangeStatus(CharacterStatus.AtDoor);
+                break;
+        }
     }
 
     /*
@@ -268,6 +304,58 @@ public class Game : MonoBehaviour
             ScavengeParty.Remove(character);
     }
 
+    /// <summary>
+    /// Sends out the current scavenging party.
+    /// </summary>
+    /// <param name="withShotgun"></param>
+    public static void SendToScavenge(bool withShotgun)
+    {
+        // Only allow the shotgun if it's in the cabin
+        bool sendingShotgun = withShotgun && Cabin.HasShotgun;
+        if (ScavengeParty.Count > 0)
+        {
+            // Remove the shotgun from the cabin
+            if (sendingShotgun)
+                Cabin.HasShotgun = false;
+
+            // Send all scavengers out
+            foreach (Character scavenger in ScavengeParty)
+                scavenger.ChangeStatus(sendingShotgun ? CharacterStatus.ScavengingWithShotgun : CharacterStatus.ScavengingDefenseless);
+        }
+    }
+
+    private static void DetermineScavengerFates()
+    {
+        if (ScavengeParty.Count < 0)
+            return;
+
+        // Kill Jessica if she is alone
+        if (ScavengeParty.Count == 1 && ScavengeParty[0] == Character.Jessica)
+        {
+            // RIP bozo you will not be missed
+            Character.Jessica.ChangeStatus(CharacterStatus.DeadWhileScavenging);
+        }
+        else
+        {
+            // Return the shotgun if they had it
+            if (ScavengeParty[0].Status == CharacterStatus.ScavengingWithShotgun)
+                Cabin.HasShotgun = true;
+
+            Cabin.HasScavengedSuccessfully = true;
+
+            // Welcome back valued party members
+            foreach (Character scavenger in ScavengeParty)
+            {
+                scavenger.ChangeStatus(CharacterStatus.InsideCabin);
+                // Violet gets the car
+                if (scavenger == Character.Violet)
+                    Cabin.HasCar = true;
+            }
+        }
+
+        ScavengeParty.Clear();
+    }
+
 
     public static void ExitToMenu()
     {
@@ -286,7 +374,7 @@ public class Game : MonoBehaviour
         Stage.FixingOvercrowding => Level.Afternoon,
         Stage.RadioLoreTime => Level.Evening,
         Stage.DealingWithArrival => Level.Door,
-        _ => throw new NotImplementedException("Invalid stage: " + stage)
+        _ => throw new ArgumentException("Invalid stage: " + stage)
     };
 }
 
