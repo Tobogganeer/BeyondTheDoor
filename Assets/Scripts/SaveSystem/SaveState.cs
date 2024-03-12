@@ -101,6 +101,7 @@ namespace BeyondTheDoor.SaveSystem
         {
             data.Add(Cabin.HasShotgun);
             data.Add(Cabin.HasCar);
+            data.Add(Cabin.HasScavengedSuccessfully);
         }
 
         private void SaveCharacters()
@@ -148,6 +149,7 @@ namespace BeyondTheDoor.SaveSystem
         {
             Cabin.HasShotgun = data.Read<bool>();
             Cabin.HasCar = data.Read<bool>();
+            Cabin.HasScavengedSuccessfully = data.Read<bool>();
         }
 
         private void LoadCharacters()

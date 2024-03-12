@@ -10,6 +10,9 @@ namespace BeyondTheDoor
 
         public static bool HasShotgun { get; set; } = true;
         public static bool HasCar { get; set; } = false;
+        public static bool HasScavengedSuccessfully { get; set; } = false;
+
+        public static bool IsAlone => NumCurrentPartyMembers() == 0;
 
 
 

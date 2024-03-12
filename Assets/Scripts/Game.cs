@@ -63,6 +63,7 @@ public class Game : MonoBehaviour
     public static Character ArrivingCharacter => CharacterArrivalOrder[DayNumber];
     public static int DayNumber => Day.DayNumber;
     public static Stage Stage => Day.Stage;
+    public static bool Alone => Cabin.IsAlone;
     public static List<Character> ScavengeParty { get; private set; } = new List<Character>();
 
     /// <summary>
@@ -138,14 +139,14 @@ public class Game : MonoBehaviour
     {
         if (CanAdvance())
         {
-            Day.Stage++;
-            // Wrap around if we went too far
-            if (Day.Stage > Stage.DealingWithArrival)
+            Day.Stage = GetNextStage();
+            // Wrap around if we went to the next morning
+            if (Stage == Stage.SpeakingWithParty)
             {
-                Day.StartDay(Day.DayNumber + 1);
+                Day.StartDay(DayNumber + 1);
                 OnNewDayStarted?.Invoke();
             }
-            else if (Day.Stage == Stage.DealingWithArrival)
+            else if (Stage == Stage.DealingWithArrival)
             {
                 // Make the character "arrive"
                 ArrivingCharacter.ChangeStatus(CharacterStatus.AtDoor);
@@ -190,6 +191,49 @@ public class Game : MonoBehaviour
 
         throw new InvalidProgramException("Tried to check advancement on some goofy state that doesn't exist?");
     }
+
+    /*
+    private static Ending GetEndingIfAdvance()
+    {
+        // Uh oh, you might be starving
+        if (DayNumber == 5 && !Cabin.HasScavengedSuccessfully)
+        {
+            // You are all alone - no way to scavenge
+            if (Alone && Stage == Stage.SpeakingWithParty)
+                return Ending.Starve;
+            // You didn't send anyone to scavenge (or Jessica died) and it's the afternoon now
+            else if (Stage == Stage.FixingOvercrowding)
+                return Ending.Starve;
+        }
+        else if (DayNumber == Day.LastDay && Stage == Stage.DealingWithArrival)
+            return Ending.
+
+        return Ending.None;
+    }
+    */
+
+    private static Stage GetNextStage()
+    {
+        switch (Stage)
+        {
+            case Stage.SpeakingWithParty:
+                // Skip right to the end of the day if you are alone
+                return Alone ? Stage.RadioLoreTime : Stage.SendingScavengers;
+            case Stage.SendingScavengers:
+                bool peopleScavenging = ScavengeParty.Count > 0;
+                bool overcrowded = Cabin.NumCurrentPartyMembers() > 2;
+                return peopleScavenging || overcrowded ? Stage.FixingOvercrowding : Stage.RadioLoreTime;
+            case Stage.FixingOvercrowding:
+                return Stage.RadioLoreTime;
+            case Stage.RadioLoreTime:
+                return Stage.DealingWithArrival;
+            case Stage.DealingWithArrival:
+                return Stage.SpeakingWithParty;
+            default:
+                return Stage.SpeakingWithParty;
+        }
+    }
+
 
     private static void LoadStage(Stage stage)
     {
@@ -244,4 +288,37 @@ public class Game : MonoBehaviour
         Stage.DealingWithArrival => Level.Door,
         _ => throw new NotImplementedException("Invalid stage: " + stage)
     };
+}
+
+public enum Ending
+{
+    None,
+    /// <summary>
+    /// Failed to let your parents back in.
+    /// </summary>
+    JokeEnding,
+    /// <summary>
+    /// Killed by the bear.
+    /// </summary>
+    Bear,
+    /// <summary>
+    /// Didn't scavenge in time.
+    /// </summary>
+    Starve,
+    /// <summary>
+    /// Didn't have the resources to make it.
+    /// </summary>
+    DieOnWayToBorder,
+    /// <summary>
+    /// The dad and his son saved you.
+    /// </summary>
+    SavedByDad,
+    /// <summary>
+    /// You walked to the border successfully.
+    /// </summary>
+    ReachBorder,
+    /// <summary>
+    /// You drove to the border.
+    /// </summary>
+    DriveToBorder
 }
