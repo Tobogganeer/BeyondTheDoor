@@ -9,7 +9,7 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play BYTD Full Story Map.</tw-noscript></noscript></tw-story>
-<tw-storydata name="BYTD Full Story Map" startnode="1" creator="Twine" creator-version="2.8.1" format="Harlowe" format-version="3.3.8" ifid="A36AA0B0-2B0E-4DB3-98BD-890F5E5D9087" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="d#_morning" tags="" position="200,2950" size="100,100">This is where you talk with the party.
+<tw-storydata name="BYTD Full Story Map" startnode="1" creator="Twine" creator-version="2.8.1" format="Harlowe" format-version="3.3.8" ifid="A36AA0B0-2B0E-4DB3-98BD-890F5E5D9087" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="d#_morning" tags="" position="200,2950" size="100,100">This is where you talk with the party.
 You can also look around at some objects like the shotgun, supplies, etc.
 Leads to [[d#_noon]] if you have other folks around.
 Otherwise, it goes straight to the [[d#_evening]].</tw-passagedata><tw-passagedata pid="2" name="d#_noon" tags="" position="275,2800" size="100,100">Here you can send out some scavengers.
@@ -17,38 +17,645 @@ This one leads to [[d#_afternoon]] if you have too many people.
 Otherwise it goes to the [[d#_evening]].</tw-passagedata><tw-passagedata pid="3" name="d#_afternoon" tags="" position="425,2800" size="100,100">Now you need to fix overcrowding (if applicable).
 Leads into [[d#_evening]].</tw-passagedata><tw-passagedata pid="4" name="d#_evening" tags="" position="500,2950" size="100,100">Here you can get some lore. Listen to the radio, watch the TV, take stock of supplies.
 Then comes [[d#_door]].</tw-passagedata><tw-passagedata pid="5" name="d#_door" tags="" position="650,2950" size="100,100">Now you decide who comes in and out.
-Let&#39;s get started with [[d0_morning]]</tw-passagedata><tw-passagedata pid="6" name="d0_morning" tags="" position="950,2950" size="100,100">This is a tutorial section. The player wakes up as a kid in the past and can talk with their parents.
+The player can take a few actions with whatever is outside:
+- Look through peephole (shows view and a description)
+- Ask questions
+- Stay silent
+- Make decision (revealed after taking at least one action, let in/leave outside)
+
+They can ask the following questions:
+- &quot;Who are you?&quot;
+- &quot;What do you want?&quot;
+- &quot;Why should I let you in?&quot;
+- &quot;How can you be helpful to me?&quot;
+
+If the player lets the person/thing in, they can talk for a bit (if applicable).
+
+The tutorial starts with [[d0_morning]], and the game starts with [[d1_morning]]</tw-passagedata><tw-passagedata pid="6" name="d0_morning" tags="" position="950,2950" size="100,100">This is a tutorial section. The player wakes up as a kid in the past and can talk with their parents.
 They will make a choice of which flavour they prefer to learn how the dialogue and choices work.
-The game will move to [[d0_noon]].</tw-passagedata><tw-passagedata pid="7" name="d0_noon" tags="" position="1025,2825" size="100,100">Here the player learns about scavenging.
+The game will move to [[d0_noon]].
+
+Player wakes up with their parents poking them.
+
+MOM
+Wake up sunshine, you fell asleep while playing games, me and your dad are you going to get some ice cream
+
+DAD
+What flavour of ice cream do you want?
+
+Player chooses flavour( doesn&#39;t impact game at all)
+
+DAD
+Okay, we wont take long
+(Talking to mom)
+Have you seen where the car keys are?
+</tw-passagedata><tw-passagedata pid="7" name="d0_noon" tags="" position="1025,2825" size="100,100">Here the player learns about scavenging.
 They find their parents&#39; car keys and send them out to scavenge.
-The game move along to [[d0_evening]]</tw-passagedata><tw-passagedata pid="8" name="d0_evening" tags="" position="1100,2950" size="100,100">The player can now watch some TV or listen to the radio.
-There may or may not be some lore about the world here.
+The game move along to [[d0_evening]]
+
+Player finds key
+
+Now player has the option to give the key which will be marked as &quot;give key( send to scavange)&quot;
+
+DAD
+Thank you kiddo see you soon
+</tw-passagedata><tw-passagedata pid="8" name="d0_evening" tags="" position="1100,2950" size="100,100">The player can now watch some TV or listen to the radio.
+There may or may not be some lore about the world here - maybe the war starting?
 Then onto [[d0_door]]</tw-passagedata><tw-passagedata pid="9" name="d0_door" tags="" position="1250,2950" size="100,100">Here they learn about the door.
 The player&#39;s parents return back and must be let in.
 Letting them in will progress onto [[d1_morning]].
-If they repeatedly lock their parents out, they get the [[end_joke]].</tw-passagedata><tw-passagedata pid="10" name="d1_morning" tags="" position="1550,2950" size="100,100">This is the first level of the actual game.
+If they repeatedly lock their parents out, they get the [[end_joke]].
+
+
+Door knocks
+
+MOM
+We&#39;re back, hey kiddo can you open the door please? Its raining here outside
+
+Player opens the door ( story progresses) or doesnt open the door ( joke ending)
+
+DAD
+Thanks kiddo, now lets eat some ice cream!
+</tw-passagedata><tw-passagedata pid="10" name="d1_morning" tags="" position="1550,2950" size="100,100">This is the first level of the actual game.
 The player awakes to the sound of explosions (as if coming to).
-There isn&#39;t much to do apart from look around the cabin and move onto [[d1_evening]]</tw-passagedata><tw-passagedata pid="11" name="end_joke" tags="" position="1250,3550" size="100,100">This is what happens when they lock their parents out for the entire time.</tw-passagedata><tw-passagedata pid="12" name="d1_evening" tags="" position="1700,2950" size="100,100">Here is where the player will get their first taste of lore.
+There isn&#39;t much to do apart from look around the cabin and move onto [[d1_evening]]
+
+
+Player wakes up with distant sound of explosions
+
+PLAYER
+Uuuuugh. If the sound continues I will have to hide again under the bed
+
+PLAYER
+Another dream huh, what can I do for today
+
+PLAYER can choose to interact with some objects
+
+Check food ration
+
+PLAYER
+I think I have enough food for the next days if, I hope the war doesn&#39;t reach this are of the city
+
+Check outside
+
+PLAYER
+I only see snow and ash outside, I hope the heater doesnt give up on me, that would be my downfall
+
+</tw-passagedata><tw-passagedata pid="11" name="end_joke" tags="" position="1250,3550" size="100,100">This is what happens when they lock their parents out for the entire time.</tw-passagedata><tw-passagedata pid="12" name="d1_evening" tags="" position="1700,2950" size="100,100">Here is where the player will get their first taste of lore.
 The TV will talk about the ongoing war and the weather.
 The radio will pelt out about warnings and government news.
-Then comes the first knock with [[d1_door]]</tw-passagedata><tw-passagedata pid="13" name="d1_door" tags="" position="1850,2950" size="100,100">Here is where Jessica arrives.
+Then comes the first knock with [[d1_door]]
+
+
+Check radio
+
+RADIO
+The war continues on Brasnia Republic, it has been one week since the war started, United States send more weapons to revolutionaries, multiple industries are leaving the country, afraid of being involved with any side of the war. So far the only hope for some is leaving for Canada as they are the only ones accepting refugees.
+
+Check television
+
+TV
+LOOK FOR SHELTER, DONT LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING.</tw-passagedata><tw-passagedata pid="13" name="d1_door" tags="" position="1850,2950" size="100,100">Here is where Jessica arrives.
 The player can let Jessica in, talk with her a bit, and move onto [[d2_morning_j]]
 OR
 Keep her locked outside and move to [[d2_morning_alone]]
-</tw-passagedata><tw-passagedata pid="14" name="d2_morning_j" tags="" position="2150,3100" size="100,100">The player can do their normal thingies and also talk to Jessica.
+
+
+
+Player is in front of the campfire
+
+Player is offered some choices but none of them are actually useful as all of them lead to Jessica knocking on the door
+
+Knock on the door
+
+UNKNOWN (Jessica)
+Hello? Is there anyone there? Its cold here outside
+
+Player can either approach the door to look trough the peephole and talk or just stay far
+
+If stayed far
+
+UNKNOWN (JESSICA)
+Hey! Im pleading to be let in, I can survive out here in a wheel chair
+
+Player can either approach the door to look trough the peephole and talk or continue to stay far and then Jessica will leave
+
+If player chooses to talk to Jessica or look trough the peephole
+
+Player
+(Talking in their head)
+I can&#39;t see anything beyond a shape, it looks like I can see small, and a wheel, maybe two
+
+If player chooses to talk to Jessica they can use the dialog choices under
+
+PLAYER
+Who are you? What do you want?
+
+JESSICA
+(name is revelaed now )
+
+My name is Jessica, Im just looking for shelter, I can&#39;t stay out here for long, I cant go very further because of my wheelchair
+
+PLAYER
+Why should I let you in?
+
+JESSICA
+There&#39;s not much reason apart from your kindness, I know I can&#39;t help much because of my condition but I&#39;m scared, please help me
+
+PLAYER
+How can you be helpful to me?
+
+JESSICA
+I cant help you much because of my wheelchair but I can just help by being someone that you can talk to.
+
+PLAYER
+Have you ever been here before, where did you come from?
+
+JESSICA
+I&#39;ve from a city nearby. I used to live in a big house before but after the war started I had to escape the city, I took the refugee train to leave the city before it was shut down due to the destruction of the lines.
+
+Player after making the question can chose to either let person in or not
+
+Letting person out
+
+PLAYER
+Sorry I cant let you in, I don&#39;t have enough resources ( lie)
+
+JESSICA
+That&#39;s horrible, but at least you tried, I will go now, goodbye
+
+OR
+
+PLAYER
+Sorry, I cant let you in, I don&#39;t trust you
+
+JESSICA
+Is there anything more I can say to change your mind?
+
+PLAYER
+Yes ( go back to questions)
+
+Or
+
+No
+
+JESSICA
+I&#39;m sad but I can understand where you&#39;re coming from. Goodbye.
+
+OR
+
+PLAYER
+*stay silent*
+
+JESSICA
+Hello? Oh, I see how it is then
+
+Player can opt to let Jessica in
+
+PLAYER
+Okay, take three step back, I&#39;m going to open the door
+
+JESSICA
+Thank you so much
+
+Door opens
+
+JESSICA
+Thank you so much, really thank you so much
+
+PLAYER
+Okay you can get in, you should warm up a bit.
+
+JESSICA
+You&#39;re probably right
+
+Player can choose to leave Jessica and go to sleep or talk a bit with her
+
+PLAYER
+*sits near her* So for how long have you been out there?
+
+JESSICA
+For around a day, I was able to take the last train that was going for the airport nearby, but after the airport was attacked, we were left helpless in the station.
+
+JESSICA
+Some of the soldiers apprehended some of the people of the station but I was able to flee so I&#39;ve romamed a for some hours until I found the cabin, I was probably going to die if it wasnt for you
+
+PLAYER
+Those are some horrible news, were they the govermnet soldiers or the revolunaries?
+
+JESSICA
+It was the government, they were afraid of some of the words getting out, some people are fleeing the country trough airports.
+
+PLAYER
+Weren&#39;t the airports closed?
+
+JESSICA
+They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country
+
+Player can ask if they want to talk about politics or about Jessicas past
+
+PLAYER
+Can you tell me a bit about your past?
+
+OR
+
+PLAYER
+Which of the two sides do you trust more ?
+
+JESSICA
+I feel Im not too confortable talking about that
+
+PLAYER
+I feel like it is better for us to get some rest, you can use the first bedroom in the hallway.
+
+JESSICA
+Ok, thank you very much, see you tomorrow.
+
+If player chose to not talk to Jessica the player will say
+
+PLAYER
+I feel like it is better for us to get some rest, you can use the first bedroom in the hallway.</tw-passagedata><tw-passagedata pid="14" name="d2_morning_j" tags="" position="2150,3100" size="100,100">The player can do their normal thingies and also talk to Jessica.
 They will chit-chat a bit and talk about scavenging and the ethics of it.
-Move on to [[d2_noon_j]]</tw-passagedata><tw-passagedata pid="15" name="d2_morning_alone" tags="" position="2150,2800" size="100,100">This is pretty similar to the first day being alone.
-The player moves along to [[d2_evening_alone]]</tw-passagedata><tw-passagedata pid="16" name="d2_evening_alone" tags="" position="2300,2800" size="100,100">Similar to day 1, you can listen to the radio, tv, etc.
-Move on to [[d2_door_alone]]</tw-passagedata><tw-passagedata pid="17" name="d2_noon_j" tags="" position="2225,3225" size="100,100">Here the player can ask Jessica to scavenge. She will object, but you can force her to anyways.
+Move on to [[d2_noon_j]]
+
+
+Player wakes up and while Jessica didn&#39;t wake up yet
+
+The player can opt to do one of few things
+
+PLAYER can choose TWO objects to interact before Jessica wakes up.
+
+Check food ration
+
+PLAYER
+I have to see how long the food will last now that Jessica is around.
+
+Check outside
+
+PLAYER
+Still only white and gray from ash and snow
+
+Jessica wakes up
+
+JESSICA
+Good morning
+
+PLAYER
+Good morning. Are you feeling better?
+
+JESSICA
+Yes, thanks helping me
+
+OR
+
+PLAYER
+Good morning
+
+Either choices will lead to noon</tw-passagedata><tw-passagedata pid="15" name="d2_morning_alone" tags="" position="2150,2800" size="100,100">This is pretty similar to the first day being alone.
+The player moves along to [[d2_evening_alone]]
+
+The player can opt to do one of few things
+
+Check food ration
+
+PLAYER
+I have to see how long the food will last.
+
+Check outside
+
+PLAYER
+Still only white and gray from ash and snow</tw-passagedata><tw-passagedata pid="16" name="d2_evening_alone" tags="" position="2300,2800" size="100,100">Similar to day 1, you can listen to the radio, tv, etc.
+Move on to [[d2_door_alone]]
+
+
+Check radio
+
+RADIO
+25 dead after revolutionaries attempted to send hijack airplanes for refugees to flee the country, the only resources coming to the country are trough air drops and direct sent to the military outposts.
+
+Check television
+
+TV
+LOOK FOR SHELTER, DON&#39;T LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING. THOSE ARE RUNNING LOW ON SUPPLIES OR HAVE INJURIES SHOULD IMMEDIATELY SEEK A MILITARY OUTPOST.</tw-passagedata><tw-passagedata pid="17" name="d2_noon_j" tags="" position="2225,3225" size="100,100">Here the player can ask Jessica to scavenge. She will object, but you can force her to anyways.
 If you send her, she will perish, moving you to [[d2_evening_alone]].
-If you don&#39;t send her, you will move to [[d2_evening_j]]</tw-passagedata><tw-passagedata pid="18" name="d2_evening_j" tags="" position="2300,3100" size="100,100">Similar to day 1, you can listen to the radio, tv, etc. Maybe Jessica will have some input...
-Then comes [[d2_door_j]]</tw-passagedata><tw-passagedata pid="19" name="d2_door_j" tags="" position="2450,3100" size="100,100">Bob arrives at the door. Jessica will urge the player to open it and see who needs help.
+If you don&#39;t send her, you will move to [[d2_evening_j]]
+
+
+PLAYER
+I don&#39;t know for how long the supplies will last. For it to work out we probably will need one of us to go out there to search for supplies
+
+JESSICA
+Are you sure about that? Isn&#39;t it better for us to wait until we absolutely need to?
+
+JESSICA
+I feel like that would be stealing and some other people out there might need it more than us
+
+PLAYER
+You&#39;re probably right, we can wait a bit further until we have to resort to scavenge.
+
+OR
+
+PLAYER
+Its either us or they, we don&#39;t know if there are many survives nearby as well, in the end it might just be pillaged by raiders or by soldiers themselves. I think it would be a good idea for you you to scavenge today (send her to scavenge)
+
+JESSICA
+
+I&#39;m against it, I&#39;m almost the supplies will last for a long while, I can&#39;t steal knowing some people out there might need it more than us.
+
+PLAYER
+You&#39;re the one who is currently living with me, if you want to survive you will need to collaborate
+
+JESSICA
+Im only going because you&#39;re the one who saved me
+
+Player can opt to give her the weapon or not
+
+She will die any ways and the gun will be lost
+
+After sending her to scavenge there will be a time skip
+
+If she is sent to scavenge
+
+PLAYER
+It already past 2 hours the time we scheduled for her to come back, she probably died
+
+If not they both just went to rest more
+</tw-passagedata><tw-passagedata pid="18" name="d2_evening_j" tags="" position="2300,3100" size="100,100">Similar to day 1, you can listen to the radio, tv, etc. Maybe Jessica will have some input...
+Then comes [[d2_door_j]]
+
+
+Check radio
+
+RADIO
+25 dead after revolutionaries attempted to send hijack airplanes for refugees to flee the country, the only resources coming to the country are trough air drops and direct sent to the military outposts.
+
+Check television
+
+TV
+LOOK FOR SHELTER, DON&#39;T LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING. THOSE ARE RUNNING LOW ON SUPPLIES OR HAVE INJURIES SHOULD IMMEDIATELY SEEK A MILITARY OUTPOST.</tw-passagedata><tw-passagedata pid="19" name="d2_door_j" tags="" position="2450,3100" size="100,100">Bob arrives at the door. Jessica will urge the player to open it and see who needs help.
 The player can let Bob in, talk with him a bit and move to [[d3_morning_jb]]
 OR
-Keep him locked outside, upsetting Jessica slightly and moving to [[d3_morning_j]]</tw-passagedata><tw-passagedata pid="20" name="d2_door_alone" tags="" position="2450,2800" size="100,100">Bob arrives at the door.
+Keep him locked outside, upsetting Jessica slightly and moving to [[d3_morning_j]]
+
+
+Knock on the door
+
+JESSICA
+You should check it out, what if its someone who needs help?
+
+PLAYER can choose to ignore or not
+
+If ignore the door
+
+JESSICA
+Please check the door, I&#39;m sure its someone out there in that wasteland! Are you going to let they die?! You&#39;re going to murder them!
+
+If player still ignores the door or even after talking to bob they choose to not let him inside.
+
+JESSICA
+I can&#39;t believe you&#39;re actually doing this. You&#39;re really going to let them die!
+
+IF player chooses to talk to them
+
+UNKNOWN (bob)
+Hello? I can see you have your lights on, hey please man can you let me in? It&#39;s freezing out here.
+
+If player chooses to look trough peephole
+
+PLAYER
+(Talking in their head)
+I can only see what it seems to be someone wearing a cap, the look tall and he looks like a normal man
+
+If player wants to talk to Bob they can choose one of the options bellow
+
+PLAYER
+Who are you? What do you want?
+
+BOB
+Name&#39;s Bob, I just to find shelter, the nearest city is under siege, its a total chaos, building crumbling, shells and rumble on the street. You please have to let me in!
+
+PLAYER
+Why should I let you in?
+
+BOB
+I can help you search for survive, I know how to scavenge and survive on my own out there for a while but I am at my limit right now! I need water and a warmed place to rest, I don&#39;t want to die in this hell hole!
+
+PLAYER
+Have you ever been here before? Where did you come from?
+
+BOB
+I used to live a town nearby, I moved to the city recently but after the war I was forced to flee. I&#39;ve been here before, I know these woods like the palm of my hand, you should let me in! I&#39;m useful!
+
+After asking at least one question they can let the person in or not.
+
+Letting person out
+
+PLAYER
+Sorry I can&#39;t let you in, I don&#39;t have enough resources (lie)
+
+JESSICA
+What are you talking about! You&#39;re lying, we&#39;re talking about a human being on the other side of the door! He already proved himself to be even useful for God&#39;s sake, let him in!
+
+BOB
+I can help! I can be useful and find more food to help us survive, please! I don&#39;t want to be here!
+
+OR
+
+PLAYER
+Sorry I can&#39;t let you in, I don&#39;t trust you
+
+JESSICA
+What are you talking about! You&#39;re lying, we&#39;re talking about a human being on the other side of the door! He already proved himself to be even useful for God&#39;s sake, let him in!
+
+BOB
+I can help! I can be useful and find more food to help us survive, please! I don&#39;t want to be here!
+
+Player either asks more questions or just let them out. ( reload questions)
+
+Player will have the chance on letting him in or not again after that dialog
+
+PLAYER
+Okay, take three step back, I&#39;m going to open the door.
+
+Bob
+Okay, thanks!
+
+Player opens the door and Bob goes to the fireplace
+
+Player can opt to talk to Bob and Jessica or leave them alone and go to bed.
+
+If player chooses to not talk to them
+
+PLAYER
+Im going to bed, your room is the second one in the hallway.
+
+If player chooses to talk to them
+
+PLAYER
+So how long have you been outside?
+
+BOB
+It&#39;s been some days,  I think maybe 3 days, I&#39;ve been surviving trough scavenging some resources on my way here.
+
+PLAYER
+Do you know how to situation is out there?
+
+BOB
+Because of the blizzard its hard to see much, I&#39;m glad I left with my hiking equipment and clothes, If not I could&#39;ve died out there.
+
+JESSICA
+That&#39;s horrible
+
+BOB
+They don&#39;t stop,even in these horrible conditions the war still rages on
+
+JESSICA
+I hope it ends soon so I can see my friends again
+
+BOB
+I&#39;m going to get some rest now
+
+PLAYER
+I&#39;m going to bed, your room is the second one in the hallway.
+
+if player chose to let bob out
+
+JESSICA
+I can&#39;t believe I&#39;m a murderer, I hope he finds somewhere else to live
+
+Player can choose one of the following phrases
+
+PLAYER
+We can&#39;t afford to let him in, we don&#39;t have enough food and water to keep one more person around
+
+JESSICA
+Be he said he was good with scavenging!
+
+PLAYER
+But what if he was lying just to get in?
+
+JESSICA
+You might be right
+
+JESSICA
+I need some rest, my head is not in the best place right now
+
+OR
+
+PLAYER
+We can&#39;t trust everyone who knocks. What if he was a Raider? He could&#39;ve very well lied about everything. This is war, we have to be cautious about everything
+
+JESSICA
+You might be right
+
+JESSICA
+I need some rest, my head is not in the best place right now
+
+night 2 ended</tw-passagedata><tw-passagedata pid="20" name="d2_door_alone" tags="" position="2450,2800" size="100,100">Bob arrives at the door.
 The player can let Bob in, talk with him a bit and move to [[d3_morning_b]]
 OR
-Keep him locked outside, moving to [[d3_morning_alone]]</tw-passagedata><tw-passagedata pid="21" name="d3_morning_jb" tags="" position="2750,3400" size="100,100">Jessica and Bob will have a bit of friendly chatter. Supplies are getting lower and bob mentions it, causing Jessica and Bob to have a small fight.
+Keep him locked outside, moving to [[d3_morning_alone]]
+
+
+Knock on the door
+
+PLAYER can choose to ignore or not
+
+BOB might try to speak to the player
+
+If player still ignores the door or even after talking to bob they choose to not let him inside.
+
+IF player chooses to talk to them
+
+UNKNOWN (bob)
+Hello? I can see you have your lights on, hey please man can you let me in? It&#39;s freezing out here.
+
+If player chooses to look trough peephole
+
+PLAYER
+(Talking in their head)
+I can only see what it seems to be someone wearing a cap, the look tall and he looks like a normal man
+
+If player wants to talk to Bob they can choose one of the options bellow
+
+PLAYER
+Who are you? What do you want?
+
+BOB
+Name&#39;s Bob, I just to find shelter, the nearest city is under siege, its a total chaos, building crumbling, shells and rumble on the street. You please have to let me in!
+
+PLAYER
+Why should I let you in?
+
+BOB
+I can help you search for survive, I know how to scavenge and survive on my own out there for a while but I am at my limit right now! I need water and a warmed place to rest, I don&#39;t want to die in this hell hole!
+
+PLAYER
+Have you ever been here before? Where did you come from?
+
+BOB
+I used to live a town nearby, I moved to the city recently but after the war I was forced to flee. I&#39;ve been here before, I know these woods like the palm of my hand, you should let me in! I&#39;m useful!
+
+After asking at least one question they can let the person in or not.
+
+Letting person out
+
+PLAYER
+Sorry I can&#39;t let you in, I don&#39;t have enough resources (lie)
+
+BOB
+I can help! I can be useful and find more food to help us survive, please! I don&#39;t want to be here!
+
+OR
+
+PLAYER
+Sorry I can&#39;t let you in, I don&#39;t trust you
+
+BOB
+I can help! I can be useful and find more food to help us survive, please! I don&#39;t want to be here!
+
+Player either asks more questions or just let them out. ( reload questions)
+
+Player will have the chance on letting him in or not again after that dialog
+
+PLAYER
+Okay, take three step back, I&#39;m going to open the door.
+
+Bob
+Okay, thanks!
+
+Player opens the door and Bob goes to the fireplace
+
+Player can opt to talk to Bob and Jessica or leave them alone and go to bed.
+
+If player chooses to not talk to them
+
+PLAYER
+Im going to bed, your room is the second one in the hallway.
+
+If player chooses to talk to them
+
+PLAYER
+So how long have you been outside?
+
+BOB
+It&#39;s been some days,  I think maybe 3 days, I&#39;ve been surviving trough scavenging some resources on my way here.
+
+PLAYER
+Do you know how to situation is out there?
+
+BOB
+Because of the blizzard its hard to see much, I&#39;m glad I left with my hiking equipment and clothes, If not I could&#39;ve died out there.
+
+BOB
+They don&#39;t stop,even in these horrible conditions the war still rages on. I&#39;m going to get some rest now
+
+PLAYER
+I&#39;m going to bed, your room is the second one in the hallway.
+
+If player chose to let bob out the night ends
+
+night 2 ended</tw-passagedata><tw-passagedata pid="21" name="d3_morning_jb" tags="" position="2750,3400" size="100,100">Jessica and Bob will have a bit of friendly chatter. Supplies are getting lower and bob mentions it, causing Jessica and Bob to have a small fight.
 You can talk to the journalist outside.
 Move on to [[d3_noon_jb]]</tw-passagedata><tw-passagedata pid="22" name="d3_morning_j" tags="" position="2750,3100" size="100,100">Jessica talks a bit about drafting and the war. You discuss food shortages.
 You can talk to the journalist outside.
