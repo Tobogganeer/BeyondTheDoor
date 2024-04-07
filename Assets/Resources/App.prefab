@@ -196,11 +196,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213edb94dc5a5534188f943855cacdc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  q_addToScavengeParty: {fileID: 11400000, guid: d23f60fc8958dc74dba9c6e1e1a054d6, type: 2}
+  q_removeFromScavengeParty: {fileID: 11400000, guid: 520a3997c7b16ee4892d76b7cace3545, type: 2}
   advanceCallback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
   openDoorCallback: {fileID: 11400000, guid: 5acfab5c786a53846bd0c9a7f9814e55, type: 2}
   leaveDoorClosedCallback: {fileID: 11400000, guid: ca63835b13df52c4d90007edbc25d2d3, type: 2}
   addToScavengePartyCallback: {fileID: 11400000, guid: 3994136765eb0ab42ba00d18e2cfb924, type: 2}
   removeFromScavengePartyCallback: {fileID: 11400000, guid: 128f76816af2c8048a405576488d57d1, type: 2}
+  sendToScavenge_withShotgun: {fileID: 11400000, guid: a97ebf4be4da3094c80aca7a247ed0d8, type: 2}
+  sendToScavenge_noShotgun: {fileID: 11400000, guid: bed032dea7cb8c948a206210c232bc92, type: 2}
   onInitialize:
     m_PersistentCalls:
       m_Calls: []
