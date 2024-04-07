@@ -51,6 +51,9 @@ public class Game : MonoBehaviour
     [SerializeField] private UnityEvent onDoorOpened;
     [SerializeField] private UnityEvent onDoorLeftClosed;
 
+    // Do we only allow 1 person to scavenge at a time?
+    const bool SingleMemberScavengeParty = true;
+
 
     public static Character[] CharacterArrivalOrder { get; private set; } =
     {
@@ -315,7 +318,11 @@ public class Game : MonoBehaviour
     public static void AddToScavengeParty(Character character)
     {
         if (character != null && !ScavengeParty.Contains(character))
+        {
+            if (SingleMemberScavengeParty)
+                ScavengeParty.Clear();
             ScavengeParty.Add(character);
+        }
     }
 
     public static void RemoveFromScavengeParty(Character character)
@@ -330,10 +337,11 @@ public class Game : MonoBehaviour
     /// <param name="withShotgun"></param>
     public static void SendToScavenge(bool withShotgun)
     {
-        // Only allow the shotgun if it's in the cabin
-        bool sendingShotgun = withShotgun && Cabin.HasShotgun;
         if (ScavengeParty.Count > 0)
         {
+            // Only allow the shotgun if it's in the cabin
+            bool sendingShotgun = withShotgun && Cabin.HasShotgun;
+
             // Remove the shotgun from the cabin
             if (sendingShotgun)
                 Cabin.HasShotgun = false;
@@ -342,11 +350,14 @@ public class Game : MonoBehaviour
             foreach (Character scavenger in ScavengeParty)
                 scavenger.ChangeStatus(sendingShotgun ? CharacterStatus.ScavengingWithShotgun : CharacterStatus.ScavengingDefenseless);
         }
+
+        // Move along to the next stage
+        Advance();
     }
 
     private static void DetermineScavengerFates()
     {
-        if (ScavengeParty.Count < 0)
+        if (ScavengeParty.Count == 0)
             return;
 
         // Kill Jessica if she is alone
