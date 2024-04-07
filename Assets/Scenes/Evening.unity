@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 624123898}
-  m_IndirectSpecularColor: {r: 0.123010844, g: 0.12381889, b: 0.120883346, a: 1}
+  m_IndirectSpecularColor: {r: 0.042711735, g: 0.04299197, b: 0.04197213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 2fabe2ee68ec2414f9b0f2ac6bdf5a35, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8dfb3eef3ec022548bd0c1201f0284bf, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: ae5d70495d4ba1b479f8ff0a16f055a9, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -749,7 +749,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 2.3e-43, z: 4.903e-42, w: NaN}
+  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 3.6e-44, w: 1.0567e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1087,7 +1087,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2898669459434023505, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 853193167524035239, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1288053534388779169, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8769957375257475876, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 6727816342565002136, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1109097623698185545, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 554810326577478667, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8028833928084163753, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 7495015608404765408, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 8195455443446325796, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2986407573426426186, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 3053743751181022298, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
