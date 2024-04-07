@@ -25,8 +25,8 @@ public class TutorialInit : DayBehaviour<TutorialInit>
         Character.Tutorial_Dad.SpokenTo += (dad) => Line.tutdad_0_looking_for_keys.Open();
 
         // Clicking either character has the same result
-        Character.Tutorial_Mom.SendingToScavenge += SendToScavenge;
-        Character.Tutorial_Dad.SendingToScavenge += SendToScavenge;
+        Character.Tutorial_Mom.ClickedOnDuringScavengeStage += SendToScavenge;
+        Character.Tutorial_Dad.ClickedOnDuringScavengeStage += SendToScavenge;
 
         Character.Tutorial_Mom.ArrivingAtDoor += ArrivingAtDoor;
 

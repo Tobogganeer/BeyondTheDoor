@@ -77,7 +77,7 @@ namespace BeyondTheDoor.Importer
                 if (GUILayout.Button("Generate Enums"))
                 {
                     if (clearLinesOnEnumGeneration)
-                        LineGenerator.ClearLinesFile();
+                        LineGenerator.ClearLinesFile(rawLines);
 
                     GenerateEnums(charactersInvalid, lineIDsInvalid, lineStatusesInvalid, voiceStatusesInvalid);
                 }

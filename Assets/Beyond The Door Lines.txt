@@ -4,34 +4,34 @@ Test	Let me ask you something... 	idk something can go here	0	test_0_dont_use_ca
 Test	Did I ever tell you the definition... Of insanity?	Export: Save as Text (tab delimited)	0	test_0_q_questions_have_a_q_first	Final	Draft	Go
 Test	Dialogue is so cool.	I got nothin	0	test_0_main_chars_only_use_one_letter	Draft	Placeholder	Here
 							
-							
-None	Character Define	Used to generate Character IDs	0	none_chardefine	None	None	
-Player	Character Define	^^^ before they have any lines	0	player_chardefine	None	None	
-Tutorial_Mom	Character Define	Used to generate Character IDs	0	tutmom_chardefine	None	None	
-Tutorial_Dad	Character Define	^^^ before they have any lines	0	tutdad_chardefine	None	None	
-Jessica	Character Define	Used to generate Character IDs	0	j_chardefine	None	None	
-Bob	Character Define	^^^ before they have any lines	0	b_chardefine	None	None	
-Violet	Character Define	Used to generate Character IDs	0	v_chardefine	None	None	
-Hal	Character Define	^^^ before they have any lines	0	h_chardefine	None	None	
-Sal	Character Define	Used to generate Character IDs	0	s_chardefine	None	None	
-Dad	Character Define	^^^ before they have any lines	0	dad_chardefine	None	None	
-Bear	Character Define	Used to generate Character IDs	0	bear_chardefine	None	None	
-Raiders	Character Define	^^^ before they have any lines	0	raiders_chardefine	None	None	
-Neighbour	Character Define	Used to generate Character IDs	0	neighbour_chardefine	None	None	
-Journalist	Character Define	^^^ before they have any lines	0	journalist_chardefine	None	None	
-							
-							
+//	"These just make sure that all characters are ""defined"" even if they have no lines yet"						
+None	Character Define	Lines with no character	0	none_chardefine	None	None	
+Player	Character Define		0	player_chardefine	None	None	
+Tutorial_Mom	Character Define		0	tutmom_chardefine	None	None	
+Tutorial_Dad	Character Define		0	tutdad_chardefine	None	None	
+Jessica	Character Define		0	j_chardefine	None	None	
+Bob	Character Define		0	b_chardefine	None	None	
+Violet	Character Define		0	v_chardefine	None	None	
+Hal	Character Define		0	h_chardefine	None	None	
+Sal	Character Define		0	s_chardefine	None	None	
+Dad	Character Define		0	dad_chardefine	None	None	
+Bear	Character Define		0	bear_chardefine	None	None	
+Raiders	Character Define		0	raiders_chardefine	None	None	
+Neighbour	Character Define		0	neighbour_chardefine	None	None	
+Journalist	Character Define		0	journalist_chardefine	None	None	
 							
 							
+//	These are basic prompts that are used repeatedly (as choices)						
+Player	Yes		0	yes	Final	None	
+Player	No		0	no	Final	None	
+Player	Open door		0	open_door	Final	None	
+Player	Keep door closed		0	keep_door_closed	Final	None	
+Player	Send {character} to scavenge		0	send_to_scavenge	Final	None	
+Player	Stay silent		0	stay_silent	Final	None	
+Player	Go back		0	go_back	Final	None	
 							
 							
-							
-Player	Yes	Basic prompts that are used often	0	player_yes	Final	None	
-Player	No		0	player_no	Final	None	
-Player	Open Door		0	player_open_door	Final	None	
-Player	Keep Door Closed		0	player_keep_door_closed	Final	None	
-							
-							
+//	Tutorial/day 0						
 Tutorial_Mom	Wake up sunshine...  you fell asleep while playing games.	First line of tutorial	0	tutmom_0_wake_up	Placeholder	None	
 Tutorial_Mom	Me and your Dad are going to get some ice cream.		0	tutmom_0_going_ice_cream	Placeholder	None	
 Tutorial_Dad	What flavour of ice cream do you want?	First question	0	tutdad_0_q_ice_cream	Placeholder	None	
@@ -44,7 +44,7 @@ Tutorial_Dad	I don't know where we left them...	If you try to talk to them befor
 Tutorial_Mom	I could've swore they were around here somewhere!	If you try to talk to them before finding keys	0	tutmom_0_looking_for_keys	Placeholder	None	
 Tutorial_Dad	Thank you kiddo...  see you soon.	Being sent out to scavenge	0	tutdad_0_scavenge_response	Placeholder	None	
 Tutorial_Mom	We're back!	At door	0	tutmom_0_at_door	Placeholder	None	
-Tutorial_Mom	"Hey kiddo, can you open the door please? It's raining out here... "		0	tutmom_0_q_open_door	Placeholder	None	
+Tutorial_Mom	"Hey kiddo, can you open the door please? It's raining out here... "	At door	0	tutmom_0_q_open_door	Placeholder	None	
 Tutorial_Mom	"Hehe, nice one... Really though, it is quite cold."	Player keeps door closed	0	tutmom_0_q_open_door_second	Placeholder	None	
 Tutorial_Mom	Kiddo?	Player keeps door closed again	0	tutmom_0_door_closed_twice	Placeholder	None	
 Tutorial_Dad	"Thanks kiddo, now let's eat some ice cream!"	Player lets them in	0	tutdad_0_lets_eat	Placeholder	None	

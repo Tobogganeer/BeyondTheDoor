@@ -16,10 +16,18 @@ public class Game : MonoBehaviour
     }
 
 
+    [Header("Questions")]
+    public Conversation q_addToScavengeParty;
+    public Conversation q_removeFromScavengeParty;
+
     [Header("Input")]
     [SerializeField] private ConversationCallback advanceCallback;
     [SerializeField] private ConversationCallback openDoorCallback;
     [SerializeField] private ConversationCallback leaveDoorClosedCallback;
+    [SerializeField] private ConversationCallback addToScavengePartyCallback;
+    [SerializeField] private ConversationCallback removeFromScavengePartyCallback;
+    [SerializeField] private ConversationCallback sendToScavenge_withShotgun;
+    [SerializeField] private ConversationCallback sendToScavenge_noShotgun;
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
@@ -43,6 +51,9 @@ public class Game : MonoBehaviour
     [SerializeField] private UnityEvent onDoorOpened;
     [SerializeField] private UnityEvent onDoorLeftClosed;
 
+    // Do we only allow 1 person to scavenge at a time?
+    const bool SingleMemberScavengeParty = true;
+
 
     public static Character[] CharacterArrivalOrder { get; private set; } =
     {
@@ -55,12 +66,15 @@ public class Game : MonoBehaviour
         Character.Hal,
         Character.Raiders
     };
+
     /// <summary>
     /// What character is arriving today?
     /// </summary>
     public static Character ArrivingCharacter => CharacterArrivalOrder[DayNumber];
     public static int DayNumber => Day.DayNumber;
     public static Stage Stage => Day.Stage;
+    public static bool Alone => Cabin.IsAlone;
+    public static List<Character> ScavengeParty { get; private set; } = new List<Character>();
 
     /// <summary>
     /// Called after a save file is loaded but before the stage is loaded.
@@ -99,12 +113,17 @@ public class Game : MonoBehaviour
     private void Start()
     {
         // Advance when a conversation wants to
-        if (advanceCallback != null)
-            advanceCallback.Callback += (conv, line) => Advance();
-        if (openDoorCallback != null)
-            openDoorCallback.Callback += (conv, line) => OpenDoor();
-        if (leaveDoorClosedCallback != null)
-            leaveDoorClosedCallback.Callback += (conv, line) => LeaveDoorClosed();
+        advanceCallback.Callback += (conv, line) => Advance();
+        openDoorCallback.Callback += (conv, line) => OpenDoor();
+        leaveDoorClosedCallback.Callback += (conv, line) => LeaveDoorClosed();
+        addToScavengePartyCallback.Callback += (conv, line) => AddToScavengeParty(Character.Current);
+        removeFromScavengePartyCallback.Callback += (conv, line) => RemoveFromScavengeParty(Character.Current);
+        sendToScavenge_withShotgun.Callback += (conv, line) => SendToScavenge(true);
+        sendToScavenge_noShotgun.Callback += (conv, line) => SendToScavenge(false);
+
+        // Hook up all characters to the scavenge adding/removal
+        foreach (Character character in Character.All.Values)
+            character.ClickedOnDuringScavengeStage += AddOrRemoveFromScavengeParty;
     }
 
 
@@ -131,18 +150,13 @@ public class Game : MonoBehaviour
     {
         if (CanAdvance())
         {
-            Day.Stage++;
-            // Wrap around if we went too far
-            if (Day.Stage > Stage.DealingWithArrival)
-            {
-                Day.StartDay(Day.DayNumber + 1);
-                OnNewDayStarted?.Invoke();
-            }
-            else if (Day.Stage == Stage.DealingWithArrival)
-            {
-                // Make the character "arrive"
-                ArrivingCharacter.ChangeStatus(CharacterStatus.AtDoor);
-            }
+            // Execute stage-specific behaviour
+            Stage next = GetNextStage();
+            BeforeLoadNewStage(Stage, next);
+
+            Day.Stage = next;
+
+            OnLoadNewStage();
 
             // Save the state after we switch stages (but before changing scenes)
             SaveState currentState = new SaveState();
@@ -184,6 +198,90 @@ public class Game : MonoBehaviour
         throw new InvalidProgramException("Tried to check advancement on some goofy state that doesn't exist?");
     }
 
+    private static void BeforeLoadNewStage(Stage current, Stage next)
+    {
+        switch (current)
+        {
+            case Stage.SpeakingWithParty:
+                break;
+            case Stage.SendingScavengers:
+                break;
+            case Stage.FixingOvercrowding:
+                break;
+            case Stage.RadioLoreTime:
+                break;
+            case Stage.DealingWithArrival:
+                break;
+        }
+    }
+
+    private static void OnLoadNewStage()
+    {
+        switch (Stage)
+        {
+            case Stage.SpeakingWithParty:
+                // Wrap around if we went to the next morning
+                Day.StartDay(DayNumber + 1);
+                OnNewDayStarted?.Invoke();
+                break;
+            case Stage.SendingScavengers:
+                break;
+            case Stage.FixingOvercrowding:
+                // See what happened to the scavengers
+                DetermineScavengerFates();
+                break;
+            case Stage.RadioLoreTime:
+                break;
+            case Stage.DealingWithArrival:
+                // Make the character "arrive"
+                ArrivingCharacter.ChangeStatus(CharacterStatus.AtDoor);
+                break;
+        }
+    }
+
+    /*
+    private static Ending GetEndingIfAdvance()
+    {
+        // Uh oh, you might be starving
+        if (DayNumber == 5 && !Cabin.HasScavengedSuccessfully)
+        {
+            // You are all alone - no way to scavenge
+            if (Alone && Stage == Stage.SpeakingWithParty)
+                return Ending.Starve;
+            // You didn't send anyone to scavenge (or Jessica died) and it's the afternoon now
+            else if (Stage == Stage.FixingOvercrowding)
+                return Ending.Starve;
+        }
+        else if (DayNumber == Day.LastDay && Stage == Stage.DealingWithArrival)
+            return Ending.
+
+        return Ending.None;
+    }
+    */
+
+    private static Stage GetNextStage()
+    {
+        switch (Stage)
+        {
+            case Stage.SpeakingWithParty:
+                // Skip right to the end of the day if you are alone
+                return Alone ? Stage.RadioLoreTime : Stage.SendingScavengers;
+            case Stage.SendingScavengers:
+                bool peopleScavenging = ScavengeParty.Count > 0;
+                bool overcrowded = Cabin.NumCurrentPartyMembers() > 2;
+                return peopleScavenging || overcrowded ? Stage.FixingOvercrowding : Stage.RadioLoreTime;
+            case Stage.FixingOvercrowding:
+                return Stage.RadioLoreTime;
+            case Stage.RadioLoreTime:
+                return Stage.DealingWithArrival;
+            case Stage.DealingWithArrival:
+                return Stage.SpeakingWithParty;
+            default:
+                return Stage.SpeakingWithParty;
+        }
+    }
+
+
     private static void LoadStage(Stage stage)
     {
         OnStageChanged?.Invoke();
@@ -205,6 +303,90 @@ public class Game : MonoBehaviour
         OnDoorLeftClosed?.Invoke();
     }
 
+    /// <summary>
+    /// Opens the prompt to add/remove the character from the scavenge party
+    /// </summary>
+    /// <param name="character"></param>
+    public static void AddOrRemoveFromScavengeParty(Character character)
+    {
+        if (ScavengeParty.Contains(character))
+            instance.q_removeFromScavengeParty.Open();
+        else
+            instance.q_addToScavengeParty.Open();
+    }
+
+    public static void AddToScavengeParty(Character character)
+    {
+        if (character != null && !ScavengeParty.Contains(character))
+        {
+            if (SingleMemberScavengeParty)
+                ScavengeParty.Clear();
+            ScavengeParty.Add(character);
+        }
+    }
+
+    public static void RemoveFromScavengeParty(Character character)
+    {
+        if (character != null && ScavengeParty.Contains(character))
+            ScavengeParty.Remove(character);
+    }
+
+    /// <summary>
+    /// Sends out the current scavenging party.
+    /// </summary>
+    /// <param name="withShotgun"></param>
+    public static void SendToScavenge(bool withShotgun)
+    {
+        if (ScavengeParty.Count > 0)
+        {
+            // Only allow the shotgun if it's in the cabin
+            bool sendingShotgun = withShotgun && Cabin.HasShotgun;
+
+            // Remove the shotgun from the cabin
+            if (sendingShotgun)
+                Cabin.HasShotgun = false;
+
+            // Send all scavengers out
+            foreach (Character scavenger in ScavengeParty)
+                scavenger.ChangeStatus(sendingShotgun ? CharacterStatus.ScavengingWithShotgun : CharacterStatus.ScavengingDefenseless);
+        }
+
+        // Move along to the next stage
+        Advance();
+    }
+
+    private static void DetermineScavengerFates()
+    {
+        if (ScavengeParty.Count == 0)
+            return;
+
+        // Kill Jessica if she is alone
+        if (ScavengeParty.Count == 1 && ScavengeParty[0] == Character.Jessica)
+        {
+            // RIP bozo you will not be missed
+            Character.Jessica.ChangeStatus(CharacterStatus.DeadWhileScavenging);
+        }
+        else
+        {
+            // Return the shotgun if they had it
+            if (ScavengeParty[0].Status == CharacterStatus.ScavengingWithShotgun)
+                Cabin.HasShotgun = true;
+
+            Cabin.HasScavengedSuccessfully = true;
+
+            // Welcome back valued party members
+            foreach (Character scavenger in ScavengeParty)
+            {
+                scavenger.ChangeStatus(CharacterStatus.InsideCabin);
+                // Violet gets the car
+                if (scavenger == Character.Violet)
+                    Cabin.HasCar = true;
+            }
+        }
+
+        ScavengeParty.Clear();
+    }
+
 
     public static void ExitToMenu()
     {
@@ -223,6 +405,39 @@ public class Game : MonoBehaviour
         Stage.FixingOvercrowding => Level.Afternoon,
         Stage.RadioLoreTime => Level.Evening,
         Stage.DealingWithArrival => Level.Door,
-        _ => throw new NotImplementedException("Invalid stage: " + stage)
+        _ => throw new ArgumentException("Invalid stage: " + stage)
     };
+}
+
+public enum Ending
+{
+    None,
+    /// <summary>
+    /// Failed to let your parents back in.
+    /// </summary>
+    JokeEnding,
+    /// <summary>
+    /// Killed by the bear.
+    /// </summary>
+    Bear,
+    /// <summary>
+    /// Didn't scavenge in time.
+    /// </summary>
+    Starve,
+    /// <summary>
+    /// Didn't have the resources to make it.
+    /// </summary>
+    DieOnWayToBorder,
+    /// <summary>
+    /// The dad and his son saved you.
+    /// </summary>
+    SavedByDad,
+    /// <summary>
+    /// You walked to the border successfully.
+    /// </summary>
+    ReachBorder,
+    /// <summary>
+    /// You drove to the border.
+    /// </summary>
+    DriveToBorder
 }

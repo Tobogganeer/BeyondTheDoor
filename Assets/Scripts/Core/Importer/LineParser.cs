@@ -38,6 +38,10 @@ namespace BeyondTheDoor.Importer
             for (int i = 0; i < elements.Length; i++)
                 FillValue(line, mappings[i], elements[i]);
 
+            // Comments in excel file
+            if (line.character == "//")
+                return null;
+
             line.Validate();
             return line;
         }

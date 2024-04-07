@@ -14,8 +14,6 @@ namespace BeyondTheDoor.Editor
 
         public override void OnInspectorGUI()
         {
-            base.OnInspectorGUI();
-
             if (style == null)
             {
                 style = new GUIStyle(EditorStyles.textArea);
@@ -23,6 +21,22 @@ namespace BeyondTheDoor.Editor
             }
 
             Conversation con = (Conversation)target;
+            serializedObject.Update();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.lines)), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.OnStarted)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.OnFinished)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.nextConversation)));
+
+            // Grey out choices if this conversation just moves on
+            if (con.nextConversation != null)
+                GUI.enabled = false;
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.choices)), true);
+            GUI.enabled = true;
+
+            serializedObject.ApplyModifiedProperties();
+
+            //base.OnInspectorGUI();
 
             EditorGUILayout.Space(10);
             EditorGUILayout.LabelField("======= CONVERSATION START =======", EditorStyles.largeLabel);
@@ -48,12 +62,36 @@ namespace BeyondTheDoor.Editor
                 }
             }
 
-            if (con.choices != null && con.choices.Count > 0)
+            if (con.nextConversation != null)
             {
-                EditorGUILayout.LabelField("=== Player Choices ===", EditorStyles.boldLabel);
-                foreach (Conversation.ConversationChoice choice in con.choices)
+                string text = "";
+
+                text += $"<color={EditorColours.TextColour}>Start Conversation</color> " +
+                        $"'<color={EditorColours.ConversationNameColour}>" +
+                        //$"<a href=\"{AssetDatabase.GetAssetPath(choice.nextConversation)}\">" +
+                        con.nextConversation.name + "</color>'";
+                if (con.nextConversation.lines != null && con.nextConversation.lines.Count > 0)
                 {
-                    DisplayChoice(choice);
+                    Line line = Line.Get(con.nextConversation.lines[0]);
+                    text += $"\n  -> {FormatCharacterMessage(line)}";
+                    text += "\n  ... (cont'd)";
+                }
+                else
+                {
+                    text += "\n  (no lines)";
+                }
+
+                EditorGUILayout.TextArea(text, style);
+            }
+            else
+            {
+                if (con.choices != null && con.choices.Count > 0)
+                {
+                    EditorGUILayout.LabelField("=== Player Choices ===", EditorStyles.boldLabel);
+                    foreach (Conversation.ConversationChoice choice in con.choices)
+                    {
+                        DisplayChoice(choice);
+                    }
                 }
             }
 

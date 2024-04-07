@@ -120,8 +120,7 @@ namespace BeyondTheDoor.UI
             revealedLength = 0;
             ResetRevealTimer();
 
-            // TODO: Use Character class to get proper name
-            characterNameField.text = line.character.ToString();
+            characterNameField.text = Character.All[line.CharacterID].GetCurrentName();
             lineTextField.text = string.Empty; // Blank
 
             OnLineStart?.Invoke(line.ID);
@@ -236,6 +235,7 @@ namespace BeyondTheDoor.UI
 
             currentLine = null;
             currentChoices = null;
+            Character.Current = null;
         }
 
         private void _Next()
