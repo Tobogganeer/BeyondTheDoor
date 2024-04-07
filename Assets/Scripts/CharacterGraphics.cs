@@ -8,32 +8,43 @@ using BeyondTheDoor;
 /// </summary>
 public class CharacterGraphics : MonoBehaviour
 {
-    [SerializeField] private Graphic[] characters;
+    private static CharacterGraphics current;
+
+    [SerializeField] private CharacterObject[] characters;
     
-    private Dictionary<CharacterID, GameObject> graphics = new Dictionary<CharacterID, GameObject>();
+    private Dictionary<CharacterID, CharacterObject> graphics = new Dictionary<CharacterID, CharacterObject>();
+
+    private void OnEnable()
+    {
+        current = this;
+    }
 
     private void Start()
     {
-        // Disable all characters and add them to the dict
-        foreach (Graphic graphic in characters)
-        {
-            graphic.graphic.SetActive(false);
-            graphics.Add(graphic.character, graphic.graphic);
-        }
+        // Add all characters to the dict
+        foreach (CharacterObject character in characters)
+            graphics.Add(character.character, character);
+
+        UpdateGraphics();
+    }
+
+    public void UpdateGraphics()
+    {
+        // Disable them all
+        foreach (CharacterObject graphic in characters)
+            graphic.gameObject.SetActive(false);
 
         // Enable current characters
         foreach (Character character in Cabin.CurrentPartyMembers())
         {
-            if (graphics.TryGetValue(character.ID, out GameObject graphic))
-                graphic.SetActive(true);
+            if (graphics.TryGetValue(character.ID, out CharacterObject graphic))
+                graphic.gameObject.SetActive(true);
         }
     }
 
-
-    [System.Serializable]
-    private class Graphic
+    public static void UpdateCurrent()
     {
-        public CharacterID character;
-        public GameObject graphic;
+        if (current != null)
+            current.UpdateGraphics();
     }
 }
