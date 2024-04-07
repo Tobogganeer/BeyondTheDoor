@@ -77,6 +77,7 @@ namespace BeyondTheDoor.SaveSystem
         {
             data.Add(true); // Has Shotgun
             data.Add(false); // Has Car
+            data.Add(false); // Has Successfully Scavenged
         }
 
         private void SaveEmptyCharacters()
