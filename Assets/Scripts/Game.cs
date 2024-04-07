@@ -16,12 +16,18 @@ public class Game : MonoBehaviour
     }
 
 
+    [Header("Questions")]
+    public Conversation q_addToScavengeParty;
+    public Conversation q_removeFromScavengeParty;
+
     [Header("Input")]
     [SerializeField] private ConversationCallback advanceCallback;
     [SerializeField] private ConversationCallback openDoorCallback;
     [SerializeField] private ConversationCallback leaveDoorClosedCallback;
     [SerializeField] private ConversationCallback addToScavengePartyCallback;
     [SerializeField] private ConversationCallback removeFromScavengePartyCallback;
+    [SerializeField] private ConversationCallback sendToScavenge_withShotgun;
+    [SerializeField] private ConversationCallback sendToScavenge_noShotgun;
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
@@ -57,6 +63,7 @@ public class Game : MonoBehaviour
         Character.Hal,
         Character.Raiders
     };
+
     /// <summary>
     /// What character is arriving today?
     /// </summary>
@@ -103,16 +110,17 @@ public class Game : MonoBehaviour
     private void Start()
     {
         // Advance when a conversation wants to
-        if (advanceCallback != null)
-            advanceCallback.Callback += (conv, line) => Advance();
-        if (openDoorCallback != null)
-            openDoorCallback.Callback += (conv, line) => OpenDoor();
-        if (leaveDoorClosedCallback != null)
-            leaveDoorClosedCallback.Callback += (conv, line) => LeaveDoorClosed();
-        if (addToScavengePartyCallback != null)
-            addToScavengePartyCallback.Callback += (conv, line) => AddToScavengeParty(Character.Current);
-        if (removeFromScavengePartyCallback != null)
-            removeFromScavengePartyCallback.Callback += (conv, line) => RemoveFromScavengeParty(Character.Current);
+        advanceCallback.Callback += (conv, line) => Advance();
+        openDoorCallback.Callback += (conv, line) => OpenDoor();
+        leaveDoorClosedCallback.Callback += (conv, line) => LeaveDoorClosed();
+        addToScavengePartyCallback.Callback += (conv, line) => AddToScavengeParty(Character.Current);
+        removeFromScavengePartyCallback.Callback += (conv, line) => RemoveFromScavengeParty(Character.Current);
+        sendToScavenge_withShotgun.Callback += (conv, line) => SendToScavenge(true);
+        sendToScavenge_noShotgun.Callback += (conv, line) => SendToScavenge(false);
+
+        // Hook up all characters to the scavenge adding/removal
+        foreach (Character character in Character.All.Values)
+            character.ClickedOnDuringScavengeStage += AddOrRemoveFromScavengeParty;
     }
 
 
@@ -290,6 +298,18 @@ public class Game : MonoBehaviour
     {
         ArrivingCharacter.ChangeStatus(CharacterStatus.LeftOutside);
         OnDoorLeftClosed?.Invoke();
+    }
+
+    /// <summary>
+    /// Opens the prompt to add/remove the character from the scavenge party
+    /// </summary>
+    /// <param name="character"></param>
+    public static void AddOrRemoveFromScavengeParty(Character character)
+    {
+        if (ScavengeParty.Contains(character))
+            instance.q_removeFromScavengeParty.Open();
+        else
+            instance.q_addToScavengeParty.Open();
     }
 
     public static void AddToScavengeParty(Character character)

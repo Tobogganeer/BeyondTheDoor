@@ -66,25 +66,49 @@ namespace BeyondTheDoor
 
         // ============ Dialogue Events ============
         /// <summary>
-        /// Called when this character arrives at the door (start dialogue).
+        /// Called when this character arrives at the door.
         /// </summary>
+        /// <remarks>Start dialogue</remarks>
         public event Action<Character> ArrivingAtDoor;
         /// <summary>
-        ///Called when the player clicks on this character while another character is at the door (start dialogue).
+        /// Called when the player clicks on this character while another character is at the door.
         /// </summary>
+        /// <remarks>Start dialogue</remarks>
         public event Action<Character> OtherCharacterArrivingAtDoor;
         /// <summary>
-        /// Called when the player clicks on this character during the day (start dialogue).
+        /// Called when the player clicks on this character during the day.
         /// </summary>
+        /// <remarks>Start dialogue</remarks>
         public event Action<Character> SpokenTo;
-
         /// <summary>
-        /// Called when the player clicks on this character during the scavenging stage (start dialogue).
+        /// Called when the player clicks on this character during the scavenging stage.
         /// </summary>
-        public event Action<Character> SendingToScavenge;
+        /// <remarks>Add/remove from the scavenge party (internal use)</remarks>
+        public event Action<Character> ClickedOnDuringScavengeStage;
         /// <summary>
-        /// Called when the player clicks on this character during the overcrowding stage (start dialogue).
+        /// Called when the player wants to send this character scavenging.
         /// </summary>
+        /// <remarks>Start dialogue</remarks>
+        public event Action<Character> AddedToScavengeParty;
+        /// <summary>
+        /// Called when the player decides to not send this character scavenging.
+        /// </summary>
+        /// <remarks>Start dialogue</remarks>
+        public event Action<Character> RemovedFromScavengeParty;
+        /// <summary>
+        /// Called when the player clicks the button to start the scavenge.
+        /// </summary>
+        /// <remarks>Call SendToScavenge_With/NoShotgun callback</remarks>
+        public event Action<Character> AboutToBeSentScavenging;
+        /// <summary>
+        /// Called when the player sends this character out to scavenge. Passes the character and whether or not they have the shotgun.
+        /// </summary>
+        /// <remarks>Call AdvanceStage callback</remarks>
+        public event Action<Character, bool> SentToScavenge;
+        /// <summary>
+        /// Called when the player clicks on this character during the overcrowding stage.
+        /// </summary>
+        /// <remarks>Start dialogue and call KickOut callback</remarks>
         public event Action<Character> TryingToKickOut;
 
 
@@ -119,7 +143,7 @@ namespace BeyondTheDoor
             ArrivingAtDoor = null;
             OtherCharacterArrivingAtDoor = null;
             SpokenTo = null;
-            SendingToScavenge = null;
+            ClickedOnDuringScavengeStage = null;
             TryingToKickOut = null;
         }
 
@@ -166,7 +190,7 @@ namespace BeyondTheDoor
                     break;
                 case Stage.SendingScavengers:
                     Current = this;
-                    SendingToScavenge?.Invoke(this);
+                    ClickedOnDuringScavengeStage?.Invoke(this);
                     break;
                 case Stage.FixingOvercrowding:
                     Current = this;

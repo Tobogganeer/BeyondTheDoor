@@ -24,6 +24,8 @@ namespace BeyondTheDoor.Editor
             serializedObject.Update();
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.lines)), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.OnStarted)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.OnFinished)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.nextConversation)));
 
             // Grey out choices if this conversation just moves on
