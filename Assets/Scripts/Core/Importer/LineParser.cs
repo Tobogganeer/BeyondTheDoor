@@ -23,7 +23,7 @@ namespace BeyondTheDoor.Importer
         });
 
         /// <summary>
-        /// Splits the TSV file into all lines worth considering and cleans them up
+        /// Splits the TSV file into all lines worth considering and cleans them up.
         /// </summary>
         /// <param name="tsvFile"></param>
         /// <returns></returns>

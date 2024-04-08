@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Text;
 
 namespace BeyondTheDoor.Importer
 {
@@ -10,6 +12,10 @@ namespace BeyondTheDoor.Importer
     /// </summary>
     public class TSVData
     {
+        const string FileName = "TSVData.txt";
+        static readonly string FilePath = Path.Combine(Application.dataPath, FileName);
+        static readonly Encoding Encoding = Encoding.ASCII;
+
         /// <summary>
         /// The CharacterID or the marker of special elements (Conversations, Conditionals, etc)
         /// </summary>
@@ -24,6 +30,7 @@ namespace BeyondTheDoor.Importer
         public List<string> LineStatusColumn { get; private set; }
         public List<string> VoiceStatusColumn { get; private set; }
         public List<string> ExtraDataColumn { get; private set; }
+        public int Count => CharacterIDColumn != null ? CharacterIDColumn.Count : 0;
 
         public TSVData(int estimatedElements)
         {
@@ -110,6 +117,108 @@ namespace BeyondTheDoor.Importer
             LineStatusColumn.Add(line.lineStatus);
             VoiceStatusColumn.Add(line.voiceStatus);
             ExtraDataColumn.Add(line.extraData);
+        }
+
+
+        // https://learn.microsoft.com/en-us/dotnet/api/system.io.filestream?view=net-8.0
+        public void Save()
+        {
+            // Delete the file if it exists.
+            if (File.Exists(FilePath))
+                File.Delete(FilePath);
+
+            //Create the file.
+            using (FileStream fs = File.Create(FilePath))
+            {
+                // Some lines are long; leave enough room
+                byte[] stringBuffer = new byte[1024];
+                char newLine = '\n';
+
+                // Add how many lines we have
+                Write(fs, stringBuffer, Count.ToString() + newLine);
+
+                for (int i = 0; i < Count; i++)
+                {
+                    // Write all lines in order
+                    Write(fs, stringBuffer, CharacterIDColumn[i] + newLine);
+                    Write(fs, stringBuffer, TextColumn[i] + newLine);
+                    Write(fs, stringBuffer, ContextColumn[i] + newLine);
+                    Write(fs, stringBuffer, DayColumn[i] + newLine);
+                    Write(fs, stringBuffer, LineIDColumn[i] + newLine);
+                    Write(fs, stringBuffer, LineStatusColumn[i] + newLine);
+                    Write(fs, stringBuffer, VoiceStatusColumn[i] + newLine);
+                    Write(fs, stringBuffer, ExtraDataColumn[i] + newLine);
+                }
+            }
+        }
+
+        void Write(FileStream fs, byte[] buf, string value)
+        {
+            // Reuse the buffer and write the string
+            int written = Encoding.GetBytes(value, 0, value.Length, buf, 0);
+            fs.Write(buf, 0, written);
+        }
+
+
+        public static TSVData Load()
+        {
+            if (!SavedDataExists())
+                throw new FileNotFoundException("No saved TSVData file found");
+
+            TSVData data = null;
+            bool first = true;
+            int index = 0;
+            int count = 0;
+            const int NumElements = 8;
+            List<string> lineBuffer = new List<string>(NumElements);
+
+            foreach (string line in File.ReadLines(FilePath, Encoding))
+            {
+                if (first)
+                {
+                    // Read the amount on the first time through
+                    first = false;
+                    count = int.Parse(line.TrimEnd());
+                    data = new TSVData(count);
+                }
+                else
+                {
+                    lineBuffer.Add(line);
+                    // Add it when it's full
+                    if (lineBuffer.Count == NumElements)
+                    {
+                        AddLineBuffer(data, lineBuffer);
+                        index++;
+                        // Check if we are done
+                        if (index == count)
+                            break;
+                    }
+                }
+            }
+
+            return data;
+        }
+
+        private static void AddLineBuffer(TSVData to, List<string> lineBuffer)
+        {
+            RawLineData d = new RawLineData();
+            d.character = lineBuffer[0];
+            d.text = lineBuffer[1];
+            d.context = lineBuffer[2];
+            d.day = lineBuffer[3];
+            d.id = lineBuffer[4];
+            d.lineStatus = lineBuffer[5];
+            d.voiceStatus = lineBuffer[6];
+            d.extraData = lineBuffer[7];
+
+            to.AddLineToStorage(d);
+
+            lineBuffer.Clear();
+        }
+
+        public static bool SavedDataExists()
+        {
+            return File.Exists(FilePath);
         }
     }
 }
