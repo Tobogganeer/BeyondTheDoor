@@ -9,7 +9,7 @@ namespace BeyondTheDoor.Importer
     public class DialogueImportWindow : EditorWindow
     {
         TextAsset tsvFile;
-        LineParser.RawLineCollection rawLines;
+        RawLineCollection rawLines;
         bool clearLinesOnEnumGeneration;
 
         [MenuItem("Dialogue/Import Window")]
@@ -62,7 +62,7 @@ namespace BeyondTheDoor.Importer
             if (GUILayout.Button("Log Invalid lines"))
             {
                 Debug.Log("Invalid lines:");
-                foreach (LineParser.RawLineData data in rawLines.InvalidLines)
+                foreach (RawLineData data in rawLines.InvalidLines)
                     Debug.Log("- " + data.GetInvalidElementsString());
             }
 
