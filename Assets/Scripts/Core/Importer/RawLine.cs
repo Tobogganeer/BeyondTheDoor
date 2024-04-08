@@ -46,6 +46,24 @@ namespace BeyondTheDoor.Importer
             }
         }
 
+        /// <summary>
+        /// Clears artifacts from the TSV export (triple quotes, random single quotes)
+        /// </summary>
+        /// <remarks>Do not call this twice! It will remove valid quotation marks!</remarks>
+        public void CorrectQuotationMarks()
+        {
+            string tripleQuote = "\"\"\"";
+            string quote = "\"";
+            // Triple quotes means we want a quote at the start and end
+            if (text.StartsWith(tripleQuote) && text.EndsWith(tripleQuote))
+                text = text.Replace(tripleQuote, quote);
+            // Some lines have random quotes placed on them
+            else if (text.StartsWith(quote) && text.EndsWith(quote))
+                text = text.Replace(quote, string.Empty);
+
+            // TODO: This function could format text poorly if it has quotes not at the start and end
+        }
+
         private Line.Element GetInvalidElements()
         {
             Line.Element invalidElements = Line.Element.None;

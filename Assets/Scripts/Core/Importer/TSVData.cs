@@ -64,6 +64,7 @@ namespace BeyondTheDoor.Importer
 
             // Trim all entries; don't validate every line
             line.Validate(false);
+            line.CorrectQuotationMarks();
             return line;
         }
 

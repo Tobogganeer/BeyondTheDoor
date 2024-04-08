@@ -40,7 +40,7 @@ Draft
 Placeholder
 Here
 //
-"These just make sure that all characters are ""defined"" even if they have no lines yet"
+These just make sure that all characters are defined even if they have no lines yet
 
 
 
@@ -272,7 +272,7 @@ Final
 None
 
 Player
-"""Who are you?"""
+"Who are you?"
 
 0
 who_are_you
@@ -280,7 +280,7 @@ Final
 None
 
 Player
-"""What do you want?"""
+"What do you want?"
 
 0
 what_do_you_want
@@ -288,7 +288,7 @@ Final
 None
 
 Player
-"""Why should I let you in?"""
+"Why should I let you in?"
 
 0
 why_should_i_let_you_in
@@ -296,7 +296,7 @@ Final
 None
 
 Player
-"""How can you be helpful to me?"""
+"How can you be helpful to me?"
 
 0
 how_can_you_be_helpful
@@ -408,7 +408,7 @@ None
 None
 
 Tutorial_Dad
-"Okay, we won't take long."
+Okay, we won't take long.
 Response to player choice
 0
 tutdad_0_question_response
@@ -512,7 +512,7 @@ Draft
 None
 
 Tutorial_Mom
-"Hey kiddo, can you open the door please? It's raining out here... "
+Hey kiddo, can you open the door please? It's raining out here... 
 At door
 0
 tutmom_0_q_open_door
@@ -568,7 +568,7 @@ None
 None
 
 Tutorial_Mom
-"Hehe, nice one... Really though, it is quite cold."
+Hehe, nice one... Really though, it is quite cold.
 Player keeps door closed
 0
 tutmom_0_q_open_door_second
@@ -648,7 +648,7 @@ None
 None
 
 Tutorial_Dad
-"Thanks kiddo, now let's eat some ice cream!"
+Thanks kiddo, now let's eat some ice cream!
 Player lets them in
 0
 tutdad_0_lets_eat
@@ -688,7 +688,7 @@ Placeholder
 None
 
 Player
-"Another dream huh, what can I do for today"
+Another dream huh, what can I do for today
 Player just woke up
 1
 p1_choosing
@@ -712,7 +712,7 @@ None
 None
 
 Radio
-"The war continues on Brasnia Republic, it has been one week since the war started, United States send more weapons to revolutionaries, multiple industries are leaving the country, afraid of being involved with any side of the war. So far the only hope for some is leaving for Canada as they are the only ones accepting refugees."
+The war continues on Brasnia Republic, it has been one week since the war started, United States send more weapons to revolutionaries, multiple industries are leaving the country, afraid of being involved with any side of the war. So far the only hope for some is leaving for Canada as they are the only ones accepting refugees.
 Player checks radio in day 1
 1
 r1
@@ -736,7 +736,7 @@ None
 None
 
 Player
-"I only see snow and ash outside, I hope the heater doesnt give up on me, that would be my downfall"
+I only see snow and ash outside, I hope the heater doesnt give up on me, that would be my downfall
 Player goes outside to check situation
 1
 p1_outside
@@ -760,7 +760,7 @@ None
 None
 
 TV
-"LOOK FOR SHELTER, DONT LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING."
+LOOK FOR SHELTER, DONT LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING.
 Player checks television in day 1
 1
 tv1
@@ -784,7 +784,7 @@ None
 None
 
 Player
-"I think I have enough food for the next days if, I hope the war doesn't reach this are of the city"
+I think I have enough food for the next days if, I hope the war doesn't reach this are of the city
 Player checks food supplies
 1
 p1_supply
@@ -816,7 +816,7 @@ Placeholder
 None
 
 Jessica
-"Hey! Im pleading to be let in, I can survive out here in a wheel chair"
+Hey! Im pleading to be let in, I can survive out here in a wheel chair
 
 1
 j_1_door_ignored
@@ -824,7 +824,7 @@ Placeholder
 None
 
 Player
-"I can't see anything beyond a shape, it looks like I can see small, and a wheel, maybe two"
+I can't see anything beyond a shape, it looks like I can see small, and a wheel, maybe two
 
 1
 p_1_door_head
@@ -856,7 +856,7 @@ None
 None
 
 Player
-"Sorry I cant let you in, I don't have enough resources ( lie)"
+Sorry I cant let you in, I don't have enough resources ( lie)
 
 1
 p_1_door_out_lie
@@ -872,7 +872,7 @@ None
 None
 
 Player
-"Sorry I cant let you in, I don't trust you"
+Sorry I cant let you in, I don't trust you
 
 1
 p_1_door_out
@@ -888,7 +888,7 @@ None
 None
 
 Player
-"Okay, take three step back, I'm going to open the door"
+Okay, take three step back, I'm going to open the door
 
 1
 p_1_open_door
@@ -912,7 +912,7 @@ None
 None
 
 Jessica
-"My name is Jessica, I'm just looking for shelter, I can't stay out here for long, I cant go very further because of my wheelchair"
+My name is Jessica, I'm just looking for shelter, I can't stay out here for long, I cant go very further because of my wheelchair
 Who are you
 1
 j_1_who
@@ -936,7 +936,7 @@ None
 None
 
 Jessica
-"I'm in a wheelchair, I will die if you don't let me in! I cannot survive in this cold, I can't even walk!"
+I'm in a wheelchair, I will die if you don't let me in! I cannot survive in this cold, I can't even walk!
 Why should I let you in
 1
 j_1_why
@@ -984,7 +984,7 @@ None
 None
 
 Jessica
-"I've from a city nearby. I used to live in a big house before but after the war started I had to escape the city, I took the refugee train to leave the city before it was shut down due to the destruction of the lines."
+I've from a city nearby. I used to live in a big house before but after the war started I had to escape the city, I took the refugee train to leave the city before it was shut down due to the destruction of the lines.
 Where you came from
 1
 j_1_where
@@ -1080,7 +1080,7 @@ Placeholder
 None
 
 Player
-"Okay you can get in, you should warm up a bit."
+Okay you can get in, you should warm up a bit.
 
 1
 p_1_j_in
@@ -1120,7 +1120,7 @@ Placeholder
 None
 
 Jessica
-"For around a day, I was able to take the last train that was going for the airport nearby, but after the airport was attacked, we were left helpless in the station."
+For around a day, I was able to take the last train that was going for the airport nearby, but after the airport was attacked, we were left helpless in the station.
 
 1
 j_1_story
@@ -1128,7 +1128,7 @@ Placeholder
 None
 
 Jessica
-"Some of the soldiers apprehended some of the people of the station but I was able to flee so I've romamed a for some hours until I found the cabin, I was probably going to die if it wasnt for you"
+Some of the soldiers apprehended some of the people of the station but I was able to flee so I've romamed a for some hours until I found the cabin, I was probably going to die if it wasnt for you
 
 1
 j_1_background
@@ -1136,7 +1136,7 @@ Placeholder
 None
 
 Player
-"Those are some horrible news, were they the govermnet soldiers or the revolunaries?"
+Those are some horrible news, were they the govermnet soldiers or the revolunaries?
 
 1
 p_1_news
@@ -1144,7 +1144,7 @@ Placeholder
 None
 
 Jessica
-"It was the government, they were afraid of some of the words getting out, some people are fleeing the country trough airports."
+It was the government, they were afraid of some of the words getting out, some people are fleeing the country trough airports.
 
 1
 j_1_airport
@@ -1160,7 +1160,7 @@ Placeholder
 None
 
 Jessica
-"They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country"
+They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country
 
 1
 j_1_flee
@@ -1208,7 +1208,7 @@ Placeholder
 None
 
 Player
-"I feel like it is better for us to get some rest, you can use the first bedroom in the hallway."
+I feel like it is better for us to get some rest, you can use the first bedroom in the hallway.
 
 1
 p_1_rest1
@@ -1216,7 +1216,7 @@ Placeholder
 None
 
 Jessica
-"Ok, thank you very much, see you tomorrow."
+Ok, thank you very much, see you tomorrow.
 
 1
 j_1_rest
@@ -1224,7 +1224,7 @@ Placeholder
 None
 
 Player
-"I feel like it is better for us to get some rest, you can use the first bedroom in the hallway."
+I feel like it is better for us to get some rest, you can use the first bedroom in the hallway.
 
 1
 p_1_rest2
@@ -1256,7 +1256,7 @@ None
 None
 
 Radio
-"25 dead after revolutionaries attempted to send hijack airplanes for refugees to flee the country, the only resources coming to the country are trough air drops and direct sent to the military outposts."
+25 dead after revolutionaries attempted to send hijack airplanes for refugees to flee the country, the only resources coming to the country are trough air drops and direct sent to the military outposts.
 Player checks radio in day 2
 2
 r2
@@ -1304,7 +1304,7 @@ None
 None
 
 TV
-"LOOK FOR SHELTER, DON'T LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING. THOSE ARE RUNNING LOW ON SUPPLIES OR HAVE INJURIES SHOULD IMMEDIATELY SEEK A MILITARY OUTPOST."
+LOOK FOR SHELTER, DON'T LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING. THOSE ARE RUNNING LOW ON SUPPLIES OR HAVE INJURIES SHOULD IMMEDIATELY SEEK A MILITARY OUTPOST.
 Player checks television in day 1
 2
 tv2
@@ -1432,7 +1432,7 @@ None
 None
 
 Player
-"You're probably right, we can wait a bit further until we have to resort to scavenge."
+You're probably right, we can wait a bit further until we have to resort to scavenge.
 Player decides to not send Jessica
 2
 p_2_scavenge_opt1
@@ -1440,7 +1440,7 @@ Placeholder
 None
 
 Player
-"Its either us or they, we don't know if there are many survives nearby as well, in the end it might just be pillaged by raiders or by soldiers themselves. I think it would be a good idea for you you to scavenge today (send her to scavenge)"
+Its either us or they, we don't know if there are many survives nearby as well, in the end it might just be pillaged by raiders or by soldiers themselves. I think it would be a good idea for you you to scavenge today (send her to scavenge)
 Player convincing Jessica to scavenge
 2
 p_2_scavenge_opt2
@@ -1448,7 +1448,7 @@ Placeholder
 None
 
 Jessica
-"I'm against it, I'm almost the supplies will last for a long while, I can't steal knowing some people out there might need it more than us."
+I'm against it, I'm almost the supplies will last for a long while, I can't steal knowing some people out there might need it more than us.
 Jessica being against scavenging
 2
 j_2_scavenge
@@ -1456,7 +1456,7 @@ Placeholder
 None
 
 Player
-"You're the one who is currently living with me, if you want to survive you will need to collaborate"
+You're the one who is currently living with me, if you want to survive you will need to collaborate
 Player convincing Jessica to scavenge
 2
 p_2_force_jscavange
@@ -1488,7 +1488,7 @@ None
 None
 
 Player
-"It already past 2 hours the time we scheduled for her to come back, she probably died"
+It already past 2 hours the time we scheduled for her to come back, she probably died
 
 2
 j_2_jessica_died
@@ -1520,7 +1520,7 @@ None
 None
 
 Jessica
-"You should check it out, what if its someone who needs help?"
+You should check it out, what if its someone who needs help?
 
 2
 j_2_door
@@ -1528,7 +1528,7 @@ Placeholder
 None
 
 Jessica
-"Please check the door, I'm sure its someone out there in that wasteland! Are you going to let they die?! You're going to murder them!"
+Please check the door, I'm sure its someone out there in that wasteland! Are you going to let they die?! You're going to murder them!
 
 2
 j_2_pleading_door
@@ -1552,7 +1552,7 @@ None
 None
 
 Bob
-"Hello? I can see you have your lights on, hey please man can you let me in? It's freezing out here."
+Hello? I can see you have your lights on, hey please man can you let me in? It's freezing out here.
 
 2
 b_2_door
@@ -1560,7 +1560,7 @@ Placeholder
 None
 
 Player
-"I can only see what it seems to be someone wearing a cap, the look tall and he looks like a normal man"
+I can only see what it seems to be someone wearing a cap, the look tall and he looks like a normal man
 
 2
 p_2_door_head
@@ -1584,7 +1584,7 @@ None
 None
 
 Bob
-"Name's Bob, I just to find shelter, the nearest city is under siege, its a total chaos, building crumbling, shells and rumble on the street. You please have to let me in!"
+Name's Bob, I just to find shelter, the nearest city is under siege, its a total chaos, building crumbling, shells and rumble on the street. You please have to let me in!
 
 2
 b_2_name
@@ -1608,7 +1608,7 @@ None
 None
 
 Bob
-"I can help you search for survive, I know how to scavenge and survive on my own out there for a while but I am at my limit right now! I need water and a warmed place to rest, I don't want to die in this hell hole!"
+I can help you search for survive, I know how to scavenge and survive on my own out there for a while but I am at my limit right now! I need water and a warmed place to rest, I don't want to die in this hell hole!
 
 2
 b_2_why_in
@@ -1632,7 +1632,7 @@ None
 None
 
 Bob
-"I used to live a town nearby, I moved to the city recently but after the war I was forced to flee. I've been here before, I know these woods like the palm of my hand, you should let me in! I'm useful!"
+I used to live a town nearby, I moved to the city recently but after the war I was forced to flee. I've been here before, I know these woods like the palm of my hand, you should let me in! I'm useful!
 
 2
 b_2_where
@@ -1664,7 +1664,7 @@ None
 None
 
 Player
-"Sorry I can't let you in, I don't have enough resources (lie)"
+Sorry I can't let you in, I don't have enough resources (lie)
 
 2
 p_2_dont_b
@@ -1680,7 +1680,7 @@ None
 None
 
 Player
-"Okay, take three step back, I'm going to open the door."
+Okay, take three step back, I'm going to open the door.
 
 2
 p_2_open_door
@@ -1712,7 +1712,7 @@ None
 None
 
 Jessica
-"What are you talking about! You're lying, we're talking about a human being on the other side of the door! He already proved himself to be even useful for God's sake, let him in!"
+What are you talking about! You're lying, we're talking about a human being on the other side of the door! He already proved himself to be even useful for God's sake, let him in!
 
 2
 j_2_door_sad
@@ -1728,7 +1728,7 @@ None
 None
 
 Bob
-"I can help! I can be useful and find more food to help us survive, please! I don't want to be here!"
+I can help! I can be useful and find more food to help us survive, please! I don't want to be here!
 
 2
 b_door_rejection
@@ -1736,7 +1736,7 @@ None
 None
 
 Player
-"Sorry I can't let you in, I don't trust you"
+Sorry I can't let you in, I don't trust you
 
 2
 p_door_rejection
@@ -1760,7 +1760,7 @@ None
 None
 
 Bob
-"Okay, thanks!"
+Okay, thanks!
 
 2
 b_2_open_door
@@ -1792,7 +1792,7 @@ None
 None
 
 Player
-"Im going to bed, your room is the second one in the hallway."
+Im going to bed, your room is the second one in the hallway.
 
 2
 p_2_room
@@ -1832,7 +1832,7 @@ None
 None
 
 Bob
-"It's been some days,? I think maybe 3 days, I've been surviving trough scavenging some resources on my way here."
+It's been some days,? I think maybe 3 days, I've been surviving trough scavenging some resources on my way here.
 
 2
 b_2_time
@@ -1848,7 +1848,7 @@ Placeholder
 None
 
 Bob
-"Because of the blizzard its hard to see much, I'm glad I left with my hiking equipment and clothes, If not I could've died out there."
+Because of the blizzard its hard to see much, I'm glad I left with my hiking equipment and clothes, If not I could've died out there.
 
 2
 b_2_situation
@@ -1880,7 +1880,7 @@ None
 None
 
 Bob
-"They don't stop,even in these horrible conditions the war still rages on"
+They don't stop,even in these horrible conditions the war still rages on
 
 2
 b_2_war
@@ -1920,7 +1920,7 @@ Placeholder
 None
 
 Player
-"I'm going to bed, your room is the second one in the hallway."
+I'm going to bed, your room is the second one in the hallway.
 
 2
 p_2_sleep
@@ -1944,7 +1944,7 @@ None
 None
 
 Jessica
-"I can't believe I'm a murderer, I hope he finds somewhere else to live"
+I can't believe I'm a murderer, I hope he finds somewhere else to live
 
 2
 j_2_bob_out
@@ -1952,7 +1952,7 @@ Placeholder
 None
 
 Player
-"We can't afford to let him in, we don't have enough food and water to keep one more person around"
+We can't afford to let him in, we don't have enough food and water to keep one more person around
 
 2
 p_2_bob_food
@@ -1984,7 +1984,7 @@ Placeholder
 None
 
 Jessica
-"I need some rest, my head is not in the best place right now"
+I need some rest, my head is not in the best place right now
 
 2
 j_2_rest
@@ -1992,7 +1992,7 @@ Placeholder
 None
 
 Player
-"We can't trust everyone who knocks. What if he was a Raider? He could've very well lied about everything. This is war, we have to be cautious about everything"
+We can't trust everyone who knocks. What if he was a Raider? He could've very well lied about everything. This is war, we have to be cautious about everything
 
 2
 p_2_b_untrust
@@ -2008,7 +2008,7 @@ Placeholder
 None
 
 Jessica
-"I need some rest, my head is not in the best place right now"
+I need some rest, my head is not in the best place right now
 
 2
 j_2_headache
@@ -2040,7 +2040,7 @@ None
 None
 
 Radio
-"Drone footage has shown that camps in which POW revolutionaries and being executed without, going against the Geneva convention"
+Drone footage has shown that camps in which POW revolutionaries and being executed without, going against the Geneva convention
 Player checks radio in day 3
 3
 r3
@@ -2064,7 +2064,7 @@ None
 None
 
 Player
-"A bit less cold then yesterday bit still inhumane to stay out here for longer periods of time, I wonder how the soldiers even fight in these conditions"
+A bit less cold then yesterday bit still inhumane to stay out here for longer periods of time, I wonder how the soldiers even fight in these conditions
 Player goes outside to check situation
 3
 p3_outside
@@ -2088,7 +2088,7 @@ None
 None
 
 TV
-"LOOK FOR SHELTER, DON'T LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING. ALL CITIZENS OVER 30 ARE REQUIRED TO GO TO AN OUTPOST TO BE DRAFTED INTO THE WAR."
+LOOK FOR SHELTER, DON'T LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING. ALL CITIZENS OVER 30 ARE REQUIRED TO GO TO AN OUTPOST TO BE DRAFTED INTO THE WAR.
 Player checks television in day 3
 3
 tv3
@@ -2160,7 +2160,7 @@ Placeholder
 None
 
 Player
-"Yeah, we have to be more careful when scavenging to no e caught by any soldiers."
+Yeah, we have to be more careful when scavenging to no e caught by any soldiers.
 Player talking about soldiers
 3
 p_3_careful
@@ -2232,7 +2232,7 @@ None
 None
 
 Bob
-"We have to scavenge if we want to survive, if you want to I can go. I know these woods well"
+We have to scavenge if we want to survive, if you want to I can go. I know these woods well
 
 3
 b_3_scavenge_comment
@@ -2256,7 +2256,7 @@ Placeholder
 None
 
 Bob
-"Enough for what? To live? or until we die in the war? There's no such ""enough"" food, we have to alaways keep restocking and if a opportunity appears for us to leave this hellhole we need to have enough food until then"
+Enough for what? To live? or until we die in the war? There's no such enough food, we have to alaways keep restocking and if a opportunity appears for us to leave this hellhole we need to have enough food until then
 Bob abslolutely owning Jessica
 3
 b_3_owning
@@ -2272,7 +2272,7 @@ Placeholder
 None
 
 Bob
-"You're the owner of the house, do you want me to go or Jessica?"
+You're the owner of the house, do you want me to go or Jessica?
 
 3
 b_3_choice
@@ -2352,7 +2352,7 @@ Placeholder
 None
 
 Player
-"Yes, Jessica should go"
+Yes, Jessica should go
 
 3
 p_3_j_confirm
@@ -2448,7 +2448,7 @@ None
 None
 
 Bob
-"Okay, do you have anything I can bring to defend myself if something happens?"
+Okay, do you have anything I can bring to defend myself if something happens?
 
 3
 b_3_bring
@@ -2464,7 +2464,7 @@ None
 None
 
 Player
-"I have a gun, but I think its better for it to be here so we can defend ourselves"
+I have a gun, but I think its better for it to be here so we can defend ourselves
 
 3
 p_3_b_no_gun
@@ -2472,7 +2472,7 @@ Placeholder
 None
 
 Bob
-"Okay, I will try to see what I can do without it"
+Okay, I will try to see what I can do without it
 
 3
 b_3_without_gun
@@ -2488,7 +2488,7 @@ None
 None
 
 Player
-"I have a gun, you should bring it with you to defend yourself"
+I have a gun, you should bring it with you to defend yourself
 
 3
 p_3_b_gun
@@ -2496,7 +2496,7 @@ Placeholder
 None
 
 Bob
-"Thanks, I will be back before sunset."
+Thanks, I will be back before sunset.
 
 3
 b_3_with_gun
@@ -2536,7 +2536,7 @@ None
 None
 
 Journalist
-"Heeeeey! I come in peace, I'm just a journalist, I want to ask some questions"
+Heeeeey! I come in peace, I'm just a journalist, I want to ask some questions
 
 3
 journalist_3_hey
@@ -2544,7 +2544,7 @@ None
 None
 
 Player
-"Sure, why not"
+Sure, why not
 
 3
 p_3_j_sure
@@ -2552,7 +2552,7 @@ Placeholder
 None
 
 Journalist
-"Nice, its been a bit hard finding people out here willing to talk, a lot of them area a bit rude"
+Nice, its been a bit hard finding people out here willing to talk, a lot of them area a bit rude
 
 3
 journalist_3_rude
@@ -2584,7 +2584,7 @@ None
 None
 
 Player
-"uhum, uhum"
+uhum, uhum
 
 3
 p_3_goon
@@ -2608,7 +2608,7 @@ None
 None
 
 Journalist
-"I'm was thinking of going to the city a bit up north, the place is in complete chaos right now, I've heard that they stopped using rubber bullets against people. It sound's like movie."
+I'm was thinking of going to the city a bit up north, the place is in complete chaos right now, I've heard that they stopped using rubber bullets against people. It sound's like movie.
 
 3
 
@@ -2640,7 +2640,7 @@ None
 None
 
 Player
-"uhum, uhum"
+uhum, uhum
 
 3
 p_3_goon
@@ -2664,7 +2664,7 @@ None
 None
 
 Journalist
-"But I heard some pretty fucked up stuff, both side are torturing some people for information. "
+But I heard some pretty fucked up stuff, both side are torturing some people for information. 
 
 3
 journalist_3_fucked
@@ -2672,7 +2672,7 @@ Placeholder
 None
 
 Journalist
-"They are also paying some journalists to show a different image of the war, showing how the state is winning and the revolutionaries are doing some pretty fucked up stuff, I don't know if its true but I want to show the world the truth."
+They are also paying some journalists to show a different image of the war, showing how the state is winning and the revolutionaries are doing some pretty fucked up stuff, I don't know if its true but I want to show the world the truth.
 
 3
 journalist_3_money
@@ -2696,7 +2696,7 @@ None
 None
 
 Journalist
-"Ok, Now for some questions, are you suffering with lack of anything? Food, water, too cold etc...?"
+Ok, Now for some questions, are you suffering with lack of anything? Food, water, too cold etc...?
 
 
 journalist_3_resources
@@ -2712,7 +2712,7 @@ None
 None
 
 Player
-"Food and water are a bit hard to come by, but we are trying our best."
+Food and water are a bit hard to come by, but we are trying our best.
 
 3
 p_3_resource
@@ -2728,7 +2728,7 @@ None
 None
 
 Player
-"It is very cold, I fear that the if we run out of heating we will freeze to death"
+It is very cold, I fear that the if we run out of heating we will freeze to death
 
 3
 p_3_heating
@@ -2792,7 +2792,7 @@ Placeholder
 None
 
 Journalist
-"If you don't mind, which side do you sympathize the most?"
+If you don't mind, which side do you sympathize the most?
 
 3
 journalist_3_sympahize
@@ -2808,7 +2808,7 @@ None
 None
 
 Player
-"Revolutionaries, they are just trying to fight for a better country and get rid of all the corruptiong"
+Revolutionaries, they are just trying to fight for a better country and get rid of all the corruptiong
 
 3
 p_3_revolutionaries
@@ -2824,7 +2824,7 @@ None
 None
 
 Player
-"The government, they've kept this country going for years, stuff did get a bit better when they entered the political scene."
+The government, they've kept this country going for years, stuff did get a bit better when they entered the political scene.
 
 3
 p_3_government
@@ -2840,7 +2840,7 @@ None
 None
 
 Player
-"None, I just want to get out of this place"
+None, I just want to get out of this place
 
 3
 p_3_none
@@ -2864,7 +2864,7 @@ None
 None
 
 Journalist
-"Right, ok, I think thats all, thanks for conversation, the information you gave me will be all anonymous, so your name won't appear anywhere, if you want to learn more about it you can read the Brasnian people morning news."
+Right, ok, I think thats all, thanks for conversation, the information you gave me will be all anonymous, so your name won't appear anywhere, if you want to learn more about it you can read the Brasnian people morning news.
 
 3
 journalist_3_done
@@ -2872,7 +2872,7 @@ Placeholder
 None
 
 Player
-"Ok, thanks, havea safe trip"
+Ok, thanks, havea safe trip
 
 3
 p_3_safe_trip
@@ -2880,7 +2880,7 @@ Placeholder
 None
 
 Journalist
-"You too, be safe"
+You too, be safe
 
 3
 journalist_3_safe
@@ -2904,7 +2904,7 @@ None
 None
 
 Bob
-"Oh wow that's a strong bang, I don't think that would be great news"
+Oh wow that's a strong bang, I don't think that would be great news
 
 3
 b_3_knock
@@ -3096,7 +3096,7 @@ None
 None
 
 Player
-"Its something, not someone, it looks like a big mass of muscle."
+Its something, not someone, it looks like a big mass of muscle.
 
 
 p_3_peephole
@@ -3288,7 +3288,7 @@ None
 None
 
 Player
-"Sorry I can't let you in, I don't have enough resources (lie)"
+Sorry I can't let you in, I don't have enough resources (lie)
 
 3
 p_3_out
@@ -3304,7 +3304,7 @@ None
 None
 
 Player
-"Okay, take three step back, I'm going to open the door."
+Okay, take three step back, I'm going to open the door.
 
 3
 p_3_in
@@ -3336,7 +3336,7 @@ None
 None
 
 Bob
-"I think you did the right choice, its probably not even human"
+I think you did the right choice, its probably not even human
 
 3
 b_3_not_human
@@ -3512,7 +3512,7 @@ None
 None
 
 Jessica
-"I'm going to sleep, goodnight everyone"
+I'm going to sleep, goodnight everyone
 
 3
 j_3_night
@@ -3528,7 +3528,7 @@ Placeholder
 None
 
 Jessica
-"Yeah, good night to you too bob"
+Yeah, good night to you too bob
 
 3
 j_3_shocked
@@ -3576,7 +3576,7 @@ None
 None
 
 Radio
-"The war still breaks out and seems to be moving more towards the south, people who find themselves on that area should consider moving closer to border or other areas"
+The war still breaks out and seems to be moving more towards the south, people who find themselves on that area should consider moving closer to border or other areas
 Player checks radio in day 3
 4
 r4
@@ -3600,7 +3600,7 @@ None
 None
 
 Player
-"The weather is getting better, still no way in hell I would go outside"
+The weather is getting better, still no way in hell I would go outside
 Player goes outside to check situation
 4
 p4_outside
@@ -3624,7 +3624,7 @@ None
 None
 
 TV
-"JOIN THE RESISTANCE, FIGHT THE OPPRESSION, DEATH TO THE DICTATORS"
+JOIN THE RESISTANCE, FIGHT THE OPPRESSION, DEATH TO THE DICTATORS
 Player checks television in day 3
 4
 tv4
@@ -3648,7 +3648,7 @@ None
 None
 
 Player
-"We are alright about food, not much nor few."
+We are alright about food, not much nor few.
 Player checks food supplies
 4
 p4_supply
@@ -3672,7 +3672,7 @@ None
 None
 
 Bob
-"Hummm, that's interesting,they hacked the television broadcast"
+Hummm, that's interesting,they hacked the television broadcast
 Bob commenting on TV
 4
 b_4_hack
@@ -3696,7 +3696,7 @@ Placeholder
 None
 
 Bob
-"Fair, but we were in the need of better conditions for a long time, but you don't need to fight for something you don't believe in"
+Fair, but we were in the need of better conditions for a long time, but you don't need to fight for something you don't believe in
 
 4
 b_4_fight
@@ -3728,7 +3728,7 @@ Placeholder
 None
 
 Jessica
-"I'm sorry about yesterday, we would all be dead if you guys followed my decisions"
+I'm sorry about yesterday, we would all be dead if you guys followed my decisions
 
 4
 j_4_morning
@@ -3760,7 +3760,7 @@ None
 None
 
 Player
-"Okay, we need to scavenge, does anyone wants to go?"
+Okay, we need to scavenge, does anyone wants to go?
 
 4
 p_4_scavenge
@@ -3800,7 +3800,7 @@ None
 None
 
 Jessica
-"I don't think we need to scavenge, just the two of us we will have enough food for a while"
+I don't think we need to scavenge, just the two of us we will have enough food for a while
 
 
 j_4_while
@@ -3832,7 +3832,7 @@ None
 None
 
 Jessica
-"Okay, if we're going to scavenge can we at least only take the necessary?"
+Okay, if we're going to scavenge can we at least only take the necessary?
 
 
 j_4_necessary
@@ -3840,7 +3840,7 @@ None
 None
 
 Bob
-"There's no such thing as ""only the necessary"". We need to get as many supplies as possible"
+There's no such thing as only the necessary. We need to get as many supplies as possible
 
 4
 b_4_necessary
@@ -3888,7 +3888,7 @@ None
 None
 
 Bob
-"So okay, who's going to fucking scavenge?"
+So okay, who's going to fucking scavenge?
 
 
 b_4_pissed
@@ -3976,7 +3976,7 @@ None
 None
 
 Jessica
-"I can't do much in this state, I will die!"
+I can't do much in this state, I will die!
 
 4
 j_4_die
@@ -4160,7 +4160,7 @@ None
 None
 
 Bob
-"Okay, do you have anything I can bring to defend myself if something happens?"
+Okay, do you have anything I can bring to defend myself if something happens?
 
 4
 b_4_gun
@@ -4176,7 +4176,7 @@ None
 None
 
 Player
-"I have a gun, you should bring it with you to defend yourself"
+I have a gun, you should bring it with you to defend yourself
 
 4
 p_4_bob_gun
@@ -4192,7 +4192,7 @@ None
 None
 
 Player
-"I have a gun, but I think its better for it to be here so we can defend ourselves"
+I have a gun, but I think its better for it to be here so we can defend ourselves
 
 4
 p_4_no_gun
@@ -4216,7 +4216,7 @@ None
 None
 
 Bob
-"Thanks, I will be back before sunset."
+Thanks, I will be back before sunset.
 
 4
 b_4_thank
@@ -4240,7 +4240,7 @@ None
 None
 
 Bob
-"Okay, I will try to see what I can do without it"
+Okay, I will try to see what I can do without it
 
 4
 b_4_no_gun
@@ -4264,7 +4264,7 @@ None
 None
 
 Player
-"It already past 2 hours the time we scheduled for her to come back, she probably died"
+It already past 2 hours the time we scheduled for her to come back, she probably died
 
 4
 j_2_jessica_died
@@ -4280,7 +4280,7 @@ None
 None
 
 Bob
-"She didn't return, I told you that she wouldn't survive out there"
+She didn't return, I told you that she wouldn't survive out there
 
 4
 b_4_jessica_died
@@ -4312,7 +4312,7 @@ None
 None
 
 Bob
-"Its getting a bit less cold, I heard some gunshots in the distance, I had to hide the gun so I wouln't be mistaken as one of the revolutionaries and be shot on sight"
+Its getting a bit less cold, I heard some gunshots in the distance, I had to hide the gun so I wouln't be mistaken as one of the revolutionaries and be shot on sight
 
 4
 b_4_scavenge_gun
@@ -4336,7 +4336,7 @@ None
 None
 
 Bob
-"There were some gunshots in the distance, I had to make another route today so I didn't walk into a fucking no mans land"
+There were some gunshots in the distance, I had to make another route today so I didn't walk into a fucking no mans land
 
 4
 b_4_scavenge_bo_gun
@@ -4376,7 +4376,7 @@ Placeholder
 None
 
 Jessica
-"Of course I'm okay, did you get hurt? Blood from who?"
+Of course I'm okay, did you get hurt? Blood from who?
 
 4
 j_4_blood
@@ -4384,7 +4384,7 @@ Placeholder
 None
 
 Player
-"Bob, the bear and everything, don't you remember?"
+Bob, the bear and everything, don't you remember?
 
 4
 p_4_bob_blood
@@ -4400,7 +4400,7 @@ Placeholder
 None
 
 Player
-"Oh no she's shell shocked, she's traumatized and her brain is blocking the memory"
+Oh no she's shell shocked, she's traumatized and her brain is blocking the memory
 
 4
 p_4_jessica_shocked
@@ -4488,7 +4488,7 @@ None
 None
 
 Jessica
-"I can't do much in this state, I will die!"
+I can't do much in this state, I will die!
 
 
 j_4_crying
@@ -4584,7 +4584,7 @@ None
 None
 
 Radio
-"The Brasnian conflict continues its northward push, with officials expecting fighting to reach the northern border within days. The Brasnian government has announced plans to open northern border checkpoints for refugees within the coming days."
+The Brasnian conflict continues its northward push, with officials expecting fighting to reach the northern border within days. The Brasnian government has announced plans to open northern border checkpoints for refugees within the coming days.
 
 7
 r7
@@ -4608,7 +4608,7 @@ None
 None
 
 Player
-"It looks like the first nice day in a while. Wet, but at least there isn't massive winds."
+It looks like the first nice day in a while. Wet, but at least there isn't massive winds.
 
 7
 p7_outside
@@ -4648,7 +4648,7 @@ None
 None
 
 //
-"Bob, Jessica and Violet wake up and comment on the  TV"
+Bob, Jessica and Violet wake up and comment on the  TV
 
 
 
@@ -4704,7 +4704,7 @@ None
 None
 
 Jessica
-"(to Bob) It's good to have some doubt, but you can't be so cynical all the time. The war will end eventually."
+(to Bob) It's good to have some doubt, but you can't be so cynical all the time. The war will end eventually.
 Jessica responding to Bob
 7
 j_7_tv_comment_bob
@@ -4816,7 +4816,7 @@ DRAFT
 NONE
 
 Hal
-"Nono, it's alright, but I think we will probably need to find some more stuff somewhere today. I looked through all the cupboards and drawers here and didn't see even any bandages. Why don't you guys have a first aid kit? What's your plan if you stub your toe?"
+Nono, it's alright, but I think we will probably need to find some more stuff somewhere today. I looked through all the cupboards and drawers here and didn't see even any bandages. Why don't you guys have a first aid kit? What's your plan if you stub your toe?
 
 7
 h_7_yapping_wake_up
