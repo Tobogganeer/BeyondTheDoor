@@ -22,25 +22,28 @@ namespace BeyondTheDoor.Importer
             "goto",
         });
 
-        public static RawLineCollection ParseRawLines(string tsvFile)
+        /// <summary>
+        /// Splits the TSV file into all lines worth considering and cleans them up
+        /// </summary>
+        /// <param name="tsvFile"></param>
+        /// <returns></returns>
+        public static TSVData ParseLines(string tsvFile)
         {
             // Split the tsv into rows
-            tsvFile = tsvFile.Trim();
+            //tsvFile = tsvFile.Trim();
             string[] rawLines = tsvFile.Split('\n', StringSplitOptions.RemoveEmptyEntries);
 
             // See how the data is stored
-            List<RawLineData> lines = new List<RawLineData>(rawLines.Length - 1);
             var mappings = GenerateMappingDictionary(rawLines[0]);
+            TSVData cleanData = new TSVData(rawLines.Length);
 
             // Skip the first line (the header)
             for (int i = 1; i < rawLines.Length; i++)
             {
-                RawLineData data = GenerateLineData(rawLines[i], mappings);
-                if (data != null)
-                    lines.Add(data);
+                cleanData.AddLine(rawLines[0], mappings);
             }
 
-            return new RawLineCollection(lines);
+            return cleanData;
         }
 
         static RawLineData GenerateLineData(string rawLine, Dictionary<int, Line.Element> mappings)

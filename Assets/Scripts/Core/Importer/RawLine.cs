@@ -19,17 +19,17 @@ namespace BeyondTheDoor.Importer
         public Line.Element InvalidElements { get; private set; }
 
 
-        public void Validate()
+        public void Validate(bool calculateInvalidElements = true)
         {
             // Clean up the data
-            character = character?.Trim();
-            text = text?.Trim();
-            context = context?.Trim();
-            day = day?.Trim();
-            id = id?.Trim();
-            lineStatus = lineStatus?.Trim();
-            voiceStatus = voiceStatus?.Trim();
-            extraData = extraData?.Trim();
+            character = character?.Trim() ?? string.Empty;
+            text = text?.Trim() ?? string.Empty;
+            context = context?.Trim() ?? string.Empty;
+            day = day?.Trim() ?? string.Empty;
+            id = id?.Trim() ?? string.Empty;
+            lineStatus = lineStatus?.Trim() ?? string.Empty;
+            voiceStatus = voiceStatus?.Trim() ?? string.Empty;
+            extraData = extraData?.Trim() ?? string.Empty;
 
             const string NoneString = "None";
 
@@ -39,8 +39,11 @@ namespace BeyondTheDoor.Importer
             if (string.IsNullOrEmpty(voiceStatus))
                 voiceStatus = NoneString;
 
-            InvalidElements = GetInvalidElements();
-            IsValid = InvalidElements == Line.Element.None;
+            if (calculateInvalidElements)
+            {
+                InvalidElements = GetInvalidElements();
+                IsValid = InvalidElements == Line.Element.None;
+            }
         }
 
         private Line.Element GetInvalidElements()
