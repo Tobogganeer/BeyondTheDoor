@@ -8,7 +8,8 @@ namespace BeyondTheDoor.Importer
 {
     public class DialogueImportWindow : EditorWindow
     {
-        TextAsset tsvFile;
+        TextAsset rawExcelExport;
+        TSVData tsvData;
         RawLineCollection rawLines;
         bool clearLinesOnEnumGeneration;
 
@@ -22,13 +23,15 @@ namespace BeyondTheDoor.Importer
 
         private void OnGUI()
         {
-            tsvFile = EditorGUILayout.ObjectField("Lines File", tsvFile, typeof(TextAsset), false) as TextAsset;
-            if (tsvFile == null)
-                GUI.enabled = false;
+            rawExcelExport = EditorGUILayout.ObjectField("Lines File", rawExcelExport, typeof(TextAsset), false) as TextAsset;
+
+            ProcessTSVButtons();
+            if (tsvData != null)
+                EditorGUILayout.LabelField(tsvData.Count + " TSV entries loaded.");
 
             if (GUILayout.Button("Process TSV"))
             {
-                rawLines = LineParser.ParseRawLines(tsvFile.text);
+                //rawLines = LineParser.ParseRawLines(tsvFile.text);
             }
 
             GUI.enabled = true;
@@ -42,6 +45,36 @@ namespace BeyondTheDoor.Importer
                 else
                     LinesInvalid();
             }
+        }
+
+        void ProcessTSVButtons()
+        {
+            if (rawExcelExport == null)
+                GUI.enabled = false;
+
+            if (TSVData.SavedDataExists())
+            {
+                GUI.enabled = true;
+                if (GUILayout.Button("Load saved TSV Data"))
+                {
+                    tsvData = TSVData.Load();
+                    return;
+                }
+
+                // Disable GUI if we can't load the lines
+                if (rawExcelExport == null)
+                    GUI.enabled = false;
+
+                if (GUILayout.Button("Overwrite fresh data from Excel lines"))
+                    tsvData = LineParser.ParseLines(rawExcelExport.text);
+            }
+            else if (GUILayout.Button("Process Excel lines"))
+            {
+                tsvData = LineParser.ParseLines(rawExcelExport.text);
+            }
+
+            if (tsvData != null)
+                tsvData.Save();
         }
 
         void LinesValid()

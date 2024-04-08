@@ -40,7 +40,7 @@ namespace BeyondTheDoor.Importer
             // Skip the first line (the header)
             for (int i = 1; i < rawLines.Length; i++)
             {
-                cleanData.AddLine(rawLines[0], mappings);
+                cleanData.AddLine(rawLines[i], mappings);
             }
 
             return cleanData;

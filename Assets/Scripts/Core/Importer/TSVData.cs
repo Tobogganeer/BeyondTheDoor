@@ -48,7 +48,7 @@ namespace BeyondTheDoor.Importer
         {
             RawLineData line = GenerateLineData(csvLine, mappings);
             // If the line is the bare minimum to be considered valid, store it.
-            if (LineIsValid(line))
+            if (line != null && LineIsValid(line))
                 AddLineToStorage(line);
         }
 
@@ -183,7 +183,8 @@ namespace BeyondTheDoor.Importer
                 }
                 else
                 {
-                    lineBuffer.Add(line);
+                    // Clear the newline and add it
+                    lineBuffer.Add(line.TrimEnd());
                     // Add it when it's full
                     if (lineBuffer.Count == NumElements)
                     {
