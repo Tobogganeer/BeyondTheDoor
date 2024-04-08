@@ -2,11 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor.Search;
 
 namespace BeyondTheDoor.Importer
 {
     public static class LineParser
     {
+        // List of symbols that should be ignored
+        static readonly string Comment = "//";
+        static readonly HashSet<string> ReservedIDs = new HashSet<string>(
+        new string[] {
+            "conversation",
+            "end",
+            "if",
+            "elif",
+            "else if",
+            "else",
+            "endif",
+            "end if",
+            "choice",
+            "goto",
+        });
+
         public static RawLineCollection ParseRawLines(string tsvFile)
         {
             // Split the tsv into rows
@@ -38,8 +55,9 @@ namespace BeyondTheDoor.Importer
             for (int i = 0; i < elements.Length; i++)
                 FillValue(line, mappings[i], elements[i]);
 
-            // Comments in excel file
-            if (line.character == "//")
+            // Ignore this line if it is a special marker
+            string characterValue = line.character?.Trim().ToLower();
+            if (characterValue.StartsWith(Comment) || ReservedIDs.Contains(characterValue))
                 return null;
 
             line.Validate();
@@ -197,7 +215,6 @@ namespace BeyondTheDoor.Importer
             }
         }
 
-        [Serializable]
         public class RawLineCollection
         {
             public List<RawLineData> RawLines { get; private set; }
@@ -255,5 +272,50 @@ namespace BeyondTheDoor.Importer
                 return data;
             }
         }
+
+        /*
+        public class LineFlowData
+        {
+            public string Type { get; private set; }
+            public string Day { get; private set; }
+            public string Value { get; private set; }
+
+            public enum Element
+            {
+                Unknown = -1,
+                None = 0,
+                Dialogue,
+                ConversationStart,
+                ConversationEnd,
+                If,
+                Elif,
+                Else,
+                EndIf,
+                Choice,
+                ChoicePrompt,
+                Goto,
+            }
+        }
+
+        public class LineFlowCollection
+        {
+            public List<LineFlowData> LineFlow { get; private set; }
+            public List<LineFlowData> InvalidData { get; private set; }
+            public LineFlowData.Element InvalidElements { get; private set; }
+            public bool IsValid { get; private set; }
+        }
+
+        public class ParsedLineData
+        {
+            public RawLineCollection RawLines { get; private set; }
+            public LineFlowCollection LineFlow { get; private set; }
+
+            public ParsedLineData(RawLineCollection rawLines, LineFlowCollection lineFlow)
+            {
+                RawLines = rawLines;
+                LineFlow = lineFlow;
+            }
+        }
+        */
     }
 }
