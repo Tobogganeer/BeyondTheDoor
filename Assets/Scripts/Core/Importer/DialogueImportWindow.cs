@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using BeyondTheDoor.Importer.CodeGen;
+using System.IO;
 
 namespace BeyondTheDoor.Importer
 {
     public class DialogueImportWindow : EditorWindow
     {
-        TextAsset rawExcelExport;
+        const string ExcelLinesFileName = "ExcelLines.txt";
+        static readonly string ExcelLinesFilePath = Path.Combine(Application.dataPath, ExcelLinesFileName);
+
+        bool ExcelFileExists => File.Exists(ExcelLinesFilePath);
+
+        //TextAsset rawExcelExport;
         TSVData tsvData;
         RawLineCollection rawLines;
         bool clearLinesOnEnumGeneration;
@@ -23,7 +29,11 @@ namespace BeyondTheDoor.Importer
 
         private void OnGUI()
         {
-            rawExcelExport = EditorGUILayout.ObjectField("Lines File", rawExcelExport, typeof(TextAsset), false) as TextAsset;
+            if (!ExcelFileExists)
+            {
+                EditorGUILayout.LabelField($"Assets/{ExcelLinesFileName} not found. Please create said file.");
+                return;
+            }
 
             ProcessTSVButtons();
             if (tsvData != null)
@@ -49,28 +59,28 @@ namespace BeyondTheDoor.Importer
 
         void ProcessTSVButtons()
         {
-            if (rawExcelExport == null)
+            if (!ExcelFileExists)
                 GUI.enabled = false;
 
             if (TSVData.SavedDataExists())
             {
                 GUI.enabled = true;
-                if (GUILayout.Button("Load saved TSV Data"))
+                if (GUILayout.Button("Load cached TSV Data"))
                 {
                     tsvData = TSVData.Load();
                     return;
                 }
 
                 // Disable GUI if we can't load the lines
-                if (rawExcelExport == null)
+                if (!ExcelFileExists)
                     GUI.enabled = false;
 
                 if (GUILayout.Button("Overwrite fresh data from Excel lines"))
-                    tsvData = LineParser.ParseLines(rawExcelExport.text);
+                    tsvData = LineParser.ParseLines(File.ReadAllText(ExcelLinesFilePath));
             }
             else if (GUILayout.Button("Process Excel lines"))
             {
-                tsvData = LineParser.ParseLines(rawExcelExport.text);
+                tsvData = LineParser.ParseLines(File.ReadAllText(ExcelLinesFilePath));
             }
 
             if (tsvData != null)
