@@ -23,7 +23,7 @@ namespace BeyondTheDoor.Editor
             Conversation con = (Conversation)target;
             serializedObject.Update();
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.lines)), true);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.elements)), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.onStarted)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.onFinished)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.nextConversation)));

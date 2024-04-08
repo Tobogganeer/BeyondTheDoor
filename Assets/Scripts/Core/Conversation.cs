@@ -16,7 +16,7 @@ namespace BeyondTheDoor
         // TODO: Add ConversationCallbacks to each line? May not be needed due to Line.OnOpen, but still
         [SerializeReference]
         public List<IConversationElement> elements;
-        public Conversation nextConversation;
+        //public Conversation nextConversation;
         public List<ConversationChoice> choices;
 
         /// <summary>
