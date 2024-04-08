@@ -24,8 +24,8 @@ namespace BeyondTheDoor.Editor
             serializedObject.Update();
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.lines)), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.OnStarted)));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.OnFinished)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.onStarted)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.onFinished)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.nextConversation)));
 
             // Grey out choices if this conversation just moves on
@@ -42,10 +42,10 @@ namespace BeyondTheDoor.Editor
             EditorGUILayout.LabelField("======= CONVERSATION START =======", EditorStyles.largeLabel);
             GUI.enabled = false;
 
-            if (con.OnStarted != null)
+            if (con.onStarted != null)
             {
                 string text = $"<color={EditorColours.TextColour}>Calls </color>";
-                text += $"<color={EditorColours.CallbackColour}>{con.OnStarted.name}</color>";
+                text += $"<color={EditorColours.CallbackColour}>{con.onStarted.name}</color>";
                 EditorGUILayout.TextArea(text, style);
             }
 
@@ -88,17 +88,17 @@ namespace BeyondTheDoor.Editor
                 if (con.choices != null && con.choices.Count > 0)
                 {
                     EditorGUILayout.LabelField("=== Player Choices ===", EditorStyles.boldLabel);
-                    foreach (Conversation.ConversationChoice choice in con.choices)
+                    foreach (ConversationChoice choice in con.choices)
                     {
                         DisplayChoice(choice);
                     }
                 }
             }
 
-            if (con.OnFinished != null)
+            if (con.onFinished != null)
             {
                 string text = $"<color={EditorColours.TextColour}>Calls </color>";
-                text += $"<color={EditorColours.CallbackColour}>{con.OnFinished.name}</color>";
+                text += $"<color={EditorColours.CallbackColour}>{con.onFinished.name}</color>";
                 if (con.choices != null && con.choices.Count > 0)
                     text += $"<color={EditorColours.TextColour}> (Once choice is selected)</color>";
                 EditorGUILayout.TextArea(text, style);
@@ -116,7 +116,7 @@ namespace BeyondTheDoor.Editor
                 EditorGUILayout.TextArea(FormatCharacterMessage(line), style);
         }
 
-        void DisplayChoice(Conversation.ConversationChoice choice)
+        void DisplayChoice(ConversationChoice choice)
         {
             if (choice == null)
                 EditorGUILayout.TextArea("null choice");
