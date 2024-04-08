@@ -125,14 +125,61 @@ namespace BeyondTheDoor
         {
             OnFinished?.Invoke(this, line.ID);
         }
-
-
-        [Serializable]
-        internal class ConversationChoice
-        {
-            public LineID prompt;
-            public Conversation nextConversation;
-            public ConversationCallback callback;
-        }
     }
+
+    [Serializable]
+    public class ConversationChoice
+    {
+        public LineID prompt;
+        public Conversation nextConversation;
+        public ConversationCallback callback;
+    }
+
+
+    #region Conversation Elements
+    public interface IConversationElement { }
+
+    [Serializable]
+    public class DialogueElement : IConversationElement
+    {
+        public LineID lineID;
+    }
+
+    [Serializable]
+    public class ConditionalElement : IConversationElement
+    {
+        public string condition;
+    }
+
+    [Serializable]
+    public class IfElement : ConditionalElement { }
+
+    [Serializable]
+    public class ElifElement : ConditionalElement { }
+
+    [Serializable]
+    public class ElseElement : IConversationElement { }
+
+    [Serializable]
+    public class EndIfElement : IConversationElement { }
+
+    [Serializable]
+    public class GotoElement : IConversationElement
+    {
+        public Conversation conversation;
+    }
+
+    /*
+    Dialogue,
+    ConversationStart,
+    ConversationEnd,
+    If,
+    Elif,
+    Else,
+    EndIf,
+    Choice,
+    ChoicePrompt,
+    Goto,
+    */
+    #endregion
 }
