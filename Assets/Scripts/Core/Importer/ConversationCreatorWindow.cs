@@ -5,6 +5,7 @@ using UnityEditor;
 using BeyondTheDoor.Importer.CodeGen;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace BeyondTheDoor.Importer
 {
@@ -217,8 +218,10 @@ namespace BeyondTheDoor.Importer
 
         void LogInvalidConvos(List<RawConversationData> invalidConvos)
         {
+            StringBuilder sb = new StringBuilder();
             foreach (RawConversationData convo in invalidConvos)
-                Debug.Log(convo.GetInvalidElementsString());
+                sb.AppendLine(convo.GetInvalidElementsString());
+            Debug.Log(sb.ToString());
         }
 
         public static void FillScriptableObjects<T>(Object owner, string arrayName) where T : ScriptableObject

@@ -107,12 +107,10 @@ namespace BeyondTheDoor.Importer
             fileName = range.fileName;
 
             // Loop through the data, skipping the Conversation and End markers
-            for (int i = range.start + 1; i < range.end - 1; i++)
+            for (int i = range.start + 1; i < range.end; i++)
             {
                 string marker = data.CharacterIDColumn[i].ToLower();
-                if (string.IsNullOrEmpty(marker) && Enum.TryParse(data.LineIDColumn[i], out LineID id))
-                    elements.Add(new DialogueElement(id));
-                else if (marker == IfMarker)
+                if (marker == IfMarker)
                     elements.Add(new IfElement(data.TextColumn[i]));
                 else if (marker == ElifMarker || marker == ElseIfMarker)
                     elements.Add(new ElifElement(data.TextColumn[i]));
@@ -120,8 +118,16 @@ namespace BeyondTheDoor.Importer
                     elements.Add(new ElseElement());
                 else if (marker == EndIfMarker || marker == End_IfMarker)
                     elements.Add(new EndIfElement());
-                else if (marker == ChoiceMarker && Enum.TryParse(data.TextColumn[i + 1], out LineID prompt))
-                    choices.Add(new RawChoice(prompt, data.TextColumn[i]));
+                else if (marker == ChoiceMarker && Enum.TryParse(data.LineIDColumn[i + 1], out LineID prompt))
+                {
+                    // Account for the prefix (don't link choices across days)
+                    string nextConvoName = GetFormattedName(data.TextColumn[i], range.day, out _);
+                    choices.Add(new RawChoice(prompt, nextConvoName));
+                    i++; // Skip the next line
+                }
+                // If nothing else, it's probably a line of dialogue
+                else if (Enum.TryParse(data.LineIDColumn[i], out LineID id))
+                    elements.Add(new DialogueElement(id));
                 //else if (marker == GotoMarker)
                 // TODO: Implement Goto later
             }
