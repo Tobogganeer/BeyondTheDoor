@@ -211,20 +211,37 @@ namespace BeyondTheDoor.Importer
                 // Link Gotos
                 if (element is GotoElement _goto)
                 {
-                    if (allConversations.ContainsKey(_goto.goofyWorkaroundConversationName))
-                        _goto.conversation = allConversations[_goto.goofyWorkaroundConversationName];
+                    _goto.conversation = TryGetMatchingConversation(_goto.goofyWorkaroundConversationName, allConversations);
                 }
             }
 
             convo.choices = new List<ConversationChoice>();
             foreach (RawChoice rawChoice in data.choices)
             {
-                Conversation next = null;
-                if (allConversations.ContainsKey(rawChoice.nextConversation))
-                    next = allConversations[rawChoice.nextConversation];
+                Conversation next = TryGetMatchingConversation(rawChoice.nextConversation, allConversations);
                 ConversationChoice choice = new ConversationChoice { prompt = rawChoice.prompt, nextConversation = next };
                 convo.choices.Add(choice);
             }
+        }
+
+        Conversation TryGetMatchingConversation(string originalName, Dictionary<string, Conversation> allConversations)
+        {
+            if (allConversations.ContainsKey(originalName))
+                return allConversations[originalName];
+            else
+            {
+                string next = originalName;
+                // Starts with a number
+                if (next[1] == '_')
+                {
+                    // Check if there is an All conversation that matches
+                    next = "All" + next.Substring(1, next.Length - 1);
+                    if (allConversations.ContainsKey(next))
+                        return allConversations[next];
+                }
+            }
+
+            return null;
         }
 
         void LogInvalidConvos(List<RawConversationData> invalidConvos)
