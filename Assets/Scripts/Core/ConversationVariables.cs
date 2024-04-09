@@ -8,20 +8,21 @@ namespace BeyondTheDoor
     {
         static readonly Dictionary<string, Var> VarMap = new Dictionary<string, Var>()
         {
-            { "HasCar", Var.HarCar },
-            { "Tutorial_Mom", Var.Tutorial_Mom },
-            { "Tutorial_Dad", Var.Tutorial_Dad },
-            { "Jessica", Var.Jessica },
-            { "Bob", Var.Bob },
-            { "Violet", Var.Violet },
-            { "Hal", Var.Hal },
-            { "Sal", Var.Sal },
-            { "Dad", Var.Dad },
+            { "hascar", Var.HarCar },
+            { "car", Var.HarCar },
+            { "tutorial_mom", Var.Tutorial_Mom },
+            { "tutorial_dad", Var.Tutorial_Dad },
+            { "jessica", Var.Jessica },
+            { "bob", Var.Bob },
+            { "violet", Var.Violet },
+            { "hal", Var.Hal },
+            { "sal", Var.Sal },
+            { "dad", Var.Dad },
         };
 
         public static bool IsTrue(string condition)
         {
-            condition = condition.Trim();
+            condition = condition.Trim().ToLower();
 
             if (string.IsNullOrEmpty(condition)) return false;
 
@@ -37,10 +38,18 @@ namespace BeyondTheDoor
         private static bool IsSingleConditionTrue(string condition)
         {
             condition = condition.Trim();
+            bool invert = false;
+
+            // Check if we want the condition flipped
+            if (condition.StartsWith('!'))
+            {
+                invert = true;
+                condition = condition.Substring(1, condition.Length - 1);
+            }
 
             if (!VarMap.TryGetValue(condition, out var var)) return false;
 
-            return IsTrue(var);
+            return invert ? !IsTrue(var) : IsTrue(var);
         }
 
         public static bool IsTrue(Var var)
