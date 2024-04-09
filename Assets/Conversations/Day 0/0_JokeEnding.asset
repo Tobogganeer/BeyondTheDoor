@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: 0_JokeEnding
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
-  elements: []
+  elements:
+  - rid: 2007814009133203589
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2007814009133203589
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 739044648
