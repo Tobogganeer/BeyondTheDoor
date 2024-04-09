@@ -79,30 +79,46 @@ namespace BeyondTheDoor
     [Serializable]
     public class DialogueElement : IConversationElement
     {
+        [HideInInspector, SerializeField]
+        string name = "Dialogue";
         public LineID lineID;
     }
 
     [Serializable]
-    public class ConditionalElement : IConversationElement
+    public class IfElement : IConversationElement
     {
+        [HideInInspector, SerializeField]
+        string name = "If";
         public string condition;
     }
 
     [Serializable]
-    public class IfElement : ConditionalElement { }
+    public class ElifElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "Elif";
+        public string condition;
+    }
 
     [Serializable]
-    public class ElifElement : ConditionalElement { }
+    public class ElseElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "Else";
+    }
 
     [Serializable]
-    public class ElseElement : IConversationElement { }
-
-    [Serializable]
-    public class EndIfElement : IConversationElement { }
+    public class EndIfElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "EndIf";
+    }
 
     [Serializable]
     public class GotoElement : IConversationElement
     {
+        [HideInInspector, SerializeField]
+        string name = "Goto";
         public Conversation conversation;
     }
 

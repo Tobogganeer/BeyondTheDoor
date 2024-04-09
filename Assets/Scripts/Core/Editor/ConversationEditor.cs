@@ -26,7 +26,7 @@ namespace BeyondTheDoor.Editor
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.onStarted)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.elements)), true);
-            DrawElementAddButtons();
+            DrawElementAddButtons(con);
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.onFinished)));
             //EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.nextConversation)));
@@ -120,7 +120,10 @@ namespace BeyondTheDoor.Editor
             else
             {
                 if (element is DialogueElement dialogue)
+                {
                     DisplayLine(Line.Get(dialogue.lineID));
+                    EditorGUILayout.Space(3f);
+                }
                 else if (element is IfElement _if)
                     DisplayConditional("IF " + _if.condition + ":");
                 else if (element is ElifElement _elif)
@@ -131,14 +134,28 @@ namespace BeyondTheDoor.Editor
                     DisplayConditional("ENDIF");
                 else if (element is GotoElement _goto)
                     DisplayGoto(_goto);
-
-                EditorGUILayout.Space(3f);
             }
         }
 
-        private void DrawElementAddButtons()
+        private void DrawElementAddButtons(Conversation con)
         {
-            throw new NotImplementedException();
+            Rect rect = EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("Add Dialogue"))
+                con.elements.Add(new DialogueElement());
+            if (GUILayout.Button("Add Goto", GUILayout.Width(Mathf.Max(rect.width / 4f, 120f))))
+                con.elements.Add(new GotoElement());
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Add If"))
+                con.elements.Add(new IfElement());
+            if (GUILayout.Button("Add ElIf"))
+                con.elements.Add(new ElifElement());
+            if (GUILayout.Button("Add Else"))
+                con.elements.Add(new ElseElement());
+            if (GUILayout.Button("Add EndIf"))
+                con.elements.Add(new EndIfElement());
+            GUILayout.EndHorizontal();
         }
 
         void DisplayLine(Line line)
