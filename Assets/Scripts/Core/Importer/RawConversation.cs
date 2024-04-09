@@ -160,7 +160,7 @@ namespace BeyondTheDoor.Importer
                     invalidElements |= Elements.NoEndIf;
                 else if ((element is ElifElement || element is ElseElement) && !IsElifOrElseValid(i))
                     invalidElements |= Elements.NoStartingIf;
-                else if (element is GotoElement _goto && !conversationNames.Contains(_goto.goofyWorkaroundConversationName))
+                else if (element is GotoElement _goto && !ContainsConversation(conversationNames, _goto.goofyWorkaroundConversationName))
                     invalidElements |= Elements.InvalidGotoTarget;
             }
 
@@ -168,11 +168,34 @@ namespace BeyondTheDoor.Importer
             {
                 // Check if our next conversation should exist but doesn't
                 if (!string.IsNullOrEmpty(choices[i].nextConversation) &&
-                    !conversationNames.Contains(choices[i].nextConversation))
+                    !ContainsConversation(conversationNames, choices[i].nextConversation))
                     invalidElements |= Elements.InvalidChoiceTarget;
             }
 
             return invalidElements;
+        }
+
+        private bool ContainsConversation(List<string> conversations, string convoName)
+        {
+            if (string.IsNullOrEmpty(convoName))
+                return false;
+
+            if (conversations.Contains(convoName))
+                return true;
+            else
+            {
+                string next = convoName;
+                // Starts with a number
+                if (next[1] == '_')
+                {
+                    // Check if there is an All conversation that matches
+                    next = "All" + next.Substring(1, next.Length - 1);
+                    if (conversations.Contains(next))
+                        return true;
+                }
+            }
+
+            return false;
         }
 
         public string GetInvalidElementsString()

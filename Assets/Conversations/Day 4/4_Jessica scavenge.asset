@@ -14,31 +14,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814009133203761
-  - rid: 2007814009133203762
-  - rid: 2007814009133203763
-  - rid: 2007814009133203764
+  - rid: 2007814011597358050
+  - rid: 2007814011597358051
+  - rid: 2007814011597358052
+  - rid: 2007814011597358053
+  - rid: 2007814011597358054
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814009133203761
+    - rid: 2007814011597358050
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1640475690
-    - rid: 2007814009133203762
+    - rid: 2007814011597358051
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 2007814009133203763
+    - rid: 2007814011597358052
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -841266961
-    - rid: 2007814009133203764
+    - rid: 2007814011597358053
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
+    - rid: 2007814011597358054
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 11400000, guid: cf5f721ba3cedb14aa2b50ebcdfd5b31, type: 2}
+        goofyWorkaroundConversationName: 4_ConfirmScavenge

@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: 7_BJV Wake Up
+  m_EditorClassIdentifier: 
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 2007814011731312857
+  - rid: 2007814011731312858
+  - rid: 2007814011731312859
+  - rid: 2007814011731312860
+  - rid: 2007814011731312861
+  - rid: 2007814011731312862
+  - rid: 2007814011731312863
+  - rid: 2007814011731312864
+  - rid: 2007814011731312865
+  - rid: 2007814011731312866
+  - rid: 2007814011731312867
+  - rid: 2007814011731312868
+  - rid: 2007814011731312869
+  - rid: 2007814011731312870
+  choices: []
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2007814011731312857
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1089834143
+    - rid: 2007814011731312858
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Bob
+    - rid: 2007814011731312859
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -935989773
+    - rid: 2007814011731312860
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 2007814011731312861
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Jessica && Bob
+    - rid: 2007814011731312862
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1335383701
+    - rid: 2007814011731312863
+      type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Elif
+        condition: 
+    - rid: 2007814011731312864
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 523481610
+    - rid: 2007814011731312865
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 2007814011731312866
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Violet && HasCar
+    - rid: 2007814011731312867
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 119814286
+    - rid: 2007814011731312868
+      type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Elif
+        condition: Violet
+    - rid: 2007814011731312869
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1401389489
+    - rid: 2007814011731312870
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf

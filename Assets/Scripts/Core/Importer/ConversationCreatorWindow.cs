@@ -226,6 +226,9 @@ namespace BeyondTheDoor.Importer
 
         Conversation TryGetMatchingConversation(string originalName, Dictionary<string, Conversation> allConversations)
         {
+            if (string.IsNullOrEmpty(originalName))
+                return null;
+
             if (allConversations.ContainsKey(originalName))
                 return allConversations[originalName];
             else

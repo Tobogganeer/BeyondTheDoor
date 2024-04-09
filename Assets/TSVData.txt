@@ -1,12 +1,4 @@
-800
-//
-This is where the spoken text goes (or the conversation name - see below)
-For internal use
-
-
-None
-None
-
+1010
 Test
 These lines show some formatting stuff
 Heres some useful internal notes
@@ -39,14 +31,6 @@ test_0_main_chars_only_use_one_letter
 Draft
 Placeholder
 Here
-//
-These just make sure that all characters are defined even if they have no lines yet
-
-
-
-None
-None
-
 None
 Character Define
 Lines with no character
@@ -175,14 +159,6 @@ radio_chardefine
 None
 None
 
-//
-These are basic prompts that are used repeatedly (as choices)
-
-
-
-None
-None
-
 Player
 Yes
 
@@ -303,8 +279,280 @@ how_can_you_be_helpful
 Final
 None
 
-//
-Tutorial/day 0
+Player
+Send {character} with shotgun
+
+0
+send_with_shotgun
+Final
+None
+
+Player
+Send {character} without shotgun
+
+0
+send_without_shotgun
+Final
+None
+
+None
+(no content)
+
+0
+none
+Final
+None
+
+Player
+Send no scavengers
+
+0
+confirm_no_scavengers
+Final
+None
+
+CONVERSATION
+AddToScavengeParty
+
+
+
+None
+None
+
+CHOICE
+
+
+
+
+None
+None
+
+
+Send {character} to scavenge
+
+
+send_to_scavenge
+None
+None
+
+CHOICE
+
+
+
+
+None
+None
+
+
+Go back
+
+
+go_back
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+RemoveFromScavengeParty
+
+
+
+None
+None
+
+CHOICE
+
+
+
+
+None
+None
+
+
+Don't send {character} to scavenge
+
+
+dont_send_to_scavenge
+None
+None
+
+CHOICE
+
+
+
+
+None
+None
+
+
+Go back
+
+
+go_back
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+ConfirmScavenge
+
+
+
+None
+None
+
+IF
+!Shotgun
+
+
+
+None
+None
+
+GOTO
+SendWithoutShotgun
+
+
+
+None
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+CHOICE
+SendWithShotgun
+
+
+
+None
+None
+
+
+Send {character} with shotgun
+
+
+send_with_shotgun
+None
+None
+
+CHOICE
+SendWithoutShotgun
+
+
+
+None
+None
+
+
+Send {character} without shotgun
+
+
+send_without_shotgun
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+SendWithShotgun
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+SendWithoutShotgun
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+ConfirmNoScavengers
+
+
+
+None
+None
+
+CHOICE
+
+
+
+
+None
+None
+
+
+Send no scavengers
+
+
+confirm_no_scavengers
+None
+None
+
+CHOICE
+
+
+
+
+None
+None
+
+
+Go back
+
+
+go_back
+None
+None
+
+END
+
 
 
 
@@ -456,7 +704,7 @@ None
 None
 
 Tutorial_Dad
-Thank you kiddo...  see you soon.
+Thank you kiddo...
 Being sent out to scavenge
 0
 tutdad_0_scavenge_response
@@ -496,6 +744,30 @@ None
 None
 
 CONVERSATION
+ParentsLeaving
+
+0
+
+None
+None
+
+Tutorial_Dad
+See you soon kiddo!
+Bye bye
+0
+tutdad_0_sent
+Draft
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
 ParentsAtDoor
 
 0
@@ -520,7 +792,7 @@ Draft
 None
 
 CHOICE
-End
+TutorialEnd
 
 
 
@@ -576,7 +848,7 @@ Draft
 None
 
 CHOICE
-End
+TutorialEnd
 
 
 
@@ -640,7 +912,7 @@ None
 None
 
 CONVERSATION
-End
+TutorialEnd
 
 0
 
@@ -657,14 +929,6 @@ None
 
 END
 
-
-
-
-None
-None
-
-//
-Day 1
 
 
 
@@ -930,7 +1194,7 @@ None
 CONVERSATION
 Why Jessica
 
-
+1
 
 None
 None
@@ -978,7 +1242,7 @@ None
 CONVERSATION
 Where Jessica
 
-
+1
 
 None
 None
@@ -1235,14 +1499,6 @@ END
 
 
 2
-
-None
-None
-
-//
-Day 2
-
-
 
 None
 None
@@ -1656,7 +1912,7 @@ None
 None
 
 CHOICE
-Not lettin bob in
+Not letting bob in
 
 
 
@@ -1672,7 +1928,7 @@ Placeholder
 None
 
 CHOICE
-letting bob in
+Letting bob in
 
 
 
@@ -2023,14 +2279,6 @@ END
 None
 None
 
-//
-DAY 3
-
-
-
-None
-None
-
 CONVERSATION
 Check radio day 3
 
@@ -2184,7 +2432,7 @@ None
 None
 
 IF
-
+Jessica
 
 
 
@@ -2240,7 +2488,7 @@ Placeholder
 None
 
 IF
-Jessica and Bob interaction about scavenging
+Jessica && Bob
 
 
 
@@ -2296,9 +2544,9 @@ None
 None
 
 CONVERSATION
-trey to send Jessica scavenge day 3
+Try to send Jessica scavenge day 3
 
-
+3
 
 None
 None
@@ -2320,7 +2568,7 @@ None
 None
 
 Bob
-I don't think your're making the right decision. She won't be of much utility out there
+I don't think you're making the right decision. She won't be of much utility out there
 
 3
 b_3_disagree
@@ -2343,42 +2591,18 @@ j_3_scared
 Placeholder
 None
 
-CHOICE
-Send Jessica
+GOTO
+AddToScavengeParty
 
-3
 
-Placeholder
+
 None
-
-Player
-Yes, Jessica should go
-
-3
-p_3_j_confirm
-Placeholder
-None
-
-CHOICE
-
-
-
-
-Placeholder
-None
-
-
-
-
-
-go_back
-Placeholder
 None
 
 END
 
 
-3
+
 
 None
 None
@@ -2386,7 +2610,7 @@ None
 CONVERSATION
 Send Jessica
 
-
+3
 
 None
 None
@@ -2423,6 +2647,14 @@ j_3_silence
 Placeholder
 None
 
+GOTO
+ConfirmScavenge
+
+
+
+None
+None
+
 END
 
 
@@ -2455,68 +2687,12 @@ b_3_bring
 Placeholder
 None
 
-CHOICE
-
-
-
-
-None
-None
-
-Player
-I have a gun, but I think its better for it to be here so we can defend ourselves
-
-3
-p_3_b_no_gun
-Placeholder
-None
-
-Bob
-Okay, I will try to see what I can do without it
-
-3
-b_3_without_gun
-Placeholder
-None
-
-CHOICE
-
+GOTO
+ConfirmScavenge
 
 
 
 None
-None
-
-Player
-I have a gun, you should bring it with you to defend yourself
-
-3
-p_3_b_gun
-Placeholder
-None
-
-Bob
-Thanks, I will be back before sunset.
-
-3
-b_3_with_gun
-Placeholder
-None
-
-CHOICE
-
-
-
-
-None
-None
-
-Player
-actually I changed my mind ( go back)
-
-3
-p_3_b_goback
-Placeholder
 None
 
 END
@@ -2704,7 +2880,7 @@ Placeholder
 None
 
 CHOICE
-
+Journalist politics
 
 
 
@@ -2720,7 +2896,7 @@ Placeholder
 None
 
 CHOICE
-
+Journalist politics
 
 
 
@@ -2736,7 +2912,7 @@ Placeholder
 None
 
 CHOICE
-
+Journalist politics
 
 
 
@@ -2752,7 +2928,7 @@ Placeholder
 None
 
 CHOICE
-
+Journalist politics
 
 
 
@@ -2800,15 +2976,15 @@ Placeholder
 None
 
 CHOICE
+Journalist end
 
 
-3
 
 None
 None
 
 Player
-Revolutionaries, they are just trying to fight for a better country and get rid of all the corruptiong
+Revolutionaries, they are just trying to fight for a better country and get rid of all the corruption.
 
 3
 p_3_revolutionaries
@@ -2816,9 +2992,9 @@ Placeholder
 None
 
 CHOICE
+Journalist end
 
 
-3
 
 None
 None
@@ -2832,9 +3008,9 @@ Placeholder
 None
 
 CHOICE
+Journalist end
 
 
-3
 
 None
 None
@@ -2872,7 +3048,7 @@ Placeholder
 None
 
 Player
-Ok, thanks, havea safe trip
+Ok, thanks, have a safe trip
 
 3
 p_3_safe_trip
@@ -2943,6 +3119,14 @@ j_3_door
 Placeholder
 None
 
+ENDIF
+
+
+
+
+None
+None
+
 CHOICE
 Ignore door day 3
 
@@ -2984,7 +3168,7 @@ None
 None
 
 CONVERSATION
-Igonre door  day 3
+Ignore door day 3
 
 3
 
@@ -3136,7 +3320,7 @@ None
 None
 
 IF
-
+Bob
 
 
 
@@ -3320,54 +3504,6 @@ None
 None
 
 IF
-Bob
-
-
-
-None
-None
-
-Bob
-I think you did the right choice, its probably not even human
-
-3
-b_3_not_human
-Placeholder
-None
-
-ENDIF
-
-
-
-
-None
-None
-
-IF
-Jessica
-
-
-
-None
-None
-
-Jessica
-What if its just a hurt animal?
-
-3
-j_3_animal
-Placeholder
-None
-
-ENDIF
-
-
-
-
-None
-None
-
-IF
 Jessica && Bob
 
 
@@ -3389,6 +3525,46 @@ What the fuck are you talking about? How can an animal be helpful to keeping us 
 3
 b_3_useful
 Placeholder
+None
+
+ELIF
+Jessica
+
+
+
+None
+None
+
+Jessica
+What if its just a hurt animal?
+
+3
+j_3_animal
+Placeholder
+None
+
+ELIF
+Bob
+
+
+
+None
+None
+
+Bob
+I think you did the right choice, its probably not even human
+
+3
+b_3_not_human
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
 None
 
 END
@@ -3482,7 +3658,7 @@ None
 CONVERSATION
 Bob dead
 
-
+3
 
 None
 None
@@ -3545,14 +3721,6 @@ None
 
 END
 
-
-
-
-None
-None
-
-//
-Day 4
 
 
 
@@ -3706,7 +3874,7 @@ None
 CONVERSATION
 Jessica apologizes
 
-
+4
 
 None
 None
@@ -3746,7 +3914,7 @@ None
 CONVERSATION
 Argument
 
-
+4
 
 None
 None
@@ -3757,62 +3925,6 @@ Okay, we need to scavenge, does anyone wants to go?
 4
 p_4_scavenge
 Placeholder
-None
-
-IF
-Bob
-
-
-
-None
-None
-
-Bob
-I can go
-
-4
-b_4_offering
-Placeholder
-None
-
-ENDIF
-
-
-
-
-None
-None
-
-IF
-Jessica
-
-
-
-None
-None
-
-Jessica
-I don't think we need to scavenge, just the two of us we will have enough food for a while
-
-4
-j_4_while
-None
-None
-
-Jessica
-Plus I can't walk
-
-4
-j_4_walk
-Placeholder
-None
-
-ENDIF
-
-
-
-
-None
 None
 
 IF
@@ -3828,7 +3940,7 @@ Okay, if we're going to scavenge can we at least only take the necessary?
 
 4
 j_4_necessary
-None
+Placeholder
 None
 
 Bob
@@ -3853,6 +3965,54 @@ Though shit. There's no good outcomes. There's only war. I'm here because I didn
 4
 b_4_sympathy
 Placeholder
+None
+
+ELIF
+Jessica
+
+
+
+None
+None
+
+Jessica
+I don't think we need to scavenge, just the two of us we will have enough food for a while
+
+4
+j_4_while
+Placeholder
+None
+
+Jessica
+Plus I can't walk
+
+4
+j_4_walk
+Placeholder
+None
+
+ELIF
+Bob
+
+
+
+None
+None
+
+Bob
+I can go
+
+4
+b_4_offering
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
 None
 
 END
@@ -3893,38 +4053,6 @@ ENDIF
 
 
 None
-None
-
-CHOICE
-Jessica scavenge day 4
-
-
-
-None
-None
-
-Player
-I think Jessica should go
-
-4
-p_4_jessica
-Placeholder
-None
-
-CHOICE
-Bob scavenge day 4
-
-
-
-None
-None
-
-Player
-I think Bob should go
-
-4
-p_4_bob
-Placeholder
 None
 
 END
@@ -3975,36 +4103,12 @@ j_4_die
 Placeholder
 None
 
-CHOICE
-Scavenge day 4
+GOTO
+AddToScavengeParty
 
 
 
 None
-None
-
-Player
-Actually let me think more about this
-
-4
-p_4_rethink
-Placeholder
-None
-
-CHOICE
-Jessica scavenge day 4 confirm
-
-
-
-None
-None
-
-Player
-I'm sure
-
-4
-p_4_sure
-Placeholder
 None
 
 END
@@ -4019,6 +4123,30 @@ CONVERSATION
 Jessica scavenge day 4 confirm
 
 4
+
+None
+None
+
+IF
+!Shotgun
+
+
+
+None
+None
+
+GOTO
+Jessica scavenge
+
+
+
+None
+None
+
+ENDIF
+
+
+
 
 None
 None
@@ -4056,11 +4184,11 @@ Placeholder
 None
 
 CHOICE
-Jessica scavenge
+SendWithShotgun
 
 
 
-Placeholder
+None
 None
 
 Player
@@ -4072,7 +4200,7 @@ Placeholder
 None
 
 CHOICE
-Jessica scavenge
+SendWithoutShotgun
 
 
 
@@ -4104,7 +4232,7 @@ None
 None
 
 Jessica
-I'm probably going to die
+I'm probably going to die!
 
 4
 j_4_prob_die
@@ -4120,7 +4248,7 @@ None
 None
 
 Bob
-shameful
+Shameful.
 
 4
 b_4_shamefull
@@ -4129,6 +4257,14 @@ None
 
 ENDIF
 
+
+
+
+None
+None
+
+GOTO
+ConfirmScavenge
 
 
 
@@ -4215,6 +4351,14 @@ b_4_thank
 Placeholder
 None
 
+GOTO
+SendWithShotgun
+
+
+
+None
+None
+
 END
 
 
@@ -4237,6 +4381,14 @@ Okay, I will try to see what I can do without it
 4
 b_4_no_gun
 Placeholder
+None
+
+GOTO
+SendWithoutShotgun
+
+
+
+None
 None
 
 END
@@ -4331,7 +4483,7 @@ Bob
 There were some gunshots in the distance, I had to make another route today so I didn't walk into a fucking no mans land
 
 4
-b_4_scavenge_bo_gun
+b_4_scavenge_no_gun
 Placeholder
 None
 
@@ -4431,44 +4583,12 @@ j_4_enough
 Placeholder
 None
 
-CHOICE
-Goes to night
-
-
-
-None
-None
-
-Player
-Yeah you're right
-
-4
-p_4_enough
-Placeholder
-None
-
-CHOICE
-Jessica only scavenge day 4
-
-
-
-None
-None
-
-Player
-We need to get as much as possible
-
-4
-p_4_possible
-None
-None
-
 END
 
 
 
 
-Placeholder
+None
 None
 
 CONVERSATION
@@ -4487,36 +4607,12 @@ j_4_crying
 Placeholder
 None
 
-CHOICE
-Jessica scavenge
-
-
-
-Placeholder
-None
-
-Player
-Take the the shotgun
-
-4
-p_4_jessica_gun
-Placeholder
-None
-
-CHOICE
-Jessica scavenge
+GOTO
+ConfirmScavenge
 
 
 
 None
-None
-
-Player
-The gun is more important here
-
-4
-p_4_jessica_no_gun
-Placeholder
 None
 
 END
@@ -4557,6 +4653,14 @@ Or thing, creature, I don't know
 4
 b_4_door
 Placeholder
+None
+
+ENDIF
+
+
+
+
+None
 None
 
 CHOICE
@@ -4626,7 +4730,7 @@ None
 CONVERSATION
 Comments on door
 
-
+4
 
 None
 None
@@ -5034,7 +5138,7 @@ None
 CONVERSATION
 Letting Violet in
 
-
+4
 
 None
 None
@@ -5154,7 +5258,7 @@ None
 CONVERSATION
 Violet in
 
-
+4
 
 None
 None
@@ -5223,16 +5327,8 @@ END
 None
 None
 
-//
-DAY 5
-
-
-
-None
-None
-
 CONVERSATION
-Check radio day 4
+Check radio day 5
 
 5
 
@@ -5256,7 +5352,7 @@ None
 None
 
 CONVERSATION
-Check outside day 4
+Check outside day 5
 
 5
 
@@ -5280,7 +5376,7 @@ None
 None
 
 CONVERSATION
-Check TV day 4
+Check TV day 5
 
 5
 
@@ -5304,7 +5400,7 @@ None
 None
 
 CONVERSATION
-Check supplies day 4
+Check supplies day 5
 
 5
 
@@ -5482,7 +5578,7 @@ None
 CONVERSATION
 Scavenging comment
 
-
+5
 
 None
 None
@@ -5576,55 +5672,7 @@ None
 None
 
 CONVERSATION
-Making choice to who to send
-
-5
-
-None
-None
-
-IF
-Violet
-
-
-
-None
-None
-
-CHOICE
-Violet scavenging day 5
-
-
-
-None
-None
-
-Player
-Violet, you're up for the job
-
-5
-p_5_violet
-Placeholder
-None
-
-ENDIF
-
-
-
-
-None
-None
-
-IF
-Jessica
-
-
-
-None
-None
-
-CHOICE
-Jessica scavenging day 5
+Jessica scavenge day 5
 
 
 
@@ -5637,62 +5685,6 @@ I think Jessica should go
 5
 p_5_jessica
 Placeholder
-None
-
-ENDIF
-
-
-
-
-None
-None
-
-IF
-BOB
-
-
-
-None
-None
-
-CHOICE
-Bob scavenging day 5
-
-
-
-None
-None
-
-Player
-Bob, you're going
-
-5
-p_5_bob
-Placeholder
-None
-
-ENDIF
-
-
-
-
-None
-None
-
-END
-
-
-
-
-None
-None
-
-CONVERSATION
-Jessica scavenge day 4
-
-
-
-None
 None
 
 IF
@@ -5752,7 +5744,7 @@ None
 None
 
 CHOICE
-Send Jessica day 5
+ConfirmScavenge
 
 
 
@@ -5768,7 +5760,7 @@ Placeholder
 None
 
 CHOICE
-Makign choice to who to send
+
 
 
 
@@ -5792,11 +5784,19 @@ None
 None
 
 CONVERSATION
-Bob scavenge day 4
+Bob scavenge day 5
 
 5
 
 None
+None
+
+Player
+Bob, you're going
+
+5
+p_5_bob
+Placeholder
 None
 
 Bob
@@ -5816,7 +5816,7 @@ Placeholder
 None
 
 CHOICE
-Send bob day 5
+ConfirmScavenge
 
 
 
@@ -5832,7 +5832,7 @@ Placeholder
 None
 
 CHOICE
-Makign choice to who to send
+
 
 
 
@@ -5856,11 +5856,19 @@ None
 None
 
 CONVERSATION
-Violet scavenge day 4
+Violet scavenge day 5
 
 5
 
 None
+None
+
+Player
+Violet, you're up for the job
+
+5
+p_5_violet
+Placeholder
 None
 
 Violet
@@ -5880,7 +5888,7 @@ Placeholder
 None
 
 CHOICE
-Send violet day 5
+ConfirmScavenge
 
 
 
@@ -5888,7 +5896,7 @@ None
 None
 
 Player
-violet should go, It's better this way
+Violet should go, It's better this way
 
 5
 p_5_bob_sure
@@ -5896,7 +5904,7 @@ Placeholder
 None
 
 CHOICE
-Makign choice to who to send
+
 
 
 
@@ -5935,28 +5943,12 @@ p_5_resources
 Placeholder
 None
 
-IF
-Jessica
-
-
-
-None
-None
-
 Jessica
 What do you mean? Kick someone out?
 
 5
 j_5_comment
 Placeholder
-None
-
-ENDIF
-
-
-
-
-None
 None
 
 Player
@@ -5967,10 +5959,18 @@ p_5_go
 Placeholder
 None
 
-IF
-Bob
+END
 
 
+
+
+None
+None
+
+CONVERSATION
+Selecting Bob
+
+5
 
 None
 None
@@ -5991,18 +5991,18 @@ b_5_violet
 Placeholder
 None
 
-ENDIF
+END
+If it was up to me, I'd rather stick with Violet.
 
-
-
-
+5
+b_5_violet
+Placeholder
 None
-None
 
-IF
-Jessica
+CONVERSATION
+Selecting Jessica
 
-
+5
 
 None
 None
@@ -6015,10 +6015,18 @@ j_5_freezing
 Placeholder
 None
 
-ENDIF
+END
 
 
 
+
+None
+None
+
+CONVERSATION
+Selecting Violet
+
+5
 
 None
 None
@@ -6039,16 +6047,8 @@ v_5_okay
 Placeholder
 None
 
-ENDIF
+ELSE
 
-
-
-
-None
-None
-
-IF
-!CAR && Violet
 
 
 
@@ -6063,6 +6063,14 @@ b_5_jessica
 Placeholder
 None
 
+ENDIF
+
+
+
+
+None
+None
+
 END
 
 
@@ -6071,16 +6079,1696 @@ END
 None
 None
 
-//
-Move this section further down as needed
+CONVERSATION
+Kicking Bob out
+
+5
+
+None
+None
+
+Bob
+Me? I hope that's some kind of joke. I've been doing all the heavy lifting around here.
+
+5
+b_5_joke
+Placeholder
+None
+
+Jessica
+You're a bit mean.
+
+5
+j_5_mean
+Placeholder
+None
+
+Bob
+What the fuck does that have to do with anything? Do you think you get by in war by being nice?
+
+5
+b_5_nice
+Placeholder
+None
+
+Bob
+If you have to kick someone out, it should be Jessica.
+
+5
+b_5_jessica
+Placeholder
+None
+
+Jessica
+WHAT?
+
+5
+j_5_what
+Placeholder
+None
+
+Bob
+What the fuck are you going to do for us? Sit around in your chair all day?
+
+5
+b_5_do
+Placeholder
+None
+
+Bob
+All is fair in love and war, and if you want to survive you'll let me stay.
+
+5
+b_5_love
+Placeholder
+None
+
+CHOICE
+Kicking someone out
 
 
 
 None
 None
 
-//
-Day 7
+Player
+Wait, let me think
+
+5
+p_5_think
+Placeholder
+None
+
+CHOICE
+Bob kicked out
+
+
+
+None
+None
+
+Player
+I'm sure
+
+5
+p_5_sure
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Kicking Violet out
+
+5
+
+None
+None
+
+IF
+CAR
+
+
+
+None
+None
+
+Violet
+*if you really want me to leave i will. i did get us the car though*
+
+5
+v_5_car
+Placeholder
+None
+
+ELSE
+
+
+
+
+None
+None
+
+Violet
+*I think you should keep me around. I've got lots of experience in my years on this planet.*
+
+5
+v_5_experience
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Violet
+*If you really want someone gone, I think it should be Jessica. More of a burden than anything.*
+
+5
+v_5_burden
+Placeholder
+None
+
+Jessica
+Why is she looking at me?
+
+5
+j_5_looking
+Placeholder
+None
+
+CHOICE
+Kicking someone out
+
+
+
+None
+None
+
+Player
+Wait, let me think
+
+5
+p_5_think
+Placeholder
+None
+
+CHOICE
+Violet kicked out
+
+
+
+None
+None
+
+Player
+I'm sure
+
+5
+p_5_sure
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Kicking Jessica out
+
+5
+
+None
+None
+
+Jessica
+You can't kick me out! I'll die out there! It's scary!
+
+5
+j_5_scary
+Placeholder
+None
+
+Bob
+*stares at Jessica*
+
+5
+b_5_stare
+Placeholder
+None
+
+Violet
+*stares at Jessica*
+
+5
+v_5_stare
+Placeholder
+None
+
+CHOICE
+Kicking someone out
+
+
+
+None
+None
+
+Player
+Wait, let me think
+
+5
+p_5_think
+Placeholder
+None
+
+CHOICE
+Jessica kicked out
+
+
+
+None
+None
+
+Player
+I'm sure
+
+5
+p_5_sure
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Jessica kicked out
+
+5
+
+None
+None
+
+Jessica
+Please! Why are you doing this to me?
+
+
+j_5_why
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Violet kicked out
+
+5
+
+None
+None
+
+IF
+CAR
+
+
+
+None
+None
+
+Violet
+*maybe ill see you around*
+
+5
+v_5_see
+Placeholder
+None
+
+ELSE
+
+
+
+
+None
+None
+
+Violet
+*it was nice meeting you*
+
+5
+v_5_meeting
+Placeholder
+None
+
+ENDIF
+
+
+5
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Bob kicked out
+
+5
+
+None
+None
+
+Bob
+Fuck you. You won't make it.
+
+5
+b_5_fuck_you
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Bob coming back
+
+5
+
+None
+None
+
+Bob
+Im back! There was some pretty nice stuff back there, I was able to bring some more food and water, no sign of life whatsoever tho.
+
+5
+b_5_back
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+JESSICA coming back
+
+5
+
+None
+None
+
+Player
+It already past 2 hours the time we scheduled for her to come back, she probably died
+
+5
+j_2_jessica_died
+Placeholder
+None
+
+IF
+BOB
+
+
+
+None
+None
+
+Bob
+She didn't return, I told you that she wouldn't survive out there
+
+5
+b_4_jessica_died
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Violet
+
+
+
+None
+None
+
+Violet
+I told you it was cruel to send her out to scavenge, you shuold've sent me
+
+
+v_5_cruel
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Starve
+
+5
+
+None
+None
+
+Player
+There isn't enough food left to eat...
+
+5
+p_5_starve_no_food
+Placeholder
+None
+
+Player
+I should have sent someone to go find food.
+
+5
+p_5_starve_should_have
+Placeholder
+None
+
+Player
+*Dies*
+
+5
+p_5_starve_die
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Violet coming back
+
+5
+
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+GOTO
+B_Violet coming back
+
+
+
+None
+None
+
+ELIF
+Jessica
+
+
+
+None
+None
+
+GOTO
+J_Violet coming back
+
+
+
+None
+None
+
+ELSE
+
+
+
+
+None
+None
+
+Player
+Car noises... Wonder if Violet got that car working?
+
+5
+p_5_is_the_car_violet
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+J_Violet coming back
+
+5
+
+None
+None
+
+Jessica
+Do you hear car noises? It must be someone coming to help us!
+
+5
+j_5_car
+Placeholder
+None
+
+Jessica
+I will look at the window
+
+5
+j_5_window
+Placeholder
+None
+
+CHOICE
+Keep looking
+
+
+
+None
+None
+
+Player
+Hide now! I will turn of the lights
+
+5
+p_5_hide
+Placeholder
+None
+
+CHOICE
+Keep looking
+
+
+
+None
+None
+
+Player
+oh, tell me what you see
+
+
+p_5_tell
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+B_Violet coming back
+
+5
+
+None
+None
+
+Bob
+I hear car noises, turn off the lights now!
+
+5
+b_5_car
+Placeholder
+None
+
+CHOICE
+Look trough window
+
+
+
+None
+None
+
+Player
+Let me look trough the window
+
+5
+p_5_window
+Placeholder
+None
+
+CHOICE
+Hide bob
+
+
+
+None
+None
+
+Player
+Okay! I will get the gun
+
+5
+p_5_gun
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Keep looking
+
+5
+
+None
+None
+
+Jessica
+The car is parking
+
+5
+j_5_car_parking
+Placeholder
+None
+
+Jessica
+One person got out
+
+5
+j_5_person
+Placeholder
+None
+
+Jessica
+They are walking towards the door
+
+5
+j_5_walking
+Placeholder
+None
+
+Jessica
+It?s a bulky person
+
+5
+j_5_bulk
+Placeholder
+None
+
+Jessica
+They are very close now
+
+5
+j_5_close
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Look trough window
+
+5
+
+None
+None
+
+Bob
+What the fuck are you doing!? What if are raiders or the military?!
+
+5
+b_5_miltary
+Placeholder
+None
+
+Player
+It looks like the car is parking here
+
+5
+p_5_car_parking
+Placeholder
+None
+
+Bob
+Get the fuck away from there!
+
+5
+b_5_get_out
+Placeholder
+None
+
+CHOICE
+Continue looking trough window
+
+
+
+None
+None
+
+Player
+I'm going to keep looking
+
+5
+p_5_looking
+Placeholder
+None
+
+CHOICE
+Hide bob
+
+
+
+None
+None
+
+Player
+Okay I will hide
+
+5
+p_5_ok_hide
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Hide bob
+
+5
+
+None
+None
+
+Bob
+Point the gun at the door, finger on the trigger
+
+5
+b_5_point
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Hide jessica
+
+5
+
+None
+None
+
+Jessica
+Okay, okay, I'm going to hide
+
+5
+j_5_ok_hide
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Continue looking trough window
+
+5
+
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+What the fuck, Violet is that you?
+
+5
+b_5_violet
+Placeholder
+None
+
+Player
+Where the fuck did you find a car?
+
+5
+p_5_car
+Placeholder
+None
+
+Bob
+A car?! Oh wow that are some awesome news.
+
+5
+b_5_awesome
+Placeholder
+None
+
+ELIF
+Jessica
+
+
+
+None
+None
+
+Player
+Where the fuck did you find a car?
+
+5
+p_5_car
+Placeholder
+None
+
+Jessica
+I knew it! I knew it!
+
+5
+j_5_knew
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Violet
+* I found a broken car there and I repaired it*
+
+5
+v_5_repaired
+Placeholder
+None
+
+Player
+This will help us so much
+
+5
+p_5_help
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Knock on the door
+
+5
+
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+There's another person on the door, keep the gun close
+
+5
+b_5_keep_close
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+Oh there's another person at the door!
+
+5
+j_5_another_door
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+CHOICE
+Ignore door day 5
+
+
+
+None
+None
+
+Player
+I'm going to ignore that
+
+5
+p_5_ignora
+Placeholder
+None
+
+CHOICE
+peephole day 5
+
+
+
+None
+None
+
+Player
+I will look at the peephole
+
+5
+p_5_peephole
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Ignore door day 5
+
+5
+
+None
+None
+
+Jessica
+We should at least look trough the peephole and ask some questions
+
+5
+j_5_peephole
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+peephole day 5
+
+5
+
+None
+None
+
+Player
+It's honestly looks like a normal person, not much to say, it seems they are wearing a hood.
+
+5
+p_5_peephole
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+DAY 5 who
+
+5
+
+None
+None
+
+Dad
+Have you a teenager around here? I also just need a place to stay for the night
+
+5
+dad_5_who
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+DAY 5 why
+
+5
+
+None
+None
+
+Dad
+I promisse I won't use any of your supplies. I have my own here with me, I just to spend the night in somewhere safe. By tomorrow morning I will set off again to find my son.
+
+5
+dad_5_why
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+DAY 5 where
+
+5
+
+None
+None
+
+Dad
+I have never been here before, I'm just following a map for the area.
+
+5
+dad_5_where
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+Conversation
+Teenager
+
+5
+
+None
+None
+
+Player
+Have you guys seen any teenager on your way there?
+
+
+p_5_teenager
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+I don't think so
+
+5
+b_5_no
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+I don't think so
+
+5
+j_5_no
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Violet
+
+
+
+None
+None
+
+Violet
+*nods sideways*
+
+5
+v_5_no
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Player
+No, we have not
+
+5
+p_5_no
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Making decision day 5
+
+5
+
+None
+None
+
+CHOICE
+Letting dad out
+
+
+
+None
+None
+
+Player
+Sorry I can't let you in, I don't trust you
+
+5
+p_5_out
+Placeholder
+None
+
+CHOICE
+Letting dad in
+
+
+
+None
+None
+
+Player
+Okay, take three step back, I'm going to open the door.
+
+5
+p_5_in
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Letting dad out
+
+5
+
+None
+None
+
+IF
+Violet
+
+
+
+None
+None
+
+Violet
+* I'm sure they can just crash for the night*
+
+5
+v_5_crash
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+He means no harm, we should let him in.
+
+5
+b_5_harm
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+What are you doing? He sounds like no harm!
+
+5
+j_5_harm
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Dad
+Please just let me spend the night, I have my own food and water, I promise I won't use any of your stuff, I just need a place to stay
+
+
+
+None
+None
+
+CHOICE
+Making decision day 5
+
+
+
+None
+None
+
+Player
+Let me think about it more
+
+4
+p_4_think
+Placeholder
+None
+
+CHOICE
+Dad out
+
+
+
+None
+None
+
+Player
+I'm sure, we're not letting anyone inside
+
+4
+p_4_sure
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Dad out
+
+5
+
+None
+None
+
+Dad
+Please!
+
+5
+dad_5_please
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Letting dad in
+
+5
+
+None
+None
+
+Dad
+Thank you very much! My name is Mark
+
+
+dad_5_thank
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+*Stares at him with a bit of uneasiness*
+
+5
+b_5_uneasiness
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Violet
+
+
+
+None
+None
+
+Violet
+*Just stares at him*
+
+5
+v_5_stares
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+I'm happy to see a new face!
+
+5
+j_5_face
+Placeholder
+None
+
+Jessica
+Do you want to tell us how did your son looks like so we can help you?
+
+5
+j_5_help
+Placeholder
+None
+
+Dad
+Sure, he is 16 years old, he's tall, green eyes, has a long blond hair. He is a bit pale as well.
+
+5
+dad_5_teenager
+Placeholder
+None
+
+Player
+If we see him we will let you know.
+
+5
+p_5_let_know
+Placeholder
+None
+
+Player
+You will need to sleep in the couch in living room as we don't have any room for you.
+
+5
+p_5_couch
+Placeholder
+None
+
+Dad
+Thats fine by me!
+
+5
+dad_5_fine
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+Do you want to tell us how did your son looks like so if we someone like your description we can guide him?
+
+5
+b_5_teenager
+Placeholder
+None
+
+Dad
+Sure, he is 16 years old, he's tall, green eyes, has a long blond hair. He is a bit pale as well.
+
+5
+dad_5_teenager
+Placeholder
+None
+
+Player
+If we see him we will let you know.
+
+5
+p_5_let_know
+Placeholder
+None
+
+Player
+You will need to sleep in the couch in living room as we don't have any room for you.
+
+5
+p_5_couch
+Placeholder
+None
+
+Dad
+Thats fine by me!
+
+5
+dad_5_fine
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+END
+
 
 
 
@@ -6183,18 +7871,10 @@ END
 None
 None
 
-//
-Bob, Jessica and Violet wake up and comment on the  TV
-
-
-
-None
-None
-
 CONVERSATION
 BJV Wake Up
 
-
+7
 
 None
 None
@@ -6322,7 +8002,7 @@ None
 CONVERSATION
 Twins Wake Up
 
-
+7
 
 None
 None

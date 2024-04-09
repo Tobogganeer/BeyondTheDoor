@@ -47,6 +47,10 @@ namespace BeyondTheDoor
         public static Line what_do_you_want { get; private set; } = new Line(CharacterID.Player, "What do you want?", "", 0, LineID.what_do_you_want, LineStatus.Final, VoiceStatus.None, "");
         public static Line why_should_i_let_you_in { get; private set; } = new Line(CharacterID.Player, "Why should I let you in?", "", 0, LineID.why_should_i_let_you_in, LineStatus.Final, VoiceStatus.None, "");
         public static Line how_can_you_be_helpful { get; private set; } = new Line(CharacterID.Player, "How can you be helpful to me?", "", 0, LineID.how_can_you_be_helpful, LineStatus.Final, VoiceStatus.None, "");
+        public static Line send_with_shotgun { get; private set; } = new Line(CharacterID.Player, "Send {character} with shotgun", "", 0, LineID.send_with_shotgun, LineStatus.Final, VoiceStatus.None, "");
+        public static Line send_without_shotgun { get; private set; } = new Line(CharacterID.Player, "Send {character} without shotgun", "", 0, LineID.send_without_shotgun, LineStatus.Final, VoiceStatus.None, "");
+        public static Line none { get; private set; } = new Line(CharacterID.None, "(no content)", "", 0, LineID.none, LineStatus.Final, VoiceStatus.None, "");
+        public static Line confirm_no_scavengers { get; private set; } = new Line(CharacterID.Player, "Send no scavengers", "", 0, LineID.confirm_no_scavengers, LineStatus.Final, VoiceStatus.None, "");
         public static Line tutmom_0_wake_up { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Wake up sunshine...  you fell asleep while playing games.", "First line of tutorial", 0, LineID.tutmom_0_wake_up, LineStatus.Draft, VoiceStatus.None, "");
         public static Line tutmom_0_going_ice_cream { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Me and your Dad are going to get some ice cream.", "", 0, LineID.tutmom_0_going_ice_cream, LineStatus.Draft, VoiceStatus.None, "");
         public static Line tutdad_0_q_ice_cream { get; private set; } = new Line(CharacterID.Tutorial_Dad, "What flavour of ice cream do you want?", "First question", 0, LineID.tutdad_0_q_ice_cream, LineStatus.Draft, VoiceStatus.None, "");
@@ -57,8 +61,9 @@ namespace BeyondTheDoor
         public static Line tutdad_0_where_are_keys { get; private set; } = new Line(CharacterID.Tutorial_Dad, "(To Mom) Have you seen where the car keys are?", "", 0, LineID.tutdad_0_where_are_keys, LineStatus.Draft, VoiceStatus.None, "");
         public static Line tutdad_0_looking_for_keys { get; private set; } = new Line(CharacterID.Tutorial_Dad, "I don't know where we left them...", "If you try to talk to them before finding keys", 0, LineID.tutdad_0_looking_for_keys, LineStatus.Draft, VoiceStatus.None, "");
         public static Line tutmom_0_looking_for_keys { get; private set; } = new Line(CharacterID.Tutorial_Mom, "I could've swore they were around here somewhere!", "If you try to talk to them before finding keys", 0, LineID.tutmom_0_looking_for_keys, LineStatus.Draft, VoiceStatus.None, "");
-        public static Line tutdad_0_scavenge_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Thank you kiddo...  see you soon.", "Being sent out to scavenge", 0, LineID.tutdad_0_scavenge_response, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line tutdad_0_scavenge_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Thank you kiddo...", "Being sent out to scavenge", 0, LineID.tutdad_0_scavenge_response, LineStatus.Draft, VoiceStatus.None, "");
         public static Line tutdad_0_unscavenge_response { get; private set; } = new Line(CharacterID.Tutorial_Dad, "Don't you want us to go get ice cream?", "Player took them out of scavenge party", 0, LineID.tutdad_0_unscavenge_response, LineStatus.Draft, VoiceStatus.None, "");
+        public static Line tutdad_0_sent { get; private set; } = new Line(CharacterID.Tutorial_Dad, "See you soon kiddo!", "Bye bye", 0, LineID.tutdad_0_sent, LineStatus.Draft, VoiceStatus.None, "");
         public static Line tutmom_0_at_door { get; private set; } = new Line(CharacterID.Tutorial_Mom, "We're back!", "At door", 0, LineID.tutmom_0_at_door, LineStatus.Draft, VoiceStatus.None, "");
         public static Line tutmom_0_q_open_door { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Hey kiddo, can you open the door please? It's raining out here...", "At door", 0, LineID.tutmom_0_q_open_door, LineStatus.Draft, VoiceStatus.None, "");
         public static Line tutmom_0_q_open_door_second { get; private set; } = new Line(CharacterID.Tutorial_Mom, "Hehe, nice one... Really though, it is quite cold.", "Player keeps door closed", 0, LineID.tutmom_0_q_open_door_second, LineStatus.Draft, VoiceStatus.None, "");
@@ -131,7 +136,7 @@ namespace BeyondTheDoor
         public static Line b_2_open_door { get; private set; } = new Line(CharacterID.Bob, "Okay, thanks!", "", 2, LineID.b_2_open_door, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_2_room { get; private set; } = new Line(CharacterID.Player, "Im going to bed, your room is the second one in the hallway.", "", 2, LineID.p_2_room, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_2_b_talk { get; private set; } = new Line(CharacterID.Player, "So how long have you been outside?", "", 2, LineID.p_2_b_talk, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line b_2_time { get; private set; } = new Line(CharacterID.Bob, "It's been some days,? I think maybe 3 days, I've been surviving trough scavenging some resources on my way here.", "", 2, LineID.b_2_time, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_2_time { get; private set; } = new Line(CharacterID.Bob, "It's been some days,� I think maybe 3 days, I've been surviving trough scavenging some resources on my way here.", "", 2, LineID.b_2_time, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_2_situation { get; private set; } = new Line(CharacterID.Player, "Do you know how to situation is out there?", "", 2, LineID.p_2_situation, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_2_situation { get; private set; } = new Line(CharacterID.Bob, "Because of the blizzard its hard to see much, I'm glad I left with my hiking equipment and clothes, If not I could've died out there.", "", 2, LineID.b_2_situation, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_2_horrible { get; private set; } = new Line(CharacterID.Jessica, "That's horrible", "", 2, LineID.j_2_horrible, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -166,18 +171,12 @@ namespace BeyondTheDoor
         public static Line j_3_speechless { get; private set; } = new Line(CharacterID.Jessica, "I-i....", "Jessica speechless", 3, LineID.j_3_speechless, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_3_choice { get; private set; } = new Line(CharacterID.Bob, "You're the owner of the house, do you want me to go or Jessica?", "", 3, LineID.b_3_choice, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_3_J_scavenge { get; private set; } = new Line(CharacterID.Player, "I think Jessica should go", "", 3, LineID.p_3_J_scavenge, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line b_3_disagree { get; private set; } = new Line(CharacterID.Bob, "I don't think your're making the right decision. She won't be of much utility out there", "", 3, LineID.b_3_disagree, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_3_disagree { get; private set; } = new Line(CharacterID.Bob, "I don't think you're making the right decision. She won't be of much utility out there", "", 3, LineID.b_3_disagree, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_3_scared { get; private set; } = new Line(CharacterID.Jessica, "I'm scared to go", "", 3, LineID.j_3_scared, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_3_j_confirm { get; private set; } = new Line(CharacterID.Player, "Yes, Jessica should go", "", 3, LineID.p_3_j_confirm, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_3_whatever { get; private set; } = new Line(CharacterID.Bob, "Whatever you say.", "", 3, LineID.b_3_whatever, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_3_silence { get; private set; } = new Line(CharacterID.Jessica, "....", "", 3, LineID.j_3_silence, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_3_b_scavenge { get; private set; } = new Line(CharacterID.Player, "I think Bob should go", "", 3, LineID.p_3_b_scavenge, LineStatus.None, VoiceStatus.None, "");
         public static Line b_3_bring { get; private set; } = new Line(CharacterID.Bob, "Okay, do you have anything I can bring to defend myself if something happens?", "", 3, LineID.b_3_bring, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_3_b_no_gun { get; private set; } = new Line(CharacterID.Player, "I have a gun, but I think its better for it to be here so we can defend ourselves", "", 3, LineID.p_3_b_no_gun, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line b_3_without_gun { get; private set; } = new Line(CharacterID.Bob, "Okay, I will try to see what I can do without it", "", 3, LineID.b_3_without_gun, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_3_b_gun { get; private set; } = new Line(CharacterID.Player, "I have a gun, you should bring it with you to defend yourself", "", 3, LineID.p_3_b_gun, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line b_3_with_gun { get; private set; } = new Line(CharacterID.Bob, "Thanks, I will be back before sunset.", "", 3, LineID.b_3_with_gun, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_3_b_goback { get; private set; } = new Line(CharacterID.Player, "actually I changed my mind ( go back)", "", 3, LineID.p_3_b_goback, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line journalist_3_hey { get; private set; } = new Line(CharacterID.Journalist, "Heeeeey! I come in peace, I'm just a journalist, I want to ask some questions", "", 3, LineID.journalist_3_hey, LineStatus.None, VoiceStatus.None, "");
         public static Line p_3_j_sure { get; private set; } = new Line(CharacterID.Player, "Sure, why not", "", 3, LineID.p_3_j_sure, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line journalist_3_rude { get; private set; } = new Line(CharacterID.Journalist, "Nice, its been a bit hard finding people out here willing to talk, a lot of them area a bit rude", "", 3, LineID.journalist_3_rude, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -193,11 +192,11 @@ namespace BeyondTheDoor
         public static Line p_3_everything_good { get; private set; } = new Line(CharacterID.Player, "Everything so far is under control", "", 3, LineID.p_3_everything_good, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line journalist_3_interesting { get; private set; } = new Line(CharacterID.Journalist, "Interesting...", "", 3, LineID.journalist_3_interesting, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line journalist_3_sympahize { get; private set; } = new Line(CharacterID.Journalist, "If you don't mind, which side do you sympathize the most?", "", 3, LineID.journalist_3_sympahize, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_3_revolutionaries { get; private set; } = new Line(CharacterID.Player, "Revolutionaries, they are just trying to fight for a better country and get rid of all the corruptiong", "", 3, LineID.p_3_revolutionaries, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_3_revolutionaries { get; private set; } = new Line(CharacterID.Player, "Revolutionaries, they are just trying to fight for a better country and get rid of all the corruption.", "", 3, LineID.p_3_revolutionaries, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_3_government { get; private set; } = new Line(CharacterID.Player, "The government, they've kept this country going for years, stuff did get a bit better when they entered the political scene.", "", 3, LineID.p_3_government, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_3_none { get; private set; } = new Line(CharacterID.Player, "None, I just want to get out of this place", "", 3, LineID.p_3_none, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line journalist_3_done { get; private set; } = new Line(CharacterID.Journalist, "Right, ok, I think thats all, thanks for conversation, the information you gave me will be all anonymous, so your name won't appear anywhere, if you want to learn more about it you can read the Brasnian people morning news.", "", 3, LineID.journalist_3_done, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_3_safe_trip { get; private set; } = new Line(CharacterID.Player, "Ok, thanks, havea safe trip", "", 3, LineID.p_3_safe_trip, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_3_safe_trip { get; private set; } = new Line(CharacterID.Player, "Ok, thanks, have a safe trip", "", 3, LineID.p_3_safe_trip, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line journalist_3_safe { get; private set; } = new Line(CharacterID.Journalist, "You too, be safe", "", 3, LineID.journalist_3_safe, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_3_knock { get; private set; } = new Line(CharacterID.Bob, "Oh wow that's a strong bang, I don't think that would be great news", "", 3, LineID.b_3_knock, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_3_knock { get; private set; } = new Line(CharacterID.Jessica, "It just might be someone strong or tired", "", 3, LineID.j_3_knock, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -216,9 +215,9 @@ namespace BeyondTheDoor
         public static Line bear_3_no { get; private set; } = new Line(CharacterID.Bear, "*no answer*", "", 3, LineID.bear_3_no, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_3_out { get; private set; } = new Line(CharacterID.Player, "Sorry I can't let you in, I don't have enough resources (lie)", "", 3, LineID.p_3_out, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_3_in { get; private set; } = new Line(CharacterID.Player, "Okay, take three step back, I'm going to open the door.", "", 3, LineID.p_3_in, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line b_3_not_human { get; private set; } = new Line(CharacterID.Bob, "I think you did the right choice, its probably not even human", "", 3, LineID.b_3_not_human, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_3_animal { get; private set; } = new Line(CharacterID.Jessica, "What if its just a hurt animal?", "", 3, LineID.j_3_animal, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_3_useful { get; private set; } = new Line(CharacterID.Bob, "What the fuck are you talking about? How can an animal be helpful to keeping us alive?", "", 3, LineID.b_3_useful, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_3_not_human { get; private set; } = new Line(CharacterID.Bob, "I think you did the right choice, its probably not even human", "", 3, LineID.b_3_not_human, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_3_in { get; private set; } = new Line(CharacterID.Bob, "What the fuck are you doing? That thing is not human!", "", 3, LineID.b_3_in, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line bear_3_roar { get; private set; } = new Line(CharacterID.Bear, "*roar*", "", 3, LineID.bear_3_roar, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_3_back { get; private set; } = new Line(CharacterID.Bob, "Get back!", "", 3, LineID.b_3_back, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -239,26 +238,22 @@ namespace BeyondTheDoor
         public static Line j_4_morning { get; private set; } = new Line(CharacterID.Jessica, "Good morning everyone!", "", 4, LineID.j_4_morning, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_hum { get; private set; } = new Line(CharacterID.Bob, "Hum", "", 4, LineID.b_4_hum, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_scavenge { get; private set; } = new Line(CharacterID.Player, "Okay, we need to scavenge, does anyone wants to go?", "", 4, LineID.p_4_scavenge, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line b_4_offering { get; private set; } = new Line(CharacterID.Bob, "I can go", "", 4, LineID.b_4_offering, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line j_4_while { get; private set; } = new Line(CharacterID.Jessica, "I don't think we need to scavenge, just the two of us we will have enough food for a while", "", 4, LineID.j_4_while, LineStatus.None, VoiceStatus.None, "");
-        public static Line j_4_walk { get; private set; } = new Line(CharacterID.Jessica, "Plus I can't walk", "", 4, LineID.j_4_walk, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line j_4_necessary { get; private set; } = new Line(CharacterID.Jessica, "Okay, if we're going to scavenge can we at least only take the necessary?", "", 4, LineID.j_4_necessary, LineStatus.None, VoiceStatus.None, "");
+        public static Line j_4_necessary { get; private set; } = new Line(CharacterID.Jessica, "Okay, if we're going to scavenge can we at least only take the necessary?", "", 4, LineID.j_4_necessary, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_necessary { get; private set; } = new Line(CharacterID.Bob, "There's no such thing as only the necessary. We need to get as many supplies as possible", "", 4, LineID.b_4_necessary, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_dying { get; private set; } = new Line(CharacterID.Jessica, "You act like you've already been a situation like this before! What if you were the ones outside dying because of the lack of resources!", "", 4, LineID.j_4_dying, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_sympathy { get; private set; } = new Line(CharacterID.Bob, "Though shit. There's no good outcomes. There's only war. I'm here because I didn't show sympathy towards others. I need to be best in order to survive. I'm not here for charity. I'm here to get out alive.", "", 4, LineID.b_4_sympathy, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_4_while { get; private set; } = new Line(CharacterID.Jessica, "I don't think we need to scavenge, just the two of us we will have enough food for a while", "", 4, LineID.j_4_while, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_4_walk { get; private set; } = new Line(CharacterID.Jessica, "Plus I can't walk", "", 4, LineID.j_4_walk, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_4_offering { get; private set; } = new Line(CharacterID.Bob, "I can go", "", 4, LineID.b_4_offering, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_pissed { get; private set; } = new Line(CharacterID.Bob, "So okay, who's going to fucking scavenge?", "", 4, LineID.b_4_pissed, LineStatus.None, VoiceStatus.None, "");
-        public static Line p_4_jessica { get; private set; } = new Line(CharacterID.Player, "I think Jessica should go", "", 4, LineID.p_4_jessica, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_4_bob { get; private set; } = new Line(CharacterID.Player, "I think Bob should go", "", 4, LineID.p_4_bob, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_sure { get; private set; } = new Line(CharacterID.Bob, "you sure?", "", 4, LineID.b_4_sure, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_die { get; private set; } = new Line(CharacterID.Jessica, "I can't do much in this state, I will die!", "", 4, LineID.j_4_die, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_4_rethink { get; private set; } = new Line(CharacterID.Player, "Actually let me think more about this", "", 4, LineID.p_4_rethink, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_4_sure { get; private set; } = new Line(CharacterID.Player, "I'm sure", "", 4, LineID.p_4_sure, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_defend_jessica { get; private set; } = new Line(CharacterID.Bob, "At least give her something to defend herself", "", 4, LineID.b_4_defend_jessica, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_scared { get; private set; } = new Line(CharacterID.Jessica, "I'm scared", "", 4, LineID.j_4_scared, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_shotgun_jessica { get; private set; } = new Line(CharacterID.Player, "I will give her the shotgun", "", 4, LineID.p_4_shotgun_jessica, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_noshotgun_jessica { get; private set; } = new Line(CharacterID.Player, "The gun is more important here", "", 4, LineID.p_4_noshotgun_jessica, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line j_4_prob_die { get; private set; } = new Line(CharacterID.Jessica, "I'm probably going to die", "", 4, LineID.j_4_prob_die, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line b_4_shamefull { get; private set; } = new Line(CharacterID.Bob, "shameful", "", 4, LineID.b_4_shamefull, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_4_prob_die { get; private set; } = new Line(CharacterID.Jessica, "I'm probably going to die!", "", 4, LineID.j_4_prob_die, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_4_shamefull { get; private set; } = new Line(CharacterID.Bob, "Shameful.", "", 4, LineID.b_4_shamefull, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_gun { get; private set; } = new Line(CharacterID.Bob, "Okay, do you have anything I can bring to defend myself if something happens?", "", 4, LineID.b_4_gun, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_bob_gun { get; private set; } = new Line(CharacterID.Player, "I have a gun, you should bring it with you to defend yourself", "", 4, LineID.p_4_bob_gun, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_no_gun { get; private set; } = new Line(CharacterID.Player, "I have a gun, but I think its better for it to be here so we can defend ourselves", "", 4, LineID.p_4_no_gun, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -266,7 +261,7 @@ namespace BeyondTheDoor
         public static Line b_4_no_gun { get; private set; } = new Line(CharacterID.Bob, "Okay, I will try to see what I can do without it", "", 4, LineID.b_4_no_gun, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_jessica_died { get; private set; } = new Line(CharacterID.Bob, "She didn't return, I told you that she wouldn't survive out there", "", 4, LineID.b_4_jessica_died, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_scavenge_gun { get; private set; } = new Line(CharacterID.Bob, "Its getting a bit less cold, I heard some gunshots in the distance, I had to hide the gun so I wouln't be mistaken as one of the revolutionaries and be shot on sight", "", 4, LineID.b_4_scavenge_gun, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line b_4_scavenge_bo_gun { get; private set; } = new Line(CharacterID.Bob, "There were some gunshots in the distance, I had to make another route today so I didn't walk into a fucking no mans land", "", 4, LineID.b_4_scavenge_bo_gun, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_4_scavenge_no_gun { get; private set; } = new Line(CharacterID.Bob, "There were some gunshots in the distance, I had to make another route today so I didn't walk into a fucking no mans land", "", 4, LineID.b_4_scavenge_no_gun, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_check { get; private set; } = new Line(CharacterID.Player, "Are you okay? I cleaned all the blood", "", 4, LineID.p_4_check, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_blood { get; private set; } = new Line(CharacterID.Jessica, "Of course I'm okay, did you get hurt? Blood from who?", "", 4, LineID.j_4_blood, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_bob_blood { get; private set; } = new Line(CharacterID.Player, "Bob, the bear and everything, don't you remember?", "", 4, LineID.p_4_bob_blood, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -274,11 +269,7 @@ namespace BeyondTheDoor
         public static Line p_4_jessica_shocked { get; private set; } = new Line(CharacterID.Player, "Oh no she's shell shocked, she's traumatized and her brain is blocking the memory", "", 4, LineID.p_4_jessica_shocked, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_scavenge_jessica { get; private set; } = new Line(CharacterID.Player, "We need to scavenge today", "", 4, LineID.p_4_scavenge_jessica, LineStatus.None, VoiceStatus.None, "");
         public static Line j_4_enough { get; private set; } = new Line(CharacterID.Jessica, "Don't we have enough food?", "", 4, LineID.j_4_enough, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_4_enough { get; private set; } = new Line(CharacterID.Player, "Yeah you're right", "", 4, LineID.p_4_enough, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_4_possible { get; private set; } = new Line(CharacterID.Player, "We need to get as much as possible", "", 4, LineID.p_4_possible, LineStatus.None, VoiceStatus.None, "");
         public static Line j_4_crying { get; private set; } = new Line(CharacterID.Jessica, "I can't do much in this state, I will die!", "", 4, LineID.j_4_crying, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_4_jessica_gun { get; private set; } = new Line(CharacterID.Player, "Take the the shotgun", "", 4, LineID.p_4_jessica_gun, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_4_jessica_no_gun { get; private set; } = new Line(CharacterID.Player, "The gun is more important here", "", 4, LineID.p_4_jessica_no_gun, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_door { get; private set; } = new Line(CharacterID.Jessica, "Oh there's another person at the door!", "", 4, LineID.j_4_door, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_door { get; private set; } = new Line(CharacterID.Bob, "Or thing, creature, I don't know", "", 4, LineID.b_4_door, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_4_ignore { get; private set; } = new Line(CharacterID.Player, "Ignore door", "", 4, LineID.p_4_ignore, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -298,6 +289,7 @@ namespace BeyondTheDoor
         public static Line j_4_disability { get; private set; } = new Line(CharacterID.Jessica, "You never know, It can be someone with some kind of disability, like a mute person.", "", 4, LineID.j_4_disability, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_chance { get; private set; } = new Line(CharacterID.Jessica, "You sure you're going to let them out? Please give another chance!", "", 4, LineID.j_4_chance, LineStatus.None, VoiceStatus.None, "");
         public static Line p_4_think { get; private set; } = new Line(CharacterID.Player, "Let me think about it more", "", 4, LineID.p_4_think, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_4_sure { get; private set; } = new Line(CharacterID.Player, "I'm sure, we're not letting anyone inside", "", 4, LineID.p_4_sure, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_monster { get; private set; } = new Line(CharacterID.Jessica, "You monster!", "", 4, LineID.j_4_monster, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_calm { get; private set; } = new Line(CharacterID.Bob, "calm down, this is for our best, what if it was someone who wants our harm?", "", 4, LineID.b_4_calm, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_shit { get; private set; } = new Line(CharacterID.Bob, "Shit", "", 4, LineID.b_4_shit, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -329,20 +321,20 @@ namespace BeyondTheDoor
         public static Line v_5_go { get; private set; } = new Line(CharacterID.Violet, "*I should go, maybe there's something there that I can scrap for us to re-use*", "", 5, LineID.v_5_go, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_5_go { get; private set; } = new Line(CharacterID.Bob, "Okay! sounds like a interesting task", "", 5, LineID.b_5_go, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_5_go { get; private set; } = new Line(CharacterID.Jessica, "I should stay here, I cannot do much", "", 5, LineID.j_5_go, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_5_violet { get; private set; } = new Line(CharacterID.Player, "Violet, you're up for the job", "", 5, LineID.p_5_violet, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_5_jessica { get; private set; } = new Line(CharacterID.Player, "I think Jessica should go", "", 5, LineID.p_5_jessica, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_5_bob { get; private set; } = new Line(CharacterID.Player, "Bob, you're going", "", 5, LineID.p_5_bob, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_5_dumb { get; private set; } = new Line(CharacterID.Bob, "You're sending her alone to the gas station? Are you dumb? How can she help us by scavenging around the gas station?", "", 5, LineID.b_5_dumb, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_5_cruel { get; private set; } = new Line(CharacterID.Violet, "*This is cruel, you should let me go in her place*", "", 5, LineID.b_5_cruel, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_5_alone { get; private set; } = new Line(CharacterID.Jessica, "I cant go alone!", "", 5, LineID.j_5_alone, LineStatus.None, VoiceStatus.None, "");
         public static Line p_5_sure { get; private set; } = new Line(CharacterID.Player, "I'm sure", "", 5, LineID.p_5_sure, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_5_think { get; private set; } = new Line(CharacterID.Player, "Ok, let me think a bit more", "", 5, LineID.p_5_think, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_bob { get; private set; } = new Line(CharacterID.Player, "Bob, you're going", "", 5, LineID.p_5_bob, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_5_anything_useful { get; private set; } = new Line(CharacterID.Bob, "Sure thing, I will bring back anything that might be useful.", "", 5, LineID.b_5_anything_useful, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line v_5_want_to_find_car { get; private set; } = new Line(CharacterID.Violet, "*I want to go scavenge, there might be something useful that I can fix there*", "", 5, LineID.v_5_want_to_find_car, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_5_bob_should_go { get; private set; } = new Line(CharacterID.Player, "Bob should go, It's better this way", "", 5, LineID.p_5_bob_should_go, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_violet { get; private set; } = new Line(CharacterID.Player, "Violet, you're up for the job", "", 5, LineID.p_5_violet, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line v_5_thumbs { get; private set; } = new Line(CharacterID.Violet, "*Thumbs up*", "", 5, LineID.v_5_thumbs, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_5_violet { get; private set; } = new Line(CharacterID.Bob, "Fine by me, it seems she can handle well on her own", "", 5, LineID.b_5_violet, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_5_bob_sure { get; private set; } = new Line(CharacterID.Player, "violet should go, It's better this way", "", 5, LineID.p_5_bob_sure, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_bob_sure { get; private set; } = new Line(CharacterID.Player, "Violet should go, It's better this way", "", 5, LineID.p_5_bob_sure, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_5_resources { get; private set; } = new Line(CharacterID.Player, "I'm sorry, but I don't think we have enough resources to keep everyone around. There's just too many people in here.", "", 5, LineID.p_5_resources, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_5_comment { get; private set; } = new Line(CharacterID.Jessica, "What do you mean? Kick someone out?", "", 5, LineID.j_5_comment, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line p_5_go { get; private set; } = new Line(CharacterID.Player, "Someone has to go.", "", 5, LineID.p_5_go, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -350,6 +342,77 @@ namespace BeyondTheDoor
         public static Line j_5_freezing { get; private set; } = new Line(CharacterID.Jessica, "You aren't really going to kick someone out, are you? It's freezing out there!", "", 5, LineID.j_5_freezing, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line v_5_okay { get; private set; } = new Line(CharacterID.Violet, "*if you wanted me to go i could find somewhere else to stay*", "", 5, LineID.v_5_okay, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_5_jessica { get; private set; } = new Line(CharacterID.Violet, "*if it has to be someone it should be jessica*", "", 5, LineID.b_5_jessica, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_joke { get; private set; } = new Line(CharacterID.Bob, "Me? I hope that's some kind of joke. I've been doing all the heavy lifting around here.", "", 5, LineID.b_5_joke, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_mean { get; private set; } = new Line(CharacterID.Jessica, "You're a bit mean.", "", 5, LineID.j_5_mean, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_nice { get; private set; } = new Line(CharacterID.Bob, "What the fuck does that have to do with anything? Do you think you get by in war by being nice?", "", 5, LineID.b_5_nice, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_what { get; private set; } = new Line(CharacterID.Jessica, "WHAT?", "", 5, LineID.j_5_what, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_do { get; private set; } = new Line(CharacterID.Bob, "What the fuck are you going to do for us? Sit around in your chair all day?", "", 5, LineID.b_5_do, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_love { get; private set; } = new Line(CharacterID.Bob, "All is fair in love and war, and if you want to survive you'll let me stay.", "", 5, LineID.b_5_love, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_car { get; private set; } = new Line(CharacterID.Violet, "*if you really want me to leave i will. i did get us the car though*", "", 5, LineID.v_5_car, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_experience { get; private set; } = new Line(CharacterID.Violet, "*I think you should keep me around. I've got lots of experience in my years on this planet.*", "", 5, LineID.v_5_experience, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_burden { get; private set; } = new Line(CharacterID.Violet, "*If you really want someone gone, I think it should be Jessica. More of a burden than anything.*", "", 5, LineID.v_5_burden, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_looking { get; private set; } = new Line(CharacterID.Jessica, "Why is she looking at me?", "", 5, LineID.j_5_looking, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_scary { get; private set; } = new Line(CharacterID.Jessica, "You can't kick me out! I'll die out there! It's scary!", "", 5, LineID.j_5_scary, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_stare { get; private set; } = new Line(CharacterID.Bob, "*stares at Jessica*", "", 5, LineID.b_5_stare, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_stare { get; private set; } = new Line(CharacterID.Violet, "*stares at Jessica*", "", 5, LineID.v_5_stare, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_see { get; private set; } = new Line(CharacterID.Violet, "*maybe ill see you around*", "", 5, LineID.v_5_see, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_meeting { get; private set; } = new Line(CharacterID.Violet, "*it was nice meeting you*", "", 5, LineID.v_5_meeting, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_fuck_you { get; private set; } = new Line(CharacterID.Bob, "Fuck you. You won't make it.", "", 5, LineID.b_5_fuck_you, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_back { get; private set; } = new Line(CharacterID.Bob, "Im back! There was some pretty nice stuff back there, I was able to bring some more food and water, no sign of life whatsoever tho.", "", 5, LineID.b_5_back, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_starve_no_food { get; private set; } = new Line(CharacterID.Player, "There isn't enough food left to eat...", "", 5, LineID.p_5_starve_no_food, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_starve_should_have { get; private set; } = new Line(CharacterID.Player, "I should have sent someone to go find food.", "", 5, LineID.p_5_starve_should_have, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_starve_die { get; private set; } = new Line(CharacterID.Player, "*Dies*", "", 5, LineID.p_5_starve_die, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_is_the_car_violet { get; private set; } = new Line(CharacterID.Player, "Car noises... Wonder if Violet got that car working?", "", 5, LineID.p_5_is_the_car_violet, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_car { get; private set; } = new Line(CharacterID.Jessica, "Do you hear car noises? It must be someone coming to help us!", "", 5, LineID.j_5_car, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_window { get; private set; } = new Line(CharacterID.Jessica, "I will look at the window", "", 5, LineID.j_5_window, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_hide { get; private set; } = new Line(CharacterID.Player, "Hide now! I will turn of the lights", "", 5, LineID.p_5_hide, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_car { get; private set; } = new Line(CharacterID.Bob, "I hear car noises, turn off the lights now!", "", 5, LineID.b_5_car, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_window { get; private set; } = new Line(CharacterID.Player, "Let me look trough the window", "", 5, LineID.p_5_window, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_gun { get; private set; } = new Line(CharacterID.Player, "Okay! I will get the gun", "", 5, LineID.p_5_gun, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_car_parking { get; private set; } = new Line(CharacterID.Jessica, "The car is parking", "", 5, LineID.j_5_car_parking, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_person { get; private set; } = new Line(CharacterID.Jessica, "One person got out", "", 5, LineID.j_5_person, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_walking { get; private set; } = new Line(CharacterID.Jessica, "They are walking towards the door", "", 5, LineID.j_5_walking, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_bulk { get; private set; } = new Line(CharacterID.Jessica, "It�s a bulky person", "", 5, LineID.j_5_bulk, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_close { get; private set; } = new Line(CharacterID.Jessica, "They are very close now", "", 5, LineID.j_5_close, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_miltary { get; private set; } = new Line(CharacterID.Bob, "What the fuck are you doing!? What if are raiders or the military?!", "", 5, LineID.b_5_miltary, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_car_parking { get; private set; } = new Line(CharacterID.Player, "It looks like the car is parking here", "", 5, LineID.p_5_car_parking, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_get_out { get; private set; } = new Line(CharacterID.Bob, "Get the fuck away from there!", "", 5, LineID.b_5_get_out, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_looking { get; private set; } = new Line(CharacterID.Player, "I'm going to keep looking", "", 5, LineID.p_5_looking, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_ok_hide { get; private set; } = new Line(CharacterID.Player, "Okay I will hide", "", 5, LineID.p_5_ok_hide, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_point { get; private set; } = new Line(CharacterID.Bob, "Point the gun at the door, finger on the trigger", "", 5, LineID.b_5_point, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_ok_hide { get; private set; } = new Line(CharacterID.Jessica, "Okay, okay, I'm going to hide", "", 5, LineID.j_5_ok_hide, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_car { get; private set; } = new Line(CharacterID.Player, "Where the fuck did you find a car?", "", 5, LineID.p_5_car, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_awesome { get; private set; } = new Line(CharacterID.Bob, "A car?! Oh wow that are some awesome news.", "", 5, LineID.b_5_awesome, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_knew { get; private set; } = new Line(CharacterID.Jessica, "I knew it! I knew it!", "", 5, LineID.j_5_knew, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_repaired { get; private set; } = new Line(CharacterID.Violet, "* I found a broken car there and I repaired it*", "", 5, LineID.v_5_repaired, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_help { get; private set; } = new Line(CharacterID.Player, "This will help us so much", "", 5, LineID.p_5_help, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_keep_close { get; private set; } = new Line(CharacterID.Bob, "There's another person on the door, keep the gun close", "", 5, LineID.b_5_keep_close, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_another_door { get; private set; } = new Line(CharacterID.Jessica, "Oh there's another person at the door!", "", 5, LineID.j_5_another_door, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_ignora { get; private set; } = new Line(CharacterID.Player, "I'm going to ignore that", "", 5, LineID.p_5_ignora, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_peephole { get; private set; } = new Line(CharacterID.Player, "I will look at the peephole", "", 5, LineID.p_5_peephole, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_peephole { get; private set; } = new Line(CharacterID.Jessica, "We should at least look trough the peephole and ask some questions", "", 5, LineID.j_5_peephole, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line dad_5_who { get; private set; } = new Line(CharacterID.Dad, "Have you a teenager around here? I also just need a place to stay for the night", "", 5, LineID.dad_5_who, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line dad_5_why { get; private set; } = new Line(CharacterID.Dad, "I promisse I won't use any of your supplies. I have my own here with me, I just to spend the night in somewhere safe. By tomorrow morning I will set off again to find my son.", "", 5, LineID.dad_5_why, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line dad_5_where { get; private set; } = new Line(CharacterID.Dad, "I have never been here before, I'm just following a map for the area.", "", 5, LineID.dad_5_where, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_no { get; private set; } = new Line(CharacterID.Bob, "I don't think so", "", 5, LineID.b_5_no, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_no { get; private set; } = new Line(CharacterID.Jessica, "I don't think so", "", 5, LineID.j_5_no, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_no { get; private set; } = new Line(CharacterID.Violet, "*nods sideways*", "", 5, LineID.v_5_no, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_no { get; private set; } = new Line(CharacterID.Player, "No, we have not", "", 5, LineID.p_5_no, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_out { get; private set; } = new Line(CharacterID.Player, "Sorry I can't let you in, I don't trust you", "", 5, LineID.p_5_out, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_in { get; private set; } = new Line(CharacterID.Player, "Okay, take three step back, I'm going to open the door.", "", 5, LineID.p_5_in, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_crash { get; private set; } = new Line(CharacterID.Violet, "* I'm sure they can just crash for the night*", "", 5, LineID.v_5_crash, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_harm { get; private set; } = new Line(CharacterID.Bob, "He means no harm, we should let him in.", "", 5, LineID.b_5_harm, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_harm { get; private set; } = new Line(CharacterID.Jessica, "What are you doing? He sounds like no harm!", "", 5, LineID.j_5_harm, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line dad_5_please { get; private set; } = new Line(CharacterID.Dad, "Please!", "", 5, LineID.dad_5_please, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_uneasiness { get; private set; } = new Line(CharacterID.Bob, "*Stares at him with a bit of uneasiness*", "", 5, LineID.b_5_uneasiness, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line v_5_stares { get; private set; } = new Line(CharacterID.Violet, "*Just stares at him*", "", 5, LineID.v_5_stares, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_face { get; private set; } = new Line(CharacterID.Jessica, "I'm happy to see a new face!", "", 5, LineID.j_5_face, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line j_5_help { get; private set; } = new Line(CharacterID.Jessica, "Do you want to tell us how did your son looks like so we can help you?", "", 5, LineID.j_5_help, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line dad_5_teenager { get; private set; } = new Line(CharacterID.Dad, "Sure, he is 16 years old, he's tall, green eyes, has a long blond hair. He is a bit pale as well.", "", 5, LineID.dad_5_teenager, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_let_know { get; private set; } = new Line(CharacterID.Player, "If we see him we will let you know.", "", 5, LineID.p_5_let_know, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_5_couch { get; private set; } = new Line(CharacterID.Player, "You will need to sleep in the couch in living room as we don't have any room for you.", "", 5, LineID.p_5_couch, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line dad_5_fine { get; private set; } = new Line(CharacterID.Dad, "Thats fine by me!", "", 5, LineID.dad_5_fine, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line b_5_teenager { get; private set; } = new Line(CharacterID.Bob, "Do you want to tell us how did your son looks like so if we someone like your description we can guide him?", "", 5, LineID.b_5_teenager, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line tv7 { get; private set; } = new Line(CharacterID.TV, "REVOLUTIONARIES ARE SUBJECT TO BEING SHOT ON SIGHT. COMPLY WITH ALL INSTRUCTIONS FROM THE BRASNIAN MILITARY. BORDER CHECKPOINTS TO OPEN TOMORROW IN THE NORTH.", "", 7, LineID.tv7, LineStatus.DRAFT, VoiceStatus.NONE, "");
         public static Line r7 { get; private set; } = new Line(CharacterID.Radio, "The Brasnian conflict continues its northward push, with officials expecting fighting to reach the northern border within days. The Brasnian government has announced plans to open northern border checkpoints for refugees within the coming days.", "", 7, LineID.r7, LineStatus.DRAFT, VoiceStatus.NONE, "");
         public static Line p7_outside { get; private set; } = new Line(CharacterID.Player, "It looks like the first nice day in a while. Wet, but at least there isn't massive winds.", "", 7, LineID.p7_outside, LineStatus.DRAFT, VoiceStatus.NONE, "");
@@ -407,6 +470,10 @@ namespace BeyondTheDoor
             { LineID.what_do_you_want, what_do_you_want },
             { LineID.why_should_i_let_you_in, why_should_i_let_you_in },
             { LineID.how_can_you_be_helpful, how_can_you_be_helpful },
+            { LineID.send_with_shotgun, send_with_shotgun },
+            { LineID.send_without_shotgun, send_without_shotgun },
+            { LineID.none, none },
+            { LineID.confirm_no_scavengers, confirm_no_scavengers },
             { LineID.tutmom_0_wake_up, tutmom_0_wake_up },
             { LineID.tutmom_0_going_ice_cream, tutmom_0_going_ice_cream },
             { LineID.tutdad_0_q_ice_cream, tutdad_0_q_ice_cream },
@@ -419,6 +486,7 @@ namespace BeyondTheDoor
             { LineID.tutmom_0_looking_for_keys, tutmom_0_looking_for_keys },
             { LineID.tutdad_0_scavenge_response, tutdad_0_scavenge_response },
             { LineID.tutdad_0_unscavenge_response, tutdad_0_unscavenge_response },
+            { LineID.tutdad_0_sent, tutdad_0_sent },
             { LineID.tutmom_0_at_door, tutmom_0_at_door },
             { LineID.tutmom_0_q_open_door, tutmom_0_q_open_door },
             { LineID.tutmom_0_q_open_door_second, tutmom_0_q_open_door_second },
@@ -528,16 +596,10 @@ namespace BeyondTheDoor
             { LineID.p_3_J_scavenge, p_3_J_scavenge },
             { LineID.b_3_disagree, b_3_disagree },
             { LineID.j_3_scared, j_3_scared },
-            { LineID.p_3_j_confirm, p_3_j_confirm },
             { LineID.b_3_whatever, b_3_whatever },
             { LineID.j_3_silence, j_3_silence },
             { LineID.p_3_b_scavenge, p_3_b_scavenge },
             { LineID.b_3_bring, b_3_bring },
-            { LineID.p_3_b_no_gun, p_3_b_no_gun },
-            { LineID.b_3_without_gun, b_3_without_gun },
-            { LineID.p_3_b_gun, p_3_b_gun },
-            { LineID.b_3_with_gun, b_3_with_gun },
-            { LineID.p_3_b_goback, p_3_b_goback },
             { LineID.journalist_3_hey, journalist_3_hey },
             { LineID.p_3_j_sure, p_3_j_sure },
             { LineID.journalist_3_rude, journalist_3_rude },
@@ -576,9 +638,9 @@ namespace BeyondTheDoor
             { LineID.bear_3_no, bear_3_no },
             { LineID.p_3_out, p_3_out },
             { LineID.p_3_in, p_3_in },
-            { LineID.b_3_not_human, b_3_not_human },
             { LineID.j_3_animal, j_3_animal },
             { LineID.b_3_useful, b_3_useful },
+            { LineID.b_3_not_human, b_3_not_human },
             { LineID.b_3_in, b_3_in },
             { LineID.bear_3_roar, bear_3_roar },
             { LineID.b_3_back, b_3_back },
@@ -599,20 +661,16 @@ namespace BeyondTheDoor
             { LineID.j_4_morning, j_4_morning },
             { LineID.b_4_hum, b_4_hum },
             { LineID.p_4_scavenge, p_4_scavenge },
-            { LineID.b_4_offering, b_4_offering },
-            { LineID.j_4_while, j_4_while },
-            { LineID.j_4_walk, j_4_walk },
             { LineID.j_4_necessary, j_4_necessary },
             { LineID.b_4_necessary, b_4_necessary },
             { LineID.j_4_dying, j_4_dying },
             { LineID.b_4_sympathy, b_4_sympathy },
+            { LineID.j_4_while, j_4_while },
+            { LineID.j_4_walk, j_4_walk },
+            { LineID.b_4_offering, b_4_offering },
             { LineID.b_4_pissed, b_4_pissed },
-            { LineID.p_4_jessica, p_4_jessica },
-            { LineID.p_4_bob, p_4_bob },
             { LineID.b_4_sure, b_4_sure },
             { LineID.j_4_die, j_4_die },
-            { LineID.p_4_rethink, p_4_rethink },
-            { LineID.p_4_sure, p_4_sure },
             { LineID.b_4_defend_jessica, b_4_defend_jessica },
             { LineID.j_4_scared, j_4_scared },
             { LineID.p_4_shotgun_jessica, p_4_shotgun_jessica },
@@ -626,7 +684,7 @@ namespace BeyondTheDoor
             { LineID.b_4_no_gun, b_4_no_gun },
             { LineID.b_4_jessica_died, b_4_jessica_died },
             { LineID.b_4_scavenge_gun, b_4_scavenge_gun },
-            { LineID.b_4_scavenge_bo_gun, b_4_scavenge_bo_gun },
+            { LineID.b_4_scavenge_no_gun, b_4_scavenge_no_gun },
             { LineID.p_4_check, p_4_check },
             { LineID.j_4_blood, j_4_blood },
             { LineID.p_4_bob_blood, p_4_bob_blood },
@@ -634,11 +692,7 @@ namespace BeyondTheDoor
             { LineID.p_4_jessica_shocked, p_4_jessica_shocked },
             { LineID.p_4_scavenge_jessica, p_4_scavenge_jessica },
             { LineID.j_4_enough, j_4_enough },
-            { LineID.p_4_enough, p_4_enough },
-            { LineID.p_4_possible, p_4_possible },
             { LineID.j_4_crying, j_4_crying },
-            { LineID.p_4_jessica_gun, p_4_jessica_gun },
-            { LineID.p_4_jessica_no_gun, p_4_jessica_no_gun },
             { LineID.j_4_door, j_4_door },
             { LineID.b_4_door, b_4_door },
             { LineID.p_4_ignore, p_4_ignore },
@@ -658,6 +712,7 @@ namespace BeyondTheDoor
             { LineID.j_4_disability, j_4_disability },
             { LineID.j_4_chance, j_4_chance },
             { LineID.p_4_think, p_4_think },
+            { LineID.p_4_sure, p_4_sure },
             { LineID.j_4_monster, j_4_monster },
             { LineID.b_4_calm, b_4_calm },
             { LineID.b_4_shit, b_4_shit },
@@ -689,17 +744,17 @@ namespace BeyondTheDoor
             { LineID.v_5_go, v_5_go },
             { LineID.b_5_go, b_5_go },
             { LineID.j_5_go, j_5_go },
-            { LineID.p_5_violet, p_5_violet },
             { LineID.p_5_jessica, p_5_jessica },
-            { LineID.p_5_bob, p_5_bob },
             { LineID.b_5_dumb, b_5_dumb },
             { LineID.b_5_cruel, b_5_cruel },
             { LineID.j_5_alone, j_5_alone },
             { LineID.p_5_sure, p_5_sure },
             { LineID.p_5_think, p_5_think },
+            { LineID.p_5_bob, p_5_bob },
             { LineID.b_5_anything_useful, b_5_anything_useful },
             { LineID.v_5_want_to_find_car, v_5_want_to_find_car },
             { LineID.p_5_bob_should_go, p_5_bob_should_go },
+            { LineID.p_5_violet, p_5_violet },
             { LineID.v_5_thumbs, v_5_thumbs },
             { LineID.b_5_violet, b_5_violet },
             { LineID.p_5_bob_sure, p_5_bob_sure },
@@ -710,6 +765,77 @@ namespace BeyondTheDoor
             { LineID.j_5_freezing, j_5_freezing },
             { LineID.v_5_okay, v_5_okay },
             { LineID.b_5_jessica, b_5_jessica },
+            { LineID.b_5_joke, b_5_joke },
+            { LineID.j_5_mean, j_5_mean },
+            { LineID.b_5_nice, b_5_nice },
+            { LineID.j_5_what, j_5_what },
+            { LineID.b_5_do, b_5_do },
+            { LineID.b_5_love, b_5_love },
+            { LineID.v_5_car, v_5_car },
+            { LineID.v_5_experience, v_5_experience },
+            { LineID.v_5_burden, v_5_burden },
+            { LineID.j_5_looking, j_5_looking },
+            { LineID.j_5_scary, j_5_scary },
+            { LineID.b_5_stare, b_5_stare },
+            { LineID.v_5_stare, v_5_stare },
+            { LineID.v_5_see, v_5_see },
+            { LineID.v_5_meeting, v_5_meeting },
+            { LineID.b_5_fuck_you, b_5_fuck_you },
+            { LineID.b_5_back, b_5_back },
+            { LineID.p_5_starve_no_food, p_5_starve_no_food },
+            { LineID.p_5_starve_should_have, p_5_starve_should_have },
+            { LineID.p_5_starve_die, p_5_starve_die },
+            { LineID.p_5_is_the_car_violet, p_5_is_the_car_violet },
+            { LineID.j_5_car, j_5_car },
+            { LineID.j_5_window, j_5_window },
+            { LineID.p_5_hide, p_5_hide },
+            { LineID.b_5_car, b_5_car },
+            { LineID.p_5_window, p_5_window },
+            { LineID.p_5_gun, p_5_gun },
+            { LineID.j_5_car_parking, j_5_car_parking },
+            { LineID.j_5_person, j_5_person },
+            { LineID.j_5_walking, j_5_walking },
+            { LineID.j_5_bulk, j_5_bulk },
+            { LineID.j_5_close, j_5_close },
+            { LineID.b_5_miltary, b_5_miltary },
+            { LineID.p_5_car_parking, p_5_car_parking },
+            { LineID.b_5_get_out, b_5_get_out },
+            { LineID.p_5_looking, p_5_looking },
+            { LineID.p_5_ok_hide, p_5_ok_hide },
+            { LineID.b_5_point, b_5_point },
+            { LineID.j_5_ok_hide, j_5_ok_hide },
+            { LineID.p_5_car, p_5_car },
+            { LineID.b_5_awesome, b_5_awesome },
+            { LineID.j_5_knew, j_5_knew },
+            { LineID.v_5_repaired, v_5_repaired },
+            { LineID.p_5_help, p_5_help },
+            { LineID.b_5_keep_close, b_5_keep_close },
+            { LineID.j_5_another_door, j_5_another_door },
+            { LineID.p_5_ignora, p_5_ignora },
+            { LineID.p_5_peephole, p_5_peephole },
+            { LineID.j_5_peephole, j_5_peephole },
+            { LineID.dad_5_who, dad_5_who },
+            { LineID.dad_5_why, dad_5_why },
+            { LineID.dad_5_where, dad_5_where },
+            { LineID.b_5_no, b_5_no },
+            { LineID.j_5_no, j_5_no },
+            { LineID.v_5_no, v_5_no },
+            { LineID.p_5_no, p_5_no },
+            { LineID.p_5_out, p_5_out },
+            { LineID.p_5_in, p_5_in },
+            { LineID.v_5_crash, v_5_crash },
+            { LineID.b_5_harm, b_5_harm },
+            { LineID.j_5_harm, j_5_harm },
+            { LineID.dad_5_please, dad_5_please },
+            { LineID.b_5_uneasiness, b_5_uneasiness },
+            { LineID.v_5_stares, v_5_stares },
+            { LineID.j_5_face, j_5_face },
+            { LineID.j_5_help, j_5_help },
+            { LineID.dad_5_teenager, dad_5_teenager },
+            { LineID.p_5_let_know, p_5_let_know },
+            { LineID.p_5_couch, p_5_couch },
+            { LineID.dad_5_fine, dad_5_fine },
+            { LineID.b_5_teenager, b_5_teenager },
             { LineID.tv7, tv7 },
             { LineID.r7, r7 },
             { LineID.p7_outside, p7_outside },

@@ -14,20 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814009133203780
-  choices:
-  - prompt: 1725139099
-    nextConversation: {fileID: 11400000, guid: 262cf64f3d9c62e43a35bb104512c14d, type: 2}
-    callback: {fileID: 0}
-  - prompt: -2082777663
-    nextConversation: {fileID: 11400000, guid: 262cf64f3d9c62e43a35bb104512c14d, type: 2}
-    callback: {fileID: 0}
+  - rid: 2007814011597358074
+  - rid: 2007814011597358075
+  choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814009133203780
+    - rid: 2007814011597358074
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 366721484
+    - rid: 2007814011597358075
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 11400000, guid: cf5f721ba3cedb14aa2b50ebcdfd5b31, type: 2}
+        goofyWorkaroundConversationName: 4_ConfirmScavenge
