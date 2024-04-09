@@ -9,11 +9,6 @@ namespace BeyondTheDoor.Importer
 {
     public class DialogueImportWindow : EditorWindow
     {
-        const string ExcelLinesFileName = "ExcelLines.txt";
-        static readonly string ExcelLinesFilePath = Path.Combine(Application.dataPath, ExcelLinesFileName);
-
-        bool ExcelFileExists => File.Exists(ExcelLinesFilePath);
-
         //TextAsset rawExcelExport;
         TSVData tsvData;
         RawLineCollection rawLines;
@@ -29,9 +24,9 @@ namespace BeyondTheDoor.Importer
 
         private void OnGUI()
         {
-            if (!ExcelFileExists)
+            if (!FilePaths.ExcelFileExists)
             {
-                EditorGUILayout.LabelField($"Assets/{ExcelLinesFileName} not found. Please create said file.");
+                EditorGUILayout.LabelField($"Assets/{FilePaths.ExcelLinesFileName} not found. Please create said file.");
                 return;
             }
 
@@ -61,7 +56,7 @@ namespace BeyondTheDoor.Importer
 
         void ProcessTSVButtons()
         {
-            if (!ExcelFileExists)
+            if (!FilePaths.ExcelFileExists)
                 GUI.enabled = false;
 
             if (TSVData.SavedDataExists())
@@ -74,15 +69,15 @@ namespace BeyondTheDoor.Importer
                 }
 
                 // Disable GUI if we can't load the lines
-                if (!ExcelFileExists)
+                if (!FilePaths.ExcelFileExists)
                     GUI.enabled = false;
 
                 if (GUILayout.Button("Overwrite fresh data from Excel lines"))
-                    tsvData = LineParser.ParseLines(File.ReadAllText(ExcelLinesFilePath));
+                    tsvData = LineParser.ParseLines(File.ReadAllText(FilePaths.ExcelLinesFilePath));
             }
             else if (GUILayout.Button("Process Excel lines"))
             {
-                tsvData = LineParser.ParseLines(File.ReadAllText(ExcelLinesFilePath));
+                tsvData = LineParser.ParseLines(File.ReadAllText(FilePaths.ExcelLinesFilePath));
             }
 
             if (tsvData != null)
@@ -96,6 +91,10 @@ namespace BeyondTheDoor.Importer
             if (GUILayout.Button("Generate Lines"))
             {
                 LineGenerator.GenerateLinesFile(rawLines);
+            }
+            if (GUILayout.Button("Open Conversation Importer"))
+            {
+                ConversationCreatorWindow.ShowWindow();
             }
         }
 

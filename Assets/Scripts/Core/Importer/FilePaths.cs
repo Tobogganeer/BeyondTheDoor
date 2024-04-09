@@ -25,5 +25,10 @@ namespace BeyondTheDoor
         //public static readonly string LineStatusEnumFileName = "LineStatus.cs";
 
         public static readonly string DialogueNamespace = "BeyondTheDoor";
+
+        public static readonly string ExcelLinesFileName = "ExcelLines.txt";
+        public static readonly string ExcelLinesFilePath = Combine(Application.dataPath, ExcelLinesFileName);
+
+        public static bool ExcelFileExists => System.IO.File.Exists(ExcelLinesFilePath);
     }
 }
