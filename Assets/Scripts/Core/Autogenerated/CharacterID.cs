@@ -11,7 +11,6 @@ namespace BeyondTheDoor
     public enum CharacterID
     {
         Test = -871204762,
-        // = 51790588,
         None = 1414246128,
         Player = 1875862075,
         Tutorial_Mom = -546722264,
@@ -26,6 +25,8 @@ namespace BeyondTheDoor
         Raiders = -2023559326,
         Neighbour = -1405450649,
         Journalist = 575282495,
+        TV = 1281847248,
+        Radio = -166006211,
     }
 }
 

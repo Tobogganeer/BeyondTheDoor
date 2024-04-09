@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: 0_End
   m_EditorClassIdentifier: 
-  lines: 2133c861
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 2007814009133203590
   choices: []
-  OnStarted: {fileID: 0}
-  OnFinished: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2007814009133203590
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1640510241

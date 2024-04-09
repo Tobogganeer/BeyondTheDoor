@@ -12,16 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: 0_WakeUp
   m_EditorClassIdentifier: 
-  lines: da702569019cffb8e25b0932
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 2007814009133203577
+  - rid: 2007814009133203578
+  - rid: 2007814009133203579
   choices:
   - prompt: -439578120
-    nextConversation: {fileID: 11400000, guid: e81829975edb2964996de2a7ee74e055, type: 2}
+    nextConversation: {fileID: 0}
     callback: {fileID: 0}
   - prompt: 1598028075
-    nextConversation: {fileID: 11400000, guid: e81829975edb2964996de2a7ee74e055, type: 2}
+    nextConversation: {fileID: 0}
     callback: {fileID: 0}
   - prompt: -1068718804
-    nextConversation: {fileID: 11400000, guid: e81829975edb2964996de2a7ee74e055, type: 2}
+    nextConversation: {fileID: 0}
     callback: {fileID: 0}
-  OnStarted: {fileID: 0}
-  OnFinished: {fileID: 0}
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2007814009133203577
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1764061402
+    - rid: 2007814009133203578
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1191207935
+    - rid: 2007814009133203579
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 839474146

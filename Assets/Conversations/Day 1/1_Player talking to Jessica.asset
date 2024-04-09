@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: 1_Player talking to Jessica
+  m_EditorClassIdentifier: 
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 2007814009133203611
+  - rid: 2007814009133203612
+  - rid: 2007814009133203613
+  - rid: 2007814009133203614
+  - rid: 2007814009133203615
+  - rid: 2007814009133203616
+  - rid: 2007814009133203617
+  choices: []
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2007814009133203611
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -895142618
+    - rid: 2007814009133203612
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1264015574
+    - rid: 2007814009133203613
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1698689835
+    - rid: 2007814009133203614
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1658172388
+    - rid: 2007814009133203615
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1892309564
+    - rid: 2007814009133203616
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 2089072498
+    - rid: 2007814009133203617
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 364975737
