@@ -73,11 +73,17 @@ namespace BeyondTheDoor.Importer
 
         public static RawLineCollection ParseRawLines(TSVData data)
         {
-            List<RawLineData> rawLines = new List<RawLineData>();
+            List<RawLineData> rawLines = new List<RawLineData>(data.Count);
+            HashSet<string> seenLineIDs = new HashSet<string>(data.Count);
+
             foreach (RawLineData potentialLine in data.GetRawLines())
             {
                 // Ignore this line if it is a special marker
                 if (!CharacterValueValid(potentialLine))
+                    continue;
+
+                // Only process lines once
+                if (seenLineIDs.Contains(potentialLine.id))
                     continue;
 
                 // Discard lines that will cause compile errors
@@ -92,6 +98,7 @@ namespace BeyondTheDoor.Importer
                 // Store each good line
                 potentialLine.Validate();
                 rawLines.Add(potentialLine);
+                seenLineIDs.Add(potentialLine.id);
             }
 
             return new RawLineCollection(rawLines);
