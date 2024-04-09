@@ -207,9 +207,9 @@ Player	I have to see how long the food will last now that Jessica is around.	Pla
 END			2				
 							
 CONVERSATION	Jessica wakes up		2				
-Jessica	Good morning			j_1_morning	Placeholder		
-Player	Good morning. Are you feeling better?			p_1_moring_question	Placeholder		
-Player	Good morning			p_1_moring	Placeholder		
+Jessica	Good morning		2	j_1_morning	Placeholder		
+Player	Good morning. Are you feeling better?		2	p_1_moring_question	Placeholder		
+Player	Good morning		2	p_1_moring	Placeholder		
 END			2				
 							
 CONVERSATION	Jessica conversation		2				
@@ -235,7 +235,7 @@ IF	Jessica
 Jessica	"You should check it out, what if its someone who needs help?"		2	j_2_door	Placeholder		
 Jessica	"Please check the door, I'm sure its someone out there in that wasteland! Are you going to let they die?! You're going to murder them!"		2	j_2_pleading_door	Placeholder		
 Jessica	I can't believe you're actually doing this. You're really going to let them die!		2	j_2_pleading_door2	Placeholder		
-END IF							
+ENDIF							
 Bob	"Hello? I can see you have your lights on, hey please man can you let me in? It's freezing out here."		2	b_2_door	Placeholder		
 Player	"I can only see what it seems to be someone wearing a cap, the look tall and he looks like a normal man"		2	p_2_door_head	Placeholder		
 END							
@@ -262,7 +262,7 @@ END
 CONVERSATION	Not letting bob in		2				
 IF	Jessica						
 Jessica	"What are you talking about! You're lying, we're talking about a human being on the other side of the door! He already proved himself to be even useful for God's sake, let him in!"		2	j_2_door_sad	Placeholder		
-END IF							
+ENDIF							
 Bob	"I can help! I can be useful and find more food to help us survive, please! I don't want to be here!"		2	b_door_rejection			
 Player	"Sorry I can't let you in, I don't trust you"		2	p_door_rejection			
 END							
@@ -284,11 +284,11 @@ Player	Do you know how to situation is out there?		2	p_2_situation	Placeholder
 Bob	"Because of the blizzard its hard to see much, I'm glad I left with my hiking equipment and clothes, If not I could've died out there."		2	b_2_situation	Placeholder		
 IF	Jessica						
 Jessica	That's horrible		2	j_2_horrible	Placeholder		
-END IF							
+ENDIF							
 Bob	"They don't stop,even in these horrible conditions the war still rages on"		2	b_2_war	Placeholder		
 IF	Jessica						
 Jessica	I hope it ends soon so I can see my friends again		2	j_2_friends	Placeholder		
-END IF							
+ENDIF							
 Bob	I'm going to get some rest now		2	b_2_rest	Placeholder		
 Player	"I'm going to bed, your room is the second one in the hallway."		2	p_2_sleep	Placeholder		
 END							
@@ -335,31 +335,31 @@ Jessica	Good morning everyone!	Jessica saying good morning	3	j_3_good_morning	Pl
 Jessica	How was your night Bob? Are you feeling better?		3	j_3_bob_sleep	Placeholder		
 Bob	Better then sleeping outside.		3	b_3_sleep	Placeholder		
 Jessica	That's good to hear!		3	j_3_hear	Placeholder		
-END If							
+ENDIF							
 Bob	"We have to scavenge if we want to survive, if you want to I can go. I know these woods well"		3	b_3_scavenge_comment	Placeholder		
 IF	Jessica and Bob interaction about scavenging						
 Jessica	But don't we have enough food?	Jessica bitching	3	j_3_food	Placeholder		
 Bob	"Enough for what? To live? or until we die in the war? There's no such ""enough"" food, we have to alaways keep restocking and if a opportunity appears for us to leave this hellhole we need to have enough food until then"	Bob abslolutely owning Jessica	3	b_3_owning	Placeholder		
 Jessica	I-i....	Jessica speechless 	3	j_3_speechless	Placeholder		
 Bob	"You're the owner of the house, do you want me to go or Jessica?"		3	b_3_choice	Placeholder		
-END IF							
+ENDIF							
 END							
 CONVERSATION	trey to send Jessica scavenge day 3						
 Player	I think Jessica should go		3	p_3_J_scavenge	Placeholder		
 IF	Bob						
 Bob	I don't think your're making the right decision. She won't be of much utility out there		3	b_3_disagree	Placeholder		
-END IF							
+ENDIF							
 Jessica	I'm scared to go		3	j_3_scared	Placeholder		
 CHOICE	Send Jessica		3		Placeholder		
 Player	"Yes, Jessica should go"		3	p_3_j_confirm	Placeholder		
 CHOICE					Placeholder		
-Player	(go back)				Placeholder		
+				go_back	Placeholder		
 END			3				
 							
 CONVERSATION	Send Jessica						
 IF	Bob						
 Bob	Whatever you say.		3	b_3_whatever	Placeholder		
-END IF							
+ENDIF							
 Jessica	....		3	j_3_silence	Placeholder		
 END							
 							
@@ -387,7 +387,7 @@ Player	"uhum, uhum"		3	p_3_goon	Placeholder
 END							
 							
 CONVERSATION	Journalist talk 2		3				
-Journalist	"I'm was thinking of going to the city a bit up north, the place is in complete chaos right now, I've heard that they stopped using rubber bullets against people. It sound's like movie."		3		Placeholder		
+Journalist	"I'm was thinking of going to the city a bit up north, the place is in complete chaos right now, I've heard that they stopped using rubber bullets against people. It sound's like movie."		3	journalist_3_chaos	Placeholder		
 CHOICE	Journalist resources		3				
 Player	Can you jump to the important part		3	p_3_journalist_skip	Placeholder		
 CHOICE	Journalist talk 3		3				
@@ -400,7 +400,7 @@ Journalist	"They are also paying some journalists to show a different image of t
 END							
 							
 CONVERSATION	Journalist resources		3				
-Journalist	"Ok, Now for some questions, are you suffering with lack of anything? Food, water, too cold etc...?"			journalist_3_resources	Placeholder		
+Journalist	"Ok, Now for some questions, are you suffering with lack of anything? Food, water, too cold etc...?"		3	journalist_3_resources	Placeholder		
 CHOICE							
 Player	"Food and water are a bit hard to come by, but we are trying our best."		3	p_3_resource	Placeholder		
 CHOICE							
@@ -434,37 +434,37 @@ IF	Bob
 Jessica	It just might be someone strong or tired		3	j_3_knock	Placeholder		
 ELSE							
 Jessica	Oh there's someone at the door!		3	j_3_door	Placeholder		
-END IF 							
+							
 CHOICE	Ignore door day 3						
-Player	(ignore the door)			p_3_ignore	Placeholder		
+Player	(ignore the door)		3	p_3_ignore	Placeholder		
 CHOICE	day 3 peephole						
-Player	Let me take a look			p_3_look	Placeholder		
+Player	Let me take a look		3	p_3_look	Placeholder		
 END							
 							
 CONVERSATION	Igonre door  day 3		3				
-IF 	Jessica						
+IF	Jessica						
 Jessica	I think you check the door! What if it is someone in dire need?		3	j_3_check_door	Placeholder		
-END IF							
-IF 	Bob						
+ENDIF							
+IF	Bob						
 Bob	Even if it is someone what are we going to do? We don't have enough rooms nor food.		3	b_3_check_door	Placeholder		
-END IF							
+ENDIF							
 CHOICE	day 3 peephole						
 Player	Maybe I should check it out		3	p_3_check	Placeholder		
 CHOICE	day 3 door comments						
-Player	Nah		3		Placeholder		
+Player	Nah		3	p_3_no	Placeholder		
 END							
 							
 CONVERSATION	day 3 peephole		3				
-Player	"Its something, not someone, it looks like a big mass of muscle."			p_3_peephole			
+Player	"Its something, not someone, it looks like a big mass of muscle."		3	p_3_peephole			
 END							
 							
 CONVERSATION	day 3 door comments						
 IF	Jessica						
 Jessica	Just at least look trough the peephole! We can always find a way to help them!		3	j_3_peephole	Placeholder		
-END IF 							
+ENDIF							
 IF							
 Bob	I think you're makign the right choice		3	b_3_right_choice	Placeholder		
-END IF 							
+ENDIF							
 END							
 							
 CONVERSATION	Door day 3 who		3				
@@ -493,10 +493,10 @@ END
 CONVERSATION	Letting animal out		3				
 IF	Bob						
 Bob	"I think you did the right choice, its probably not even human"		3	b_3_not_human	Placeholder		
-END IF							
+ENDIF							
 IF 	Jessica						
 Jessica	What if its just a hurt animal?		3	j_3_animal	Placeholder		
-End if 							
+ENDIF							
 IF	Jessica && Bob						
 Jessica	What if its just a hurt animal?		3	j_3_animal	Placeholder		
 Bob	What the fuck are you talking about? How can an animal be helpful to keeping us alive?		3	b_3_useful	Placeholder		
@@ -507,10 +507,10 @@ IF	Bob
 Bob	What the fuck are you doing? That thing is not human!		3	b_3_in	Placeholder		
 Bear	*roar*		3	bear_3_roar	Placeholder		
 Bob	Get back!		3	b_3_back	Placeholder		
-END IF 							
+ENDIF							
 IF 	Jessica						
 Jessica	GET THE GUN		3	j_3_gun	Placeholder		
-END IF 							
+ENDIF							
 END							
 							
 							
@@ -521,7 +521,7 @@ Jessica	"I'm going to sleep, goodnight everyone"		3	j_3_night	Placeholder
 Player	Are you alright		3	p_3_alright	Placeholder		
 Jessica	"Yeah, good night to you too bob"		3	j_3_shocked	Placeholder		
 Player	I think she's still in state of shock		3	p_3_shocked	Placeholder		
-END IF							
+ENDIF							
 END							
 							
 							
@@ -572,7 +572,7 @@ END
 							
 CONVERSATION	Bob comments on TV		4				
 Bob	"Hummm, that's interesting,they hacked the television broadcast"	Bob commenting on TV	4	b_4_hack	Placeholder		
-Bob	Honestly good for them. They do need more strength if the want to take down the big guys			b_4_bigguys	Placeholder		
+Bob	Honestly good for them. They do need more strength if the want to take down the big guys		4	b_4_bigguys	Placeholder		
 Player	I just hope for this thing to end		4	p_4_end	Placeholder		
 Bob	"Fair, but we were in the need of better conditions for a long time, but you don't need to fight for something you don't believe in"		4	b_4_fight	Placeholder		
 END							
@@ -580,7 +580,7 @@ END
 CONVERSATION	Jessica apologizes						
 Jessica	Good morning everyone!		4	j_4_morning	Placeholder		
 Jessica	"I'm sorry about yesterday, we would all be dead if you guys followed my decisions"		4	j_4_morning	Placeholder		
-Bob	Hum		4		Placeholder		
+Bob	Hum		4	b_4_hum	Placeholder		
 END							
 							
 CONVERSATION	Argument						
@@ -589,11 +589,11 @@ IF	Bob
 Bob	I can go		4	b_4_offering	Placeholder		
 ENDIF							
 IF	Jessica						
-Jessica	"I don't think we need to scavenge, just the two of us we will have enough food for a while"			j_4_while			
+Jessica	"I don't think we need to scavenge, just the two of us we will have enough food for a while"		4	j_4_while			
 Jessica	Plus I can't walk		4	j_4_walk	Placeholder		
 ENDIF							
 IF	Jessica && Bob						
-Jessica	"Okay, if we're going to scavenge can we at least only take the necessary?"			j_4_necessary			
+Jessica	"Okay, if we're going to scavenge can we at least only take the necessary?"		4	j_4_necessary			
 Bob	"There's no such thing as ""only the necessary"". We need to get as many supplies as possible"		4	b_4_necessary	Placeholder		
 Jessica	You act like you've already been a situation like this before! What if you were the ones outside dying because of the lack of resources!		4	j_4_dying	Placeholder		
 Bob	Though shit. There's no good outcomes. There's only war. I'm here because I didn't show sympathy towards others. I need to be best in order to survive. I'm not here for charity. I'm here to get out alive.		4	b_4_sympathy	Placeholder		
@@ -601,8 +601,8 @@ END
 							
 CONVERSATION	Scavenge day 4 Bob and Jessica						
 IF	Bob						
-Bob	"So okay, who's going to fucking scavenge?"			b_4_pissed			
-END IF							
+Bob	"So okay, who's going to fucking scavenge?"		4	b_4_pissed			
+ENDIF							
 CHOICE	Jessica scavenge day 4						
 Player	I think Jessica should go		4	p_4_jessica	Placeholder		
 CHOICE	Bob scavenge day 4						
@@ -612,7 +612,7 @@ END
 CONVERSATION	Jessica scavenge day 4		4				
 IF	Bob						
 Bob	you sure?		4	b_4_sure	Placeholder		
-END IF							
+ENDIF							
 Jessica	"I can't do much in this state, I will die!"		4	j_4_die	Placeholder		
 CHOICE	Scavenge day 4						
 Player	Actually let me think more about this		4	p_4_rethink	Placeholder		
@@ -623,7 +623,7 @@ END
 CONVERSATION	Jessica scavenge day 4 confirm		4				
 IF	Bob						
 Bob	At least give her something to defend herself		4	b_4_defend_jessica	Placeholder		
-END IF							
+ENDIF							
 Jessica	I'm scared		4	j_4_scared	Placeholder		
 CHOICE	Jessica scavenge 				Placeholder		
 Player	I will give her the shotgun		4	p_4_shotgun_jessica	Placeholder		
@@ -635,7 +635,7 @@ CONVERSATION	Jessica scavenge 		4
 Jessica	I'm probably going to die		4	j_4_prob_die	Placeholder		
 IF 	Bob						
 Bob	shameful		4	b_4_shamefull	Placeholder		
-END IF							
+ENDIF							
 END							
 							
 CONVERSATION	Bob scavenge day 4						
@@ -665,11 +665,11 @@ CONVERSATION	Bob after scavenging day 4 gun		4
 Bob	"Its getting a bit less cold, I heard some gunshots in the distance, I had to hide the gun so I wouln't be mistaken as one of the revolutionaries and be shot on sight"		4	b_4_scavenge_gun	Placeholder		
 END							
 							
-CONVERSATION	Bob after scavenging day 4 no gun						
+CONVERSATION	Bob after scavenging day 4 no gun		4				
 Bob	"There were some gunshots in the distance, I had to make another route today so I didn't walk into a fucking no mans land"		4	b_4_scavenge_bo_gun	Placeholder		
 END							
 							
-CONVERSATION	Day 4 Jessica shell shocked						
+CONVERSATION	Day 4 Jessica shell shocked		4				
 Jessica	Good morning everyone!		4	j_4_morning	Placeholder		
 Player	Are you okay? I cleaned all the blood		4	p_4_check	Placeholder		
 Jessica	"Of course I'm okay, did you get hurt? Blood from who?"		4	j_4_blood	Placeholder		
@@ -678,7 +678,7 @@ Jessica	I don't think I met anyone named bob		4	j_4_no_bob	Placeholder
 Player	"Oh no she's shell shocked, she's traumatized and her brain is blocking the memory"		4	p_4_jessica_shocked	Placeholder		
 END							
 							
-CONVERSATION	Scavenge Jessica only						
+CONVERSATION	Scavenge Jessica only		4				
 Player	We need to scavenge today		4	p_4_scavenge_jessica			
 Jessica	Don't we have enough food?		4	j_4_enough	Placeholder		
 CHOICE	Goes to night						
@@ -687,140 +687,234 @@ CHOICE	Jessica only scavenge day 4
 Player	We need to get as much as possible		4	p_4_possible			
 END					Placeholder		
 							
-CONVERSATION	Jessica only scavenge day 4 						
-Jessica	"I can't do much in this state, I will die!"			j_4_crying	Placeholder		
+CONVERSATION	Jessica only scavenge day 4 		4				
+Jessica	"I can't do much in this state, I will die!"		4	j_4_crying	Placeholder		
 CHOICE	Jessica scavenge 				Placeholder		
 Player	Take the the shotgun		4	p_4_jessica_gun	Placeholder		
 CHOICE	Jessica scavenge 						
 Player	The gun is more important here		4	p_4_jessica_no_gun	Placeholder		
 END							
 							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
+CONVERSATION	Knock on the door day 4		4				
+IF	Jessica && Bob						
+Jessica	Oh there's another person at the door!		4	j_4_door	Placeholder		
+Bob	"Or thing, creature, I don't know"		4	b_4_door	Placeholder		
+CHOICE	Jessica asking to look at peephole						
+Player	Ignore door		4	p_4_ignore	Placeholder		
+CHOICE	Look at the peephole						
+Player	Look at the peephole		4	p_4_look	Placeholder		
+END							
+							
+CONVERSATION	Jessica asking to look at peephole		4				
+Jessica	We should at least look trough the peephole and ask some questions		4	j_4_peephole	Placeholder		
+END							
+							
+CONVERSATION	Comments on door						
+IF	Bob						
+Bob	"That's weird, is it human? Or is it a fucking animal again?"		4	b_4_animal	Placeholder		
+ENDIF							
+IF	Jessica						
+Jessica	What if its person with difficulty or too much pain to talk?		4	j_4_pain	Placeholder		
+ENDIF							
+END							
+							
+							
+CONVERSATION	Look at the peephole		4				
+Player	It's a big image. Very bulky. Different from the bear I can see the shape of a human. They are not speaking anything tho.		4	p_4_peephole	Placeholder		
+IF	Bob						
+Bob	Isn't that a raider trying to play tricks on us?		4	b_4_raider	Placeholder		
+ENDIF							
+END							
+							
+CONVERSATION	DAY 4 who		4				
+Violet	*incomprehensible sounds* * knocks on door again*		4	v_4_who	Placeholder		
+END							
+							
+CONVERSATION	DAY 4 why		4				
+Violet	*incomprehensible sounds* * knocks on door again*		4	v_4_why	Placeholder		
+END							
+							
+CONVERSATION	DAY 4 where		4				
+Violet	*incomprehensible sounds*		4	v_4_where	Placeholder		
+END							
+							
+CONVERSATION	DAY 4 how		4				
+Violet	*incomprehensible sounds*		4	v_4_how	Placeholder		
+END							
+							
+CONVERSATION	Making decision day 4		4				
+CHOICE	Letting Violet out						
+Player	"Sorry I can't let you in, I don't have enough resources (lie)"		4	p_4_out	Placeholder		
+CHOICE	Letting Violet in						
+Player	"Okay, take three step back, I'm going to open the door."		4	p_4_in	Placeholder		
+END							
+							
+CONVERSATION	Letting Violet out		4				
+IF	Bob						
+Bob	"I think you did the right choice, how can we confirm that it is trully a human?"		4	b_4_right_choice	Placeholder		
+ENDIF							
+IF 	Jessica						
+Jessica	"You never know, It can be someone with some kind of disability, like a mute person. "		4	j_4_disability	Placeholder		
+Jessica	You sure you're going to let them out? Please give another chance!		4	j_4_chance			
+ENDIF							
+CHOICE	Making decision day 4						
+Player	Let me think about it more		4	p_4_think	Placeholder		
+CHOICE	Jessica pissed						
+Player	"I'm sure, we're not letting anyone inside"		4	p_4_sure	Placeholder		
+END							
+							
+CONVERSATION	Jessica pissed		4				
+Jessica	You monster!		4	j_4_monster	Placeholder		
+IF	BOB						
+Bob	"calm down, this is for our best, what if it was someone who wants our harm?"		4	b_4_calm	Placeholder		
+ENDIF							
+END							
+							
+CONVERSATION	Letting Violet in						
+IF	BOB						
+Bob	Shit		4	b_4_shit	Placeholder		
+Bob	*stares*		4	b_4_stare	Placeholder		
+ENDIF							
+Violet	Stards gesturing		4	v_4_gestures	Placeholder		
+IF	Jessica && BOB						
+Jessica	Oh you're mute?		4	j_4_mute	Placeholder		
+Bob	Go figure		4	b_4_figure			
+ENDIF							
+IF	Jessica						
+Jessica	Oh you're mute?		4	j_4_mute	Placeholder		
+ENDIF							
+Violet 	*Thank you gestures*		4	v_4_thank	Placeholder		
+END							
+							
+CONVERSATION	Violet in						
+IF	BOB && !Jessica						
+Bob	I'm going to grab a piece of paper so I can understand what you're talking		4	b_4_paper	Placeholder		
+ENDIF							
+IF	Jessica						
+Jessica	"I have an idea, let me get some paper so we can talk to her"		4	j_4_paper	Placeholder		
+ENDIF							
+Player	"Good idea. There's no room for you to sleep in, you will need to sleep on the living room."		4	p_4_sleep	Placeholder		
+END							
+							
+//	DAY 5						
+CONVERSATION	Check radio day 4		5				
+Radio	"Nothing new in the front of the war. The republic palace was raided yesterday, the building has been completely ran over"	Player checks radio in day 3	5	r5	Placeholder		
+END							
+							
+CONVERSATION	Check outside day 4		5				
+Player	"Visibility has increased, we can scavenge further now"	Player goes outside to check situation	5	p5_outside	Placeholder		
+END							
+							
+CONVERSATION	Check TV day 4		5				
+TV	"Yesterday the broadcast was hacked, the government now will shoot any revolutionary in sight without questions asked. Join the military, make Brasnia great again. Make Brasnia safe again."	Player checks television in day 3	5	tv5	Placeholder		
+END							
+							
+CONVERSATION	Check supplies day 4		5				
+Player	We are certainly going to make a bigger expedition today to search for supplies	Player checks food supplies	5	p5_supply	Placeholder		
+END							
+							
+CONVERSATION	Jessica commements on the radio		5				
+Jessica	I hope they are alright		5	j_5_alright	Placeholder		
+Player	Oh you already woke up. But why do you care about it? It doesn't affect us in any way		5	p_5_woke_up	Placeholder		
+Jessica	My dad used to work there		5	j_5_dad	Placeholder		
+Player	"Oh, what was his job"		5	j_5_job	Placeholder		
+Jessica	He was one of Judiciaries		5	j_5_judiciaries	Placeholder		
+Player	"Wait, whats your full name?"		5	p_5_name	Placeholder		
+Radio	*loud music		5	r_5_loud	Placeholder		
+Jessica	I will turn that off		5	j_5_off	Placeholder		
+END							
+							
+CONVERSATION	Bob comments on the radio		5				
+Bob	Honestly they deserve it		5	b_5_deserve	Placeholder		
+Player	Oh you already woke up. But why do you care about it? It doesn't affect us in any way		5	p_5_woke_up	Placeholder		
+Bob	"It does affect us, they were the ones that made the country get into this shit state."		5	b_5_affect	Placeholder		
+END							
+							
+CONVERSATION	Violet wakes up		5				
+Violet	*Good morning*		5	v_5_good	Placeholder		
+Player	Oh yeah thats a good way that we can use to comunicate		5	p_5_communicate	Placeholder		
+END							
+							
+CONVERSATION	Scavenging comment						
+Player	"So okay, we are in dire need for supplies and the weather got better so we are going to need to scavenge a gas station that is nearby"		5	p_5_scavenge	Placeholder		
+					Placeholder		
+IF	Violet						
+Violet	"*I should go, maybe there's something there that I can scrap for us to re-use*"		5	v_5_go	Placeholder		
+ENDIF							
+IF	BOB						
+Bob	Okay! sounds like a interesting task		5	b_5_go	Placeholder		
+ENDIF							
+IF	Jessica						
+Jessica	"I should stay here, I cannot do much"		5	j_5_go	Placeholder		
+ENDIF							
+END							
+							
+CONVERSATION	Making choice to who to send		5				
+IF	Violet						
+CHOICE	Violet scavenging day 5						
+Player	"Violet, you're up for the job"		5	p_5_violet	Placeholder		
+ENDIF							
+IF	Jessica						
+CHOICE	Jessica scavenging day 5						
+Player	I think Jessica should go		5	p_5_jessica	Placeholder		
+ENDIF							
+IF	BOB						
+CHOICE	Bob scavenging day 5						
+Player	"Bob, you're going"		5	p_5_bob	Placeholder		
+ENDIF							
+END							
+							
+CONVERSATION	Jessica scavenge day 4						
+IF	BOB						
+Bob	You're sending her alone to the gas station? Are you dumb? How can she help us by scavenging around the gas station?		5	b_5_dumb	Placeholder		
+ENDIF							
+IF	Violet						
+Violet	"*This is cruel, you should let me go in her place*"		5	b_5_cruel	Placeholder		
+ENDIF							
+Jessica	I cant go alone!		5	j_5_alone			
+CHOICE	Send Jessica day 5						
+Player	I'm sure		5	p_5_sure	Placeholder		
+CHOICE	Makign choice to who to send						
+Player	"Ok, let me think a bit more"		5	p_5_think	Placeholder		
+END							
+							
+CONVERSATION	Bob scavenge day 4		5				
+Bob	"Sure thing, I will bring back anything that might be useful."		5	b_5_anything_useful	Placeholder		
+Violet	"*I want to go scavenge, there might be something useful that I can fix there*"		5	v_5_want_to_find_car	Placeholder		
+CHOICE	Send bob day 5						
+Player	"Bob should go, It's better this way"		5	p_5_bob_should_go	Placeholder		
+CHOICE	Makign choice to who to send						
+Player	"Ok, let me think a bit more"			p_5_think	Placeholder		
+END							
+							
+CONVERSATION	Violet scavenge day 4		5				
+Violet	*Thumbs up*		5	v_5_thumbs	Placeholder		
+Bob	"Fine by me, it seems she can handle well on her own"		5	b_5_violet	Placeholder		
+CHOICE	Send violet day 5						
+Player	"violet should go, It's better this way"		5	p_5_bob_sure	Placeholder		
+CHOICE	Makign choice to who to send						
+Player	"Ok, let me think a bit more"		5	p_5_think	Placeholder		
+END							
+							
+CONVERSATION	Kicking someone out		5				
+Player	"I'm sorry, but I don't think we have enough resources to keep everyone around. There's just too many people in here."		5	p_5_resources	Placeholder		
+IF	Jessica						
+Jessica	What do you mean? Kick someone out?		5	j_5_comment	Placeholder		
+ENDIF							
+Player	Someone has to go.		5	p_5_go	Placeholder		
+IF	Bob						
+Bob	"I trust your judgement. This is war, and there really isn't enough to go around."		5	b_5_judgment	Placeholder		
+Bob	"If it was up to me, I'd rather stick with Violet."		5	b_5_violet	Placeholder		
+ENDIF							
+IF	Jessica						
+Jessica	"You aren't really going to kick someone out, are you? It's freezing out there!"		5	j_5_freezing	Placeholder		
+ENDIF							
+IF	CAR						
+Violet	*if you wanted me to go i could find somewhere else to stay*		5	v_5_okay	Placeholder		
+ENDIF							
+IF	!CAR && Violet						
+Violet	*if it has to be someone it should be jessica*		5	b_5_jessica	Placeholder		
+END							
 							
 							
 							

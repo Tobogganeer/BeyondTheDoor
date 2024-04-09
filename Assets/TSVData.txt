@@ -1,4 +1,4 @@
-608
+800
 //
 This is where the spoken text goes (or the conversation name - see below)
 For internal use
@@ -1354,7 +1354,7 @@ None
 Jessica
 Good morning
 
-
+2
 j_1_morning
 Placeholder
 None
@@ -1362,7 +1362,7 @@ None
 Player
 Good morning. Are you feeling better?
 
-
+2
 p_1_moring_question
 Placeholder
 None
@@ -1370,7 +1370,7 @@ None
 Player
 Good morning
 
-
+2
 p_1_moring
 Placeholder
 None
@@ -1543,7 +1543,7 @@ j_2_pleading_door2
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -1719,7 +1719,7 @@ j_2_door_sad
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -1871,7 +1871,7 @@ j_2_horrible
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -1903,7 +1903,7 @@ j_2_friends
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -2223,7 +2223,7 @@ j_3_hear
 Placeholder
 None
 
-END If
+ENDIF
 
 
 
@@ -2279,7 +2279,7 @@ b_3_choice
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -2327,7 +2327,7 @@ b_3_disagree
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -2367,11 +2367,11 @@ CHOICE
 Placeholder
 None
 
-Player
-(go back)
 
 
 
+
+go_back
 Placeholder
 None
 
@@ -2407,7 +2407,7 @@ b_3_whatever
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -2611,7 +2611,7 @@ Journalist
 I'm was thinking of going to the city a bit up north, the place is in complete chaos right now, I've heard that they stopped using rubber bullets against people. It sound's like movie.
 
 3
-
+journalist_3_chaos
 Placeholder
 None
 
@@ -2698,7 +2698,7 @@ None
 Journalist
 Ok, Now for some questions, are you suffering with lack of anything? Food, water, too cold etc...?
 
-
+3
 journalist_3_resources
 Placeholder
 None
@@ -2943,14 +2943,6 @@ j_3_door
 Placeholder
 None
 
-END IF
-
-
-
-
-None
-None
-
 CHOICE
 Ignore door day 3
 
@@ -2962,7 +2954,7 @@ None
 Player
 (ignore the door)
 
-
+3
 p_3_ignore
 Placeholder
 None
@@ -2978,7 +2970,7 @@ None
 Player
 Let me take a look
 
-
+3
 p_3_look
 Placeholder
 None
@@ -3015,7 +3007,7 @@ j_3_check_door
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -3039,7 +3031,7 @@ b_3_check_door
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -3075,7 +3067,7 @@ Player
 Nah
 
 3
-
+p_3_no
 Placeholder
 None
 
@@ -3098,7 +3090,7 @@ None
 Player
 Its something, not someone, it looks like a big mass of muscle.
 
-
+3
 p_3_peephole
 None
 None
@@ -3135,7 +3127,7 @@ j_3_peephole
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -3159,7 +3151,7 @@ b_3_right_choice
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -3343,7 +3335,7 @@ b_3_not_human
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -3367,7 +3359,7 @@ j_3_animal
 Placeholder
 None
 
-End if
+ENDIF
 
 
 
@@ -3447,7 +3439,7 @@ b_3_back
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -3471,7 +3463,7 @@ j_3_gun
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -3543,7 +3535,7 @@ p_3_shocked
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -3682,7 +3674,7 @@ None
 Bob
 Honestly good for them. They do need more strength if the want to take down the big guys
 
-
+4
 b_4_bigguys
 Placeholder
 None
@@ -3739,7 +3731,7 @@ Bob
 Hum
 
 4
-
+b_4_hum
 Placeholder
 None
 
@@ -3802,7 +3794,7 @@ None
 Jessica
 I don't think we need to scavenge, just the two of us we will have enough food for a while
 
-
+4
 j_4_while
 None
 None
@@ -3834,7 +3826,7 @@ None
 Jessica
 Okay, if we're going to scavenge can we at least only take the necessary?
 
-
+4
 j_4_necessary
 None
 None
@@ -3890,12 +3882,12 @@ None
 Bob
 So okay, who's going to fucking scavenge?
 
-
+4
 b_4_pissed
 None
 None
 
-END IF
+ENDIF
 
 
 
@@ -3967,7 +3959,7 @@ b_4_sure
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -4047,7 +4039,7 @@ b_4_defend_jessica
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -4135,7 +4127,7 @@ b_4_shamefull
 Placeholder
 None
 
-END IF
+ENDIF
 
 
 
@@ -4330,7 +4322,7 @@ None
 CONVERSATION
 Bob after scavenging day 4 no gun
 
-
+4
 
 None
 None
@@ -4354,7 +4346,7 @@ None
 CONVERSATION
 Day 4 Jessica shell shocked
 
-
+4
 
 None
 None
@@ -4418,7 +4410,7 @@ None
 CONVERSATION
 Scavenge Jessica only
 
-
+4
 
 None
 None
@@ -4482,7 +4474,7 @@ None
 CONVERSATION
 Jessica only scavenge day 4
 
-
+4
 
 None
 None
@@ -4490,7 +4482,7 @@ None
 Jessica
 I can't do much in this state, I will die!
 
-
+4
 j_4_crying
 Placeholder
 None
@@ -4524,6 +4516,1550 @@ The gun is more important here
 
 4
 p_4_jessica_no_gun
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Knock on the door day 4
+
+4
+
+None
+None
+
+IF
+Jessica && Bob
+
+
+
+None
+None
+
+Jessica
+Oh there's another person at the door!
+
+4
+j_4_door
+Placeholder
+None
+
+Bob
+Or thing, creature, I don't know
+
+4
+b_4_door
+Placeholder
+None
+
+CHOICE
+Jessica asking to look at peephole
+
+
+
+None
+None
+
+Player
+Ignore door
+
+4
+p_4_ignore
+Placeholder
+None
+
+CHOICE
+Look at the peephole
+
+
+
+None
+None
+
+Player
+Look at the peephole
+
+4
+p_4_look
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Jessica asking to look at peephole
+
+4
+
+None
+None
+
+Jessica
+We should at least look trough the peephole and ask some questions
+
+4
+j_4_peephole
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Comments on door
+
+
+
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+That's weird, is it human? Or is it a fucking animal again?
+
+4
+b_4_animal
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+What if its person with difficulty or too much pain to talk?
+
+4
+j_4_pain
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Look at the peephole
+
+4
+
+None
+None
+
+Player
+It's a big image. Very bulky. Different from the bear I can see the shape of a human. They are not speaking anything tho.
+
+4
+p_4_peephole
+Placeholder
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+Isn't that a raider trying to play tricks on us?
+
+4
+b_4_raider
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+DAY 4 who
+
+4
+
+None
+None
+
+Violet
+*incomprehensible sounds* * knocks on door again*
+
+4
+v_4_who
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+DAY 4 why
+
+4
+
+None
+None
+
+Violet
+*incomprehensible sounds* * knocks on door again*
+
+4
+v_4_why
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+DAY 4 where
+
+4
+
+None
+None
+
+Violet
+*incomprehensible sounds*
+
+4
+v_4_where
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+DAY 4 how
+
+4
+
+None
+None
+
+Violet
+*incomprehensible sounds*
+
+4
+v_4_how
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Making decision day 4
+
+4
+
+None
+None
+
+CHOICE
+Letting Violet out
+
+
+
+None
+None
+
+Player
+Sorry I can't let you in, I don't have enough resources (lie)
+
+4
+p_4_out
+Placeholder
+None
+
+CHOICE
+Letting Violet in
+
+
+
+None
+None
+
+Player
+Okay, take three step back, I'm going to open the door.
+
+4
+p_4_in
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Letting Violet out
+
+4
+
+None
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+I think you did the right choice, how can we confirm that it is trully a human?
+
+4
+b_4_right_choice
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+You never know, It can be someone with some kind of disability, like a mute person.
+
+4
+j_4_disability
+Placeholder
+None
+
+Jessica
+You sure you're going to let them out? Please give another chance!
+
+4
+j_4_chance
+None
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+CHOICE
+Making decision day 4
+
+
+
+None
+None
+
+Player
+Let me think about it more
+
+4
+p_4_think
+Placeholder
+None
+
+CHOICE
+Jessica pissed
+
+
+
+None
+None
+
+Player
+I'm sure, we're not letting anyone inside
+
+4
+p_4_sure
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Jessica pissed
+
+4
+
+None
+None
+
+Jessica
+You monster!
+
+4
+j_4_monster
+Placeholder
+None
+
+IF
+BOB
+
+
+
+None
+None
+
+Bob
+calm down, this is for our best, what if it was someone who wants our harm?
+
+4
+b_4_calm
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Letting Violet in
+
+
+
+None
+None
+
+IF
+BOB
+
+
+
+None
+None
+
+Bob
+Shit
+
+4
+b_4_shit
+Placeholder
+None
+
+Bob
+*stares*
+
+4
+b_4_stare
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Violet
+Stards gesturing
+
+4
+v_4_gestures
+Placeholder
+None
+
+IF
+Jessica && BOB
+
+
+
+None
+None
+
+Jessica
+Oh you're mute?
+
+4
+j_4_mute
+Placeholder
+None
+
+Bob
+Go figure
+
+4
+b_4_figure
+None
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+Oh you're mute?
+
+4
+j_4_mute
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Violet
+*Thank you gestures*
+
+4
+v_4_thank
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Violet in
+
+
+
+None
+None
+
+IF
+BOB && !Jessica
+
+
+
+None
+None
+
+Bob
+I'm going to grab a piece of paper so I can understand what you're talking
+
+4
+b_4_paper
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+I have an idea, let me get some paper so we can talk to her
+
+4
+j_4_paper
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Player
+Good idea. There's no room for you to sleep in, you will need to sleep on the living room.
+
+4
+p_4_sleep
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+//
+DAY 5
+
+
+
+None
+None
+
+CONVERSATION
+Check radio day 4
+
+5
+
+None
+None
+
+Radio
+Nothing new in the front of the war. The republic palace was raided yesterday, the building has been completely ran over
+Player checks radio in day 3
+5
+r5
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Check outside day 4
+
+5
+
+None
+None
+
+Player
+Visibility has increased, we can scavenge further now
+Player goes outside to check situation
+5
+p5_outside
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Check TV day 4
+
+5
+
+None
+None
+
+TV
+Yesterday the broadcast was hacked, the government now will shoot any revolutionary in sight without questions asked. Join the military, make Brasnia great again. Make Brasnia safe again.
+Player checks television in day 3
+5
+tv5
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Check supplies day 4
+
+5
+
+None
+None
+
+Player
+We are certainly going to make a bigger expedition today to search for supplies
+Player checks food supplies
+5
+p5_supply
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Jessica commements on the radio
+
+5
+
+None
+None
+
+Jessica
+I hope they are alright
+
+5
+j_5_alright
+Placeholder
+None
+
+Player
+Oh you already woke up. But why do you care about it? It doesn't affect us in any way
+
+5
+p_5_woke_up
+Placeholder
+None
+
+Jessica
+My dad used to work there
+
+5
+j_5_dad
+Placeholder
+None
+
+Player
+Oh, what was his job
+
+5
+j_5_job
+Placeholder
+None
+
+Jessica
+He was one of Judiciaries
+
+5
+j_5_judiciaries
+Placeholder
+None
+
+Player
+Wait, whats your full name?
+
+5
+p_5_name
+Placeholder
+None
+
+Radio
+*loud music
+
+5
+r_5_loud
+Placeholder
+None
+
+Jessica
+I will turn that off
+
+5
+j_5_off
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Bob comments on the radio
+
+5
+
+None
+None
+
+Bob
+Honestly they deserve it
+
+5
+b_5_deserve
+Placeholder
+None
+
+Player
+Oh you already woke up. But why do you care about it? It doesn't affect us in any way
+
+5
+p_5_woke_up
+Placeholder
+None
+
+Bob
+It does affect us, they were the ones that made the country get into this shit state.
+
+5
+b_5_affect
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Violet wakes up
+
+5
+
+None
+None
+
+Violet
+*Good morning*
+
+5
+v_5_good
+Placeholder
+None
+
+Player
+Oh yeah thats a good way that we can use to comunicate
+
+5
+p_5_communicate
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Scavenging comment
+
+
+
+None
+None
+
+Player
+So okay, we are in dire need for supplies and the weather got better so we are going to need to scavenge a gas station that is nearby
+
+5
+p_5_scavenge
+Placeholder
+None
+
+IF
+Violet
+
+
+
+None
+None
+
+Violet
+*I should go, maybe there's something there that I can scrap for us to re-use*
+
+5
+v_5_go
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+BOB
+
+
+
+None
+None
+
+Bob
+Okay! sounds like a interesting task
+
+5
+b_5_go
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+I should stay here, I cannot do much
+
+5
+j_5_go
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Making choice to who to send
+
+5
+
+None
+None
+
+IF
+Violet
+
+
+
+None
+None
+
+CHOICE
+Violet scavenging day 5
+
+
+
+None
+None
+
+Player
+Violet, you're up for the job
+
+5
+p_5_violet
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+CHOICE
+Jessica scavenging day 5
+
+
+
+None
+None
+
+Player
+I think Jessica should go
+
+5
+p_5_jessica
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+BOB
+
+
+
+None
+None
+
+CHOICE
+Bob scavenging day 5
+
+
+
+None
+None
+
+Player
+Bob, you're going
+
+5
+p_5_bob
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Jessica scavenge day 4
+
+
+
+None
+None
+
+IF
+BOB
+
+
+
+None
+None
+
+Bob
+You're sending her alone to the gas station? Are you dumb? How can she help us by scavenging around the gas station?
+
+5
+b_5_dumb
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Violet
+
+
+
+None
+None
+
+Violet
+*This is cruel, you should let me go in her place*
+
+5
+b_5_cruel
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Jessica
+I cant go alone!
+
+5
+j_5_alone
+None
+None
+
+CHOICE
+Send Jessica day 5
+
+
+
+None
+None
+
+Player
+I'm sure
+
+5
+p_5_sure
+Placeholder
+None
+
+CHOICE
+Makign choice to who to send
+
+
+
+None
+None
+
+Player
+Ok, let me think a bit more
+
+5
+p_5_think
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Bob scavenge day 4
+
+5
+
+None
+None
+
+Bob
+Sure thing, I will bring back anything that might be useful.
+
+5
+b_5_anything_useful
+Placeholder
+None
+
+Violet
+*I want to go scavenge, there might be something useful that I can fix there*
+
+5
+v_5_want_to_find_car
+Placeholder
+None
+
+CHOICE
+Send bob day 5
+
+
+
+None
+None
+
+Player
+Bob should go, It's better this way
+
+5
+p_5_bob_should_go
+Placeholder
+None
+
+CHOICE
+Makign choice to who to send
+
+
+
+None
+None
+
+Player
+Ok, let me think a bit more
+
+
+p_5_think
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Violet scavenge day 4
+
+5
+
+None
+None
+
+Violet
+*Thumbs up*
+
+5
+v_5_thumbs
+Placeholder
+None
+
+Bob
+Fine by me, it seems she can handle well on her own
+
+5
+b_5_violet
+Placeholder
+None
+
+CHOICE
+Send violet day 5
+
+
+
+None
+None
+
+Player
+violet should go, It's better this way
+
+5
+p_5_bob_sure
+Placeholder
+None
+
+CHOICE
+Makign choice to who to send
+
+
+
+None
+None
+
+Player
+Ok, let me think a bit more
+
+5
+p_5_think
+Placeholder
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Kicking someone out
+
+5
+
+None
+None
+
+Player
+I'm sorry, but I don't think we have enough resources to keep everyone around. There's just too many people in here.
+
+5
+p_5_resources
+Placeholder
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+What do you mean? Kick someone out?
+
+5
+j_5_comment
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+Player
+Someone has to go.
+
+5
+p_5_go
+Placeholder
+None
+
+IF
+Bob
+
+
+
+None
+None
+
+Bob
+I trust your judgement. This is war, and there really isn't enough to go around.
+
+5
+b_5_judgment
+Placeholder
+None
+
+Bob
+If it was up to me, I'd rather stick with Violet.
+
+5
+b_5_violet
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+Jessica
+
+
+
+None
+None
+
+Jessica
+You aren't really going to kick someone out, are you? It's freezing out there!
+
+5
+j_5_freezing
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+CAR
+
+
+
+None
+None
+
+Violet
+*if you wanted me to go i could find somewhere else to stay*
+
+5
+v_5_okay
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+IF
+!CAR && Violet
+
+
+
+None
+None
+
+Violet
+*if it has to be someone it should be jessica*
+
+5
+b_5_jessica
 Placeholder
 None
 
