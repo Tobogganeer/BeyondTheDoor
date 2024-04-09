@@ -82,6 +82,11 @@ namespace BeyondTheDoor
         [HideInInspector, SerializeField]
         string name = "Dialogue";
         public LineID lineID;
+
+        public DialogueElement(LineID lineID)
+        {
+            this.lineID = lineID;
+        }
     }
 
     [Serializable]
@@ -90,6 +95,12 @@ namespace BeyondTheDoor
         [HideInInspector, SerializeField]
         string name = "If";
         public string condition;
+
+        public IfElement(string condition)
+        {
+            // Remove all quotes
+            this.condition = condition.Trim().Replace("\"", string.Empty);
+        }
     }
 
     [Serializable]
@@ -98,6 +109,12 @@ namespace BeyondTheDoor
         [HideInInspector, SerializeField]
         string name = "Elif";
         public string condition;
+
+        public ElifElement(string condition)
+        {
+            // Remove all quotes
+            this.condition = condition.Trim().Replace("\"", string.Empty);
+        }
     }
 
     [Serializable]
@@ -120,6 +137,11 @@ namespace BeyondTheDoor
         [HideInInspector, SerializeField]
         string name = "Goto";
         public Conversation conversation;
+
+        public GotoElement(Conversation conversation)
+        {
+            this.conversation = conversation;
+        }
     }
 
     /*

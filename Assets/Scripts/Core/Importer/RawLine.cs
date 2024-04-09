@@ -84,7 +84,7 @@ namespace BeyondTheDoor.Importer
             if (IsIDValid())
                 return $"Line '{id}': {InvalidElements}";
             else
-                return $"Line (invalid ID, char={character},text={text}): {InvalidElements}";
+                return $"Line (invalid ID, char={character}, text={text}): {InvalidElements}";
             //return $"Raw Line with ID {id} is invalid. Invalid elements: {InvalidElements}.";
         }
 

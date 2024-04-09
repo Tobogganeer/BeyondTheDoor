@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Contexts;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace BeyondTheDoor.Importer
 {
@@ -13,7 +17,7 @@ namespace BeyondTheDoor.Importer
 
         public RawConversationData(string name, int? day)
         {
-            this.name = name;
+            this.name = name.Trim();
             this.day = day ?? FindDay(name);
 
             elements = new List<IConversationElement>();
@@ -66,13 +70,43 @@ namespace BeyondTheDoor.Importer
         public bool IsValid { get; private set; }
         public Elements InvalidElements { get; private set; }
 
-        [System.Flags]
+
+        public void Validate()
+        {
+            InvalidElements = GetInvalidElements();
+            IsValid = InvalidElements == Elements.None;
+        }
+
+        private Elements GetInvalidElements()
+        {
+            Elements invalidElements = Elements.None;
+            if (!IsNameValid()) invalidElements |= Elements.InvalidName;
+
+            return invalidElements;
+        }
+
+        public string GetInvalidElementsString()
+        {
+            if (IsNameValid())
+                return $"Conversation '{name}': {InvalidElements}";
+            else
+                return $"Conversation (invalid name, day={day}, {elements.Count} elements): {InvalidElements}";
+            //return $"Raw Line with ID {id} is invalid. Invalid elements: {InvalidElements}.";
+        }
+
+
+        public bool IsNameValid() => !string.IsNullOrEmpty(name);
+
+
+        [Flags]
         public enum Elements
         {
             None = 0,
             NoStartingIf = 1 << 0,
             NoEndIf = 1 << 1,
             InvalidChoiceTarget = 1 << 2,
+            InvalidName = 1 << 3,
+            InvalidGotoTarget = 1 << 4,
         }
     }
 
