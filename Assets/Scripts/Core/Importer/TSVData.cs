@@ -48,7 +48,7 @@ namespace BeyondTheDoor.Importer
         {
             RawLineData line = GenerateLineData(csvLine, mappings);
             // If the line is the bare minimum to be considered valid, store it.
-            if (line != null && LineIsValid(line))
+            if (line != null && !IsComment(line) && LineIsValid(line))
                 AddLineToStorage(line);
         }
 
@@ -106,6 +106,11 @@ namespace BeyondTheDoor.Importer
         {
             // Every valid line has at least a CharacterID or LineID
             return !string.IsNullOrEmpty(line.character) || !string.IsNullOrEmpty(line.id);
+        }
+
+        bool IsComment(RawLineData line)
+        {
+            return !string.IsNullOrEmpty(line.character) && line.character.Trim().StartsWith("//");
         }
 
         void AddLineToStorage(RawLineData line)
