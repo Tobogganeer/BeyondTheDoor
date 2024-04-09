@@ -110,7 +110,7 @@ namespace BeyondTheDoor.Importer
                         inConversation = false;
                         // Get the name and day
                         bool hasDay = int.TryParse(tsvData.DayColumn[currentConversationIndex], out int day);
-                        string currentName = tsvData.CharacterIDColumn[currentConversationIndex];
+                        string currentName = tsvData.TextColumn[currentConversationIndex];
                         // Add the proper file name to the list
                         string fileName = RawConversationData.GetFormattedName(currentName, hasDay ? day : null, out int parsedDay);
                         if (tsvConversations.Any(conv => conv.fileName == fileName))
@@ -129,7 +129,8 @@ namespace BeyondTheDoor.Importer
 
         void CreateConversations()
         {
-            Conversation[] existingConvos = FindAllScriptableObjectsOfType<Conversation>(FilePaths.ConversationsFolderName);
+            //Conversation[] existingConvos = FindAllScriptableObjectsOfType<Conversation>(FilePaths.ConversationsFolderName);
+            Conversation[] existingConvos = FindAllScriptableObjectsOfType<Conversation>();
             // Store a list of names so we don't overwrite existing convos
             HashSet<string> existingConvoNames = new HashSet<string>();
             foreach (Conversation convo in existingConvos)
@@ -185,10 +186,11 @@ namespace BeyondTheDoor.Importer
                 int day = validConvos[i].day;
                 // Create the directory
                 string path = FilePaths.GetConversationsFolderForDay(day);
+                string relativePath = FilePaths.GetRelativeConversationsFolderForDay(day);
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
-                string relativePath = FilePaths.GetRelativeConversationsFolderForDay(day);
+                
                 AssetDatabase.CreateAsset(createdConvos[i], Path.Combine(relativePath, createdConvos[i].name + ".asset"));
             }
 
