@@ -10,19 +10,11 @@ namespace BeyondTheDoor.Importer
 {
     public class ConversationCreatorWindow : EditorWindow
     {
+        public static readonly string ConversationMarker = "conversation";
+        public static readonly string EndMarker = "end";
+
         TSVData tsvData;
         List<ConversationRange> tsvConversations;
-
-        static readonly string ConversationMarker = "conversation";
-        static readonly string EndMarker = "end";
-        static readonly string IfMarker = "if";
-        static readonly string ElifMarkerMarker = "elif";
-        static readonly string ElseIfMarker = "else if";
-        static readonly string ElseMarker = "else";
-        static readonly string EndIfMarker = "endif";
-        static readonly string End_IfMarker = "end if";
-        static readonly string ChoiceMarker = "choice";
-        static readonly string GotoMarker = "goto";
 
         [MenuItem("Dialogue/Conversation Importer")]
         public static void ShowWindow()
@@ -148,32 +140,84 @@ namespace BeyondTheDoor.Importer
             foreach (ConversationRange convoRange in tsvConversations)
                 allTSVConvoNames.Add(convoRange.fileName);
 
+            Dictionary<string, Conversation> allConversations = new Dictionary<string, Conversation>();
+
             // Store invalid convos
             List<RawConversationData> invalidConvos = new List<RawConversationData>();
+            List<RawConversationData> validConvos = new List<RawConversationData>();
 
+            List<Conversation> createdConvos = new List<Conversation>();
+
+            // Find out which conversations should be created
             foreach (ConversationRange convoRange in tsvConversations)
             {
                 // Skip over any conversations that already have assets
                 if (existingConvoNames.Contains(convoRange.fileName))
                     continue;
 
+                // Fill the conversation and make sure it is valid
                 RawConversationData data = new RawConversationData(convoRange.name, convoRange.day);
+                data.Fill(convoRange, tsvData);
                 data.Validate(allTSVConvoNames);
-                if (!data.IsValid)
-                {
+                if (data.IsValid)
+                    validConvos.Add(data);
+                else
                     invalidConvos.Add(data);
-                    continue;
-                }
+            }
 
-                data.
+            // Add all existing conversations to the big dict
+            foreach (Conversation existingConvo in existingConvos)
+                allConversations.Add(existingConvo.name, existingConvo);
+
+            // Add all the valid convos to the list as well
+            foreach (RawConversationData validConvo in validConvos)
+            {
+                Conversation convo = ScriptableObject.CreateInstance<Conversation>();
+                convo.name = validConvo.fileName;
+                createdConvos.Add(convo);
+                allConversations.Add(convo.name, convo);
+            }
+
+            // Link up everything
+            for (int i = 0; i < createdConvos.Count; i++)
+            {
+                LinkCreatedConversation(validConvos[i], createdConvos[i], allConversations);
+                int day = validConvos[i].day;
+                // Create the directory
+                string path = FilePaths.GetConversationsFolderForDay(day);
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                string relativePath = FilePaths.GetRelativeConversationsFolderForDay(day);
+                AssetDatabase.CreateAsset(createdConvos[i], Path.Combine(relativePath, createdConvos[i].name + ".asset"));
+            }
+
+            Debug.Log($"Created {createdConvos.Count} Conversation assets, ignoring {invalidConvos.Count} invalid Conversations. Invalid conversations:");
+            LogInvalidConvos(invalidConvos);
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
+        void LinkCreatedConversation(RawConversationData data, Conversation convo, Dictionary<string, Conversation> allConversations)
+        {
+            convo.elements = data.elements;
+            convo.choices = new List<ConversationChoice>();
+            foreach (RawChoice rawChoice in data.choices)
+            {
+                Conversation next = null;
+                if (allConversations.ContainsKey(rawChoice.nextConversation))
+                    next = allConversations[rawChoice.nextConversation];
+                ConversationChoice choice = new ConversationChoice { prompt = rawChoice.prompt, nextConversation = next };
+                convo.choices.Add(choice);
             }
         }
 
-        Conversation CreateConversationAsset(RawConversationData data)
+        void LogInvalidConvos(List<RawConversationData> invalidConvos)
         {
-
+            foreach (RawConversationData convo in invalidConvos)
+                Debug.Log(convo.GetInvalidElementsString());
         }
-
 
         public static void FillScriptableObjects<T>(Object owner, string arrayName) where T : ScriptableObject
         {

@@ -7,7 +7,17 @@ namespace BeyondTheDoor.Importer
 {
     public class RawConversationData
     {
+        public static readonly string IfMarker = "if";
+        public static readonly string ElifMarker = "elif";
+        public static readonly string ElseIfMarker = "else if";
+        public static readonly string ElseMarker = "else";
+        public static readonly string EndIfMarker = "endif";
+        public static readonly string End_IfMarker = "end if";
+        public static readonly string ChoiceMarker = "choice";
+        public static readonly string GotoMarker = "goto";
+
         public string name;
+        public string fileName;
         public int day;
         public List<IConversationElement> elements;
         public List<RawChoice> choices;
@@ -94,7 +104,27 @@ namespace BeyondTheDoor.Importer
         /// <param name="data"></param>
         public void Fill(ConversationRange range, TSVData data)
         {
+            fileName = range.fileName;
 
+            // Loop through the data, skipping the Conversation and End markers
+            for (int i = range.start + 1; i < range.end - 1; i++)
+            {
+                string marker = data.CharacterIDColumn[i].ToLower();
+                if (string.IsNullOrEmpty(marker) && Enum.TryParse(data.LineIDColumn[i], out LineID id))
+                    elements.Add(new DialogueElement(id));
+                else if (marker == IfMarker)
+                    elements.Add(new IfElement(data.TextColumn[i]));
+                else if (marker == ElifMarker || marker == ElseIfMarker)
+                    elements.Add(new ElifElement(data.TextColumn[i]));
+                else if (marker == ElseMarker)
+                    elements.Add(new ElseElement());
+                else if (marker == EndIfMarker || marker == End_IfMarker)
+                    elements.Add(new EndIfElement());
+                else if (marker == ChoiceMarker && Enum.TryParse(data.TextColumn[i + 1], out LineID prompt))
+                    choices.Add(new RawChoice(prompt, data.TextColumn[i]));
+                //else if (marker == GotoMarker)
+                // TODO: Implement Goto later
+            }
         }
 
 
@@ -133,7 +163,7 @@ namespace BeyondTheDoor.Importer
         public string GetInvalidElementsString()
         {
             if (IsNameValid())
-                return $"Conversation '{name}': {InvalidElements}";
+                return $"Conversation '{name}' (day={day}): {InvalidElements}";
             else
                 return $"Conversation (invalid name, day={day}, {elements.Count} elements): {InvalidElements}";
             //return $"Raw Line with ID {id} is invalid. Invalid elements: {InvalidElements}.";
