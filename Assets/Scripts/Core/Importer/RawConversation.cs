@@ -122,6 +122,9 @@ namespace BeyondTheDoor.Importer
                 {
                     // Account for the prefix (don't link choices across days)
                     string nextConvoName = GetFormattedName(data.TextColumn[i], range.day, out _);
+                    // Don't add numbers to choices with no further convo
+                    if (string.IsNullOrEmpty(data.TextColumn[i]))
+                        nextConvoName = string.Empty;
                     choices.Add(new RawChoice(prompt, nextConvoName));
                     i++; // Skip the next line
                 }
@@ -163,7 +166,9 @@ namespace BeyondTheDoor.Importer
 
             for (int i = 0; i < choices.Count; i++)
             {
-                if (!conversationNames.Contains(choices[i].nextConversation))
+                // Check if our next conversation should exist but doesn't
+                if (!string.IsNullOrEmpty(choices[i].nextConversation) &&
+                    !conversationNames.Contains(choices[i].nextConversation))
                     invalidElements |= Elements.InvalidChoiceTarget;
             }
 
