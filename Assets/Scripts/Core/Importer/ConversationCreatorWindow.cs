@@ -205,6 +205,17 @@ namespace BeyondTheDoor.Importer
         void LinkCreatedConversation(RawConversationData data, Conversation convo, Dictionary<string, Conversation> allConversations)
         {
             convo.elements = data.elements;
+
+            foreach (IConversationElement element in convo.elements)
+            {
+                // Link Gotos
+                if (element is GotoElement _goto)
+                {
+                    if (allConversations.ContainsKey(_goto.goofyWorkaroundConversationName))
+                        _goto.conversation = allConversations[_goto.goofyWorkaroundConversationName];
+                }
+            }
+
             convo.choices = new List<ConversationChoice>();
             foreach (RawChoice rawChoice in data.choices)
             {

@@ -147,7 +147,7 @@ namespace BeyondTheDoor.Editor
                 con.elements.Add(new DialogueElement(0));
             }
             if (GUILayout.Button("Add Goto", GUILayout.Width(Mathf.Max(rect.width / 4f, 120f))))
-                con.elements.Add(new GotoElement(null));
+                con.elements.Add(new GotoElement(string.Empty));
             EditorGUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();

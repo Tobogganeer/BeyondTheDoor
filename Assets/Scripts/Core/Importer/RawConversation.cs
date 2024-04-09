@@ -125,11 +125,15 @@ namespace BeyondTheDoor.Importer
                     choices.Add(new RawChoice(prompt, nextConvoName));
                     i++; // Skip the next line
                 }
+                else if (marker == GotoMarker)
+                {
+                    // Account for the prefix (don't link Gotos across days)
+                    string nextConvoName = GetFormattedName(data.TextColumn[i], range.day, out _);
+                    elements.Add(new GotoElement(nextConvoName));
+                }
                 // If nothing else, it's probably a line of dialogue
                 else if (Enum.TryParse(data.LineIDColumn[i], out LineID id))
                     elements.Add(new DialogueElement(id));
-                //else if (marker == GotoMarker)
-                // TODO: Implement Goto later
             }
         }
 
@@ -153,7 +157,7 @@ namespace BeyondTheDoor.Importer
                     invalidElements |= Elements.NoEndIf;
                 else if ((element is ElifElement || element is ElseElement) && !IsElifOrElseValid(i))
                     invalidElements |= Elements.NoStartingIf;
-                else if (element is GotoElement _goto && _goto.conversation == null)
+                else if (element is GotoElement _goto && !conversationNames.Contains(_goto.goofyWorkaroundConversationName))
                     invalidElements |= Elements.InvalidGotoTarget;
             }
 

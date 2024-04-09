@@ -140,6 +140,14 @@ namespace BeyondTheDoor
         string name = "Goto";
         public Conversation conversation;
 
+        [HideInInspector]
+        public string goofyWorkaroundConversationName;
+
+        public GotoElement(string conversationName)
+        {
+            goofyWorkaroundConversationName = conversationName;
+        }
+
         public GotoElement(Conversation conversation)
         {
             this.conversation = conversation;
