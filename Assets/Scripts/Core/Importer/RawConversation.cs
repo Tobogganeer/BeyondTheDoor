@@ -21,7 +21,7 @@ namespace BeyondTheDoor.Importer
             choices = new List<RawChoice>();
         }
 
-        int FindDay(string name)
+        static int FindDay(string name)
         {
             // Tries to find a valid day number in the name
 
@@ -64,8 +64,38 @@ namespace BeyondTheDoor.Importer
             return -1;
         }
 
+        /// <summary>
+        /// Returns the name with the day prepended.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="day"></param>
+        /// <returns></returns>
+        public static string GetFormattedName(string name, int? day, out int parsedDay)
+        {
+            name = name.Trim();
+            parsedDay = day ?? FindDay(name);
+
+            string prefix = "All";
+            if (parsedDay >= 0)
+                prefix = parsedDay.ToString();
+
+            return prefix + "_" + name;
+        }
+
         public bool IsValid { get; private set; }
         public Elements InvalidElements { get; private set; }
+
+
+
+        /// <summary>
+        /// Fills this Conversation's elements and choices.
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="data"></param>
+        public void Fill(ConversationRange range, TSVData data)
+        {
+
+        }
 
 
         public void Validate(List<string> conversationNames)

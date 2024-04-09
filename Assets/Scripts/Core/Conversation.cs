@@ -76,6 +76,8 @@ namespace BeyondTheDoor
     #region Conversation Elements
     public interface IConversationElement { }
 
+#pragma warning disable CS0414 // The field '_Element.name' is assigned but its value is never used
+
     [Serializable]
     public class DialogueElement : IConversationElement
     {
@@ -143,6 +145,9 @@ namespace BeyondTheDoor
             this.conversation = conversation;
         }
     }
+
+
+#pragma warning restore CS0414 // The field '_Element.name' is assigned but its value is never used
 
     /*
     Dialogue,

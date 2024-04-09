@@ -141,16 +141,20 @@ namespace BeyondTheDoor.Editor
         {
             Rect rect = EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Add Dialogue"))
-                con.elements.Add(new DialogueElement());
+            {
+                // TODO: Replace line with None
+                //throw new System.NotImplementedException("ADD NONE CHARACTER LINE HERE");
+                con.elements.Add(new DialogueElement(0));
+            }
             if (GUILayout.Button("Add Goto", GUILayout.Width(Mathf.Max(rect.width / 4f, 120f))))
-                con.elements.Add(new GotoElement());
+                con.elements.Add(new GotoElement(null));
             EditorGUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Add If"))
-                con.elements.Add(new IfElement());
+                con.elements.Add(new IfElement(string.Empty));
             if (GUILayout.Button("Add ElIf"))
-                con.elements.Add(new ElifElement());
+                con.elements.Add(new ElifElement(string.Empty));
             if (GUILayout.Button("Add Else"))
                 con.elements.Add(new ElseElement());
             if (GUILayout.Button("Add EndIf"))
