@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Contexts;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 namespace BeyondTheDoor.Importer
 {
@@ -71,16 +68,34 @@ namespace BeyondTheDoor.Importer
         public Elements InvalidElements { get; private set; }
 
 
-        public void Validate()
+        public void Validate(List<string> conversationNames)
         {
-            InvalidElements = GetInvalidElements();
+            InvalidElements = GetInvalidElements(conversationNames);
             IsValid = InvalidElements == Elements.None;
         }
 
-        private Elements GetInvalidElements()
+        private Elements GetInvalidElements(List<string> conversationNames)
         {
             Elements invalidElements = Elements.None;
             if (!IsNameValid()) invalidElements |= Elements.InvalidName;
+
+            for (int i = 0; i < elements.Count; i++)
+            {
+                IConversationElement element = elements[i];
+
+                if (element is IfElement && !IsIfValid(i))
+                    invalidElements |= Elements.NoEndIf;
+                else if ((element is ElifElement || element is ElseElement) && !IsElifOrElseValid(i))
+                    invalidElements |= Elements.NoStartingIf;
+                else if (element is GotoElement _goto && _goto.conversation == null)
+                    invalidElements |= Elements.InvalidGotoTarget;
+            }
+
+            for (int i = 0; i < choices.Count; i++)
+            {
+                if (!conversationNames.Contains(choices[i].nextConversation))
+                    invalidElements |= Elements.InvalidChoiceTarget;
+            }
 
             return invalidElements;
         }
@@ -96,6 +111,44 @@ namespace BeyondTheDoor.Importer
 
 
         public bool IsNameValid() => !string.IsNullOrEmpty(name);
+        bool IsIfValid(int ifIndex)
+        {
+            // Start at the next element
+            for (int i = ifIndex + 1; i < elements.Count; i++)
+            {
+                IConversationElement element = elements[i];
+                // There is an EndIf element - we are good
+                if (element is EndIfElement)
+                    return true;
+                // Ruh roh - found another If
+                else if (element is IfElement)
+                    return false;
+            }
+
+            // No EndIf found
+            return false;
+        }
+
+        bool IsElifOrElseValid(int elifOrElseIndex)
+        {
+            for (int i = elifOrElseIndex - 1; i >= 0; i--)
+            {
+                IConversationElement element = elements[i];
+
+                // There is a starting If element - we are good
+                if (element is IfElement)
+                    return true;
+
+                // Uh oh... there is no starting If
+                else if (element is EndIfElement)
+                    return false;
+                // Two elses in a row or an Else before an ElIf (big nono)
+                else if (element is ElseElement)
+                    return false;
+            }
+
+            return false;
+        }
 
 
         [Flags]
@@ -118,7 +171,7 @@ namespace BeyondTheDoor.Importer
         public RawChoice(LineID prompt, string nextConversation)
         {
             this.prompt = prompt;
-            this.nextConversation = nextConversation;
+            this.nextConversation = nextConversation.Trim();
         }
     }
 }
