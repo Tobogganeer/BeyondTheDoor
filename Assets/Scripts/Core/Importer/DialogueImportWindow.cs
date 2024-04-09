@@ -37,11 +37,13 @@ namespace BeyondTheDoor.Importer
 
             ProcessTSVButtons();
             if (tsvData != null)
+            {
                 EditorGUILayout.LabelField(tsvData.Count + " TSV entries loaded.");
 
-            if (GUILayout.Button("Process TSV"))
-            {
-                //rawLines = LineParser.ParseRawLines(tsvFile.text);
+                if (GUILayout.Button("Process Raw Lines"))
+                {
+                    rawLines = LineParser.ParseRawLines(tsvData);
+                }
             }
 
             GUI.enabled = true;

@@ -121,6 +121,25 @@ namespace BeyondTheDoor.Importer
         }
 
 
+        public IEnumerable<RawLineData> GetRawLines()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                RawLineData line = new RawLineData();
+                line.character = CharacterIDColumn[i];
+                line.text = TextColumn[i];
+                line.context = ContextColumn[i];
+                line.day = DayColumn[i];
+                line.id = LineIDColumn[i];
+                line.lineStatus = LineStatusColumn[i];
+                line.voiceStatus = VoiceStatusColumn[i];
+                line.extraData = ExtraDataColumn[i];
+                yield return line;
+            }
+        }
+
+
+
         // https://learn.microsoft.com/en-us/dotnet/api/system.io.filestream?view=net-8.0
         public void Save()
         {

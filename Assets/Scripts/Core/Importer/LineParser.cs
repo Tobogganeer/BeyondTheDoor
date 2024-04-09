@@ -46,59 +46,6 @@ namespace BeyondTheDoor.Importer
             return cleanData;
         }
 
-        static RawLineData GenerateLineData(string rawLine, Dictionary<int, Line.Element> mappings)
-        {
-            if (string.IsNullOrWhiteSpace(rawLine))
-                return null;
-
-            RawLineData line = new RawLineData();
-            string[] elements = rawLine.Split('\t', StringSplitOptions.None);
-            for (int i = 0; i < elements.Length; i++)
-                FillValue(line, mappings[i], elements[i]);
-
-            // Ignore this line if it is a special marker
-            string characterValue = line.character?.Trim().ToLower();
-            if (characterValue.StartsWith(Comment) || ReservedIDs.Contains(characterValue))
-                return null;
-
-            line.Validate();
-            return line;
-        }
-
-        static void FillValue(RawLineData line, Line.Element type, string data)
-        {
-            switch (type)
-            {
-                case Line.Element.CharacterID:
-                    line.character = data;
-                    break;
-                case Line.Element.Text:
-                    line.text = data;
-                    break;
-                case Line.Element.Context:
-                    line.context = data;
-                    break;
-                case Line.Element.Day:
-                    line.day = data;
-                    break;
-                case Line.Element.LineID:
-                    line.id = data;
-                    break;
-                case Line.Element.LineStatus:
-                    line.lineStatus = data;
-                    break;
-                case Line.Element.VoiceStatus:
-                    line.voiceStatus = data;
-                    break;
-                case Line.Element.ExtraData:
-                    line.extraData = data;
-                    break;
-                default:
-                    Debug.LogWarning("Invalid data type for RawLineData " + line.id + " (" + type + ")");
-                    break;
-            }
-        }
-
         /// <summary>
         /// Generates a map of the index of arguments to their type.
         /// </summary>
@@ -122,6 +69,48 @@ namespace BeyondTheDoor.Importer
                 throw new FormatException($"TSV file contained less than {numDataTypes} headers!");
 
             return mappings;
+        }
+
+        public static RawLineCollection ParseRawLines(TSVData data)
+        {
+            List<RawLineData> rawLines = new List<RawLineData>();
+            foreach (RawLineData potentialLine in data.GetRawLines())
+            {
+                // Ignore this line if it is a special marker
+                if (!CharacterValueValid(potentialLine))
+                    continue;
+
+                // Discard lines that will cause compile errors
+                if (!HasRequiredLineValues(potentialLine))
+                {
+                    potentialLine.Validate();
+                    Debug.LogWarning("Discarding line for missing required elements.\n"
+                        + potentialLine.GetInvalidElementsString());
+                    continue;
+                }
+
+                // Store each good line
+                potentialLine.Validate();
+                rawLines.Add(potentialLine);
+            }
+
+            return new RawLineCollection(rawLines);
+        }
+
+        static bool CharacterValueValid(RawLineData potentialLine)
+        {
+            // Ignore this line if it is a special marker or is empty
+            string characterValue = potentialLine.character.ToLower();
+            return !string.IsNullOrEmpty(characterValue) &&
+                !characterValue.StartsWith(Comment) &&
+                !ReservedIDs.Contains(characterValue);
+        }
+
+        static bool HasRequiredLineValues(RawLineData potentialLine)
+        {
+            return !string.IsNullOrEmpty(potentialLine.character) &&
+                !string.IsNullOrEmpty(potentialLine.day) &&
+                !string.IsNullOrEmpty(potentialLine.id);
         }
     }
 }
