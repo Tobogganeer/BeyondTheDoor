@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: 6_Moron trying to argue against scavenging
+  m_EditorClassIdentifier: 
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 4847120288080986666
+  - rid: 4847120288080986667
+  - rid: 4847120288080986668
+  - rid: 4847120288080986669
+  - rid: 4847120288080986670
+  - rid: 4847120288080986671
+  - rid: 4847120288080986672
+  - rid: 4847120288080986673
+  - rid: 4847120288080986674
+  - rid: 4847120288080986675
+  - rid: 4847120288080986676
+  - rid: 4847120288080986677
+  - rid: 4847120288080986678
+  - rid: 4847120288080986679
+  - rid: 4847120288080986680
+  - rid: 4847120288080986681
+  - rid: 4847120288080986682
+  - rid: 4847120288080986683
+  choices: []
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4847120288080986666
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Bob
+    - rid: 4847120288080986667
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 762591632
+    - rid: 4847120288080986668
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 4847120288080986669
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Bob && Jessica
+    - rid: 4847120288080986670
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1847869375
+    - rid: 4847120288080986671
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 962349353
+    - rid: 4847120288080986672
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -360065373
+    - rid: 4847120288080986673
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 640452615
+    - rid: 4847120288080986674
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 4847120288080986675
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Violet && HasCar
+    - rid: 4847120288080986676
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 2072797849
+    - rid: 4847120288080986677
+      type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Elif
+        condition: Violet && !HasCar
+    - rid: 4847120288080986678
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 41445758
+    - rid: 4847120288080986679
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 4847120288080986680
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Violet && !HasCar && Jessica
+    - rid: 4847120288080986681
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1253953996
+    - rid: 4847120288080986682
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 561232349
+    - rid: 4847120288080986683
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf

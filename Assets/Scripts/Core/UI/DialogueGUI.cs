@@ -99,6 +99,15 @@ namespace BeyondTheDoor.UI
             lineTextField.text = formattedLineText?.Substring(0, revealedLength);
         }
 
+        internal void OpenConversation(Conversation convo)
+        {
+            // Turn the line text on, keep choices off
+            SetWindowActive(true);
+            SetLineTextActive(true);
+            SetChoicesActive(false);
+
+            throw new System.NotImplementedException();
+        }
 
         internal void OpenLine(Line line)
         {
@@ -179,6 +188,14 @@ namespace BeyondTheDoor.UI
         private void ResetRevealTimer() => revealTimer = 1f / RevealedCharactersPerSecond;
 
         #region Static Accessors
+        public static void Open(Conversation conversation)
+        {
+            if (Current == null)
+                throw new System.InvalidOperationException("Tried to open conversation with no active DialogueGUI.");
+
+            Current.OpenConversation(conversation);
+        }
+
         internal static void Open(Line line)
         {
             if (Current == null)
@@ -193,6 +210,15 @@ namespace BeyondTheDoor.UI
                 throw new System.InvalidOperationException("Tried to open choices with no active DialogueGUI.");
 
             Current.OpenChoices(choices);
+        }
+
+        /// <summary>
+        /// Starts the <paramref name="next"/> conversation after the current one completes.
+        /// </summary>
+        /// <param name="next"></param>
+        public static void Enqueue(Conversation next)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>

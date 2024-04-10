@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BeyondTheDoor;
 
-public class Radio : MonoBehaviour, IInteractable
+public class Radio : MorningInteractable
 {
-    public void OnClicked()
-    {
-        throw new System.NotImplementedException("Radio OnClicked");
-    }
+    protected override Conversation Conversation => DayBehaviour.Current.radio;
 }

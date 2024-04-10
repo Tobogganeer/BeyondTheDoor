@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: 5_Knock on the door
+  m_EditorClassIdentifier: 
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 4847120288080986535
+  - rid: 4847120288080986536
+  - rid: 4847120288080986537
+  - rid: 4847120288080986538
+  - rid: 4847120288080986539
+  - rid: 4847120288080986540
+  choices:
+  - prompt: 14881585
+    nextConversation: {fileID: 0}
+    callback: {fileID: 0}
+  - prompt: 2010657075
+    nextConversation: {fileID: 0}
+    callback: {fileID: 0}
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4847120288080986535
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Bob
+    - rid: 4847120288080986536
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1946757607
+    - rid: 4847120288080986537
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 4847120288080986538
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Jessica
+    - rid: 4847120288080986539
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 177493533
+    - rid: 4847120288080986540
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf

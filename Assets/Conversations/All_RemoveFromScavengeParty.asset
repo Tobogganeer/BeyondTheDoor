@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: All_RemoveFromScavengeParty
   m_EditorClassIdentifier: 
-  lines: 
-  nextConversation: {fileID: 0}
+  onStarted: {fileID: 0}
+  elements: []
   choices:
-  - prompt: -1587538290
+  - prompt: 406788211
     nextConversation: {fileID: 0}
-    callback: {fileID: 11400000, guid: 128f76816af2c8048a405576488d57d1, type: 2}
+    callback: {fileID: 0}
   - prompt: 714585806
     nextConversation: {fileID: 0}
     callback: {fileID: 0}
-  OnStarted: {fileID: 0}
-  OnFinished: {fileID: 0}
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: 6_Enter scavenging
+  m_EditorClassIdentifier: 
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 4847120288080986652
+  - rid: 4847120288080986653
+  - rid: 4847120288080986654
+  - rid: 4847120288080986655
+  - rid: 4847120288080986656
+  - rid: 4847120288080986657
+  - rid: 4847120288080986658
+  choices: []
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4847120288080986652
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: OnePartyMember
+    - rid: 4847120288080986653
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1773713198
+    - rid: 4847120288080986654
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 0}
+        goofyWorkaroundConversationName: 6_Single person comments on scavenging
+    - rid: 4847120288080986655
+      type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Else
+    - rid: 4847120288080986656
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 391281956
+    - rid: 4847120288080986657
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 0}
+        goofyWorkaroundConversationName: 6_Moron trying to argue against scavenging
+    - rid: 4847120288080986658
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf

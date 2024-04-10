@@ -2,61 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using BeyondTheDoor.UI;
 
 namespace BeyondTheDoor
 {
     [CreateAssetMenu(menuName = "Dialogue/Conversation")]
     public class Conversation : ScriptableObject, IDialogueElement
     {
-        // TODO: Add ConversationCallbacks to each line? May not be needed due to Line.OnOpen, but still
-        [SerializeField] internal List<LineID> lines;
-        [SerializeField] internal Conversation nextConversation;
-        [SerializeField] internal List<ConversationChoice> choices;
-
-        //private List<Line> _linesBacking;
-        private ChoiceCollection _choicesBacking;
-
-        /// <summary>
-        /// The lines of this conversation, in order.
-        /// </summary>
-        public List<Line> Lines => lines != null ? lines.ConvertAll((id) => Line.Get(id)) : new List<Line>();
-
-        /// <summary>
-        /// The choices that can be chosen after all lines are spoken. May be null if the conversation simply ends.
-        /// </summary>
-        public ChoiceCollection Choices
-        {
-            get
-            {
-                // No choices, return nothing
-                if (choices.Count == 0)
-                    return null;
-
-                if (_choicesBacking == null || _choicesBacking.Choices.Count != choices.Count)
-                {
-                    List<Choice> fill = new List<Choice>();
-
-                    foreach (ConversationChoice c in choices)
-                    {
-                        fill.Add(Choice.LineAndAction(Line.Get(c.prompt),
-                            c.nextConversation, (line) => c.callback?.Invoke(this, line.ID)));
-                    }
-
-                    _choicesBacking = new ChoiceCollection(fill);
-                }
-
-                return _choicesBacking;
-            }
-        }
         /// <summary>
         /// Called when this conversation is started
         /// </summary>
-        public ConversationCallback OnStarted;
+        public ConversationCallback onStarted;
+
+        // TODO: Add ConversationCallbacks to each line? May not be needed due to Line.OnOpen, but still
+        [SerializeReference]
+        public List<IConversationElement> elements;
+        //public Conversation nextConversation;
+        public List<ConversationChoice> choices;
+
         /// <summary>
         /// Called when the last line of this conversation is finished, or when a choice is chosen.
         /// </summary>
-        public ConversationCallback OnFinished;
-
+        public ConversationCallback onFinished;
 
         /// <summary>
         /// Starts this conversation. Analogous to Open();
@@ -68,9 +35,12 @@ namespace BeyondTheDoor
 
         public void Open()
         {
+            UI.DialogueGUI.Open(this);
+
+            /*
             HookUpLines();
             List<Line> lines = Lines;
-            OnStarted?.Invoke(this, lines.Count > 0 ? lines[0].ID : 0);
+            onStarted?.Invoke(this, lines.Count > 0 ? lines[0].ID : 0);
             if (lines.Count > 0)
                 lines[0].Open();
             else if (Choices != null)
@@ -91,48 +61,122 @@ namespace BeyondTheDoor
                 // There are no choices - we are finished when the last line is closed
                 HookUpLineFinishedCallback(lines[lines.Count - 1]);
             }
+            */
         }
 
-        private void HookUpLines()
+        /// <summary>
+        /// Starts this Conversation after the current one completes.
+        /// </summary>
+        public void Enqueue()
         {
-            List<Line> _linesBacking = Lines;
-
-            // Make the lines lead into each other
-            if (_linesBacking.Count > 1)
-            {
-                for (int i = 0; i < _linesBacking.Count - 1; i++)
-                    _linesBacking[i].Then(_linesBacking[i + 1]);
-                // Make the last one lead to the choices/next convo (can't use ?? here)
-                _linesBacking[_linesBacking.Count - 1].Then(nextConversation == null ? Choices : nextConversation);
-            }
-        }
-
-        private void HookUpLineFinishedCallback(Line line)
-        {
-            // Un and re-sub to prevent double calling
-            line.OnClose -= OnLastLineFinished;
-            line.OnClose += OnLastLineFinished;
-        }
-
-        private void HookUpLineFinishedCallback(Choice line)
-        {
-            // Un and re-sub to prevent double calling
-            line.OnChosen -= OnLastLineFinished;
-            line.OnChosen += OnLastLineFinished;
-        }
-
-        private void OnLastLineFinished(Line line)
-        {
-            OnFinished?.Invoke(this, line.ID);
-        }
-
-
-        [Serializable]
-        internal class ConversationChoice
-        {
-            public LineID prompt;
-            public Conversation nextConversation;
-            public ConversationCallback callback;
+            DialogueGUI.Enqueue(this);
         }
     }
+
+    [Serializable]
+    public class ConversationChoice
+    {
+        public LineID prompt;
+        public Conversation nextConversation;
+        public ConversationCallback callback;
+    }
+
+
+    #region Conversation Elements
+    public interface IConversationElement { }
+
+#pragma warning disable CS0414 // The field '_Element.name' is assigned but its value is never used
+
+    [Serializable]
+    public class DialogueElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "Dialogue";
+        public LineID lineID;
+
+        public DialogueElement(LineID lineID)
+        {
+            this.lineID = lineID;
+        }
+    }
+
+    [Serializable]
+    public class IfElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "If";
+        public string condition;
+
+        public IfElement(string condition)
+        {
+            // Remove all quotes
+            this.condition = condition.Trim().Replace("\"", string.Empty);
+        }
+    }
+
+    [Serializable]
+    public class ElifElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "Elif";
+        public string condition;
+
+        public ElifElement(string condition)
+        {
+            // Remove all quotes
+            this.condition = condition.Trim().Replace("\"", string.Empty);
+        }
+    }
+
+    [Serializable]
+    public class ElseElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "Else";
+    }
+
+    [Serializable]
+    public class EndIfElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "EndIf";
+    }
+
+    [Serializable]
+    public class GotoElement : IConversationElement
+    {
+        [HideInInspector, SerializeField]
+        string name = "Goto";
+        public Conversation conversation;
+
+        [HideInInspector]
+        public string goofyWorkaroundConversationName;
+
+        public GotoElement(string conversationName)
+        {
+            goofyWorkaroundConversationName = conversationName;
+        }
+
+        public GotoElement(Conversation conversation)
+        {
+            this.conversation = conversation;
+        }
+    }
+
+
+#pragma warning restore CS0414 // The field '_Element.name' is assigned but its value is never used
+
+    /*
+    Dialogue,
+    ConversationStart,
+    ConversationEnd,
+    If,
+    Elif,
+    Else,
+    EndIf,
+    Choice,
+    ChoicePrompt,
+    Goto,
+    */
+    #endregion
 }

@@ -49,10 +49,10 @@ namespace BeyondTheDoor
     /// </summary>
     public enum Stage
     {
+        MorningSupplies,
         SpeakingWithParty,
         SendingScavengers,
         FixingOvercrowding,
-        RadioLoreTime,
         DealingWithArrival
     }
 
@@ -60,10 +60,10 @@ namespace BeyondTheDoor
     {
         public static string ToTimeString(this Stage stage) => stage switch
         {
+            Stage.MorningSupplies => "Dawn",
             Stage.SpeakingWithParty => "Morning",
             Stage.SendingScavengers => "Noon",
             Stage.FixingOvercrowding => "Afternoon",
-            Stage.RadioLoreTime => "Evening",
             Stage.DealingWithArrival => "Door",
             _ => throw new System.NotImplementedException()
         };

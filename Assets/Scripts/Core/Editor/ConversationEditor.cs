@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 namespace BeyondTheDoor.Editor
 {
@@ -23,16 +24,18 @@ namespace BeyondTheDoor.Editor
             Conversation con = (Conversation)target;
             serializedObject.Update();
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.lines)), true);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.OnStarted)));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.OnFinished)));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.nextConversation)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.onStarted)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.elements)), true);
+            DrawElementAddButtons(con);
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.onFinished)));
+            //EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.nextConversation)));
 
             // Grey out choices if this conversation just moves on
-            if (con.nextConversation != null)
-                GUI.enabled = false;
+            //if (con.nextConversation != null)
+            //    GUI.enabled = false;
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(Conversation.choices)), true);
-            GUI.enabled = true;
+            //GUI.enabled = true;
 
             serializedObject.ApplyModifiedProperties();
 
@@ -42,26 +45,26 @@ namespace BeyondTheDoor.Editor
             EditorGUILayout.LabelField("======= CONVERSATION START =======", EditorStyles.largeLabel);
             GUI.enabled = false;
 
-            if (con.OnStarted != null)
+            if (con.onStarted != null)
             {
-                string text = $"<color={EditorColours.TextColour}>Calls </color>";
-                text += $"<color={EditorColours.CallbackColour}>{con.OnStarted.name}</color>";
+                string text = EditorColours.Text("Calls ");
+                text += EditorColours.Callback(con.onStarted.name);
                 EditorGUILayout.TextArea(text, style);
             }
 
-            if (con.lines != null)
+            if (con.elements != null)
             {
-                if (con.lines.Count > 0)
+                if (con.elements.Count > 0)
                 {
-                    EditorGUILayout.LabelField("=== Character Lines ===", EditorStyles.boldLabel);
-                    foreach (LineID line in con.lines)
+                    EditorGUILayout.LabelField("=== Conversation Elements ===", EditorStyles.boldLabel);
+                    foreach (IConversationElement element in con.elements)
                     {
-                        DisplayLine(Line.Get(line));
-                        EditorGUILayout.Space(3f);
+                        DisplayElement(element);
                     }
                 }
             }
 
+            /*
             if (con.nextConversation != null)
             {
                 string text = "";
@@ -83,29 +86,80 @@ namespace BeyondTheDoor.Editor
 
                 EditorGUILayout.TextArea(text, style);
             }
-            else
+            */
+            //else
+            //{
+            if (con.choices != null && con.choices.Count > 0)
             {
-                if (con.choices != null && con.choices.Count > 0)
+                EditorGUILayout.LabelField("=== Player Choices ===", EditorStyles.boldLabel);
+                foreach (ConversationChoice choice in con.choices)
                 {
-                    EditorGUILayout.LabelField("=== Player Choices ===", EditorStyles.boldLabel);
-                    foreach (Conversation.ConversationChoice choice in con.choices)
-                    {
-                        DisplayChoice(choice);
-                    }
+                    DisplayChoice(choice);
                 }
             }
+            //}
 
-            if (con.OnFinished != null)
+            if (con.onFinished != null)
             {
-                string text = $"<color={EditorColours.TextColour}>Calls </color>";
-                text += $"<color={EditorColours.CallbackColour}>{con.OnFinished.name}</color>";
+                string text = EditorColours.Text("Calls ");
+                text += EditorColours.Callback(con.onFinished.name);
+                EditorGUILayout.TextArea(text, style);
                 if (con.choices != null && con.choices.Count > 0)
-                    text += $"<color={EditorColours.TextColour}> (Once choice is selected)</color>";
+                    text += EditorColours.Text(" (Once choice is selected)");
                 EditorGUILayout.TextArea(text, style);
             }
 
             GUI.enabled = true;
             EditorGUILayout.LabelField("======= CONVERSATION END =======", EditorStyles.largeLabel);
+        }
+
+        private void DisplayElement(IConversationElement element)
+        {
+            if (element == null)
+                EditorGUILayout.TextArea("null (codegen?)");
+            else
+            {
+                if (element is DialogueElement dialogue)
+                {
+                    DisplayLine(Line.Get(dialogue.lineID));
+                    EditorGUILayout.Space(3f);
+                }
+                else if (element is IfElement _if)
+                    DisplayConditional("IF " + _if.condition + ":");
+                else if (element is ElifElement _elif)
+                    DisplayConditional("ELIF " + _elif.condition + ":");
+                else if (element is ElseElement)
+                    DisplayConditional("ELSE:");
+                else if (element is EndIfElement)
+                    DisplayConditional("ENDIF");
+                else if (element is GotoElement _goto)
+                    DisplayGoto(_goto);
+            }
+        }
+
+        private void DrawElementAddButtons(Conversation con)
+        {
+            Rect rect = EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("Add Dialogue"))
+            {
+                // TODO: Replace line with None
+                //throw new System.NotImplementedException("ADD NONE CHARACTER LINE HERE");
+                con.elements.Add(new DialogueElement(0));
+            }
+            if (GUILayout.Button("Add Goto", GUILayout.Width(Mathf.Max(rect.width / 4f, 120f))))
+                con.elements.Add(new GotoElement(string.Empty));
+            EditorGUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Add If"))
+                con.elements.Add(new IfElement(string.Empty));
+            if (GUILayout.Button("Add ElIf"))
+                con.elements.Add(new ElifElement(string.Empty));
+            if (GUILayout.Button("Add Else"))
+                con.elements.Add(new ElseElement());
+            if (GUILayout.Button("Add EndIf"))
+                con.elements.Add(new EndIfElement());
+            GUILayout.EndHorizontal();
         }
 
         void DisplayLine(Line line)
@@ -116,7 +170,19 @@ namespace BeyondTheDoor.Editor
                 EditorGUILayout.TextArea(FormatCharacterMessage(line), style);
         }
 
-        void DisplayChoice(Conversation.ConversationChoice choice)
+        void DisplayConditional(string text)
+        {
+            EditorGUILayout.TextArea(EditorColours.Conditional(text), style);
+        }
+
+        void DisplayGoto(GotoElement _goto)
+        {
+            string text = EditorColours.Goto("GOTO -> ") + "'" +
+                EditorColours.ConversationName(_goto.conversation.name) + "'";
+            EditorGUILayout.TextArea(text, style);
+        }
+
+        void DisplayChoice(ConversationChoice choice)
         {
             if (choice == null)
                 EditorGUILayout.TextArea("null choice");
@@ -128,27 +194,25 @@ namespace BeyondTheDoor.Editor
                     EditorGUILayout.TextArea("Invalid Choice");
                     return;
                 }
-                string text = $"<color={EditorColours.ChoicePromptColour}>{prompt.text}</color>";
+                string text = EditorColours.ChoicePrompt(prompt.text);
                 if (choice.callback != null)
                 {
                     text += "\n -> ";
-                    text += $"<color={EditorColours.TextColour}>Calls </color>";
-                    text += $"<color={EditorColours.CallbackColour}>{choice.callback.name}</color>";
+                    text += EditorColours.Text("Calls ");
+                    text += EditorColours.Callback(choice.callback.name);
                 }
 
                 text += "\n -> ";
                 if (choice.nextConversation == null)
-                    text += $"<color={EditorColours.TextColour}>Conversation Ends</color>";
+                    text += EditorColours.Text("Conversation Ends");
                 else
                 {
-                    text += $"<color={EditorColours.TextColour}>Start Conversation</color> " +
-                        $"'<color={EditorColours.ConversationNameColour}>" +
-                        //$"<a href=\"{AssetDatabase.GetAssetPath(choice.nextConversation)}\">" +
-                        choice.nextConversation.name + "</color>'";
-                    if (choice.nextConversation.lines != null && choice.nextConversation.lines.Count > 0)
+                    text += EditorColours.Text("Start Conversation") + "'" +
+                        EditorColours.ConversationName(choice.nextConversation.name) + "'";
+                    if (choice.nextConversation.elements != null && choice.nextConversation.elements.Count > 0)
                     {
-                        Line line = Line.Get(choice.nextConversation.lines[0]);
-                        text += $"\n    -> {FormatCharacterMessage(line)}";
+                        text += $"\n    -> ";
+                        DisplayElement(choice.nextConversation.elements[0]);
                         text += "\n    ... (cont'd)";
                     }
                     else

@@ -3343,6 +3343,122 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048618422}
   m_CullTransparentMesh: 1
+--- !u!1 &1118220817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1118220819}
+  - component: {fileID: 1118220818}
+  m_Layer: 0
+  m_Name: Day 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1118220818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118220817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420b30bb7130dab4db0dedd9a1327005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters:
+  - id: -1608546876
+    wakingUp: {fileID: 0}
+    mightSendScavenging: {fileID: 11400000, guid: c73f078aadd6b8f42b9ac83c9345a809, type: 2}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: 62034829995d0ad478b96fb32faef5c8, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 62034829995d0ad478b96fb32faef5c8, type: 2}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: 1eff85bda7de77440bbd0e0cd6e5c0ad, type: 2}
+  - id: 1502599511
+    wakingUp: {fileID: 11400000, guid: 0fa71037c8ce80a4da1e1fdc04c088f8, type: 2}
+    mightSendScavenging: {fileID: 11400000, guid: c73f078aadd6b8f42b9ac83c9345a809, type: 2}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: 575282495
+    wakingUp: {fileID: 0}
+    mightSendScavenging: {fileID: 0}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: 1eff85bda7de77440bbd0e0cd6e5c0ad, type: 2}
+  - id: 291594208
+    wakingUp: {fileID: 0}
+    mightSendScavenging: {fileID: 0}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: 1eff85bda7de77440bbd0e0cd6e5c0ad, type: 2}
+  checkOutside: {fileID: 11400000, guid: c96ffd0e5c8e9ac4bb99eb60f2b470c8, type: 2}
+  radio: {fileID: 11400000, guid: 1efa25e39ee6bb744864eec15fad4491, type: 2}
+  tv: {fileID: 11400000, guid: 0438de79bd2700247a1260fa560600f2, type: 2}
+  checkSupplies: {fileID: 11400000, guid: 1c0fd02d66b04d04d9ef760c09305c9d, type: 2}
+  enteringScavenging: {fileID: 11400000, guid: e2438324dc5dbd14596671beffacf1c3, type: 2}
+  enteringOvercrowding: {fileID: 0}
+  personArrivedAtDoor: {fileID: 11400000, guid: 59dec2bb40a0dc242aa69177eadb7cd8, type: 2}
+  reactionToPlayerStayingSilent: {fileID: 11400000, guid: 67c32dba6d2ee614882615f1b41b2185, type: 2}
+  peephole: {fileID: 11400000, guid: ccf3415a7a05c484b96d8c66c3aab7d5, type: 2}
+  q_whoAreYou: {fileID: 11400000, guid: 1b9258cd42a2555479536c367d56a0f5, type: 2}
+  q_whatDoYouWant: {fileID: 11400000, guid: ef9467d28d37d624d9711ec63e8c437e, type: 2}
+  q_whyShouldILetYouIn: {fileID: 11400000, guid: 67f8354f1a1850649b2765f237a973b8, type: 2}
+  q_howCanYouHelpMe: {fileID: 11400000, guid: d70bebfee16c2104eae7c40d49da16a9, type: 2}
+  letPersonInside: {fileID: 11400000, guid: 6b549295ffcc83c40ade6584501914e0, type: 2}
+  keepPersonOutside: {fileID: 11400000, guid: 4e261c02f2b4afa4fbfc5c93178418a5, type: 2}
+--- !u!4 &1118220819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118220817}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1127855926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3625,6 +3741,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1222301960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222301962}
+  - component: {fileID: 1222301961}
+  m_Layer: 0
+  m_Name: Day 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1222301961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222301960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e3f5770b8e61b4885226a687f8bf5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters:
+  - id: -1608546876
+    wakingUp: {fileID: 11400000, guid: 222f94ce5bc0b86478bf69a95ccf8bca, type: 2}
+    mightSendScavenging: {fileID: 0}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 11400000, guid: 2f138352f34e32348888ef3453dcf79b, type: 2}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: 1502599511
+    wakingUp: {fileID: 0}
+    mightSendScavenging: {fileID: 0}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  checkOutside: {fileID: 11400000, guid: 76529c4c061d05d4e852fe51b9d51cdb, type: 2}
+  radio: {fileID: 11400000, guid: 417bbe1af9ddbbd4487315b63112c25e, type: 2}
+  tv: {fileID: 11400000, guid: 96e2f3ea629f7a94b818b714bed4ba31, type: 2}
+  checkSupplies: {fileID: 11400000, guid: 3c4e81cb2905eff46a38ffbd42b0b27f, type: 2}
+  enteringScavenging: {fileID: 11400000, guid: fffed9722ca60be4ab861e02ff5b34c5, type: 2}
+  enteringOvercrowding: {fileID: 0}
+  personArrivedAtDoor: {fileID: 11400000, guid: d86d1340868809c4caa7f8aace8798e2, type: 2}
+  reactionToPlayerStayingSilent: {fileID: 0}
+  peephole: {fileID: 0}
+  q_whoAreYou: {fileID: 11400000, guid: e1969790a87f12e45912ee913a287d45, type: 2}
+  q_whatDoYouWant: {fileID: 11400000, guid: 874c728190056f1408aaa004cef45cb6, type: 2}
+  q_whyShouldILetYouIn: {fileID: 11400000, guid: 1c8c508a37e0f6147864bbbbe9333aef, type: 2}
+  q_howCanYouHelpMe: {fileID: 11400000, guid: 1c8c508a37e0f6147864bbbbe9333aef, type: 2}
+  letPersonInside: {fileID: 11400000, guid: c1f348a87413b2d4eb92244e5a857241, type: 2}
+  keepPersonOutside: {fileID: 11400000, guid: a4a30d13c27e64448ba75907c86fdd05, type: 2}
+--- !u!4 &1222301962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222301960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1233891051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6720,9 +6924,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcad47c35136f5b46ba672e0004db791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characters: []
+  checkOutside: {fileID: 0}
+  radio: {fileID: 0}
+  tv: {fileID: 0}
+  checkSupplies: {fileID: 0}
+  enteringScavenging: {fileID: 0}
+  enteringOvercrowding: {fileID: 0}
+  personArrivedAtDoor: {fileID: 0}
+  reactionToPlayerStayingSilent: {fileID: 0}
+  peephole: {fileID: 0}
+  q_whoAreYou: {fileID: 0}
+  q_whatDoYouWant: {fileID: 0}
+  q_whyShouldILetYouIn: {fileID: 0}
+  q_howCanYouHelpMe: {fileID: 0}
+  letPersonInside: {fileID: 0}
+  keepPersonOutside: {fileID: 0}
   wakeUpConvo: {fileID: 11400000, guid: 011044a72cadd714da6e89d34957ea84, type: 2}
-  cyaLaterConvo: {fileID: 11400000, guid: ac2516a085ede054488e430313fa7ea1, type: 2}
-  arrivingConvo: {fileID: 11400000, guid: 67a02acaa109581459587c61be0f2f5d, type: 2}
+  cyaLaterConvo: {fileID: 0}
+  arrivingConvo: {fileID: 0}
   activateJokeEnding: {fileID: 11400000, guid: 3c286f018d00bfd40a31428c9540939f, type: 2}
 --- !u!4 &2027103834
 Transform:
@@ -7063,6 +7283,108 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123263812}
   m_CullTransparentMesh: 1
+--- !u!1 &2143297685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143297687}
+  - component: {fileID: 2143297686}
+  m_Layer: 0
+  m_Name: day 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2143297686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143297685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63a9d649a3f1f34c82b3fd7b3789ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters:
+  - id: 1502599511
+    wakingUp: {fileID: 11400000, guid: eb5d608e17c4b5a4f800458a1f09ff0d, type: 2}
+    mightSendScavenging: {fileID: 11400000, guid: fa9de103326588743b1b185855dcfaa7, type: 2}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 53426943d0c52a645bbeb962c7d54b59, type: 2}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: d673113d45710344bb6c40639f9ecfb4, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 6cd571533c39170449a867a546aa2a58, type: 2}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: 7e43725282de9c64c99d324aa57e1625, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: 6cd571533c39170449a867a546aa2a58, type: 2}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: -1608546876
+    wakingUp: {fileID: 11400000, guid: ac3b2651c05214c4db83a3508120447a, type: 2}
+    mightSendScavenging: {fileID: 11400000, guid: 4630b35b834a99348b260d70d8156160, type: 2}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 53426943d0c52a645bbeb962c7d54b59, type: 2}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
+    diedWhileScavenging: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: 990541821
+    wakingUp: {fileID: 0}
+    mightSendScavenging: {fileID: 0}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  checkOutside: {fileID: 11400000, guid: 228743c3b21e1af45baa93b0468abef6, type: 2}
+  radio: {fileID: 11400000, guid: 0f42cea38ada9fb439c397fa3196eba5, type: 2}
+  tv: {fileID: 11400000, guid: 0e9aab35dca5d0846bb560afc610adb3, type: 2}
+  checkSupplies: {fileID: 11400000, guid: 77f434fb708d0304eb17f8799ce9e36d, type: 2}
+  enteringScavenging: {fileID: 11400000, guid: aa813bff1be714c4d8a48c64c9b447b7, type: 2}
+  enteringOvercrowding: {fileID: 0}
+  personArrivedAtDoor: {fileID: 11400000, guid: 5a985f88a322e3c448614d184e93e38e, type: 2}
+  reactionToPlayerStayingSilent: {fileID: 11400000, guid: 244982fe2f38dfd45a1fd045e103e13b, type: 2}
+  peephole: {fileID: 11400000, guid: 9aa3a5402bcc7704a8b9099a389699c2, type: 2}
+  q_whoAreYou: {fileID: 11400000, guid: 8671ed93c09e1aa448a4afff9a89ceb7, type: 2}
+  q_whatDoYouWant: {fileID: 11400000, guid: d4e5e38e82d6c824896cd313d14d24f3, type: 2}
+  q_whyShouldILetYouIn: {fileID: 11400000, guid: 420f1549d9abee143b64982f5356fdce, type: 2}
+  q_howCanYouHelpMe: {fileID: 11400000, guid: b55d60f473319d047b233f254ac714d7, type: 2}
+  letPersonInside: {fileID: 11400000, guid: 981697626de359a4791b1be90247c566, type: 2}
+  keepPersonOutside: {fileID: 11400000, guid: 2a949746b73e4b2438b7b9a3e6f126b9, type: 2}
+--- !u!4 &2143297687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143297685}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4328302293050042312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7328,6 +7650,81 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74e8094c0db65244d8fdb01ffd9a5f62, type: 3}
+--- !u!114 &4679808764190264952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313287132290736208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2308edb538c0c484989a49c545341400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters:
+  - id: -1608546876
+    wakingUp: {fileID: 0}
+    mightSendScavenging: {fileID: 0}
+    mightNotSendScavenging: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  checkOutside: {fileID: 11400000, guid: b67a9ddc034e7504b9ae8fa4c58e6da0, type: 2}
+  radio: {fileID: 11400000, guid: 8cc21a2d78b6f4545ae628de09f2cc5c, type: 2}
+  tv: {fileID: 11400000, guid: bc235b95e2badcb4cb84df4d6394ac7b, type: 2}
+  checkSupplies: {fileID: 11400000, guid: 9a9698a180e57184ba93eaba09587a1b, type: 2}
+  enteringScavenging: {fileID: 0}
+  enteringOvercrowding: {fileID: 0}
+  personArrivedAtDoor: {fileID: 11400000, guid: 20a40f2aedc784444b7ded9cd3387dcd, type: 2}
+  reactionToPlayerStayingSilent: {fileID: 0}
+  peephole: {fileID: 0}
+  q_whoAreYou: {fileID: 11400000, guid: 68aa156e03b856f41b6cccf6fd092cab, type: 2}
+  q_whatDoYouWant: {fileID: 11400000, guid: 6f1f38f7b53ae164f9fc8b728ea54964, type: 2}
+  q_whyShouldILetYouIn: {fileID: 11400000, guid: c36eeafa5e2d48345ad8d129fc441a9b, type: 2}
+  q_howCanYouHelpMe: {fileID: 11400000, guid: e2fe91c112a7c03479f420b6a3cf57ea, type: 2}
+  letPersonInside: {fileID: 11400000, guid: fc2db133625b9f74fbf609d7545ab435, type: 2}
+  keepPersonOutside: {fileID: 11400000, guid: c67cecd7510f43c4398b5a268a86a5dd, type: 2}
+  wakeUpDay1: {fileID: 11400000, guid: e54ade44345237e49834b2ae7c8e6d49, type: 2}
+--- !u!1 &8313287132290736208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8404669417152202173}
+  - component: {fileID: 4679808764190264952}
+  m_Layer: 0
+  m_Name: day 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8404669417152202173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313287132290736208}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7337,3 +7734,7 @@ SceneRoots:
   - {fileID: 399599420}
   - {fileID: 115838556}
   - {fileID: 2027103834}
+  - {fileID: 8404669417152202173}
+  - {fileID: 1222301962}
+  - {fileID: 1118220819}
+  - {fileID: 2143297687}
