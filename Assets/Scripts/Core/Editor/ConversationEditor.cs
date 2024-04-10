@@ -177,8 +177,11 @@ namespace BeyondTheDoor.Editor
 
         void DisplayGoto(GotoElement _goto)
         {
-            string text = EditorColours.Goto("GOTO -> ") + "'" +
-                EditorColours.ConversationName(_goto.conversation.name) + "'";
+            string text = EditorColours.Goto("GOTO -> ");
+            if (_goto.conversation != null)
+                text += "'" + EditorColours.ConversationName(_goto.conversation.name) + "'";
+            else
+                text += "null conversation";
             EditorGUILayout.TextArea(text, style);
         }
 

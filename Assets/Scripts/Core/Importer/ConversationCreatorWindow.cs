@@ -18,7 +18,7 @@ namespace BeyondTheDoor.Importer
         List<ConversationRange> tsvConversations;
 
         [SerializeField]
-        List<Conversation> convosToReimport = new List<Conversation>();
+        Conversation[] convosToReimport;
         SerializedObject serializedObject;
         SerializedProperty prop;
 
@@ -71,13 +71,16 @@ namespace BeyondTheDoor.Importer
             EditorGUILayout.PropertyField(prop, true);
             serializedObject.ApplyModifiedProperties();
 
-            if (convosToReimport == null || convosToReimport.Count == 0)
+            if (convosToReimport == null || convosToReimport.Length == 0)
                 GUI.enabled = false;
 
             if (GUILayout.Button("Reimport Conversations"))
-                ReimportConversations();
+                ReimportConversations(convosToReimport);
 
             GUI.enabled = true;
+
+            if (GUILayout.Button("Reimport All Conversations"))
+                ReimportConversations(FindAllScriptableObjectsOfType<Conversation>());
         }
 
         void ProcessTSVButtons()
@@ -228,19 +231,21 @@ namespace BeyondTheDoor.Importer
             AssetDatabase.Refresh();
         }
 
-        void ReimportConversations()
+        void ReimportConversations(Conversation[] toReimport)
         {
             // Yes, I'm copying the whole function. No, I don't care right now.
 
             Conversation[] allConvos = FindAllScriptableObjectsOfType<Conversation>();
             
             Dictionary<string, Conversation> allConversationsDict = new Dictionary<string, Conversation>();
+            foreach (Conversation convo in allConvos)
+                allConversationsDict.Add(convo.name, convo);
+
 
             List<string> allTSVConvoNames = new List<string>();
             foreach (ConversationRange convoRange in tsvConversations)
                 allTSVConvoNames.Add(convoRange.fileName);
 
-            List<Conversation> toReimport = convosToReimport;
             List<RawConversationData> matchingConvoData = new List<RawConversationData>();
 
             foreach (Conversation convo in toReimport)
@@ -263,7 +268,7 @@ namespace BeyondTheDoor.Importer
             }
 
             // Link up everything
-            for (int i = 0; i < toReimport.Count; i++)
+            for (int i = 0; i < toReimport.Length; i++)
             {
                 LinkCreatedConversation(matchingConvoData[i], toReimport[i], allConversationsDict);
                 //AssetDatabase.SaveAssetIfDirty(toReimport[i]);
@@ -288,12 +293,35 @@ namespace BeyondTheDoor.Importer
                 }
             }
 
-            convo.choices = new List<ConversationChoice>();
-            foreach (RawChoice rawChoice in data.choices)
+            // No choices, let's make them
+            if (convo.choices == null)
             {
-                Conversation next = TryGetMatchingConversation(rawChoice.nextConversation, allConversations);
-                ConversationChoice choice = new ConversationChoice { prompt = rawChoice.prompt, nextConversation = next };
-                convo.choices.Add(choice);
+                convo.choices = new List<ConversationChoice>();
+                foreach (RawChoice rawChoice in data.choices)
+                {
+                    Conversation next = TryGetMatchingConversation(rawChoice.nextConversation, allConversations);
+                    ConversationChoice choice = new ConversationChoice { prompt = rawChoice.prompt, nextConversation = next };
+                    convo.choices.Add(choice);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < data.choices.Count; i++)
+                {
+                    Conversation next = TryGetMatchingConversation(data.choices[i].nextConversation, allConversations);
+                    if (i < convo.choices.Count)
+                    {
+                        // Replace just the variables to preserve any callbacks
+                        convo.choices[i].prompt = data.choices[i].prompt;
+                        convo.choices[i].nextConversation = next;
+                    }
+                    else
+                    {
+                        // Add new ones once we've reached the end
+                        ConversationChoice choice = new ConversationChoice { prompt = data.choices[i].prompt, nextConversation = next };
+                        convo.choices.Add(choice);
+                    }
+                }
             }
         }
 

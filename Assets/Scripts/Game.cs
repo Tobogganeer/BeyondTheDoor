@@ -5,10 +5,11 @@ using UnityEngine;
 using BeyondTheDoor;
 using BeyondTheDoor.SaveSystem;
 using UnityEngine.Events;
+using BeyondTheDoor.UI;
 
 public class Game : MonoBehaviour
 {
-    private static Game instance;
+    public static Game instance;
     private void Awake()
     {
         instance = this;
@@ -19,15 +20,41 @@ public class Game : MonoBehaviour
     [Header("Questions")]
     public Conversation q_addToScavengeParty;
     public Conversation q_removeFromScavengeParty;
+    public Conversation q_door_options;
+    public Conversation q_door_askQuestions;
+    public Conversation q_door_openOrKeepClosed;
+    public Conversation q_makeOCDecision;
+    public Conversation q_kickCharacterOut;
+
+    [Header("Conversations")]
+    public Conversation advance;
+    public Conversation confirmScavenge;
+    public Conversation confirmNoScavenge;
 
     [Header("Input")]
     [SerializeField] private ConversationCallback advanceCallback;
+    [SerializeField] private ConversationCallback scavengeAdvanceCallback;
     [SerializeField] private ConversationCallback openDoorCallback;
     [SerializeField] private ConversationCallback leaveDoorClosedCallback;
+    [Space]
     [SerializeField] private ConversationCallback addToScavengePartyCallback;
     [SerializeField] private ConversationCallback removeFromScavengePartyCallback;
-    [SerializeField] private ConversationCallback sendToScavenge_withShotgun;
-    [SerializeField] private ConversationCallback sendToScavenge_noShotgun;
+    [SerializeField] private ConversationCallback sendToScavenge_withShotgunCallback;
+    [SerializeField] private ConversationCallback sendToScavenge_noShotgunCallback;
+    [Space]
+    // These will call the appropriate response from the DayBehaviour
+    [SerializeField] private ConversationCallback asked_q_whoAreYouCallback;
+    [SerializeField] private ConversationCallback asked_q_whatDoYouWantCallback;
+    [SerializeField] private ConversationCallback asked_q_whyShouldILetYouInCallback;
+    [SerializeField] private ConversationCallback asked_q_howCanYouHelpMeCallback;
+    [Space]
+    [SerializeField] private ConversationCallback makingOCDecisionCallback;
+    [SerializeField] private ConversationCallback kickCharacterOutCallback;
+    [Space]
+    [SerializeField] private ConversationCallback staySilentCallback;
+    [SerializeField] private ConversationCallback peepholeCallback;
+    [Space]
+    [SerializeField] private ConversationCallback clearQueueCallback;
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
@@ -118,8 +145,26 @@ public class Game : MonoBehaviour
         leaveDoorClosedCallback.Callback += (conv, line) => LeaveDoorClosed();
         addToScavengePartyCallback.Callback += (conv, line) => AddToScavengeParty(Character.Current);
         removeFromScavengePartyCallback.Callback += (conv, line) => RemoveFromScavengeParty(Character.Current);
-        sendToScavenge_withShotgun.Callback += (conv, line) => SendToScavenge(true);
-        sendToScavenge_noShotgun.Callback += (conv, line) => SendToScavenge(false);
+        sendToScavenge_withShotgunCallback.Callback += (conv, line) => SendToScavenge(true);
+        sendToScavenge_noShotgunCallback.Callback += (conv, line) => SendToScavenge(false);
+        scavengeAdvanceCallback.Callback += (conv, line) => ScavengeAdvance();
+
+        asked_q_whoAreYouCallback.Callback += (conv, line) => DayBehaviour.Current.q_whoAreYou.TryStart();
+        asked_q_whatDoYouWantCallback.Callback += (conv, line) => DayBehaviour.Current.q_whatDoYouWant.TryStart();
+        asked_q_whyShouldILetYouInCallback.Callback += (conv, line) => DayBehaviour.Current.q_whyShouldILetYouIn.TryStart();
+        asked_q_howCanYouHelpMeCallback.Callback += (conv, line) => DayBehaviour.Current.q_howCanYouHelpMe.TryStart();
+
+        staySilentCallback.Callback += (conv, line) => DayBehaviour.Current.reactionToPlayerStayingSilent.TryStart();
+        peepholeCallback.Callback += (conv, line) => DayBehaviour.Current.peephole.TryStart();
+
+        makingOCDecisionCallback.Callback += (conv, line) =>
+        {
+            DayBehaviour.Current.Characters[Character.Current.ID].tryingToKickOut.TryStart();
+            q_kickCharacterOut.Enqueue();
+        };
+        kickCharacterOutCallback.Callback += (conv, line) => KickOutCharacter(Character.Current);
+
+        clearQueueCallback.Callback += (conv, line) => DialogueGUI.ClearQueue();
 
         // Hook up all characters to the scavenge adding/removal
         foreach (Character character in Character.All.Values)
@@ -309,13 +354,19 @@ public class Game : MonoBehaviour
     public static void OpenDoor()
     {
         ArrivingCharacter.ChangeStatus(CharacterStatus.InsideCabin);
+        if (ArrivingCharacter == Character.Hal)
+            Character.Sal.ChangeStatus(CharacterStatus.InsideCabin);
         OnDoorOpened?.Invoke();
+        DayBehaviour.Current.letPersonInside.TryStart();
     }
 
     public static void LeaveDoorClosed()
     {
         ArrivingCharacter.ChangeStatus(CharacterStatus.LeftOutside);
+        if (ArrivingCharacter == Character.Hal)
+            Character.Sal.ChangeStatus(CharacterStatus.LeftOutside);
         OnDoorLeftClosed?.Invoke();
+        DayBehaviour.Current.keepPersonOutside.TryStart();
     }
 
     /// <summary>
@@ -326,12 +377,12 @@ public class Game : MonoBehaviour
     {
         if (ScavengeParty.Contains(character))
         {
-            DayBehaviour.Current.Characters[character.ID].mightNotSendScavenging.Start();
+            DayBehaviour.Current.Characters[character.ID]?.beforeUnscavengingChoice.TryStart();
             instance.q_removeFromScavengeParty.Enqueue();
         }
         else
         {
-            DayBehaviour.Current.Characters[character.ID].mightSendScavenging.Start();
+            DayBehaviour.Current.Characters[character.ID]?.beforeScavengingChoice.TryStart();
             instance.q_addToScavengeParty.Enqueue();
         }
     }
@@ -343,14 +394,62 @@ public class Game : MonoBehaviour
             if (SingleMemberScavengeParty)
                 ScavengeParty.Clear();
             ScavengeParty.Add(character);
+            // The twins are a combo deal
+            if (character == Character.Hal)
+                ScavengeParty.Add(Character.Sal);
+            else if (character == Character.Sal)
+                ScavengeParty.Add(Character.Hal);
+            character.Invoke_AddedToScavengeParty();
         }
     }
 
     public static void RemoveFromScavengeParty(Character character)
     {
         if (character != null && ScavengeParty.Contains(character))
+        {
             ScavengeParty.Remove(character);
+            if (character == Character.Hal)
+                ScavengeParty.Remove(Character.Sal);
+            else if (character == Character.Sal)
+                ScavengeParty.Remove(Character.Hal);
+            character.Invoke_RemovedFromScavengeParty();
+        }
     }
+
+    public static void KickOutCharacter(Character character)
+    {
+        DayBehaviour.Current.Characters[character.ID].kickedOut.TryStart();
+        character.ChangeStatus(CharacterStatus.KickedOut);
+        if (character == Character.Hal)
+            Character.Sal.ChangeStatus(CharacterStatus.KickedOut);
+        else if (character == Character.Sal)
+            Character.Hal.ChangeStatus(CharacterStatus.KickedOut);
+
+        // Advance
+        instance.advance.Enqueue();
+    }
+
+
+    private static void ScavengeAdvance()
+    {
+        // Handle sending some or no scavengers
+        if (ScavengeParty.Count == 0)
+        {
+            // Let the characters discuss this first
+            DayBehaviour.Current.sendNoScavengers.TryStart();
+            // Confirm this is what the player wants
+            instance.confirmNoScavenge.Enqueue();
+        }
+        else
+        {
+            Conversation beingSentScavenging = DayBehaviour.Current.Characters[ScavengeParty[0].ID].beingSentScavenging;
+            beingSentScavenging.TryStart();
+            // Start the default one if none is provided
+            if (beingSentScavenging == null)
+                instance.confirmScavenge.Start();
+        }
+    }
+
 
     /// <summary>
     /// Sends out the current scavenging party.
@@ -370,10 +469,14 @@ public class Game : MonoBehaviour
             // Send all scavengers out
             foreach (Character scavenger in ScavengeParty)
                 scavenger.ChangeStatus(sendingShotgun ? CharacterStatus.ScavengingWithShotgun : CharacterStatus.ScavengingDefenseless);
+
+            // Call their callbacks
+            foreach (Character scavenger in ScavengeParty)
+                scavenger.Invoke_SentToScavenge(withShotgun);
         }
 
         // Move along to the next stage
-        Advance();
+        instance.advance.Enqueue();
     }
 
     private static void DetermineScavengerFates()
@@ -386,6 +489,18 @@ public class Game : MonoBehaviour
         {
             // RIP bozo you will not be missed
             Character.Jessica.ChangeStatus(CharacterStatus.DeadWhileScavenging);
+            DayBehaviour.Current.Characters[CharacterID.Jessica].diedWhileScavenging.TryStart();
+        }
+        // Check if Hal was eaten by a bear
+        else if (ScavengeParty.Count == 2 && (ScavengeParty[0] == Character.Hal || ScavengeParty[0] == Character.Sal))
+        {
+            if (Character.Hal.Status == CharacterStatus.ScavengingDefenseless)
+            {
+                // :(
+                Character.Hal.ChangeStatus(CharacterStatus.DeadWhileScavenging);
+                Character.Sal.ChangeStatus(CharacterStatus.InsideCabin);
+                DayBehaviour.Current.Characters[CharacterID.Hal].diedWhileScavenging.TryStart();
+            }
         }
         else
         {
@@ -395,14 +510,30 @@ public class Game : MonoBehaviour
 
             Cabin.HasScavengedSuccessfully = true;
 
+            bool hadCar = Cabin.HasCar;
+
             // Welcome back valued party members
             foreach (Character scavenger in ScavengeParty)
             {
+                // Call our callbacks
+                if (scavenger.Status == CharacterStatus.ScavengingDefenseless)
+                    DayBehaviour.Current.Characters[scavenger.ID].returnedFromScavengingWithoutGun.TryStart();
+                else
+                    DayBehaviour.Current.Characters[scavenger.ID].returnedFromScavengingWithGun.TryStart();
+
                 scavenger.ChangeStatus(CharacterStatus.InsideCabin);
+                if (scavenger == Character.Hal)
+                    Character.Sal.ChangeStatus(CharacterStatus.InsideCabin);
+                else if (scavenger == Character.Sal)
+                    Character.Hal.ChangeStatus(CharacterStatus.InsideCabin);
                 // Violet gets the car
                 if (scavenger == Character.Violet)
                     Cabin.HasCar = true;
             }
+
+            // We just got the car
+            if (!hadCar && Cabin.HasCar)
+                DayBehaviour.Current.gotCar.TryStart();
         }
 
         ScavengeParty.Clear();
@@ -412,7 +543,7 @@ public class Game : MonoBehaviour
     public static void ExitToMenu()
     {
         OnGameExit?.Invoke();
-        BeyondTheDoor.UI.DialogueGUI.Close(); // Turn off the GUI if it's playing a line
+        DialogueGUI.Close(); // Turn off the GUI if it's playing a line
         Character.ResetAll(); // Reset them (doesn't really matter but meh)
 
         // Game is saved automatically

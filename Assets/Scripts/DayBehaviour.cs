@@ -20,37 +20,38 @@ public abstract class DayBehaviour : MonoBehaviour
     [SerializeField] protected CharacterInit[] _characters;
 
     [Header("Dawn/Lore")]
-// TODO: dayStarted
-    public Conversation checkOutside;
-    public Conversation radio;
-    public Conversation tv;
-    public Conversation checkSupplies;
+    public Conversation dayStarted; // DONE
+    public Conversation checkOutside; // DONE
+    public Conversation radio; // DONE
+    public Conversation tv; // DONE
+    public Conversation checkSupplies; // DONE
 
-// TODO: enteringTalking
+    [Header("Morning/Talking")]
+    public Conversation enteringTalking; // DONE
 
     [Header("Noon/Scavenging")]
-    public Conversation enteringScavenging;
-// TODO: gotCar
-// TODO: sendNoScavengers
+    public Conversation enteringScavenging; // DONE
+    public Conversation gotCar; // DONE
+    public Conversation sendNoScavengers; // DONE
 
     [Header("Afternoon/Overcrowding")]
-    public Conversation enteringOvercrowding;
+    public Conversation enteringOvercrowding; // DONE
 
     [Header("Night/Door")]
-    public Conversation personArrivedAtDoor;
+    public Conversation personArrivedAtDoor; // DONE
     [Tooltip("Optional, mainly Jessica reacting")]
-    public Conversation reactionToPlayerStayingSilent;
-    public Conversation peephole;
+    public Conversation reactionToPlayerStayingSilent; // DONE
+    public Conversation peephole; // DONE
 
     [Space]
-    public Conversation q_whoAreYou;
-    public Conversation q_whatDoYouWant;
-    public Conversation q_whyShouldILetYouIn;
-    public Conversation q_howCanYouHelpMe;
+    public Conversation q_whoAreYou; // DONE
+    public Conversation q_whatDoYouWant; // DONE
+    public Conversation q_whyShouldILetYouIn; // DONE
+    public Conversation q_howCanYouHelpMe; // DONE
 
     [Space]
-    public Conversation letPersonInside;
-    public Conversation keepPersonOutside;
+    public Conversation letPersonInside; // DONE
+    public Conversation keepPersonOutside; // DONE
 
 
     public Dictionary<CharacterID, CharacterInit> Characters { get; private set; } = new Dictionary<CharacterID, CharacterInit>();
@@ -102,21 +103,53 @@ public abstract class DayBehaviour : MonoBehaviour
     // Called every time the Character callbacks are cleared
     private void RegisterCharacterCallbacks()
     {
+        RunStageStartConversations();
+
         foreach (CharacterInit ch in _characters)
             Register(ch, Character.All[ch.id]);
     }
 
-    private void Register(CharacterInit events, Character character)
+    private void RunStageStartConversations()
     {
-        character.SpokenTo += (ch) => Run(events.wakingUp);
-        character.SentToScavenge += (ch, hasShotgun) => Run(events.beingSentScavenging);
+        switch (Stage)
+        {
+            case Stage.MorningSupplies:
+                // The day just started! Huzzah!
+                dayStarted.TryStart();
+                break;
+            case Stage.SpeakingWithParty:
+                enteringTalking.TryStart();
+                break;
+            case Stage.SendingScavengers:
+                enteringScavenging.TryStart();
+                break;
+            case Stage.FixingOvercrowding:
+                enteringOvercrowding.TryStart();
+                break;
+            case Stage.DealingWithArrival:
+                personArrivedAtDoor.TryStart();
+                break;
+        }
     }
 
-    // Used to null-check a conversation in one line
-    void Run(Conversation convo)
+
+    private void Register(CharacterInit events, Character character)
     {
-        if (convo != null)
-            convo.Start();
+        character.SpokenTo += (ch) => events.wakingUp.TryStart();
+        character.SentToScavenge += (ch, hasShotgun) => {
+            if (hasShotgun)
+                events.sentScavengingWithShotgun.TryStart();
+            else
+                events.sentScavengingWithoutShotgun.TryStart();
+
+        };
+        character.AddedToScavengeParty += (ch) => events.addedToScavengeParty.TryStart();
+        character.RemovedFromScavengeParty += (ch) => events.removedFromScavengeParty.TryStart();
+        character.ClickedOnDuringOvercrowding += (ch) => {
+            events.clickedOnDuringOvercrowding.TryStart();
+            Game.instance.q_makeOCDecision.Enqueue();
+        };
+        character.OtherCharacterArrivingAtDoor += (ch) => events.commentOnOtherPersonAtDoor.TryStart();
     }
 
 
@@ -171,44 +204,55 @@ public abstract class DayBehaviour : MonoBehaviour
         public CharacterID id;
 
         [Space]
-        public Conversation wakingUp;
+        public Conversation wakingUp; // DONE
 
         [Space]
-// TODO: beforeScavengingChoice
-// TODO: beforeUnscavengingChoice
-// TODO: addedToScavengeParty
-// TODO: removedFromScavengeParty
         [Tooltip("Started when the player will pop up the menu to send this character scavenging")]
-        public Conversation mightSendScavenging;
+        public Conversation beforeScavengingChoice; // DONE
         [Tooltip("Started when the player might choose to not send this character scavenging anymore")]
-        public Conversation mightNotSendScavenging;
+        public Conversation beforeUnscavengingChoice; // DONE
+        [Tooltip("Started after the player has added this character to the scavenge party")]
+        public Conversation addedToScavengeParty; // DONE
+        [Tooltip("Started after the player has removed this character from the scavenge party")]
+        public Conversation removedFromScavengeParty; // DONE
         [Tooltip("LINK TO 'SendWith/WithoutShotgun' or 'ConfirmScavenge'. Started when this character is getting sent out")]
-        public Conversation beingSentScavenging;
+        public Conversation beingSentScavenging; // DONE
         [Tooltip("Started after this character is sent with the shotgun, right before they leave")]
-        public Conversation sentScavengingWithShotgun;
+        public Conversation sentScavengingWithShotgun; // DONE
         [Tooltip("Started after this character is sent without the shotgun, right before they leave")]
-        public Conversation sentScavengingWithoutShotgun;
+        public Conversation sentScavengingWithoutShotgun; // DONE
 
         [Space]
         [Tooltip("Started when this character fails to return. Don't include this character in the dialogue obviously")]
-        public Conversation diedWhileScavenging;
-        public Conversation returnedFromScavengingWithGun;
-        public Conversation returnedFromScavengingWithoutGun;
+        public Conversation diedWhileScavenging; // DONE
+        public Conversation returnedFromScavengingWithGun; // DONE
+        public Conversation returnedFromScavengingWithoutGun; // DONE
 
         [Space]
         [Tooltip("Started when this character is clicked on during overcrowding")]
-        public Conversation clickedOnDuringOvercrowding;
+        public Conversation clickedOnDuringOvercrowding; // DONE
         [Tooltip("Started when the player tries to kick this character out")]
-        public Conversation tryingToKickOut;
+        public Conversation tryingToKickOut; // DONE
         [Tooltip("The last conversation after this character has been kicked out")]
-        public Conversation kickedOut;
+        public Conversation kickedOut; // DONE
 
         [Space]
-        //[Tooltip("Started when this character arrives at the door, asking to be let in.")]
-        //public Conversation arrivingAtDoor;
         [Tooltip("Started when the player clicks on this character when someone else is outside.")]
-        public Conversation commentOnOtherPersonAtDoor;
+        public Conversation commentOnOtherPersonAtDoor; // DONE
 
         public Character Character => Character.All[id];
+    }
+}
+
+public static class ConversationExtensions
+{
+    /// <summary>
+    /// Starts this conversation if it isn't null.
+    /// </summary>
+    /// <param name="convo"></param>
+    public static void TryStart(this Conversation convo)
+    {
+        if (convo != null)
+            convo.Start();
     }
 }

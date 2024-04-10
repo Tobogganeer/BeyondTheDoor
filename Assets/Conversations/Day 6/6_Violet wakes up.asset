@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
-  m_Name: All_ConfirmNoScavengers
+  m_Name: 6_Violet wakes up
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
-  elements: []
-  choices:
-  - prompt: 198088684
-    nextConversation: {fileID: 0}
-    callback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
-  - prompt: 714585806
-    nextConversation: {fileID: 0}
-    callback: {fileID: 0}
+  elements:
+  - rid: 2007814029053001738
+  choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2007814029053001738
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -581027430

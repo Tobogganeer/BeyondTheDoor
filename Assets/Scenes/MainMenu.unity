@@ -3375,8 +3375,10 @@ MonoBehaviour:
   _characters:
   - id: -1608546876
     wakingUp: {fileID: 0}
-    mightSendScavenging: {fileID: 11400000, guid: c73f078aadd6b8f42b9ac83c9345a809, type: 2}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 0}
     sentScavengingWithShotgun: {fileID: 11400000, guid: 62034829995d0ad478b96fb32faef5c8, type: 2}
     sentScavengingWithoutShotgun: {fileID: 11400000, guid: 62034829995d0ad478b96fb32faef5c8, type: 2}
@@ -3389,8 +3391,10 @@ MonoBehaviour:
     commentOnOtherPersonAtDoor: {fileID: 11400000, guid: 1eff85bda7de77440bbd0e0cd6e5c0ad, type: 2}
   - id: 1502599511
     wakingUp: {fileID: 11400000, guid: 0fa71037c8ce80a4da1e1fdc04c088f8, type: 2}
-    mightSendScavenging: {fileID: 11400000, guid: c73f078aadd6b8f42b9ac83c9345a809, type: 2}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 0}
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
@@ -3403,8 +3407,10 @@ MonoBehaviour:
     commentOnOtherPersonAtDoor: {fileID: 0}
   - id: 575282495
     wakingUp: {fileID: 0}
-    mightSendScavenging: {fileID: 0}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 0}
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
@@ -3417,8 +3423,10 @@ MonoBehaviour:
     commentOnOtherPersonAtDoor: {fileID: 11400000, guid: 1eff85bda7de77440bbd0e0cd6e5c0ad, type: 2}
   - id: 291594208
     wakingUp: {fileID: 0}
-    mightSendScavenging: {fileID: 0}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 0}
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
@@ -3429,11 +3437,15 @@ MonoBehaviour:
     tryingToKickOut: {fileID: 0}
     kickedOut: {fileID: 0}
     commentOnOtherPersonAtDoor: {fileID: 11400000, guid: 1eff85bda7de77440bbd0e0cd6e5c0ad, type: 2}
+  dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: c96ffd0e5c8e9ac4bb99eb60f2b470c8, type: 2}
   radio: {fileID: 11400000, guid: 1efa25e39ee6bb744864eec15fad4491, type: 2}
   tv: {fileID: 11400000, guid: 0438de79bd2700247a1260fa560600f2, type: 2}
   checkSupplies: {fileID: 11400000, guid: 1c0fd02d66b04d04d9ef760c09305c9d, type: 2}
+  enteringTalking: {fileID: 0}
   enteringScavenging: {fileID: 11400000, guid: e2438324dc5dbd14596671beffacf1c3, type: 2}
+  gotCar: {fileID: 0}
+  sendNoScavengers: {fileID: 0}
   enteringOvercrowding: {fileID: 0}
   personArrivedAtDoor: {fileID: 11400000, guid: 59dec2bb40a0dc242aa69177eadb7cd8, type: 2}
   reactionToPlayerStayingSilent: {fileID: 11400000, guid: 67c32dba6d2ee614882615f1b41b2185, type: 2}
@@ -3773,8 +3785,10 @@ MonoBehaviour:
   _characters:
   - id: -1608546876
     wakingUp: {fileID: 11400000, guid: 222f94ce5bc0b86478bf69a95ccf8bca, type: 2}
-    mightSendScavenging: {fileID: 0}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 0}
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
@@ -3787,8 +3801,10 @@ MonoBehaviour:
     commentOnOtherPersonAtDoor: {fileID: 0}
   - id: 1502599511
     wakingUp: {fileID: 0}
-    mightSendScavenging: {fileID: 0}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 0}
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
@@ -3799,11 +3815,15 @@ MonoBehaviour:
     tryingToKickOut: {fileID: 0}
     kickedOut: {fileID: 0}
     commentOnOtherPersonAtDoor: {fileID: 0}
+  dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: 76529c4c061d05d4e852fe51b9d51cdb, type: 2}
   radio: {fileID: 11400000, guid: 417bbe1af9ddbbd4487315b63112c25e, type: 2}
   tv: {fileID: 11400000, guid: 96e2f3ea629f7a94b818b714bed4ba31, type: 2}
   checkSupplies: {fileID: 11400000, guid: 3c4e81cb2905eff46a38ffbd42b0b27f, type: 2}
+  enteringTalking: {fileID: 0}
   enteringScavenging: {fileID: 11400000, guid: fffed9722ca60be4ab861e02ff5b34c5, type: 2}
+  gotCar: {fileID: 0}
+  sendNoScavengers: {fileID: 0}
   enteringOvercrowding: {fileID: 0}
   personArrivedAtDoor: {fileID: 11400000, guid: d86d1340868809c4caa7f8aace8798e2, type: 2}
   reactionToPlayerStayingSilent: {fileID: 0}
@@ -6925,11 +6945,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characters: []
+  dayStarted: {fileID: 0}
   checkOutside: {fileID: 0}
   radio: {fileID: 0}
   tv: {fileID: 0}
   checkSupplies: {fileID: 0}
+  enteringTalking: {fileID: 0}
   enteringScavenging: {fileID: 0}
+  gotCar: {fileID: 0}
+  sendNoScavengers: {fileID: 0}
   enteringOvercrowding: {fileID: 0}
   personArrivedAtDoor: {fileID: 0}
   reactionToPlayerStayingSilent: {fileID: 0}
@@ -7315,8 +7339,10 @@ MonoBehaviour:
   _characters:
   - id: 1502599511
     wakingUp: {fileID: 11400000, guid: eb5d608e17c4b5a4f800458a1f09ff0d, type: 2}
-    mightSendScavenging: {fileID: 11400000, guid: fa9de103326588743b1b185855dcfaa7, type: 2}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 11400000, guid: 53426943d0c52a645bbeb962c7d54b59, type: 2}
     sentScavengingWithShotgun: {fileID: 11400000, guid: d673113d45710344bb6c40639f9ecfb4, type: 2}
     sentScavengingWithoutShotgun: {fileID: 11400000, guid: 6cd571533c39170449a867a546aa2a58, type: 2}
@@ -7329,8 +7355,10 @@ MonoBehaviour:
     commentOnOtherPersonAtDoor: {fileID: 0}
   - id: -1608546876
     wakingUp: {fileID: 11400000, guid: ac3b2651c05214c4db83a3508120447a, type: 2}
-    mightSendScavenging: {fileID: 11400000, guid: 4630b35b834a99348b260d70d8156160, type: 2}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 11400000, guid: 53426943d0c52a645bbeb962c7d54b59, type: 2}
     sentScavengingWithShotgun: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
     sentScavengingWithoutShotgun: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
@@ -7343,8 +7371,10 @@ MonoBehaviour:
     commentOnOtherPersonAtDoor: {fileID: 0}
   - id: 990541821
     wakingUp: {fileID: 0}
-    mightSendScavenging: {fileID: 0}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 0}
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
@@ -7355,11 +7385,15 @@ MonoBehaviour:
     tryingToKickOut: {fileID: 0}
     kickedOut: {fileID: 0}
     commentOnOtherPersonAtDoor: {fileID: 0}
+  dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: 228743c3b21e1af45baa93b0468abef6, type: 2}
   radio: {fileID: 11400000, guid: 0f42cea38ada9fb439c397fa3196eba5, type: 2}
   tv: {fileID: 11400000, guid: 0e9aab35dca5d0846bb560afc610adb3, type: 2}
   checkSupplies: {fileID: 11400000, guid: 77f434fb708d0304eb17f8799ce9e36d, type: 2}
+  enteringTalking: {fileID: 0}
   enteringScavenging: {fileID: 11400000, guid: aa813bff1be714c4d8a48c64c9b447b7, type: 2}
+  gotCar: {fileID: 0}
+  sendNoScavengers: {fileID: 0}
   enteringOvercrowding: {fileID: 0}
   personArrivedAtDoor: {fileID: 11400000, guid: 5a985f88a322e3c448614d184e93e38e, type: 2}
   reactionToPlayerStayingSilent: {fileID: 11400000, guid: 244982fe2f38dfd45a1fd045e103e13b, type: 2}
@@ -7665,8 +7699,10 @@ MonoBehaviour:
   _characters:
   - id: -1608546876
     wakingUp: {fileID: 0}
-    mightSendScavenging: {fileID: 0}
-    mightNotSendScavenging: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
     beingSentScavenging: {fileID: 0}
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
@@ -7677,11 +7713,15 @@ MonoBehaviour:
     tryingToKickOut: {fileID: 0}
     kickedOut: {fileID: 0}
     commentOnOtherPersonAtDoor: {fileID: 0}
+  dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: b67a9ddc034e7504b9ae8fa4c58e6da0, type: 2}
   radio: {fileID: 11400000, guid: 8cc21a2d78b6f4545ae628de09f2cc5c, type: 2}
   tv: {fileID: 11400000, guid: bc235b95e2badcb4cb84df4d6394ac7b, type: 2}
   checkSupplies: {fileID: 11400000, guid: 9a9698a180e57184ba93eaba09587a1b, type: 2}
+  enteringTalking: {fileID: 0}
   enteringScavenging: {fileID: 0}
+  gotCar: {fileID: 0}
+  sendNoScavengers: {fileID: 0}
   enteringOvercrowding: {fileID: 0}
   personArrivedAtDoor: {fileID: 11400000, guid: 20a40f2aedc784444b7ded9cd3387dcd, type: 2}
   reactionToPlayerStayingSilent: {fileID: 0}

@@ -10,18 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
-  m_Name: All_ConfirmNoScavengers
+  m_Name: All_KickCharacterOut
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
-  elements: []
+  elements:
+  - rid: 2007814029053002294
   choices:
-  - prompt: 198088684
+  - prompt: -1273338385
     nextConversation: {fileID: 0}
-    callback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
-  - prompt: 714585806
+    callback: {fileID: 11400000, guid: da6fa37fc6c9dc34dae85acda2ce4646, type: 2}
+  - prompt: 1496915069
     nextConversation: {fileID: 0}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2007814029053002294
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 839976659

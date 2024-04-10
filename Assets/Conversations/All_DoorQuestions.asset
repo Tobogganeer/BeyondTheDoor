@@ -10,14 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
-  m_Name: All_ConfirmNoScavengers
+  m_Name: All_DoorQuestions
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements: []
   choices:
-  - prompt: 198088684
+  - prompt: 459272005
     nextConversation: {fileID: 0}
-    callback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
+    callback: {fileID: 11400000, guid: 71829a93e2d017444a0005799c3cf264, type: 2}
+  - prompt: 26348921
+    nextConversation: {fileID: 0}
+    callback: {fileID: 11400000, guid: b2118b94ef1a6ca4d9878492e48b0655, type: 2}
+  - prompt: 1655458522
+    nextConversation: {fileID: 0}
+    callback: {fileID: 11400000, guid: 515b18ba8c83c5340a1e1b2b2ce19c3a, type: 2}
+  - prompt: 577836566
+    nextConversation: {fileID: 0}
+    callback: {fileID: 11400000, guid: 27d9525025351bb448b8f319088e447d, type: 2}
   - prompt: 714585806
     nextConversation: {fileID: 0}
     callback: {fileID: 0}

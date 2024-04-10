@@ -14,32 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597357815
-  - rid: 2007814011597357816
-  - rid: 2007814011597357817
+  - rid: 2007814029053001770
+  - rid: 2007814029053001771
+  - rid: 2007814029053001772
   choices:
   - prompt: -14678456
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: d6ef8905fc375554d8e2c420ef57a341, type: 2}
     callback: {fileID: 0}
   - prompt: 775415762
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 6df28ad79bede4f40998c9f97df216de, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597357815
+    - rid: 2007814029053001770
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: '!Shotgun'
-    - rid: 2007814011597357816
+    - rid: 2007814029053001771
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
-        conversation: {fileID: 0}
+        conversation: {fileID: 11400000, guid: 6df28ad79bede4f40998c9f97df216de, type: 2}
         goofyWorkaroundConversationName: All_SendWithoutShotgun
-    - rid: 2007814011597357817
+    - rid: 2007814029053001772
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
