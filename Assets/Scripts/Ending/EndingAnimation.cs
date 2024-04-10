@@ -19,12 +19,14 @@ public class EndingAnimation : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI FinalText;
+    [SerializeField] private TextMeshProUGUI Logo;
     [SerializeField] private List<string> phrases;
     [SerializeField] private float timeBetweenTransitions;
 
     IEnumerator Start()
     {
-        yield return WriteList(timeBetweenTransitions, "6 people", "Hard decisions were made", "People were sent to their death", "Only 3 left out unharmed", "We", "SURVIVED", "A new dawn rises", "A new life starts");
+        yield return WriteList(timeBetweenTransitions, "6 people", "Hard decisions were made", "People were sent to their death", "Only some left unharmed", "We", "SURVIVED", "A new dawn rises", "A new life starts");
         if (Character.Player.Status == CharacterStatus.AliveAtBorder && !Cabin.HasCar)
         {
             yield return WriteList(timeBetweenTransitions, "I was feeling very tired", "I felt my leg tremble as I walked", " I blinked and now I’m dead", "Is it all my fault, the raiders?", "everyone the took, was it my fault?", "or it was destined to happen?", "We were at war", "How could’ve done better?", "I guess theres no more chances for me", "or those who I met in the last days", "I’m sorry", "I’m truly sorry");
@@ -32,6 +34,7 @@ public class EndingAnimation : MonoBehaviour
         if (Character.Player.Status == CharacterStatus.KilledByBear)
         {
             yield return WriteList(timeBetweenTransitions, "What the fuck was going on my head", "When I let a bear get inside my house","I’m dead now","What makes me even sadder", "is that I’m just a number now","like those who where caught between conflicting ideas","my death is irrelevant", "as it will all be forgotten in the future","I don’t think I can judge them to be honest", "it is in the human nature to not care about stuff", "that doesn’t affect them");
+            
         }
         {
             yield return WriteList(timeBetweenTransitions, "I was feeling very tired", "I felt my leg tremble as I walked", " I blinked and now I’m dead", "Is it all my fault, the raiders?", "everyone the took, was it my fault?", "or it was destined to happen?", "We were at war", "How could’ve done better?", "I guess theres no more chances for me", "or those who I met in the last days", "I’m sorry", "I’m truly sorry");
@@ -56,6 +59,18 @@ public class EndingAnimation : MonoBehaviour
         {
             yield return WriteList(timeBetweenTransitions, "I was feeling very tired", "I felt my leg tremble as I walked", "I blinked and collapsed", "I was woken up being carried in a sledge by two people", "I head familiar voices", "As my vision started to go back to normal", "The shapes became defined", "It was mark and his kid ", "I thought I was done for", "He was happy that I woke up", " He said he found me lying in the ground unconscious" , " WIth the gun I gave him he was able to defend himself until he found his son", " we are approaching the border now", " I guess that are happy endings", "Even if they are few" );
         }
+        if (Character.Player.Status == CharacterStatus.AliveAtBorder && Cabin.HasCar)
+        {
+            yield return WriteList(timeBetweenTransitions, "I was feeling very tired", "I felt my leg tremble as I walked", "I blinked and collapsed", "I was woken up being carried in a sledge by two people", "I head familiar voices", "As my vision started to go back to normal", "The shapes became defined", "It was mark and his kid ", "I thought I was done for", "He was happy that I woke up", " He said he found me lying in the ground unconscious", " WIth the gun I gave him he was able to defend himself until he found his son", " we are approaching the border now", " I guess that are happy endings", "Even if they are few");
+        }
+
+        //Joke ending
+        /*
+        if(Character.Player.Status == CharacterStatus.)
+        {
+             yield return WriteList(timeBetweenTransitions,"I blinked again", "I saw a spaceship floating on above me", "I stated floating", "It was abducting me!", "Now I live in a super advanced society of various alien species", "i didnt want no ice cream" , " take that suckers");
+        }
+        */
     }
     IEnumerator WriteList(float delay, params string[] textToDisplay)
     {
