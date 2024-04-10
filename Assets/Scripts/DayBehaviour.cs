@@ -30,6 +30,7 @@ public abstract class DayBehaviour : MonoBehaviour
 
     [Header("Noon/Scavenging")]
     public Conversation enteringScavenging;
+// TODO: gotCar
 
     [Header("Afternoon/Overcrowding")]
     public Conversation enteringOvercrowding;
