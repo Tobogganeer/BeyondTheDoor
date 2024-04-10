@@ -309,7 +309,7 @@ namespace BeyondTheDoor.Importer
                 for (int i = 0; i < data.choices.Count; i++)
                 {
                     Conversation next = TryGetMatchingConversation(data.choices[i].nextConversation, allConversations);
-                    if (convo.choices.Count < i)
+                    if (i < convo.choices.Count)
                     {
                         // Replace just the variables to preserve any callbacks
                         convo.choices[i].prompt = data.choices[i].prompt;
