@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213edb94dc5a5534188f943855cacdc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  q_addToScavengeParty: {fileID: 11400000, guid: d23f60fc8958dc74dba9c6e1e1a054d6, type: 2}
-  q_removeFromScavengeParty: {fileID: 11400000, guid: 520a3997c7b16ee4892d76b7cace3545, type: 2}
+  q_addToScavengeParty: {fileID: 0}
+  q_removeFromScavengeParty: {fileID: 0}
   advanceCallback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
   openDoorCallback: {fileID: 11400000, guid: 5acfab5c786a53846bd0c9a7f9814e55, type: 2}
   leaveDoorClosedCallback: {fileID: 11400000, guid: ca63835b13df52c4d90007edbc25d2d3, type: 2}
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2420169551764057506}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 350c2d7e3f2f2d1488a86b943f812c04, type: 3}
   m_Name: 
