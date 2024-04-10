@@ -293,12 +293,35 @@ namespace BeyondTheDoor.Importer
                 }
             }
 
-            convo.choices = new List<ConversationChoice>();
-            foreach (RawChoice rawChoice in data.choices)
+            // No choices, let's make them
+            if (convo.choices == null)
             {
-                Conversation next = TryGetMatchingConversation(rawChoice.nextConversation, allConversations);
-                ConversationChoice choice = new ConversationChoice { prompt = rawChoice.prompt, nextConversation = next };
-                convo.choices.Add(choice);
+                convo.choices = new List<ConversationChoice>();
+                foreach (RawChoice rawChoice in data.choices)
+                {
+                    Conversation next = TryGetMatchingConversation(rawChoice.nextConversation, allConversations);
+                    ConversationChoice choice = new ConversationChoice { prompt = rawChoice.prompt, nextConversation = next };
+                    convo.choices.Add(choice);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < data.choices.Count; i++)
+                {
+                    Conversation next = TryGetMatchingConversation(data.choices[i].nextConversation, allConversations);
+                    if (convo.choices.Count < i)
+                    {
+                        // Replace just the variables to preserve any callbacks
+                        convo.choices[i].prompt = data.choices[i].prompt;
+                        convo.choices[i].nextConversation = next;
+                    }
+                    else
+                    {
+                        // Add new ones once we've reached the end
+                        ConversationChoice choice = new ConversationChoice { prompt = data.choices[i].prompt, nextConversation = next };
+                        convo.choices.Add(choice);
+                    }
+                }
             }
         }
 
