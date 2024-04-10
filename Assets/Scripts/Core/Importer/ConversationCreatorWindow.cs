@@ -17,12 +17,23 @@ namespace BeyondTheDoor.Importer
         TSVData tsvData;
         List<ConversationRange> tsvConversations;
 
+        [SerializeField]
+        List<Conversation> convosToReimport = new List<Conversation>();
+        SerializedObject serializedObject;
+        SerializedProperty prop;
+
         [MenuItem("Dialogue/Conversation Importer")]
         public static void ShowWindow()
         {
             ConversationCreatorWindow window = EditorWindow.GetWindow<ConversationCreatorWindow>();
             window.titleContent = new GUIContent("Import Conversations");
             window.minSize = new Vector2(350, 150);
+        }
+
+        private void OnEnable()
+        {
+            serializedObject = new SerializedObject(this);
+            prop = serializedObject.FindProperty(nameof(convosToReimport));
         }
 
         private void OnGUI()
@@ -52,6 +63,21 @@ namespace BeyondTheDoor.Importer
 
             if (GUILayout.Button("Create Conversation assets"))
                 CreateConversations();
+            EditorGUILayout.Space(10f);
+
+            serializedObject.Update();
+
+            // Draw field
+            EditorGUILayout.PropertyField(prop, true);
+            serializedObject.ApplyModifiedProperties();
+
+            if (convosToReimport == null || convosToReimport.Count == 0)
+                GUI.enabled = false;
+
+            if (GUILayout.Button("Reimport Conversations"))
+                ReimportConversations();
+
+            GUI.enabled = true;
         }
 
         void ProcessTSVButtons()
@@ -197,6 +223,53 @@ namespace BeyondTheDoor.Importer
 
             Debug.Log($"Created {createdConvos.Count} Conversation assets, ignoring {invalidConvos.Count} invalid Conversations. Invalid conversations:");
             LogInvalidConvos(invalidConvos);
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
+        void ReimportConversations()
+        {
+            // Yes, I'm copying the whole function. No, I don't care right now.
+
+            Conversation[] allConvos = FindAllScriptableObjectsOfType<Conversation>();
+            
+            Dictionary<string, Conversation> allConversationsDict = new Dictionary<string, Conversation>();
+
+            List<string> allTSVConvoNames = new List<string>();
+            foreach (ConversationRange convoRange in tsvConversations)
+                allTSVConvoNames.Add(convoRange.fileName);
+
+            List<Conversation> toReimport = convosToReimport;
+            List<RawConversationData> matchingConvoData = new List<RawConversationData>();
+
+            foreach (Conversation convo in toReimport)
+            {
+                if (convo == null)
+                    continue;
+
+                ConversationRange range = tsvConversations.FirstOrDefault((rng) => rng.fileName == convo.name);
+                // If we don't have a matching range
+                if (range == null)
+                    throw new InvalidDataException("Couldn't find ConversationRange for convo: " + convo.name);
+
+                RawConversationData data = new RawConversationData(range.name, range.day);
+                data.Fill(range, tsvData);
+                data.Validate(allTSVConvoNames);
+                if (data.IsValid)
+                    matchingConvoData.Add(data);
+                else
+                    throw new InvalidDataException($"Invalid data for convo '{convo.name}': {data.GetInvalidElementsString()}");
+            }
+
+            // Link up everything
+            for (int i = 0; i < toReimport.Count; i++)
+            {
+                LinkCreatedConversation(matchingConvoData[i], toReimport[i], allConversationsDict);
+                //AssetDatabase.SaveAssetIfDirty(toReimport[i]);
+            }
+
+            Debug.Log("Reimported assets.");
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
