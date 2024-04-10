@@ -36,6 +36,8 @@ namespace BeyondTheDoor
         public IDialogueElement Introduction { get; set; }
         */
 
+        public bool NameAlwaysKnown { get; set; } = true;
+
 
         // ============ Useful Properties ============
         /// <summary>
@@ -113,7 +115,7 @@ namespace BeyondTheDoor
 
 
         // ============ Constants ============
-        static readonly string UnknownCharacterName = "(Unknown)";
+        static readonly string UnknownCharacterName = "Unknown";
         
 
         /// <summary>
@@ -217,7 +219,7 @@ namespace BeyondTheDoor
         /// <returns></returns>
         public string GetCurrentName()
         {
-            return HasBeenIntroduced ? Name : UnknownCharacterName;
+            return (HasBeenIntroduced || NameAlwaysKnown) ? Name : UnknownCharacterName;
         }
 
 

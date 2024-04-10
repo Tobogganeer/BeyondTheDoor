@@ -11,6 +11,7 @@ namespace BeyondTheDoor.UI
     {
         public static DialogueGUI Current { get; private set; }
         public bool IsCurrent => Current == this;
+        private static bool Exists => Current != null;
 
         [Header("Config")]
         [SerializeField] private bool startAsDefault = true;
@@ -20,12 +21,15 @@ namespace BeyondTheDoor.UI
         [Space]
         [SerializeField] private GameObject characterUIContainer;
         [SerializeField] private TMP_Text characterNameField;
+        [SerializeField] private GameObject characterNameHolder;
         [SerializeField] private TMP_Text lineTextField;
         [SerializeField] private GameObject endOfLineMarker;
         [Space]
         [SerializeField] private GameObject choiceUIContainer;
         [SerializeField] private ChoiceGUI[] choiceButtons;
 
+        private Conversation currentConversation;
+        private int currentElementIndex;
         private Line currentLine;
         private string formattedLineText;
         private ChoiceCollection currentChoices;
@@ -36,8 +40,9 @@ namespace BeyondTheDoor.UI
         /// </summary>
         public static float RevealedCharactersPerSecond { get; set; }
 
-        public static Line CurrentLine => Current?.currentLine;
-        public static ChoiceCollection CurrentChoices => Current?.currentChoices;
+        public static Conversation CurrentConversation => Exists ? Current.currentConversation : null;
+        public static Line CurrentLine => Exists ? Current.currentLine : null;
+        public static ChoiceCollection CurrentChoices => Exists ? Current.currentChoices : null;
         public static bool HasLine => CurrentLine != null;
         public static bool HasChoices => CurrentChoices != null;
         public static bool AtEndOfLine => HasLine && Current.revealedLength >= Current.formattedLineText.Length;
@@ -129,7 +134,15 @@ namespace BeyondTheDoor.UI
             revealedLength = 0;
             ResetRevealTimer();
 
-            characterNameField.text = Character.All[line.CharacterID].GetCurrentName();
+            string name = Character.All[line.CharacterID].GetCurrentName();
+            if (string.IsNullOrEmpty(name))
+                characterNameHolder.SetActive(false);
+            else
+            {
+                characterNameHolder.SetActive(true);
+                characterNameField.text = name;
+            }
+
             lineTextField.text = string.Empty; // Blank
 
             OnLineStart?.Invoke(line.ID);
