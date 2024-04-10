@@ -5,6 +5,7 @@ using UnityEngine;
 using BeyondTheDoor;
 using BeyondTheDoor.SaveSystem;
 using UnityEngine.Events;
+using BeyondTheDoor.UI;
 
 public class Game : MonoBehaviour
 {
@@ -141,6 +142,8 @@ public class Game : MonoBehaviour
         removeFromScavengePartyCallback.Callback += (conv, line) => RemoveFromScavengeParty(Character.Current);
         sendToScavenge_withShotgunCallback.Callback += (conv, line) => SendToScavenge(true);
         sendToScavenge_noShotgunCallback.Callback += (conv, line) => SendToScavenge(false);
+
+        clearQueueCallback.Callback += (conv, line) => DialogueGUI.ClearQueue();
 
         // Hook up all characters to the scavenge adding/removal
         foreach (Character character in Character.All.Values)

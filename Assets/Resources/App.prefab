@@ -217,6 +217,7 @@ MonoBehaviour:
   asked_q_howCanYouHelpMeCallback: {fileID: 11400000, guid: 27d9525025351bb448b8f319088e447d, type: 2}
   makingOCDecisionCallback: {fileID: 11400000, guid: b25c08c45f593144884ed4836f429cde, type: 2}
   kickCharacterOutCallback: {fileID: 11400000, guid: da6fa37fc6c9dc34dae85acda2ce4646, type: 2}
+  clearQueueCallback: {fileID: 11400000, guid: 254308f26ef5e734a8ec717fd0c51124, type: 2}
   onInitialize:
     m_PersistentCalls:
       m_Calls: []
