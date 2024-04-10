@@ -18,7 +18,7 @@ namespace BeyondTheDoor.Importer
         List<ConversationRange> tsvConversations;
 
         [SerializeField]
-        List<Conversation> convosToReimport = new List<Conversation>();
+        Conversation[] convosToReimport;
         SerializedObject serializedObject;
         SerializedProperty prop;
 
@@ -71,13 +71,16 @@ namespace BeyondTheDoor.Importer
             EditorGUILayout.PropertyField(prop, true);
             serializedObject.ApplyModifiedProperties();
 
-            if (convosToReimport == null || convosToReimport.Count == 0)
+            if (convosToReimport == null || convosToReimport.Length == 0)
                 GUI.enabled = false;
 
             if (GUILayout.Button("Reimport Conversations"))
-                ReimportConversations();
+                ReimportConversations(convosToReimport);
 
             GUI.enabled = true;
+
+            if (GUILayout.Button("Reimport All Conversations"))
+                ReimportConversations(FindAllScriptableObjectsOfType<Conversation>());
         }
 
         void ProcessTSVButtons()
@@ -228,7 +231,7 @@ namespace BeyondTheDoor.Importer
             AssetDatabase.Refresh();
         }
 
-        void ReimportConversations()
+        void ReimportConversations(Conversation[] toReimport)
         {
             // Yes, I'm copying the whole function. No, I don't care right now.
 
@@ -243,7 +246,6 @@ namespace BeyondTheDoor.Importer
             foreach (ConversationRange convoRange in tsvConversations)
                 allTSVConvoNames.Add(convoRange.fileName);
 
-            List<Conversation> toReimport = convosToReimport;
             List<RawConversationData> matchingConvoData = new List<RawConversationData>();
 
             foreach (Conversation convo in toReimport)
@@ -266,7 +268,7 @@ namespace BeyondTheDoor.Importer
             }
 
             // Link up everything
-            for (int i = 0; i < toReimport.Count; i++)
+            for (int i = 0; i < toReimport.Length; i++)
             {
                 LinkCreatedConversation(matchingConvoData[i], toReimport[i], allConversationsDict);
                 //AssetDatabase.SaveAssetIfDirty(toReimport[i]);
