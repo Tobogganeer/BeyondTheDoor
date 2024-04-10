@@ -784,7 +784,7 @@ Draft
 None
 
 Tutorial_Mom
-Hey kiddo, can you open the door please? It's raining out here...
+Hey kiddo, can you open the door please? It's raining out here... 
 At door
 0
 tutmom_0_q_open_door
@@ -2840,7 +2840,7 @@ None
 None
 
 Journalist
-But I heard some pretty fucked up stuff, both side are torturing some people for information.
+But I heard some pretty fucked up stuff, both side are torturing some people for information. 
 
 3
 journalist_3_fucked
@@ -5024,7 +5024,7 @@ None
 None
 
 Jessica
-You never know, It can be someone with some kind of disability, like a mute person.
+You never know, It can be someone with some kind of disability, like a mute person. 
 
 4
 j_4_disability

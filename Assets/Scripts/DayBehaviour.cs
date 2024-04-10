@@ -41,7 +41,7 @@ public abstract class DayBehaviour : MonoBehaviour
     [Tooltip("Optional, mainly Jessica reacting")]
     public Conversation reactionToPlayerStayingSilent;
     public Conversation peephole;
-da
+
     [Space]
     public Conversation q_whoAreYou;
     public Conversation q_whatDoYouWant;
