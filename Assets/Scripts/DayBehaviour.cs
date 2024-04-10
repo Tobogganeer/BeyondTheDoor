@@ -81,7 +81,7 @@ public abstract class DayBehaviour : MonoBehaviour
 
     private void AddGameCallbacks()
     {
-        Game.OnInitialize.AddListener(() => { if (Active) RegisterConversationsAndCharacters(); Initialize(); });
+        Game.OnInitialize.AddListener(() => { if (Active) RegisterCharacterCallbacks(); Initialize(); });
         Game.OnStageChanged.AddListener(() => { if (Active) StageChanged(); });
         Game.OnStageLoaded.AddListener(() => { if (Active) StageLoaded(); });
         //Game.OnNewDayStarted.AddListener(NewDayStarted);
@@ -94,19 +94,24 @@ public abstract class DayBehaviour : MonoBehaviour
     public static DayBehaviour GetCurrentDay() => instances[Day.DayNumber];
     public static bool TryGetDay(int dayNumber, out DayBehaviour day) => instances.TryGetValue(dayNumber, out day);
 
-    private void RegisterConversationsAndCharacters()
+    // Called every time the Character callbacks are cleared
+    private void RegisterCharacterCallbacks()
     {
-
+        foreach (CharacterInit ch in _characters)
+            Register(ch, Character.All[ch.id]);
     }
 
-    private void Register(CharacterInit character)
+    private void Register(CharacterInit events, Character character)
     {
-
+        character.SpokenTo += (ch) => Run(events.wakingUp);
+        character.SentToScavenge += (ch, hasShotgun) => Run(events.beingSentScavenging);
     }
 
-    private void Deregister(CharacterInit character)
+    // Used to null-check a conversation in one line
+    void Run(Conversation convo)
     {
-
+        if (convo != null)
+            convo.Start();
     }
 
 
@@ -159,15 +164,21 @@ public abstract class DayBehaviour : MonoBehaviour
     public class CharacterInit
     {
         public CharacterID id;
+
+        [Space]
         public Conversation wakingUp;
 
         [Space]
-        [Tooltip("Started when the player wants to send this character scavenging")]
-        public Conversation addedToScavengeParty;
-        [Tooltip("Started when the player doesn't want to send this character scavenging anymore")]
-        public Conversation removedFromScavengeParty;
+        [Tooltip("Started when the player will pop up the menu to send this character scavenging")]
+        public Conversation mightSendScavenging;
+        [Tooltip("Started when the player might choose to not send this character scavenging anymore")]
+        public Conversation mightNotSendScavenging;
         [Tooltip("LINK TO 'SendWith/WithoutShotgun' or 'ConfirmScavenge'. Started when this character is getting sent out")]
         public Conversation beingSentScavenging;
+        [Tooltip("Started after this character is sent with the shotgun, right before they leave")]
+        public Conversation sentScavengingWithShotgun;
+        [Tooltip("Started after this character is sent without the shotgun, right before they leave")]
+        public Conversation sentScavengingWithoutShotgun;
 
         [Space]
         [Tooltip("Started when this character fails to return. Don't include this character in the dialogue obviously")]

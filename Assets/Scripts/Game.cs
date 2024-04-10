@@ -310,9 +310,15 @@ public class Game : MonoBehaviour
     public static void AddOrRemoveFromScavengeParty(Character character)
     {
         if (ScavengeParty.Contains(character))
-            instance.q_removeFromScavengeParty.Open();
+        {
+            DayBehaviour.Current.Characters[character.ID].mightNotSendScavenging.Start();
+            instance.q_removeFromScavengeParty.Enqueue();
+        }
         else
-            instance.q_addToScavengeParty.Open();
+        {
+            DayBehaviour.Current.Characters[character.ID].mightSendScavenging.Start();
+            instance.q_addToScavengeParty.Enqueue();
+        }
     }
 
     public static void AddToScavengeParty(Character character)
