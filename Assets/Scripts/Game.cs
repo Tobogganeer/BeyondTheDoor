@@ -19,15 +19,34 @@ public class Game : MonoBehaviour
     [Header("Questions")]
     public Conversation q_addToScavengeParty;
     public Conversation q_removeFromScavengeParty;
+    public Conversation q_door_options;
+    public Conversation q_door_askQuestions;
+    public Conversation q_door_openOrKeepClosed;
+    public Conversation q_makeOCDecision;
+    public Conversation q_kickCharacterOut;
+
+    //[Header("Conversations")]
+    //public Conversation
 
     [Header("Input")]
     [SerializeField] private ConversationCallback advanceCallback;
+    [SerializeField] private ConversationCallback scavengeAdvanceCallback;
     [SerializeField] private ConversationCallback openDoorCallback;
     [SerializeField] private ConversationCallback leaveDoorClosedCallback;
+    [Space]
     [SerializeField] private ConversationCallback addToScavengePartyCallback;
     [SerializeField] private ConversationCallback removeFromScavengePartyCallback;
-    [SerializeField] private ConversationCallback sendToScavenge_withShotgun;
-    [SerializeField] private ConversationCallback sendToScavenge_noShotgun;
+    [SerializeField] private ConversationCallback sendToScavenge_withShotgunCallback;
+    [SerializeField] private ConversationCallback sendToScavenge_noShotgunCallback;
+    [Space]
+    // These will call the appropriate response from the DayBehaviour
+    [SerializeField] private ConversationCallback asked_q_whoAreYouCallback;
+    [SerializeField] private ConversationCallback asked_q_whatDoYouWantCallback;
+    [SerializeField] private ConversationCallback asked_q_whyShouldILetYouInCallback;
+    [SerializeField] private ConversationCallback asked_q_howCanYouHelpMeCallback;
+    [Space]
+    [SerializeField] private ConversationCallback makingOCDecisionCallback;
+    [SerializeField] private ConversationCallback kickCharacterOutCallback;
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
@@ -118,8 +137,8 @@ public class Game : MonoBehaviour
         leaveDoorClosedCallback.Callback += (conv, line) => LeaveDoorClosed();
         addToScavengePartyCallback.Callback += (conv, line) => AddToScavengeParty(Character.Current);
         removeFromScavengePartyCallback.Callback += (conv, line) => RemoveFromScavengeParty(Character.Current);
-        sendToScavenge_withShotgun.Callback += (conv, line) => SendToScavenge(true);
-        sendToScavenge_noShotgun.Callback += (conv, line) => SendToScavenge(false);
+        sendToScavenge_withShotgunCallback.Callback += (conv, line) => SendToScavenge(true);
+        sendToScavenge_noShotgunCallback.Callback += (conv, line) => SendToScavenge(false);
 
         // Hook up all characters to the scavenge adding/removal
         foreach (Character character in Character.All.Values)

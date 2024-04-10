@@ -20,22 +20,22 @@ public abstract class DayBehaviour : MonoBehaviour
     [SerializeField] protected CharacterInit[] _characters;
 
     [Header("Dawn/Lore")]
-    public Conversation dayStarted;
-    public Conversation checkOutside;
-    public Conversation radio;
-    public Conversation tv;
-    public Conversation checkSupplies;
+    public Conversation dayStarted; // DONE
+    public Conversation checkOutside; // DONE
+    public Conversation radio; // DONE
+    public Conversation tv; // DONE
+    public Conversation checkSupplies; // DONE
 
     [Header("Morning/Talking")]
-    public Conversation enteringTalking;
+    public Conversation enteringTalking; // DONE
 
     [Header("Noon/Scavenging")]
-    public Conversation enteringScavenging;
+    public Conversation enteringScavenging; // DONE
     public Conversation gotCar;
     public Conversation sendNoScavengers;
 
     [Header("Afternoon/Overcrowding")]
-    public Conversation enteringOvercrowding;
+    public Conversation enteringOvercrowding; // DONE
 
     [Header("Night/Door")]
     public Conversation personArrivedAtDoor;
