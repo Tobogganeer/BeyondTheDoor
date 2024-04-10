@@ -34,6 +34,7 @@ namespace BeyondTheDoor.UI
         private string formattedLineText;
         private ChoiceCollection currentChoices;
         private int revealedLength;
+        private Queue<Conversation> queue = new Queue<Conversation>();
 
         /// <summary>
         /// Set by Settings.cs
@@ -47,6 +48,7 @@ namespace BeyondTheDoor.UI
         public static bool HasChoices => CurrentChoices != null;
         public static bool AtEndOfLine => HasLine && Current.revealedLength >= Current.formattedLineText.Length;
         public static bool IsOpen => HasLine;
+        public static Queue<Conversation> Queue => Exists ? Current.queue : null;
 
         // Intended to be used for audio VVV
         /// <summary>
@@ -106,6 +108,9 @@ namespace BeyondTheDoor.UI
 
         internal void OpenConversation(Conversation convo)
         {
+            currentElementIndex = 0;
+            currentConversation = convo;
+
             // Turn the line text on, keep choices off
             SetWindowActive(true);
             SetLineTextActive(true);
@@ -235,7 +240,7 @@ namespace BeyondTheDoor.UI
         }
 
         /// <summary>
-        /// Closes the window and stops the dialogue.
+        /// Closes the window, stops the dialogue, and clears the queue.
         /// </summary>
         public static void Close()
         {
@@ -275,6 +280,7 @@ namespace BeyondTheDoor.UI
             currentLine = null;
             currentChoices = null;
             Character.Current = null;
+            queue.Clear();
         }
 
         private void _Next()
@@ -302,7 +308,7 @@ namespace BeyondTheDoor.UI
 
         public static void ClearQueue()
         {
-            throw new NotImplementedException();
+            Queue?.Clear();
         }
 
         [System.Serializable]
