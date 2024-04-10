@@ -21,6 +21,7 @@ namespace BeyondTheDoor
             { "hal", Var.Hal },
             { "sal", Var.Sal },
             { "dad", Var.Dad },
+            {"bobdead",Var.BobDead }
         };
 
         public static bool IsTrue(string condition)
@@ -63,6 +64,7 @@ namespace BeyondTheDoor
             else if (var == Var.HarCar) return Cabin.HasCar;
             else if (var == Var.HasShotgun) return Cabin.HasShotgun;
             else if (var == Var.OnePartyMember) return Cabin.NumCurrentPartyMembers() == 1;
+            else if (var == Var.BobDead) return Character.Bob.Status == CharacterStatus.KilledByBear;
             else
                 return CharacterPresent((CharacterID)var);
         }
@@ -87,6 +89,7 @@ namespace BeyondTheDoor
             Hal = 696030773,
             Sal = 696031022,
             Dad = 696030393,
+            BobDead,
         }
     }
 }
