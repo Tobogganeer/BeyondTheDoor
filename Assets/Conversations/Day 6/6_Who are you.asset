@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: 6_Who are you
+  m_EditorClassIdentifier: 
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 4847120288080986735
+  - rid: 4847120288080986736
+  - rid: 4847120288080986737
+  - rid: 4847120288080986738
+  - rid: 4847120288080986739
+  - rid: 4847120288080986740
+  - rid: 4847120288080986741
+  - rid: 4847120288080986742
+  choices: []
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4847120288080986735
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1835685928
+    - rid: 4847120288080986736
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 248132483
+    - rid: 4847120288080986737
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1477431657
+    - rid: 4847120288080986738
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1616722785
+    - rid: 4847120288080986739
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1111061922
+    - rid: 4847120288080986740
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Bob
+    - rid: 4847120288080986741
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 361462245
+    - rid: 4847120288080986742
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf

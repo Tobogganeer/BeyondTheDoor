@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
+  m_Name: 7_Add twins to scavenge party
+  m_EditorClassIdentifier: 
+  onStarted: {fileID: 0}
+  elements:
+  - rid: 4847120288080986854
+  - rid: 4847120288080986855
+  - rid: 4847120288080986856
+  - rid: 4847120288080986857
+  - rid: 4847120288080986858
+  - rid: 4847120288080986859
+  - rid: 4847120288080986860
+  - rid: 4847120288080986861
+  - rid: 4847120288080986862
+  - rid: 4847120288080986863
+  - rid: 4847120288080986864
+  - rid: 4847120288080986865
+  - rid: 4847120288080986866
+  - rid: 4847120288080986867
+  choices: []
+  onFinished: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4847120288080986854
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: '!Bob && !Jessica && !Violet'
+    - rid: 4847120288080986855
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1987544013
+    - rid: 4847120288080986856
+      type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Else
+    - rid: 4847120288080986857
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1275964333
+    - rid: 4847120288080986858
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 4847120288080986859
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Bob
+    - rid: 4847120288080986860
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: -1119631165
+    - rid: 4847120288080986861
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 4847120288080986862
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Jessica && !Bob && !Violet
+    - rid: 4847120288080986863
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 636719991
+    - rid: 4847120288080986864
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
+    - rid: 4847120288080986865
+      type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: If
+        condition: Violet
+    - rid: 4847120288080986866
+      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Dialogue
+        lineID: 1080231767
+    - rid: 4847120288080986867
+      type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: EndIf
