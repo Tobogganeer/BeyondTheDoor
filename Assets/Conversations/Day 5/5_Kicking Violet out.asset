@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011731312745
-  - rid: 2007814011731312746
-  - rid: 2007814011731312747
-  - rid: 2007814011731312748
-  - rid: 2007814011731312749
-  - rid: 2007814011731312750
-  - rid: 2007814011731312751
+  - rid: 4847120288080986479
+  - rid: 4847120288080986480
+  - rid: 4847120288080986481
+  - rid: 4847120288080986482
+  - rid: 4847120288080986483
+  - rid: 4847120288080986484
+  - rid: 4847120288080986485
   choices:
   - prompt: 146567717
     nextConversation: {fileID: 11400000, guid: 3a0c720ef7de7fa4a83810b580ff3c3e, type: 2}
@@ -32,35 +32,35 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2007814011731312745
+    - rid: 4847120288080986479
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: CAR
-    - rid: 2007814011731312746
+    - rid: 4847120288080986480
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 439837355
-    - rid: 2007814011731312747
+    - rid: 4847120288080986481
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 2007814011731312748
+    - rid: 4847120288080986482
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -481179447
-    - rid: 2007814011731312749
+    - rid: 4847120288080986483
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
-    - rid: 2007814011731312750
+    - rid: 4847120288080986484
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1341344533
-    - rid: 2007814011731312751
+    - rid: 4847120288080986485
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue

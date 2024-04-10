@@ -27,6 +27,7 @@ namespace BeyondTheDoor
         Journalist = 575282495,
         TV = 1281847248,
         Radio = -166006211,
+        Door = -1670867770,
     }
 }
 

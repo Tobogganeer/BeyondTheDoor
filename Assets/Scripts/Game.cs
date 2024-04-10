@@ -180,7 +180,10 @@ public class Game : MonoBehaviour
 
             Day.Stage = next;
 
-            OnLoadNewStage();
+            bool gameEnded = OnLoadNewStage();
+
+            if (gameEnded)
+                return;
 
             // Save the state after we switch stages (but before changing scenes)
             SaveState currentState = new SaveState();
@@ -239,16 +242,21 @@ public class Game : MonoBehaviour
         }
     }
 
-    private static void OnLoadNewStage()
+    private static bool OnLoadNewStage()
     {
         switch (Stage)
         {
             case Stage.MorningSupplies:
-                break;
-            case Stage.SpeakingWithParty:
+                if (DayNumber + 1 > Day.LastDay)
+                {
+                    EndTheGame();
+                    return true;
+                }
                 // Wrap around if we went to the next morning
                 Day.StartDay(DayNumber + 1);
                 OnNewDayStarted?.Invoke();
+                break;
+            case Stage.SpeakingWithParty:
                 break;
             case Stage.SendingScavengers:
                 break;
@@ -261,6 +269,13 @@ public class Game : MonoBehaviour
                 ArrivingCharacter.ChangeStatus(CharacterStatus.AtDoor);
                 break;
         }
+
+        return false;
+    }
+
+    private static void EndTheGame()
+    {
+        
     }
 
     /*
