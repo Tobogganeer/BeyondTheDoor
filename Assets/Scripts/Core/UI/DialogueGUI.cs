@@ -134,7 +134,7 @@ namespace BeyondTheDoor.UI
             // Set our current
             currentLine = line;
             // TODO: Format text accounting for variables etc
-            formattedLineText = line.text;
+            formattedLineText = line.text.Replace("{character}", Character.Current.GetCurrentName());
             // Get the incremental printing ready
             revealedLength = 0;
             ResetRevealTimer();
