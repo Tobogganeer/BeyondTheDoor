@@ -14,50 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011731312771
-  - rid: 2007814011731312772
-  - rid: 2007814011731312773
-  - rid: 2007814011731312774
-  - rid: 2007814011731312775
-  - rid: 2007814011731312776
-  - rid: 2007814011731312777
+  - rid: 4847120288080986505
+  - rid: 4847120288080986506
+  - rid: 4847120288080986507
+  - rid: 4847120288080986508
+  - rid: 4847120288080986509
+  - rid: 4847120288080986510
+  - rid: 4847120288080986511
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011731312771
+    - rid: 4847120288080986505
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 2007814011731312772
+    - rid: 4847120288080986506
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
         conversation: {fileID: 0}
         goofyWorkaroundConversationName: 5_B_Violet coming back
-    - rid: 2007814011731312773
+    - rid: 4847120288080986507
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Jessica
-    - rid: 2007814011731312774
+    - rid: 4847120288080986508
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
         conversation: {fileID: 0}
         goofyWorkaroundConversationName: 5_J_Violet coming back
-    - rid: 2007814011731312775
+    - rid: 4847120288080986509
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 2007814011731312776
+    - rid: 4847120288080986510
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -821830624
-    - rid: 2007814011731312777
+    - rid: 4847120288080986511
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

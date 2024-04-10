@@ -14,31 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011731312721
-  - rid: 2007814011731312722
-  - rid: 2007814011731312723
+  - rid: 4847120288080986455
+  - rid: 4847120288080986456
+  - rid: 4847120288080986457
   choices:
   - prompt: 1890247095
     nextConversation: {fileID: 11400000, guid: cf5f721ba3cedb14aa2b50ebcdfd5b31, type: 2}
     callback: {fileID: 0}
   - prompt: 146567717
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 5bdd3a20fbb80994880836cd102ed069, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011731312721
+    - rid: 4847120288080986455
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1246469586
-    - rid: 2007814011731312722
+    - rid: 4847120288080986456
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1342121234
-    - rid: 2007814011731312723
+    - rid: 4847120288080986457
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
