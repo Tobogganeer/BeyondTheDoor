@@ -31,6 +31,7 @@ public abstract class DayBehaviour : MonoBehaviour
     [Header("Noon/Scavenging")]
     public Conversation enteringScavenging;
 // TODO: gotCar
+// TODO: sendNoScavengers
 
     [Header("Afternoon/Overcrowding")]
     public Conversation enteringOvercrowding;
@@ -203,8 +204,8 @@ da
         public Conversation kickedOut;
 
         [Space]
-        [Tooltip("Started when this character arrives at the door, asking to be let in.")]
-        public Conversation arrivingAtDoor;
+        //[Tooltip("Started when this character arrives at the door, asking to be let in.")]
+        //public Conversation arrivingAtDoor;
         [Tooltip("Started when the player clicks on this character when someone else is outside.")]
         public Conversation commentOnOtherPersonAtDoor;
 
