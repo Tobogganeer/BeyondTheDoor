@@ -6,23 +6,56 @@ using BeyondTheDoor;
 /// <summary>
 /// Used to initialize pieces of the dialogue system for a specific day.
 /// </summary>
-/// <typeparam name="T"></typeparam>
 /// <remarks>Basically wraps <seealso cref="Game"/> callbacks.</remarks>
-public abstract class DayBehaviour<T> : MonoBehaviour
+public abstract class DayBehaviour : MonoBehaviour
 {
-    private static DayBehaviour<T> instance;
+    private static Dictionary<int, DayBehaviour> instances = new Dictionary<int, DayBehaviour>();
+    public static DayBehaviour Current => GetCurrentDay();
 
     protected int DayNumber { get; private set; }
     protected Stage Stage => Day.Stage;
 
 
+    public CharacterInit[] characters;
+
+    [Header("Morning/Talking")]
+    public Conversation checkOutside;
+    public Conversation radio;
+    public Conversation tv;
+    public Conversation checkSupplies;
+
+    [Header("Noon/Scavenging")]
+    public Conversation enteringScavenging;
+
+    [Header("Afternoon/Overcrowding")]
+    public Conversation e;
+
+    [Header("Night/Door")]
+    public Conversation personArrivedAtDoor;
+    [Tooltip("Optional, mainly Jessica reacting")]
+    public Conversation reactionToPlayerStayingSilent;
+    public Conversation peephole;
+
+    [Space]
+    public Conversation q_whoAreYou;
+    public Conversation q_whatDoYouWant;
+    public Conversation q_whyShouldILetYouIn;
+    public Conversation q_howCanYouHelpMe;
+
+    [Space]
+    public Conversation letPersonInside;
+    public Conversation keepPersonOutside;
+
+
 
     private void Awake()
     {
+        DayNumber = GetDay();
+
         // Make sure there is only one
-        if (instance == null)
+        if (!instances.ContainsKey(DayNumber))
         {
-            instance = this;
+            instances.Add(DayNumber, this);
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -30,8 +63,6 @@ public abstract class DayBehaviour<T> : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        DayNumber = GetDay();
     }
 
     private void Start()
@@ -51,6 +82,10 @@ public abstract class DayBehaviour<T> : MonoBehaviour
         Game.OnDoorOpened.AddListener(() => { if (Day.DayNumber == DayNumber) DoorOpened(); });
         Game.OnDoorLeftClosed.AddListener(() => { if (Day.DayNumber == DayNumber) DoorLeftClosed(); });
     }
+
+
+    public static DayBehaviour GetCurrentDay() => instances[Day.DayNumber];
+    public static bool TryGetDay(int dayNumber, out DayBehaviour day) => instances.TryGetValue(dayNumber, out day);
 
 
     /// <summary>
@@ -97,4 +132,33 @@ public abstract class DayBehaviour<T> : MonoBehaviour
     /// </summary>
     protected virtual void DoorLeftClosed() { }
 
+
+    [System.Serializable]
+    public class CharacterInit
+    {
+        public CharacterID id;
+        public Conversation wakingUp;
+
+        [Space]
+        [Tooltip("Started when the player wants to send this character scavenging")]
+        public Conversation addedToScavengeParty;
+        [Tooltip("Started when the player doesn't want to send this character scavenging anymore")]
+        public Conversation removedFromScavengeParty;
+        [Tooltip("LINK TO 'SendWith/WithoutShotgun' 'ConfirmScavenge'. Started when this character is getting sent out")]
+        public Conversation beingSentScavenging;
+
+        [Space]
+        [Tooltip("Started when this character fails to return. Don't include this character in the dialogue obviously")]
+        public Conversation diedWhileScavenging;
+        public Conversation returnedFromScavengingWithGun;
+        public Conversation returnedFromScavengingWithoutGun;
+
+        [Space]
+        [Tooltip("Started when this character arrives at the door, asking to be let in.")]
+        public Conversation arrivingAtDoor;
+        [Tooltip("Started when the player clicks on this character when someone else is outside.")]
+        public Conversation commentOnOtherPersonAtDoor;
+
+        public Character Character => Character.All[id];
+    }
 }
