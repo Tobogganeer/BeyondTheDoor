@@ -20,7 +20,7 @@ public abstract class DayBehaviour : MonoBehaviour
     [SerializeField] protected CharacterInit[] _characters;
 
     [Header("Dawn/Lore")]
-// TODO: dayStarted
+    public Conversation dayStarted;
     public Conversation checkOutside;
     public Conversation radio;
     public Conversation tv;
