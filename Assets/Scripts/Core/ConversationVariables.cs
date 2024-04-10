@@ -31,11 +31,13 @@ namespace BeyondTheDoor
 
             string[] conditions = condition.Split("&&");
 
-            // TODO: Dear god make this actually proper
-            if (condition.Length == 1)
-                return IsSingleConditionTrue(condition);
-            else
-                return IsSingleConditionTrue(conditions[0]) && IsSingleConditionTrue(conditions[1]);
+            for (int i = 0; i < conditions.Length; i++)
+            {
+                if (!IsSingleConditionTrue(condition))
+                    return false;
+            }
+
+            return true;
         }
 
         private static bool IsSingleConditionTrue(string condition)
