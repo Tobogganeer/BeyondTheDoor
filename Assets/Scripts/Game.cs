@@ -26,8 +26,9 @@ public class Game : MonoBehaviour
     public Conversation q_makeOCDecision;
     public Conversation q_kickCharacterOut;
 
-    //[Header("Conversations")]
-    //public Conversation
+    [Header("Conversations")]
+    public Conversation advance;
+    public Conversation confirmScavenge;
 
     [Header("Input")]
     [SerializeField] private ConversationCallback advanceCallback;
@@ -145,6 +146,12 @@ public class Game : MonoBehaviour
         removeFromScavengePartyCallback.Callback += (conv, line) => RemoveFromScavengeParty(Character.Current);
         sendToScavenge_withShotgunCallback.Callback += (conv, line) => SendToScavenge(true);
         sendToScavenge_noShotgunCallback.Callback += (conv, line) => SendToScavenge(false);
+        scavengeAdvanceCallback.Callback += (conv, line) => ScavengeAdvance();
+
+        asked_q_whoAreYouCallback.Callback += (conv, line) => DayBehaviour.Current.q_whoAreYou.TryStart();
+        asked_q_whatDoYouWantCallback.Callback += (conv, line) => DayBehaviour.Current.q_whatDoYouWant.TryStart();
+        asked_q_whyShouldILetYouInCallback.Callback += (conv, line) => DayBehaviour.Current.q_whyShouldILetYouIn.TryStart();
+        asked_q_howCanYouHelpMeCallback.Callback += (conv, line) => DayBehaviour.Current.q_howCanYouHelpMe.TryStart();
 
         clearQueueCallback.Callback += (conv, line) => DialogueGUI.ClearQueue();
 
@@ -379,6 +386,28 @@ public class Game : MonoBehaviour
             ScavengeParty.Remove(character);
     }
 
+
+    private static void ScavengeAdvance()
+    {
+        // Handle sending some or no scavengers
+        if (ScavengeParty.Count == 0)
+        {
+            // We (should) have already asked/confirmed that they wanted this
+            DayBehaviour.Current.sendNoScavengers.TryStart();
+            // Actually advance after the lines are spoken
+            instance.advance.Enqueue();
+        }
+        else
+        {
+            Conversation beingSentScavenging = DayBehaviour.Current.Characters[ScavengeParty[0].ID].beingSentScavenging;
+            beingSentScavenging.TryStart();
+            // Start the default one if none is provided
+            if (beingSentScavenging == null)
+                instance.confirmScavenge.Start();
+        }
+    }
+
+
     /// <summary>
     /// Sends out the current scavenging party.
     /// </summary>
@@ -397,6 +426,10 @@ public class Game : MonoBehaviour
             // Send all scavengers out
             foreach (Character scavenger in ScavengeParty)
                 scavenger.ChangeStatus(sendingShotgun ? CharacterStatus.ScavengingWithShotgun : CharacterStatus.ScavengingDefenseless);
+
+            // Call their callbacks
+            foreach (Character scavenger in ScavengeParty)
+                scavenger.Invoke_SentToScavenge(withShotgun);
         }
 
         // Move along to the next stage

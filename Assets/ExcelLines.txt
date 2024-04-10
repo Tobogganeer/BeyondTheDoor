@@ -139,8 +139,8 @@ CHOICE
 				make_decision			
 END							
 							
-							
-							
+CONVERSATION	Advance						
+END							
 							
 							
 							

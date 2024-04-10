@@ -229,6 +229,9 @@ namespace BeyondTheDoor
             foreach (Character c in All.Values)
                 c.Reset();
         }
+
+
+        public void Invoke_SentToScavenge(bool shotgun) => SentToScavenge?.Invoke(this, shotgun);
     }
 
     public enum CharacterStatus
