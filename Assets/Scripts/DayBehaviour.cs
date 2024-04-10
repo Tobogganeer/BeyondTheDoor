@@ -20,13 +20,19 @@ public abstract class DayBehaviour : MonoBehaviour
     [SerializeField] protected CharacterInit[] _characters;
 
     [Header("Dawn/Lore")]
+// TODO: dayStarted
     public Conversation checkOutside;
     public Conversation radio;
     public Conversation tv;
     public Conversation checkSupplies;
 
+    [Header("Morning/Talking")]
+    public Conversation enteringTalking;
+
     [Header("Noon/Scavenging")]
     public Conversation enteringScavenging;
+    public Conversation gotCar;
+    public Conversation sendNoScavengers;
 
     [Header("Afternoon/Overcrowding")]
     public Conversation enteringOvercrowding;
@@ -170,9 +176,13 @@ public abstract class DayBehaviour : MonoBehaviour
 
         [Space]
         [Tooltip("Started when the player will pop up the menu to send this character scavenging")]
-        public Conversation mightSendScavenging;
+        public Conversation beforeScavengingChoice;
         [Tooltip("Started when the player might choose to not send this character scavenging anymore")]
-        public Conversation mightNotSendScavenging;
+        public Conversation beforeUnscavengingChoice;
+        [Tooltip("Started after the player has added this character to the scavenge party")]
+        public Conversation addedToScavengeParty;
+        [Tooltip("Started after the player has removed this character from the scavenge party")]
+        public Conversation removedFromScavengeParty;
         [Tooltip("LINK TO 'SendWith/WithoutShotgun' or 'ConfirmScavenge'. Started when this character is getting sent out")]
         public Conversation beingSentScavenging;
         [Tooltip("Started after this character is sent with the shotgun, right before they leave")]
@@ -195,8 +205,6 @@ public abstract class DayBehaviour : MonoBehaviour
         public Conversation kickedOut;
 
         [Space]
-        [Tooltip("Started when this character arrives at the door, asking to be let in.")]
-        public Conversation arrivingAtDoor;
         [Tooltip("Started when the player clicks on this character when someone else is outside.")]
         public Conversation commentOnOtherPersonAtDoor;
 

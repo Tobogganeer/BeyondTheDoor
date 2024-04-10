@@ -311,12 +311,12 @@ public class Game : MonoBehaviour
     {
         if (ScavengeParty.Contains(character))
         {
-            DayBehaviour.Current.Characters[character.ID].mightNotSendScavenging.Start();
+            DayBehaviour.Current.Characters[character.ID].beforeUnscavengingChoice.Start();
             instance.q_removeFromScavengeParty.Enqueue();
         }
         else
         {
-            DayBehaviour.Current.Characters[character.ID].mightSendScavenging.Start();
+            DayBehaviour.Current.Characters[character.ID].beforeScavengingChoice.Start();
             instance.q_addToScavengeParty.Enqueue();
         }
     }
