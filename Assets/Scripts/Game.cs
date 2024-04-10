@@ -358,6 +358,9 @@ public class Game : MonoBehaviour
             Character.Sal.ChangeStatus(CharacterStatus.InsideCabin);
         OnDoorOpened?.Invoke();
         DayBehaviour.Current.letPersonInside.TryStart();
+
+        // Advance afterwards
+        instance.advance.Enqueue();
     }
 
     public static void LeaveDoorClosed()
@@ -367,6 +370,9 @@ public class Game : MonoBehaviour
             Character.Sal.ChangeStatus(CharacterStatus.LeftOutside);
         OnDoorLeftClosed?.Invoke();
         DayBehaviour.Current.keepPersonOutside.TryStart();
+
+        // Advance afterwards
+        instance.advance.Enqueue();
     }
 
     /// <summary>
