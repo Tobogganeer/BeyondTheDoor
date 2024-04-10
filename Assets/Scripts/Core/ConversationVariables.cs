@@ -12,6 +12,7 @@ namespace BeyondTheDoor
             { "car", Var.HarCar },
             { "hasshotgun", Var.HasShotgun },
             { "shotgun", Var.HasShotgun },
+            { "onepartymember", Var.OnePartyMember },
             { "tutorial_mom", Var.Tutorial_Mom },
             { "tutorial_dad", Var.Tutorial_Dad },
             { "jessica", Var.Jessica },
@@ -30,11 +31,13 @@ namespace BeyondTheDoor
 
             string[] conditions = condition.Split("&&");
 
-            // TODO: Dear god make this actually proper
-            if (condition.Length == 1)
-                return IsSingleConditionTrue(condition);
-            else
-                return IsSingleConditionTrue(conditions[0]) && IsSingleConditionTrue(conditions[1]);
+            for (int i = 0; i < conditions.Length; i++)
+            {
+                if (!IsSingleConditionTrue(condition))
+                    return false;
+            }
+
+            return true;
         }
 
         private static bool IsSingleConditionTrue(string condition)
@@ -59,6 +62,7 @@ namespace BeyondTheDoor
             if (var == Var.None) return false;
             else if (var == Var.HarCar) return Cabin.HasCar;
             else if (var == Var.HasShotgun) return Cabin.HasShotgun;
+            else if (var == Var.OnePartyMember) return Cabin.NumCurrentPartyMembers() == 1;
             else
                 return CharacterPresent((CharacterID)var);
         }
@@ -73,6 +77,7 @@ namespace BeyondTheDoor
             None,
             HarCar,
             HasShotgun,
+            OnePartyMember,
             // Use same numbers as CharacterIDs to make matching easier
             Tutorial_Mom = -546722264,
             Tutorial_Dad = -486113334,

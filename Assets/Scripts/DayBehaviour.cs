@@ -20,13 +20,18 @@ public abstract class DayBehaviour : MonoBehaviour
     [SerializeField] protected CharacterInit[] _characters;
 
     [Header("Dawn/Lore")]
+// TODO: dayStarted
     public Conversation checkOutside;
     public Conversation radio;
     public Conversation tv;
     public Conversation checkSupplies;
 
+// TODO: enteringTalking
+
     [Header("Noon/Scavenging")]
     public Conversation enteringScavenging;
+// TODO: gotCar
+// TODO: sendNoScavengers
 
     [Header("Afternoon/Overcrowding")]
     public Conversation enteringOvercrowding;
@@ -36,7 +41,7 @@ public abstract class DayBehaviour : MonoBehaviour
     [Tooltip("Optional, mainly Jessica reacting")]
     public Conversation reactionToPlayerStayingSilent;
     public Conversation peephole;
-
+da
     [Space]
     public Conversation q_whoAreYou;
     public Conversation q_whatDoYouWant;
@@ -169,6 +174,10 @@ public abstract class DayBehaviour : MonoBehaviour
         public Conversation wakingUp;
 
         [Space]
+// TODO: beforeScavengingChoice
+// TODO: beforeUnscavengingChoice
+// TODO: addedToScavengeParty
+// TODO: removedFromScavengeParty
         [Tooltip("Started when the player will pop up the menu to send this character scavenging")]
         public Conversation mightSendScavenging;
         [Tooltip("Started when the player might choose to not send this character scavenging anymore")]
@@ -195,8 +204,8 @@ public abstract class DayBehaviour : MonoBehaviour
         public Conversation kickedOut;
 
         [Space]
-        [Tooltip("Started when this character arrives at the door, asking to be let in.")]
-        public Conversation arrivingAtDoor;
+        //[Tooltip("Started when this character arrives at the door, asking to be let in.")]
+        //public Conversation arrivingAtDoor;
         [Tooltip("Started when the player clicks on this character when someone else is outside.")]
         public Conversation commentOnOtherPersonAtDoor;
 
