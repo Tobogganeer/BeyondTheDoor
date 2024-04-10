@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: All_SendWithShotgun
   m_EditorClassIdentifier: 
-  onStarted: {fileID: 0}
+  onStarted: {fileID: 11400000, guid: a97ebf4be4da3094c80aca7a247ed0d8, type: 2}
   elements: []
   choices: []
   onFinished: {fileID: 0}

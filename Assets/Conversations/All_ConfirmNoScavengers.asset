@@ -17,7 +17,7 @@ MonoBehaviour:
   choices:
   - prompt: 198088684
     nextConversation: {fileID: 0}
-    callback: {fileID: 0}
+    callback: {fileID: 11400000, guid: 31f038fe378eb6645a3e391fa639ba81, type: 2}
   - prompt: 714585806
     nextConversation: {fileID: 0}
     callback: {fileID: 0}

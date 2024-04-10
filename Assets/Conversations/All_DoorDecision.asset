@@ -17,10 +17,10 @@ MonoBehaviour:
   choices:
   - prompt: 844154365
     nextConversation: {fileID: 0}
-    callback: {fileID: 0}
+    callback: {fileID: 11400000, guid: 5acfab5c786a53846bd0c9a7f9814e55, type: 2}
   - prompt: 1771883707
     nextConversation: {fileID: 0}
-    callback: {fileID: 0}
+    callback: {fileID: 11400000, guid: ca63835b13df52c4d90007edbc25d2d3, type: 2}
   - prompt: 714585806
     nextConversation: {fileID: 0}
     callback: {fileID: 0}

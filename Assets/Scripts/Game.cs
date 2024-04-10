@@ -49,6 +49,9 @@ public class Game : MonoBehaviour
     [SerializeField] private ConversationCallback makingOCDecisionCallback;
     [SerializeField] private ConversationCallback kickCharacterOutCallback;
     [Space]
+    [SerializeField] private ConversationCallback staySilentCallback;
+    [SerializeField] private ConversationCallback peepholeCallback;
+    [Space]
     [SerializeField] private ConversationCallback clearQueueCallback;
 
     [Header("Output")]
