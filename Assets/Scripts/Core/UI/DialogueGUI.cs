@@ -188,7 +188,7 @@ namespace BeyondTheDoor.UI
         private void ResetRevealTimer() => revealTimer = 1f / RevealedCharactersPerSecond;
 
         #region Static Accessors
-        internal static void Open(Conversation conversation)
+        public static void Open(Conversation conversation)
         {
             if (Current == null)
                 throw new System.InvalidOperationException("Tried to open conversation with no active DialogueGUI.");
@@ -210,6 +210,15 @@ namespace BeyondTheDoor.UI
                 throw new System.InvalidOperationException("Tried to open choices with no active DialogueGUI.");
 
             Current.OpenChoices(choices);
+        }
+
+        /// <summary>
+        /// Starts the <paramref name="next"/> conversation after the current one completes.
+        /// </summary>
+        /// <param name="next"></param>
+        public static void Enqueue(Conversation next)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>

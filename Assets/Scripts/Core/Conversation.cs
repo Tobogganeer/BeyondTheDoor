@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using BeyondTheDoor.UI;
 
 namespace BeyondTheDoor
 {
@@ -61,6 +62,14 @@ namespace BeyondTheDoor
                 HookUpLineFinishedCallback(lines[lines.Count - 1]);
             }
             */
+        }
+
+        /// <summary>
+        /// Starts this Conversation after the current one completes.
+        /// </summary>
+        public void Enqueue()
+        {
+            DialogueGUI.Enqueue(this);
         }
     }
 

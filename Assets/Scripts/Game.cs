@@ -178,6 +178,9 @@ public class Game : MonoBehaviour
     {
         switch (Stage)
         {
+            case Stage.MorningSupplies:
+                // Just lore, you can advance any time
+                return true;
             case Stage.SpeakingWithParty:
                 // You can always advance from speaking
                 return true;
@@ -187,9 +190,6 @@ public class Game : MonoBehaviour
             case Stage.FixingOvercrowding:
                 // You can advance after you fix the overcrowding
                 return !Cabin.IsOvercrowded();
-            case Stage.RadioLoreTime:
-                // This stage is mainly just lore anyways
-                return true;
             case Stage.DealingWithArrival:
                 // You can advance once you've decided what to do with today's character
                 return CharacterArrivalOrder[DayNumber].DoorDecisionMade;
@@ -202,13 +202,13 @@ public class Game : MonoBehaviour
     {
         switch (current)
         {
+            case Stage.MorningSupplies:
+                break;
             case Stage.SpeakingWithParty:
                 break;
             case Stage.SendingScavengers:
                 break;
             case Stage.FixingOvercrowding:
-                break;
-            case Stage.RadioLoreTime:
                 break;
             case Stage.DealingWithArrival:
                 break;
@@ -219,6 +219,8 @@ public class Game : MonoBehaviour
     {
         switch (Stage)
         {
+            case Stage.MorningSupplies:
+                break;
             case Stage.SpeakingWithParty:
                 // Wrap around if we went to the next morning
                 Day.StartDay(DayNumber + 1);
@@ -229,8 +231,6 @@ public class Game : MonoBehaviour
             case Stage.FixingOvercrowding:
                 // See what happened to the scavengers
                 DetermineScavengerFates();
-                break;
-            case Stage.RadioLoreTime:
                 break;
             case Stage.DealingWithArrival:
                 // Make the character "arrive"
@@ -263,16 +263,16 @@ public class Game : MonoBehaviour
     {
         switch (Stage)
         {
+            case Stage.MorningSupplies:
+                return Stage.SpeakingWithParty;
             case Stage.SpeakingWithParty:
                 // Skip right to the end of the day if you are alone
-                return Alone ? Stage.RadioLoreTime : Stage.SendingScavengers;
+                return Alone ? Stage.DealingWithArrival : Stage.SendingScavengers;
             case Stage.SendingScavengers:
                 bool peopleScavenging = ScavengeParty.Count > 0;
                 bool overcrowded = Cabin.NumCurrentPartyMembers() > 2;
-                return peopleScavenging || overcrowded ? Stage.FixingOvercrowding : Stage.RadioLoreTime;
+                return peopleScavenging || overcrowded ? Stage.FixingOvercrowding : Stage.DealingWithArrival;
             case Stage.FixingOvercrowding:
-                return Stage.RadioLoreTime;
-            case Stage.RadioLoreTime:
                 return Stage.DealingWithArrival;
             case Stage.DealingWithArrival:
                 return Stage.SpeakingWithParty;
@@ -310,9 +310,15 @@ public class Game : MonoBehaviour
     public static void AddOrRemoveFromScavengeParty(Character character)
     {
         if (ScavengeParty.Contains(character))
-            instance.q_removeFromScavengeParty.Open();
+        {
+            DayBehaviour.Current.Characters[character.ID].mightNotSendScavenging.Start();
+            instance.q_removeFromScavengeParty.Enqueue();
+        }
         else
-            instance.q_addToScavengeParty.Open();
+        {
+            DayBehaviour.Current.Characters[character.ID].mightSendScavenging.Start();
+            instance.q_addToScavengeParty.Enqueue();
+        }
     }
 
     public static void AddToScavengeParty(Character character)
@@ -400,10 +406,10 @@ public class Game : MonoBehaviour
 
     public static Level GameStageToLevel(Stage stage) => stage switch
     {
+        Stage.MorningSupplies => Level.Dawn,
         Stage.SpeakingWithParty => Level.Morning,
         Stage.SendingScavengers => Level.Noon,
         Stage.FixingOvercrowding => Level.Afternoon,
-        Stage.RadioLoreTime => Level.Evening,
         Stage.DealingWithArrival => Level.Door,
         _ => throw new ArgumentException("Invalid stage: " + stage)
     };
