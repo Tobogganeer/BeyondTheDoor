@@ -14,11 +14,12 @@ public abstract class DayBehaviour : MonoBehaviour
 
     protected int DayNumber { get; private set; }
     protected Stage Stage => Day.Stage;
+    public bool Active => DayNumber == Day.DayNumber;
 
 
-    public CharacterInit[] characters;
+    [SerializeField] protected CharacterInit[] _characters;
 
-    [Header("Morning/Talking")]
+    [Header("Dawn/Lore")]
     public Conversation checkOutside;
     public Conversation radio;
     public Conversation tv;
@@ -28,7 +29,7 @@ public abstract class DayBehaviour : MonoBehaviour
     public Conversation enteringScavenging;
 
     [Header("Afternoon/Overcrowding")]
-    public Conversation e;
+    public Conversation enteringOvercrowding;
 
     [Header("Night/Door")]
     public Conversation personArrivedAtDoor;
@@ -47,6 +48,9 @@ public abstract class DayBehaviour : MonoBehaviour
     public Conversation keepPersonOutside;
 
 
+    public Dictionary<CharacterID, CharacterInit> Characters { get; private set; } = new Dictionary<CharacterID, CharacterInit>();
+
+
 
     private void Awake()
     {
@@ -63,6 +67,9 @@ public abstract class DayBehaviour : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        foreach (CharacterInit ch in _characters)
+            Characters.Add(ch.id, ch);
     }
 
     private void Start()
@@ -74,18 +81,33 @@ public abstract class DayBehaviour : MonoBehaviour
 
     private void AddGameCallbacks()
     {
-        Game.OnInitialize.AddListener(() => { if (Day.DayNumber == DayNumber) Initialize(); });
-        Game.OnStageChanged.AddListener(() => { if (Day.DayNumber == DayNumber) StageChanged(); });
-        Game.OnStageLoaded.AddListener(() => { if (Day.DayNumber == DayNumber) StageLoaded(); });
+        Game.OnInitialize.AddListener(() => { if (Active) RegisterConversationsAndCharacters(); Initialize(); });
+        Game.OnStageChanged.AddListener(() => { if (Active) StageChanged(); });
+        Game.OnStageLoaded.AddListener(() => { if (Active) StageLoaded(); });
         //Game.OnNewDayStarted.AddListener(NewDayStarted);
-        Game.OnGameExit.AddListener(() => { if (Day.DayNumber == DayNumber) GameExit(); });
-        Game.OnDoorOpened.AddListener(() => { if (Day.DayNumber == DayNumber) DoorOpened(); });
-        Game.OnDoorLeftClosed.AddListener(() => { if (Day.DayNumber == DayNumber) DoorLeftClosed(); });
+        Game.OnGameExit.AddListener(() => { if (Active) GameExit(); });
+        Game.OnDoorOpened.AddListener(() => { if (Active) DoorOpened(); });
+        Game.OnDoorLeftClosed.AddListener(() => { if (Active) DoorLeftClosed(); });
     }
 
 
     public static DayBehaviour GetCurrentDay() => instances[Day.DayNumber];
     public static bool TryGetDay(int dayNumber, out DayBehaviour day) => instances.TryGetValue(dayNumber, out day);
+
+    private void RegisterConversationsAndCharacters()
+    {
+
+    }
+
+    private void Register(CharacterInit character)
+    {
+
+    }
+
+    private void Deregister(CharacterInit character)
+    {
+
+    }
 
 
     /// <summary>
@@ -144,7 +166,7 @@ public abstract class DayBehaviour : MonoBehaviour
         public Conversation addedToScavengeParty;
         [Tooltip("Started when the player doesn't want to send this character scavenging anymore")]
         public Conversation removedFromScavengeParty;
-        [Tooltip("LINK TO 'SendWith/WithoutShotgun' 'ConfirmScavenge'. Started when this character is getting sent out")]
+        [Tooltip("LINK TO 'SendWith/WithoutShotgun' or 'ConfirmScavenge'. Started when this character is getting sent out")]
         public Conversation beingSentScavenging;
 
         [Space]
@@ -152,6 +174,14 @@ public abstract class DayBehaviour : MonoBehaviour
         public Conversation diedWhileScavenging;
         public Conversation returnedFromScavengingWithGun;
         public Conversation returnedFromScavengingWithoutGun;
+
+        [Space]
+        [Tooltip("Started when this character is clicked on during overcrowding")]
+        public Conversation clickedOnDuringOvercrowding;
+        [Tooltip("Started when the player tries to kick this character out")]
+        public Conversation tryingToKickOut;
+        [Tooltip("The last conversation after this character has been kicked out")]
+        public Conversation kickedOut;
 
         [Space]
         [Tooltip("Started when this character arrives at the door, asking to be let in.")]
