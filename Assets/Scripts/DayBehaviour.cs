@@ -40,8 +40,8 @@ public abstract class DayBehaviour : MonoBehaviour
     [Header("Night/Door")]
     public Conversation personArrivedAtDoor; // DONE
     [Tooltip("Optional, mainly Jessica reacting")]
-    public Conversation reactionToPlayerStayingSilent;
-    public Conversation peephole;
+    public Conversation reactionToPlayerStayingSilent; // DONE
+    public Conversation peephole; // DONE
 
     [Space]
     public Conversation q_whoAreYou; // DONE
@@ -50,8 +50,8 @@ public abstract class DayBehaviour : MonoBehaviour
     public Conversation q_howCanYouHelpMe; // DONE
 
     [Space]
-    public Conversation letPersonInside;
-    public Conversation keepPersonOutside;
+    public Conversation letPersonInside; // DONE
+    public Conversation keepPersonOutside; // DONE
 
 
     public Dictionary<CharacterID, CharacterInit> Characters { get; private set; } = new Dictionary<CharacterID, CharacterInit>();
@@ -145,6 +145,11 @@ public abstract class DayBehaviour : MonoBehaviour
         };
         character.AddedToScavengeParty += (ch) => events.addedToScavengeParty.TryStart();
         character.RemovedFromScavengeParty += (ch) => events.removedFromScavengeParty.TryStart();
+        character.ClickedOnDuringOvercrowding += (ch) => {
+            events.clickedOnDuringOvercrowding.TryStart();
+            Game.instance.q_makeOCDecision.Enqueue();
+        };
+        character.OtherCharacterArrivingAtDoor += (ch) => events.commentOnOtherPersonAtDoor.TryStart();
     }
 
 
@@ -225,15 +230,15 @@ public abstract class DayBehaviour : MonoBehaviour
 
         [Space]
         [Tooltip("Started when this character is clicked on during overcrowding")]
-        public Conversation clickedOnDuringOvercrowding;
+        public Conversation clickedOnDuringOvercrowding; // DONE
         [Tooltip("Started when the player tries to kick this character out")]
-        public Conversation tryingToKickOut;
+        public Conversation tryingToKickOut; // DONE
         [Tooltip("The last conversation after this character has been kicked out")]
-        public Conversation kickedOut;
+        public Conversation kickedOut; // DONE
 
         [Space]
         [Tooltip("Started when the player clicks on this character when someone else is outside.")]
-        public Conversation commentOnOtherPersonAtDoor;
+        public Conversation commentOnOtherPersonAtDoor; // DONE
 
         public Character Character => Character.All[id];
     }

@@ -109,7 +109,7 @@ namespace BeyondTheDoor
         /// Called when the player clicks on this character during the overcrowding stage.
         /// </summary>
         /// <remarks>Start dialogue and call KickOut callback</remarks>
-        public event Action<Character> TryingToKickOut;
+        public event Action<Character> ClickedOnDuringOvercrowding;
 
 
         // ============ Constants ============
@@ -148,7 +148,7 @@ namespace BeyondTheDoor
             RemovedFromScavengeParty = null;
             AboutToBeSentScavenging = null;
             SentToScavenge = null;
-            TryingToKickOut = null;
+            ClickedOnDuringOvercrowding = null;
         }
 
 
@@ -200,7 +200,7 @@ namespace BeyondTheDoor
                     break;
                 case Stage.FixingOvercrowding:
                     Current = this;
-                    TryingToKickOut?.Invoke(this);
+                    ClickedOnDuringOvercrowding?.Invoke(this);
                     break;
                 case Stage.DealingWithArrival:
                     Current = this;

@@ -9,7 +9,7 @@ using BeyondTheDoor.UI;
 
 public class Game : MonoBehaviour
 {
-    private static Game instance;
+    public static Game instance;
     private void Awake()
     {
         instance = this;
@@ -153,6 +153,16 @@ public class Game : MonoBehaviour
         asked_q_whatDoYouWantCallback.Callback += (conv, line) => DayBehaviour.Current.q_whatDoYouWant.TryStart();
         asked_q_whyShouldILetYouInCallback.Callback += (conv, line) => DayBehaviour.Current.q_whyShouldILetYouIn.TryStart();
         asked_q_howCanYouHelpMeCallback.Callback += (conv, line) => DayBehaviour.Current.q_howCanYouHelpMe.TryStart();
+
+        staySilentCallback.Callback += (conv, line) => DayBehaviour.Current.reactionToPlayerStayingSilent.TryStart();
+        peepholeCallback.Callback += (conv, line) => DayBehaviour.Current.peephole.TryStart();
+
+        makingOCDecisionCallback.Callback += (conv, line) =>
+        {
+            DayBehaviour.Current.Characters[Character.Current.ID].tryingToKickOut.TryStart();
+            q_kickCharacterOut.Enqueue();
+        };
+        kickCharacterOutCallback.Callback += (conv, line) => KickOutCharacter(Character.Current);
 
         clearQueueCallback.Callback += (conv, line) => DialogueGUI.ClearQueue();
 
@@ -344,13 +354,19 @@ public class Game : MonoBehaviour
     public static void OpenDoor()
     {
         ArrivingCharacter.ChangeStatus(CharacterStatus.InsideCabin);
+        if (ArrivingCharacter == Character.Hal)
+            Character.Sal.ChangeStatus(CharacterStatus.InsideCabin);
         OnDoorOpened?.Invoke();
+        DayBehaviour.Current.letPersonInside.TryStart();
     }
 
     public static void LeaveDoorClosed()
     {
         ArrivingCharacter.ChangeStatus(CharacterStatus.LeftOutside);
+        if (ArrivingCharacter == Character.Hal)
+            Character.Sal.ChangeStatus(CharacterStatus.LeftOutside);
         OnDoorLeftClosed?.Invoke();
+        DayBehaviour.Current.keepPersonOutside.TryStart();
     }
 
     /// <summary>
@@ -400,6 +416,19 @@ public class Game : MonoBehaviour
         }
     }
 
+    public static void KickOutCharacter(Character character)
+    {
+        DayBehaviour.Current.Characters[character.ID].kickedOut.TryStart();
+        character.ChangeStatus(CharacterStatus.KickedOut);
+        if (character == Character.Hal)
+            Character.Sal.ChangeStatus(CharacterStatus.KickedOut);
+        else if (character == Character.Sal)
+            Character.Hal.ChangeStatus(CharacterStatus.KickedOut);
+
+        // Advance
+        instance.advance.Enqueue();
+    }
+
 
     private static void ScavengeAdvance()
     {
@@ -447,7 +476,7 @@ public class Game : MonoBehaviour
         }
 
         // Move along to the next stage
-        Advance();
+        instance.advance.Enqueue();
     }
 
     private static void DetermineScavengerFates()
@@ -493,6 +522,10 @@ public class Game : MonoBehaviour
                     DayBehaviour.Current.Characters[scavenger.ID].returnedFromScavengingWithGun.TryStart();
 
                 scavenger.ChangeStatus(CharacterStatus.InsideCabin);
+                if (scavenger == Character.Hal)
+                    Character.Sal.ChangeStatus(CharacterStatus.InsideCabin);
+                else if (scavenger == Character.Sal)
+                    Character.Hal.ChangeStatus(CharacterStatus.InsideCabin);
                 // Violet gets the car
                 if (scavenger == Character.Violet)
                     Cabin.HasCar = true;
@@ -510,7 +543,7 @@ public class Game : MonoBehaviour
     public static void ExitToMenu()
     {
         OnGameExit?.Invoke();
-        BeyondTheDoor.UI.DialogueGUI.Close(); // Turn off the GUI if it's playing a line
+        DialogueGUI.Close(); // Turn off the GUI if it's playing a line
         Character.ResetAll(); // Reset them (doesn't really matter but meh)
 
         // Game is saved automatically

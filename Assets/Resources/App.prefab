@@ -205,6 +205,7 @@ MonoBehaviour:
   q_kickCharacterOut: {fileID: 11400000, guid: 18e711bf837a4f34f8f666e7b0bb2ba6, type: 2}
   advance: {fileID: 11400000, guid: 8d4c8f050d7fc744486fa9fb028de648, type: 2}
   confirmScavenge: {fileID: 11400000, guid: cf5f721ba3cedb14aa2b50ebcdfd5b31, type: 2}
+  confirmNoScavenge: {fileID: 11400000, guid: 0c44a8bff2621254cb16d9dc81c053c6, type: 2}
   advanceCallback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
   scavengeAdvanceCallback: {fileID: 11400000, guid: 31f038fe378eb6645a3e391fa639ba81, type: 2}
   openDoorCallback: {fileID: 11400000, guid: 5acfab5c786a53846bd0c9a7f9814e55, type: 2}
