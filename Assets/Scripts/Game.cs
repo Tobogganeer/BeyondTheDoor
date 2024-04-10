@@ -47,6 +47,8 @@ public class Game : MonoBehaviour
     [Space]
     [SerializeField] private ConversationCallback makingOCDecisionCallback;
     [SerializeField] private ConversationCallback kickCharacterOutCallback;
+    [Space]
+    [SerializeField] private ConversationCallback clearQueueCallback;
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]

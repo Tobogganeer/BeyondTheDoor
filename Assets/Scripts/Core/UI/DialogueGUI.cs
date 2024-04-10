@@ -287,6 +287,10 @@ namespace BeyondTheDoor.UI
             }
         }
 
+        public static void ClearQueue()
+        {
+            throw new NotImplementedException();
+        }
 
         [System.Serializable]
         private class ChoiceGUI
