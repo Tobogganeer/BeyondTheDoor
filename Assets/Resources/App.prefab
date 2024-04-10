@@ -198,11 +198,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   q_addToScavengeParty: {fileID: 11400000, guid: 0387d15386e00f7479bb14d0ec876dcc, type: 2}
   q_removeFromScavengeParty: {fileID: 11400000, guid: 3328c4c70d700854e931161842fb48d8, type: 2}
-  q_door_options: {fileID: 0}
-  q_door_askQuestions: {fileID: 0}
-  q_door_openOrKeepClosed: {fileID: 0}
+  q_door_options: {fileID: 11400000, guid: a70e0e5771bf27c43b4dc4f748820268, type: 2}
+  q_door_askQuestions: {fileID: 11400000, guid: 2bf099182efe635489d9afaea4a102ee, type: 2}
+  q_door_openOrKeepClosed: {fileID: 11400000, guid: 05dd35b987e4b2a4db8a022926d8b067, type: 2}
   q_makeOCDecision: {fileID: 11400000, guid: 539c4b0a5229ab841b34a2fd166150a5, type: 2}
-  q_kickCharacterOut: {fileID: 0}
+  q_kickCharacterOut: {fileID: 11400000, guid: 18e711bf837a4f34f8f666e7b0bb2ba6, type: 2}
   advanceCallback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
   scavengeAdvanceCallback: {fileID: 11400000, guid: 31f038fe378eb6645a3e391fa639ba81, type: 2}
   openDoorCallback: {fileID: 11400000, guid: 5acfab5c786a53846bd0c9a7f9814e55, type: 2}
