@@ -44,6 +44,11 @@ Player	Send {character} with shotgun		0	send_with_shotgun	Final	None
 Player	Send {character} without shotgun		0	send_without_shotgun	Final	None	
 None	(no content)		0	none	Final	None	
 Player	Send no scavengers		0	confirm_no_scavengers	Final	None	
+None	Kick {character} out?		0	q_kick_character_out	Final	None	
+							
+							
+							
+							
 							
 //	Common conversations						
 CONVERSATION	AddToScavengeParty						
@@ -78,18 +83,19 @@ END
 CONVERSATION	SendWithoutShotgun						
 END							
 							
-							
-							
-							
-							
-							
-							
-							
 CONVERSATION	ConfirmNoScavengers						
 CHOICE							
 	Send no scavengers			confirm_no_scavengers			
 CHOICE							
 	Go back			go_back			
+END							
+							
+CONVERSATION	MakeOCDecision						
+				q_kick_character_out			
+CHOICE							
+				make_decision			
+CHOICE							
+				go_back			
 END							
 							
 							
@@ -174,11 +180,53 @@ CONVERSATION	Check supplies day 1		1
 Player	"I think I have enough food for the next days if, I hope the war doesn't reach this are of the city"	Player checks food supplies	1	p1_supply	Placeholder		
 END			1				
 							
+							
+							
+							
+							
 CONVERSATION	Jessica arrive at the door		1				
 Jessica	Hello? Is there anyone there? Its cold here outside		1	j_1_door	Placeholder		
 Jessica	"Hey! Im pleading to be let in, I can survive out here in a wheel chair"		1	j_1_door_ignored	Placeholder		
+END			1				
+							
+CONVERSATION	Day 1 peephole						
 Player 	"I can't see anything beyond a shape, it looks like I can see small, and a wheel, maybe two"		1	p_1_door_head	Placeholder		
 END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Making decision		1				
 CHOICE	Player lets Jesssica out lie						
@@ -219,17 +267,18 @@ CONVERSATION	Player lets Jessica in		1
 Jessica	Thank you so much		1	j_1_in	Placeholder		
 Player	"Okay you can get in, you should warm up a bit."		1	p_1_j_in	Placeholder		
 Jessica	You're probably right		1	j_1_warm	Placeholder		
+GOTO	Player talking to Jessica						
 END							
 CONVERSATION	Player talking to Jessica		1				
 Player	*sits near her* So for how long have you been out there?		1	p_1_j_talk	Placeholder		
 Jessica	"For around a day, I was able to take the last train that was going for the airport nearby, but after the airport was attacked, we were left helpless in the station."		1	j_1_story	Placeholder		
 Jessica	"Some of the soldiers apprehended some of the people of the station but I was able to flee so I've romamed a for some hours until I found the cabin, I was probably going to die if it wasnt for you"		1	j_1_background	Placeholder		
 Player	"Those are some horrible news, were they the govermnet soldiers or the revolunaries?"		1	p_1_news	Placeholder		
-Jessica	"It was the government, they were afraid of some of the words getting out, some people are fleeing the country trough airports."		1	j_1_airport	Placeholder		
+Jessica	"It was the government, they were afraid of some of the words getting out, some people are fleeing the country through airports."		1	j_1_airport	Placeholder		
 Player	Weren't the airports closed?		1	p_1_airport	Placeholder		
 Jessica	"They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country"		1	j_1_flee	Placeholder		
+GOTO	Player talking to Jessica about politics						
 END							
-							
 CONVERSATION	Player talking to Jessica about politics		1				
 Player	Can you tell me a bit about your past?		1	p_1_j_past	Placeholder		
 Player	Which of the two sides do you trust more ?		1	p_1_j_politics	Placeholder		
@@ -238,10 +287,9 @@ Player	"I feel like it is better for us to get some rest, you can use the first 
 Jessica	"Ok, thank you very much, see you tomorrow."		1	j_1_rest	Placeholder		
 Player	"I feel like it is better for us to get some rest, you can use the first bedroom in the hallway."		1	p_1_rest2	Placeholder		
 END			2				
-							
 //	Day 2						
 CONVERSATION	Check radio day 2						
-Radio	"25 dead after revolutionaries attempted to send hijack airplanes for refugees to flee the country, the only resources coming to the country are trough air drops and direct sent to the military outposts."	Player checks radio in day 2	2	r2	Placeholder		
+Radio	"25 dead after revolutionaries attempted to send hijack airplanes for refugees to flee the country, the only resources coming to the country are through air drops and direct sent to the military outposts."	Player checks radio in day 2	2	r2	Placeholder		
 END			2				
 							
 CONVERSATION	Check outside day 2		2				
@@ -268,13 +316,26 @@ Jessica	Are you sure about that? Isn't it better for us to wait until we absolut
 Jessica	I feel like that would be stealing and some other people out there might need it more than us		2	j_2_jconvo2	Placeholder		
 END							
 							
-CONVERSATION	Sending Jessica to scavange or not		2				
+							
+							
+CONVERSATION	NOT Sending Jessica to scavange		2				
 Player	"You're probably right, we can wait a bit further until we have to resort to scavenge."	Player decides to not send Jessica	2	p_2_scavenge_opt1	Placeholder		
+END							
+							
+							
+							
+							
+CONVERSATION	Sending Jessica to scavange		2				
 Player	"Its either us or they, we don't know if there are many survives nearby as well, in the end it might just be pillaged by raiders or by soldiers themselves. I think it would be a good idea for you you to scavenge today (send her to scavenge)"	Player convincing Jessica to scavenge	2	p_2_scavenge_opt2	Placeholder		
 Jessica	"I'm against it, I'm almost the supplies will last for a long while, I can't steal knowing some people out there might need it more than us."	Jessica being against scavenging	2	j_2_scavenge	Placeholder		
 Player	"You're the one who is currently living with me, if you want to survive you will need to collaborate"	Player convincing Jessica to scavenge	2	p_2_force_jscavange	Placeholder		
 Jessica	Im only going because you're the one who saved me		2	j_2_force_scavenge	Placeholder		
 END							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Jessica after scavenging 		2				
 Player	"It already past 2 hours the time we scheduled for her to come back, she probably died"		2	j_2_jessica_died	Placeholder		
@@ -287,8 +348,16 @@ Jessica	"Please check the door, I'm sure its someone out there in that wasteland
 Jessica	I can't believe you're actually doing this. You're really going to let them die!		2	j_2_pleading_door2	Placeholder		
 ENDIF							
 Bob	"Hello? I can see you have your lights on, hey please man can you let me in? It's freezing out here."		2	b_2_door	Placeholder		
+END							
+							
+							
+CONVERSATION	Day 2 peephole						
 Player	"I can only see what it seems to be someone wearing a cap, the look tall and he looks like a normal man"		2	p_2_door_head	Placeholder		
 END							
+							
+							
+							
+							
 							
 CONVERSATION	Bob who		2				
 Bob	"Name's Bob, I just to find shelter, the nearest city is under siege, its a total chaos, building crumbling, shells and rumble on the street. You please have to let me in!"		2	b_2_name	Placeholder		
@@ -315,21 +384,29 @@ Jessica	"What are you talking about! You're lying, we're talking about a human b
 ENDIF							
 Bob	"I can help! I can be useful and find more food to help us survive, please! I don't want to be here!"		2	b_door_rejection			
 Player	"Sorry I can't let you in, I don't trust you"		2	p_door_rejection			
+IF	Jessica						
+GOTO	Bob does not get in						
+ENDIF							
 END							
+							
+							
 							
 CONVERSATION	Letting bob in		2				
 Bob	"Okay, thanks!"		2	b_2_open_door	Placeholder		
+GOTO	Bob gets in						
 END							
 							
+							
+							
 CONVERSATION	Bob gets in		2				
-CHOICE	talking to bob						
+CHOICE							
 Player	"Im going to bed, your room is the second one in the hallway."		2	p_2_room	Placeholder		
 CHOICE	talking to bob						
 Player	So how long have you been outside?		2	p_2_b_talk	Placeholder		
 END							
 							
 CONVERSATION	talking to bob		2				
-Bob	"It's been some days,  I think maybe 3 days, I've been surviving trough scavenging some resources on my way here."		2	b_2_time	Placeholder		
+Bob	"It's been some days,  I think maybe 3 days, I've been surviving through scavenging some resources on my way here."		2	b_2_time	Placeholder		
 Player	Do you know how to situation is out there?		2	p_2_situation	Placeholder		
 Bob	"Because of the blizzard its hard to see much, I'm glad I left with my hiking equipment and clothes, If not I could've died out there."		2	b_2_situation	Placeholder		
 IF	Jessica						
@@ -362,7 +439,12 @@ END
 							
 CONVERSATION	Check outside day 3		3				
 Player	"A bit less cold then yesterday bit still inhumane to stay out here for longer periods of time, I wonder how the soldiers even fight in these conditions"	Player goes outside to check situation	3	p3_outside	Placeholder		
+GOTO	Journalist intro						
 END							
+							
+							
+							
+							
 							
 CONVERSATION	Check TV day 3		3				
 TV	"LOOK FOR SHELTER, DON'T LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOST FOR HELP OR VOLUNTEERING. ALL CITIZENS OVER 30 ARE REQUIRED TO GO TO AN OUTPOST TO BE DRAFTED INTO THE WAR."	Player checks television in day 3	3	tv3	Placeholder		
@@ -378,6 +460,10 @@ Player	We have to get out of this place when the first opportunity appears		3	p_
 Bob	It's just fucked up that we are forced to fight for something we don't even believe. And if we fight for what we believe the chance of us getting erased from history is big.	Bob talking about beliefs	3	b_3_believe	Placeholder		
 Player	"Yeah, we have to be more careful when scavenging to no e caught by any soldiers."	Player talking about soldiers	3	p_3_careful	Placeholder		
 END							
+							
+							
+							
+							
 							
 CONVERSATION	Jessica and Bob interaction about scavenging		3				
 IF	Jessica						
@@ -420,12 +506,6 @@ GOTO	ConfirmScavenge
 END							
 							
 							
-							
-							
-							
-							
-							
-							
 CONVERSATION	Journalist intro		3				
 Journalist	"Heeeeey! I come in peace, I'm just a journalist, I want to ask some questions"		3	journalist_3_hey			
 Player 	"Sure, why not"		3	p_3_j_sure	Placeholder		
@@ -435,6 +515,23 @@ Player	Can you jump to the important part		3	p_3_journalist_skip	Placeholder
 CHOICE	Journalist talk 2						
 Player	"uhum, uhum"		3	p_3_goon	Placeholder		
 END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Journalist talk 2		3				
 Journalist	"I'm was thinking of going to the city a bit up north, the place is in complete chaos right now, I've heard that they stopped using rubber bullets against people. It sound's like movie."		3	journalist_3_chaos	Placeholder		
@@ -447,7 +544,18 @@ END
 CONVERSATION	Journalist talk 3		3				
 Journalist	"But I heard some pretty fucked up stuff, both side are torturing some people for information. "		3	journalist_3_fucked	Placeholder		
 Journalist	"They are also paying some journalists to show a different image of the war, showing how the state is winning and the revolutionaries are doing some pretty fucked up stuff, I don't know if its true but I want to show the world the truth."		3	journalist_3_money	Placeholder		
+GOTO	Journalist resources						
 END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Journalist resources		3				
 Journalist	"Ok, Now for some questions, are you suffering with lack of anything? Food, water, too cold etc...?"		3	journalist_3_resources	Placeholder		
@@ -510,7 +618,7 @@ END
 							
 CONVERSATION	day 3 door comments						
 IF	Jessica						
-Jessica	Just at least look trough the peephole! We can always find a way to help them!		3	j_3_peephole	Placeholder		
+Jessica	Just at least look through the peephole! We can always find a way to help them!		3	j_3_peephole	Placeholder		
 ENDIF							
 IF	Bob						
 Bob	I think you're makign the right choice		3	b_3_right_choice	Placeholder		
@@ -557,12 +665,12 @@ IF	Bob
 Bob	What the fuck are you doing? That thing is not human!		3	b_3_in	Placeholder		
 Bear	*roar*		3	bear_3_roar	Placeholder		
 Bob	Get back!		3	b_3_back	Placeholder		
+GOTO	Bob dead						
 ENDIF							
 IF 	Jessica						
 Jessica	GET THE GUN		3	j_3_gun	Placeholder		
 ENDIF							
 END							
-							
 							
 CONVERSATION	Bob dead		3				
 Player	Oh my god		3	p_3_god	Placeholder		
@@ -600,11 +708,72 @@ Player	I just hope for this thing to end		4	p_4_end	Placeholder
 Bob	"Fair, but we were in the need of better conditions for a long time, but you don't need to fight for something you don't believe in"		4	b_4_fight	Placeholder		
 END							
 							
+							
+							
 CONVERSATION	Jessica apologizes		4				
 Jessica	Good morning everyone!		4	j_4_morning	Placeholder		
+IF	Bob						
 Jessica	"I'm sorry about yesterday, we would all be dead if you guys followed my decisions"		4	j_4_morning	Placeholder		
 Bob	Hum		4	b_4_hum	Placeholder		
+ENDIF							
+IF	bobdead						
+Player	Are you okay? I cleaned all the blood		4	p_4_check	Placeholder		
+Jessica	"Of course I'm okay, did you get hurt? Blood from who?"		4	j_4_blood	Placeholder		
+Player	"Bob, the bear and everything, don't you remember?"		4	p_4_bob_blood	Placeholder		
+Jessica	I don't think I met anyone named bob		4	j_4_no_bob	Placeholder		
+Player	"Oh no she's shell shocked, she's traumatized and her brain is blocking the memory"		4	p_4_jessica_shocked	Placeholder		
+ENDIF							
 END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Argument		4				
 Player	"Okay, we need to scavenge, does anyone wants to go?"		4	p_4_scavenge	Placeholder		
@@ -619,11 +788,11 @@ Jessica	Plus I can't walk		4	j_4_walk	Placeholder
 ELIF	Bob						
 Bob	I can go		4	b_4_offering	Placeholder		
 ENDIF							
+GOTO	Scavenge day 4 Bob and Jessica						
 END							
 							
-							
 CONVERSATION	Scavenge day 4 Bob and Jessica						
-IF	Bob						
+IF	Bob && jessica						
 Bob	"So okay, who's going to fucking scavenge?"		4	b_4_pissed			
 ENDIF							
 END							
@@ -692,14 +861,14 @@ CONVERSATION	Bob after scavenging day 4 no gun		4
 Bob	"There were some gunshots in the distance, I had to make another route today so I didn't walk into a fucking no mans land"		4	b_4_scavenge_no_gun	Placeholder		
 END							
 							
-CONVERSATION	Day 4 Jessica shell shocked		4				
-Jessica	Good morning everyone!		4	j_4_morning	Placeholder		
-Player	Are you okay? I cleaned all the blood		4	p_4_check	Placeholder		
-Jessica	"Of course I'm okay, did you get hurt? Blood from who?"		4	j_4_blood	Placeholder		
-Player	"Bob, the bear and everything, don't you remember?"		4	p_4_bob_blood	Placeholder		
-Jessica	I don't think I met anyone named bob		4	j_4_no_bob	Placeholder		
-Player	"Oh no she's shell shocked, she's traumatized and her brain is blocking the memory"		4	p_4_jessica_shocked	Placeholder		
-END							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Scavenge Jessica only		4				
 Player	We need to scavenge today		4	p_4_scavenge_jessica			
@@ -729,7 +898,7 @@ Player	Look at the peephole		4	p_4_look	Placeholder
 END							
 							
 CONVERSATION	Jessica asking to look at peephole		4				
-Jessica	We should at least look trough the peephole and ask some questions		4	j_4_peephole	Placeholder		
+Jessica	We should at least look through the peephole and ask some questions		4	j_4_peephole	Placeholder		
 END							
 							
 CONVERSATION	Comments on door		4				
@@ -807,7 +976,17 @@ IF	Jessica
 Jessica	Oh you're mute?		4	j_4_mute	Placeholder		
 ENDIF							
 Violet 	*Thank you gestures*		4	v_4_thank	Placeholder		
+GOTO	Violet in						
 END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Violet in		4				
 IF	BOB && !Jessica						
@@ -895,7 +1074,7 @@ ENDIF
 Jessica	I cant go alone!		5	j_5_alone			
 CHOICE	ConfirmScavenge						
 Player	I'm sure		5	p_5_sure	Placeholder		
-CHOICE							
+CHOICE	Scavenging comment						
 Player	"Ok, let me think a bit more"		5	p_5_think	Placeholder		
 END							
 							
@@ -905,7 +1084,7 @@ Bob	"Sure thing, I will bring back anything that might be useful."		5	b_5_anythi
 Violet	"*I want to go scavenge, there might be something useful that I can fix there*"		5	v_5_want_to_find_car	Placeholder		
 CHOICE	ConfirmScavenge						
 Player	"Bob should go, It's better this way"		5	p_5_bob_should_go	Placeholder		
-CHOICE							
+CHOICE	Scavenging comment						
 Player	"Ok, let me think a bit more"			p_5_think	Placeholder		
 END							
 							
@@ -915,7 +1094,7 @@ Violet	*Thumbs up*		5	v_5_thumbs	Placeholder
 Bob	"Fine by me, it seems she can handle well on her own"		5	b_5_violet	Placeholder		
 CHOICE	ConfirmScavenge						
 Player	"Violet should go, It's better this way"		5	p_5_bob_sure	Placeholder		
-CHOICE							
+CHOICE	Scavenging comment						
 Player	"Ok, let me think a bit more"		5	p_5_think	Placeholder		
 END							
 							
@@ -928,7 +1107,7 @@ END
 CONVERSATION	Selecting Bob		5				
 Bob	"I trust your judgement. This is war, and there really isn't enough to go around."		5	b_5_judgment	Placeholder		
 Bob	"If it was up to me, I'd rather stick with Violet."		5	b_5_violet	Placeholder		
-END	"If it was up to me, I'd rather stick with Violet."		5	b_5_violet	Placeholder		
+END							
 							
 CONVERSATION	Selecting Jessica		5				
 Jessica	"You aren't really going to kick someone out, are you? It's freezing out there!"		5	j_5_freezing	Placeholder		
@@ -1037,8 +1216,8 @@ END
 							
 CONVERSATION	B_Violet coming back		5				
 Bob	"I hear car noises, turn off the lights now!"		5	b_5_car	Placeholder		
-CHOICE	Look trough window						
-Player	Let me look trough the window		5	p_5_window	Placeholder		
+CHOICE	Look through window						
+Player	Let me look through the window		5	p_5_window	Placeholder		
 CHOICE	Hide bob						
 Player	Okay! I will get the gun		5	p_5_gun	Placeholder		
 END							
@@ -1051,11 +1230,11 @@ Jessica	It’s a bulky person		5	j_5_bulk	Placeholder
 Jessica	They are very close now		5	j_5_close	Placeholder		
 END							
 							
-CONVERSATION	Look trough window		5				
+CONVERSATION	Look through window		5				
 Bob	What the fuck are you doing!? What if are raiders or the military?!		5	b_5_miltary	Placeholder		
 Player	It looks like the car is parking here		5	p_5_car_parking	Placeholder		
 Bob	Get the fuck away from there!		5	b_5_get_out	Placeholder		
-CHOICE	Continue looking trough window						
+CHOICE	Continue looking through window						
 Player	I'm going to keep looking		5	p_5_looking	Placeholder		
 CHOICE	Hide bob						
 Player	Okay I will hide		5	p_5_ok_hide	Placeholder		
@@ -1069,7 +1248,7 @@ CONVERSATION	Hide jessica		5
 Jessica	"Okay, okay, I'm going to hide"		5	j_5_ok_hide	Placeholder		
 END							
 							
-CONVERSATION	Continue looking trough window		5				
+CONVERSATION	Continue looking through window		5				
 IF	Bob						
 Bob	"What the fuck, Violet is that you?"		5	b_5_violet	Placeholder		
 Player	Where the fuck did you find a car?		5	p_5_car	Placeholder		
@@ -1097,7 +1276,7 @@ Player	I will look at the peephole		5	p_5_peephole	Placeholder
 END							
 							
 CONVERSATION	Ignore door day 5		5				
-Jessica	We should at least look trough the peephole and ask some questions		5	j_5_peephole	Placeholder		
+Jessica	We should at least look through the peephole and ask some questions		5	j_5_peephole	Placeholder		
 END							
 							
 CONVERSATION	peephole day 5		5				
@@ -1105,8 +1284,14 @@ Player	"It's honestly looks like a normal person, not much to say, it seems they
 END							
 							
 CONVERSATION	DAY 5 who		5				
-Dad	Have you a teenager around here? I also just need a place to stay for the night		5	dad_5_who	Placeholder		
+Dad	Have you seen a teenager around here? I also just need a place to stay for the night		5	dad_5_who	Placeholder		
+GOTO	Teenager						
 END							
+							
+							
+							
+							
+							
 							
 CONVERSATION	DAY 5 why		5				
 Dad	"I promisse I won't use any of your supplies. I have my own here with me, I just to spend the night in somewhere safe. By tomorrow morning I will set off again to find my son."		5	dad_5_why	Placeholder		
@@ -1182,12 +1367,510 @@ Player	You will need to sleep in the couch in living room as we don't have any r
 Dad	Thats fine by me!		5	dad_5_fine	Placeholder		
 ENDIF							
 END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 //	Day 6						
+CONVERSATION	Check TV		6				
+TV	*STATIC*		6	tv6	DRAFT	NONE	
+END							
+							
+							
+CONVERSATION	Check Radio		6				
+Radio	The war in Brasnia continues to expand outwards. Citizens of the north and east are expected to hear firefights and artillery. Ceasefire negotiations continue with the US still apprehensive.		6	r6	DRAFT	NONE	
+END							
+							
+CONVERSATION	Check Outside		6				
+Player	It looks clearer and clearer by the day... still hostile though.		6	p6_outside	DRAFT	NONE	
+END							
+							
+CONVERSATION	Check Supplies		6				
+Player	We should be alright for a few days at least.		6	p6_supplies	DRAFT	NONE	
+END							
 							
 							
 							
 							
-//	Move this section further down as needed						
+CONVERSATION	Bob wakes up		6				
+Bob	Big guys got the TV down by the looks of it.		6	b_6_tv_taken_down	DRAFT	NONE	
+Player	We could use some more information on what's happening.		6	p_6_tv_could_use_info	DRAFT	NONE	
+Bob	It's just fighting and more fighting.		6	b_6_tv_fighting	DRAFT	NONE	
+END							
+							
+CONVERSATION	Jessica wakes up		6				
+Jessica	Good morning everyone!		6	j_6_good_morning	DRAFT	NONE	
+IF	Bob						
+Bob	*sigh*		6	b_6_sigh	DRAFT	NONE	
+ELSE							
+Player	Hi.		6	p_6_j_hi	DRAFT	NONE	
+ENDIF							
+END							
+							
+CONVERSATION	Violet wakes up						
+Violet	*your beds arent half bad actually*		6	v_6_wake_up	DRAFT	NONE	
+END							
+							
+CONVERSATION	Dad wakes up		6				
+Dad	Morning guys... Thanks for letting me stay the night.		6	dad_6_wake_up	DRAFT	NONE	
+IF	Bob						
+Bob	"Don't want to be that guy, but you did say you were just staying the night."		6	b_6_d_you_gotta_leave	DRAFT	NONE	
+ENDIF							
+Dad	"I'm a man of my word. It was nice getting to briefly meet you folks, but it's time for me to hit the road... My son's out there somewhere."		6	dad_6_i_will_leave	DRAFT	NONE	
+IF	Jessica						
+Jessica	Is there anything we can give you to help you out?		6	j_6_d_anything_to_give	DRAFT	NONE	
+Dad	"I'm not sure... I've got food, water, clothes on my back and a good pair of mitts."		6	dad_6_dont_need_anything	DRAFT	NONE	
+ENDIF							
+IF	!HasShotgun						
+GOTO	Nothing for Dad						
+ENDIF							
+CHOICE	Offer Dad shotgun						
+Player	Offer Shotgun		6	p_6_d_offer_shotgun	DRAFT	NONE	
+CHOICE	Nothing for Dad						
+Player	Send him on his way		6	p_6_d_send_dad_along	DRAFT	NONE	
+END							
+							
+							
+CONVERSATION	Nothing for Dad		6				
+Player	"Sorry, but I don't think there's anything else we can do for you."		6	p_6_d_nothing_else	DRAFT	NONE	
+Dad	"That's alright, just spending the night is nice enough."		6	dad_6_nothing_is_alright	DRAFT	NONE	
+GOTO	Dad leaves						
+END							
+							
+CONVERSATION	Offer Dad shotgun		6				
+Dad	It would certainly help me out.		6	dad_6_shotgun_would_help	DRAFT	NONE	
+IF	Bob && !Jessica						
+Bob	(to you) Don't give him our gun. He's only been here for a night and he could still be dangerous.		6	b_6_d_dont_give_gun	DRAFT	NONE	
+ELIF	Bob && Jessica						
+Bob	(to you) Be careful with him...		6	b_6_d_be_cautious	DRAFT	NONE	
+ENDIF							
+IF	Jessica						
+Jessica	"(to you) Give it to him, he can use it a lot more than we can."		6	j_6_d_give_gun	DRAFT	NONE	
+ENDIF							
+IF	Violet						
+Violet	*ask him some more questions before you give him the gun*		6	v_6_d_ask_questions_before	DRAFT	NONE	
+ENDIF							
+GOTO	Dad questions						
+END							
+							
+							
+CONVERSATION	Dad questions		6				
+CHOICE	Will Dad bring shotgun back						
+Player	"""Will you bring the gun back to us?"""		6	p_6_d_will_you_bring_back	DRAFT	NONE	
+CHOICE	Will shotgun help Dad						
+Player	"""Do you really think this would help you out?"""		6	p_6_d_will_gun_help	DRAFT	NONE	
+CHOICE	Give Dad shotgun						
+Player	Give Shotgun		6	p_6_d_give_shotgun	DRAFT	NONE	
+CHOICE	Keep shotgun						
+Player	Keep Shotgun		6	p_6_d_keep_shotgun	DRAFT	NONE	
+END							
+							
+CONVERSATION	Will Dad bring shotgun back		6				
+Dad	"I'm not sure if you would be seeing it again. I don't plan on coming back, but who knows what way the wind blows."		6	dad_6_p_wont_bring_back	DRAFT	NONE	
+GOTO	Dad questions						
+END							
+							
+CONVERSATION	Will shotgun help Dad		6				
+Dad	"Yes, my son might be somewhere dangerous."		6	dad_6_p_son_maybe_danger	DRAFT	NONE	
+GOTO	Dad questions						
+END							
+							
+CONVERSATION	Give Dad shotgun		6				
+IF	Bob						
+Bob	*sigh*		6	b_6_sigh	DRAFT	NONE	
+ENDIF							
+Dad	Thank you... I will remember this.		6	dad_6_thanks_for_gun	DRAFT	NONE	
+GOTO	Dad leaves						
+END							
+							
+CONVERSATION	Keep shotgun		6				
+Player	I think we should keep the shotgun.		6	p_6_d_we_should_keep_gun	DRAFT	NONE	
+Dad	I understand. You have to keep yourself safe too.		6	dad_6_understand	DRAFT	NONE	
+GOTO	Dad leaves						
+END							
+							
+							
+							
+							
+							
+CONVERSATION	Dad leaves		6				
+Dad	"Regardless, thanks for the hospitality. Stay safe!"		6	dad_6_goodbye			
+IF	Jessica						
+Jessica	Bye! Hope you can find your son!		6	j_6_d_goodbye			
+ENDIF							
+IF	Bob						
+Bob	Good luck.		6	b_6_d_goodbye			
+ENDIF							
+IF	Violet						
+Violet	(to you) *i don't think he'll find his son*		6	v_6_d_goodbye			
+ENDIF							
+END							
+							
+							
+							
+CONVERSATION	Enter scavenging		6				
+IF	OnePartyMember						
+Player	"The weather's clearing up a bit, and we could use some more food. Do you want to go out?"		6	p_6_solo_want_to_go_out			
+GOTO	Single person comments on scavenging						
+ELSE							
+Player	"The weather's clearing up a bit, and we could use some more food. Who wants to go out?"		6	p_6_multi_want_to_go_out			
+GOTO	Moron trying to argue against scavenging						
+ENDIF							
+END							
+							
+CONVERSATION	Single person comments on scavenging		6				
+IF	Bob						
+Bob	Might as well.		6	b_6_might_as_well			
+ELIF	Violet && HasCar						
+Violet	*sure i can go*		6	v_6_sure_i_can_go			
+ELIF	Violet && !HasCar						
+Violet	*i want to go check out the gas station*		6	v_6_wants_to_check_gas_station			
+ENDIF							
+END							
+							
+CONVERSATION	Moron trying to argue against scavenging		6				
+//	The player just asked who wants to go out						
+IF	Bob						
+Bob	I'll go.		6	b_6_ill_go			
+ENDIF							
+IF	Bob && Jessica						
+Jessica	I don't think anyone should go. The weather looks better outside and we have lots of food left.		6	j_6_b_nobody_should_go			
+Bob	That's exactly why we should go. The weather being clear means that we can check farther out for more food. What if the weather goes bad and we are snowed in?		6	b_6_j_thats_why_we_should			
+Jessica	I don't know why you are always so negative. Can't we just eat a bit less and leave some food for people who need it?		6	j_6_b_you_are_negative			
+Bob	We need it. I'll go out.		6	b_6_j_we_need_it_dummy			
+ENDIF							
+IF	Violet && HasCar						
+Violet	"*it could get worse, ill go*"		6	v_6_it_could_get_worse			
+ELIF	Violet && !HasCar						
+Violet	"*i want to go to the gas station, there could be a car for us there*"		6	v_6_j_want_car			
+ENDIF							
+IF	Violet && !HasCar && Jessica						
+Jessica	"I guess we wouldn't be taking other people's food, but what if that is someone's car?"		6	j_6_v_what_if_stealing_car			
+Violet	*this is war it's not fair for everyone*		6	v_6_j_war_isnt_fair			
+ENDIF							
+END							
+							
+							
+							
+CONVERSATION	Before scavenge choice Jessica		6				
+IF	OnePartyMember						
+Jessica	"I don't think so, even if it's a bit nicer out there I don't think it's a good idea for me to go. I think we also have enough food already, it's just two of us."		6	j_6_solo_doesnt_want_to_go			
+ELSE							
+Jessica	 I don't think it's a good idea for me to go. I think we also have enough food already.		6	j_6_multi_doesnt_want_to_go			
+ENDIF							
+END							
+							
+CONVERSATION	Added to scavenge party Jessica		6				
+Jessica	Are you sure? It's scary out there!		6	j_6_hesitant			
+//	TODO: Add some Ifs here to spice it up						
+END							
+							
+CONVERSATION	Removed from scavenge party Jessica		6				
+Jessica	Thank you for understanding!		6	j_6_relief			
+END							
+							
+							
+CONVERSATION	Send Jessica		6				
+Jessica	Do I really have to?		6	j_6_bargaining			
+Player	"Yes, what if the storm comes back and we are stuck inside?"		6	p_6_j_you_must_go			
+IF	!HasShotgun						
+GOTO	Tell Jessica her idea is stupid						
+ENDIF							
+Jessica	Alright... Can I at least take that firearm? Maybe I could trade it with someone...		6	j_6_p_can_i_have_gun			
+CHOICE	Tell Jessica her idea is stupid						
+Player	That sounds stupid		6	p_6_that_sounds_stupid			
+CHOICE	Send Jessica without shotgun						
+Player	I'd rather keep it here to defend the cabin		6	p_6_j_i_want_gun			
+CHOICE	Send Jessica with shotgun						
+Player	"Sure, it could help you stay safe"		6	p_6_j_sure_take_the_gun			
+END							
+							
+CONVERSATION	Tell Jessica her idea is stupid		6				
+Jessica	"I'm just scared, okay..."		6	j_6_defensive_scared			
+GOTO	SendWithoutShotgun						
+END							
+							
+CONVERSATION	Send Jessica without shotgun		6				
+Jessica	"Okay, I understand."		6	j_6_understanding			
+GOTO	SendWithoutShotgun						
+END							
+							
+CONVERSATION	Send Jessica with shotgun		6				
+Jessica	"Thank you, I hope I won't need it for anything."		6	j_6_thanks_for_gun			
+GOTO	SendWithShotgun						
+END							
+							
+							
+CONVERSATION	Jessica died while scavenging		6				
+IF	Bob						
+Bob	"It's been too long, I don't think she made it."		6	b_6_jessica_died			
+ELIF	Violet						
+Violet	*i think she's probably dead out there. unfortunate but unsurprising*		6	v_6_jessica_died			
+ELSE							
+Player	It's been a bit too long... I don't think she's coming back.		6	p_6_jessica_died			
+ENDIF							
+END							
+							
+							
+							
+							
+							
+CONVERSATION	Added to scavenge party Bob		6				
+Bob	I'll try to go a bit farther and find somewhere new.		6	b_6_trying_further			
+END							
+							
+CONVERSATION	Send Bob		6				
+Bob	Mind giving me the gun?		6	b_6_ask_for_gun			
+GOTO	ConfirmScavenge						
+END							
+							
+CONVERSATION	Send Bob with shotgun		6				
+Bob	Thanks. I'll see what I can find for us.		6	b_6_sent_with_gun			
+END							
+							
+CONVERSATION	Send Bob without shotgun		6				
+Bob	"Alright, I'm sure it'll be fine anyways. I'll avoid the forests."		6	b_6_sent_without_gun			
+END							
+							
+CONVERSATION	Bob returned with gun		6				
+Bob	It's certainly clearing up out there. A bit foggy and barely snowing. I found a shed in the forest though... It had bodies in it. Looked fresh too. Executed. War's getting closer.		6	b_6_return_with_gun			
+END							
+							
+CONVERSATION	Bob returned without gun		6				
+Bob	"I found an abandoned farm up the road. Not a lot inside, but I swear I could see people marching in the distance."		6	b_6_return_without_gun			
+END							
+							
+							
+							
+							
+							
+							
+							
+CONVERSATION	Added to scavenge party Violet		6				
+Violet	*cool*		6	v_6_cool			
+END							
+							
+CONVERSATION	Send Violet		6				
+Violet	*can i take the gun*		6	v_6_ask_for_gun			
+GOTO	ConfirmScavenge						
+END							
+							
+CONVERSATION	Send Violet with shotgun		6				
+Violet	*thanks*		6	v_6_sent_with_gun			
+END							
+							
+CONVERSATION	Send Violet without shotgun		6				
+Violet	*ok sounds good*		6	v_6_sent_without_gun			
+END							
+							
+CONVERSATION	Violet returned with gun		6				
+Violet	*weather is improving outside*		6	v_6_return_with_gun			
+END							
+							
+CONVERSATION	Violet returned without gun		6				
+Violet	*weather is clearing and i saw some people walking around*		6	v_6_return_without_gun			
+END							
+							
+							
+CONVERSATION	Got Car		6				
+Violet	*i fixed up a car as well! itll be really useful for us*		6	v_6_got_car			
+IF	Bob						
+Bob	"Nice, a car will be really useful for us. Let's hope it has enough gas."		6	b_6_got_car			
+ENDIF							
+END							
+							
+							
+							
+							
+							
+							
+							
+CONVERSATION	Twins arriving		6				
+Hal	"Hey guys, could we come in? My brother got shot or something and I can see your lights are on and I'm pretty sure I heard you guys talking about some random crap! I need some place to patch him up a bit and it's pretty cold out here..."		6	h_6_arrive_at_door			
+END							
+							
+CONVERSATION	Look through peephole		6				
+Player	There's two people. One person is holding up the other one... matches with their story.		6	p_6_twins_through_peephole			
+END							
+							
+CONVERSATION	Stay silent		6				
+IF	Jessica						
+Jessica	"You can hear that they need some help! They sound like kids, you should let them in."		6	j_6_let_twins_in			
+ENDIF							
+Hal	"C'mon bud, I wasn't born yesterday and there's really no point in staying quiet."		6	h_6_stop_being_silent			
+ENDIF							
+END							
+							
+CONVERSATION	Who are you		6				
+Hal	"Well, I'm Hal, this is my big bro Sal."		6	h_6_im_hal			
+Sal	*groaning*		6	s_6_groan_introduction			
+Hal	We've kinda been like going around and stuff for awhile and eventually all these bombs start going off and people are shooting and yelling and we are just tryna get outta there you know? So we...		6	h_6_who_we_are_start			
+None	*5 minutes later*		6	none_5_mins_later			
+Hal	"... and I'm like, ""Oh crap Sal, you're bleeding there"", so we got the heck outta dodge and starting walking this old road and ended up here."		6	h_6_who_we_are_end			
+IF	Bob						
+Bob	Jesus this kid can talk.		6	b_6_this_kid_can_talk			
+ENDIF							
+END							
+							
+							
+CONVERSATION	What do you want		6				
+Hal	"We really just want some place to crash for a bit. Sal's kinda bleeding all over the place here and I have some patches but I'm not gonna put em on out here in the wet and the cold because they won't stick, y'know?"		6	h_6_we_want_to_crash			
+END							
+							
+							
+CONVERSATION	Why should I let you in		6				
+Hal	"I dunno how you want me to answer that? If you want us to try to do some stuff around the place we can. Or, I guess I can. Sal should probably just get some sleep."		6	h_6_idk_what_we_can_do			
+END							
+							
+							
+CONVERSATION	How can you be helpful		6				
+Hal	"Well, me and my bro here are pretty good at just being alive out here. I know that the blood and everything doesn't give you the most trust in our abilities but hey, we've been out here for like months and - well, actually probably a couple years at this point."		6	h_6_me_and_sal_are_good			
+Hal	"We can shoot, we can take care of ourselves, we're basically a perfect duo for kicking butt and living off the land."		6	h_6_skills			
+END							
+							
+							
+CONVERSATION	Bobs opinion of twins		6				
+Bob	"I don't really think we have enough resources to last with them in here. That's two more mouths to feed, plus the one is sick and will take some of our medical supplies."		6	b_6_t_no_resources			
+END							
+							
+CONVERSATION	Jessicas opinion of twins		6				
+IF	Bob						
+Jessica	"I think we should let them in so that the injured one can rest for a bit, but maybe only let them stay for the night."		6	j_6_t_conservative			
+Bob	"Didn't expect that from you, but I agree."		6	b_6_j_surprised			
+ELSE							
+Jessica	"Let them in already! That kid is dying outside, there's no way you can just let it happen!"		6	j_6_t_they_are_dying			
+ENDIF							
+END							
+							
+							
+CONVERSATION	Violets opinion of twins		6				
+IF	HasCar						
+Violet	*we have the car and it sounds like they could be useful*		6	v_6_t_let_twins_in			
+ELSE							
+Violet	*im not sure if two more people needing food is a good idea*		6	v_6_t_keep_twins_out			
+ENDIF							
+END							
+							
+							
+CONVERSATION	Keep twins out		6				
+Player	"I'm sorry guys, but I really don't have the food to support you two. You're gonna have to find somewhere else."		6	p_6_t_sorry_but_stay_out			
+Hal	"Hey, could we at least stay for a bit just so I can patch my brother up?"		6	h_6_p_bargaining			
+Player	I'm sorry. Good luck.		6	p_6_t_sorry_no			
+Hal	"Alright... Sal, wake up bro we gotta hit the road again."		6	h_6_s_get_up			
+Sal	*groans*		6	s_6_groans			
+Hal	"I know, I know, we'll find somewhere for you..."		6	h_6_s_i_know_bro_lets_go			
+IF	Jessica						
+Jessica	I think you should have let them in.		6	j_6_p_shouldve_let_them_in			
+ENDIF							
+END							
+							
+							
+							
+CONVERSATION	Let twins in		6				
+Player	I'm going to open the door now.		6	p_6_going_to_open_door			
+IF	Bob						
+Bob	*sigh*		6	b_6_sigh			
+ENDIF							
+Hal	"Thank you so much! Get up Sal, we gotta head inside."		6	h_6_p_thanks_so_much			
+Sal	*groans and gets up*		6	s_6_groan_and_get_up			
+None	*30 minutes pass*		6	none_30_mins_pass			
+Player	So what happened out there?		6	p_6_t_what_happened			
+Sal	*faintly* I think I got some shrapnel somewhere inside of me. Hard to tell with all the shooting and explosions.		6	s_6_p_shrapnel			
+IF	Jessica						
+Jessica	Where did this happen?		6	j_6_t_where			
+ELIF	Bob						
+Bob	Where did this happen?		6	b_6_t_where			
+ELIF	Violet						
+Violet	Where did this happen?		6	v_6_t_where			
+ELSE							
+Player	Where did this happen?		6	p_6_t_where			
+ENDIF							
+Sal	*pain sounds*		6	s_6_pain			
+Hal	"We were down south a bit, I can't really tell you how far because I don't know to be honest, but we came north this way for probably a couple of days before we found your little cabin."		6	h_6_down_south			
+Hal	"I think we should all try to get some sleep, I'm frankly a bit tired and honestly my bro here should probably not be forced to keep talking when he really just needs sleep."		6	h_6_want_to_sleep			
+Player	"Alright, you can find any free room really, or just sleep out here. Whatever works."		6	p_6_t_go_to_room			
+END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 //	Day 7						
 CONVERSATION	Check TV		7				
 TV	REVOLUTIONARIES ARE SUBJECT TO BEING SHOT ON SIGHT. COMPLY WITH ALL INSTRUCTIONS FROM THE BRASNIAN MILITARY. BORDER CHECKPOINTS TO OPEN TOMORROW IN THE NORTH.		7	tv7	DRAFT	NONE	
@@ -1207,23 +1890,31 @@ Player	Running quite low now...		7	p7_supplies	DRAFT	NONE
 END							
 							
 							
-//	"Bob, Jessica and Violet wake up and comment on the  TV"						
-CONVERSATION	BJV Wake Up		7				
+							
+CONVERSATION	Enter talking		7				
 Player	The border's opening tomorrow... seems like a good opportunity to get out of here.		7	p_7_tv_comment	DRAFT	NONE	
-IF	Bob						
+END							
+							
+CONVERSATION	Bob wakes up		7				
 Bob	It could be a trap - you can't trust everything the government says.		7	b_7_tv_comment	DRAFT	NONE	
-ENDIF							
-IF	Jessica && Bob						
+IF	Jessica						
 Jessica	"(to Bob) It's good to have some doubt, but you can't be so cynical all the time. The war will end eventually."	Jessica responding to Bob	7	j_7_tv_comment_bob	DRAFT	NONE	
-ELIF							
-Jessica	I think it's a good time to get out of here. I don't want to have people shooting at me!		7	j_7_tv_comment_nobob	DRAFT	NONE	
-ENDIF							
-IF	Violet && HasCar						
-Violet	*We can drive to the border and check it out tomorrow.*		7	v_7_tv_comment_car	DRAFT	NONE	
-ELIF	Violet						
-Violet	*We could try to find a car to drive there*		7	v_7_tv_comment_nocar	DRAFT	NONE	
 ENDIF							
 END							
+							
+CONVERSATION	Jessica wakes up		7				
+Jessica	I think it's a good time to get out of here. I don't want to have people shooting at me!		7	j_7_tv_comment_nobob	DRAFT	NONE	
+END							
+							
+CONVERSATION	Violet wakes up		7				
+IF	Violet && HasCar						
+Violet	*we can drive to the border and check it out tomorrow*		7	v_7_tv_comment_car	DRAFT	NONE	
+ELIF	Violet						
+Violet	*we could try to find a car to drive there*		7	v_7_tv_comment_nocar	DRAFT	NONE	
+ENDIF							
+END							
+							
+							
 							
 CONVERSATION	Twins Wake Up		7				
 Sal	*quiet* Hey... Thanks for letting us in. I feel a bit better.		7	s_7_wake_up	DRAFT	NONE	
@@ -1234,4 +1925,564 @@ IF	Bob
 Bob	(to you) Sure talks a lot...		7	b_7_hal_yaps_wake_up	DRAFT	NONE	
 ENDIF							
 Player	...		7	p_7_speechless	DRAFT	NONE	
+END							
+							
+							
+							
+							
+							
+//	Hack because there are no OR statements :P						
+CONVERSATION	Enter scavenging		7				
+IF	Bob						
+Player	"The border's opening tomorrow, so we should probably try to get some more supplies."		7	p_7_we_should_get_supplies			
+ELIF	Jessica						
+			7	p_7_we_should_get_supplies			
+ELIF	Violet						
+			7	p_7_we_should_get_supplies			
+ENDIF							
+IF	Hal						
+Player	"(to twins) If you two want any more medicine, someone will have to go find it."		7	p_7_t_yall_need_to_get_meds			
+Hal	Why can't you go? Is there anyone else who can go? Do you have like some kind of friend or someone hiding in the basement or..?		7	t_7_p_why_cant_you			
+ENDIF							
+IF	Hal && Bob						
+Bob	I could go. I might've seen some bandages at the gas station before.		7	b_7_i_can_go_meds			
+ELIF	Hal && Jessica						
+Jessica	I don't think I would be helpful in finding anything. My parents always did the shopping and I can't really reach the shelves.		7	j_7_not_useful			
+Hal	My brother's dying here. I need to stay and take care of him. I think you should go.		7	h_7_j_sal_is_dying			
+ELIF	Hal && Violet						
+Violet	*i can go. gas station probably has stuff*		7	v_7_i_can_go_gas_station			
+ENDIF							
+//	Stuff without twins						
+IF	Jessica						
+Jessica	I don't think I would be helpful in finding anything. My parents always did the shopping and I can't really reach the shelves.		7	j_7_not_useful			
+ENDIF							
+IF	Violet						
+Violet	*i can go. gas station probably has stuff*		7	v_7_i_can_go_gas_station			
+ENDIF							
+IF	Violet && !HasCar						
+Violet	*maybe we could find something to drive*		7	v_7_maybe_car			
+ENDIF							
+IF	Bob						
+Bob	I can go if you'd like. The more we have the better.		7	b_7_i_can_go_selfish			
+ENDIF							
+IF	Bob && Jessica						
+Jessica	Don't you think we have enough? It could be dangerous out there.		7	j_7_b_could_be_dangerous			
+Bob	"If we want to go to the border, we will want as much as possible. Who knows if they would even give us food?"		7	b_7_j_we_want_more			
+ELIF	Violet && Jessica						
+Jessica	Shouldn't we just play it safe? The radio said there might be fighting outside.		7	j_7_v_play_it_safe			
+Violet	*better to be shot than starve*		7	v_7_j_better_shot_than_starve			
+ENDIF							
+END							
+							
+							
+							
+							
+							
+							
+CONVERSATION	Try send no scavengers		7				
+IF	Sal						
+Sal	We need something. I don't think I'll make it otherwise.		7	s_7_we_need_something			
+ENDIF							
+END							
+							
+							
+							
+							
+							
+CONVERSATION	Add twins to scavenge party		7				
+IF	!Bob && !Jessica && !Violet						
+Hal	"Okay, okay..."		7	h_7_okok			
+ELSE							
+Hal	This isn't fair! Why won't you-		7	h_7_not_fair			
+ENDIF							
+IF	Bob						
+Bob	I really think you should let the kid rest. Injuries will just hinder their search.		7	b_7_dont_send_twins			
+ENDIF							
+IF	Jessica && !Bob && !Violet						
+Sal	It's okay. We will probably do a better job than her anyways.		7	s_7_better_than_jessica			
+ENDIF							
+IF	Violet						
+Violet	*i can go. i dont want them getting hurt*		7	v_7_dont_send_twins			
+ENDIF							
+END							
+							
+							
+							
+							
+CONVERSATION	Send twins		7				
+IF	HasShotgun						
+Hal	Okay... could we take that shotgun you've got on the wall there?		7	h_7_ask_for_gun			
+ENDIF							
+GOTO	ConfirmScavenge						
+END							
+							
+							
+CONVERSATION	Sending twins with shotgun		7				
+Sal	Thanks. I'm a pretty good shot. Maybe we'll hunt an animal.		7	s_7_thanks_for_gun			
+Hal	Let's focus on getting you sealed up before we go running around the woods!		7	h_7_focus_on_wounds			
+END							
+							
+							
+CONVERSATION	Sending twins without shotgun		7				
+Sal	I'm on death's door. Who's gonna defend me? Who will defend Hal?		7	s_7_im_almost_dead			
+Hal	"(to Sal) Hey, hey, it's alright! You do realize we walked like a million miles to get here, what's a few more to the gas station?"		7	h_7_s_its_okay_million_miles			
+Sal	...		7				
+END							
+							
+							
+							
+							
+CONVERSATION	Twins returned with shotgun		7				
+Hal	Hey! We're back! We heard some people but we got a whole bunch of bandages and some hydrogen pero-		7	h_7_we_are_back			
+Sal	Can you please wait. I feel faint.		7	s_7_i_feel_faint			
+Hal	"Sorry, sorry!"		7	h_7_sorry_sorry			
+Hal	"Alright, let's eat some antibiotics and get some new dressings on!"		7	h_7_antibiotics			
+END							
+							
+//	Hal died						
+CONVERSATION	Twin returned without shotgun		7				
+Sal	(stumbles inside covered in blood) I...		7	s_7_enter_in_blood			
+Player	What happened!?		7	p_7_s_what_happened			
+Sal	There was a bear. Big brown one. Had cubs.		7	s_7_bear			
+Sal	I told Hal to... yeah. I had to run. Nothing I could do to save...		7	s_7_couldnt_save_hal			
+IF	Jessica						
+Jessica	Oh my god...		7	j_7_omg			
+ELIF	Bob						
+Bob	... Damn.		7	b_7_damn			
+Bob	You should've let me go.		7	b_7_shouldve_let_me_go			
+ELIF	Violet						
+Violet	...		7	v_7_speechless_shocker_ik			
+ENDIF							
+END							
+							
+							
+CONVERSATION	Sal dies from lack of successful scavenge		7				
+Sal	Hal... I'm not feeling so good.		7	s_7_not_feeling_good			
+Hal	"Hey hey, what's up? You don't look too bad..."		7	h_7_s_you_look_good			
+Sal	Yeah... I can't see much.		7	s_7_cant_see			
+Hal	"Listen, we won't have to wait that much longer. Think about it! Remember this morning? The border will be open soon! We can go and get some food and some medicine and they probably have new clothes for us too and..."		7	h_7_wont_wait_much_more			
+Hal	...		7	h_7_speechless			
+Hal	Hey... You can't go to sleep.		7	h_7_s_cant_sleep_now			
+Hal	...		7	h_7_speechless			
+Hal	"Sal... Wake up man, we still need to eat some dinner! Right? Eat some canned beans or..."		7	h_7_s_wake_up_please			
+Hal	...		7	h_7_speechless			
+IF	Jessica						
+Jessica	I'm so sorry...		7	j_7_h_im_sorry			
+Hal	(to Jessica) This is your fault.		7	h_7_j_your_fault			
+ELIF	Bob						
+Bob	What will you do now?		7	b_7_h_what_will_you_do			
+Hal	... I don't know.		7	h_7_dont_know			
+ELIF	Violet						
+Violet	*where are you going*		7	v_7_h_where_going			
+Hal	... I don't know.		7	h_7_dont_know			
+ENDIF							
+END							
+							
+							
+							
+							
+							
+CONVERSATION	Before scavenge choice Jessica		7				
+Jessica	"I can't! I don't know if you heard the radio, but I did - there might be people fighting out there!"		7	j_7_dont_send_me			
+END							
+							
+CONVERSATION	Added to scavenge party Jessica		7				
+Jessica	They will shoot me!		7	j_7_worried			
+END							
+							
+CONVERSATION	Removed from scavenge party Jessica		7				
+Jessica	Please keep it this way!		7	j_7_relief			
+END							
+							
+							
+CONVERSATION	Send Jessica		7				
+IF	HasShotgun						
+Jessica	Will you let me take the gun?		7	j_7_wants_gun			
+ENDIF							
+GOTO	ConfirmScavenge						
+END							
+							
+							
+CONVERSATION	Sending Jessica without shotgun		7				
+Jessica	...		7	j_7_speechless			
+Jessica	Whatever happens is your fault.		7	j_7_your_fault			
+END							
+							
+							
+CONVERSATION	Sending Jessica with shotgun		7				
+Jessica	"We will see what happens. I'll try to get some medicine, at least we actually need it."		7	j_7_will_try_to_find_meds			
+END							
+							
+							
+							
+CONVERSATION	Jessica died while scavenging		7				
+IF	Bob						
+Bob	I don't think she made it... maybe I should've listened to her.		7	b_7_jessica_died			
+ELIF	Violet						
+Violet	"*i wonder what happened to her, dont think she will come back*"		7	v_7_jessica_died			
+ELIF	Hal						
+Hal	She isn't coming back. It's been too long.		7	h_7_jessica_died			
+ELSE							
+Player	It's been a bit too long... I don't think she's coming back.		7	p_7_jessica_died			
+ENDIF							
+IF	Hal						
+GOTO	Sal dies from lack of successful scavenge						
+ENDIF							
+END							
+							
+							
+							
+							
+							
+							
+							
+							
+CONVERSATION	Added to scavenge party Bob		7				
+Bob	Sounds good.		7	b_7_sounds_good			
+END							
+							
+CONVERSATION	Send Bob		7				
+Bob	Mind lending me the shotgun?		7	b_7_ask_for_gun			
+GOTO	ConfirmScavenge						
+END							
+							
+CONVERSATION	Sending Bob with shotgun		7				
+Bob	"Thanks. War's getting closer, but hopefully I don't need to use it."		7	b_7_sent_with_gun			
+END							
+							
+CONVERSATION	Sending Bob without shotgun		7				
+Bob	I understand. Could be dangerous with the war getting closer.		7	b_7_sent_without_gun			
+END							
+							
+CONVERSATION	Bob returned		7				
+Bob	(to twins) Found some bandages and some antibiotics. Hope it helps.		7	b_7_return			
+Sal	Thank you.		7	s_7_thank_you			
+Hal	"Alright, let's eat some antibiotics and get some new dressings on!"		7	h_7_antibiotics			
+Bob	"I think I heard some voices in the distance. Sounded like a group of men, but I could've just imagined it."		7	b_7_voices_in_distance			
+END							
+							
+							
+							
+							
+							
+							
+							
+							
+CONVERSATION	Added to scavenge party Violet		7				
+Violet	*ok*		7	v_7_ok			
+END							
+							
+CONVERSATION	Send Violet		7				
+Violet	*can i take the gun*		7	v_7_ask_for_gun			
+GOTO	ConfirmScavenge						
+END							
+							
+CONVERSATION	Send Violet with shotgun		7				
+Violet	"*thanks, hopefully don't see any people*"		7	v_7_sent_with_gun			
+END							
+							
+CONVERSATION	Send Violet without shotgun		7				
+Violet	*ok*		7	v_7_sent_without_gun			
+END							
+							
+CONVERSATION	Violet returned		7				
+Violet	*got some medicine and i saw some guys out there*		7	v_7_return			
+Sal	Thank you.		7	s_7_thank_you			
+Hal	"Alright, let's eat some antibiotics and get some new dressings on!"		7	h_7_antibiotics			
+END							
+							
+							
+							
+							
+CONVERSATION	Got Car		7				
+Violet	*i fixed up a car as well! itll be really useful for us*		7	v_7_got_car			
+IF	Bob						
+Bob	"Nice, a car will be really useful for us. Let's hope it has enough gas."		7	b_7_got_car			
+ENDIF							
+END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+//	Day 7 afternoon						
+CONVERSATION	Enter overcrowding		7				
+Player	Night is coming and we don't have the resources to support everyone here.		7	p_7_oc_intro			
+Player	Someone has to go.		7	p_7_oc_someone_has_to_go			
+END							
+							
+							
+							
+CONVERSATION	Bob OC comment		7				
+Bob	"Tough situation, but I know you know how useful my skills are to have around. I know you'll make the right choice."		7	b_7_oc_comment			
+END							
+							
+CONVERSATION	Jessica OC comment		7				
+Jessica	"I'm sorry, but I think that everybody can stay. We are probably going to the border tomorrow. We have enough stuff to support everyone."		7	j_7_oc_comment			
+END							
+							
+CONVERSATION	Violet OC comment		7				
+IF	Car						
+Violet	*if you want me to go ill drive to the border*		7	v_7_oc_comment_car			
+ELSE							
+Violet	*ive got what it takes*		7	v_7_oc_comment_nocar			
+ENDIF							
+END							
+							
+CONVERSATION	Hal OC comment		7				
+Hal	"Well, if you really have to kick someone out it's gonna be a hard choice. I don't know how long you've known all these other people or if they are your friends but I know it might be a bit hard to see them go."		7	h_7_oc_comment			
+END							
+							
+CONVERSATION	Sal OC comment		7				
+Sal	"I'd offer to leave, but I don't think I'd last long out there. I like this place."		7	s_7_oc_comment			
+END							
+							
+							
+							
+CONVERSATION	Bob OC vouch		7				
+Bob	"Hey, stop. I've been nothing but helpful to everyone here. Nobody else here has my survival skills or instincts."		7	b_7_oc_vouch_stop			
+Sal	We've all made it this far. Me and Hal were alone.		7	s_7_b_weve_all_made_it_far			
+Bob	I don't care. I'm not getting send to the road again. You can't.		7	b_7_s_oc_vouch_dont_care			
+IF	Jessica						
+Bob	"If you have to kick someone out, it should be Jessica."		7	b_7_oc_vouch_kick_jessica			
+Jessica	WHAT?		7	j_7_b_shocked			
+Bob	"(to Jessica) You can't do anything! If we sent you out, you'd die. All you do is hold us back!"		7	b_7_oc_vouch_jessica_useless			
+Bob	"This war is about life and death. If you want life, you'll get her our of here."		7	b_7_oc_vouch_life_death_taxes			
+ENDIF							
+END							
+							
+							
+CONVERSATION	Jessica OC vouch		7				
+Jessica	Stop! I've been here since the start. I deserve a spot here! I give everybody here emotional support.		7	j_7_oc_vouch_garbage_answer			
+END							
+							
+							
+CONVERSATION	Violet OC vouch		7				
+IF	HasCar						
+Violet	*if you really want me to leave i will*		7	v_7_oc_vouch_car			
+ELSE							
+Violet	*hey Im good to keep around though. I'm great with technology and mechanics.*		7	v_7_oc_vouch_nocar			
+ENDIF							
+IF	Jessica						
+Violet	*What can Jessica even do? she is dead weight if you ask me*		7	v_7_oc_vouch_jessica_sucks			
+Jessica	What is she writing?		7	j_7_v_oc_vouch_suspicious			
+ENDIF							
+END							
+							
+							
+CONVERSATION	Twins OC vouch		7				
+Hal	You can't just kick us out? We just got here and my brother here is still hurt! That's not fair at all!		7	h_7_oc_vouch_what			
+Sal	"We are useful. I know we are young, but I am a great shot and Hal here can patch anyone up. Saved me from dying."		7	s_7_oc_vouch_we_are_useful			
+IF	Jessica						
+Hal	"Besides, what does *she* do? Just sit around and eat up all of your food? Why not kick her out!"		7	h_7_oc_vouch_jessica_sucks			
+Jessica	Watch your mouth. You talk too much.		7	j_7_h_oc_vouch_sassy			
+ENDIF							
+END							
+							
+							
+							
+							
+							
+							
+CONVERSATION	Bob kicked out		7				
+Bob	Good luck. I hope you rot.		7	b_7_kicked_out			
+END							
+							
+							
+CONVERSATION	Jessica kicked out		7				
+Jessica	I'll die out there! I can't believe you are doing this to me!		7	j_7_kicked_out			
+END							
+							
+							
+CONVERSATION	Violet kicked out		7				
+IF	Car						
+Violet	*hopefully i see you at the border*		7	v_7_kicked_out_car			
+ELSE							
+Violet	*thanks for letting me stay through the storm at least*		7	v_7_kicked_out_nocar			
+ENDIF							
+END							
+							
+							
+CONVERSATION	Twins kicked out		7				
+Hal	I can't believe you. We trusted you!		7	h_7_kicked_out_cant_believe			
+Sal	"Hey, hey... it's alright."		7	s_7_kicked_out_its_alright			
+Sal	Thanks for letting us stay for a bit. I'm feeling better		7	s_7_kicked_out_thanks			
+Hal	...		7	h_7_kicked_out_speechless			
+Sal	"Let's get back on the road. Just another adventure, right?"		7	s_7_kicked_out_adventure			
+Hal	Just another adventure.		7	h_7_kicked_out_adventure			
+Hal	...		7	h_7_kicked_out_speechless			
+Hal	Maybe we'll belong somewhere some day.		7	h_7_kicked_out_soul_crushing			
+END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+CONVERSATION	Raiders arriving		7				
+Raiders	HEY! WE KNOW YOU'RE IN THERE! OPEN UP!		7	raiders_7_arrival			
+Raiders	OPEN UP OR WE ARE BUSTING OUR WAY IN!		7	raiders_7_open_up			
+IF	Bob						
+Bob	Oh shit.		7	b_7_oh_shit			
+ENDIF							
+Raiders	WE WON'T HURT YOU! OPEN THE GODDAMN DOOR.		7	raiders_7_we_wont_hurt_you			
+END							
+							
+							
+CONVERSATION	Look through peephole		7				
+Player	That is a lot of people. At least five. They have guns.		7	p_7_peephole			
+END							
+							
+							
+CONVERSATION	Stay silent		7				
+Raiders	WE CAN SEE YOU PUSSIES IN THERE.		7	raiders_7_we_see_you			
+END							
+							
+							
+CONVERSATION	Who are you		7				
+Raiders	OPEN THE FUCKING DOOR AND FIND OUT.		7	raiders_7_find_out			
+END							
+							
+							
+CONVERSATION	What do you want		7				
+Raiders	I WANT TO KILL YOU FOR ASKING SO MANY QUESTIONS.		7	raiders_7_too_many_questions			
+END							
+							
+							
+CONVERSATION	Why should I let you in		7				
+Raiders	"WE WILL COME IN WHETHER YOU OPEN THIS DOOR OR NOT. IF YOU LET US IN, WE MIGHT NOT KILL YOU ALL."		7	raiders_7_might_not_kill			
+END							
+							
+							
+CONVERSATION	How can you be helpful		7				
+Raiders	*shoots bullets through door*		7	raiders_7_helpful_bullets			
+IF	Jessica						
+Jessica	AH!		7	j_7_bullets_ah			
+ENDIF							
+IF	Bob						
+Bob	Holy shit.		7	b_7_bullets_holy_shit			
+ENDIF							
+END							
+							
+							
+CONVERSATION	Bobs opinion of raiders		7				
+Bob	"Barricade the fucking door. If you let them in, we are dead."		7	b_7_barricade			
+END							
+							
+CONVERSATION	Jessicas opinion of raiders		7				
+Jessica	Um.. oh god. Maybe you should let them in? Maybe they will just leave...		7	j_7_let_raiders_in			
+IF	BOB						
+Bob	Shut the fuck up. Do not let them in.		7	b_7_stfu			
+ENDIF							
+END							
+							
+							
+CONVERSATION	Violets opinion of raiders		7				
+Violet	(curling fists) ...		7	v_7_anger			
+END							
+							
+							
+CONVERSATION	Hals opinion of raiders		7				
+Hal	These fuckers better get ready. We aren't going down without a fight.		7	h_7_anger			
+END							
+							
+							
+CONVERSATION	Sals opinion of raiders		7				
+Sal	*whispering* I hope your door is strong.		7	s_7_fear			
+END							
+							
+							
+							
+CONVERSATION	Keep raiders out		7				
+Player	Get the fuck out of here.		7	p_7_gtfo			
+Raiders	YOU ASKED FOR IT.		7	raiders_7_you_asked_for_it			
+Door	*slamming sounds*		7	door_7_slamming			
+Raiders	(muffled) Back up guys...		7	raiders_7_back_up			
+None	Shots ring out.		7	env_7_shots			
+None	You are hit.		7	env_7_you_are_hit			
+IF	Hal						
+Hal	"Shit, you're bleeding."		7	h_7_you_are_bleeding			
+ELIF	Bob						
+Bob	Put some pressure on that.		7	b_7_put_some_pressure			
+ENDIF							
+Raiders	HOW DO YOU FUCKING LIKE THAT?		7	raiders_7_are_you_not_appeased			
+None	"More shots ring out, hitting nothing."		7	env_7_more_shots			
+Raiders	WE WILL BE BACK YOU ASSHOLE. YOU'RE DEAD!		7	raiders_7_ill_be_back			
+END							
+							
+							
+							
+CONVERSATION	Let raiders in		7				
+Player	"Okay, I'll open the door."		7	p_7_opening_door_moron			
+IF	Jessica						
+Jessica	DON'T-		7	j_7_dont_open_door			
+ENDIF							
+IF	Bob						
+Bob	HEY!		7	b_7_dont_open_door			
+ENDIF							
+IF	Violet						
+Violet	*yelling*		7	v_7_dont_open_door			
+ENDIF							
+IF	Hal						
+Hal	STOP!		7	h_7_dont_open_door			
+ENDIF							
+None	The raiders come inside.		7	env_7_raiders_enter			
+Raiders	"Good. You did the right thing, huh?"		7	raiders_7_right_thing			
+IF	Jessica						
+None	Yells echo as the raiders drag everyone out.		7	env_7_dragging_people_out			
+Raiders	"We'll get rid of all your little problems. Little revolutionary scum, all of them."		7	raiders_7_problem_solving			
+ELIF	Bob						
+None	Yells echo as the raiders drag everyone out.		7	env_7_dragging_people_out			
+Raiders	"We'll get rid of all your little problems. Little revolutionary scum, all of them."		7	raiders_7_problem_solving			
+ELIF	Violet						
+None	Yells echo as the raiders drag everyone out.		7	env_7_dragging_people_out			
+Raiders	"We'll get rid of all your little problems. Little revolutionary scum, all of them."		7	raiders_7_problem_solving			
+ELIF	Hal						
+None	Yells echo as the raiders drag everyone out.		7	env_7_dragging_people_out			
+Raiders	"We'll get rid of all your little problems. Little revolutionary scum, all of them."		7	raiders_7_problem_solving			
+ENDIF							
+Raiders	Glory to Brasnia.		7	raiders_7_glory_to_brasnia			
+None	The raiders leave and close the door behind them.		7	env_raiders_leaving			
+//	I love not implementing Ors						
+IF	Jessica						
+GOTO	Execute party members						
+ELIF	Bob						
+GOTO	Execute party members						
+ELIF	Violet						
+GOTO	Execute party members						
+ELIF	Hal						
+GOTO	Execute party members						
+ENDIF							
+GOTO	Day7Over						
+END							
+							
+							
+							
+							
+							
+CONVERSATION	Execute party members		7				
+None	You hear pleading and crying.		7	env_7_pleading			
+None	Shots ring out.		7	env_7_execution			
+IF	HasCar						
+None	You hear nothing but the car starting up and driving away.		7	env_7_stealing_car			
+ELSE							
+None	You hear nothing but the wind.		7	env_7_silence			
+ENDIF							
+GOTO	Day7Over						
+END							
+							
+CONVERSATION	Day7Over		7				
 END							
