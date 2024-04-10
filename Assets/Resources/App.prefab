@@ -201,7 +201,7 @@ MonoBehaviour:
   q_door_options: {fileID: 0}
   q_door_askQuestions: {fileID: 0}
   q_door_openOrKeepClosed: {fileID: 0}
-  q_makeOCDecision: {fileID: 0}
+  q_makeOCDecision: {fileID: 11400000, guid: 539c4b0a5229ab841b34a2fd166150a5, type: 2}
   q_kickCharacterOut: {fileID: 0}
   advanceCallback: {fileID: 11400000, guid: b872566e4bf6b794dbde2d6d8a2b3045, type: 2}
   scavengeAdvanceCallback: {fileID: 11400000, guid: 31f038fe378eb6645a3e391fa639ba81, type: 2}

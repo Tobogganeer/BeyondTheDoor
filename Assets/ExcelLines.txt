@@ -91,12 +91,63 @@ CHOICE
 END							
 							
 CONVERSATION	MakeOCDecision						
-				q_kick_character_out			
 CHOICE							
 				make_decision			
 CHOICE							
 				go_back			
 END							
+							
+							
+CONVERSATION	KickCharacterOut						
+				q_kick_character_out			
+CHOICE							
+				yes			
+CHOICE							
+				no			
+END							
+							
+CONVERSATION	DoorDecision						
+CHOICE							
+				open_door			
+CHOICE							
+				keep_door_closed			
+CHOICE							
+				go_back			
+END							
+							
+CONVERSATION	DoorQuestions						
+CHOICE							
+				who_are_you			
+CHOICE							
+				what_do_you_want			
+CHOICE							
+				why_should_i_let_you_in			
+CHOICE							
+				how_can_you_be_helpful			
+CHOICE							
+				go_back			
+END							
+							
+CONVERSATION	DoorOptions						
+CHOICE							
+				stay_silent			
+CHOICE							
+				look_through_peephole			
+CHOICE							
+				ask_questions			
+CHOICE							
+				make_decision			
+END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 							
 //	Tutorial/day 0						
@@ -181,9 +232,6 @@ Player	"I think I have enough food for the next days if, I hope the war doesn't 
 END			1				
 							
 							
-							
-							
-							
 CONVERSATION	Jessica arrive at the door		1				
 Jessica	Hello? Is there anyone there? Its cold here outside		1	j_1_door	Placeholder		
 Jessica	"Hey! Im pleading to be let in, I can survive out here in a wheel chair"		1	j_1_door_ignored	Placeholder		
@@ -192,40 +240,6 @@ END			1
 CONVERSATION	Day 1 peephole						
 Player 	"I can't see anything beyond a shape, it looks like I can see small, and a wheel, maybe two"		1	p_1_door_head	Placeholder		
 END							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
 							
 							
 CONVERSATION	Making decision		1				
@@ -724,20 +738,6 @@ Jessica	I don't think I met anyone named bob		4	j_4_no_bob	Placeholder
 Player	"Oh no she's shell shocked, she's traumatized and her brain is blocking the memory"		4	p_4_jessica_shocked	Placeholder		
 ENDIF							
 END							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
 							
 							
 							
@@ -1457,7 +1457,7 @@ Player	Hi.		6	p_6_j_hi	DRAFT	NONE
 ENDIF							
 END							
 							
-CONVERSATION	Violet wakes up						
+CONVERSATION	Violet wakes up		6				
 Violet	*your beds arent half bad actually*		6	v_6_wake_up	DRAFT	NONE	
 END							
 							
