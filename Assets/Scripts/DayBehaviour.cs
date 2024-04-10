@@ -103,21 +103,40 @@ public abstract class DayBehaviour : MonoBehaviour
     // Called every time the Character callbacks are cleared
     private void RegisterCharacterCallbacks()
     {
+        RunStageStartConversations();
+
         foreach (CharacterInit ch in _characters)
             Register(ch, Character.All[ch.id]);
     }
 
-    private void Register(CharacterInit events, Character character)
+    private void RunStageStartConversations()
     {
-        character.SpokenTo += (ch) => Run(events.wakingUp);
-        character.SentToScavenge += (ch, hasShotgun) => Run(events.beingSentScavenging);
+        switch (Stage)
+        {
+            case Stage.MorningSupplies:
+                // The day just started! Huzzah!
+                dayStarted.TryStart();
+                break;
+            case Stage.SpeakingWithParty:
+                enteringTalking.TryStart();
+                break;
+            case Stage.SendingScavengers:
+                enteringScavenging.TryStart();
+                break;
+            case Stage.FixingOvercrowding:
+                enteringOvercrowding.TryStart();
+                break;
+            case Stage.DealingWithArrival:
+                personArrivedAtDoor.TryStart();
+                break;
+        }
     }
 
-    // Used to null-check a conversation in one line
-    void Run(Conversation convo)
+
+    private void Register(CharacterInit events, Character character)
     {
-        if (convo != null)
-            convo.Start();
+        character.SpokenTo += (ch) => events.wakingUp.TryStart();
+        character.SentToScavenge += (ch, hasShotgun) => events.beingSentScavenging.TryStart();
     }
 
 
@@ -209,5 +228,18 @@ public abstract class DayBehaviour : MonoBehaviour
         public Conversation commentOnOtherPersonAtDoor;
 
         public Character Character => Character.All[id];
+    }
+}
+
+public static class ConversationExtensions
+{
+    /// <summary>
+    /// Starts this conversation if it isn't null.
+    /// </summary>
+    /// <param name="convo"></param>
+    public static void TryStart(this Conversation convo)
+    {
+        if (convo != null)
+            convo.Start();
     }
 }
