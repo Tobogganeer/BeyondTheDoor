@@ -232,6 +232,8 @@ namespace BeyondTheDoor
 
 
         public void Invoke_SentToScavenge(bool shotgun) => SentToScavenge?.Invoke(this, shotgun);
+        public void Invoke_AddedToScavengeParty() => AddedToScavengeParty?.Invoke(this);
+        public void Invoke_RemovedFromScavengeParty() => RemovedFromScavengeParty?.Invoke(this);
     }
 
     public enum CharacterStatus

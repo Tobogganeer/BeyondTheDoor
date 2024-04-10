@@ -29,6 +29,7 @@ public class Game : MonoBehaviour
     [Header("Conversations")]
     public Conversation advance;
     public Conversation confirmScavenge;
+    public Conversation confirmNoScavenge;
 
     [Header("Input")]
     [SerializeField] private ConversationCallback advanceCallback;
@@ -377,13 +378,26 @@ public class Game : MonoBehaviour
             if (SingleMemberScavengeParty)
                 ScavengeParty.Clear();
             ScavengeParty.Add(character);
+            // The twins are a combo deal
+            if (character == Character.Hal)
+                ScavengeParty.Add(Character.Sal);
+            else if (character == Character.Sal)
+                ScavengeParty.Add(Character.Hal);
+            character.Invoke_AddedToScavengeParty();
         }
     }
 
     public static void RemoveFromScavengeParty(Character character)
     {
         if (character != null && ScavengeParty.Contains(character))
+        {
             ScavengeParty.Remove(character);
+            if (character == Character.Hal)
+                ScavengeParty.Remove(Character.Sal);
+            else if (character == Character.Sal)
+                ScavengeParty.Remove(Character.Hal);
+            character.Invoke_RemovedFromScavengeParty();
+        }
     }
 
 
@@ -392,10 +406,10 @@ public class Game : MonoBehaviour
         // Handle sending some or no scavengers
         if (ScavengeParty.Count == 0)
         {
-            // We (should) have already asked/confirmed that they wanted this
+            // Let the characters discuss this first
             DayBehaviour.Current.sendNoScavengers.TryStart();
-            // Actually advance after the lines are spoken
-            instance.advance.Enqueue();
+            // Confirm this is what the player wants
+            instance.confirmNoScavenge.Enqueue();
         }
         else
         {
@@ -446,6 +460,18 @@ public class Game : MonoBehaviour
         {
             // RIP bozo you will not be missed
             Character.Jessica.ChangeStatus(CharacterStatus.DeadWhileScavenging);
+            DayBehaviour.Current.Characters[CharacterID.Jessica].diedWhileScavenging.TryStart();
+        }
+        // Check if Hal was eaten by a bear
+        else if (ScavengeParty.Count == 2 && (ScavengeParty[0] == Character.Hal || ScavengeParty[0] == Character.Sal))
+        {
+            if (Character.Hal.Status == CharacterStatus.ScavengingDefenseless)
+            {
+                // :(
+                Character.Hal.ChangeStatus(CharacterStatus.DeadWhileScavenging);
+                Character.Sal.ChangeStatus(CharacterStatus.InsideCabin);
+                DayBehaviour.Current.Characters[CharacterID.Hal].diedWhileScavenging.TryStart();
+            }
         }
         else
         {
@@ -455,14 +481,26 @@ public class Game : MonoBehaviour
 
             Cabin.HasScavengedSuccessfully = true;
 
+            bool hadCar = Cabin.HasCar;
+
             // Welcome back valued party members
             foreach (Character scavenger in ScavengeParty)
             {
+                // Call our callbacks
+                if (scavenger.Status == CharacterStatus.ScavengingDefenseless)
+                    DayBehaviour.Current.Characters[scavenger.ID].returnedFromScavengingWithoutGun.TryStart();
+                else
+                    DayBehaviour.Current.Characters[scavenger.ID].returnedFromScavengingWithGun.TryStart();
+
                 scavenger.ChangeStatus(CharacterStatus.InsideCabin);
                 // Violet gets the car
                 if (scavenger == Character.Violet)
                     Cabin.HasCar = true;
             }
+
+            // We just got the car
+            if (!hadCar && Cabin.HasCar)
+                DayBehaviour.Current.gotCar.TryStart();
         }
 
         ScavengeParty.Clear();

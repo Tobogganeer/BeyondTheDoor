@@ -31,14 +31,14 @@ public abstract class DayBehaviour : MonoBehaviour
 
     [Header("Noon/Scavenging")]
     public Conversation enteringScavenging; // DONE
-    public Conversation gotCar;
+    public Conversation gotCar; // DONE
     public Conversation sendNoScavengers; // DONE
 
     [Header("Afternoon/Overcrowding")]
     public Conversation enteringOvercrowding; // DONE
 
     [Header("Night/Door")]
-    public Conversation personArrivedAtDoor;
+    public Conversation personArrivedAtDoor; // DONE
     [Tooltip("Optional, mainly Jessica reacting")]
     public Conversation reactionToPlayerStayingSilent;
     public Conversation peephole;
@@ -143,6 +143,8 @@ public abstract class DayBehaviour : MonoBehaviour
                 events.sentScavengingWithoutShotgun.TryStart();
 
         };
+        character.AddedToScavengeParty += (ch) => events.addedToScavengeParty.TryStart();
+        character.RemovedFromScavengeParty += (ch) => events.removedFromScavengeParty.TryStart();
     }
 
 
@@ -197,7 +199,7 @@ public abstract class DayBehaviour : MonoBehaviour
         public CharacterID id;
 
         [Space]
-        public Conversation wakingUp;
+        public Conversation wakingUp; // DONE
 
         [Space]
         [Tooltip("Started when the player will pop up the menu to send this character scavenging")]
@@ -205,9 +207,9 @@ public abstract class DayBehaviour : MonoBehaviour
         [Tooltip("Started when the player might choose to not send this character scavenging anymore")]
         public Conversation beforeUnscavengingChoice; // DONE
         [Tooltip("Started after the player has added this character to the scavenge party")]
-        public Conversation addedToScavengeParty;
+        public Conversation addedToScavengeParty; // DONE
         [Tooltip("Started after the player has removed this character from the scavenge party")]
-        public Conversation removedFromScavengeParty;
+        public Conversation removedFromScavengeParty; // DONE
         [Tooltip("LINK TO 'SendWith/WithoutShotgun' or 'ConfirmScavenge'. Started when this character is getting sent out")]
         public Conversation beingSentScavenging; // DONE
         [Tooltip("Started after this character is sent with the shotgun, right before they leave")]
@@ -217,9 +219,9 @@ public abstract class DayBehaviour : MonoBehaviour
 
         [Space]
         [Tooltip("Started when this character fails to return. Don't include this character in the dialogue obviously")]
-        public Conversation diedWhileScavenging;
-        public Conversation returnedFromScavengingWithGun;
-        public Conversation returnedFromScavengingWithoutGun;
+        public Conversation diedWhileScavenging; // DONE
+        public Conversation returnedFromScavengingWithGun; // DONE
+        public Conversation returnedFromScavengingWithoutGun; // DONE
 
         [Space]
         [Tooltip("Started when this character is clicked on during overcrowding")]
