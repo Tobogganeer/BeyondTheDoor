@@ -235,6 +235,9 @@ namespace BeyondTheDoor.Importer
             Conversation[] allConvos = FindAllScriptableObjectsOfType<Conversation>();
             
             Dictionary<string, Conversation> allConversationsDict = new Dictionary<string, Conversation>();
+            foreach (Conversation convo in allConvos)
+                allConversationsDict.Add(convo.name, convo);
+
 
             List<string> allTSVConvoNames = new List<string>();
             foreach (ConversationRange convoRange in tsvConversations)
