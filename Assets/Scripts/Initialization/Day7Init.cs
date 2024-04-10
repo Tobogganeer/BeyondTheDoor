@@ -1,21 +1,21 @@
-using BeyondTheDoor;
 using BeyondTheDoor.UI;
+using BeyondTheDoor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Day3Init : DayBehaviour
+public class Day7Init : DayBehaviour
 {
-    public ConversationCallback activateBearEnding;
+    public ConversationCallback endOfDay;
 
     protected override int GetDay() => 3;
 
     protected override void Initialize()
     {
-        activateBearEnding.Callback += (conv, line) => BearEnding();
+        endOfDay.Callback += (conv, line) => EndGame();
     }
 
-    private static void BearEnding()
+    private static void EndGame()
     {
         // Stop any advances
         DialogueGUI.ClearQueue();
