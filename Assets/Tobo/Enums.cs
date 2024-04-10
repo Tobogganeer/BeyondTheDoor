@@ -3,6 +3,10 @@ public enum Level : byte
 {
     MainMenu,
     /// <summary>
+    /// Getting lore from the TV, Radio, Outside, and Supplies
+    /// </summary>
+    Dawn,
+    /// <summary>
     /// Talking with people, etc.
     /// </summary>
     Morning,
@@ -14,10 +18,6 @@ public enum Level : byte
     /// Kicking people out to fix overcrowding.
     /// </summary>
     Afternoon,
-    /// <summary>
-    /// Getting lore on the radio, leading into the door.
-    /// </summary>
-    Evening,
     /// <summary>
     /// Letting someone in or kicking them out.
     /// </summary>

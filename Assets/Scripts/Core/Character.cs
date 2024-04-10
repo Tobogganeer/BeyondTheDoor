@@ -184,6 +184,8 @@ namespace BeyondTheDoor
         {
             switch (Day.Stage)
             {
+                case Stage.MorningSupplies:
+                    break;
                 case Stage.SpeakingWithParty:
                     Current = this;
                     SpokenTo?.Invoke(this);
@@ -195,8 +197,6 @@ namespace BeyondTheDoor
                 case Stage.FixingOvercrowding:
                     Current = this;
                     TryingToKickOut?.Invoke(this);
-                    break;
-                case Stage.RadioLoreTime:
                     break;
                 case Stage.DealingWithArrival:
                     Current = this;
