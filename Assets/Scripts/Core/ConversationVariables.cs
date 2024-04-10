@@ -12,6 +12,7 @@ namespace BeyondTheDoor
             { "car", Var.HarCar },
             { "hasshotgun", Var.HasShotgun },
             { "shotgun", Var.HasShotgun },
+            { "onepartymember", Var.OnePartyMember },
             { "tutorial_mom", Var.Tutorial_Mom },
             { "tutorial_dad", Var.Tutorial_Dad },
             { "jessica", Var.Jessica },
@@ -59,6 +60,7 @@ namespace BeyondTheDoor
             if (var == Var.None) return false;
             else if (var == Var.HarCar) return Cabin.HasCar;
             else if (var == Var.HasShotgun) return Cabin.HasShotgun;
+            else if (var == Var.OnePartyMember) return Cabin.NumCurrentPartyMembers() == 1;
             else
                 return CharacterPresent((CharacterID)var);
         }
@@ -73,6 +75,7 @@ namespace BeyondTheDoor
             None,
             HarCar,
             HasShotgun,
+            OnePartyMember,
             // Use same numbers as CharacterIDs to make matching easier
             Tutorial_Mom = -546722264,
             Tutorial_Dad = -486113334,
