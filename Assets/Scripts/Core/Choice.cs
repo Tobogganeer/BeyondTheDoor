@@ -65,8 +65,8 @@ namespace BeyondTheDoor
             if (FollowingElement != null)
                 FollowingElement.Open();
             // If not just stop the dialogue
-            else
-                UI.DialogueGUI.Close();
+            //else
+            //    UI.DialogueGUI.Close();
         }
     }
 
@@ -85,7 +85,7 @@ namespace BeyondTheDoor
             foreach (ConversationChoice c in choices)
             {
                 Choices.Add(Choice.LineAndAction(Line.Get(c.prompt),
-                    c.nextConversation, (line) => c.callback.Invoke(convo, line.ID)));
+                    c.nextConversation, (line) => { if (c.callback != null) { c.callback.Invoke(convo, line.ID); }; }));
             }
         }
 
