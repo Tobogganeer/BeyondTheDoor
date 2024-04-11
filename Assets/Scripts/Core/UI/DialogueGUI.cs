@@ -91,6 +91,7 @@ namespace BeyondTheDoor.UI
                 else
                     Close();
             }
+
             if (HasLine && !AtEndOfLine)
             {
                 UpdateLine();
@@ -340,8 +341,8 @@ namespace BeyondTheDoor.UI
             if (currentLine != null)
                 currentLine.Open();
             // If we found no line and didn't switch convos, take some action
-            else if (currentConversation == this)
-                OnAllLinesFinished();
+            //else if (currentConversation == this)
+            //    OnAllLinesFinished();
         }
 
         private void OnAllLinesFinished()
@@ -361,7 +362,7 @@ namespace BeyondTheDoor.UI
             if (currentConversation.onFinished != null)
                 currentConversation.onFinished.Invoke(currentConversation, LineID.none);
 
-            // We are done with it
+            // We are done this one
             currentConversation = null;
         }
 
@@ -428,6 +429,8 @@ namespace BeyondTheDoor.UI
                 else if (element is GotoElement gotoElement)
                 {
                     // Switch over to this one
+                    if (currentConversation.onFinished != null)
+                        currentConversation.onFinished.Invoke(currentConversation, LineID.none);
                     OpenConversation(gotoElement.conversation);
                     return;
                 }
@@ -438,6 +441,8 @@ namespace BeyondTheDoor.UI
                 // Don't try to use the next else or elif
                 useNextElifOrElse = false;
             }
+
+            OnAllLinesFinished();
         }
 
         private void FindNextElifOrElse()

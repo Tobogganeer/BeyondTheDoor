@@ -72,6 +72,6 @@ public class MainMenu : MonoBehaviour
         canContinue = SaveSystem.TryGetLastPlayedSaveSlot(out lastPlayedSaveSlot);
         continueButton.SetActive(canContinue);
         if (canContinue)
-            continueText.text = $"Continue (Day {lastPlayedSaveSlot})";
+            continueText.text = $"Continue Slot {lastPlayedSaveSlot + 1}";
     }
 }
