@@ -1590,6 +1590,22 @@ MonoBehaviour:
     tryingToKickOut: {fileID: 11400000, guid: e17080af48a08774d83287d366eccf23, type: 2}
     kickedOut: {fileID: 11400000, guid: 7fe341be4907d53419aa7480c7316704, type: 2}
     commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: 696030393
+    wakingUp: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
   dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: 9cceaad57bb712c42915bdc1e4b78af7, type: 2}
   radio: {fileID: 11400000, guid: 2152547e9fbf63c4ea07c91b090a3b83, type: 2}
@@ -2927,6 +2943,38 @@ MonoBehaviour:
     tryingToKickOut: {fileID: 0}
     kickedOut: {fileID: 0}
     commentOnOtherPersonAtDoor: {fileID: 11400000, guid: ae43bbf9ef7d6a9468b0612c704b04fe, type: 2}
+  - id: 696030773
+    wakingUp: {fileID: 11400000, guid: 45f0cb432734f0242bcad93fcf8b35fc, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 11400000, guid: 7bf75af552be5f74fa7db03ca05319f1, type: 2}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 14b0f42035a2ac048a5e3dd4ca4fda62, type: 2}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: 80e74af4a72ff1f49be70828fa09349f, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 66e7e8d3e7669d34099588079be4996e, type: 2}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: 429297fd92cdc844a91081f218b7d656, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: a189f928c744471439ec0fab239992e3, type: 2}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: ae43bbf9ef7d6a9468b0612c704b04fe, type: 2}
+  - id: 696031022
+    wakingUp: {fileID: 11400000, guid: 45f0cb432734f0242bcad93fcf8b35fc, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 11400000, guid: 7bf75af552be5f74fa7db03ca05319f1, type: 2}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 14b0f42035a2ac048a5e3dd4ca4fda62, type: 2}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: 80e74af4a72ff1f49be70828fa09349f, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 66e7e8d3e7669d34099588079be4996e, type: 2}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: 429297fd92cdc844a91081f218b7d656, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: a189f928c744471439ec0fab239992e3, type: 2}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: ae43bbf9ef7d6a9468b0612c704b04fe, type: 2}
   dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: 32792d9a464e4c94a8869997f013a1ad, type: 2}
   radio: {fileID: 11400000, guid: 1fd2952661a46d14292f90a880ca6825, type: 2}
@@ -4013,6 +4061,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characters:
   - id: -1608546876
+    wakingUp: {fileID: 11400000, guid: 222f94ce5bc0b86478bf69a95ccf8bca, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 11400000, guid: 2f138352f34e32348888ef3453dcf79b, type: 2}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: 1502599511
     wakingUp: {fileID: 11400000, guid: 222f94ce5bc0b86478bf69a95ccf8bca, type: 2}
     beforeScavengingChoice: {fileID: 0}
     beforeUnscavengingChoice: {fileID: 0}
@@ -5375,6 +5439,22 @@ MonoBehaviour:
     kickedOut: {fileID: 11400000, guid: e6cf365b8df619140a58796c4d10389e, type: 2}
     commentOnOtherPersonAtDoor: {fileID: 11400000, guid: e23d7ced119e0ff4cbe28c295c30ac32, type: 2}
   - id: 696031022
+    wakingUp: {fileID: 11400000, guid: 7c4d874e712a298458354dd7eed417ba, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 11400000, guid: 60ce471ff82b72b428d194dfb7342993, type: 2}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 20ebf0094d72fdb4aae4224f4f696b3e, type: 2}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: f3716d5817d336b4fb5728a6014dcc50, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 2d7bdba2602eaca4c87ee407adbd70ad, type: 2}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: 0ebad41f95d341d4c8d711cf60a556cd, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: 468289f64c5ff0e4899c7d49bfca1ed1, type: 2}
+    clickedOnDuringOvercrowding: {fileID: 11400000, guid: aefdd03b1ce2dc8428eba5fc483e269a, type: 2}
+    tryingToKickOut: {fileID: 11400000, guid: 358357db62102884bb34c4486b4e5699, type: 2}
+    kickedOut: {fileID: 11400000, guid: e6cf365b8df619140a58796c4d10389e, type: 2}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: 3fa679792a00d9c488ea570da42f636c, type: 2}
+  - id: -2023559326
     wakingUp: {fileID: 11400000, guid: 7c4d874e712a298458354dd7eed417ba, type: 2}
     beforeScavengingChoice: {fileID: 0}
     beforeUnscavengingChoice: {fileID: 0}
@@ -7758,6 +7838,22 @@ MonoBehaviour:
     tryingToKickOut: {fileID: 0}
     kickedOut: {fileID: 0}
     commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: 990541821
+    wakingUp: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
   dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: 228743c3b21e1af45baa93b0468abef6, type: 2}
   radio: {fileID: 11400000, guid: 0f42cea38ada9fb439c397fa3196eba5, type: 2}
@@ -8069,7 +8165,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2308edb538c0c484989a49c545341400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters: []
+  _characters:
+  - id: -1608546876
+    wakingUp: {fileID: 0}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
   dayStarted: {fileID: 11400000, guid: e54ade44345237e49834b2ae7c8e6d49, type: 2}
   checkOutside: {fileID: 11400000, guid: b67a9ddc034e7504b9ae8fa4c58e6da0, type: 2}
   radio: {fileID: 11400000, guid: 8cc21a2d78b6f4545ae628de09f2cc5c, type: 2}

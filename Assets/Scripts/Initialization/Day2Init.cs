@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class Day2Init : DayBehaviour
 {
-    
-
     protected override int GetDay() => 2;
 
     protected override void Initialize()
     {
-
-      
+        Character.Bob.NameKnown = false;
     }
 }

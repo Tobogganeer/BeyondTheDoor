@@ -18,7 +18,7 @@ public class TutorialInit : DayBehaviour
 
     protected override void Initialize()
     {
-        if (Stage == Stage.SpeakingWithParty)
+        if (Stage == Stage.MorningSupplies)
         {
             // We just started the tutorial - add the mom and dad to the cabin
             Character.Tutorial_Mom.ChangeStatus(CharacterStatus.InsideCabin);
