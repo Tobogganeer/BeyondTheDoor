@@ -5,38 +5,23 @@ using BeyondTheDoor;
 
 public class TutorialInit : DayBehaviour
 {
-    public Conversation wakeUpConvo;
-    public Conversation cyaLaterConvo;
-    public Conversation arrivingConvo;
-    public ConversationCallback activateJokeEnding;
+    public ConversationCallback jokeEnding;
 
 
     protected override int GetDay() => 0;
 
     protected override void RegisterConversationCallbacks()
     {
-        activateJokeEnding.Callback += ActivateJokeEnding;
+        jokeEnding.Callback += ActivateJokeEnding;
     }
 
     protected override void Initialize()
     {
-        // If you talk to them they'll just ask you where the keys are (does nothing)
-        Character.Tutorial_Mom.SpokenTo += (mom) => Line.tutmom_0_looking_for_keys.Open();
-        Character.Tutorial_Dad.SpokenTo += (dad) => Line.tutdad_0_looking_for_keys.Open();
-
-        // Clicking either character has the same result
-        Character.Tutorial_Mom.ClickedOnDuringScavengeStage += SendToScavenge;
-        Character.Tutorial_Dad.ClickedOnDuringScavengeStage += SendToScavenge;
-
-        Character.Tutorial_Mom.ArrivingAtDoor += ArrivingAtDoor;
-
         if (Stage == Stage.SpeakingWithParty)
         {
             // We just started the tutorial - add the mom and dad to the cabin
             Character.Tutorial_Mom.ChangeStatus(CharacterStatus.InsideCabin);
             Character.Tutorial_Dad.ChangeStatus(CharacterStatus.InsideCabin);
-            // Start the game essentially
-            wakeUpConvo.Start();
         }
     }
 
@@ -51,17 +36,6 @@ public class TutorialInit : DayBehaviour
         // The mom will automatically have the status set, the dad will not
         Character.Tutorial_Dad.ChangeStatus(CharacterStatus.LeftOutside);
     }
-
-    private void SendToScavenge(Character momOrDad)
-    {
-        cyaLaterConvo.Start();
-    }
-
-    private void ArrivingAtDoor(Character mom)
-    {
-        arrivingConvo.Start();
-    }
-
 
     private void ActivateJokeEnding(Conversation convo, LineID line)
     {

@@ -145,11 +145,6 @@ END
 							
 							
 							
-							
-							
-							
-							
-							
 //	Tutorial/day 0						
 CONVERSATION	WakeUp		0				
 Tutorial_Mom	Wake up sunshine...  you fell asleep while playing games.	First line of tutorial	0	tutmom_0_wake_up	Draft	None	
@@ -166,7 +161,12 @@ END
 CONVERSATION	ParentsLookForKeys		0				
 Tutorial_Dad	"Okay, we won't take long."	Response to player choice	0	tutdad_0_question_response	Draft	None	
 Tutorial_Dad	(To Mom) Have you seen where the car keys are?		0	tutdad_0_where_are_keys	Draft	None	
+END							
+							
+CONVERSATION	TutDad_LookForKeys		0				
 Tutorial_Dad	I don't know where we left them...	If you try to talk to them before finding keys	0	tutdad_0_looking_for_keys	Draft	None	
+END							
+CONVERSATION	TutMom_LookForKeys		0				
 Tutorial_Mom	I could've swore they were around here somewhere!	If you try to talk to them before finding keys	0	tutmom_0_looking_for_keys	Draft	None	
 END							
 							
@@ -180,8 +180,8 @@ END
 							
 CONVERSATION	ParentsLeaving		0				
 Tutorial_Dad	See you soon kiddo!	Bye bye	0	tutdad_0_sent	Draft	None	
+GOTO	SendWithoutShotgun						
 END							
-							
 CONVERSATION	ParentsAtDoor		0				
 Tutorial_Mom	We're back!	At door	0	tutmom_0_at_door	Draft	None	
 Tutorial_Mom	"Hey kiddo, can you open the door please? It's raining out here... "	At door	0	tutmom_0_q_open_door	Draft	None	

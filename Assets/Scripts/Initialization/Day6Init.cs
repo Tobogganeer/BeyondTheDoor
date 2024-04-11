@@ -10,7 +10,7 @@ public class Day6Init : DayBehaviour
     public ConversationCallback dadWithoutShotgun;
 
 
-    protected override void Initialize()
+    protected override void RegisterConversationCallbacks()
     {
         dadWithShotgun.Callback += (conv, line) => dadShotgun();
         dadWithoutShotgun.Callback += (conv, line) => dadNoShotgun();

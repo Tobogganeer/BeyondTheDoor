@@ -11,7 +11,7 @@ public class Day5Init : DayBehaviour
 
     protected override int GetDay() => 5;
 
-    protected override void Initialize()
+    protected override void RegisterConversationCallbacks()
     {
         afterScavenging.Callback += (conv, line) => CheckForStarvation();
     }

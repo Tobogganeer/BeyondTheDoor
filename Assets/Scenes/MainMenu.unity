@@ -7303,7 +7303,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcad47c35136f5b46ba672e0004db791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters: []
+  _characters:
+  - id: -546722264
+    wakingUp: {fileID: 11400000, guid: 6a649adc70a11c74bb7734f8974b19d8, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 11400000, guid: 8b0561facdac70e4cb7ed89fc334d39d, type: 2}
+    removedFromScavengeParty: {fileID: 11400000, guid: d1529a60072e32f42a7cbfea1a28ab7a, type: 2}
+    beingSentScavenging: {fileID: 11400000, guid: 505b5bfdb50e06f4f8ec8282092f875c, type: 2}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: -486113334
+    wakingUp: {fileID: 11400000, guid: 78d864c721435024d988c52c6f9c494d, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 11400000, guid: 8b0561facdac70e4cb7ed89fc334d39d, type: 2}
+    removedFromScavengeParty: {fileID: 11400000, guid: d1529a60072e32f42a7cbfea1a28ab7a, type: 2}
+    beingSentScavenging: {fileID: 11400000, guid: 505b5bfdb50e06f4f8ec8282092f875c, type: 2}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
   dayStarted: {fileID: 11400000, guid: 011044a72cadd714da6e89d34957ea84, type: 2}
   checkOutside: {fileID: 0}
   radio: {fileID: 0}
@@ -7314,7 +7346,7 @@ MonoBehaviour:
   gotCar: {fileID: 0}
   sendNoScavengers: {fileID: 0}
   enteringOvercrowding: {fileID: 0}
-  personArrivedAtDoor: {fileID: 0}
+  personArrivedAtDoor: {fileID: 11400000, guid: e45fcf3e4f99295468158c6b9275d197, type: 2}
   reactionToPlayerStayingSilent: {fileID: 0}
   peephole: {fileID: 0}
   q_whoAreYou: {fileID: 0}
@@ -7323,10 +7355,7 @@ MonoBehaviour:
   q_howCanYouHelpMe: {fileID: 0}
   letPersonInside: {fileID: 0}
   keepPersonOutside: {fileID: 0}
-  wakeUpConvo: {fileID: 11400000, guid: 011044a72cadd714da6e89d34957ea84, type: 2}
-  cyaLaterConvo: {fileID: 0}
-  arrivingConvo: {fileID: 0}
-  activateJokeEnding: {fileID: 11400000, guid: 3c286f018d00bfd40a31428c9540939f, type: 2}
+  jokeEnding: {fileID: 0}
 --- !u!4 &2027103834
 Transform:
   m_ObjectHideFlags: 0
