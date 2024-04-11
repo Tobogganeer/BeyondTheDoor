@@ -28,6 +28,11 @@ public class EndingAnimation : MonoBehaviour
 
     IEnumerator Start()
     {
+
+        if (Day.DayNumber == 5 && !Cabin.HasScavengedSuccessfully)
+        {
+            yield return WriteList(timeBetweenTransitions,"Jessica didn't return from the scavenging", "We've ran out of water, food and heating for days now", "I fear I'm not going to last long", "Somebody", "help","please" );
+        }
         //player no car 
         if (Character.Player.Status == CharacterStatus.DeadOnWayToBorder && !Cabin.HasCar)
         {
@@ -40,7 +45,7 @@ public class EndingAnimation : MonoBehaviour
         //player dead by bear
         if (Character.Player.Status == CharacterStatus.KilledByBear)
         {
-            yield return WriteList(timeBetweenTransitions, "What the fuck was going on my head", "When I let a bear get inside my house","I’m dead now","What makes me even sadder", "is that I’m just a number now","like those who where caught between conflicting ideas","my death is irrelevant", "as it will all be forgotten in the future","I don’t think I can judge them to be honest", "it is in the human nature to not care about stuff", "that doesn’t affect them");
+            yield return WriteList(timeBetweenTransitions, "What the fuck was going on my head", "for me to let a bear get inside my house","I’m dead now","What makes me even sadder", "is that I’m just a number now","like those who where caught between conflicting ideas","my death is irrelevant", "as it will all be forgotten in the future","I don’t think I can judge them to be honest", "it is in the human nature to not care about stuff", "that doesn’t affect them");
             // change later for text No survivors
             survivors = 0;
             Final();
