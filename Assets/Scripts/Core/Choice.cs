@@ -79,6 +79,16 @@ namespace BeyondTheDoor
             Choices = choices;
         }
 
+        public ChoiceCollection(Conversation convo, List<ConversationChoice> choices)
+        {
+            Choices = new List<Choice>();
+            foreach (ConversationChoice c in choices)
+            {
+                Choices.Add(Choice.LineAndAction(Line.Get(c.prompt),
+                    c.nextConversation, (line) => c.callback.Invoke(convo, line.ID)));
+            }
+        }
+
         public ChoiceCollection(Choice[] choices)
         {
             Choices = new List<Choice>(choices);

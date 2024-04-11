@@ -79,6 +79,18 @@ namespace BeyondTheDoor.UI
             if (!IsCurrent)
                 return;
 
+            if (currentConversation == null)
+            {
+                // If we need to load a new conversation, send it
+                if (queue.Count > 0)
+                {
+                    OpenConversation(queue.Dequeue());
+                    return;
+                }
+                // If there is nothing else, close ourselves
+                else
+                    Close();
+            }
             if (HasLine && !AtEndOfLine)
             {
                 UpdateLine();
@@ -115,11 +127,14 @@ namespace BeyondTheDoor.UI
             currentConversation = convo;
 
             // Turn the line text on, keep choices off
-            SetWindowActive(true);
-            SetLineTextActive(true);
-            SetChoicesActive(false);
+            //SetWindowActive(true);
+            //SetLineTextActive(true);
+            //SetChoicesActive(false);
 
-            throw new System.NotImplementedException();
+            if (currentConversation.onStarted != null)
+                currentConversation.onStarted.Invoke(convo, LineID.none);
+
+            WalkAndTryOpen();
         }
 
         internal void OpenLine(Line line)
@@ -203,6 +218,8 @@ namespace BeyondTheDoor.UI
         {
             currentChoices = null; // Remove our choices
             choice.OnChoiceChosen(); // Activate it
+
+            ConversationFinished();
         }
 
 
@@ -281,6 +298,7 @@ namespace BeyondTheDoor.UI
             if (HasLine && !AtEndOfLine)
                 OnLineStop?.Invoke(CurrentLine.ID);
 
+            currentConversation = null;
             currentLine = null;
             currentChoices = null;
             Character.Current = null;
@@ -301,13 +319,50 @@ namespace BeyondTheDoor.UI
 
             // Let the line know it's done
             if (AtEndOfLine)
+            {
                 currentLine.OnLineClosing();
+                currentLine = null;
+                // Find the next line
+                WalkAndTryOpen();
+            }
             else
             {
                 // Skip to the end of the line
                 revealedLength = string.IsNullOrEmpty(formattedLineText) ? 0 : formattedLineText.Length;
                 UpdateLineTextGUI();
             }
+        }
+
+        private void WalkAndTryOpen()
+        {
+            WalkElement();
+            // If we found a line, open it
+            if (currentLine != null)
+                currentLine.Open();
+            // If we found no line and didn't switch convos, take some action
+            else if (currentConversation == this)
+                OnAllLinesFinished();
+        }
+
+        private void OnAllLinesFinished()
+        {
+            // If we have choices to display
+            if (currentConversation.choices != null && currentConversation.choices.Count > 0)
+            {
+                ChoiceCollection choices = new ChoiceCollection(currentConversation, currentConversation.choices);
+                choices.Open();
+            }
+            else
+                ConversationFinished();
+        }
+
+        private void ConversationFinished()
+        {
+            if (currentConversation.onFinished != null)
+                currentConversation.onFinished.Invoke(currentConversation, LineID.none);
+
+            // We are done with it
+            currentConversation = null;
         }
 
         /// <summary>
