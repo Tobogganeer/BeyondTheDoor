@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120302114865162
-  - rid: 4847120302114865163
+  - rid: 2007814039375446679
+  - rid: 2007814039375446680
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120302114865162
+    - rid: 2007814039375446679
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1978455326
-    - rid: 4847120302114865163
+    - rid: 2007814039375446680
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto

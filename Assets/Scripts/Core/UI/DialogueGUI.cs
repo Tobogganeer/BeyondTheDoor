@@ -47,7 +47,7 @@ namespace BeyondTheDoor.UI
         public static bool HasLine => CurrentLine != null;
         public static bool HasChoices => CurrentChoices != null;
         public static bool AtEndOfLine => HasLine && Current.revealedLength >= Current.formattedLineText.Length;
-        public static bool IsOpen => HasLine;
+        public static bool IsOpen => HasLine || HasChoices;
         public static Queue<Conversation> Queue => Exists ? Current.queue : null;
 
         // Intended to be used for audio VVV
@@ -125,7 +125,7 @@ namespace BeyondTheDoor.UI
             if (convo == null)
                 return;
 
-            Debug.Log("Opened: " + convo.name);
+            //Debug.Log("Opened: " + convo.name);
 
             currentElementIndex = -1;
             currentConversation = convo;
@@ -162,7 +162,7 @@ namespace BeyondTheDoor.UI
             currentLine = line;
 
             // TODO: Format text accounting for variables etc
-            string name = Character.Current.GetCurrentName();
+            string name = Character.All[line.CharacterID].GetCurrentName();
             //Debug.Log(name);
             formattedLineText = line.text.Replace("{character}", name);
             // Get the incremental printing ready

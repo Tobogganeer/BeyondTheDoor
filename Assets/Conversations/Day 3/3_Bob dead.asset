@@ -14,49 +14,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120302114865233
-  - rid: 4847120302114865234
-  - rid: 4847120302114865235
-  - rid: 4847120302114865236
-  - rid: 4847120302114865237
-  - rid: 4847120302114865238
-  - rid: 4847120302114865239
+  - rid: 2007814039375446765
+  - rid: 2007814039375446766
+  - rid: 2007814039375446767
+  - rid: 2007814039375446768
+  - rid: 2007814039375446769
+  - rid: 2007814039375446770
+  - rid: 2007814039375446771
   choices: []
   onFinished: {fileID: 11400000, guid: 128b3c1a114e6714591a98dcfec889b4, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 4847120302114865233
+    - rid: 2007814039375446765
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1246480311
-    - rid: 4847120302114865234
+    - rid: 2007814039375446766
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Jessica
-    - rid: 4847120302114865235
+    - rid: 2007814039375446767
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1203587307
-    - rid: 4847120302114865236
+    - rid: 2007814039375446768
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1136113874
-    - rid: 4847120302114865237
+    - rid: 2007814039375446769
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 75180902
-    - rid: 4847120302114865238
+    - rid: 2007814039375446770
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 277954092
-    - rid: 4847120302114865239
+    - rid: 2007814039375446771
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

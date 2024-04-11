@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120289072939639
+  - rid: 2007814039375446288
   choices:
   - prompt: 1629311977
     nextConversation: {fileID: 11400000, guid: 0aa1255f5e4fb7e4b81b2ac785e64a59, type: 2}
@@ -32,7 +32,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4847120289072939639
+    - rid: 2007814039375446288
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue

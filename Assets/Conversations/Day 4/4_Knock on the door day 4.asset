@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120302114865362
-  - rid: 4847120302114865363
-  - rid: 4847120302114865364
-  - rid: 4847120302114865365
+  - rid: 2007814039375446894
+  - rid: 2007814039375446895
+  - rid: 2007814039375446896
+  - rid: 2007814039375446897
   choices:
   - prompt: -1954518660
     nextConversation: {fileID: 11400000, guid: 244982fe2f38dfd45a1fd045e103e13b, type: 2}
@@ -29,22 +29,22 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4847120302114865362
+    - rid: 2007814039375446894
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Jessica && Bob
-    - rid: 4847120302114865363
+    - rid: 2007814039375446895
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -891937208
-    - rid: 4847120302114865364
+    - rid: 2007814039375446896
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -892224688
-    - rid: 4847120302114865365
+    - rid: 2007814039375446897
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

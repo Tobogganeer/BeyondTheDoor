@@ -271,6 +271,6 @@ public static class ConversationExtensions
     public static void TryStart(this Conversation convo)
     {
         if (convo != null)
-            convo.Start();
+            convo.Enqueue();
     }
 }

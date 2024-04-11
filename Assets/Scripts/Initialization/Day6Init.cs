@@ -6,24 +6,26 @@ using UnityEngine;
 public class Day6Init : DayBehaviour
 {
     protected override int GetDay() => 6;
-    public ConversationCallback dadWithShotgun;
-    public ConversationCallback dadWithoutShotgun;
+    public ConversationCallback giveDadShotgun;
+    public ConversationCallback dadLeaves;
+    bool dadHasShotgun = false;
 
 
     protected override void RegisterConversationCallbacks()
     {
-        dadWithShotgun.Callback += (conv, line) => dadShotgun();
-        dadWithoutShotgun.Callback += (conv, line) => dadNoShotgun();
+        giveDadShotgun.Callback += (conv, line) => GiveDadShotgun();
+        dadLeaves.Callback += (conv, line) => DadLeaves();
 
     }
 
-    private void dadShotgun()
+    private void GiveDadShotgun()
     {
-        Character.Dad.ChangeStatus(CharacterStatus.LeftWithShotgun, true);
+        dadHasShotgun = true;
+        Cabin.HasShotgun = false;
     }
-    private void dadNoShotgun()
+    private void DadLeaves()
     {
-        Character.Dad.ChangeStatus(CharacterStatus.Left, true);
+        Character.Dad.ChangeStatus(dadHasShotgun ? CharacterStatus.LeftWithShotgun : CharacterStatus.Left);
     }
 
 }

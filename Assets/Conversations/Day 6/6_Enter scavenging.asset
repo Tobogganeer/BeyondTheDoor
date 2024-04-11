@@ -14,50 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120302114865489
-  - rid: 4847120302114865490
-  - rid: 4847120302114865491
-  - rid: 4847120302114865492
-  - rid: 4847120302114865493
-  - rid: 4847120302114865494
-  - rid: 4847120302114865495
+  - rid: 2007814039375447021
+  - rid: 2007814039375447022
+  - rid: 2007814039375447023
+  - rid: 2007814039375447024
+  - rid: 2007814039375447025
+  - rid: 2007814039375447026
+  - rid: 2007814039375447027
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120302114865489
+    - rid: 2007814039375447021
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: OnePartyMember
-    - rid: 4847120302114865490
+    - rid: 2007814039375447022
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1773713198
-    - rid: 4847120302114865491
+    - rid: 2007814039375447023
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
         conversation: {fileID: 11400000, guid: 02fa7cd7b9235da4ba11949dfbf74679, type: 2}
         goofyWorkaroundConversationName: 6_Single person comments on scavenging
-    - rid: 4847120302114865492
+    - rid: 2007814039375447024
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 4847120302114865493
+    - rid: 2007814039375447025
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 391281956
-    - rid: 4847120302114865494
+    - rid: 2007814039375447026
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
         conversation: {fileID: 11400000, guid: fd86d5d3fbf757145aa9238e3e1976d4, type: 2}
         goofyWorkaroundConversationName: 6_Moron trying to argue against scavenging
-    - rid: 4847120302114865495
+    - rid: 2007814039375447027
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSetup
       objectReference: {fileID: 0}
+    - target: {fileID: 5173041166041200214, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
+      propertyPath: m_text
+      value: Kick out
+      objectReference: {fileID: 0}
     - target: {fileID: 5297239884069172725, guid: e8e4a6e7ba9df5245aca614fa4bc35d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

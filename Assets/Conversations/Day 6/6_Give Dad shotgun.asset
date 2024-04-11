@@ -12,38 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: 6_Give Dad shotgun
   m_EditorClassIdentifier: 
-  onStarted: {fileID: 0}
+  onStarted: {fileID: 11400000, guid: 053cead7060447842a9600c37cc2fd32, type: 2}
   elements:
-  - rid: 4847120289072939507
-  - rid: 4847120289072939508
-  - rid: 4847120289072939509
-  - rid: 4847120289072939510
-  - rid: 4847120289072939511
+  - rid: 2007814039375446159
+  - rid: 2007814039375446160
+  - rid: 2007814039375446161
+  - rid: 2007814039375446162
+  - rid: 2007814039375446163
   choices: []
-  onFinished: {fileID: 11400000, guid: 053cead7060447842a9600c37cc2fd32, type: 2}
+  onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120289072939507
+    - rid: 2007814039375446159
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 4847120289072939508
+    - rid: 2007814039375446160
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 700712057
-    - rid: 4847120289072939509
+    - rid: 2007814039375446161
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
-    - rid: 4847120289072939510
+    - rid: 2007814039375446162
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1317281811
-    - rid: 4847120289072939511
+    - rid: 2007814039375446163
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto

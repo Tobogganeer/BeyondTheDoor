@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120302114865159
-  - rid: 4847120302114865160
-  - rid: 4847120302114865161
+  - rid: 2007814039375446692
+  - rid: 2007814039375446693
+  - rid: 2007814039375446694
   choices:
   - prompt: -14678456
     nextConversation: {fileID: 11400000, guid: d6ef8905fc375554d8e2c420ef57a341, type: 2}
@@ -28,18 +28,18 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4847120302114865159
+    - rid: 2007814039375446692
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: '!Shotgun'
-    - rid: 4847120302114865160
+    - rid: 2007814039375446693
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
         conversation: {fileID: 11400000, guid: 6df28ad79bede4f40998c9f97df216de, type: 2}
         goofyWorkaroundConversationName: All_SendWithoutShotgun
-    - rid: 4847120302114865161
+    - rid: 2007814039375446694
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
