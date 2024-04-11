@@ -6,10 +6,24 @@ using UnityEngine;
 public class Day2Init : DayBehaviour
 {
     protected override int GetDay() => 6;
+    public ConversationCallback dadWithShotgun;
+    public ConversationCallback dadWithoutShotgun;
+
 
     protected override void Initialize()
     {
-
+        dadWithShotgun.Callback += (conv, line) => dadShotgun();
+        dadWithoutShotgun.Callback += (conv, line) => dadNoShotgun();
 
     }
+
+    private void dadShotgun()
+    {
+        Character.Dad.ChangeStatus(CharacterStatus.LeftWithShotgun, true);
+    }
+    private void dadNoShotgun()
+    {
+        Character.Dad.ChangeStatus(CharacterStatus.Left, true);
+    }
+
 }
