@@ -13,6 +13,7 @@ public class Day1Init : DayBehaviour
         Character.Tutorial_Dad.ChangeStatus(CharacterStatus.NotMet, true);
         Character.Tutorial_Mom.ChangeStatus(CharacterStatus.NotMet, true);
         Character.Jessica.NameKnown = false;
+        Character.Player.ChangeStatus(CharacterStatus.InsideCabin);
     }
 
 

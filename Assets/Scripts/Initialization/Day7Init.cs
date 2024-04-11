@@ -15,17 +15,40 @@ public class Day7Init : DayBehaviour
     protected override void RegisterConversationCallbacks()
     {
         endOfDay.Callback += (conv, line) => EndGame();
-        KilledByRaiders.Callback += (conv, line) => KilledRaiders();
+        KilledByRaiders.Callback += (conv, line) => GroupKilledByRaiders();
     }
 
-    private static void EndGame()
+    private void EndGame()
     {
         // Stop any advances
         DialogueGUI.Close();
+        CalculateEndStates();
         UnitySceneManager.LoadScene("Ending");
     }
 
-    private void KilledRaiders()
+    private void CalculateEndStates()
+    {
+        foreach (Character character in Cabin.CurrentPartyMembers())
+        {
+            character.ChangeStatus(CharacterStatus.AliveAtBorder);
+        }
+
+        if (Cabin.NumCurrentPartyMembers() > 0)
+            // They made it with the group
+            Character.Player.ChangeStatus(CharacterStatus.AliveAtBorder);
+        else if (Character.Dad.Status == CharacterStatus.LeftWithShotgun)
+        {
+            // Saved by the Dad
+            Character.Player.ChangeStatus(CharacterStatus.AliveAtBorder);
+            Character.Dad.ChangeStatus(CharacterStatus.AliveAtBorder);
+        }
+        else
+            // Womp womp
+            Character.Player.ChangeStatus(CharacterStatus.DeadOnWayToBorder);
+    }
+
+
+    private void GroupKilledByRaiders()
     {
         foreach (var item in Cabin.CurrentPartyMembers())
         {

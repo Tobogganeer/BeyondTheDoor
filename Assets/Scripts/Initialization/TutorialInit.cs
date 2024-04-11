@@ -27,6 +27,8 @@ public class TutorialInit : DayBehaviour
         // Skip this stage
         else if (Stage == Stage.SpeakingWithParty)
             Game.Advance();
+
+        Character.Player.ChangeStatus(CharacterStatus.InsideCabin);
     }
 
     protected override void DoorOpened()
