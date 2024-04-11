@@ -14,49 +14,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597358005
-  - rid: 2007814011597358006
-  - rid: 2007814011597358007
-  - rid: 2007814011597358008
-  - rid: 2007814011597358009
-  - rid: 2007814011597358010
-  - rid: 2007814011597358011
+  - rid: 2007814039131390968
+  - rid: 2007814039131390969
+  - rid: 2007814039131390970
+  - rid: 2007814039131390971
+  - rid: 2007814039131390972
+  - rid: 2007814039131390973
+  - rid: 2007814039131390974
   choices: []
-  onFinished: {fileID: 0}
+  onFinished: {fileID: 11400000, guid: 128b3c1a114e6714591a98dcfec889b4, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597358005
+    - rid: 2007814039131390968
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1246480311
-    - rid: 2007814011597358006
+    - rid: 2007814039131390969
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Jessica
-    - rid: 2007814011597358007
+    - rid: 2007814039131390970
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1203587307
-    - rid: 2007814011597358008
+    - rid: 2007814039131390971
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1136113874
-    - rid: 2007814011597358009
+    - rid: 2007814039131390972
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 75180902
-    - rid: 2007814011597358010
+    - rid: 2007814039131390973
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 277954092
-    - rid: 2007814011597358011
+    - rid: 2007814039131390974
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

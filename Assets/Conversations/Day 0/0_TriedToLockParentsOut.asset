@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597357830
+  - rid: 2007814039375446107
   choices:
   - prompt: 844154365
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: b2021f9529a070a4b92b169a25ce1af9, type: 2}
     callback: {fileID: 0}
   - prompt: 1771883707
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: c6ee2d1657c10bc49819f848e09167cd, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597357830
+    - rid: 2007814039375446107
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue

@@ -14,48 +14,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597357966
-  - rid: 2007814011597357967
-  - rid: 2007814011597357968
-  - rid: 2007814011597357969
-  - rid: 2007814011597357970
-  - rid: 2007814011597357971
+  - rid: 2007814039375446070
+  - rid: 2007814039375446071
+  - rid: 2007814039375446072
+  - rid: 2007814039375446073
+  - rid: 2007814039375446074
+  - rid: 2007814039375446075
   choices:
   - prompt: -1954132389
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 67c32dba6d2ee614882615f1b41b2185, type: 2}
     callback: {fileID: 0}
   - prompt: 1743030506
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: ccf3415a7a05c484b96d8c66c3aab7d5, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597357966
+    - rid: 2007814039375446070
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -668607325
-    - rid: 2007814011597357967
+    - rid: 2007814039375446071
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 2007814011597357968
+    - rid: 2007814039375446072
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -659136869
-    - rid: 2007814011597357969
+    - rid: 2007814039375446073
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 2007814011597357970
+    - rid: 2007814039375446074
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -891930033
-    - rid: 2007814011597357971
+    - rid: 2007814039375446075
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

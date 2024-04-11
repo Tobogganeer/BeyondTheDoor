@@ -13,7 +13,7 @@ public class Day3Init : DayBehaviour
 
     protected override int GetDay() => 3;
 
-    protected override void Initialize()
+    protected override void RegisterConversationCallbacks()
     {
         activateBearEnding.Callback += (conv, line) => BearEnding();
         BobKillerByBear.Callback += (conv, line) => BobKilled();
@@ -23,7 +23,7 @@ public class Day3Init : DayBehaviour
     {
         // Stop any advances
 
-        DialogueGUI.ClearQueue();
+        DialogueGUI.Close();
         UnitySceneManager.LoadScene("Ending");
     }
 

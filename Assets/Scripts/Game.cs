@@ -311,10 +311,10 @@ public class Game : MonoBehaviour
         switch (Stage)
         {
             case Stage.MorningSupplies:
-                return Stage.SpeakingWithParty;
-            case Stage.SpeakingWithParty:
                 // Skip right to the end of the day if you are alone
-                return Alone ? Stage.DealingWithArrival : Stage.SendingScavengers;
+                return Alone ? Stage.DealingWithArrival : Stage.SpeakingWithParty;
+            case Stage.SpeakingWithParty:
+                return Stage.SendingScavengers;
             case Stage.SendingScavengers:
                 bool peopleScavenging = ScavengeParty.Count > 0;
                 bool overcrowded = Cabin.NumCurrentPartyMembers() > 2;
@@ -322,9 +322,9 @@ public class Game : MonoBehaviour
             case Stage.FixingOvercrowding:
                 return Stage.DealingWithArrival;
             case Stage.DealingWithArrival:
-                return Stage.SpeakingWithParty;
+                return Stage.MorningSupplies;
             default:
-                return Stage.SpeakingWithParty;
+                return Stage.MorningSupplies;
         }
     }
 

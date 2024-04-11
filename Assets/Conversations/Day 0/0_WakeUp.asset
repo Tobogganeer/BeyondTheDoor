@@ -14,34 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597357818
-  - rid: 2007814011597357819
-  - rid: 2007814011597357820
+  - rid: 2007814039375446110
+  - rid: 2007814039375446111
+  - rid: 2007814039375446112
   choices:
   - prompt: -439578120
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: c7826e299a91b254fbbfdb0f990be0b3, type: 2}
     callback: {fileID: 0}
   - prompt: 1598028075
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: c7826e299a91b254fbbfdb0f990be0b3, type: 2}
     callback: {fileID: 0}
   - prompt: -1068718804
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: c7826e299a91b254fbbfdb0f990be0b3, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597357818
+    - rid: 2007814039375446110
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1764061402
-    - rid: 2007814011597357819
+    - rid: 2007814039375446111
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1191207935
-    - rid: 2007814011597357820
+    - rid: 2007814039375446112
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue

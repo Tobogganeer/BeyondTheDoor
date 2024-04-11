@@ -1,4 +1,4 @@
-1797
+1801
 Test
 These lines show some formatting stuff
 Heres some useful internal notes
@@ -1039,12 +1039,44 @@ tutdad_0_where_are_keys
 Draft
 None
 
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+TutDad_LookForKeys
+
+0
+
+None
+None
+
 Tutorial_Dad
 I don't know where we left them...
 If you try to talk to them before finding keys
 0
 tutdad_0_looking_for_keys
 Draft
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+TutMom_LookForKeys
+
+0
+
+None
 None
 
 Tutorial_Mom
@@ -1125,6 +1157,14 @@ Bye bye
 0
 tutdad_0_sent
 Draft
+None
+
+GOTO
+SendWithoutShotgun
+
+
+
+None
 None
 
 END
@@ -4135,6 +4175,14 @@ ENDIF
 None
 None
 
+GOTO
+Bear ending
+
+
+
+None
+None
+
 END
 
 
@@ -4203,6 +4251,22 @@ ENDIF
 
 
 
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Bear ending
+
+3
 
 None
 None
@@ -4669,14 +4733,6 @@ I can't do much in this state, I will die!
 4
 j_4_die
 Placeholder
-None
-
-GOTO
-AddToScavengeParty
-
-
-
-None
 None
 
 END
@@ -5551,32 +5607,8 @@ ENDIF
 None
 None
 
-CHOICE
-Making decision day 4
-
-
-
-None
-None
-
 Player
-Let me think about it more
-
-4
-p_4_think
-Placeholder
-None
-
-CHOICE
-Jessica pissed
-
-
-
-None
-None
-
-Player
-I'm sure, we're not letting anyone inside
+I'm sure, we're not letting anyone inside.
 
 4
 p_4_sure

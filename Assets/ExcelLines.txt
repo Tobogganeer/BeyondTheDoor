@@ -145,11 +145,6 @@ END
 							
 							
 							
-							
-							
-							
-							
-							
 //	Tutorial/day 0						
 CONVERSATION	WakeUp		0				
 Tutorial_Mom	Wake up sunshine...  you fell asleep while playing games.	First line of tutorial	0	tutmom_0_wake_up	Draft	None	
@@ -166,7 +161,12 @@ END
 CONVERSATION	ParentsLookForKeys		0				
 Tutorial_Dad	"Okay, we won't take long."	Response to player choice	0	tutdad_0_question_response	Draft	None	
 Tutorial_Dad	(To Mom) Have you seen where the car keys are?		0	tutdad_0_where_are_keys	Draft	None	
+END							
+							
+CONVERSATION	TutDad_LookForKeys		0				
 Tutorial_Dad	I don't know where we left them...	If you try to talk to them before finding keys	0	tutdad_0_looking_for_keys	Draft	None	
+END							
+CONVERSATION	TutMom_LookForKeys		0				
 Tutorial_Mom	I could've swore they were around here somewhere!	If you try to talk to them before finding keys	0	tutmom_0_looking_for_keys	Draft	None	
 END							
 							
@@ -180,8 +180,8 @@ END
 							
 CONVERSATION	ParentsLeaving		0				
 Tutorial_Dad	See you soon kiddo!	Bye bye	0	tutdad_0_sent	Draft	None	
+GOTO	SendWithoutShotgun						
 END							
-							
 CONVERSATION	ParentsAtDoor		0				
 Tutorial_Mom	We're back!	At door	0	tutmom_0_at_door	Draft	None	
 Tutorial_Mom	"Hey kiddo, can you open the door please? It's raining out here... "	At door	0	tutmom_0_q_open_door	Draft	None	
@@ -673,7 +673,6 @@ Bob	"I think you did the right choice, its probably not even human"		3	b_3_not_h
 ENDIF							
 END							
 							
-							
 CONVERSATION	Letting animal in		3				
 IF	Bob						
 Bob	What the fuck are you doing? That thing is not human!		3	b_3_in	Placeholder		
@@ -681,11 +680,11 @@ Bear	*roar*		3	bear_3_roar	Placeholder
 Bob	Get back!		3	b_3_back	Placeholder		
 GOTO	Bob dead						
 ENDIF							
-IF 	Jessica						
+IF	Jessica						
 Jessica	GET THE GUN		3	j_3_gun	Placeholder		
 ENDIF							
+GOTO	Bear ending						
 END							
-							
 CONVERSATION	Bob dead		3				
 Player	Oh my god		3	p_3_god	Placeholder		
 IF	Jessica						
@@ -695,7 +694,8 @@ Jessica	"Yeah, good night to you too bob"		3	j_3_shocked	Placeholder
 Player	I think she's still in state of shock		3	p_3_shocked	Placeholder		
 ENDIF							
 END							
-							
+CONVERSATION	Bear ending		3				
+END							
 							
 //	Day 4						
 							
@@ -803,8 +803,8 @@ IF	Bob
 Bob	you sure?		4	b_4_sure	Placeholder		
 ENDIF							
 Jessica	"I can't do much in this state, I will die!"		4	j_4_die	Placeholder		
-GOTO	AddToScavengeParty						
 END							
+							
 							
 CONVERSATION	Jessica scavenge day 4 confirm		4				
 IF	!Shotgun						
@@ -945,14 +945,14 @@ CONVERSATION	Letting Violet out		4
 IF	Bob						
 Bob	"I think you did the right choice, how can we confirm that it is trully a human?"		4	b_4_right_choice	Placeholder		
 ENDIF							
-IF 	Jessica						
+IF	Jessica						
 Jessica	"You never know, It can be someone with some kind of disability, like a mute person. "		4	j_4_disability	Placeholder		
 Jessica	You sure you're going to let them out? Please give another chance!		4	j_4_chance			
 ENDIF							
-CHOICE	Making decision day 4						
-Player	Let me think about it more		4	p_4_think	Placeholder		
-CHOICE	Jessica pissed						
-Player	"I'm sure, we're not letting anyone inside"		4	p_4_sure	Placeholder		
+//CHOICE	Making decision day 4						
+//Player	Let me think about it more		4	p_4_think	Placeholder		
+//CHOICE	Jessica pissed						
+Player	"I'm sure, we're not letting anyone inside."		4	p_4_sure	Placeholder		
 END							
 							
 CONVERSATION	Jessica pissed		4				

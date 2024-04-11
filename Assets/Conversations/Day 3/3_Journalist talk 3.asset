@@ -14,20 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597357958
-  - rid: 2007814011597357959
+  - rid: 2007814039375446086
+  - rid: 2007814039375446087
+  - rid: 2007814039375446088
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597357958
+    - rid: 2007814039375446086
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1702266340
-    - rid: 2007814011597357959
+    - rid: 2007814039375446087
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -2045786750
+    - rid: 2007814039375446088
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 11400000, guid: 7078b8265c206cf49b3b02ce05c95d5f, type: 2}
+        goofyWorkaroundConversationName: 3_Journalist resources

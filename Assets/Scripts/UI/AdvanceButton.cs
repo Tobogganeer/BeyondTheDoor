@@ -19,6 +19,12 @@ public class AdvanceButton : MonoBehaviour
     private void Update()
     {
         // Turn it on if we can advance
-        button.gameObject.SetActive(Game.CanAdvance());
+        button.gameObject.SetActive(ShouldButtonBeOn());
+    }
+
+    bool ShouldButtonBeOn()
+    {
+        bool isTutorial = Day.DayNumber == Day.TutorialDay;
+        return !isTutorial && Game.CanAdvance();
     }
 }

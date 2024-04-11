@@ -31,7 +31,7 @@ namespace BeyondTheDoor
 
             DayNumber = dayNumber;
             //ArrivingCharacter = Game.CharacterArrivalOrder[dayNumber];
-            Stage = Stage.SpeakingWithParty;
+            Stage = Stage.MorningSupplies;
         }
 
         /// <summary>

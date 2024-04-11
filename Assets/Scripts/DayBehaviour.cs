@@ -187,7 +187,7 @@ public abstract class DayBehaviour : MonoBehaviour
     /// Called for this day before each stage is loaded.
     /// </summary>
     /// <remarks>Initialize lines and character callbacks here.</remarks>
-    protected abstract void Initialize();
+    protected virtual void Initialize() { }
     /// <summary>
     /// Called after the game's stage is changed but before the next stage is loaded.
     /// </summary>

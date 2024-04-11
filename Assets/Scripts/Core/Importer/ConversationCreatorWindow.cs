@@ -271,6 +271,7 @@ namespace BeyondTheDoor.Importer
             for (int i = 0; i < toReimport.Length; i++)
             {
                 LinkCreatedConversation(matchingConvoData[i], toReimport[i], allConversationsDict);
+                EditorUtility.SetDirty(toReimport[i]);
                 //AssetDatabase.SaveAssetIfDirty(toReimport[i]);
             }
 
@@ -306,6 +307,10 @@ namespace BeyondTheDoor.Importer
             }
             else
             {
+                // If there should be less choices
+                while (convo.choices.Count > data.choices.Count)
+                    convo.choices.RemoveAt(convo.choices.Count - 1);
+
                 for (int i = 0; i < data.choices.Count; i++)
                 {
                     Conversation next = TryGetMatchingConversation(data.choices[i].nextConversation, allConversations);

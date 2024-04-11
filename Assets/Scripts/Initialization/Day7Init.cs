@@ -12,7 +12,7 @@ public class Day7Init : DayBehaviour
 
     protected override int GetDay() => 7;
 
-    protected override void Initialize()
+    protected override void RegisterConversationCallbacks()
     {
         endOfDay.Callback += (conv, line) => EndGame();
         KilledByRaiders.Callback += (conv, line) => KilledRaiders();
@@ -21,7 +21,7 @@ public class Day7Init : DayBehaviour
     private static void EndGame()
     {
         // Stop any advances
-        DialogueGUI.ClearQueue();
+        DialogueGUI.Close();
         UnitySceneManager.LoadScene("Ending");
     }
 
