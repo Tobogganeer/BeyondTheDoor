@@ -165,6 +165,38 @@ public class EndingAnimation : MonoBehaviour
             yield return WriteList(timeBetweenTransitions, "I reached my destination", "finally", "I’m at the border", "I’m alive", "they are all dead", " was it worth it?");
             yield return Final(1);
         }
+
+        if (Character.Jessica.AliveAtBorder) 
+        {
+            Debug.Log("jessica only");
+            yield return Write6PeoplePreamble();
+
+            yield return WriteList(timeBetweenTransitions, "We reached the border safely", "finally", "I had to keep an eye on Jesssica", "when we were asked for our id", "they were surprised by Jessica's", "Turns out shes niece of one of the higher ups in Brasnia", "We were taken to a room, wand told to wait for someone", "Turns out we're getting evacuted to the USA for protection");
+            yield return Final(2);
+        }
+
+        //Violet only
+        if (Character.Violet.AliveAtBorder)
+        {
+            Debug.Log("violet only");
+            yield return Write6PeoplePreamble();
+
+            yield return WriteList(timeBetweenTransitions, "Turns out that years later violet oppened a workshop", "I went to visit her some years later", "Turns out she's doing pretty well", "I even got a job offer", "good to see that someone is doing pretty well after the war", "I guess it was worth it in the end");
+            yield return Final(2);
+        }
+
+        //bob only
+        if (Character.Bob.AliveAtBorder)
+        {
+            Debug.Log("bob only");
+            yield return Write6PeoplePreamble();
+
+            yield return WriteList(timeBetweenTransitions, "some months passed and the war still rages on", "Bob chose to return to the war and fight as a revolutionary", "I never heard from him ever again", "I hope he's doing alright");
+            yield return Final(2);
+
+        }
+
+
     }
 
     private IEnumerator JokeEnding()
