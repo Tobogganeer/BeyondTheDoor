@@ -13,21 +13,15 @@ MonoBehaviour:
   m_Name: All_KickCharacterOut
   m_EditorClassIdentifier: 
   onStarted: {fileID: 11400000, guid: 7be50aa2ea2b86f4aaea169aede51d59, type: 2}
-  elements:
-  - rid: 2007814042214989852
+  elements: []
   choices:
-  - prompt: -1273338385
+  - prompt: 839976659
     nextConversation: {fileID: 0}
     callback: {fileID: 11400000, guid: da6fa37fc6c9dc34dae85acda2ce4646, type: 2}
-  - prompt: 1496915069
+  - prompt: 714585806
     nextConversation: {fileID: 0}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
-    RefIds:
-    - rid: 2007814042214989852
-      type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
-      data:
-        name: Dialogue
-        lineID: 839976659
+    RefIds: []

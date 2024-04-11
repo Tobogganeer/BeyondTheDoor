@@ -14,50 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814039375446773
-  - rid: 2007814039375446774
-  - rid: 2007814039375446775
-  - rid: 2007814039375446776
-  - rid: 2007814039375446777
-  - rid: 2007814039375446778
-  - rid: 2007814039375446779
+  - rid: 2007814042214990098
+  - rid: 2007814042214990099
+  - rid: 2007814042214990100
+  - rid: 2007814042214990101
+  - rid: 2007814042214990102
+  - rid: 2007814042214990103
+  - rid: 2007814042214990104
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814039375446773
+    - rid: 2007814042214990098
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 2007814039375446774
+    - rid: 2007814042214990099
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
         conversation: {fileID: 11400000, guid: 1900558a8b4314d479739e82376fecd2, type: 2}
         goofyWorkaroundConversationName: 5_B_Violet coming back
-    - rid: 2007814039375446775
+    - rid: 2007814042214990100
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Jessica
-    - rid: 2007814039375446776
+    - rid: 2007814042214990101
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
         conversation: {fileID: 11400000, guid: e408e18f15f3af34b90c7295092e3b4d, type: 2}
         goofyWorkaroundConversationName: 5_J_Violet coming back
-    - rid: 2007814039375446777
+    - rid: 2007814042214990102
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 2007814039375446778
+    - rid: 2007814042214990103
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -821830624
-    - rid: 2007814039375446779
+    - rid: 2007814042214990104
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

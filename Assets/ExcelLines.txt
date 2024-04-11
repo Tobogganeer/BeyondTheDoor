@@ -44,7 +44,7 @@ Player	Send {character} with shotgun		0	send_with_shotgun	Final	None
 Player	Send {character} without shotgun		0	send_without_shotgun	Final	None	
 None	(no content)		0	none	Final	None	
 Player	Send no scavengers		0	confirm_no_scavengers	Final	None	
-None	Kick {character} out?		0	q_kick_character_out	Final	None	
+None	Kick {character} out		0	q_kick_character_out	Final	None	
 							
 							
 							
@@ -99,12 +99,12 @@ END
 							
 							
 CONVERSATION	KickCharacterOut						
+CHOICE							
 				q_kick_character_out			
 CHOICE							
-				yes			
-CHOICE							
-				no			
+				go_back			
 END							
+							
 							
 CONVERSATION	DoorDecision						
 CHOICE							
@@ -599,12 +599,12 @@ Journalist	"Right, ok, I think thats all, thanks for conversation, the informati
 Player	"Ok, thanks, have a safe trip"		3	p_3_safe_trip	Placeholder		
 Journalist	"You too, be safe"		3	journalist_3_safe	Placeholder		
 END							
-							
 CONVERSATION	Knock on door		3				
-Bob	"Oh wow that's a strong bang, I don't think that would be great news"		3	b_3_knock	Placeholder		
 IF	Bob						
+Bob	"Oh wow that's a strong bang, I don't think that would be great news"		3	b_3_knock	Placeholder		
+IF	Jessica						
 Jessica	It just might be someone strong or tired		3	j_3_knock	Placeholder		
-ELSE							
+ELIF	Jessica						
 Jessica	Oh there's someone at the door!		3	j_3_door	Placeholder		
 ENDIF							
 CHOICE	Ignore door day 3						
@@ -612,6 +612,11 @@ Player	(ignore the door)		3	p_3_ignore	Placeholder
 CHOICE	day 3 peephole						
 Player	Let me take a look		3	p_3_look	Placeholder		
 END							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Ignore door day 3		3				
 IF	Jessica						
@@ -726,8 +731,8 @@ END
 							
 CONVERSATION	Jessica apologizes		4				
 Jessica	Good morning everyone!		4	j_4_morning	Placeholder		
-IF	Bob						
-Jessica	"I'm sorry about yesterday, we would all be dead if you guys followed my decisions"		4	j_4_morning	Placeholder		
+IF	Jessica && bob						
+Jessica	"I'm sorry about yesterday, we would all be dead if you guys followed my decisions"		4	j_4_sorry	Placeholder		
 Bob	Hum		4	b_4_hum	Placeholder		
 ENDIF							
 IF	bobdead						
@@ -1118,7 +1123,7 @@ CONVERSATION	Selecting Violet		5
 IF	CAR						
 Violet	*if you wanted me to go i could find somewhere else to stay*		5	v_5_okay	Placeholder		
 ELSE							
-Violet	*if it has to be someone it should be jessica*		5	b_5_jessica	Placeholder		
+Violet	*if it has to be someone it should be jessica*		5	v_5_jessica	Placeholder		
 ENDIF							
 END							
 							
@@ -1130,11 +1135,11 @@ Bob	"If you have to kick someone out, it should be Jessica."		5	b_5_jessica	Plac
 Jessica	WHAT?		5	j_5_what	Placeholder		
 Bob	What the fuck are you going to do for us? Sit around in your chair all day?		5	b_5_do	Placeholder		
 Bob	"All is fair in love and war, and if you want to survive you'll let me stay."		5	b_5_love	Placeholder		
-CHOICE	Kicking someone out						
-Player	"Wait, let me think"		5	p_5_think	Placeholder		
-CHOICE	Bob kicked out						
-Player	I'm sure		5	p_5_sure	Placeholder		
 END							
+							
+							
+							
+							
 							
 CONVERSATION	Kicking Violet out		5				
 IF	CAR						
@@ -1144,21 +1149,21 @@ Violet	*I think you should keep me around. I've got lots of experience in my yea
 ENDIF							
 Violet	"*If you really want someone gone, I think it should be Jessica. More of a burden than anything.*"		5	v_5_burden	Placeholder		
 Jessica	Why is she looking at me?		5	j_5_looking	Placeholder		
-CHOICE	Kicking someone out						
-Player	"Wait, let me think"		5	p_5_think	Placeholder		
-CHOICE	Violet kicked out						
-Player	I'm sure		5	p_5_sure	Placeholder		
+Violet	*Please*		5	v_5_please			
 END							
+							
+							
+							
 							
 CONVERSATION	Kicking Jessica out		5				
 Jessica	You can't kick me out! I'll die out there! It's scary!		5	j_5_scary	Placeholder		
 Bob	*stares at Jessica*		5	b_5_stare	Placeholder		
 Violet	*stares at Jessica*		5	v_5_stare	Placeholder		
-CHOICE	Kicking someone out						
-Player	"Wait, let me think"		5	p_5_think	Placeholder		
-CHOICE	Jessica kicked out						
-Player	I'm sure		5	p_5_sure	Placeholder		
+Jessica	Why do you guys always do this!		5	j_5_why_do_you_do_this	Placeholder		
 END							
+							
+							
+							
 							
 CONVERSATION	Jessica kicked out		5				
 Jessica	Please! Why are you doing this to me?			j_5_why	Placeholder		

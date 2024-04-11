@@ -1,4 +1,4 @@
-1802
+1792
 Test
 These lines show some formatting stuff
 Heres some useful internal notes
@@ -312,7 +312,7 @@ Final
 None
 
 None
-Kick {character} out?
+Kick {character} out
 
 0
 q_kick_character_out
@@ -623,6 +623,14 @@ KickCharacterOut
 None
 None
 
+CHOICE
+
+
+
+
+None
+None
+
 
 
 
@@ -643,23 +651,7 @@ None
 
 
 
-yes
-None
-None
-
-CHOICE
-
-
-
-
-None
-None
-
-
-
-
-
-no
+go_back
 None
 None
 
@@ -3607,6 +3599,14 @@ Knock on door
 None
 None
 
+IF
+Bob
+
+
+
+None
+None
+
 Bob
 Oh wow that's a strong bang, I don't think that would be great news
 
@@ -3616,7 +3616,7 @@ Placeholder
 None
 
 IF
-Bob
+Jessica
 
 
 
@@ -3631,8 +3631,8 @@ j_3_knock
 Placeholder
 None
 
-ELSE
-
+ELIF
+Jessica
 
 
 
@@ -4448,7 +4448,7 @@ Placeholder
 None
 
 IF
-Bob
+Jessica && bob
 
 
 
@@ -4459,7 +4459,7 @@ Jessica
 I'm sorry about yesterday, we would all be dead if you guys followed my decisions
 
 4
-j_4_morning
+j_4_sorry
 Placeholder
 None
 
@@ -6611,7 +6611,7 @@ Violet
 *if it has to be someone it should be jessica*
 
 5
-b_5_jessica
+v_5_jessica
 Placeholder
 None
 
@@ -6695,38 +6695,6 @@ b_5_love
 Placeholder
 None
 
-CHOICE
-Kicking someone out
-
-
-
-None
-None
-
-Player
-Wait, let me think
-
-5
-p_5_think
-Placeholder
-None
-
-CHOICE
-Bob kicked out
-
-
-
-None
-None
-
-Player
-I'm sure
-
-5
-p_5_sure
-Placeholder
-None
-
 END
 
 
@@ -6799,36 +6767,12 @@ j_5_looking
 Placeholder
 None
 
-CHOICE
-Kicking someone out
-
-
-
-None
-None
-
-Player
-Wait, let me think
+Violet
+*Please*
 
 5
-p_5_think
-Placeholder
+v_5_please
 None
-
-CHOICE
-Violet kicked out
-
-
-
-None
-None
-
-Player
-I'm sure
-
-5
-p_5_sure
-Placeholder
 None
 
 END
@@ -6871,35 +6815,11 @@ v_5_stare
 Placeholder
 None
 
-CHOICE
-Kicking someone out
-
-
-
-None
-None
-
-Player
-Wait, let me think
+Jessica
+Why do you guys always do this!
 
 5
-p_5_think
-Placeholder
-None
-
-CHOICE
-Jessica kicked out
-
-
-
-None
-None
-
-Player
-I'm sure
-
-5
-p_5_sure
+j_5_why_do_you_do_this
 Placeholder
 None
 

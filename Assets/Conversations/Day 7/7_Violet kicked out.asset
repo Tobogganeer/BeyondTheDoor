@@ -14,36 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814039375446635
-  - rid: 2007814039375446636
-  - rid: 2007814039375446637
-  - rid: 2007814039375446638
-  - rid: 2007814039375446639
+  - rid: 2007814042214989973
+  - rid: 2007814042214989974
+  - rid: 2007814042214989975
+  - rid: 2007814042214989976
+  - rid: 2007814042214989977
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814039375446635
+    - rid: 2007814042214989973
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Car
-    - rid: 2007814039375446636
+    - rid: 2007814042214989974
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 91796330
-    - rid: 2007814039375446637
+    - rid: 2007814042214989975
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 2007814039375446638
+    - rid: 2007814042214989976
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 736145845
-    - rid: 2007814039375446639
+    - rid: 2007814042214989977
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

@@ -14,53 +14,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814039375447032
-  - rid: 2007814039375447033
-  - rid: 2007814039375447034
-  - rid: 2007814039375447035
-  - rid: 2007814039375447036
-  - rid: 2007814039375447037
-  - rid: 2007814039375447038
-  - rid: 2007814039375447039
+  - rid: 2007814042214990275
+  - rid: 2007814042214990276
+  - rid: 2007814042214990277
+  - rid: 2007814042214990278
+  - rid: 2007814042214990279
+  - rid: 2007814042214990280
+  - rid: 2007814042214990281
+  - rid: 2007814042214990282
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814039375447032
+    - rid: 2007814042214990275
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1561126906
-    - rid: 2007814039375447033
+    - rid: 2007814042214990276
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -901790390
-    - rid: 2007814039375447034
+    - rid: 2007814042214990277
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: HasCar
-    - rid: 2007814039375447035
+    - rid: 2007814042214990278
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 999237552
-    - rid: 2007814039375447036
+    - rid: 2007814042214990279
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 2007814039375447037
+    - rid: 2007814042214990280
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1149286729
-    - rid: 2007814039375447038
+    - rid: 2007814042214990281
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
-    - rid: 2007814039375447039
+    - rid: 2007814042214990282
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto

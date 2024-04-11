@@ -169,12 +169,17 @@ public class Game : MonoBehaviour
             DayBehaviour.Current.Characters[Character.Current.ID].tryingToKickOut.TryStart();
             q_kickCharacterOut.Enqueue();
         };
-        kickCharacterOutCallback.Callback += (conv, line) => KickOutCharacter(Character.Current);
+        kickCharacterOutCallback.Callback += (conv, line) => KickOutCharacter(Character.ChoppingBlock);
 
         clearQueueCallback.Callback += (conv, line) => DialogueGUI.ClearQueue();
         learnName.Callback += (conv, line) => LearnName(conv);
 
-        loadStoredCharacter.Callback += (conv, line) => Character.Current = Character.ChoppingBlock;
+        loadStoredCharacter.Callback += (conv, line) =>
+        {
+            Character.Current = Character.ChoppingBlock;
+            Debug.Log("Set current character to " + (Character.ChoppingBlock != null ? Character.ChoppingBlock.Name : "null :("));
+        }
+        ;
 
         // Hook up all characters to the scavenge adding/removal
         foreach (Character character in Character.All.Values)
