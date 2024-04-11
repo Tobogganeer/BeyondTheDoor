@@ -25,7 +25,7 @@ public class EndingAnimation : MonoBehaviour
         Debug.Log("violet " + Character.Violet.Status);
         Debug.Log("Jessica " + Character.Jessica.Status);
         List<Character> peopleAtTheBorder = GetCharactersAtBorder();
-        bool only1atBorder = peopleAtTheBorder.Count == 1;
+        bool only1atBorder = peopleAtTheBorder.Count == 2;
         Character personAtBorder = null;
         if (only1atBorder)
             personAtBorder = peopleAtTheBorder[0];
@@ -176,7 +176,7 @@ public class EndingAnimation : MonoBehaviour
     {
 
         //Jessica only
-        if (personAtBorder == Character.Jessica)
+        if (personAtBorder == Character.Jessica )
         {
             Debug.Log("jessica only");
             yield return Write6PeoplePreamble();
@@ -186,8 +186,9 @@ public class EndingAnimation : MonoBehaviour
         }
 
         //Violet only
-        if (personAtBorder == Character.Violet)
+        if (personAtBorder == Character.Violet && Character.Player.AliveAtBorder)
         {
+            Debug.Log("violet only");
             yield return Write6PeoplePreamble();
 
             yield return WriteList(timeBetweenTransitions, "Turns out that years later violet oppened a workshop", "I went to visit her some years later", "Turns out she's doing pretty well", "I even got a job offer", "good to see that someone is doing pretty well after the war", "I guess it was worth it in the end");
