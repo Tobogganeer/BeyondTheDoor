@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 3387363760288231107}
   - component: {fileID: -9045745168459478293}
   - component: {fileID: -4411511646512016402}
+  - component: {fileID: 8397524173035809595}
   m_Layer: 0
   m_Name: App
   m_TagString: Untagged
@@ -223,6 +224,7 @@ MonoBehaviour:
   staySilentCallback: {fileID: 11400000, guid: d2fa6347c186b924fbac47013a04e338, type: 2}
   peepholeCallback: {fileID: 11400000, guid: 7d221fbd6ec88df4eb191e68ded25bf9, type: 2}
   clearQueueCallback: {fileID: 11400000, guid: 254308f26ef5e734a8ec717fd0c51124, type: 2}
+  learnName: {fileID: 11400000, guid: 4b4ec98642a354945a4918fd8e712b5f, type: 2}
   onInitialize:
     m_PersistentCalls:
       m_Calls: []
@@ -257,6 +259,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuScene: MainMenu
+--- !u!114 &8397524173035809595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420169551764057506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b6ffa725da59d46aedf2f4d370142d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2598026140404002207
 GameObject:
   m_ObjectHideFlags: 0

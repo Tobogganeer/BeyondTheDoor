@@ -36,7 +36,7 @@ namespace BeyondTheDoor
         public IDialogueElement Introduction { get; set; }
         */
 
-        public bool NameAlwaysKnown { get; set; } = true;
+        public bool NameKnown { get; set; } = true;
 
 
         // ============ Useful Properties ============
@@ -138,6 +138,7 @@ namespace BeyondTheDoor
             Name = ID.ToString(); // Can be changed later
             Status = CharacterStatus.NotMet;
             HistoryEvents = new List<CharacterHistoryEvent>();
+            NameKnown = true;
 
             ResetEvents();
         }
@@ -221,7 +222,7 @@ namespace BeyondTheDoor
         /// <returns></returns>
         public string GetCurrentName()
         {
-            return (HasBeenIntroduced || NameAlwaysKnown) ? Name : UnknownCharacterName;
+            return (HasBeenIntroduced || NameKnown) ? Name : UnknownCharacterName;
         }
 
 

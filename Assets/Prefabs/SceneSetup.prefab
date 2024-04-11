@@ -2359,10 +2359,6 @@ PrefabInstance:
       propertyPath: m_ReceiveGI
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2f16385070ac1ea41b9c11d66b6bfe18, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: be5c1bfeef15ff04a98f0f43665c1512, type: 2}
     - target: {fileID: 919132149155446097, guid: 2f16385070ac1ea41b9c11d66b6bfe18, type: 3}
       propertyPath: m_Name
       value: WindowTrim
@@ -2554,10 +2550,6 @@ PrefabInstance:
       propertyPath: m_ReceiveGI
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: d91c2d0fb474848418ab442fce3692cd, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: be5c1bfeef15ff04a98f0f43665c1512, type: 2}
     - target: {fileID: 919132149155446097, guid: d91c2d0fb474848418ab442fce3692cd, type: 3}
       propertyPath: m_Name
       value: Radio
@@ -3288,10 +3280,6 @@ PrefabInstance:
       propertyPath: m_ReceiveGI
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 03cf510a6714e20438ce959a6422ac02, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: be5c1bfeef15ff04a98f0f43665c1512, type: 2}
     - target: {fileID: 919132149155446097, guid: 03cf510a6714e20438ce959a6422ac02, type: 3}
       propertyPath: m_Name
       value: TV
@@ -3557,10 +3545,6 @@ PrefabInstance:
       propertyPath: m_ReceiveGI
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 2f16385070ac1ea41b9c11d66b6bfe18, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: be5c1bfeef15ff04a98f0f43665c1512, type: 2}
     - target: {fileID: 919132149155446097, guid: 2f16385070ac1ea41b9c11d66b6bfe18, type: 3}
       propertyPath: m_Name
       value: WindowTrim (1)
@@ -3972,10 +3956,6 @@ PrefabInstance:
       propertyPath: m_ReceiveGI
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 1f70a25799d59544eaba4e8de847ca37, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: be5c1bfeef15ff04a98f0f43665c1512, type: 2}
     - target: {fileID: 919132149155446097, guid: 1f70a25799d59544eaba4e8de847ca37, type: 3}
       propertyPath: m_Name
       value: Door
@@ -4275,10 +4255,6 @@ PrefabInstance:
       propertyPath: m_ReceiveGI
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: dda8c2e72045b254499d005ef35ec54e, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: be5c1bfeef15ff04a98f0f43665c1512, type: 2}
     - target: {fileID: 919132149155446097, guid: dda8c2e72045b254499d005ef35ec54e, type: 3}
       propertyPath: m_Name
       value: Supplies

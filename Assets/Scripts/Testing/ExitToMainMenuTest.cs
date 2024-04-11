@@ -7,7 +7,7 @@ public class ExitToMainMenuTest : MonoBehaviour
 {
     void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
             Game.ExitToMenu();
     }
 }

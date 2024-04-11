@@ -103,7 +103,7 @@ namespace BeyondTheDoor.Editor
             {
                 string text = EditorColours.Text("Calls ");
                 text += EditorColours.Callback(con.onFinished.name);
-                EditorGUILayout.TextArea(text, style);
+                //EditorGUILayout.TextArea(text, style);
                 if (con.choices != null && con.choices.Count > 0)
                     text += EditorColours.Text(" (Once choice is selected)");
                 EditorGUILayout.TextArea(text, style);
