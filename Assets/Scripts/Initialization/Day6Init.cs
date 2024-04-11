@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Day2Init : DayBehaviour
+public class Day6Init : DayBehaviour
 {
     protected override int GetDay() => 6;
     public ConversationCallback dadWithShotgun;
