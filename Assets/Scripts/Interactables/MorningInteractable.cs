@@ -9,7 +9,7 @@ public abstract class MorningInteractable : MonoBehaviour, IInteractable
 
     public void OnClicked()
     {
-        if (Day.Stage == Stage.SpeakingWithParty && Conversation != null)
+        if (Day.Stage == Stage.MorningSupplies && Conversation != null)
             Conversation.Start();
     }
 }
