@@ -12,6 +12,7 @@ public class Day1Init : DayBehaviour
         // Make sure the parents are outta here
         Character.Tutorial_Dad.ChangeStatus(CharacterStatus.NotMet, true);
         Character.Tutorial_Mom.ChangeStatus(CharacterStatus.NotMet, true);
+        Character.Jessica.NameKnown = false;
     }
 
 
