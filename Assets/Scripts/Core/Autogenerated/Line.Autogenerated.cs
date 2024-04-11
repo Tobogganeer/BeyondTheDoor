@@ -289,8 +289,7 @@ namespace BeyondTheDoor
         public static Line b_4_right_choice { get; private set; } = new Line(CharacterID.Bob, "I think you did the right choice, how can we confirm that it is trully a human?", "", 4, LineID.b_4_right_choice, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_disability { get; private set; } = new Line(CharacterID.Jessica, "You never know, It can be someone with some kind of disability, like a mute person.", "", 4, LineID.j_4_disability, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_chance { get; private set; } = new Line(CharacterID.Jessica, "You sure you're going to let them out? Please give another chance!", "", 4, LineID.j_4_chance, LineStatus.None, VoiceStatus.None, "");
-        public static Line p_4_think { get; private set; } = new Line(CharacterID.Player, "Let me think about it more", "", 4, LineID.p_4_think, LineStatus.Placeholder, VoiceStatus.None, "");
-        public static Line p_4_sure { get; private set; } = new Line(CharacterID.Player, "I'm sure, we're not letting anyone inside", "", 4, LineID.p_4_sure, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_4_sure { get; private set; } = new Line(CharacterID.Player, "I'm sure, we're not letting anyone inside.", "", 4, LineID.p_4_sure, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_4_monster { get; private set; } = new Line(CharacterID.Jessica, "You monster!", "", 4, LineID.j_4_monster, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_calm { get; private set; } = new Line(CharacterID.Bob, "calm down, this is for our best, what if it was someone who wants our harm?", "", 4, LineID.b_4_calm, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_4_shit { get; private set; } = new Line(CharacterID.Bob, "Shit", "", 4, LineID.b_4_shit, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -404,6 +403,7 @@ namespace BeyondTheDoor
         public static Line v_5_crash { get; private set; } = new Line(CharacterID.Violet, "* I'm sure they can just crash for the night*", "", 5, LineID.v_5_crash, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_5_harm { get; private set; } = new Line(CharacterID.Bob, "He means no harm, we should let him in.", "", 5, LineID.b_5_harm, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line j_5_harm { get; private set; } = new Line(CharacterID.Jessica, "What are you doing? He sounds like no harm!", "", 5, LineID.j_5_harm, LineStatus.Placeholder, VoiceStatus.None, "");
+        public static Line p_4_think { get; private set; } = new Line(CharacterID.Player, "Let me think about it more", "", 4, LineID.p_4_think, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line dad_5_please { get; private set; } = new Line(CharacterID.Dad, "Please!", "", 5, LineID.dad_5_please, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line b_5_uneasiness { get; private set; } = new Line(CharacterID.Bob, "*Stares at him with a bit of uneasiness*", "", 5, LineID.b_5_uneasiness, LineStatus.Placeholder, VoiceStatus.None, "");
         public static Line v_5_stares { get; private set; } = new Line(CharacterID.Violet, "*Just stares at him*", "", 5, LineID.v_5_stares, LineStatus.Placeholder, VoiceStatus.None, "");
@@ -988,7 +988,6 @@ namespace BeyondTheDoor
             { LineID.b_4_right_choice, b_4_right_choice },
             { LineID.j_4_disability, j_4_disability },
             { LineID.j_4_chance, j_4_chance },
-            { LineID.p_4_think, p_4_think },
             { LineID.p_4_sure, p_4_sure },
             { LineID.j_4_monster, j_4_monster },
             { LineID.b_4_calm, b_4_calm },
@@ -1103,6 +1102,7 @@ namespace BeyondTheDoor
             { LineID.v_5_crash, v_5_crash },
             { LineID.b_5_harm, b_5_harm },
             { LineID.j_5_harm, j_5_harm },
+            { LineID.p_4_think, p_4_think },
             { LineID.dad_5_please, dad_5_please },
             { LineID.b_5_uneasiness, b_5_uneasiness },
             { LineID.v_5_stares, v_5_stares },

@@ -133,9 +133,9 @@ CHOICE
 				stay_silent			
 CHOICE							
 				look_through_peephole			
-CHOICE							
+CHOICE	DoorQuestions						
 				ask_questions			
-CHOICE							
+CHOICE	DoorDecision						
 				make_decision			
 END							
 							
