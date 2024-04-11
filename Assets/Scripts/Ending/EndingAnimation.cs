@@ -58,7 +58,7 @@ public class EndingAnimation : MonoBehaviour
             yield return JokeEnding();
         }
 
-        else if (only1atBorder)
+        else if (only1atBorder || peopleAtTheBorder.Count == 2 && peopleAtTheBorder[0] == Character.Hal)
         {
             yield return SingleCharacterAtBorder(personAtBorder);
         }
@@ -186,7 +186,7 @@ public class EndingAnimation : MonoBehaviour
         }
 
         //Violet only
-        if (personAtBorder == Character.Violet && Character.Player.AliveAtBorder)
+        if (personAtBorder == Character.Violet)
         {
             Debug.Log("violet only");
             yield return Write6PeoplePreamble();
@@ -207,9 +207,12 @@ public class EndingAnimation : MonoBehaviour
 
         //val and sal only
 
-        if (personAtBorder == Character.Sal)
+        if (personAtBorder == Character.Hal)
         {
-            //DO STUFF LATER    
+            yield return Write6PeoplePreamble();
+
+            yield return WriteList(timeBetweenTransitions, "Sal got better", "Hal got bigger.", "They were inseperable", "until", "Sal got sent to the front", "and there was", "nothing", "for Hal to do about it.", "They will never know a home.");
+            yield return Final(3);
         }
     }
 

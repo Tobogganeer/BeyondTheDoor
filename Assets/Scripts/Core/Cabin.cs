@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace BeyondTheDoor
 {
@@ -21,7 +22,7 @@ namespace BeyondTheDoor
             int num = 0;
             foreach (Character character in Character.All.Values)
             {
-                if (character.InsideCabin)
+                if (character.InsideCabin && character != Character.Player)
                     num++;
             }
 
@@ -32,7 +33,7 @@ namespace BeyondTheDoor
             List<Character> chars = new List<Character>();
             foreach (Character c in Character.All.Values)
             {
-                if (c.InsideCabin)
+                if (c.InsideCabin && c != Character.Player)
                     chars.Add(c);
             }
 
