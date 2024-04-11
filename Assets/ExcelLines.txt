@@ -803,8 +803,8 @@ IF	Bob
 Bob	you sure?		4	b_4_sure	Placeholder		
 ENDIF							
 Jessica	"I can't do much in this state, I will die!"		4	j_4_die	Placeholder		
-GOTO	AddToScavengeParty						
 END							
+							
 							
 CONVERSATION	Jessica scavenge day 4 confirm		4				
 IF	!Shotgun						
@@ -945,14 +945,14 @@ CONVERSATION	Letting Violet out		4
 IF	Bob						
 Bob	"I think you did the right choice, how can we confirm that it is trully a human?"		4	b_4_right_choice	Placeholder		
 ENDIF							
-IF 	Jessica						
+IF	Jessica						
 Jessica	"You never know, It can be someone with some kind of disability, like a mute person. "		4	j_4_disability	Placeholder		
 Jessica	You sure you're going to let them out? Please give another chance!		4	j_4_chance			
 ENDIF							
-CHOICE	Making decision day 4						
-Player	Let me think about it more		4	p_4_think	Placeholder		
-CHOICE	Jessica pissed						
-Player	"I'm sure, we're not letting anyone inside"		4	p_4_sure	Placeholder		
+//CHOICE	Making decision day 4						
+//Player	Let me think about it more		4	p_4_think	Placeholder		
+//CHOICE	Jessica pissed						
+Player	"I'm sure, we're not letting anyone inside."		4	p_4_sure	Placeholder		
 END							
 							
 CONVERSATION	Jessica pissed		4				

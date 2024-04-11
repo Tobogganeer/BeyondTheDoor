@@ -7722,8 +7722,8 @@ MonoBehaviour:
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
     diedWhileScavenging: {fileID: 0}
-    returnedFromScavengingWithGun: {fileID: 0}
-    returnedFromScavengingWithoutGun: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: 7e43725282de9c64c99d324aa57e1625, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: bc74d2e10fa3a9f4b98b51515ec9cdd8, type: 2}
     clickedOnDuringOvercrowding: {fileID: 0}
     tryingToKickOut: {fileID: 0}
     kickedOut: {fileID: 0}
@@ -7737,7 +7737,7 @@ MonoBehaviour:
     beingSentScavenging: {fileID: 11400000, guid: 53426943d0c52a645bbeb962c7d54b59, type: 2}
     sentScavengingWithShotgun: {fileID: 0}
     sentScavengingWithoutShotgun: {fileID: 0}
-    diedWhileScavenging: {fileID: 0}
+    diedWhileScavenging: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
     returnedFromScavengingWithGun: {fileID: 0}
     returnedFromScavengingWithoutGun: {fileID: 0}
     clickedOnDuringOvercrowding: {fileID: 0}
@@ -7754,15 +7754,15 @@ MonoBehaviour:
   gotCar: {fileID: 0}
   sendNoScavengers: {fileID: 0}
   enteringOvercrowding: {fileID: 0}
-  personArrivedAtDoor: {fileID: 0}
-  reactionToPlayerStayingSilent: {fileID: 0}
-  peephole: {fileID: 0}
-  q_whoAreYou: {fileID: 0}
-  q_whatDoYouWant: {fileID: 0}
-  q_whyShouldILetYouIn: {fileID: 0}
-  q_howCanYouHelpMe: {fileID: 0}
-  letPersonInside: {fileID: 0}
-  keepPersonOutside: {fileID: 0}
+  personArrivedAtDoor: {fileID: 11400000, guid: 5a985f88a322e3c448614d184e93e38e, type: 2}
+  reactionToPlayerStayingSilent: {fileID: 11400000, guid: 244982fe2f38dfd45a1fd045e103e13b, type: 2}
+  peephole: {fileID: 11400000, guid: 9aa3a5402bcc7704a8b9099a389699c2, type: 2}
+  q_whoAreYou: {fileID: 11400000, guid: 8671ed93c09e1aa448a4afff9a89ceb7, type: 2}
+  q_whatDoYouWant: {fileID: 11400000, guid: d4e5e38e82d6c824896cd313d14d24f3, type: 2}
+  q_whyShouldILetYouIn: {fileID: 11400000, guid: 420f1549d9abee143b64982f5356fdce, type: 2}
+  q_howCanYouHelpMe: {fileID: 11400000, guid: b55d60f473319d047b233f254ac714d7, type: 2}
+  letPersonInside: {fileID: 11400000, guid: 981697626de359a4791b1be90247c566, type: 2}
+  keepPersonOutside: {fileID: 11400000, guid: 2a949746b73e4b2438b7b9a3e6f126b9, type: 2}
 --- !u!4 &2143297687
 Transform:
   m_ObjectHideFlags: 0

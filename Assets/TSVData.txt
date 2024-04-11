@@ -1,4 +1,4 @@
-1797
+1793
 Test
 These lines show some formatting stuff
 Heres some useful internal notes
@@ -1152,7 +1152,7 @@ Draft
 None
 
 Tutorial_Mom
-Hey kiddo, can you open the door please? It's raining out here... 
+Hey kiddo, can you open the door please? It's raining out here...
 At door
 0
 tutmom_0_q_open_door
@@ -3312,7 +3312,7 @@ None
 None
 
 Journalist
-But I heard some pretty fucked up stuff, both side are torturing some people for information. 
+But I heard some pretty fucked up stuff, both side are torturing some people for information.
 
 3
 journalist_3_fucked
@@ -4671,14 +4671,6 @@ j_4_die
 Placeholder
 None
 
-GOTO
-AddToScavengeParty
-
-
-
-None
-None
-
 END
 
 
@@ -5528,7 +5520,7 @@ None
 None
 
 Jessica
-You never know, It can be someone with some kind of disability, like a mute person. 
+You never know, It can be someone with some kind of disability, like a mute person.
 
 4
 j_4_disability
@@ -5551,32 +5543,8 @@ ENDIF
 None
 None
 
-CHOICE
-Making decision day 4
-
-
-
-None
-None
-
 Player
-Let me think about it more
-
-4
-p_4_think
-Placeholder
-None
-
-CHOICE
-Jessica pissed
-
-
-
-None
-None
-
-Player
-I'm sure, we're not letting anyone inside
+I'm sure, we're not letting anyone inside.
 
 4
 p_4_sure
