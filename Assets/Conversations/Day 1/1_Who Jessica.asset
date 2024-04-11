@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 11400000, guid: 4b4ec98642a354945a4918fd8e712b5f, type: 2}
   elements:
-  - rid: 2007814039375446374
+  - rid: 2007814042214990523
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814039375446374
+    - rid: 2007814042214990523
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue

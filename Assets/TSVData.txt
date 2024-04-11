@@ -1,4 +1,4 @@
-1804
+1808
 Test
 These lines show some formatting stuff
 Heres some useful internal notes
@@ -1352,7 +1352,7 @@ None
 None
 
 Player
-Uuuuugh. If the sound continues I will have to hide again under the bed
+Uuuuugh... If that sound continues I'll have to hide under my pillows again.
 player just woke up
 1
 p1_wakeup
@@ -1360,7 +1360,7 @@ Placeholder
 None
 
 Player
-Another dream huh, what can I do for today
+Another dream, huh... what can I do for today?
 Player just woke up
 1
 p1_choosing
@@ -1384,7 +1384,7 @@ None
 None
 
 Radio
-The war continues on Brasnia Republic, it has been one week since the war started, United States send more weapons to revolutionaries, multiple industries are leaving the country, afraid of being involved with any side of the war. So far the only hope for some is leaving for Canada as they are the only ones accepting refugees.
+The war rages on in the Republic of Brasnia. It has been one week since the start of the conflict, with the United States' supply of weapons to revolutionaries creating questions of involvement; multiple industries are leaving the country, afraid of being involved with any side of the war. Currently, few countries are accepting Brasnian refugees, though that datum is expected to change in the near future.
 Player checks radio in day 1
 1
 r1
@@ -1408,7 +1408,7 @@ None
 None
 
 Player
-I only see snow and ash outside, I hope the heater doesnt give up on me, that would be my downfall
+I can only see snow and ash outside. I hope my little heater doesnt give up on me, that would be my downfall...
 Player goes outside to check situation
 1
 p1_outside
@@ -1456,7 +1456,7 @@ None
 None
 
 Player
-I think I have enough food for the next days if, I hope the war doesn't reach this are of the city
+I think I have enough food for the next couple of days. I hope the war doesn't reach this part of the country.
 Player checks food supplies
 1
 p1_supply
@@ -1480,7 +1480,7 @@ None
 None
 
 Jessica
-Hello? Is there anyone there? Its cold here outside
+Hello? Is there anyone there? It's so cold outside...
 
 1
 j_1_door
@@ -1488,7 +1488,15 @@ Placeholder
 None
 
 Jessica
-Hey! Im pleading to be let in, I can survive out here in a wheel chair
+...
+
+1
+j_1_door_wait
+Placeholder
+None
+
+Jessica
+Hey! Im pleading to be let in man! I can't survive out here in a wheel chair!
 
 1
 j_1_door_ignored
@@ -1512,7 +1520,7 @@ None
 None
 
 Player
-I can't see anything beyond a shape, it looks like I can see small, and a wheel, maybe two
+I can't see anything beyond a shape: it looks like I can see something small  and a wheel, maybe two.
 
 1
 p_1_door_head
@@ -1544,7 +1552,7 @@ None
 None
 
 Player
-Sorry I cant let you in, I don't have enough resources ( lie)
+Sorry, I cant let you in. I don't have enough resources ( lie)
 
 1
 p_1_door_out_lie
@@ -1560,7 +1568,7 @@ None
 None
 
 Player
-Sorry I cant let you in, I don't trust you
+Sorry, I cant let you in. I don't trust you
 
 1
 p_1_door_out
@@ -1600,7 +1608,7 @@ None
 None
 
 Jessica
-My name is Jessica, I'm just looking for shelter, I can't stay out here for long, I cant go very further because of my wheelchair
+My name is Jessica. I'm just looking for shelter. Please, I can't stay out here for long and I can't go much further because of my wheelchair.
 Who are you
 1
 j_1_who
@@ -1648,7 +1656,7 @@ None
 None
 
 Jessica
-I cannot offer much help because of my wheelchair but I can try my best to find how to help in any way.
+I can't offer much help because of my wheelchair, but I can try my best to find how to help in any way.
 How are you helpful
 1
 j_1_how
@@ -1672,7 +1680,7 @@ None
 None
 
 Jessica
-I've from a city nearby. I used to live in a big house before but after the war started I had to escape the city, I took the refugee train to leave the city before it was shut down due to the destruction of the lines.
+I'm from a city nearby. I used to live in a big house before the war, but once it started I had to escape the city. I took the refugee train to leave the city before it was shut down due to the destruction of the lines.
 Where you came from
 1
 j_1_where
@@ -1760,7 +1768,7 @@ None
 None
 
 Jessica
-Thank you so much
+Thank you so much!
 
 1
 j_1_in
@@ -1768,7 +1776,7 @@ Placeholder
 None
 
 Player
-Okay you can get in, you should warm up a bit.
+Okay, you can get in. You should warm up a bit.
 
 1
 p_1_j_in
@@ -1776,7 +1784,7 @@ Placeholder
 None
 
 Jessica
-You're probably right
+You're probably right.
 
 1
 j_1_warm
@@ -1808,7 +1816,7 @@ None
 None
 
 Player
-*sits near her* So for how long have you been out there?
+*sits near her* So, for how long have you been out there?
 
 1
 p_1_j_talk
@@ -1824,7 +1832,7 @@ Placeholder
 None
 
 Jessica
-Some of the soldiers apprehended some of the people of the station but I was able to flee so I've romamed a for some hours until I found the cabin, I was probably going to die if it wasnt for you
+Some of the soldiers apprehended some of the people of the station but I was able to flee so I roamed around for a whileuntil I found your cabin. I was probably going to die if it wasnt for you
 
 1
 j_1_background
@@ -1832,7 +1840,7 @@ Placeholder
 None
 
 Player
-Those are some horrible news, were they the govermnet soldiers or the revolunaries?
+This is horrible news...  were they the government soldiers or the revolutionaries?
 
 1
 p_1_news
@@ -1840,7 +1848,7 @@ Placeholder
 None
 
 Jessica
-It was the government, they were afraid of some of the words getting out, some people are fleeing the country through airports.
+It was the government. They were afraid of word getting out that some people are fleeing the country through airports.
 
 1
 j_1_airport
@@ -1856,7 +1864,7 @@ Placeholder
 None
 
 Jessica
-They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country
+They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country.
 
 1
 j_1_flee
@@ -1896,7 +1904,7 @@ Placeholder
 None
 
 Player
-Which of the two sides do you trust more ?
+Which of the two sides do you trust more?
 
 1
 p_1_j_politics
@@ -1904,7 +1912,7 @@ Placeholder
 None
 
 Jessica
-I feel Im not too confortable talking about that
+I feel like I'm not too confortable talking about that.
 
 1
 j_1_unconfortable
@@ -1927,18 +1935,10 @@ j_1_rest
 Placeholder
 None
 
-Player
-I feel like it is better for us to get some rest, you can use the first bedroom in the hallway.
-
-1
-p_1_rest2
-Placeholder
-None
-
 END
 
 
-2
+
 
 None
 None
@@ -1952,7 +1952,7 @@ None
 None
 
 Radio
-25 dead after revolutionaries attempted to send hijack airplanes for refugees to flee the country, the only resources coming to the country are through air drops and direct sent to the military outposts.
+Breaking news: 25 dead after revolutionaries attempted to send hijacked airplanes for refugees to flee the country. The only resources coming to the country are through air drops and direct mail sent to the military outposts.
 Player checks radio in day 2
 2
 r2
@@ -2023,6 +2023,14 @@ Check supplies day 2
 None
 None
 
+IF
+Jessica
+Player checks food supplies
+
+
+Placeholder
+None
+
 Player
 I have to see how long the food will last now that Jessica is around.
 Player checks food supplies
@@ -2031,12 +2039,36 @@ p2_supply
 Placeholder
 None
 
+ELSE
+Jessica
+
+
+
+None
+None
+
+Player
+This food should still last me a few weeks.
+
+2
+p2_supply_solo
+Placeholder
+None
+
+ENDIF
+
+
+
+
+\
+None
+
 END
 
 
-2
 
-None
+
+Placeholder
 None
 
 CONVERSATION
@@ -2052,7 +2084,7 @@ Good morning
 
 2
 j_1_morning
-Placeholder
+None
 None
 
 Player
@@ -2060,7 +2092,7 @@ Good morning. Are you feeling better?
 
 2
 p_1_moring_question
-Placeholder
+None
 None
 
 Player
@@ -2076,7 +2108,7 @@ END
 
 2
 
-None
+Placeholder
 None
 
 CONVERSATION
@@ -2088,11 +2120,11 @@ None
 None
 
 Player
-I don't know for how long the supplies will last. For it to work out we probably will need one of us to go out there to search for supplies
+I don't know long these supplies will last. For it to work out we probably will need one of us to go out there to search for supplies
 
 2
 p_2_jconvo
-Placeholder
+None
 None
 
 Jessica
@@ -2100,7 +2132,7 @@ Are you sure about that? Isn't it better for us to wait until we absolutely need
 
 2
 j_2_jconvo
-Placeholder
+None
 None
 
 Jessica
@@ -2108,7 +2140,7 @@ I feel like that would be stealing and some other people out there might need it
 
 2
 j_2_jconvo2
-Placeholder
+None
 None
 
 END
@@ -2129,10 +2161,10 @@ None
 
 Player
 You're probably right, we can wait a bit further until we have to resort to scavenge.
-Player decides to not send Jessica
+
 2
 p_2_scavenge_opt1
-Placeholder
+None
 None
 
 END

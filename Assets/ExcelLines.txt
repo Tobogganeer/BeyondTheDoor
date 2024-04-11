@@ -211,16 +211,16 @@ END
 							
 //	Day 1						
 CONVERSATION	Wake_up		1				
-Player	Uuuuugh. If the sound continues I will have to hide again under the bed	player just woke up	1	p1_wakeup	Placeholder		
-Player 	"Another dream huh, what can I do for today"	Player just woke up	1	p1_choosing	Placeholder		
+Player	Uuuuugh... If that sound continues I'll have to hide under my pillows again.	player just woke up	1	p1_wakeup	Placeholder		
+Player 	"Another dream, huh... what can I do for today?"	Player just woke up	1	p1_choosing	Placeholder		
 END			1				
 							
 CONVERSATION	Check radio day 1						
-Radio	"The war continues on Brasnia Republic, it has been one week since the war started, United States send more weapons to revolutionaries, multiple industries are leaving the country, afraid of being involved with any side of the war. So far the only hope for some is leaving for Canada as they are the only ones accepting refugees."	Player checks radio in day 1	1	r1	Placeholder		
+Radio	"The war rages on in the Republic of Brasnia. It has been one week since the start of the conflict, with the United States' supply of weapons to revolutionaries creating questions of involvement; multiple industries are leaving the country, afraid of being involved with any side of the war. Currently, few countries are accepting Brasnian refugees, though that datum is expected to change in the near future."	Player checks radio in day 1	1	r1	Placeholder		
 END			1				
 							
 CONVERSATION	Check outside day 1		1				
-Player	"I only see snow and ash outside, I hope the heater doesnt give up on me, that would be my downfall"	Player goes outside to check situation	1	p1_outside	Placeholder		
+Player	"I can only see snow and ash outside. I hope my little heater doesnt give up on me, that would be my downfall..."	Player goes outside to check situation	1	p1_outside	Placeholder		
 END			1				
 							
 CONVERSATION	Check TV day 1		1				
@@ -228,31 +228,31 @@ TV	"LOOK FOR SHELTER, DONT LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPOS
 END			1				
 							
 CONVERSATION	Check supplies day 1		1				
-Player	"I think I have enough food for the next days if, I hope the war doesn't reach this are of the city"	Player checks food supplies	1	p1_supply	Placeholder		
+Player	I think I have enough food for the next couple of days. I hope the war doesn't reach this part of the country.	Player checks food supplies	1	p1_supply	Placeholder		
 END			1				
 							
 							
 CONVERSATION	Jessica arrive at the door		1				
-Jessica	Hello? Is there anyone there? Its cold here outside		1	j_1_door	Placeholder		
-Jessica	"Hey! Im pleading to be let in, I can survive out here in a wheel chair"		1	j_1_door_ignored	Placeholder		
+Jessica	Hello? Is there anyone there? It's so cold outside...		1	j_1_door	Placeholder		
+Jessica	...		1	j_1_door_wait	Placeholder		
+Jessica	Hey! Im pleading to be let in man! I can't survive out here in a wheel chair!		1	j_1_door_ignored	Placeholder		
 END			1				
 							
 CONVERSATION	Day 1 peephole						
-Player 	"I can't see anything beyond a shape, it looks like I can see small, and a wheel, maybe two"		1	p_1_door_head	Placeholder		
+Player 	"I can't see anything beyond a shape: it looks like I can see something small  and a wheel, maybe two."		1	p_1_door_head	Placeholder		
 END							
-							
 							
 CONVERSATION	Making decision		1				
 CHOICE	Player lets Jesssica out lie						
-Player 	"Sorry I cant let you in, I don't have enough resources ( lie)"		1	p_1_door_out_lie	Placeholder		
+Player 	"Sorry, I cant let you in. I don't have enough resources ( lie)"		1	p_1_door_out_lie	Placeholder		
 CHOICE	Player letting jessica out						
-Player 	"Sorry I cant let you in, I don't trust you"		1	p_1_door_out	Placeholder		
+Player 	"Sorry, I cant let you in. I don't trust you"		1	p_1_door_out	Placeholder		
 CHOICE	Player lets Jessica in						
 Player 	"Okay, take three step back, I'm going to open the door"		1	p_1_open_door	Placeholder		
 END							
 							
 CONVERSATION	Who Jessica		1				
-Jessica	"My name is Jessica, I'm just looking for shelter, I can't stay out here for long, I cant go very further because of my wheelchair"	Who are you	1	j_1_who	Placeholder		
+Jessica	"My name is Jessica. I'm just looking for shelter. Please, I can't stay out here for long and I can't go much further because of my wheelchair."	Who are you	1	j_1_who	Placeholder		
 END							
 							
 CONVERSATION	Why Jessica		1				
@@ -260,11 +260,11 @@ Jessica	"I'm in a wheelchair, I will die if you don't let me in! I cannot surviv
 END							
 							
 CONVERSATION	How Jessica		1				
-Jessica	I cannot offer much help because of my wheelchair but I can try my best to find how to help in any way.	How are you helpful	1	j_1_how	Placeholder		
+Jessica	"I can't offer much help because of my wheelchair, but I can try my best to find how to help in any way."	How are you helpful	1	j_1_how	Placeholder		
 END							
 							
 CONVERSATION	Where Jessica		1				
-Jessica	"I've from a city nearby. I used to live in a big house before but after the war started I had to escape the city, I took the refugee train to leave the city before it was shut down due to the destruction of the lines."	Where you came from	1	j_1_where	Placeholder		
+Jessica	"I'm from a city nearby. I used to live in a big house before the war, but once it started I had to escape the city. I took the refugee train to leave the city before it was shut down due to the destruction of the lines."	Where you came from	1	j_1_where	Placeholder		
 END							
 							
 CONVERSATION	Player lets Jesssica out lie		1				
@@ -278,32 +278,32 @@ Jessica	Hello?! Are you still there? Hello?		1	j_1_asking	Placeholder
 END							
 							
 CONVERSATION	Player lets Jessica in		1				
-Jessica	Thank you so much		1	j_1_in	Placeholder		
-Player	"Okay you can get in, you should warm up a bit."		1	p_1_j_in	Placeholder		
-Jessica	You're probably right		1	j_1_warm	Placeholder		
+Jessica	Thank you so much!		1	j_1_in	Placeholder		
+Player	"Okay, you can get in. You should warm up a bit."		1	p_1_j_in	Placeholder		
+Jessica	You're probably right.		1	j_1_warm	Placeholder		
 GOTO	Player talking to Jessica						
 END							
 CONVERSATION	Player talking to Jessica		1				
-Player	*sits near her* So for how long have you been out there?		1	p_1_j_talk	Placeholder		
+Player	"*sits near her* So, for how long have you been out there?"		1	p_1_j_talk	Placeholder		
 Jessica	"For around a day, I was able to take the last train that was going for the airport nearby, but after the airport was attacked, we were left helpless in the station."		1	j_1_story	Placeholder		
-Jessica	"Some of the soldiers apprehended some of the people of the station but I was able to flee so I've romamed a for some hours until I found the cabin, I was probably going to die if it wasnt for you"		1	j_1_background	Placeholder		
-Player	"Those are some horrible news, were they the govermnet soldiers or the revolunaries?"		1	p_1_news	Placeholder		
-Jessica	"It was the government, they were afraid of some of the words getting out, some people are fleeing the country through airports."		1	j_1_airport	Placeholder		
+Jessica	Some of the soldiers apprehended some of the people of the station but I was able to flee so I roamed around for a whileuntil I found your cabin. I was probably going to die if it wasnt for you		1	j_1_background	Placeholder		
+Player	This is horrible news...  were they the government soldiers or the revolutionaries?		1	p_1_news	Placeholder		
+Jessica	It was the government. They were afraid of word getting out that some people are fleeing the country through airports.		1	j_1_airport	Placeholder		
 Player	Weren't the airports closed?		1	p_1_airport	Placeholder		
-Jessica	"They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country"		1	j_1_flee	Placeholder		
+Jessica	"They were, but the some of the revolutionaries were trying to hijack the airport to let civilians flee the country."		1	j_1_flee	Placeholder		
 GOTO	Player talking to Jessica about politics						
 END							
 CONVERSATION	Player talking to Jessica about politics		1				
 Player	Can you tell me a bit about your past?		1	p_1_j_past	Placeholder		
-Player	Which of the two sides do you trust more ?		1	p_1_j_politics	Placeholder		
-Jessica	I feel Im not too confortable talking about that		1	j_1_unconfortable	Placeholder		
+Player	Which of the two sides do you trust more?		1	p_1_j_politics	Placeholder		
+Jessica	I feel like I'm not too confortable talking about that.		1	j_1_unconfortable	Placeholder		
 Player	"I feel like it is better for us to get some rest, you can use the first bedroom in the hallway."		1	p_1_rest1	Placeholder		
 Jessica	"Ok, thank you very much, see you tomorrow."		1	j_1_rest	Placeholder		
-Player	"I feel like it is better for us to get some rest, you can use the first bedroom in the hallway."		1	p_1_rest2	Placeholder		
-END			2				
+END							
+							
 //	Day 2						
 CONVERSATION	Check radio day 2						
-Radio	"25 dead after revolutionaries attempted to send hijack airplanes for refugees to flee the country, the only resources coming to the country are through air drops and direct sent to the military outposts."	Player checks radio in day 2	2	r2	Placeholder		
+Radio	Breaking news: 25 dead after revolutionaries attempted to send hijacked airplanes for refugees to flee the country. The only resources coming to the country are through air drops and direct mail sent to the military outposts.	Player checks radio in day 2	2	r2	Placeholder		
 END			2				
 							
 CONVERSATION	Check outside day 2		2				
@@ -315,30 +315,30 @@ TV	"LOOK FOR SHELTER, DON'T LEAVE YOUR HOUSES. IF OUTSIDE SEEK THE NEAREST OUTPO
 END			2				
 							
 CONVERSATION	Check supplies day 2		2				
+IF	Jessica	Player checks food supplies			Placeholder		
 Player	I have to see how long the food will last now that Jessica is around.	Player checks food supplies	2	p2_supply	Placeholder		
-END			2				
-							
+ELSE	Jessica						
+Player	This food should still last me a few weeks.		2	p2_supply_solo	Placeholder		
+ENDIF					\		
+END					Placeholder		
+					Placeholder		
 CONVERSATION	Jessica wakes up		2				
-Jessica	Good morning		2	j_1_morning	Placeholder		
-Player	Good morning. Are you feeling better?		2	p_1_moring_question	Placeholder		
+Jessica	Good morning		2	j_1_morning			
+Player	Good morning. Are you feeling better?		2	p_1_moring_question			
 Player	Good morning		2	p_1_moring	Placeholder		
-END			2				
-							
+END			2		Placeholder		
+					Placeholder		
 CONVERSATION	Jessica conversation		2				
-Player	I don't know for how long the supplies will last. For it to work out we probably will need one of us to go out there to search for supplies		2	p_2_jconvo	Placeholder		
-Jessica	Are you sure about that? Isn't it better for us to wait until we absolutely need to?		2	j_2_jconvo	Placeholder		
-Jessica	I feel like that would be stealing and some other people out there might need it more than us		2	j_2_jconvo2	Placeholder		
+Player	I don't know long these supplies will last. For it to work out we probably will need one of us to go out there to search for supplies		2	p_2_jconvo			
+Jessica	Are you sure about that? Isn't it better for us to wait until we absolutely need to?		2	j_2_jconvo			
+Jessica	I feel like that would be stealing and some other people out there might need it more than us		2	j_2_jconvo2			
 END							
-							
+		Player decides to not send Jessica			Placeholder		
 							
 							
 CONVERSATION	NOT Sending Jessica to scavange		2				
-Player	"You're probably right, we can wait a bit further until we have to resort to scavenge."	Player decides to not send Jessica	2	p_2_scavenge_opt1	Placeholder		
+Player	"You're probably right, we can wait a bit further until we have to resort to scavenge."		2	p_2_scavenge_opt1			
 END							
-							
-							
-							
-							
 CONVERSATION	Sending Jessica to scavange		2				
 Player	"Its either us or they, we don't know if there are many survives nearby as well, in the end it might just be pillaged by raiders or by soldiers themselves. I think it would be a good idea for you you to scavenge today (send her to scavenge)"	Player convincing Jessica to scavenge	2	p_2_scavenge_opt2	Placeholder		
 Jessica	"I'm against it, I'm almost the supplies will last for a long while, I can't steal knowing some people out there might need it more than us."	Jessica being against scavenging	2	j_2_scavenge	Placeholder		

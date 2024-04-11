@@ -14,61 +14,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814039375446683
-  - rid: 2007814039375446684
-  - rid: 2007814039375446685
-  - rid: 2007814039375446686
-  - rid: 2007814039375446687
-  - rid: 2007814039375446688
-  - rid: 2007814039375446689
-  - rid: 2007814039375446690
-  - rid: 2007814039375446691
+  - rid: 2007814042214990481
+  - rid: 2007814042214990482
+  - rid: 2007814042214990483
+  - rid: 2007814042214990484
+  - rid: 2007814042214990485
+  - rid: 2007814042214990486
+  - rid: 2007814042214990487
+  - rid: 2007814042214990488
+  - rid: 2007814042214990489
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814039375446683
+    - rid: 2007814042214990481
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -800691450
-    - rid: 2007814039375446684
+    - rid: 2007814042214990482
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -878114972
-    - rid: 2007814039375446685
+    - rid: 2007814042214990483
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1056154660
-    - rid: 2007814039375446686
+    - rid: 2007814042214990484
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 593659375
-    - rid: 2007814039375446687
+    - rid: 2007814042214990485
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -60482687
-    - rid: 2007814039375446688
+    - rid: 2007814042214990486
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -92268736
-    - rid: 2007814039375446689
+    - rid: 2007814042214990487
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1240679250
-    - rid: 2007814039375446690
+    - rid: 2007814042214990488
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 644012428
-    - rid: 2007814039375446691
+    - rid: 2007814042214990489
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
