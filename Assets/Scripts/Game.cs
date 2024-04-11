@@ -164,8 +164,8 @@ public class Game : MonoBehaviour
 
         makingOCDecisionCallback.Callback += (conv, line) =>
         {
-            Debug.Log("SAVING CHAR: " + Character.Current != null ? Character.Current.Name : "null :(");
-            Character.ChoppingBlock = Character.Current;
+            //Debug.Log("SAVING CHAR: " + Character.Current != null ? Character.Current.Name : "null :(");
+            //Character.ChoppingBlock = Character.Current;
             DayBehaviour.Current.Characters[Character.Current.ID].tryingToKickOut.TryStart();
             q_kickCharacterOut.Enqueue();
         };
@@ -309,7 +309,7 @@ public class Game : MonoBehaviour
                 {
                     DetermineScavengerFates();
                     // We have few enough people - get outta here
-                    if (Cabin.NumCurrentPartyMembers() <= 2)
+                    if (!Cabin.IsOvercrowded())
                         Advance();
                 }
                 break;
@@ -351,7 +351,7 @@ public class Game : MonoBehaviour
                 return Stage.SendingScavengers;
             case Stage.SendingScavengers:
                 bool peopleScavenging = ScavengeParty.Count > 0;
-                bool overcrowded = Cabin.NumCurrentPartyMembers() > 2;
+                bool overcrowded = Cabin.IsOvercrowded();
                 return peopleScavenging || overcrowded ? Stage.FixingOvercrowding : Stage.DealingWithArrival;
             case Stage.FixingOvercrowding:
                 return Stage.DealingWithArrival;
