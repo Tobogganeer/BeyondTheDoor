@@ -889,15 +889,22 @@ Jessica	"I can't do much in this state, I will die!"		4	j_4_crying	Placeholder
 GOTO	ConfirmScavenge						
 END							
 							
-							
-							
 CONVERSATION	Knock on the door day 4		4				
 IF	Jessica && Bob						
 Jessica	Oh there's another person at the door!		4	j_4_door	Placeholder		
 Bob	"Or thing, creature, I don't know"		4	b_4_door	Placeholder		
 ENDIF							
+IF	Jessica						
 CHOICE	Jessica asking to look at peephole						
 Player	Ignore door		4	p_4_ignore	Placeholder		
+ENDIF							
+ELSE							
+CHOICE							
+Player	Ignore door		4	p_4_ignore	Placeholder		
+ENDIF							
+							
+							
+							
 CHOICE	Look at the peephole						
 Player	Look at the peephole		4	p_4_look	Placeholder		
 END							
@@ -983,13 +990,6 @@ ENDIF
 Violet 	*Thank you gestures*		4	v_4_thank	Placeholder		
 GOTO	Violet in						
 END							
-							
-							
-							
-							
-							
-							
-							
 							
 							
 							
@@ -1274,11 +1274,29 @@ ENDIF
 IF	Jessica						
 Jessica	Oh there's another person at the door!		5	j_5_another_door	Placeholder		
 ENDIF							
+IF	Jessica						
 CHOICE	Ignore door day 5						
 Player	I'm going to ignore that		5	p_5_ignora	Placeholder		
+ENDIF							
+ELSE							
+CHOICE							
+Player	I'm going to ignore that						
 CHOICE	peephole day 5						
 Player	I will look at the peephole		5	p_5_peephole	Placeholder		
 END							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							
 CONVERSATION	Ignore door day 5		5				
 Jessica	We should at least look through the peephole and ask some questions		5	j_5_peephole	Placeholder		
@@ -1292,9 +1310,6 @@ CONVERSATION	DAY 5 who		5
 Dad	Have you seen a teenager around here? I also just need a place to stay for the night		5	dad_5_who	Placeholder		
 GOTO	Teenager						
 END							
-							
-							
-							
 							
 							
 							
@@ -1372,21 +1387,6 @@ Player	You will need to sleep in the couch in living room as we don't have any r
 Dad	Thats fine by me!		5	dad_5_fine	Placeholder		
 ENDIF							
 END							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
 							
 							
 							

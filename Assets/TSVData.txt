@@ -1,4 +1,4 @@
-1793
+1804
 Test
 These lines show some formatting stuff
 Heres some useful internal notes
@@ -5231,6 +5231,14 @@ ENDIF
 None
 None
 
+IF
+Jessica
+
+
+
+None
+None
+
 CHOICE
 Jessica asking to look at peephole
 
@@ -5245,6 +5253,46 @@ Ignore door
 4
 p_4_ignore
 Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+ELSE
+
+
+
+
+None
+None
+
+CHOICE
+
+
+
+
+None
+None
+
+Player
+Ignore door
+
+4
+p_4_ignore
+Placeholder
+None
+
+ENDIF
+
+
+
+
+None
 None
 
 CHOICE
@@ -7591,6 +7639,14 @@ ENDIF
 None
 None
 
+IF
+Jessica
+
+
+
+None
+None
+
 CHOICE
 Ignore door day 5
 
@@ -7605,6 +7661,38 @@ I'm going to ignore that
 5
 p_5_ignora
 Placeholder
+None
+
+ENDIF
+
+
+
+
+None
+None
+
+ELSE
+
+
+
+
+None
+None
+
+CHOICE
+
+
+
+
+None
+None
+
+Player
+I'm going to ignore that
+
+
+
+None
 None
 
 CHOICE
