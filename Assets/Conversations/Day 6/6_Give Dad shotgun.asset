@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: 6_Give Dad shotgun
   m_EditorClassIdentifier: 
-  onStarted: {fileID: 0}
+  onStarted: {fileID: 11400000, guid: 053cead7060447842a9600c37cc2fd32, type: 2}
   elements:
   - rid: 2007814039375446159
   - rid: 2007814039375446160
@@ -20,7 +20,7 @@ MonoBehaviour:
   - rid: 2007814039375446162
   - rid: 2007814039375446163
   choices: []
-  onFinished: {fileID: 11400000, guid: 053cead7060447842a9600c37cc2fd32, type: 2}
+  onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:

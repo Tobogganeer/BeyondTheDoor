@@ -2975,12 +2975,28 @@ MonoBehaviour:
     tryingToKickOut: {fileID: 0}
     kickedOut: {fileID: 0}
     commentOnOtherPersonAtDoor: {fileID: 11400000, guid: ae43bbf9ef7d6a9468b0612c704b04fe, type: 2}
+  - id: 696030393
+    wakingUp: {fileID: 11400000, guid: 005e48eaff019ef4db3730ea37c71f66, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 0}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 0}
   dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: 32792d9a464e4c94a8869997f013a1ad, type: 2}
   radio: {fileID: 11400000, guid: 1fd2952661a46d14292f90a880ca6825, type: 2}
   tv: {fileID: 11400000, guid: 9904681cfc151b34088c0a43237f8b3e, type: 2}
   checkSupplies: {fileID: 11400000, guid: 75019b914ac8a4045af5af6d989f2f43, type: 2}
-  enteringTalking: {fileID: 11400000, guid: 005e48eaff019ef4db3730ea37c71f66, type: 2}
+  enteringTalking: {fileID: 0}
   enteringScavenging: {fileID: 11400000, guid: 9b2bcac2fcb13ff49af4317e69f2a72b, type: 2}
   gotCar: {fileID: 11400000, guid: f62380112c316234db89813f5b700702, type: 2}
   sendNoScavengers: {fileID: 0}
@@ -2994,8 +3010,8 @@ MonoBehaviour:
   q_howCanYouHelpMe: {fileID: 11400000, guid: bf6d7ff881bb51c4a992b218d7235f03, type: 2}
   letPersonInside: {fileID: 11400000, guid: bddc37b32d98f49409ba63cdbf2c8540, type: 2}
   keepPersonOutside: {fileID: 11400000, guid: bdffb78624fc46643978aa8c66b16912, type: 2}
-  dadWithShotgun: {fileID: 11400000, guid: 053cead7060447842a9600c37cc2fd32, type: 2}
-  dadWithoutShotgun: {fileID: 11400000, guid: 6941c03183b80db42936d25fa8e6e668, type: 2}
+  giveDadShotgun: {fileID: 11400000, guid: 053cead7060447842a9600c37cc2fd32, type: 2}
+  dadLeaves: {fileID: 11400000, guid: 6941c03183b80db42936d25fa8e6e668, type: 2}
 --- !u!4 &789145480
 Transform:
   m_ObjectHideFlags: 0
