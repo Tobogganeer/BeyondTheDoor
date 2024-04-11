@@ -9,12 +9,14 @@ using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 public class Day3Init : DayBehaviour
 {
     public ConversationCallback activateBearEnding;
+    public ConversationCallback BobKillerByBear;
 
     protected override int GetDay() => 3;
 
     protected override void Initialize()
     {
         activateBearEnding.Callback += (conv, line) => BearEnding();
+        BobKillerByBear.Callback += (conv, line) => BobKilled();
     }
 
     private static void BearEnding()
@@ -23,5 +25,13 @@ public class Day3Init : DayBehaviour
 
         DialogueGUI.ClearQueue();
         UnitySceneManager.LoadScene("Ending");
+    }
+
+    private void BobKilled()
+    {
+        DialogueGUI.ClearQueue();
+        Character.Bob.ChangeStatus(CharacterStatus.KilledByBear, true);
+        Character.Bear.ChangeStatus(CharacterStatus.Left, true);
+
     }
 }
