@@ -108,7 +108,10 @@ namespace BeyondTheDoor.UI
 
         internal void OpenConversation(Conversation convo)
         {
-            currentElementIndex = 0;
+            if (convo == null)
+                return;
+
+            currentElementIndex = -1;
             currentConversation = convo;
 
             // Turn the line text on, keep choices off
@@ -236,7 +239,8 @@ namespace BeyondTheDoor.UI
         /// <param name="next"></param>
         public static void Enqueue(Conversation next)
         {
-            throw new System.NotImplementedException();
+            if (next != null)
+                Queue?.Enqueue(next);
         }
 
         /// <summary>
@@ -304,6 +308,96 @@ namespace BeyondTheDoor.UI
                 revealedLength = string.IsNullOrEmpty(formattedLineText) ? 0 : formattedLineText.Length;
                 UpdateLineTextGUI();
             }
+        }
+
+        /// <summary>
+        /// Moves the 'cursor' forwards until a new line or conversation is reached
+        /// </summary>
+        private void WalkElement()
+        {
+            if (currentConversation == null)
+                return;
+
+            bool useNextElifOrElse = false;
+
+            currentElementIndex++;
+            while (currentElementIndex < currentConversation.elements.Count)
+            {
+                IConversationElement element = currentConversation.elements[currentElementIndex];
+
+                if (element is DialogueElement line)
+                {
+                    // We found a line - open it and stop
+                    Line.Get(line.lineID).Open();
+                    return;
+                }
+                else if (element is IfElement ifElement)
+                {
+                    // If true, keep going through the block
+                    if (ConversationVariables.IsTrue(ifElement.condition))
+                        goto Increment;
+                    // Otherwise, skip it and step to the next thing
+                    else
+                    {
+                        useNextElifOrElse = true;
+                        FindNextElifOrElse();
+                        continue;
+                    }
+                }
+                else if (element is ElifElement elifElement)
+                {
+                    // Should we try and evaluate this?
+                    if (useNextElifOrElse && ConversationVariables.IsTrue(elifElement.condition))
+                        // Keep goin through
+                        goto Increment;
+                    else
+                    {
+                        useNextElifOrElse = true;
+                        FindNextElifOrElse();
+                        continue;
+                    }
+                }
+                else if (element is ElseElement elseElement)
+                {
+                    if (useNextElifOrElse)
+                        // Keep goin through
+                        goto Increment;
+                    else
+                    {
+                        // Find the end of the if
+                        useNextElifOrElse = false;
+                        FindNextElifOrElse();
+                        continue;
+                    }
+                }
+                else if (element is GotoElement gotoElement)
+                {
+                    // Switch over to this one
+                    OpenConversation(gotoElement.conversation);
+                    return;
+                }
+                // We don't care about Choices, just go through em
+
+            Increment:;
+                currentElementIndex++;
+                // Don't try to use the next else or elif
+                useNextElifOrElse = false;
+            }
+        }
+
+        private void FindNextElifOrElse()
+        {
+            // Just in case
+            int safety = 10000;
+            while (safety --> 0)
+            {
+                currentElementIndex++;
+                IConversationElement element = currentConversation.elements[currentElementIndex];
+                if (element is ElifElement || element is ElseElement || element is EndIfElement)
+                    return;
+            }
+
+            throw new FormatException("Could not find end to a Conversation If block!");
         }
 
         public static void ClearQueue()
