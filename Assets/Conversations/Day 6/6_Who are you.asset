@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: 6_Who are you
   m_EditorClassIdentifier: 
-  onStarted: {fileID: 0}
+  onStarted: {fileID: 11400000, guid: 4b4ec98642a354945a4918fd8e712b5f, type: 2}
   elements:
   - rid: 4847120288080986735
   - rid: 4847120288080986736

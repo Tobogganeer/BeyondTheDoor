@@ -25,6 +25,6 @@ public class AdvanceButton : MonoBehaviour
     bool ShouldButtonBeOn()
     {
         bool isTutorial = Day.DayNumber == Day.TutorialDay;
-        return !isTutorial && Game.CanAdvance();
+        return !isTutorial && Game.CanAdvance() && Day.Stage != Stage.DealingWithArrival;
     }
 }

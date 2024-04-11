@@ -55,6 +55,8 @@ public class Game : MonoBehaviour
     [SerializeField] private ConversationCallback peepholeCallback;
     [Space]
     [SerializeField] private ConversationCallback clearQueueCallback;
+    [SerializeField] private ConversationCallback learnName;
+
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
@@ -165,10 +167,29 @@ public class Game : MonoBehaviour
         kickCharacterOutCallback.Callback += (conv, line) => KickOutCharacter(Character.Current);
 
         clearQueueCallback.Callback += (conv, line) => DialogueGUI.ClearQueue();
+        learnName.Callback += (conv, line) => LearnName(conv);
 
         // Hook up all characters to the scavenge adding/removal
         foreach (Character character in Character.All.Values)
             character.ClickedOnDuringScavengeStage += AddOrRemoveFromScavengeParty;
+    }
+
+    void LearnName(Conversation convo)
+    {
+        if (Character.Current != null)
+            Character.Current.NameKnown = true;
+        else if (convo != null)
+        {
+            foreach (IConversationElement element in convo.elements)
+            {
+                // Find the first line and reveal that person
+                if (element is DialogueElement dialogue)
+                    Character.All[Line.All[dialogue.lineID].CharacterID].NameKnown = true;
+            }
+        }
+
+        // Keep them matched up
+        Character.Sal.NameKnown = Character.Hal.NameKnown;
     }
 
 

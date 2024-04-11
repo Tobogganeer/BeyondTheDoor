@@ -223,6 +223,7 @@ MonoBehaviour:
   staySilentCallback: {fileID: 11400000, guid: d2fa6347c186b924fbac47013a04e338, type: 2}
   peepholeCallback: {fileID: 11400000, guid: 7d221fbd6ec88df4eb191e68ded25bf9, type: 2}
   clearQueueCallback: {fileID: 11400000, guid: 254308f26ef5e734a8ec717fd0c51124, type: 2}
+  learnName: {fileID: 11400000, guid: 4b4ec98642a354945a4918fd8e712b5f, type: 2}
   onInitialize:
     m_PersistentCalls:
       m_Calls: []
