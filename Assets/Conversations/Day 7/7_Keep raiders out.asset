@@ -14,91 +14,98 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814042214990079
-  - rid: 2007814042214990080
-  - rid: 2007814042214990081
-  - rid: 2007814042214990082
-  - rid: 2007814042214990083
-  - rid: 2007814042214990084
-  - rid: 2007814042214990085
-  - rid: 2007814042214990086
-  - rid: 2007814042214990087
-  - rid: 2007814042214990088
-  - rid: 2007814042214990089
-  - rid: 2007814042214990090
-  - rid: 2007814042214990091
-  - rid: 2007814042214990092
+  - rid: 2007814042214990416
+  - rid: 2007814042214990417
+  - rid: 2007814042214990418
+  - rid: 2007814042214990419
+  - rid: 2007814042214990420
+  - rid: 2007814042214990421
+  - rid: 2007814042214990422
+  - rid: 2007814042214990423
+  - rid: 2007814042214990424
+  - rid: 2007814042214990425
+  - rid: 2007814042214990426
+  - rid: 2007814042214990427
+  - rid: 2007814042214990428
+  - rid: 2007814042214990429
+  - rid: 2007814042214990430
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814042214990079
+    - rid: 2007814042214990416
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -24570855
-    - rid: 2007814042214990080
+    - rid: 2007814042214990417
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -625300629
-    - rid: 2007814042214990081
+    - rid: 2007814042214990418
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 60796439
-    - rid: 2007814042214990082
+    - rid: 2007814042214990419
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 630807314
-    - rid: 2007814042214990083
+    - rid: 2007814042214990420
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -628967967
-    - rid: 2007814042214990084
+    - rid: 2007814042214990421
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -225179600
-    - rid: 2007814042214990085
+    - rid: 2007814042214990422
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Hal
-    - rid: 2007814042214990086
+    - rid: 2007814042214990423
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1619340102
-    - rid: 2007814042214990087
+    - rid: 2007814042214990424
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Bob
-    - rid: 2007814042214990088
+    - rid: 2007814042214990425
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 494998297
-    - rid: 2007814042214990089
+    - rid: 2007814042214990426
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
-    - rid: 2007814042214990090
+    - rid: 2007814042214990427
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1941843177
-    - rid: 2007814042214990091
+    - rid: 2007814042214990428
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1072512867
-    - rid: 2007814042214990092
+    - rid: 2007814042214990429
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 982772454
+    - rid: 2007814042214990430
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 11400000, guid: 3b88b771be5de1145bf1790e95cbbecb, type: 2}
+        goofyWorkaroundConversationName: 7_Day7Over

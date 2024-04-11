@@ -2426,8 +2426,8 @@ ENDIF
 Raiders	HOW DO YOU FUCKING LIKE THAT?		7	raiders_7_are_you_not_appeased			
 None	"More shots ring out, hitting nothing."		7	env_7_more_shots			
 Raiders	WE WILL BE BACK YOU ASSHOLE. YOU'RE DEAD!		7	raiders_7_ill_be_back			
+GOTO	Day7Over						
 END							
-							
 							
 							
 CONVERSATION	Let raiders in		7				
