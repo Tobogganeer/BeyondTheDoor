@@ -438,7 +438,7 @@ public class Game : MonoBehaviour
 
     public static void KickOutCharacter(Character character)
     {
-        DayBehaviour.Current.Characters[character.ID].kickedOut.TryStart();
+        DayBehaviour.Current.Characters[character.ID].kickedOut.TryStart(); 
         character.ChangeStatus(CharacterStatus.KickedOut);
         if (character == Character.Hal)
             Character.Sal.ChangeStatus(CharacterStatus.KickedOut);
