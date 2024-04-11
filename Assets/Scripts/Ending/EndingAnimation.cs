@@ -20,6 +20,10 @@ public class EndingAnimation : MonoBehaviour
 
     IEnumerator Start()
     {
+        Debug.Log("player " + Character.Player.Status);
+        Debug.Log("bob " + Character.Bob.Status);
+        Debug.Log("violet " + Character.Violet.Status);
+        Debug.Log("Jessica " + Character.Jessica.Status);
         List<Character> peopleAtTheBorder = GetCharactersAtBorder();
         bool only1atBorder = peopleAtTheBorder.Count == 1;
         Character personAtBorder = null;
