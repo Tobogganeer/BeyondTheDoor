@@ -1541,26 +1541,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1d794bb552a1c4a8e38d0d93a976a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters: []
+  _characters:
+  - id: -1608546876
+    wakingUp: {fileID: 11400000, guid: a2c0ec2d316701240aadbc0a67d5ace7, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: fcfd3e6ff00e94b4fbd26688d3a76ac2, type: 2}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 11400000, guid: bd5bb771ae6960048bad81df1b761bb6, type: 2}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 11400000, guid: ca85cc0bf3ef7f74ebca20a93e411eb9, type: 2}
+    tryingToKickOut: {fileID: 11400000, guid: 01914943176322a4ebdd4e74b11b82f2, type: 2}
+    kickedOut: {fileID: 11400000, guid: f648ee20e9b55424f84bc1cd1bc3e490, type: 2}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: 1502599511
+    wakingUp: {fileID: 11400000, guid: 9d98f5d261d49324298276ec5669767c, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 992f76c3666e6a14eab372452fb30a36, type: 2}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: 8032b8ce2957a644b96042caa7a70366, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: 8032b8ce2957a644b96042caa7a70366, type: 2}
+    clickedOnDuringOvercrowding: {fileID: 11400000, guid: f096cc3c1ef98e14e8f9a6222e07967c, type: 2}
+    tryingToKickOut: {fileID: 11400000, guid: 84610e13bea5e0741b3393198033d988, type: 2}
+    kickedOut: {fileID: 11400000, guid: 82cb271ceee880c4ea3958ca49627e3e, type: 2}
+    commentOnOtherPersonAtDoor: {fileID: 0}
+  - id: 990541821
+    wakingUp: {fileID: 11400000, guid: abf85db630bb15349bec78e48914b133, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 0}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 6d3aabfe1089b3e4ea4e0269ef0b3c2f, type: 2}
+    sentScavengingWithShotgun: {fileID: 0}
+    sentScavengingWithoutShotgun: {fileID: 0}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: 465938b6aa0a3e349a86634d6143ad15, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: 465938b6aa0a3e349a86634d6143ad15, type: 2}
+    clickedOnDuringOvercrowding: {fileID: 11400000, guid: a95552efcb4e8854188bcaa6dc22b14a, type: 2}
+    tryingToKickOut: {fileID: 11400000, guid: e17080af48a08774d83287d366eccf23, type: 2}
+    kickedOut: {fileID: 11400000, guid: 7fe341be4907d53419aa7480c7316704, type: 2}
+    commentOnOtherPersonAtDoor: {fileID: 0}
   dayStarted: {fileID: 0}
-  checkOutside: {fileID: 0}
-  radio: {fileID: 0}
-  tv: {fileID: 0}
-  checkSupplies: {fileID: 0}
+  checkOutside: {fileID: 11400000, guid: 9cceaad57bb712c42915bdc1e4b78af7, type: 2}
+  radio: {fileID: 11400000, guid: 2152547e9fbf63c4ea07c91b090a3b83, type: 2}
+  tv: {fileID: 11400000, guid: 9efe41af0ed52ca44bbc0267fafb3e07, type: 2}
+  checkSupplies: {fileID: 11400000, guid: f0bd4237fb4de0c40b25ab0d08a3dac9, type: 2}
   enteringTalking: {fileID: 0}
-  enteringScavenging: {fileID: 0}
+  enteringScavenging: {fileID: 11400000, guid: 5bdd3a20fbb80994880836cd102ed069, type: 2}
   gotCar: {fileID: 0}
   sendNoScavengers: {fileID: 0}
-  enteringOvercrowding: {fileID: 0}
-  personArrivedAtDoor: {fileID: 0}
-  reactionToPlayerStayingSilent: {fileID: 0}
-  peephole: {fileID: 0}
-  q_whoAreYou: {fileID: 0}
-  q_whatDoYouWant: {fileID: 0}
-  q_whyShouldILetYouIn: {fileID: 0}
-  q_howCanYouHelpMe: {fileID: 0}
-  letPersonInside: {fileID: 0}
-  keepPersonOutside: {fileID: 0}
+  enteringOvercrowding: {fileID: 11400000, guid: 3a0c720ef7de7fa4a83810b580ff3c3e, type: 2}
+  personArrivedAtDoor: {fileID: 11400000, guid: 5caca6fcce579894197febdf4493a1d0, type: 2}
+  reactionToPlayerStayingSilent: {fileID: 11400000, guid: 742877c42c0dc444bb9b6ffc3f735e78, type: 2}
+  peephole: {fileID: 11400000, guid: 57f31bdcfee681b4d93bda5f1c51e61b, type: 2}
+  q_whoAreYou: {fileID: 11400000, guid: cff396e53a05b814a8b6dac100cf6634, type: 2}
+  q_whatDoYouWant: {fileID: 11400000, guid: 8d8e5ffe4ae1904499f63c9a6be22768, type: 2}
+  q_whyShouldILetYouIn: {fileID: 11400000, guid: 4c91890fde17ff741b0177ac3807c2b9, type: 2}
+  q_howCanYouHelpMe: {fileID: 11400000, guid: 8d8e5ffe4ae1904499f63c9a6be22768, type: 2}
+  letPersonInside: {fileID: 11400000, guid: 0ca11ddf1adedc84dadaeba96ac5a96f, type: 2}
+  keepPersonOutside: {fileID: 11400000, guid: 8bd6a534ac2eb2c41a106be319076992, type: 2}
   endOfDay: {fileID: 0}
 --- !u!4 &448206852
 Transform:
