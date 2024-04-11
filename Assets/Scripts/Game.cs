@@ -57,6 +57,9 @@ public class Game : MonoBehaviour
     [SerializeField] private ConversationCallback clearQueueCallback;
     [SerializeField] private ConversationCallback learnName;
 
+    [Space]
+    [SerializeField] private ConversationCallback loadStoredCharacter;
+
 
     [Header("Output")]
     [Tooltip("Called after a save file is loaded but before the stage is loaded.")]
@@ -161,6 +164,7 @@ public class Game : MonoBehaviour
 
         makingOCDecisionCallback.Callback += (conv, line) =>
         {
+            Character.ChoppingBlock = Character.Current;
             DayBehaviour.Current.Characters[Character.Current.ID].tryingToKickOut.TryStart();
             q_kickCharacterOut.Enqueue();
         };
@@ -168,6 +172,8 @@ public class Game : MonoBehaviour
 
         clearQueueCallback.Callback += (conv, line) => DialogueGUI.ClearQueue();
         learnName.Callback += (conv, line) => LearnName(conv);
+
+        loadStoredCharacter.Callback += (conv, line) => Character.Current = Character.ChoppingBlock;
 
         // Hook up all characters to the scavenge adding/removal
         foreach (Character character in Character.All.Values)

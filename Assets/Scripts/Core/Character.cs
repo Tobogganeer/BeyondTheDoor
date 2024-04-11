@@ -125,6 +125,11 @@ namespace BeyondTheDoor
         /// </summary>
         public static Character Current { get; set; }
 
+        /// <summary>
+        /// DO NOT TOUCH! THIS IS A 5am HACK!
+        /// </summary>
+        public static Character ChoppingBlock { get; set; }
+
 
         public Character(CharacterID id)
         {
