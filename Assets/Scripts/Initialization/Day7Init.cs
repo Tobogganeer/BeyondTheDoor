@@ -21,7 +21,7 @@ public class Day7Init : DayBehaviour
     private static void EndGame()
     {
         // Stop any advances
-        DialogueGUI.ClearQueue();
+        DialogueGUI.Close();
         UnitySceneManager.LoadScene("Ending");
     }
 

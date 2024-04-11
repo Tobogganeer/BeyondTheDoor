@@ -7,19 +7,20 @@ using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class Day5Init : DayBehaviour
 {
-    public ConversationCallback endOfDay;
+    public ConversationCallback afterScavenging;
 
     protected override int GetDay() => 5;
 
     protected override void Initialize()
     {
-        endOfDay.Callback += (conv, line) => EndGame();
+        afterScavenging.Callback += (conv, line) => CheckForStarvation();
     }
 
-    private static void EndGame()
+    private static void CheckForStarvation()
     {
         // Stop any advances
-        DialogueGUI.ClearQueue();
-        UnitySceneManager.LoadScene("Ending");
+        DialogueGUI.Close();
+        if (!Cabin.HasScavengedSuccessfully)
+            UnitySceneManager.LoadScene("Ending");
     }
 }

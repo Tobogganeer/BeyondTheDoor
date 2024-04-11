@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: 5_JESSICA coming back
   m_EditorClassIdentifier: 
-  onStarted: {fileID: 0}
+  onStarted: {fileID: 11400000, guid: fafc5aac1888d6746856d474fd6b7c7f, type: 2}
   elements:
   - rid: 4847120288080986496
   - rid: 4847120288080986497

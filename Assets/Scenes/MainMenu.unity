@@ -1609,7 +1609,7 @@ MonoBehaviour:
   q_howCanYouHelpMe: {fileID: 11400000, guid: 8d8e5ffe4ae1904499f63c9a6be22768, type: 2}
   letPersonInside: {fileID: 11400000, guid: 0ca11ddf1adedc84dadaeba96ac5a96f, type: 2}
   keepPersonOutside: {fileID: 11400000, guid: 8bd6a534ac2eb2c41a106be319076992, type: 2}
-  endOfDay: {fileID: 0}
+  afterScavenging: {fileID: 11400000, guid: fafc5aac1888d6746856d474fd6b7c7f, type: 2}
 --- !u!4 &448206852
 Transform:
   m_ObjectHideFlags: 0

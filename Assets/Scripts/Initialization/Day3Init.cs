@@ -23,7 +23,7 @@ public class Day3Init : DayBehaviour
     {
         // Stop any advances
 
-        DialogueGUI.ClearQueue();
+        DialogueGUI.Close();
         UnitySceneManager.LoadScene("Ending");
     }
 
