@@ -19,7 +19,7 @@ MonoBehaviour:
     nextConversation: {fileID: 0}
     callback: {fileID: 0}
   - prompt: -894978099
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 9d698021093843f4bbfb7473887924f0, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:

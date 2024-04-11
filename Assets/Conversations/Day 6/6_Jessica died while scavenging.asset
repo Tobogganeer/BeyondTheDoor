@@ -14,48 +14,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120288080986703
-  - rid: 4847120288080986704
-  - rid: 4847120288080986705
-  - rid: 4847120288080986706
-  - rid: 4847120288080986707
-  - rid: 4847120288080986708
-  - rid: 4847120288080986709
+  - rid: 4847120302114865480
+  - rid: 4847120302114865481
+  - rid: 4847120302114865482
+  - rid: 4847120302114865483
+  - rid: 4847120302114865484
+  - rid: 4847120302114865485
+  - rid: 4847120302114865486
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120288080986703
+    - rid: 4847120302114865480
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 4847120288080986704
+    - rid: 4847120302114865481
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1851086005
-    - rid: 4847120288080986705
+    - rid: 4847120302114865482
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Violet
-    - rid: 4847120288080986706
+    - rid: 4847120302114865483
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1871577823
-    - rid: 4847120288080986707
+    - rid: 4847120302114865484
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 4847120288080986708
+    - rid: 4847120302114865485
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 34757277
-    - rid: 4847120288080986709
+    - rid: 4847120302114865486
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

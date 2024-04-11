@@ -14,79 +14,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597358023
-  - rid: 2007814011597358024
-  - rid: 2007814011597358025
-  - rid: 2007814011597358026
-  - rid: 2007814011597358027
-  - rid: 2007814011597358028
-  - rid: 2007814011597358029
-  - rid: 2007814011597358030
-  - rid: 2007814011597358031
-  - rid: 2007814011597358032
-  - rid: 2007814011597358033
-  - rid: 2007814011597358034
+  - rid: 4847120289072939756
+  - rid: 4847120289072939757
+  - rid: 4847120289072939758
+  - rid: 4847120289072939759
+  - rid: 4847120289072939760
+  - rid: 4847120289072939761
+  - rid: 4847120289072939762
+  - rid: 4847120289072939763
+  - rid: 4847120289072939764
+  - rid: 4847120289072939765
+  - rid: 4847120289072939766
+  - rid: 4847120289072939767
+  - rid: 4847120289072939768
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597358023
+    - rid: 4847120289072939756
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1306147336
-    - rid: 2007814011597358024
+    - rid: 4847120289072939757
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Jessica && Bob
-    - rid: 2007814011597358025
+    - rid: 4847120289072939758
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1772539025
-    - rid: 2007814011597358026
+    - rid: 4847120289072939759
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 49704585
-    - rid: 2007814011597358027
+    - rid: 4847120289072939760
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -2077389493
-    - rid: 2007814011597358028
+    - rid: 4847120289072939761
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -763891351
-    - rid: 2007814011597358029
+    - rid: 4847120289072939762
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Jessica
-    - rid: 2007814011597358030
+    - rid: 4847120289072939763
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1303331493
-    - rid: 2007814011597358031
+    - rid: 4847120289072939764
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -737478709
-    - rid: 2007814011597358032
+    - rid: 4847120289072939765
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Bob
-    - rid: 2007814011597358033
+    - rid: 4847120289072939766
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 2006392398
-    - rid: 2007814011597358034
+    - rid: 4847120289072939767
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
+    - rid: 4847120289072939768
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 11400000, guid: da2fb3dcfe31c9d45b6af8b5d2537418, type: 2}
+        goofyWorkaroundConversationName: 4_Scavenge day 4 Bob and Jessica

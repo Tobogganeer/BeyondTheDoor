@@ -22,10 +22,10 @@ MonoBehaviour:
     nextConversation: {fileID: 0}
     callback: {fileID: 11400000, guid: 7d221fbd6ec88df4eb191e68ded25bf9, type: 2}
   - prompt: 715864667
-    nextConversation: {fileID: 11400000, guid: 2bf099182efe635489d9afaea4a102ee, type: 2}
+    nextConversation: {fileID: 0}
     callback: {fileID: 0}
   - prompt: -963597415
-    nextConversation: {fileID: 11400000, guid: 05dd35b987e4b2a4db8a022926d8b067, type: 2}
+    nextConversation: {fileID: 0}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:

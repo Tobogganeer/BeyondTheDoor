@@ -14,38 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597358038
-  - rid: 2007814011597358039
-  - rid: 2007814011597358040
-  - rid: 2007814011597358041
-  - rid: 2007814011597358042
+  - rid: 4847120302114865215
+  - rid: 4847120302114865216
+  - rid: 4847120302114865217
+  - rid: 4847120302114865218
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597358038
+    - rid: 4847120302114865215
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 2007814011597358039
+    - rid: 4847120302114865216
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 149614651
-    - rid: 2007814011597358040
+    - rid: 4847120302114865217
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
-    - rid: 2007814011597358041
+    - rid: 4847120302114865218
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 83488438
-    - rid: 2007814011597358042
-      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
-      data:
-        name: Goto
-        conversation: {fileID: 11400000, guid: 0387d15386e00f7479bb14d0ec876dcc, type: 2}
-        goofyWorkaroundConversationName: 4_AddToScavengeParty

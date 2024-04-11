@@ -14,27 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120288080986639
-  - rid: 4847120288080986640
-  - rid: 4847120288080986641
+  - rid: 4847120289072939791
+  - rid: 4847120289072939792
+  - rid: 4847120289072939793
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120288080986639
+    - rid: 4847120289072939791
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1804255982
-    - rid: 4847120288080986640
+    - rid: 4847120289072939792
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 280444903
-    - rid: 4847120288080986641
+    - rid: 4847120289072939793
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
-        conversation: {fileID: 0}
+        conversation: {fileID: 11400000, guid: 72972a6eaef49b246a790c146d1420bc, type: 2}
         goofyWorkaroundConversationName: 6_Dad leaves

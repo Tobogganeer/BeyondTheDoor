@@ -14,52 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120288080986691
-  - rid: 4847120288080986692
-  - rid: 4847120288080986693
-  - rid: 4847120288080986694
-  - rid: 4847120288080986695
-  - rid: 4847120288080986696
+  - rid: 4847120289072939954
+  - rid: 4847120289072939955
+  - rid: 4847120289072939956
+  - rid: 4847120289072939957
+  - rid: 4847120289072939958
+  - rid: 4847120289072939959
   choices:
   - prompt: -1375788600
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 11cc0598d89cc954a859fbb6eee43cb3, type: 2}
     callback: {fileID: 0}
   - prompt: -55773168
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: d6d5e55ae0421694fbd8017241870bf6, type: 2}
     callback: {fileID: 0}
   - prompt: -1699196685
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 4358544e12fa5ee41ac162cf39759a9f, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120288080986691
+    - rid: 4847120289072939954
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1784773820
-    - rid: 4847120288080986692
+    - rid: 4847120289072939955
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1522240871
-    - rid: 4847120288080986693
+    - rid: 4847120289072939956
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: '!HasShotgun'
-    - rid: 4847120288080986694
+    - rid: 4847120289072939957
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
-        conversation: {fileID: 0}
+        conversation: {fileID: 11400000, guid: 11cc0598d89cc954a859fbb6eee43cb3, type: 2}
         goofyWorkaroundConversationName: 6_Tell Jessica her idea is stupid
-    - rid: 4847120288080986695
+    - rid: 4847120289072939958
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
-    - rid: 4847120288080986696
+    - rid: 4847120289072939959
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue

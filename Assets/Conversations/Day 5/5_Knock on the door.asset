@@ -14,48 +14,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 11400000, guid: fafc5aac1888d6746856d474fd6b7c7f, type: 2}
   elements:
-  - rid: 4847120288080986535
-  - rid: 4847120288080986536
-  - rid: 4847120288080986537
-  - rid: 4847120288080986538
-  - rid: 4847120288080986539
-  - rid: 4847120288080986540
+  - rid: 4847120289072939924
+  - rid: 4847120289072939925
+  - rid: 4847120289072939926
+  - rid: 4847120289072939927
+  - rid: 4847120289072939928
+  - rid: 4847120289072939929
   choices:
   - prompt: 14881585
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 742877c42c0dc444bb9b6ffc3f735e78, type: 2}
     callback: {fileID: 0}
   - prompt: 2010657075
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 57f31bdcfee681b4d93bda5f1c51e61b, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120288080986535
+    - rid: 4847120289072939924
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 4847120288080986536
+    - rid: 4847120289072939925
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1946757607
-    - rid: 4847120288080986537
+    - rid: 4847120289072939926
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
-    - rid: 4847120288080986538
+    - rid: 4847120289072939927
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Jessica
-    - rid: 4847120288080986539
+    - rid: 4847120289072939928
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 177493533
-    - rid: 4847120288080986540
+    - rid: 4847120289072939929
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
