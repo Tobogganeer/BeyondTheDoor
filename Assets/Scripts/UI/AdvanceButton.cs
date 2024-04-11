@@ -4,13 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
 public class AdvanceButton : MonoBehaviour
 {
     public ConversationCallback advance;
 
+    [Space]
+    public Button button;
+
     private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(() => advance.Invoke(null, 0));
+        button.onClick.AddListener(() => advance.Invoke(null, 0));
+    }
+
+    private void Update()
+    {
+        // Turn it on if we can advance
+        button.gameObject.SetActive(Game.CanAdvance());
     }
 }

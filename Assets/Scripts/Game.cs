@@ -195,6 +195,8 @@ public class Game : MonoBehaviour
     {
         if (CanAdvance())
         {
+            DialogueGUI.Close();
+
             // Execute stage-specific behaviour
             Stage next = GetNextStage();
             BeforeLoadNewStage(Stage, next);
