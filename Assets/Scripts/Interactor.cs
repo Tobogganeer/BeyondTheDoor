@@ -20,7 +20,10 @@ public class Interactor : MonoBehaviour
         timeSinceGuiOpen += Time.deltaTime;
 
         if (DialogueGUI.IsOpen)
+        {
             timeSinceGuiOpen = 0;
+            return;
+        }
 
         // Check if we click while not speaking already
         if (timeSinceGuiOpen > 0.3f && Mouse.current.leftButton.wasReleasedThisFrame)
