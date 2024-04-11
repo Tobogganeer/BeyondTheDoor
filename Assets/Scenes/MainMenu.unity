@@ -2850,6 +2850,8 @@ MonoBehaviour:
   q_howCanYouHelpMe: {fileID: 0}
   letPersonInside: {fileID: 0}
   keepPersonOutside: {fileID: 0}
+  dadWithShotgun: {fileID: 0}
+  dadWithoutShotgun: {fileID: 0}
 --- !u!4 &789145480
 Transform:
   m_ObjectHideFlags: 0
@@ -3586,6 +3588,7 @@ MonoBehaviour:
   letPersonInside: {fileID: 11400000, guid: 6b549295ffcc83c40ade6584501914e0, type: 2}
   keepPersonOutside: {fileID: 11400000, guid: 4e261c02f2b4afa4fbfc5c93178418a5, type: 2}
   activateBearEnding: {fileID: 0}
+  BobKillerByBear: {fileID: 0}
 --- !u!4 &1118220819
 Transform:
   m_ObjectHideFlags: 0
@@ -5228,25 +5231,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characters: []
   dayStarted: {fileID: 0}
-  checkOutside: {fileID: 0}
-  radio: {fileID: 0}
-  tv: {fileID: 0}
-  checkSupplies: {fileID: 0}
-  enteringTalking: {fileID: 0}
-  enteringScavenging: {fileID: 0}
-  gotCar: {fileID: 0}
-  sendNoScavengers: {fileID: 0}
-  enteringOvercrowding: {fileID: 0}
-  personArrivedAtDoor: {fileID: 0}
-  reactionToPlayerStayingSilent: {fileID: 0}
-  peephole: {fileID: 0}
-  q_whoAreYou: {fileID: 0}
-  q_whatDoYouWant: {fileID: 0}
-  q_whyShouldILetYouIn: {fileID: 0}
-  q_howCanYouHelpMe: {fileID: 0}
-  letPersonInside: {fileID: 0}
-  keepPersonOutside: {fileID: 0}
-  endOfDay: {fileID: 0}
+  checkOutside: {fileID: 11400000, guid: 19f76d25e9ae08b4985b133d3577790f, type: 2}
+  radio: {fileID: 11400000, guid: 37b63f504df5c4544a91daa047c99f70, type: 2}
+  tv: {fileID: 11400000, guid: ec2701a84afe6d44f9beb753c998267d, type: 2}
+  checkSupplies: {fileID: 11400000, guid: 7d7c3811dd8ff904dae8ed5c37ebbd07, type: 2}
+  enteringTalking: {fileID: 11400000, guid: 8e6f64541a1ade747b1a2b39b48ac942, type: 2}
+  enteringScavenging: {fileID: 11400000, guid: 06e3306ea42e6914fbef74fa4de63842, type: 2}
+  gotCar: {fileID: 11400000, guid: b743d9cbffe0daa469e61038058ea3dd, type: 2}
+  sendNoScavengers: {fileID: 11400000, guid: 9f041dc6c0d90e3469bd118aac767193, type: 2}
+  enteringOvercrowding: {fileID: 11400000, guid: c57f676278ba21441b4453e04c0e5d3d, type: 2}
+  personArrivedAtDoor: {fileID: 11400000, guid: 6070fec17313df044915e67028633ae6, type: 2}
+  reactionToPlayerStayingSilent: {fileID: 11400000, guid: d0a87df6d381f1f4a921477ab81c0daf, type: 2}
+  peephole: {fileID: 11400000, guid: 789dea3f9446ba74897bc2c371d339cf, type: 2}
+  q_whoAreYou: {fileID: 11400000, guid: 1f07e81eeee9d324aaafea39519166bf, type: 2}
+  q_whatDoYouWant: {fileID: 11400000, guid: 2c15b776349c1174bbf90e079a1b0b12, type: 2}
+  q_whyShouldILetYouIn: {fileID: 11400000, guid: d611e5eed5a7b8f4a9e99c6ae072c7c9, type: 2}
+  q_howCanYouHelpMe: {fileID: 11400000, guid: 7cb7528cf3953c9428a4196f21dc8872, type: 2}
+  letPersonInside: {fileID: 11400000, guid: cfb86e0ea28668449af7ce88477393fa, type: 2}
+  keepPersonOutside: {fileID: 11400000, guid: d24e9ddce0776ac42b97030fc594c04a, type: 2}
+  endOfDay: {fileID: 11400000, guid: 9adaf4b80c116214c9d55ba45c03bded, type: 2}
+  KilledByRaiders: {fileID: 11400000, guid: 0e6b51e4ff01efb4e8620d01f6fe0ac0, type: 2}
 --- !u!4 &1604992105
 Transform:
   m_ObjectHideFlags: 0
