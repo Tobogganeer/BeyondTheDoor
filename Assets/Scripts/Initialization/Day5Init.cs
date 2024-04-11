@@ -3,14 +3,13 @@ using BeyondTheDoor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
-using UnitySceneManager =  UnityEngine.SceneManagement.SceneManager;
-
-public class Day7Init : DayBehaviour
+public class Day5Init : DayBehaviour
 {
     public ConversationCallback endOfDay;
 
-    protected override int GetDay() => 7;
+    protected override int GetDay() => 5;
 
     protected override void Initialize()
     {

@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
+
 public class Day3Init : DayBehaviour
 {
     public ConversationCallback activateBearEnding;
@@ -18,6 +20,8 @@ public class Day3Init : DayBehaviour
     private static void BearEnding()
     {
         // Stop any advances
+
         DialogueGUI.ClearQueue();
+        UnitySceneManager.LoadScene("Ending");
     }
 }
