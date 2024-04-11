@@ -28,11 +28,6 @@ public class Day7Init : DayBehaviour
 
     private void CalculateEndStates()
     {
-        foreach (Character character in Cabin.CurrentPartyMembers())
-        {
-            character.ChangeStatus(CharacterStatus.AliveAtBorder);
-        }
-
         if (Cabin.NumCurrentPartyMembers() > 0)
             // They made it with the group
             Character.Player.ChangeStatus(CharacterStatus.AliveAtBorder);
@@ -45,6 +40,11 @@ public class Day7Init : DayBehaviour
         else
             // Womp womp
             Character.Player.ChangeStatus(CharacterStatus.DeadOnWayToBorder);
+
+        foreach (Character character in Cabin.CurrentPartyMembers())
+        {
+            character.ChangeStatus(CharacterStatus.AliveAtBorder);
+        }
     }
 
 
