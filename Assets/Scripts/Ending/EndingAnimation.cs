@@ -3,7 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+HEAD
 using UnityEngine.UI;
+
+using System.Linq;
+new-endings
 
 public class EndingAnimation : MonoBehaviour
 {
@@ -15,9 +19,17 @@ public class EndingAnimation : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private int survivors;
 
+    List<Character> GetCharactersAtBorder() => Character.All.Values.Where((ch) => ch.Status == CharacterStatus.AliveAtBorder).ToList();
 
     IEnumerator Start()
     {
+
+        Character.Jessica.ChangeStatus(CharacterStatus.AliveAtBorder, true);
+
+        List<Character> peopleAtTheBorder = GetCharactersAtBorder();
+        bool only1atBorder = peopleAtTheBorder.Count == 1;
+        Character personAtBorder = peopleAtTheBorder[0];
+
 
 
         if (Day.DayNumber == 5 && !Cabin.HasScavengedSuccessfully)
@@ -99,13 +111,52 @@ public class EndingAnimation : MonoBehaviour
             Final();
         }
 
+        //Jessica only
+        if(only1atBorder && personAtBorder == Character.Jessica)
+        {
+            yield return WriteList(timeBetweenTransitions, "6 people", "Hard decisions were made", "People were sent to their death", "Only some left unharmed", "We", "survived", "A new dawn rises", "A new life starts");
+
+            yield return WriteList(timeBetweenTransitions, "We reached the border safely", "finally", "I had to keep an eye on Jesssica", "when we were asked for our id", "they were surprised by Jessica's", "Turns out shes niece of one of the higher ups in Brasnia", "We were taken to a room, wand told to wait for someone", "Turns out we're getting evacuted to the USA for protection");
+            survivors = 2;
+            yield return new WaitForSeconds(5);
+            Final();
+        }
+
+        //Violet only
+        if(only1atBorder && personAtBorder == Character.Violet)
+        {
+            yield return WriteList(timeBetweenTransitions, "6 people", "Hard decisions were made", "People were sent to their death", "Only some left unharmed", "We", "survived", "A new dawn rises", "A new life starts");
+
+            yield return WriteList(timeBetweenTransitions, "Turns out that years later violet oppened a workshop", "I went to visit her some years later", "Turns out she's doing pretty well", "I even got a job offer", "good to see that someone is doing pretty well after the war", "I guess it was worth it in the end");
+            survivors = 2;
+            yield return new WaitForSeconds(5);
+            Final();
+        }
+
+        //bob only
+        if(only1atBorder && personAtBorder == Character.Bob)
+        {
+            yield return WriteList(timeBetweenTransitions, "6 people", "Hard decisions were made", "People were sent to their death", "Only some left unharmed", "We", "survived", "A new dawn rises", "A new life starts");
+
+            yield return WriteList(timeBetweenTransitions, "some months and the war still rages on", "Bob chose to return to the war and fight as a revolutionary", "I never heard from him ever again", "I hope he's doing alright");
+            survivors = 2;
+            yield return new WaitForSeconds(5);
+            Final();
+        }
+
+        //val and sal only
+   
+        if(personAtBorder == Character.Sal)
+        {
+            //DO STUFF LATER    
+        }
         //Joke ending
-        /*
-        if(Character.Player.Status == CharacterStatus.)
+
+        if (Character.Tutorial_Dad.Status == CharacterStatus.LeftOutside && Character.Tutorial_Mom.Status == CharacterStatus.LeftOutside)
         {
              yield return WriteList(timeBetweenTransitions,"I blinked again", "I saw a spaceship floating on above me", "I stated floating", "It was abducting me!", "Now I live in a super advanced society of various alien species", "i didnt want no ice cream" , " take that suckers");
         }
-        */
+      
     }
     IEnumerator WriteList(float delay, params string[] textToDisplay)
     {
