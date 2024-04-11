@@ -135,6 +135,11 @@ namespace BeyondTheDoor.UI
             if (currentConversation.onStarted != null)
                 currentConversation.onStarted.Invoke(convo, LineID.none);
 
+            // Turn it all off
+            SetWindowActive(false);
+            SetLineTextActive(false);
+            SetChoicesActive(false);
+
             WalkAndTryOpen();
         }
 
@@ -210,7 +215,10 @@ namespace BeyondTheDoor.UI
             if (choice == null)
                 throw new System.ArgumentNullException(nameof(choice));
 
-            gui.label.text = choice.Prompt.Text; // Set the right text
+            string labelText = choice.Prompt.Text;
+            if (Character.Current != null)
+                labelText = labelText.Replace("{character}", Character.Current.GetCurrentName());
+            gui.label.text = labelText; // Set the right text
             gui.button.onClick.RemoveAllListeners(); // Clear the previous choices
             gui.button.onClick.AddListener(() => OnChoiceChosen(choice)); // Wire it up
         }
@@ -218,9 +226,9 @@ namespace BeyondTheDoor.UI
         private void OnChoiceChosen(Choice choice)
         {
             currentChoices = null; // Remove our choices
-            choice.OnChoiceChosen(); // Activate it
-
             ConversationFinished();
+
+            choice.OnChoiceChosen(); // Activate the choice
         }
 
 
