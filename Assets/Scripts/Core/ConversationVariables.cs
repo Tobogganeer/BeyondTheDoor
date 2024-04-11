@@ -21,7 +21,9 @@ namespace BeyondTheDoor
             { "hal", Var.Hal },
             { "sal", Var.Sal },
             { "dad", Var.Dad },
-            {"bobdead",Var.BobDead }
+            {"bobdead",Var.BobDead },
+            {"left_with_shotgun",Var.LeftWithShotgun }
+
         };
 
         public static bool IsTrue(string condition)
@@ -90,6 +92,7 @@ namespace BeyondTheDoor
             Sal = 696031022,
             Dad = 696030393,
             BobDead,
+            LeftWithShotgun,
         }
     }
 }
