@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BeyondTheDoor;
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class TutorialInit : DayBehaviour
 {
@@ -49,7 +50,6 @@ public class TutorialInit : DayBehaviour
     {
         // Set them outside
         DoorLeftClosed();
-        Debug.Log("Joke ending silly");
-        Game.ExitToMenu();
+        UnitySceneManager.LoadScene("Ending");
     }
 }
