@@ -3012,6 +3012,7 @@ MonoBehaviour:
   keepPersonOutside: {fileID: 11400000, guid: bdffb78624fc46643978aa8c66b16912, type: 2}
   giveDadShotgun: {fileID: 11400000, guid: 053cead7060447842a9600c37cc2fd32, type: 2}
   dadLeaves: {fileID: 11400000, guid: 6941c03183b80db42936d25fa8e6e668, type: 2}
+  dadLeavingConvo: {fileID: 11400000, guid: 005e48eaff019ef4db3730ea37c71f66, type: 2}
 --- !u!4 &789145480
 Transform:
   m_ObjectHideFlags: 0
