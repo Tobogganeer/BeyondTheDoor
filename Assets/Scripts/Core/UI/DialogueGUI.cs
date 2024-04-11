@@ -157,13 +157,15 @@ namespace BeyondTheDoor.UI
         {
             // Set our current
             currentLine = line;
+
             // TODO: Format text accounting for variables etc
-            formattedLineText = line.text.Replace("{character}", Character.Current.GetCurrentName());
+            string name = Character.Current.GetCurrentName();
+            //Debug.Log(name);
+            formattedLineText = line.text.Replace("{character}", name);
             // Get the incremental printing ready
             revealedLength = 0;
             ResetRevealTimer();
 
-            string name = Character.All[line.CharacterID].GetCurrentName();
             if (string.IsNullOrEmpty(name))
                 characterNameHolder.SetActive(false);
             else
@@ -391,8 +393,8 @@ namespace BeyondTheDoor.UI
 
                 if (element is DialogueElement line)
                 {
-                    // We found a line - open it and stop
-                    Line.Get(line.lineID).Open();
+                    // We found a line - store it and stop
+                    currentLine = Line.Get(line.lineID);
                     return;
                 }
                 else if (element is IfElement ifElement)
