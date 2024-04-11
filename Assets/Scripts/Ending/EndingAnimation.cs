@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-HEAD
 using UnityEngine.UI;
 
 using System.Linq;
-new-endings
+
 
 public class EndingAnimation : MonoBehaviour
 {
