@@ -9,7 +9,7 @@ public class Door : MonoBehaviour, IInteractable
 
     public void OnClicked()
     {
-        if (Day.Stage == Stage.DealingWithArrival)
+        if (Day.Stage == Stage.DealingWithArrival && Day.DayNumber != Day.TutorialDay)
         {
             doorOptions.Start();
         }

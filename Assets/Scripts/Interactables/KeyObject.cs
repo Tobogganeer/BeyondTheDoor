@@ -8,7 +8,7 @@ public class KeyObject : MonoBehaviour, IInteractable
     public void OnClicked()
     {
         // Move forward once we find the tutorial key (onto scavenging)
-        if (Day.DayNumber == Day.TutorialDay && Day.Stage == Stage.SpeakingWithParty)
+        if (Day.DayNumber == Day.TutorialDay && Day.Stage == Stage.MorningSupplies)
             Game.Advance();
     }
 }

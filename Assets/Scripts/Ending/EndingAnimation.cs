@@ -3,18 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using UnityEngine.InputSystem.HID;
-using UnityEngine.UIElements;
-using static Unity.Burst.Intrinsics.X86;
-using static UnityEngine.ParticleSystem;
-using static UnityEngine.Rendering.DebugUI.Table;
-using Unity.Burst.Intrinsics;
-using UnityEngine.UIElements.Experimental;
-using static UnityEngine.Rendering.DebugUI;
-using System.Net.NetworkInformation;
-using System;
-using UnityEditor.Rendering;
+using UnityEngine.UI;
 
 public class EndingAnimation : MonoBehaviour
 {

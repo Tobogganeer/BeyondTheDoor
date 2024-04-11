@@ -70,7 +70,7 @@ namespace BeyondTheDoor.SaveSystem
         private void SaveEmptyDay(bool playTutorial)
         {
             data.Add(playTutorial ? 0 : 1); // Day 0/1 depending on whether we are doing the tutorial
-            data.Add(Stage.SpeakingWithParty); // First stage
+            data.Add(Stage.MorningSupplies); // First stage
         }
 
         private void SaveEmptyCabin()
