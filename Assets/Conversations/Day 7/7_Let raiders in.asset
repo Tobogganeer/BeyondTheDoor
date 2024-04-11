@@ -55,7 +55,7 @@ MonoBehaviour:
   - rid: 4847120288080987083
   - rid: 4847120288080987084
   choices: []
-  onFinished: {fileID: 0}
+  onFinished: {fileID: 11400000, guid: 0e6b51e4ff01efb4e8620d01f6fe0ac0, type: 2}
   references:
     version: 2
     RefIds:
