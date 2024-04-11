@@ -62,6 +62,8 @@ namespace BeyondTheDoor
         /// </summary>
         public bool DoorDecisionMade => Status > CharacterStatus.AtDoor;
         public bool InsideCabin => Status == CharacterStatus.InsideCabin;
+        public bool AliveAtBorder => Status == CharacterStatus.AliveAtBorder;
+        public bool DiedOnWayToBorder => Status == CharacterStatus.DeadOnWayToBorder;
         public bool JustReturnedFromScavenging => LastStatus == CharacterStatus.ScavengingWithShotgun ||
             LastStatus == CharacterStatus.ScavengingDefenseless;
 
