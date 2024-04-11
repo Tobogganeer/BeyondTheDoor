@@ -1512,6 +1512,71 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &448206850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 448206852}
+  - component: {fileID: 448206851}
+  m_Layer: 0
+  m_Name: Init Day 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &448206851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448206850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1d794bb552a1c4a8e38d0d93a976a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters: []
+  dayStarted: {fileID: 0}
+  checkOutside: {fileID: 0}
+  radio: {fileID: 0}
+  tv: {fileID: 0}
+  checkSupplies: {fileID: 0}
+  enteringTalking: {fileID: 0}
+  enteringScavenging: {fileID: 0}
+  gotCar: {fileID: 0}
+  sendNoScavengers: {fileID: 0}
+  enteringOvercrowding: {fileID: 0}
+  personArrivedAtDoor: {fileID: 0}
+  reactionToPlayerStayingSilent: {fileID: 0}
+  peephole: {fileID: 0}
+  q_whoAreYou: {fileID: 0}
+  q_whatDoYouWant: {fileID: 0}
+  q_whyShouldILetYouIn: {fileID: 0}
+  q_howCanYouHelpMe: {fileID: 0}
+  letPersonInside: {fileID: 0}
+  keepPersonOutside: {fileID: 0}
+  endOfDay: {fileID: 0}
+--- !u!4 &448206852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448206850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &487244690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,6 +2801,70 @@ MonoBehaviour:
   quitOverlay: {fileID: 1486749448}
   savesPage: {fileID: 266667057}
   settingsPage: {fileID: 40908331}
+--- !u!1 &789145478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789145480}
+  - component: {fileID: 789145479}
+  m_Layer: 0
+  m_Name: Init Day 6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &789145479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789145478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4512d3b93f1e11d4dbee9601264b2934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters: []
+  dayStarted: {fileID: 0}
+  checkOutside: {fileID: 0}
+  radio: {fileID: 0}
+  tv: {fileID: 0}
+  checkSupplies: {fileID: 0}
+  enteringTalking: {fileID: 0}
+  enteringScavenging: {fileID: 0}
+  gotCar: {fileID: 0}
+  sendNoScavengers: {fileID: 0}
+  enteringOvercrowding: {fileID: 0}
+  personArrivedAtDoor: {fileID: 0}
+  reactionToPlayerStayingSilent: {fileID: 0}
+  peephole: {fileID: 0}
+  q_whoAreYou: {fileID: 0}
+  q_whatDoYouWant: {fileID: 0}
+  q_whyShouldILetYouIn: {fileID: 0}
+  q_howCanYouHelpMe: {fileID: 0}
+  letPersonInside: {fileID: 0}
+  keepPersonOutside: {fileID: 0}
+--- !u!4 &789145480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789145478}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &843429988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3354,7 +3483,7 @@ GameObject:
   - component: {fileID: 1118220819}
   - component: {fileID: 1118220818}
   m_Layer: 0
-  m_Name: Day 3
+  m_Name: Init Day 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3765,7 +3894,7 @@ GameObject:
   - component: {fileID: 1222301962}
   - component: {fileID: 1222301961}
   m_Layer: 0
-  m_Name: Day 2
+  m_Name: Init Day 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5068,6 +5197,71 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6460104523104018814, guid: 74e8094c0db65244d8fdb01ffd9a5f62, type: 3}
   m_PrefabInstance: {fileID: 1586937815}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1604992103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604992105}
+  - component: {fileID: 1604992104}
+  m_Layer: 0
+  m_Name: Init Day 7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1604992104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604992103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24ae2dbd94400c43b527a7a49e97e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters: []
+  dayStarted: {fileID: 0}
+  checkOutside: {fileID: 0}
+  radio: {fileID: 0}
+  tv: {fileID: 0}
+  checkSupplies: {fileID: 0}
+  enteringTalking: {fileID: 0}
+  enteringScavenging: {fileID: 0}
+  gotCar: {fileID: 0}
+  sendNoScavengers: {fileID: 0}
+  enteringOvercrowding: {fileID: 0}
+  personArrivedAtDoor: {fileID: 0}
+  reactionToPlayerStayingSilent: {fileID: 0}
+  peephole: {fileID: 0}
+  q_whoAreYou: {fileID: 0}
+  q_whatDoYouWant: {fileID: 0}
+  q_whyShouldILetYouIn: {fileID: 0}
+  q_howCanYouHelpMe: {fileID: 0}
+  letPersonInside: {fileID: 0}
+  keepPersonOutside: {fileID: 0}
+  endOfDay: {fileID: 0}
+--- !u!4 &1604992105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604992103}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630330884
 GameObject:
   m_ObjectHideFlags: 0
@@ -7319,7 +7513,7 @@ GameObject:
   - component: {fileID: 2143297687}
   - component: {fileID: 2143297686}
   m_Layer: 0
-  m_Name: day 4
+  m_Name: Init Day 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7334,77 +7528,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2143297685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f63a9d649a3f1f34c82b3fd7b3789ab9, type: 3}
+  m_Script: {fileID: 11500000, guid: 41d598180f3d5314d8915692d23b701e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters:
-  - id: 1502599511
-    wakingUp: {fileID: 11400000, guid: eb5d608e17c4b5a4f800458a1f09ff0d, type: 2}
-    beforeScavengingChoice: {fileID: 0}
-    beforeUnscavengingChoice: {fileID: 0}
-    addedToScavengeParty: {fileID: 0}
-    removedFromScavengeParty: {fileID: 0}
-    beingSentScavenging: {fileID: 11400000, guid: 53426943d0c52a645bbeb962c7d54b59, type: 2}
-    sentScavengingWithShotgun: {fileID: 11400000, guid: d673113d45710344bb6c40639f9ecfb4, type: 2}
-    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 6cd571533c39170449a867a546aa2a58, type: 2}
-    diedWhileScavenging: {fileID: 0}
-    returnedFromScavengingWithGun: {fileID: 11400000, guid: 7e43725282de9c64c99d324aa57e1625, type: 2}
-    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: 6cd571533c39170449a867a546aa2a58, type: 2}
-    clickedOnDuringOvercrowding: {fileID: 0}
-    tryingToKickOut: {fileID: 0}
-    kickedOut: {fileID: 0}
-    commentOnOtherPersonAtDoor: {fileID: 0}
-  - id: -1608546876
-    wakingUp: {fileID: 11400000, guid: ac3b2651c05214c4db83a3508120447a, type: 2}
-    beforeScavengingChoice: {fileID: 0}
-    beforeUnscavengingChoice: {fileID: 0}
-    addedToScavengeParty: {fileID: 0}
-    removedFromScavengeParty: {fileID: 0}
-    beingSentScavenging: {fileID: 11400000, guid: 53426943d0c52a645bbeb962c7d54b59, type: 2}
-    sentScavengingWithShotgun: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
-    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
-    diedWhileScavenging: {fileID: 11400000, guid: 956a45af67463ca428746e55e84ff280, type: 2}
-    returnedFromScavengingWithGun: {fileID: 0}
-    returnedFromScavengingWithoutGun: {fileID: 0}
-    clickedOnDuringOvercrowding: {fileID: 0}
-    tryingToKickOut: {fileID: 0}
-    kickedOut: {fileID: 0}
-    commentOnOtherPersonAtDoor: {fileID: 0}
-  - id: 990541821
-    wakingUp: {fileID: 0}
-    beforeScavengingChoice: {fileID: 0}
-    beforeUnscavengingChoice: {fileID: 0}
-    addedToScavengeParty: {fileID: 0}
-    removedFromScavengeParty: {fileID: 0}
-    beingSentScavenging: {fileID: 0}
-    sentScavengingWithShotgun: {fileID: 0}
-    sentScavengingWithoutShotgun: {fileID: 0}
-    diedWhileScavenging: {fileID: 0}
-    returnedFromScavengingWithGun: {fileID: 0}
-    returnedFromScavengingWithoutGun: {fileID: 0}
-    clickedOnDuringOvercrowding: {fileID: 0}
-    tryingToKickOut: {fileID: 0}
-    kickedOut: {fileID: 0}
-    commentOnOtherPersonAtDoor: {fileID: 0}
+  _characters: []
   dayStarted: {fileID: 0}
-  checkOutside: {fileID: 11400000, guid: 228743c3b21e1af45baa93b0468abef6, type: 2}
-  radio: {fileID: 11400000, guid: 0f42cea38ada9fb439c397fa3196eba5, type: 2}
-  tv: {fileID: 11400000, guid: 0e9aab35dca5d0846bb560afc610adb3, type: 2}
-  checkSupplies: {fileID: 11400000, guid: 77f434fb708d0304eb17f8799ce9e36d, type: 2}
+  checkOutside: {fileID: 0}
+  radio: {fileID: 0}
+  tv: {fileID: 0}
+  checkSupplies: {fileID: 0}
   enteringTalking: {fileID: 0}
-  enteringScavenging: {fileID: 11400000, guid: aa813bff1be714c4d8a48c64c9b447b7, type: 2}
+  enteringScavenging: {fileID: 0}
   gotCar: {fileID: 0}
   sendNoScavengers: {fileID: 0}
   enteringOvercrowding: {fileID: 0}
-  personArrivedAtDoor: {fileID: 11400000, guid: 5a985f88a322e3c448614d184e93e38e, type: 2}
-  reactionToPlayerStayingSilent: {fileID: 11400000, guid: 244982fe2f38dfd45a1fd045e103e13b, type: 2}
-  peephole: {fileID: 11400000, guid: 9aa3a5402bcc7704a8b9099a389699c2, type: 2}
-  q_whoAreYou: {fileID: 11400000, guid: 8671ed93c09e1aa448a4afff9a89ceb7, type: 2}
-  q_whatDoYouWant: {fileID: 11400000, guid: d4e5e38e82d6c824896cd313d14d24f3, type: 2}
-  q_whyShouldILetYouIn: {fileID: 11400000, guid: 420f1549d9abee143b64982f5356fdce, type: 2}
-  q_howCanYouHelpMe: {fileID: 11400000, guid: b55d60f473319d047b233f254ac714d7, type: 2}
-  letPersonInside: {fileID: 11400000, guid: 981697626de359a4791b1be90247c566, type: 2}
-  keepPersonOutside: {fileID: 11400000, guid: 2a949746b73e4b2438b7b9a3e6f126b9, type: 2}
+  personArrivedAtDoor: {fileID: 0}
+  reactionToPlayerStayingSilent: {fileID: 0}
+  peephole: {fileID: 0}
+  q_whoAreYou: {fileID: 0}
+  q_whatDoYouWant: {fileID: 0}
+  q_whyShouldILetYouIn: {fileID: 0}
+  q_howCanYouHelpMe: {fileID: 0}
+  letPersonInside: {fileID: 0}
+  keepPersonOutside: {fileID: 0}
 --- !u!4 &2143297687
 Transform:
   m_ObjectHideFlags: 0
@@ -7745,7 +7891,7 @@ GameObject:
   - component: {fileID: 8404669417152202173}
   - component: {fileID: 4679808764190264952}
   m_Layer: 0
-  m_Name: day 1
+  m_Name: Init Day 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7779,3 +7925,6 @@ SceneRoots:
   - {fileID: 1222301962}
   - {fileID: 1118220819}
   - {fileID: 2143297687}
+  - {fileID: 448206852}
+  - {fileID: 789145480}
+  - {fileID: 1604992105}
