@@ -465,8 +465,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: 541.8, y: 276.28}
+  m_AnchoredPosition: {x: 20.700989, y: -19.6113}
+  m_SizeDelta: {x: 836.468, y: 208.9968}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2054139735043617638
 CanvasRenderer:
@@ -523,12 +523,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 113.8
-  m_fontSizeBase: 113.8
+  m_fontSize: 40
+  m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12904486647dd274fb23551869b0359a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayCounter: {fileID: 0}
+  dayCounter: {fileID: 6591517622433931034}
 --- !u!1 &1132165590763253698
 GameObject:
   m_ObjectHideFlags: 0

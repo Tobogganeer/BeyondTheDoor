@@ -16,7 +16,7 @@ public class DayCounterUI : MonoBehaviour
 
     private void getDay()
     {
-        dayCounter.text = "Day:" + Day.DayNumber.ToString() + "<br>" + Day.Stage.ToString() ;
+        dayCounter.text = "Day:" + Day.DayNumber.ToString() + "\n" + Day.Stage.ToString() ;
     }
 
     // Update is called once per frame

@@ -24,6 +24,9 @@ public class TutorialInit : DayBehaviour
             Character.Tutorial_Mom.ChangeStatus(CharacterStatus.InsideCabin);
             Character.Tutorial_Dad.ChangeStatus(CharacterStatus.InsideCabin);
         }
+        // Skip this stage
+        else if (Stage == Stage.SpeakingWithParty)
+            Game.Advance();
     }
 
     protected override void DoorOpened()

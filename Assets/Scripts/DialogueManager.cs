@@ -19,6 +19,9 @@ namespace BeyondTheDoor
         [SerializeField] private bool playLineAudio = true;
         [SerializeField] private Key nextKey = Key.Space;
 
+        private const float MinTimeBetweenClicks = 0.05f;
+        private float timer;
+
         PooledAudioSource playingAudio;
 
         void Start()
@@ -45,9 +48,17 @@ namespace BeyondTheDoor
 
         void Update()
         {
+            timer += Time.deltaTime;
+
             // Advance if the 'next' key or mouse are pressed
-            if (Keyboard.current[nextKey].wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
-                DialogueGUI.Next();
+            if (Keyboard.current[nextKey].wasReleasedThisFrame || Mouse.current.leftButton.wasReleasedThisFrame)
+            {
+                if (timer >= MinTimeBetweenClicks)
+                {
+                    DialogueGUI.Next();
+                    timer = 0;
+                }
+            }
         }
     }
 }

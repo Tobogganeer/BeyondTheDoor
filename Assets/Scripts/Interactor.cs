@@ -23,7 +23,7 @@ public class Interactor : MonoBehaviour
             timeSinceGuiOpen = 0;
 
         // Check if we click while not speaking already
-        if (timeSinceGuiOpen > 0.3f && Mouse.current.leftButton.wasPressedThisFrame)
+        if (timeSinceGuiOpen > 0.3f && Mouse.current.leftButton.wasReleasedThisFrame)
         {
             Ray ray = cam.ScreenPointToRay(Mouse.current.position.value);
             // Check if we clicked on something interactable

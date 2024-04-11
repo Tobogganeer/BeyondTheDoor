@@ -81,6 +81,7 @@ namespace BeyondTheDoor.UI
 
             if (currentConversation == null)
             {
+                //Debug.Log("Conv null. Queue? " + queue.Count);
                 // If we need to load a new conversation, send it
                 if (queue.Count > 0)
                 {
@@ -123,6 +124,8 @@ namespace BeyondTheDoor.UI
         {
             if (convo == null)
                 return;
+
+            Debug.Log("Opened: " + convo.name);
 
             currentElementIndex = -1;
             currentConversation = convo;

@@ -298,7 +298,13 @@ public class Game : MonoBehaviour
                 break;
             case Stage.FixingOvercrowding:
                 // See what happened to the scavengers
-                DetermineScavengerFates();
+                if (ScavengeParty.Count > 0)
+                {
+                    DetermineScavengerFates();
+                    // We have few enough people - get outta here
+                    if (Cabin.NumCurrentPartyMembers() <= 2)
+                        Advance();
+                }
                 break;
             case Stage.DealingWithArrival:
                 // Make the character "arrive"

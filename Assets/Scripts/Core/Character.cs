@@ -148,7 +148,7 @@ namespace BeyondTheDoor
             ArrivingAtDoor = null;
             OtherCharacterArrivingAtDoor = null;
             SpokenTo = null;
-            ClickedOnDuringScavengeStage = null;
+            //ClickedOnDuringScavengeStage = null;
             AddedToScavengeParty = null;
             RemovedFromScavengeParty = null;
             //AboutToBeSentScavenging = null;
