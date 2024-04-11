@@ -28,9 +28,7 @@ public class EndingAnimation : MonoBehaviour
 
     IEnumerator Start()
     {
-        Character.Player.ChangeStatus(CharacterStatus.DeadOnWayToBorder);
-        Cabin.HasCar = false;
-         //player no car 
+        //player no car 
         if (Character.Player.Status == CharacterStatus.DeadOnWayToBorder && !Cabin.HasCar)
         {
             Debug.Log("died on the way");
