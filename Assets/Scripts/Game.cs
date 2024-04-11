@@ -164,6 +164,7 @@ public class Game : MonoBehaviour
 
         makingOCDecisionCallback.Callback += (conv, line) =>
         {
+            Debug.Log("SAVING CHAR: " + Character.Current != null ? Character.Current.Name : "null :(");
             Character.ChoppingBlock = Character.Current;
             DayBehaviour.Current.Characters[Character.Current.ID].tryingToKickOut.TryStart();
             q_kickCharacterOut.Enqueue();
