@@ -87,7 +87,7 @@ public abstract class DayBehaviour : MonoBehaviour
 
     private void AddGameCallbacks()
     {
-        Game.OnInitialize.AddListener(() => { if (Active) RegisterCharacterCallbacks(); Initialize(); });
+        Game.OnInitialize.AddListener(() => { if (Active) { RegisterCharacterCallbacks(); InitCharacterNames(); Initialize(); } });
         Game.OnStageChanged.AddListener(() => { if (Active) StageChanged(); });
         Game.OnStageLoaded.AddListener(() => { if (Active) StageLoaded(); });
         //Game.OnNewDayStarted.AddListener(NewDayStarted);
@@ -108,6 +108,24 @@ public abstract class DayBehaviour : MonoBehaviour
         foreach (CharacterInit ch in _characters)
             Register(ch, Character.All[ch.id]);
     }
+
+    private void InitCharacterNames()
+    {
+        // Set the character names to their proper values
+        Character.Tutorial_Dad.Name = "Dad";
+        Character.Tutorial_Mom.Name = "Mom";
+        Character.None.Name = string.Empty;
+
+        // These are the characters who are "revealed"
+        Character.Jessica.NameAlwaysKnown = false;
+        Character.Bob.NameAlwaysKnown = false;
+        Character.Violet.NameAlwaysKnown = false;
+        Character.Hal.NameAlwaysKnown = false;
+        Character.Sal.NameAlwaysKnown = false;
+        Character.Dad.NameAlwaysKnown = false;
+        Character.Bear.NameAlwaysKnown = false;
+    }
+
 
     private void RunStageStartConversations()
     {

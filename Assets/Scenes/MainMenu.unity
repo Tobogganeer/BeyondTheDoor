@@ -3456,6 +3456,7 @@ MonoBehaviour:
   q_howCanYouHelpMe: {fileID: 11400000, guid: d70bebfee16c2104eae7c40d49da16a9, type: 2}
   letPersonInside: {fileID: 11400000, guid: 6b549295ffcc83c40ade6584501914e0, type: 2}
   keepPersonOutside: {fileID: 11400000, guid: 4e261c02f2b4afa4fbfc5c93178418a5, type: 2}
+  activateBearEnding: {fileID: 0}
 --- !u!4 &1118220819
 Transform:
   m_ObjectHideFlags: 0
@@ -6945,7 +6946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characters: []
-  dayStarted: {fileID: 0}
+  dayStarted: {fileID: 11400000, guid: 011044a72cadd714da6e89d34957ea84, type: 2}
   checkOutside: {fileID: 0}
   radio: {fileID: 0}
   tv: {fileID: 0}
@@ -7725,7 +7726,7 @@ MonoBehaviour:
   enteringOvercrowding: {fileID: 0}
   personArrivedAtDoor: {fileID: 11400000, guid: 20a40f2aedc784444b7ded9cd3387dcd, type: 2}
   reactionToPlayerStayingSilent: {fileID: 0}
-  peephole: {fileID: 0}
+  peephole: {fileID: 11400000, guid: ee1554e85b216e6408317aac887d58e8, type: 2}
   q_whoAreYou: {fileID: 11400000, guid: 68aa156e03b856f41b6cccf6fd092cab, type: 2}
   q_whatDoYouWant: {fileID: 11400000, guid: 6f1f38f7b53ae164f9fc8b728ea54964, type: 2}
   q_whyShouldILetYouIn: {fileID: 11400000, guid: c36eeafa5e2d48345ad8d129fc441a9b, type: 2}

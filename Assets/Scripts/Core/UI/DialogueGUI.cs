@@ -11,6 +11,7 @@ namespace BeyondTheDoor.UI
     {
         public static DialogueGUI Current { get; private set; }
         public bool IsCurrent => Current == this;
+        private static bool Exists => Current != null;
 
         [Header("Config")]
         [SerializeField] private bool startAsDefault = true;
@@ -20,28 +21,34 @@ namespace BeyondTheDoor.UI
         [Space]
         [SerializeField] private GameObject characterUIContainer;
         [SerializeField] private TMP_Text characterNameField;
+        [SerializeField] private GameObject characterNameHolder;
         [SerializeField] private TMP_Text lineTextField;
         [SerializeField] private GameObject endOfLineMarker;
         [Space]
         [SerializeField] private GameObject choiceUIContainer;
         [SerializeField] private ChoiceGUI[] choiceButtons;
 
+        private Conversation currentConversation;
+        private int currentElementIndex;
         private Line currentLine;
         private string formattedLineText;
         private ChoiceCollection currentChoices;
         private int revealedLength;
+        private Queue<Conversation> queue = new Queue<Conversation>();
 
         /// <summary>
         /// Set by Settings.cs
         /// </summary>
         public static float RevealedCharactersPerSecond { get; set; }
 
-        public static Line CurrentLine => Current?.currentLine;
-        public static ChoiceCollection CurrentChoices => Current?.currentChoices;
+        public static Conversation CurrentConversation => Exists ? Current.currentConversation : null;
+        public static Line CurrentLine => Exists ? Current.currentLine : null;
+        public static ChoiceCollection CurrentChoices => Exists ? Current.currentChoices : null;
         public static bool HasLine => CurrentLine != null;
         public static bool HasChoices => CurrentChoices != null;
         public static bool AtEndOfLine => HasLine && Current.revealedLength >= Current.formattedLineText.Length;
         public static bool IsOpen => HasLine;
+        public static Queue<Conversation> Queue => Exists ? Current.queue : null;
 
         // Intended to be used for audio VVV
         /// <summary>
@@ -72,6 +79,19 @@ namespace BeyondTheDoor.UI
             if (!IsCurrent)
                 return;
 
+            if (currentConversation == null)
+            {
+                // If we need to load a new conversation, send it
+                if (queue.Count > 0)
+                {
+                    OpenConversation(queue.Dequeue());
+                    return;
+                }
+                // If there is nothing else, close ourselves
+                else
+                    Close();
+            }
+
             if (HasLine && !AtEndOfLine)
             {
                 UpdateLine();
@@ -101,12 +121,21 @@ namespace BeyondTheDoor.UI
 
         internal void OpenConversation(Conversation convo)
         {
-            // Turn the line text on, keep choices off
-            SetWindowActive(true);
-            SetLineTextActive(true);
-            SetChoicesActive(false);
+            if (convo == null)
+                return;
 
-            throw new System.NotImplementedException();
+            currentElementIndex = -1;
+            currentConversation = convo;
+
+            // Turn the line text on, keep choices off
+            //SetWindowActive(true);
+            //SetLineTextActive(true);
+            //SetChoicesActive(false);
+
+            if (currentConversation.onStarted != null)
+                currentConversation.onStarted.Invoke(convo, LineID.none);
+
+            WalkAndTryOpen();
         }
 
         internal void OpenLine(Line line)
@@ -124,12 +153,20 @@ namespace BeyondTheDoor.UI
             // Set our current
             currentLine = line;
             // TODO: Format text accounting for variables etc
-            formattedLineText = line.text;
+            formattedLineText = line.text.Replace("{character}", Character.Current.GetCurrentName());
             // Get the incremental printing ready
             revealedLength = 0;
             ResetRevealTimer();
 
-            characterNameField.text = Character.All[line.CharacterID].GetCurrentName();
+            string name = Character.All[line.CharacterID].GetCurrentName();
+            if (string.IsNullOrEmpty(name))
+                characterNameHolder.SetActive(false);
+            else
+            {
+                characterNameHolder.SetActive(true);
+                characterNameField.text = name;
+            }
+
             lineTextField.text = string.Empty; // Blank
 
             OnLineStart?.Invoke(line.ID);
@@ -182,6 +219,8 @@ namespace BeyondTheDoor.UI
         {
             currentChoices = null; // Remove our choices
             choice.OnChoiceChosen(); // Activate it
+
+            ConversationFinished();
         }
 
 
@@ -218,11 +257,12 @@ namespace BeyondTheDoor.UI
         /// <param name="next"></param>
         public static void Enqueue(Conversation next)
         {
-            throw new System.NotImplementedException();
+            if (next != null)
+                Queue?.Enqueue(next);
         }
 
         /// <summary>
-        /// Closes the window and stops the dialogue.
+        /// Closes the window, stops the dialogue, and clears the queue.
         /// </summary>
         public static void Close()
         {
@@ -259,9 +299,11 @@ namespace BeyondTheDoor.UI
             if (HasLine && !AtEndOfLine)
                 OnLineStop?.Invoke(CurrentLine.ID);
 
+            currentConversation = null;
             currentLine = null;
             currentChoices = null;
             Character.Current = null;
+            queue.Clear();
         }
 
         private void _Next()
@@ -278,7 +320,12 @@ namespace BeyondTheDoor.UI
 
             // Let the line know it's done
             if (AtEndOfLine)
+            {
                 currentLine.OnLineClosing();
+                currentLine = null;
+                // Find the next line
+                WalkAndTryOpen();
+            }
             else
             {
                 // Skip to the end of the line
@@ -287,9 +334,135 @@ namespace BeyondTheDoor.UI
             }
         }
 
+        private void WalkAndTryOpen()
+        {
+            WalkElement();
+            // If we found a line, open it
+            if (currentLine != null)
+                currentLine.Open();
+            // If we found no line and didn't switch convos, take some action
+            //else if (currentConversation == this)
+            //    OnAllLinesFinished();
+        }
+
+        private void OnAllLinesFinished()
+        {
+            // If we have choices to display
+            if (currentConversation.choices != null && currentConversation.choices.Count > 0)
+            {
+                ChoiceCollection choices = new ChoiceCollection(currentConversation, currentConversation.choices);
+                choices.Open();
+            }
+            else
+                ConversationFinished();
+        }
+
+        private void ConversationFinished()
+        {
+            if (currentConversation.onFinished != null)
+                currentConversation.onFinished.Invoke(currentConversation, LineID.none);
+
+            // We are done this one
+            currentConversation = null;
+        }
+
+        /// <summary>
+        /// Moves the 'cursor' forwards until a new line or conversation is reached
+        /// </summary>
+        private void WalkElement()
+        {
+            if (currentConversation == null)
+                return;
+
+            bool useNextElifOrElse = false;
+
+            currentElementIndex++;
+            while (currentElementIndex < currentConversation.elements.Count)
+            {
+                IConversationElement element = currentConversation.elements[currentElementIndex];
+
+                if (element is DialogueElement line)
+                {
+                    // We found a line - open it and stop
+                    Line.Get(line.lineID).Open();
+                    return;
+                }
+                else if (element is IfElement ifElement)
+                {
+                    // If true, keep going through the block
+                    if (ConversationVariables.IsTrue(ifElement.condition))
+                        goto Increment;
+                    // Otherwise, skip it and step to the next thing
+                    else
+                    {
+                        useNextElifOrElse = true;
+                        FindNextElifOrElse();
+                        continue;
+                    }
+                }
+                else if (element is ElifElement elifElement)
+                {
+                    // Should we try and evaluate this?
+                    if (useNextElifOrElse && ConversationVariables.IsTrue(elifElement.condition))
+                        // Keep goin through
+                        goto Increment;
+                    else
+                    {
+                        useNextElifOrElse = true;
+                        FindNextElifOrElse();
+                        continue;
+                    }
+                }
+                else if (element is ElseElement elseElement)
+                {
+                    if (useNextElifOrElse)
+                        // Keep goin through
+                        goto Increment;
+                    else
+                    {
+                        // Find the end of the if
+                        useNextElifOrElse = false;
+                        FindNextElifOrElse();
+                        continue;
+                    }
+                }
+                else if (element is GotoElement gotoElement)
+                {
+                    // Switch over to this one
+                    if (currentConversation.onFinished != null)
+                        currentConversation.onFinished.Invoke(currentConversation, LineID.none);
+                    OpenConversation(gotoElement.conversation);
+                    return;
+                }
+                // We don't care about Choices, just go through em
+
+            Increment:;
+                currentElementIndex++;
+                // Don't try to use the next else or elif
+                useNextElifOrElse = false;
+            }
+
+            OnAllLinesFinished();
+        }
+
+        private void FindNextElifOrElse()
+        {
+            // Just in case
+            int safety = 10000;
+            while (safety --> 0)
+            {
+                currentElementIndex++;
+                IConversationElement element = currentConversation.elements[currentElementIndex];
+                if (element is ElifElement || element is ElseElement || element is EndIfElement)
+                    return;
+            }
+
+            throw new FormatException("Could not find end to a Conversation If block!");
+        }
+
         public static void ClearQueue()
         {
-            throw new NotImplementedException();
+            Queue?.Clear();
         }
 
         [System.Serializable]

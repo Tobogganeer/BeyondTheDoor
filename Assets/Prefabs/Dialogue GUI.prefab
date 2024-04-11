@@ -157,10 +157,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAsDefault: 1
-  revealedCharactersPerSecond: 25
   dialogueUIContainer: {fileID: 1777531404031824716}
   characterUIContainer: {fileID: 5324825214270709586}
   characterNameField: {fileID: 1740240234719948474}
+  characterNameHolder: {fileID: 3513619254078679005}
   lineTextField: {fileID: 1976907048930160193}
   endOfLineMarker: {fileID: 5420650876268794237}
   choiceUIContainer: {fileID: 292882078864920391}

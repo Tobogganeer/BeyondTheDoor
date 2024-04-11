@@ -36,6 +36,8 @@ namespace BeyondTheDoor
         public IDialogueElement Introduction { get; set; }
         */
 
+        public bool NameAlwaysKnown { get; set; } = true;
+
 
         // ============ Useful Properties ============
         /// <summary>
@@ -95,11 +97,13 @@ namespace BeyondTheDoor
         /// </summary>
         /// <remarks>Start dialogue</remarks>
         public event Action<Character> RemovedFromScavengeParty;
+        /*
         /// <summary>
         /// Called when the player clicks the button to start the scavenge.
         /// </summary>
         /// <remarks>Call SendToScavenge_With/NoShotgun callback</remarks>
         public event Action<Character> AboutToBeSentScavenging;
+        */
         /// <summary>
         /// Called when the player sends this character out to scavenge. Passes the character and whether or not they have the shotgun.
         /// </summary>
@@ -113,7 +117,7 @@ namespace BeyondTheDoor
 
 
         // ============ Constants ============
-        static readonly string UnknownCharacterName = "(Unknown)";
+        static readonly string UnknownCharacterName = "Unknown";
         
 
         /// <summary>
@@ -146,7 +150,7 @@ namespace BeyondTheDoor
             ClickedOnDuringScavengeStage = null;
             AddedToScavengeParty = null;
             RemovedFromScavengeParty = null;
-            AboutToBeSentScavenging = null;
+            //AboutToBeSentScavenging = null;
             SentToScavenge = null;
             ClickedOnDuringOvercrowding = null;
         }
@@ -217,7 +221,7 @@ namespace BeyondTheDoor
         /// <returns></returns>
         public string GetCurrentName()
         {
-            return HasBeenIntroduced ? Name : UnknownCharacterName;
+            return (HasBeenIntroduced || NameAlwaysKnown) ? Name : UnknownCharacterName;
         }
 
 

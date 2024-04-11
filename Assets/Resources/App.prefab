@@ -163,18 +163,18 @@ MonoBehaviour:
   - name: MainMenu
     level: 0
     scene: MainMenu
-  - name: Morning
+  - name: Dawn
     level: 1
+    scene: Dawn
+  - name: Morning
+    level: 2
     scene: Morning
   - name: Noon
-    level: 2
+    level: 3
     scene: Noon
   - name: Afternoon
-    level: 3
-    scene: Afternoon
-  - name: Evening
     level: 4
-    scene: Evening
+    scene: Afternoon
   - name: Door
     level: 5
     scene: Door

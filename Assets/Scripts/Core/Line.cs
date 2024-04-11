@@ -65,7 +65,7 @@ namespace BeyondTheDoor
         [SerializeField] internal VoiceStatus voiceStatus;
         [SerializeField] internal string extraData;
 
-        private IDialogueElement followupElement;
+        //private IDialogueElement followupElement;
         internal int timesOpened;
 
         /// <summary>
@@ -99,6 +99,7 @@ namespace BeyondTheDoor
             UI.DialogueGUI.Open(this);
         }
 
+        /*
         /// <summary>
         /// Opens the <paramref name="followingLine"/> after this line is complete.
         /// </summary>
@@ -129,6 +130,7 @@ namespace BeyondTheDoor
             ChoiceCollection choiceCollection = new ChoiceCollection(choices);
             followupElement = choiceCollection;
         }
+        */
 
 
 
@@ -158,11 +160,11 @@ namespace BeyondTheDoor
         internal void OnLineClosing()
         {
             // Open the next thing if there is one
-            if (followupElement != null)
-                followupElement.Open();
+            //if (followupElement != null)
+            //    followupElement.Open();
             // If not just stop the dialogue
-            else
-                UI.DialogueGUI.Close();
+            //else
+            //    UI.DialogueGUI.Close();
 
             OnClose?.Invoke(this);
         }
