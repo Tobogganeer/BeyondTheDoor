@@ -204,9 +204,9 @@ CONVERSATION	JokeEnding		0
 Tutorial_Mom	Kiddo?	Player keeps door closed again	0	tutmom_0_door_closed_twice	Draft	None	
 END							
 							
-							
 CONVERSATION	TutorialEnd		0				
 Tutorial_Dad	"Thanks kiddo, now let's eat some ice cream!"	Player lets them in	0	tutdad_0_lets_eat	Draft	None	
+GOTO	Advance						
 END							
 							
 //	Day 1						

@@ -1,4 +1,4 @@
-1801
+1802
 Test
 These lines show some formatting stuff
 Heres some useful internal notes
@@ -1333,6 +1333,14 @@ Player lets them in
 0
 tutdad_0_lets_eat
 Draft
+None
+
+GOTO
+Advance
+
+
+
+None
 None
 
 END

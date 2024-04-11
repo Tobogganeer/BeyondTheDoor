@@ -7356,6 +7356,7 @@ MonoBehaviour:
   letPersonInside: {fileID: 0}
   keepPersonOutside: {fileID: 0}
   jokeEnding: {fileID: 11400000, guid: 3c286f018d00bfd40a31428c9540939f, type: 2}
+  bringParentsInside: {fileID: 11400000, guid: 6356589dbf4440141a2f82867d175b6d, type: 2}
 --- !u!4 &2027103834
 Transform:
   m_ObjectHideFlags: 0

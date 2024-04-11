@@ -117,13 +117,13 @@ public abstract class DayBehaviour : MonoBehaviour
         Character.None.Name = string.Empty;
 
         // These are the characters who are "revealed"
-        Character.Jessica.NameAlwaysKnown = false;
-        Character.Bob.NameAlwaysKnown = false;
-        Character.Violet.NameAlwaysKnown = false;
-        Character.Hal.NameAlwaysKnown = false;
-        Character.Sal.NameAlwaysKnown = false;
-        Character.Dad.NameAlwaysKnown = false;
-        Character.Bear.NameAlwaysKnown = false;
+        Character.Jessica.NameKnown = false;
+        Character.Bob.NameKnown = false;
+        Character.Violet.NameKnown = false;
+        Character.Hal.NameKnown = false;
+        Character.Sal.NameKnown = false;
+        Character.Dad.NameKnown = false;
+        Character.Bear.NameKnown = false;
     }
 
 
