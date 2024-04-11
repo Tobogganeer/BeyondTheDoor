@@ -2830,7 +2830,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4512d3b93f1e11d4dbee9601264b2934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characters: []
+  _characters:
+  - id: -1608546876
+    wakingUp: {fileID: 11400000, guid: b699d38cd14e9024da1aa8ef1c9b5c29, type: 2}
+    beforeScavengingChoice: {fileID: 11400000, guid: 98ed8c39a76315e47a282115f5b9c376, type: 2}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 11400000, guid: 44f9f4ec2c536d4438dde47ea6fc8c9b, type: 2}
+    removedFromScavengeParty: {fileID: 11400000, guid: 4bea6f923cfcd8d49990a250a8a4ff7e, type: 2}
+    beingSentScavenging: {fileID: 11400000, guid: c0d673ca50ca9f14eb8b69e4ef3c696b, type: 2}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: 4358544e12fa5ee41ac162cf39759a9f, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: d6d5e55ae0421694fbd8017241870bf6, type: 2}
+    diedWhileScavenging: {fileID: 11400000, guid: 2aa57a0a5efaec14dbbe83b4b27589c5, type: 2}
+    returnedFromScavengingWithGun: {fileID: 0}
+    returnedFromScavengingWithoutGun: {fileID: 0}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: 384e603fd6d76a74b9666a114bbbffb9, type: 2}
+  - id: 1502599511
+    wakingUp: {fileID: 11400000, guid: d0199ec4fa378084bae2830aafb2c3d0, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 11400000, guid: 25b2429c7137384499a1da60d8feded5, type: 2}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 564193bec91208546876de89a740119c, type: 2}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: 214e7f204b9667941869bb1cad18d14c, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: f62fe94bd0a24ca49b184bff3f6de396, type: 2}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: baca79c3c7ccab4498f89dd0e8969cbb, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: e36b79797e27852459321f37dce12587, type: 2}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: c2b9adccaad0dfd4a87fed3fb41a0670, type: 2}
+  - id: 990541821
+    wakingUp: {fileID: 11400000, guid: 45f0cb432734f0242bcad93fcf8b35fc, type: 2}
+    beforeScavengingChoice: {fileID: 0}
+    beforeUnscavengingChoice: {fileID: 0}
+    addedToScavengeParty: {fileID: 11400000, guid: 7bf75af552be5f74fa7db03ca05319f1, type: 2}
+    removedFromScavengeParty: {fileID: 0}
+    beingSentScavenging: {fileID: 11400000, guid: 14b0f42035a2ac048a5e3dd4ca4fda62, type: 2}
+    sentScavengingWithShotgun: {fileID: 11400000, guid: 80e74af4a72ff1f49be70828fa09349f, type: 2}
+    sentScavengingWithoutShotgun: {fileID: 11400000, guid: 66e7e8d3e7669d34099588079be4996e, type: 2}
+    diedWhileScavenging: {fileID: 0}
+    returnedFromScavengingWithGun: {fileID: 11400000, guid: 429297fd92cdc844a91081f218b7d656, type: 2}
+    returnedFromScavengingWithoutGun: {fileID: 11400000, guid: a189f928c744471439ec0fab239992e3, type: 2}
+    clickedOnDuringOvercrowding: {fileID: 0}
+    tryingToKickOut: {fileID: 0}
+    kickedOut: {fileID: 0}
+    commentOnOtherPersonAtDoor: {fileID: 11400000, guid: ae43bbf9ef7d6a9468b0612c704b04fe, type: 2}
   dayStarted: {fileID: 0}
   checkOutside: {fileID: 11400000, guid: 32792d9a464e4c94a8869997f013a1ad, type: 2}
   radio: {fileID: 11400000, guid: 1fd2952661a46d14292f90a880ca6825, type: 2}
