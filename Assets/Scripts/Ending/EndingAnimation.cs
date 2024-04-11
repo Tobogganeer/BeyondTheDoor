@@ -21,11 +21,12 @@ public class EndingAnimation : MonoBehaviour
     IEnumerator Start()
     {
 
-        Character.Jessica.ChangeStatus(CharacterStatus.AliveAtBorder, true);
 
         List<Character> peopleAtTheBorder = GetCharactersAtBorder();
         bool only1atBorder = peopleAtTheBorder.Count == 1;
-        Character personAtBorder = peopleAtTheBorder[0];
+        Character personAtBorder = null;
+        if (only1atBorder)
+            personAtBorder = peopleAtTheBorder[0];
 
 
 
@@ -40,15 +41,16 @@ public class EndingAnimation : MonoBehaviour
             yield return WriteList(timeBetweenTransitions, "I was feeling very tired", "I felt my leg tremble as I walked", " I blinked and now I’m dead", "Is it all my fault, the raiders?", "everyone they took, was it my fault?", "or it was destined to happen?", "We were at war", "How I could’ve done better?", "I guess theres no more chances for me", "For those who I met in the last days", "I’m sorry", "I’m truly sorry");
             survivors = 0;
             Final();
-
+           
         }
         //player dead by bear
-        if (Character.Player.Status == CharacterStatus.KilledByBear)
+        if (Character.Jessica.Status == CharacterStatus.KilledByBear )
         {
             yield return WriteList(timeBetweenTransitions, "What the fuck was going on my head", "for me to let a bear get inside my house","I’m dead now","What makes me even sadder", "is that I’m just a number now","like those who where caught between conflicting ideas","my death is irrelevant", "as it will all be forgotten in the future","I don’t think I can judge them to be honest", "it is in the human nature to not care about stuff", "that doesn’t affect them");
             // change later for text No survivors
             survivors = 0;
             Final();
+
         }
         if(Character.Player.Status == CharacterStatus.AliveAtBorder && Character.Bob.Status == CharacterStatus.AliveAtBorder && Character.Sal.Status == CharacterStatus.AliveAtBorder && Character.Hal.Status == CharacterStatus.AliveAtBorder)
         {
@@ -111,6 +113,7 @@ public class EndingAnimation : MonoBehaviour
         //Jessica only
         if(only1atBorder && personAtBorder == Character.Jessica)
         {
+            Debug.Log("jessica only");
             yield return WriteList(timeBetweenTransitions, "6 people", "Hard decisions were made", "People were sent to their death", "Only some left unharmed", "We", "survived", "A new dawn rises", "A new life starts");
 
             yield return WriteList(timeBetweenTransitions, "We reached the border safely", "finally", "I had to keep an eye on Jesssica", "when we were asked for our id", "they were surprised by Jessica's", "Turns out shes niece of one of the higher ups in Brasnia", "We were taken to a room, wand told to wait for someone", "Turns out we're getting evacuted to the USA for protection");
@@ -170,6 +173,7 @@ public class EndingAnimation : MonoBehaviour
         text.gameObject.SetActive(false);
         FinalText.text = "Markistan Border <br> 12 / 05 / 2002 <br> " + survivors + " survivors";
         FinalText.gameObject.SetActive(true);
+        
     }
 }
 

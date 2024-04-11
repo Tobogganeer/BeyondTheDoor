@@ -21,9 +21,12 @@ public class Day3Init : DayBehaviour
 
     private static void BearEnding()
     {
+        Character.Jessica.ChangeStatus(CharacterStatus.KilledByBear);
+        Character.Player.ChangeStatus(CharacterStatus.KilledByBear);
         // Stop any advances
         DialogueGUI.Close();
         UnitySceneManager.LoadScene("Ending");
+
     }
 
     private void BobKilled()
