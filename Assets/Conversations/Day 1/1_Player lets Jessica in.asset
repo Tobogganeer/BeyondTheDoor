@@ -14,26 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597357850
-  - rid: 2007814011597357851
-  - rid: 2007814011597357852
+  - rid: 2007814039375446129
+  - rid: 2007814039375446130
+  - rid: 2007814039375446131
+  - rid: 2007814039375446132
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597357850
+    - rid: 2007814039375446129
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 917835886
-    - rid: 2007814011597357851
+    - rid: 2007814039375446130
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1332833099
-    - rid: 2007814011597357852
+    - rid: 2007814039375446131
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1544042680
+    - rid: 2007814039375446132
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 11400000, guid: a919aa7efd017fa4bb1ba7d61f44cf4b, type: 2}
+        goofyWorkaroundConversationName: 1_Player talking to Jessica

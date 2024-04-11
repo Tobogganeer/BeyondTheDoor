@@ -7355,7 +7355,7 @@ MonoBehaviour:
   q_howCanYouHelpMe: {fileID: 0}
   letPersonInside: {fileID: 0}
   keepPersonOutside: {fileID: 0}
-  jokeEnding: {fileID: 0}
+  jokeEnding: {fileID: 11400000, guid: 3c286f018d00bfd40a31428c9540939f, type: 2}
 --- !u!4 &2027103834
 Transform:
   m_ObjectHideFlags: 0
