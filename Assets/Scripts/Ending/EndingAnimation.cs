@@ -26,8 +26,10 @@ public class EndingAnimation : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private int survivors;
 
+
     IEnumerator Start()
     {
+
 
         if (Day.DayNumber == 5 && !Cabin.HasScavengedSuccessfully)
         {
