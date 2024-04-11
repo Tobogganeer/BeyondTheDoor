@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: 5_Kicking Bob out
   m_EditorClassIdentifier: 
-  onStarted: {fileID: 0}
+  onStarted: {fileID: 11400000, guid: 0ad75625eab4e314c9ac35b92278587c, type: 2}
   elements:
   - rid: 2007814042214989832
   - rid: 2007814042214989833

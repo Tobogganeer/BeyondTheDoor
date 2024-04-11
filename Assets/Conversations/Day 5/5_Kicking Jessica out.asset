@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ca03d4a0563b54e8260f899ebdbd9a, type: 3}
   m_Name: 5_Kicking Jessica out
   m_EditorClassIdentifier: 
-  onStarted: {fileID: 0}
+  onStarted: {fileID: 11400000, guid: 04eef5830a626c449b92a20cf7f07aa0, type: 2}
   elements:
   - rid: 2007814039375446588
   - rid: 2007814039375446589

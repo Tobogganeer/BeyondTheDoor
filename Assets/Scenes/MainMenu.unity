@@ -1626,6 +1626,11 @@ MonoBehaviour:
   letPersonInside: {fileID: 11400000, guid: 0ca11ddf1adedc84dadaeba96ac5a96f, type: 2}
   keepPersonOutside: {fileID: 11400000, guid: 8bd6a534ac2eb2c41a106be319076992, type: 2}
   afterScavenging: {fileID: 11400000, guid: fafc5aac1888d6746856d474fd6b7c7f, type: 2}
+  bobChoppingBlock: {fileID: 11400000, guid: 0ad75625eab4e314c9ac35b92278587c, type: 2}
+  jessicaChoppingBlock: {fileID: 11400000, guid: 04eef5830a626c449b92a20cf7f07aa0, type: 2}
+  violetChoppingBlock: {fileID: 11400000, guid: 06b34471cc1b1164abd7e2b6e58c3b77, type: 2}
+  halChoppingBlock: {fileID: 11400000, guid: 620a3327aa094c74f8272bf637a7bb0a, type: 2}
+  salChoppingBlock: {fileID: 11400000, guid: 2f7b3aa7d945d954fa5d2a7862771877, type: 2}
 --- !u!4 &448206852
 Transform:
   m_ObjectHideFlags: 0
