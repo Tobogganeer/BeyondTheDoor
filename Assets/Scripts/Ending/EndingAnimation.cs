@@ -84,7 +84,11 @@ public class EndingAnimation : MonoBehaviour
     {
         if (Character.Bob.AliveAtBorder && Character.Sal.AliveAtBorder && Character.Hal.AliveAtBorder)
         {
-            //implement later
+            // Twins and  bob are alive
+            yield return Write6PeoplePreamble();
+
+            yield return WriteList(timeBetweenTransitions, "Bob looked over those kids.", "Raised them like he was never raised", "and they taught him a thing or two", "about patience", "about trust", "about being human", "in a warzone.");
+            yield return Final(4);
         }
         //player bob jessica
         else if(Character.Bob.AliveAtBorder && Character.Jessica.AliveAtBorder)
@@ -112,6 +116,14 @@ public class EndingAnimation : MonoBehaviour
             yield return WriteList(timeBetweenTransitions, "Violet opened a mechanics shop", "she hired Jessica to keep an eye on her", "as she swore to take care of her", "The place has been going well", "I passed there after some years", "they were glad to see me", "I even got a job offer", "I guess it was worth it in the end");
             yield return Final(3);
 
+        }
+        else if (Character.Hal.AliveAtBorder && Character.Sal.AliveAtBorder)
+        {
+            // Twins are alive
+            yield return Write6PeoplePreamble();
+
+            yield return WriteList(timeBetweenTransitions, "Sal got better", "Hal got bigger.", "They were inseperable", "until", "Sal got sent to the front", "and there was", "nothing", "for Hal to do about it.", "They will never know a home.");
+            yield return Final(3);
         }
         //dad ending
         else if (Character.Dad.AliveAtBorder)
