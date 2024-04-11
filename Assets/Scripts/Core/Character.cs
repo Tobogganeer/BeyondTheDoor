@@ -250,7 +250,8 @@ namespace BeyondTheDoor
         ScavengingWithShotgun,
         AliveAtBorder,
         KickedOut,
-        Left, // Used for Dad
+        Left, // Used for Dad and Hal
+        LeftWithShotgun, // Used for Dad
         DeadWhileScavenging,
         KilledByBear,
         Kidnapped,
