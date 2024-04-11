@@ -1,4 +1,4 @@
-1793
+1796
 Test
 These lines show some formatting stuff
 Heres some useful internal notes
@@ -1152,7 +1152,7 @@ Draft
 None
 
 Tutorial_Mom
-Hey kiddo, can you open the door please? It's raining out here...
+Hey kiddo, can you open the door please? It's raining out here... 
 At door
 0
 tutmom_0_q_open_door
@@ -3312,7 +3312,7 @@ None
 None
 
 Journalist
-But I heard some pretty fucked up stuff, both side are torturing some people for information.
+But I heard some pretty fucked up stuff, both side are torturing some people for information. 
 
 3
 journalist_3_fucked
@@ -4135,6 +4135,14 @@ ENDIF
 None
 None
 
+GOTO
+Bear ending
+
+
+
+None
+None
+
 END
 
 
@@ -4203,6 +4211,22 @@ ENDIF
 
 
 
+
+None
+None
+
+END
+
+
+
+
+None
+None
+
+CONVERSATION
+Bear ending
+
+3
 
 None
 None
@@ -5520,7 +5544,7 @@ None
 None
 
 Jessica
-You never know, It can be someone with some kind of disability, like a mute person.
+You never know, It can be someone with some kind of disability, like a mute person. 
 
 4
 j_4_disability

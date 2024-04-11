@@ -14,14 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597357920
+  - rid: 2007814039375446030
+  - rid: 2007814039375446031
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597357920
+    - rid: 2007814039375446030
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1792443379
+    - rid: 2007814039375446031
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 11400000, guid: ddaf316a463d47b48810287443f1f30c, type: 2}
+        goofyWorkaroundConversationName: 3_Journalist intro

@@ -3683,8 +3683,8 @@ MonoBehaviour:
   q_howCanYouHelpMe: {fileID: 11400000, guid: d70bebfee16c2104eae7c40d49da16a9, type: 2}
   letPersonInside: {fileID: 11400000, guid: 6b549295ffcc83c40ade6584501914e0, type: 2}
   keepPersonOutside: {fileID: 11400000, guid: 4e261c02f2b4afa4fbfc5c93178418a5, type: 2}
-  activateBearEnding: {fileID: 0}
-  BobKillerByBear: {fileID: 0}
+  activateBearEnding: {fileID: 11400000, guid: 2838d09a76c28a045bda922b88746980, type: 2}
+  BobKillerByBear: {fileID: 11400000, guid: 128b3c1a114e6714591a98dcfec889b4, type: 2}
 --- !u!4 &1118220819
 Transform:
   m_ObjectHideFlags: 0

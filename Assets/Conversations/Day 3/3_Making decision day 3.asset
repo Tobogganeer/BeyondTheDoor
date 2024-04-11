@@ -16,10 +16,10 @@ MonoBehaviour:
   elements: []
   choices:
   - prompt: 2053049645
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 4e261c02f2b4afa4fbfc5c93178418a5, type: 2}
     callback: {fileID: 0}
   - prompt: 917841574
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 6b549295ffcc83c40ade6584501914e0, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:

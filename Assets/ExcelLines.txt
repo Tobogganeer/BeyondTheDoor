@@ -673,7 +673,6 @@ Bob	"I think you did the right choice, its probably not even human"		3	b_3_not_h
 ENDIF							
 END							
 							
-							
 CONVERSATION	Letting animal in		3				
 IF	Bob						
 Bob	What the fuck are you doing? That thing is not human!		3	b_3_in	Placeholder		
@@ -681,11 +680,11 @@ Bear	*roar*		3	bear_3_roar	Placeholder
 Bob	Get back!		3	b_3_back	Placeholder		
 GOTO	Bob dead						
 ENDIF							
-IF 	Jessica						
+IF	Jessica						
 Jessica	GET THE GUN		3	j_3_gun	Placeholder		
 ENDIF							
+GOTO	Bear ending						
 END							
-							
 CONVERSATION	Bob dead		3				
 Player	Oh my god		3	p_3_god	Placeholder		
 IF	Jessica						
@@ -695,7 +694,8 @@ Jessica	"Yeah, good night to you too bob"		3	j_3_shocked	Placeholder
 Player	I think she's still in state of shock		3	p_3_shocked	Placeholder		
 ENDIF							
 END							
-							
+CONVERSATION	Bear ending		3				
+END							
 							
 //	Day 4						
 							
