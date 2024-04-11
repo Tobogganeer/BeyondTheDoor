@@ -8,6 +8,7 @@ using BeyondTheDoor.UI;
 public class Interactor : MonoBehaviour
 {
     private Camera cam;
+    private float timeSinceGuiOpen;
 
     private void Start()
     {
@@ -16,8 +17,13 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
+        timeSinceGuiOpen += Time.deltaTime;
+
+        if (DialogueGUI.IsOpen)
+            timeSinceGuiOpen = 0;
+
         // Check if we click while not speaking already
-        if (!DialogueGUI.IsOpen && Mouse.current.leftButton.wasPressedThisFrame)
+        if (timeSinceGuiOpen > 0.3f && Mouse.current.leftButton.wasPressedThisFrame)
         {
             Ray ray = cam.ScreenPointToRay(Mouse.current.position.value);
             // Check if we clicked on something interactable
