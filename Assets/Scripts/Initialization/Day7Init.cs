@@ -3,8 +3,7 @@ using BeyondTheDoor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-using UnitySceneManager =  UnityEngine.SceneManagement.SceneManager;
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class Day7Init : DayBehaviour
 {
