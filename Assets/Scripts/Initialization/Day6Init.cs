@@ -26,6 +26,7 @@ public class Day6Init : DayBehaviour
     private void DadLeaves()
     {
         Character.Dad.ChangeStatus(dadHasShotgun ? CharacterStatus.LeftWithShotgun : CharacterStatus.Left);
+        CharacterGraphics.UpdateCurrent();
     }
 
 }
