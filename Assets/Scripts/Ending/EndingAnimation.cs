@@ -82,12 +82,31 @@ public class EndingAnimation : MonoBehaviour
 
     private IEnumerator PlayerMadeItToBorder()
     {
+        // player bob twins
         if (Character.Bob.AliveAtBorder && Character.Sal.AliveAtBorder && Character.Hal.AliveAtBorder)
         {
             // Twins and  bob are alive
             yield return Write6PeoplePreamble();
 
             yield return WriteList(timeBetweenTransitions, "Bob looked over those kids.", "Raised them like he was never raised", "and they taught him a thing or two", "about patience", "about trust", "about being human", "in a warzone.");
+            yield return Final(4);
+        }
+        // player jessica twins
+        else if (Character.Jessica.AliveAtBorder && Character.Sal.AliveAtBorder && Character.Hal.AliveAtBorder)
+        {
+            // Twins and  bob are alive
+            yield return Write6PeoplePreamble();
+
+            yield return WriteList(timeBetweenTransitions, "Jessica needed people", "her parents were gone", "and this big, new world was scary.", "Hal and Sal were ready", "they helped her learn", "they had some good memories", "but in the end, this country is at war.", "Rest in peace, Jessica.");
+            yield return Final(4);
+        }
+        // player violet twins
+        else if (Character.Violet.AliveAtBorder && Character.Sal.AliveAtBorder && Character.Hal.AliveAtBorder)
+        {
+            // Twins and  bob are alive
+            yield return Write6PeoplePreamble();
+
+            yield return WriteList(timeBetweenTransitions, "Violet opened a car shop", "she got the twins to keep her company", "they were quite handy", "eager to learn", "and tough as nails.", "Hard times", "make hard people.");
             yield return Final(4);
         }
         //player bob jessica
