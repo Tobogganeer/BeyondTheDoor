@@ -37,7 +37,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fresnel_Power: 3.79
+    - _Fresnel_Power: 6.96
     - _Metallic: 0
     - _Noise_Scale: 7.16
     - _Noise_Speed: 0.2
@@ -47,7 +47,7 @@ Material:
     - _Smoothness: 0.1
     m_Colors:
     - _BaseColour: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
-    - _Glow: {r: 7.9999995, g: 4.4632554, b: 1.9245279, a: 1}
+    - _Glow: {r: 63.999996, g: 35.706043, b: 15.396223, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5227719935796523148
 MonoBehaviour:
