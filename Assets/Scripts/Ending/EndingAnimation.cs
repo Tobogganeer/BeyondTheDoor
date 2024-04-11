@@ -191,7 +191,7 @@ public class EndingAnimation : MonoBehaviour
             Debug.Log("bob only");
             yield return Write6PeoplePreamble();
 
-            yield return WriteList(timeBetweenTransitions, "some months and the war still rages on", "Bob chose to return to the war and fight as a revolutionary", "I never heard from him ever again", "I hope he's doing alright");
+            yield return WriteList(timeBetweenTransitions, "some months passed and the war still rages on", "Bob chose to return to the war and fight as a revolutionary", "I never heard from him ever again", "I hope he's doing alright");
             yield return Final(2);
 
         }
