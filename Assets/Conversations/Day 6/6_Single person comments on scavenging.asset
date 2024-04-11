@@ -14,49 +14,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120288080986659
-  - rid: 4847120288080986660
-  - rid: 4847120288080986661
-  - rid: 4847120288080986662
-  - rid: 4847120288080986663
-  - rid: 4847120288080986664
-  - rid: 4847120288080986665
+  - rid: 2007814042214989845
+  - rid: 2007814042214989846
+  - rid: 2007814042214989847
+  - rid: 2007814042214989848
+  - rid: 2007814042214989849
+  - rid: 2007814042214989850
+  - rid: 2007814042214989851
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120288080986659
+    - rid: 2007814042214989845
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 4847120288080986660
+    - rid: 2007814042214989846
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1810325687
-    - rid: 4847120288080986661
+    - rid: 2007814042214989847
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Violet && HasCar
-    - rid: 4847120288080986662
+    - rid: 2007814042214989848
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1715406531
-    - rid: 4847120288080986663
+    - rid: 2007814042214989849
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Violet && !HasCar
-    - rid: 4847120288080986664
+    - rid: 2007814042214989850
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 2050587645
-    - rid: 4847120288080986665
+    - rid: 2007814042214989851
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

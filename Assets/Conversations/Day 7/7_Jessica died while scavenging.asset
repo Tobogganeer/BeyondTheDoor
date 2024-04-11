@@ -14,78 +14,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120288080986921
-  - rid: 4847120288080986922
-  - rid: 4847120288080986923
-  - rid: 4847120288080986924
-  - rid: 4847120288080986925
-  - rid: 4847120288080986926
-  - rid: 4847120288080986927
-  - rid: 4847120288080986928
-  - rid: 4847120288080986929
-  - rid: 4847120288080986930
-  - rid: 4847120288080986931
-  - rid: 4847120288080986932
+  - rid: 2007814042214989861
+  - rid: 2007814042214989862
+  - rid: 2007814042214989863
+  - rid: 2007814042214989864
+  - rid: 2007814042214989865
+  - rid: 2007814042214989866
+  - rid: 2007814042214989867
+  - rid: 2007814042214989868
+  - rid: 2007814042214989869
+  - rid: 2007814042214989870
+  - rid: 2007814042214989871
+  - rid: 2007814042214989872
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120288080986921
+    - rid: 2007814042214989861
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 4847120288080986922
+    - rid: 2007814042214989862
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -637745014
-    - rid: 4847120288080986923
+    - rid: 2007814042214989863
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Violet
-    - rid: 4847120288080986924
+    - rid: 2007814042214989864
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1210048482
-    - rid: 4847120288080986925
+    - rid: 2007814042214989865
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Hal
-    - rid: 4847120288080986926
+    - rid: 2007814042214989866
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1611420372
-    - rid: 4847120288080986927
+    - rid: 2007814042214989867
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 4847120288080986928
+    - rid: 2007814042214989868
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 1247819228
-    - rid: 4847120288080986929
+    - rid: 2007814042214989869
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
-    - rid: 4847120288080986930
+    - rid: 2007814042214989870
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Hal
-    - rid: 4847120288080986931
+    - rid: 2007814042214989871
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
         conversation: {fileID: 11400000, guid: 966142c1577f9354c8425f6e95bca50e, type: 2}
         goofyWorkaroundConversationName: 7_Sal dies from lack of successful scavenge
-    - rid: 4847120288080986932
+    - rid: 2007814042214989872
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

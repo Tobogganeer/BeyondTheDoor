@@ -16,16 +16,16 @@ MonoBehaviour:
   elements: []
   choices:
   - prompt: -1391640528
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 72c2db5760148034ab94bd4c295bc41e, type: 2}
     callback: {fileID: 0}
   - prompt: 461328118
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: f405ca5fb5fced04aa8cd41d3df61b99, type: 2}
     callback: {fileID: 0}
   - prompt: 606166063
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 413bad1959a31cd4fae1090ffd2f6061, type: 2}
     callback: {fileID: 0}
   - prompt: 1030917857
-    nextConversation: {fileID: 0}
+    nextConversation: {fileID: 11400000, guid: 1867f1464b84eca4bbb813679fde9527, type: 2}
     callback: {fileID: 0}
   onFinished: {fileID: 0}
   references:

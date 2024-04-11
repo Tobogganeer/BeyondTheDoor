@@ -14,43 +14,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120288080986984
-  - rid: 4847120288080986985
-  - rid: 4847120288080986986
-  - rid: 4847120288080986987
-  - rid: 4847120288080986988
-  - rid: 4847120288080986989
+  - rid: 2007814039375446835
+  - rid: 2007814039375446836
+  - rid: 2007814039375446837
+  - rid: 2007814039375446838
+  - rid: 2007814039375446839
+  - rid: 2007814039375446840
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120288080986984
+    - rid: 2007814039375446835
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 719204620
-    - rid: 4847120288080986985
+    - rid: 2007814039375446836
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: 592618523
-    - rid: 4847120288080986986
+    - rid: 2007814039375446837
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Jessica
-    - rid: 4847120288080986987
+    - rid: 2007814039375446838
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1855049432
-    - rid: 4847120288080986988
+    - rid: 2007814039375446839
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -179481864
-    - rid: 4847120288080986989
+    - rid: 2007814039375446840
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

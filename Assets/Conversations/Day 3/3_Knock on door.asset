@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814039375446070
-  - rid: 2007814039375446071
-  - rid: 2007814039375446072
-  - rid: 2007814039375446073
-  - rid: 2007814039375446074
-  - rid: 2007814039375446075
+  - rid: 2007814039375446695
+  - rid: 2007814039375446696
+  - rid: 2007814039375446697
+  - rid: 2007814039375446698
+  - rid: 2007814039375446699
+  - rid: 2007814039375446700
   choices:
   - prompt: -1954132389
     nextConversation: {fileID: 11400000, guid: 67c32dba6d2ee614882615f1b41b2185, type: 2}
@@ -31,31 +31,31 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2007814039375446070
+    - rid: 2007814039375446695
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -668607325
-    - rid: 2007814039375446071
+    - rid: 2007814039375446696
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 2007814039375446072
+    - rid: 2007814039375446697
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -659136869
-    - rid: 2007814039375446073
+    - rid: 2007814039375446698
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 2007814039375446074
+    - rid: 2007814039375446699
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -891930033
-    - rid: 2007814039375446075
+    - rid: 2007814039375446700
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf

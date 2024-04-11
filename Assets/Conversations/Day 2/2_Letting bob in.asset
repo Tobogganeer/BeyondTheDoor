@@ -14,14 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 2007814011597357897
+  - rid: 2007814039375446434
+  - rid: 2007814039375446435
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2007814011597357897
+    - rid: 2007814039375446434
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -1754562195
+    - rid: 2007814039375446435
+      type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
+      data:
+        name: Goto
+        conversation: {fileID: 11400000, guid: c373d59ef9f983343909b115c2a82389, type: 2}
+        goofyWorkaroundConversationName: 2_Bob gets in

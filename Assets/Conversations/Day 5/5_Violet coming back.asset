@@ -14,50 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStarted: {fileID: 0}
   elements:
-  - rid: 4847120288080986505
-  - rid: 4847120288080986506
-  - rid: 4847120288080986507
-  - rid: 4847120288080986508
-  - rid: 4847120288080986509
-  - rid: 4847120288080986510
-  - rid: 4847120288080986511
+  - rid: 2007814039375446773
+  - rid: 2007814039375446774
+  - rid: 2007814039375446775
+  - rid: 2007814039375446776
+  - rid: 2007814039375446777
+  - rid: 2007814039375446778
+  - rid: 2007814039375446779
   choices: []
   onFinished: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 4847120288080986505
+    - rid: 2007814039375446773
       type: {class: IfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: If
         condition: Bob
-    - rid: 4847120288080986506
+    - rid: 2007814039375446774
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
-        conversation: {fileID: 0}
+        conversation: {fileID: 11400000, guid: 1900558a8b4314d479739e82376fecd2, type: 2}
         goofyWorkaroundConversationName: 5_B_Violet coming back
-    - rid: 4847120288080986507
+    - rid: 2007814039375446775
       type: {class: ElifElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Elif
         condition: Jessica
-    - rid: 4847120288080986508
+    - rid: 2007814039375446776
       type: {class: GotoElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Goto
-        conversation: {fileID: 0}
+        conversation: {fileID: 11400000, guid: e408e18f15f3af34b90c7295092e3b4d, type: 2}
         goofyWorkaroundConversationName: 5_J_Violet coming back
-    - rid: 4847120288080986509
+    - rid: 2007814039375446777
       type: {class: ElseElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Else
-    - rid: 4847120288080986510
+    - rid: 2007814039375446778
       type: {class: DialogueElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: Dialogue
         lineID: -821830624
-    - rid: 4847120288080986511
+    - rid: 2007814039375446779
       type: {class: EndIfElement, ns: BeyondTheDoor, asm: BeyondTheDoor}
       data:
         name: EndIf
